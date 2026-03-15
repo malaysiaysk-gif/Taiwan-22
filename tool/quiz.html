@@ -4,43 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>台湾華語 単語フラッシュカード</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <style> body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; } </style>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+    .bg-dots { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px; }
+  </style>
 </head>
-<body class="bg-slate-100">
+<body class="bg-slate-100 bg-dots">
   <div id="root"></div>
 
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    // --- アイコン ---
-    const Play = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg>;
-    const RefreshCw = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>;
-    const Trophy = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>;
-    const Star = ({ size=24, className="", fill="none" }) => <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
-    const CheckCircle = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>;
-    const XCircle = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>;
-    const ArrowRight = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
-    const Volume2 = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>;
-    const Headphones = ({ size=24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>;
+    // --- アイコンコンポーネント ---
+    const Play = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>;
+    const RefreshCw = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>;
+    const Trophy = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>;
+    const Star = ({ size = 24, className = "", fill = "none" }) => <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
+    const Volume2 = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>;
+    const Headphones = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>;
+    const CheckCircle = ({ size = 32 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>;
+    const XCircle = ({ size = 32 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>;
+    const ArrowRight = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
 
     const TARGET_SCORE = 3;
 
-    const shuffleArray = (array) => {
-      const newArray = [...array];
-      for (let i = newArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-      }
-      return newArray;
-    };
-
     function App() {
       const [wordData, setWordData] = useState([]);
-      const [testTitle, setTestTitle] = useState("単語フラッシュカード");
+      const [testTitle, setTestTitle] = useState("単語テスト");
       const [isLoading, setIsLoading] = useState(true);
       const [error, setError] = useState(null);
 
@@ -51,36 +47,38 @@
       const [options, setOptions] = useState([]);
       const [selectedOption, setSelectedOption] = useState(null);
 
-      // ★ URLからパラメータを取得してスプレッドシートを読み込む ★
       useEffect(() => {
         const params = new URLSearchParams(window.location.search);
-        const gid = params.get('gid');
-        const title = params.get('title') || "単語テスト";
+        const gid = params.get('gid') || "1162710921"; // URLにない場合の予備
+        const title = params.get('title') || "時間表現テスト";
         setTestTitle(title);
 
-        if (!gid) {
-          setError("URLに gid（タブID）が指定されていません。");
-          setIsLoading(false);
-          return;
-        }
-
-
-const SPREADSHEET_BASE = "https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/export?format=csv&gid=";
+        // ★★★ スプレッドシート読み込み用URL (ここが重要) ★★★
+        const SPREADSHEET_URL = `https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/export?format=csv&gid=${gid}`;
         
-        fetch(SPREADSHEET_BASE + gid)
-          .then(res => res.text())
+        fetch(SPREADSHEET_URL)
+          .then(res => {
+            if (!res.ok) throw new Error("アクセスエラー");
+            return res.text();
+          })
           .then(csvText => {
-            const rows = csvText.split(/\r?\n/).slice(1);
-            const parsed = rows.filter(r => r.trim()).map(r => {
-              const cols = r.split(',');
-              return { word: cols[0], pinyin: cols[1], katakana: cols[2], meaning: cols[3], hint: cols[4] };
+            // CSVを解析 (カンマ区切り、改行対応)
+            const rows = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+            const parsed = rows.slice(1).map(r => {
+              const cols = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // 特殊なカンマ分割
+              const clean = cols.map(c => c ? c.replace(/^"|"$/g, '').trim() : "");
+              return { word: clean[0], pinyin: clean[1], katakana: clean[2], meaning: clean[3], hint: clean[4] };
             });
-            if (parsed.length === 0) throw new Error("データが空です");
-            setWordData(parsed);
+
+            const finalData = parsed.filter(item => item.word && item.meaning);
+            if (finalData.length === 0) throw new Error("データが見つかりません");
+            
+            setWordData(finalData);
             setIsLoading(false);
           })
           .catch(err => {
-            setError("データの読み込みに失敗しました。ウェブ公開の設定とURLを確認してください。");
+            console.error(err);
+            setError("データの読み込みに失敗しました。スプレッドシートの「ウェブに公開」設定を確認してください。");
             setIsLoading(false);
           });
       }, []);
@@ -91,9 +89,6 @@ const SPREADSHEET_BASE = "https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSO
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = "zh-TW";
         utter.rate = 0.9;
-        const voices = window.speechSynthesis.getVoices();
-        const twVoice = voices.find(v => v.lang.includes("zh-TW") || v.lang.includes("zh_TW"));
-        if (twVoice) utter.voice = twVoice;
         window.speechSynthesis.speak(utter);
       };
 
@@ -114,19 +109,17 @@ const SPREADSHEET_BASE = "https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSO
 
       const generateQuestion = (stats, previousWord) => {
         let activeWords = wordData.filter(w => stats[w.word] < TARGET_SCORE);
-        if (activeWords.length === 0) {
-          setGameState('completed'); return;
-        }
+        if (activeWords.length === 0) { setGameState('completed'); return; }
+        
         if (activeWords.length > 1 && previousWord) {
-          const filtered = activeWords.filter(w => w.word !== previousWord);
-          if (filtered.length > 0) activeWords = filtered;
+          activeWords = activeWords.filter(w => w.word !== previousWord);
         }
 
         const target = activeWords[Math.floor(Math.random() * activeWords.length)];
         const otherMeanings = wordData.filter(w => w.word !== target.word).map(w => w.meaning);
-        const shuffledOthers = shuffleArray(otherMeanings);
+        const shuffledOthers = [...otherMeanings].sort(() => 0.5 - Math.random());
         const dummies = shuffledOthers.slice(0, 3);
-        const newOptions = shuffleArray([target.meaning, ...dummies]);
+        const newOptions = [...dummies, target.meaning].sort(() => 0.5 - Math.random());
         
         setCurrentWord(target);
         setOptions(newOptions);
@@ -137,59 +130,23 @@ const SPREADSHEET_BASE = "https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSO
         if (selectedOption) return; 
         setSelectedOption(option);
         if (gameMode === 'standard') playAudio(currentWord.word);
-        
         if (option === currentWord.meaning) {
           setWordStats(prev => ({ ...prev, [currentWord.word]: prev[currentWord.word] + 1 }));
         }
       };
 
-      const totalRequired = wordData.length * TARGET_SCORE;
-      const currentTotal = Object.values(wordStats).reduce((acc, curr) => acc + curr, 0);
-      const progressPercent = totalRequired === 0 ? 0 : (currentTotal / totalRequired) * 100;
-
-      const getButtonClass = (option) => {
-        const baseClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 text-lg font-medium outline-none focus:ring-2 focus:ring-blue-400 ";
-        if (!selectedOption) return baseClass + "bg-white border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-700 active:bg-blue-100";
-        if (option === currentWord.meaning) return baseClass + "bg-green-100 border-green-500 text-green-800 shadow-sm"; 
-        if (option === selectedOption && option !== currentWord.meaning) return baseClass + "bg-red-50 border-red-400 text-red-700 opacity-80"; 
-        return baseClass + "bg-gray-50 border-gray-200 text-gray-400 opacity-60"; 
-      };
-
-      const renderStars = () => {
-        const score = wordStats[currentWord?.word] || 0;
-        return (
-          <div className="flex space-x-1 justify-center mt-3">
-            {[1, 2, 3].map(i => (
-              <Star key={i} size={28} className={`transition-colors duration-500 ${i <= score ? "text-yellow-400" : "text-gray-200"}`} fill={i <= score ? "currentColor" : "none"} />
-            ))}
-          </div>
-        );
-      };
-
-      if (isLoading) return <div className="min-h-screen flex items-center justify-center text-xl font-bold text-gray-500">データを読み込み中...</div>;
-      if (error) return <div className="min-h-screen flex items-center justify-center text-xl font-bold text-red-500 px-4 text-center">{error}</div>;
+      if (isLoading) return <div className="min-h-screen flex items-center justify-center text-slate-400 font-bold">データを読み込み中...</div>;
+      if (error) return <div className="min-h-screen flex items-center justify-center text-red-500 font-bold p-8 text-center">{error}</div>;
 
       if (gameState === 'start') {
         return (
-          <div className="min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
-            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
-              <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <RefreshCw size={40} />
-              </div>
-              <h1 className="text-2xl font-bold mb-2 text-gray-800">{testTitle}</h1>
-              <p className="text-gray-600 mb-6 mt-4 text-left bg-gray-50 p-4 rounded-xl text-sm leading-relaxed">
-                <strong className="block mb-2 text-gray-700">ルール：</strong>
-                意味を4択から選んでください。1つの単語につき<strong className="text-blue-600 font-bold">3回正解</strong>でクリアです。<br/>
-                全 {wordData.length} 単語をマスターしましょう！
-              </p>
-              
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center border border-slate-200">
+              <div className="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-6"><RefreshCw size={40} /></div>
+              <h1 className="text-2xl font-bold text-slate-800 mb-6">{testTitle}</h1>
               <div className="space-y-3">
-                <button onClick={() => startGame('standard')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-lg shadow-blue-200">
-                  <Play size={24} /> <span className="text-lg">通常モード (文字を見る)</span>
-                </button>
-                <button onClick={() => startGame('listening')} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-lg shadow-orange-200">
-                  <Headphones size={24} /> <span className="text-lg">リスニングモード</span>
-                </button>
+                <button onClick={() => startGame('standard')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-lg shadow-blue-200"><Play size={20} /><span>通常モード</span></button>
+                <button onClick={() => startGame('listening')} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-lg shadow-orange-200"><Headphones size={20} /><span>リスニングモード</span></button>
               </div>
             </div>
           </div>
@@ -198,92 +155,58 @@ const SPREADSHEET_BASE = "https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSO
 
       if (gameState === 'completed') {
         return (
-          <div className="min-h-screen flex items-center justify-center p-4 font-sans">
-            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
-              <div className="w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6"><Trophy size={48} /></div>
-              <h1 className="text-3xl font-bold mb-4 text-gray-800">完全制覇！</h1>
-              <p className="text-gray-600 mb-8">おめでとうございます！<br/>「{testTitle}」をクリアしました！</p>
-              <button onClick={() => setGameState('start')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-lg shadow-blue-200">
-                <RefreshCw size={24} /> <span className="text-lg">トップに戻る</span>
-              </button>
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center border border-slate-200">
+              <div className="w-24 h-24 bg-yellow-50 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6"><Trophy size={48} /></div>
+              <h1 className="text-3xl font-bold text-slate-800 mb-4">完全制覇！</h1>
+              <p className="text-slate-500 mb-8">おめでとうございます！<br/>すべてクリアしました。</p>
+              <button onClick={() => setGameState('start')} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl transition-all active:scale-95">トップに戻る</button>
             </div>
           </div>
         );
       }
 
-      const isHiddenMode = gameMode === 'listening' && !selectedOption;
+      const isHidden = gameMode === 'listening' && !selectedOption;
+      const currentTotal = Object.values(wordStats).reduce((a, b) => a + b, 0);
+      const progress = (currentTotal / (wordData.length * TARGET_SCORE)) * 100;
 
       return (
         <div className="min-h-screen flex flex-col items-center py-8 px-4 font-sans select-none">
-          <div className="w-full max-w-md mb-6 px-2">
-            <div className="flex justify-between text-xs font-semibold text-gray-500 mb-2 px-1">
-              <span>進捗</span><span>{currentTotal} / {totalRequired}</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div className="bg-blue-500 h-3 rounded-full transition-all duration-500 ease-out" style={{ width: `${progressPercent}%` }}></div>
+          <div className="w-full max-w-md mb-6">
+            <div className="w-full bg-slate-200 rounded-full h-2">
+              <div className="bg-blue-500 h-2 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
             </div>
           </div>
 
           <div className="w-full max-w-md flex-1 flex flex-col">
-            <div className="bg-white rounded-3xl shadow-lg p-6 mb-4 flex-shrink-0 text-center relative overflow-hidden min-h-[220px] flex flex-col justify-center">
-              <span className="absolute top-4 left-0 w-full text-center text-sm font-semibold text-blue-500 tracking-wider">
-                {gameMode === 'listening' ? 'リスニング問題' : '問題'}
-              </span>
-              
-              {isHiddenMode ? (
-                <div className="flex flex-col items-center mt-6">
-                  <button onClick={() => playAudio(currentWord.word)} className="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center hover:bg-orange-200 transition-colors shadow-sm active:scale-95 mb-4">
-                    <Volume2 size={40} />
-                  </button>
-                  <p className="text-gray-500 font-medium text-sm">音声を聞いて意味を選んでください</p>
-                </div>
+            <div className="bg-white rounded-3xl shadow-lg p-8 mb-4 text-center relative min-h-[240px] flex flex-col justify-center border border-slate-200">
+              {isHidden ? (
+                <button onClick={() => playAudio(currentWord.word)} className="w-24 h-24 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto active:scale-90 transition-all"><Volume2 size={48} /></button>
               ) : (
-                <div className="mt-6">
-                  <h2 className="text-5xl font-bold mb-2 text-gray-800">{currentWord?.word}</h2>
-                  {currentWord?.pinyin && (
-                    <div className="text-gray-500 font-medium mb-3 flex items-center justify-center space-x-3 text-sm">
-                      <span>{currentWord.pinyin}</span><span className="text-gray-300">|</span><span>{currentWord.katakana}</span>
-                    </div>
-                  )}
-                  {currentWord?.pinyin && (
-                    <button onClick={() => playAudio(currentWord.word)} className="mx-auto mt-2 bg-orange-100 text-orange-600 hover:bg-orange-200 px-4 py-2 rounded-full flex items-center justify-center space-x-2 text-sm font-bold transition-colors active:scale-95">
-                      <Volume2 size={18} /><span>発音を聞く</span>
-                    </button>
-                  )}
+                <div>
+                  <h2 className="text-5xl font-bold text-slate-800 mb-4">{currentWord.word}</h2>
+                  <p className="text-slate-400 font-medium">{currentWord.pinyin} | {currentWord.katakana}</p>
                 </div>
               )}
-              
-              {renderStars()}
               {selectedOption && (
-                <div className={`absolute top-4 right-4 ${selectedOption === currentWord.meaning ? 'text-green-500' : 'text-red-500'}`}>
-                  {selectedOption === currentWord.meaning ? <CheckCircle size={32} /> : <XCircle size={32} />}
+                <div className={`absolute top-6 right-6 ${selectedOption === currentWord.meaning ? 'text-green-500' : 'text-red-500'}`}>
+                  {selectedOption === currentWord.meaning ? <CheckCircle /> : <XCircle />}
                 </div>
               )}
             </div>
 
             <div className="space-y-3 mb-6">
-              {options.map((option, idx) => (
-                <button key={idx} onClick={() => handleOptionClick(option)} disabled={selectedOption !== null} className={getButtonClass(option)}>{option}</button>
+              {options.map((opt, i) => (
+                <button key={i} onClick={() => handleOptionClick(opt)} disabled={!!selectedOption} className={`w-full p-4 rounded-2xl text-lg font-bold border-2 transition-all ${!selectedOption ? 'bg-white border-slate-200 hover:border-blue-400 text-slate-700' : opt === currentWord.meaning ? 'bg-green-50 border-green-500 text-green-700' : opt === selectedOption ? 'bg-red-50 border-red-500 text-red-700' : 'bg-slate-50 border-slate-100 text-slate-300'}`}>{opt}</button>
               ))}
             </div>
 
             {selectedOption && (
-              <div className="mt-auto pb-4">
-                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-4 shadow-sm">
-                  <div className="text-center mb-3">
-                    <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">Pinyin & Reading</span>
-                    <p className="text-xl font-semibold text-blue-900 mt-1">{currentWord.pinyin} <span className="text-blue-600/50 mx-2">|</span> {currentWord.katakana}</p>
-                  </div>
-                  {currentWord.hint && (
-                    <div className="border-t border-blue-200/60 pt-3">
-                      <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">解説・ヒント</span>
-                      <p className="text-gray-700 mt-1.5 leading-relaxed text-sm">{currentWord.hint}</p>
-                    </div>
-                  )}
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="bg-blue-50 rounded-2xl p-4 mb-4 border border-blue-100">
+                  <p className="text-blue-800 text-sm leading-relaxed"><span className="font-bold mr-2">ヒント:</span>{currentWord.hint}</p>
                 </div>
-                <button onClick={() => generateQuestion(wordStats, currentWord.word)} className="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-4 rounded-2xl flex justify-center items-center space-x-2 transition-all active:scale-95 shadow-md">
-                  <span className="text-lg">次の問題へ</span><ArrowRight size={20} />
-                </button>
+                <button onClick={() => generateQuestion(wordStats, currentWord.word)} className="w-full bg-slate-800 text-white font-bold py-4 rounded-2xl flex items-center justify-center space-x-2 active:scale-95 transition-all"><span>次の問題へ</span><ArrowRight size={20} /></button>
               </div>
             )}
           </div>
