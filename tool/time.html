@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 時間表現チートシート</title>
+    <!-- Tailwind CSSの読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Iconsの読み込み -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
+        <div class="max-w-4xl mx-auto space-y-8">
+            
+            <!-- Header -->
+            <div class="text-center space-y-2">
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                    台湾華語 時間表現マスター図解
+                </h1>
+                <p class="text-slate-500">TOCFL対策にも！「前・後」「上・下」と「個」のルール</p>
+            </div>
+
+            <!-- Section 1: 横の時間軸 (日・年) -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 overflow-hidden relative">
+                <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 rounded-bl-xl font-bold text-sm shadow-sm flex items-center gap-1">
+                    <i data-lucide="x-circle" class="w-4 h-4"></i> 「個」は使わない！
+                </div>
+                
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">1. 「日(天)」と「年」のルール</h2>
+                        <p class="text-sm text-slate-500">自分が道を歩くイメージ（通り過ぎた＝前、これから来る＝後）</p>
+                    </div>
+                </div>
+
+                <div class="relative pt-8 pb-4">
+                    <!-- Axis Line -->
+                    <div class="absolute top-1/2 left-0 right-0 h-1.5 bg-slate-200 -translate-y-1/2 rounded-full hidden md:block"></div>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+                        
+                        <!-- -2 -->
+                        <div class="flex flex-col items-center group w-full md:w-auto">
+                            <span class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">-2 (2つ隣)</span>
+                            <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 w-full md:w-32 text-center shadow-sm transition-transform hover:-translate-y-1">
+                                <div class="text-blue-700 font-bold text-lg mb-1">前天</div>
+                                <div class="text-blue-700 font-bold text-lg border-t border-blue-200 pt-1 mt-1">前年</div>
+                            </div>
+                            <div class="flex items-center text-blue-500 mt-3 font-medium text-sm">
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i> 通り過ぎた
+                            </div>
+                        </div>
+
+                        <!-- -1 -->
+                        <div class="flex flex-col items-center group w-full md:w-auto">
+                            <span class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">-1 (過去)</span>
+                            <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 w-full md:w-32 text-center shadow-sm transition-transform hover:-translate-y-1">
+                                <div class="text-slate-800 font-bold text-lg mb-1">昨天</div>
+                                <div class="text-slate-800 font-bold text-lg border-t border-blue-200 pt-1 mt-1">去年</div>
+                            </div>
+                        </div>
+
+                        <!-- 0 -->
+                        <div class="flex flex-col items-center group w-full md:w-auto transform md:scale-110 z-20">
+                            <span class="text-xs font-bold text-orange-500 mb-2 uppercase tracking-wider">0 (現在)</span>
+                            <div class="bg-orange-50 border-2 border-orange-400 rounded-xl p-5 w-full md:w-36 text-center shadow-md">
+                                <div class="text-orange-600 font-extrabold text-xl mb-1">今天</div>
+                                <div class="text-orange-600 font-extrabold text-xl border-t border-orange-200 pt-1 mt-1">今年</div>
+                            </div>
+                        </div>
+
+                        <!-- +1 -->
+                        <div class="flex flex-col items-center group w-full md:w-auto">
+                            <span class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">+1 (未来)</span>
+                            <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 w-full md:w-32 text-center shadow-sm transition-transform hover:-translate-y-1">
+                                <div class="text-slate-800 font-bold text-lg mb-1">明天</div>
+                                <div class="text-slate-800 font-bold text-lg border-t border-emerald-200 pt-1 mt-1">明年</div>
+                            </div>
+                        </div>
+
+                        <!-- +2 -->
+                        <div class="flex flex-col items-center group w-full md:w-auto">
+                            <span class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">+2 (2つ隣)</span>
+                            <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 w-full md:w-32 text-center shadow-sm transition-transform hover:-translate-y-1">
+                                <div class="text-emerald-700 font-bold text-lg mb-1">後天</div>
+                                <div class="text-emerald-700 font-bold text-lg border-t border-emerald-200 pt-1 mt-1">後年</div>
+                            </div>
+                            <div class="flex items-center text-emerald-600 mt-3 font-medium text-sm">
+                                これから来る <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Section 2: 縦のカレンダー (週・月) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 rounded-bl-xl font-bold text-sm shadow-sm flex items-center gap-1 z-10">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> 「個」が必須！
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="bg-purple-100 p-3 rounded-lg text-purple-600">
+                            <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-800">2. 「週」と「月」のルール</h2>
+                            <p class="text-sm text-slate-500">カレンダーを上下に移動するイメージ</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center space-y-4">
+                        <!-- 上 -->
+                        <div class="flex items-center gap-4 w-full">
+                            <div class="w-12 flex justify-center text-blue-500">
+                                <i data-lucide="arrow-up" class="w-8 h-8"></i>
+                            </div>
+                            <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-3 flex-1 text-center flex flex-col sm:flex-row justify-center items-center gap-2">
+                                <span class="text-blue-600 font-bold text-lg">上個禮拜</span>
+                                <span class="text-slate-300 hidden sm:inline">|</span>
+                                <span class="text-blue-600 font-bold text-lg">上個月</span>
+                            </div>
+                        </div>
+
+                        <!-- 這 -->
+                        <div class="flex items-center gap-4 w-full">
+                            <div class="w-12 flex justify-center text-orange-500 font-bold text-xl">
+                                今
+                            </div>
+                            <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-4 flex-1 text-center shadow-md flex flex-col sm:flex-row justify-center items-center gap-2 transform scale-105">
+                                <span class="text-orange-600 font-extrabold text-xl">這個禮拜</span>
+                                <span class="text-orange-300 hidden sm:inline">|</span>
+                                <span class="text-orange-600 font-extrabold text-xl">這個月</span>
+                            </div>
+                        </div>
+
+                        <!-- 下 -->
+                        <div class="flex items-center gap-4 w-full">
+                            <div class="w-12 flex justify-center text-emerald-500">
+                                <i data-lucide="arrow-down" class="w-8 h-8"></i>
+                            </div>
+                            <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-3 flex-1 text-center flex flex-col sm:flex-row justify-center items-center gap-2">
+                                <span class="text-emerald-600 font-bold text-lg">下個禮拜</span>
+                                <span class="text-slate-300 hidden sm:inline">|</span>
+                                <span class="text-emerald-600 font-bold text-lg">下個月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: メタ視点「個」の有無まとめ -->
+                <div class="bg-slate-800 rounded-2xl shadow-sm border border-slate-700 p-6 text-white">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-slate-700 p-3 rounded-lg text-yellow-400">
+                            <i data-lucide="info" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white">3. 期間の「個」チートシート</h2>
+                            <p class="text-sm text-slate-400">「単位」か「箱(名詞)」かで決まる！</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 不要グループ -->
+                        <div>
+                            <h3 class="flex items-center text-red-400 font-bold mb-3 border-b border-slate-700 pb-2">
+                                <i data-lucide="x-circle" class="w-[18px] h-[18px] mr-2"></i>
+                                個 は絶対に使わない！ (単位)
+                            </h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-slate-700 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-400 mb-1">日</div>
+                                    <div class="font-bold text-lg">兩天 <span class="text-slate-400 text-sm font-normal">(2日間)</span></div>
+                                </div>
+                                <div class="bg-slate-700 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-400 mb-1">年</div>
+                                    <div class="font-bold text-lg">兩年 <span class="text-slate-400 text-sm font-normal">(2年間)</span></div>
+                                </div>
+                                <div class="bg-slate-700 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-400 mb-1">秒</div>
+                                    <div class="font-bold text-lg">兩秒(鐘)</div>
+                                </div>
+                                <div class="bg-slate-700 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-400 mb-1">分</div>
+                                    <div class="font-bold text-lg">兩分(鐘)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 必須グループ -->
+                        <div>
+                            <h3 class="flex items-center text-blue-400 font-bold mb-3 border-b border-slate-700 pb-2 mt-6">
+                                <i data-lucide="check-circle" class="w-[18px] h-[18px] mr-2"></i>
+                                個 が絶対に必要！ (箱・名詞)
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="bg-blue-900/50 border border-blue-800 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-blue-300 mb-1">時間</div>
+                                    <div class="font-bold text-blue-100">兩個小時</div>
+                                    <div class="text-xs text-blue-400 mt-1">兩個鐘頭</div>
+                                </div>
+                                <div class="bg-blue-900/50 border border-blue-800 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-blue-300 mb-1">週</div>
+                                    <div class="font-bold text-blue-100">兩個禮拜</div>
+                                    <div class="text-xs text-blue-400 mt-1">兩個星期</div>
+                                </div>
+                                <div class="bg-blue-900/50 border border-blue-800 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-blue-300 mb-1">月</div>
+                                    <div class="font-bold text-blue-100">兩個月</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lucideアイコンを初期化するスクリプト -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

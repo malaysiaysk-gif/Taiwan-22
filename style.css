@@ -1,0 +1,183 @@
+/* ===== 全体の基本設定 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3 { color: #ffffff; font-weight: 700; letter-spacing: 1px; text-align: center; }
+
+/* ===== カテゴリバー ===== */
+#category-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; width: 100%; max-width: 600px; }
+.category-btn { background-color: #2a2a2a; color: #a0a0a0; border: 1px solid #3a3a3a; border-radius: 20px; padding: 8px 16px; font-size: 14px; cursor: pointer; transition: all 0.3s ease; }
+.category-btn:hover { background-color: #3a3a3a; }
+.category-btn.active { background-color: #3b82f6; color: #ffffff; border-color: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+
+/* ===== スプレッドシートリンク（基本設定） ===== */
+.sheet-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 600px; /* スマホ画面でカテゴリバーと幅を合わせるため追加 */
+}
+
+.sheet-links-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #3a3a3a;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.sheet-link {
+  font-size: 13px;
+  color: #3b82f6;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.sheet-link:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+/* ===== 左サイドバーのレイアウト（PC用） ===== */
+@media (min-width: 900px) {
+  /* 新しく作った親グループを左側に固定 */
+  .left-sidebar {
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* カテゴリとリンクの間の隙間 */
+  }
+
+  /* 個別の絶対配置を解除し、親グループの幅に合わせる */
+  #category-bar {
+    position: static;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .sheet-links {
+    position: static;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  /* ボタンの形を横長に整える */
+  .category-btn {
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+
+/* ===== メインの単語カード ===== */
+#card-mode, #quiz-mode {
+  background-color: #1e1e1e;
+  border-radius: 24px;
+  padding: 40px 20px 30px;
+  width: 100%;             
+  max-width: 400px;        
+  min-height: 440px;       
+  box-sizing: border-box;  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;      
+  border: 1px solid #2a2a2a;
+  margin-bottom: 20px;
+  display: block; 
+  position: relative; /* ★追加：星マークの基準位置にするため */
+}
+
+/* 単語テキストの余白調整 */
+#word-zh, #quiz-zh { font-size: 48px; font-weight: 700; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; word-break: break-all; }
+#word-pinyin, #quiz-pinyin { font-size: 20px; color: #9ca3af; margin: 0 0 24px 0; font-style: italic; }
+#word-jp { font-size: 24px; color: #e5e7eb; font-weight: 500; margin: 0 0 16px 0; word-break: break-word; }
+#word-note { font-size: 14px; color: #6b7280; margin: 0 0 20px 0; min-height: 20px; }
+#word-counter { font-size: 14px; color: #6b7280; margin: 0 0 20px 0; display: block; }
+
+/* ★追加：ブックマーク（星）ボタン */
+.bookmark-btn {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  color: #4b5563; /* オフの時は暗い色 */
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+.bookmark-btn:hover { transform: scale(1.1); }
+.bookmark-btn.active { color: #fbbf24; /* オンの時は黄色 */ text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+
+/* ===== アクションボタン ===== */
+#speak-btn, #quiz-speak-btn { background-color: #f59e0b; color: #fff; border: none; border-radius: 20px; padding: 10px 32px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.2s; display: inline-block; }
+#speak-btn { margin-bottom: 24px; }
+#quiz-speak-btn { margin: 10px auto 20px auto; }
+#speak-btn:hover, #quiz-speak-btn:hover { background-color: #d97706; transform: translateY(-2px); }
+
+#prev-btn, #random-btn, #next-btn {
+  background-color: #2d2d2d; color: #e0e0e0; border: none; border-radius: 12px; padding: 14px 0; font-size: 15px; font-weight: bold; cursor: pointer; width: 30%; margin: 0 1%; display: inline-block; box-sizing: border-box; transition: all 0.2s; vertical-align: middle;
+}
+#prev-btn:hover, #random-btn:hover, #next-btn:hover { background-color: #3d3d3d; transform: translateY(-2px); }
+
+/* 間違えた単語 / ブックマーク ボタン */
+#toggle-wrong-btn, #toggle-bookmark-btn {
+  background-color: #1e1e1e; border-radius: 16px; padding: 12px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; display: block; box-sizing: border-box;
+}
+#toggle-wrong-btn { color: #ef4444; border: 2px solid #ef4444; margin-top: 24px; }
+#toggle-wrong-btn.active { background-color: #ef4444; color: #ffffff; }
+
+/* ★追加：ブックマークのみボタンのスタイル */
+#toggle-bookmark-btn { color: #fbbf24; border: 2px solid #fbbf24; margin-top: 12px; }
+#toggle-bookmark-btn.active { background-color: #fbbf24; color: #121212; }
+
+/* ===== クイズモード専用 ===== */
+.quiz-option-btn { display: block; width: 100%; background-color: #2d2d2d; color: #e0e0e0; border: 1px solid #3a3a3a; border-radius: 16px; padding: 16px; margin-bottom: 12px; font-size: 18px; cursor: pointer; transition: 0.2s; box-sizing: border-box; }
+.quiz-option-btn:hover:not(:disabled) { background-color: #3d3d3d; border-color: #555; }
+.quiz-option-btn:disabled { cursor: not-allowed; opacity: 0.9; }
+#quiz-feedback { font-size: 20px; font-weight: bold; margin: 20px 0; min-height: 30px; }
+#quiz-next-btn { background-color: #3b82f6; color: white; border: none; border-radius: 16px; padding: 14px 24px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; display: none; box-sizing: border-box; }
+/* ===== 自動再生ボタン ===== */
+.autoplay-wrapper { text-align: center; margin-top: 16px; }
+.autoplay-btn { 
+  padding: 10px 24px; 
+  border-radius: 999px; 
+  border: none; 
+  background-color: #10b981; /* スタート時は緑 */
+  color: white; 
+  font-weight: bold; 
+  cursor: pointer; 
+  font-size: 15px; 
+  transition: 0.3s; 
+}
+.autoplay-btn.active { 
+  background-color: #ef4444; /* 再生中は赤（ストップ） */
+}
+.autoplay-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
