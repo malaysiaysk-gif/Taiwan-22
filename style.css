@@ -181,3 +181,32 @@ h1, h2, h3 { color: #ffffff; font-weight: 700; letter-spacing: 1px; text-align: 
   background-color: #ef4444; /* 再生中は赤（ストップ） */
 }
 .autoplay-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+/* =========================================
+   スマホ表示用：サイドバー（管理メニュー）を下に移動
+   ========================================= */
+@media screen and (max-width: 768px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 表示する順番を指定（数字が小さいほど上になります） */
+  h1 {
+    order: 1;
+  }
+  
+  #learning-view {
+    order: 2;
+  }
+  
+  #database-view {
+    order: 3;
+  }
+  
+  .left-sidebar {
+    order: 4;
+    margin-top: 32px; /* メイン画面との間に少し余白を作る */
+    border-top: 2px dashed #cbd5e1; /* 区切り線を引いて見やすくする（お好みで消してもOK） */
+    padding-top: 24px;
+  }
+}
