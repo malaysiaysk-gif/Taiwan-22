@@ -1718,5 +1718,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // 初期化
   renderWord();
   updateWrongCount();
+// ==========================================
+// ▼ 追加：画面切り替え（学習画面 ⇔ データ管理画面）▼
+// ==========================================
+const btnToDatabase = document.getElementById('nav-to-database');
+const btnToFlashcard = document.getElementById('nav-to-flashcard');
+const learningView = document.getElementById('learning-view');
+const databaseView = document.getElementById('database-view');
+
+if (btnToDatabase && btnToFlashcard && learningView && databaseView) {
+  // 「データベース管理を開く」をクリックしたとき
+  btnToDatabase.addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルト動作（ページトップへ飛ぶなど）を防ぐ
+    learningView.style.display = 'none';
+    databaseView.style.display = 'block';
+  });
+
+  // 「戻る」ボタンをクリックしたとき
+  btnToFlashcard.addEventListener('click', () => {
+    databaseView.style.display = 'none';
+    learningView.style.display = 'block'; 
+  });
+}
+// ==========================================
+// ▲ 画面切り替え処理 ここまで ▲
+// ==========================================
 
 });
+

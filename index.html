@@ -38,6 +38,69 @@
     .wrong-toggle-wrapper { text-align: center; margin-top: 16px; }
     .toggle-wrong-btn { padding: 8px 16px; border-radius: 999px; border: 2px solid #ef4444; background: white; color: #ef4444; font-weight: bold; cursor: pointer; }
     .toggle-wrong-btn.active { background: #ef4444; color: white; }
+
+    /* ▼ データ管理画面用のスタイル ▼ */
+    .db-container {
+      background: #2a2a2a;
+      padding: 24px;
+      border-radius: 12px;
+      color: #ffffff;
+      min-height: 500px;
+    }
+    .db-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 16px;
+    }
+    .db-title { font-size: 20px; font-weight: bold; }
+    .back-btn {
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      background: #4b5563;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .back-btn:hover { background: #6b7280; }
+
+    /* ▼ 管理メニュー・ツール用のボタンスタイル ▼ */
+    .db-section { margin-top: 32px; }
+    .db-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 8px;
+      color: #e5e7eb;
+    }
+    .tool-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tool-btn {
+      display: block;
+      padding: 12px 16px;
+      background: #374151;
+      color: #f3f4f6;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.2s;
+      border: 1px solid #4b5563;
+      font-weight: bold;
+    }
+    .tool-btn:hover {
+      background: #4b5563;
+      border-color: #6b7280;
+    }
+    /* 色分け用クラス */
+    .btn-green { background: #065f46; border-color: #047857; }
+    .btn-green:hover { background: #047857; border-color: #059669; }
+    .btn-blue { background: #1e3a8a; border-color: #1d4ed8; }
+    .btn-blue:hover { background: #1d4ed8; border-color: #2563eb; }
   </style>
 </head>
 <body>
@@ -49,88 +112,106 @@
       <div id="category-bar" class="category-bar"></div>
 
       <div class="sheet-links">
-        <div class="sheet-links-title">データ管理</div>
-        <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit#gid=0" target="_blank" class="sheet-link">タブ1</a>
-        <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit#gid=1997786373" target="_blank" class="sheet-link">タブ2</a>
-        <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit#gid=635468461" target="_blank" class="sheet-link">タブ3</a>
-        <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit#gid=431753409" target="_blank" class="sheet-link">タブ4</a>
-        <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit#gid=386010793" target="_blank" class="sheet-link">タブ5</a>
-        
-        <a href="#" target="_blank" class="sheet-link">タブ6 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ7 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ8 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ9 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ10 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ11 (空)</a>
-        <a href="#" target="_blank" class="sheet-link">タブ12 (空)</a>
+        <div class="sheet-links-title">管理メニュー</div>
+        <a href="#" id="nav-to-database" class="sheet-link">🗄️ 管理画面（DB・ツール）を開く</a>
       </div>
-
-      <div class="sheet-links">
-        <div class="sheet-links-title">チートシート・ツール</div>
-        
-        <a href="tool/time.html" target="_blank" class="sheet-link">🕒 時間表現マスター図解</a>
-        
-        <a href="tool/time2.html" target="_blank" class="sheet-link">ツール2 (準備中)</a>
-        <a href="tool/FLOW.html" target="_blank" class="sheet-link">ツール3 (準備中)</a>
-      </div>
-      </div>
+      
+    </div>
     
-    <div class="mode-toggle">
-      <button id="mode-card-btn" class="mode-btn active">カード</button>
-      <button id="mode-quiz-btn" class="mode-btn">クイズ</button>
-      <button id="mode-listening-btn" class="mode-btn">リスニング</button>
-    </div>
-
-    <div id="card-mode">
-      <div class="card">
-        <button id="bookmark-btn" class="bookmark-btn">☆</button>
-
-        <div class="zh" id="word-zh">華語</div>
-        <div class="pinyin" id="word-pinyin">huáyǔ</div>
-        <div class="jp" id="word-jp">中国語</div>
-        <div class="note" id="word-note"></div>
-        <button id="speak-btn" class="speak-btn">発音を聞く</button>
-        <div class="counter" id="word-counter">0 / 0</div>
+    <div id="learning-view" style="width: 100%;">
+      <div class="mode-toggle">
+        <button id="mode-card-btn" class="mode-btn active">カード</button>
+        <button id="mode-quiz-btn" class="mode-btn">クイズ</button>
+        <button id="mode-listening-btn" class="mode-btn">リスニング</button>
       </div>
 
-      <div class="buttons">
-        <button id="prev-btn">前へ</button>
-        <button id="random-btn">ランダム</button>
-        <button id="next-btn">次へ</button>
-      </div>
+      <div id="card-mode">
+        <div class="card">
+          <button id="bookmark-btn" class="bookmark-btn">☆</button>
 
-      <div class="autoplay-wrapper">
-        <button id="autoplay-btn" class="autoplay-btn">自動再生 スタート ▶️</button>
-      </div>
-      <div class="wrong-toggle-wrapper">
-        <button id="toggle-wrong-btn" class="toggle-wrong-btn">間違えた単語だけ</button>
-        <button id="toggle-bookmark-btn" class="toggle-bookmark-btn">ブックマークのみ</button>
-      </div>
-    </div>
-
-    <div id="quiz-mode" class="quiz" style="display: none;">
-      <div class="card quiz-card">
-        <div class="quiz-label" id="quiz-instruction">意味を選んでください（4択）</div>
-        
-        <div id="quiz-target-container">
-          <div class="quiz-zh" id="quiz-zh">我</div>
-          <div class="quiz-pinyin" id="quiz-pinyin">wǒ</div>
+          <div class="zh" id="word-zh">華語</div>
+          <div class="pinyin" id="word-pinyin">huáyǔ</div>
+          <div class="jp" id="word-jp">中国語</div>
+          <div class="note" id="word-note"></div>
+          <button id="speak-btn" class="speak-btn">発音を聞く</button>
+          <div class="counter" id="word-counter">0 / 0</div>
         </div>
 
-        <button id="quiz-speak-btn" class="speak-btn" style="display: none; margin: 10px auto;">
-          もう一度聞く 🔊
-        </button>
+        <div class="buttons">
+          <button id="prev-btn">前へ</button>
+          <button id="random-btn">ランダム</button>
+          <button id="next-btn">次へ</button>
+        </div>
 
-        <div class="quiz-options" id="quiz-options"></div>
+        <div class="autoplay-wrapper">
+          <button id="autoplay-btn" class="autoplay-btn">自動再生 スタート ▶️</button>
+        </div>
+        <div class="wrong-toggle-wrapper">
+          <button id="toggle-wrong-btn" class="toggle-wrong-btn">間違えた単語だけ</button>
+          <button id="toggle-bookmark-btn" class="toggle-bookmark-btn">ブックマークのみ</button>
+        </div>
+      </div>
 
-        <div class="quiz-feedback" id="quiz-feedback"></div>
-        <div class="quiz-footer">
-          <div id="quiz-wrong-count">間違えた単語: 0 語</div>
-          <button id="quiz-next-btn">次の問題</button>
+      <div id="quiz-mode" class="quiz" style="display: none;">
+        <div class="card quiz-card">
+          <div class="quiz-label" id="quiz-instruction">意味を選んでください（4択）</div>
+          
+          <div id="quiz-target-container">
+            <div class="quiz-zh" id="quiz-zh">我</div>
+            <div class="quiz-pinyin" id="quiz-pinyin">wǒ</div>
+          </div>
+
+          <button id="quiz-speak-btn" class="speak-btn" style="display: none; margin: 10px auto;">
+            もう一度聞く 🔊
+          </button>
+
+          <div class="quiz-options" id="quiz-options"></div>
+
+          <div class="quiz-feedback" id="quiz-feedback"></div>
+          <div class="quiz-footer">
+            <div id="quiz-wrong-count">間違えた単語: 0 語</div>
+            <button id="quiz-next-btn">次の問題</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div id="database-view" style="display: none; width: 100%;">
+      <div class="db-container">
+        <div class="db-header">
+          <div class="db-title">🗄️ 管理画面（ダッシュボード）</div>
+          <button id="nav-to-flashcard" class="back-btn">単語カードに戻る</button>
+        </div>
+
+        <div class="db-section">
+          <h3>🗄️ データ集</h3>
+          <div class="tool-links">
+            <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit?gid=1651780604#gid=1651780604" target="_blank" class="tool-btn btn-green">
+              📊 Googleスプレッドシートを開く
+            </a>
+          </div>
+        </div>
+
+        <div class="db-section">
+          <h3>🛠️ チートシート集</h3>
+          <div class="tool-links">
+            <a href="tool/time.html" target="_blank" class="tool-btn">🕒 時間表現マスター図解</a>
+            <a href="tool/time2.html" target="_blank" class="tool-btn">🔧 ツール2 (準備中)</a>
+            <a href="tool/FLOW.html" target="_blank" class="tool-btn">🔧 ツール3 (準備中)</a>
+          </div>
+        </div>
+
+        <div class="db-section">
+          <h3>📝 テスト集</h3>
+          <div class="tool-links">
+            <a href="test1.html" target="_blank" class="tool-btn btn-blue">
+              ✏️ テスト1（Reactフラッシュカード）を開く
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
 
   <script src="app.js"></script>
 </body>
