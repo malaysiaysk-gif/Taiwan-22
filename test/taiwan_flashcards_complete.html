@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台湾華語 対策テスト（完全版）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+    .animate-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-slate-100">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+
+    // --- アイコン ---
+    const Play = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>);
+    const RefreshCw = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>);
+    const Trophy = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>);
+    const Star = ({ size = 24, fill = "none", className = "" }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>);
+    const Volume2 = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>);
+    const Headphones = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>);
+    const CheckCircle = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>);
+    const XCircle = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>);
+    const ArrowRight = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>);
+
+    // ==========================================
+    // １．単語データ（自動で埋め込まれました）
+    // ==========================================
+    const wordData = [
+      {"word": "矮", "pinyin": "ǎi", "katakana": "", "meaning": "（背が）低い", "hint": ""},
+      {"word": "愛", "pinyin": "ài", "katakana": "", "meaning": "愛する", "hint": ""},
+      {"word": "八", "pinyin": "bā", "katakana": "", "meaning": "8", "hint": "数字"},
+      {"word": "把", "pinyin": "bǎ", "katakana": "", "meaning": "把（処置を表す前置詞）", "hint": "把A放在B（AをBに置く）"},
+      {"word": "吧", "pinyin": "ba", "katakana": "", "meaning": "〜でしょう、〜しよう", "hint": "推測や提案の語気助詞"},
+      {"word": "辦", "pinyin": "bàn", "katakana": "", "meaning": "行う、処理する", "hint": "辦公室（オフィス）の「辦」"},
+      {"word": "半", "pinyin": "bàn", "katakana": "", "meaning": "半分、半", "hint": ""},
+      {"word": "班", "pinyin": "bān", "katakana": "", "meaning": "クラス、班", "hint": ""},
+      {"word": "搬", "pinyin": "bān", "katakana": "", "meaning": "運ぶ、引っ越す", "hint": "搬家（引っ越す）"},
+      {"word": "棒", "pinyin": "bàng", "katakana": "", "meaning": "素晴らしい、すごい", "hint": "太棒了（すごすぎる！）"},
+      {"word": "幫", "pinyin": "bāng", "katakana": "", "meaning": "手伝う、助ける", "hint": "幫我（私を手伝って）"},
+      {"word": "飽", "pinyin": "bǎo", "katakana": "", "meaning": "お腹がいっぱい", "hint": "吃飽了（食べてお腹いっぱいになった）"},
+      {"word": "包", "pinyin": "bāo", "katakana": "", "meaning": "包み、〜包（量詞）", "hint": "一包糖（一包みの砂糖）"},
+      {"word": "背", "pinyin": "bèi", "katakana": "", "meaning": "背中", "hint": ""},
+      {"word": "杯", "pinyin": "bēi", "katakana": "", "meaning": "杯（量詞）", "hint": "グラスやカップの飲み物を数える"},
+      {"word": "倍", "pinyin": "bèi", "katakana": "", "meaning": "倍", "hint": "兩倍（2倍）"},
+      {"word": "被", "pinyin": "bèi", "katakana": "", "meaning": "〜される（受け身）", "hint": ""},
+      {"word": "本", "pinyin": "běn", "katakana": "", "meaning": "冊（本を数える量詞）", "hint": "一本書（一冊の本）"},
+      {"word": "笨", "pinyin": "bèn", "katakana": "", "meaning": "ばかだ、愚かだ", "hint": "好笨喔（バカだなぁ）"},
+      {"word": "筆", "pinyin": "bǐ", "katakana": "", "meaning": "筆、ペン", "hint": "量詞は「枝(zhī)」"},
+      {"word": "比", "pinyin": "bǐ", "katakana": "", "meaning": "〜より（比較）", "hint": "A比B大（AはBより大きい）"},
+      {"word": "遍", "pinyin": "biàn", "katakana": "", "meaning": "〜回（最初から最後まで通しての量詞）", "hint": "再說一遍（もう一度言ってください）"},
+      {"word": "變", "pinyin": "biàn", "katakana": "", "meaning": "変わる", "hint": "變成（〜に変わる）"},
+      {"word": "冰", "pinyin": "bīng", "katakana": "", "meaning": "氷、冷たい", "hint": "冰水（冷たい水）、去冰（氷抜き）"},
+      {"word": "病", "pinyin": "bìng", "katakana": "", "meaning": "病気", "hint": ""},
+      {"word": "步", "pinyin": "bù", "katakana": "", "meaning": "歩", "hint": "散步（散歩）の步"},
+      {"word": "不", "pinyin": "bù", "katakana": "", "meaning": "〜ない", "hint": "否定を表す（後ろが4声の時は2声に変化）"},
+      {"word": "部", "pinyin": "bù", "katakana": "", "meaning": "部（映画や機械の量詞）", "hint": "一部電影（一本の映画）"},
+      {"word": "菜", "pinyin": "cài", "katakana": "", "meaning": "料理、おかず、野菜", "hint": "點菜（料理を注文する）"},
+      {"word": "才", "pinyin": "cái", "katakana": "", "meaning": "やっと、〜して初めて", "hint": "就（すぐに）の反対のニュアンス"},
+      {"word": "差", "pinyin": "chà", "katakana": "", "meaning": "劣る、差がある", "hint": "差不多（だいたい同じ）、太差了（ひどすぎる）"},
+      {"word": "茶", "pinyin": "chá", "katakana": "", "meaning": "お茶", "hint": ""},
+      {"word": "查", "pinyin": "chá", "katakana": "", "meaning": "調べる", "hint": "查字典（辞書を引く）"},
+      {"word": "唱", "pinyin": "chàng", "katakana": "", "meaning": "歌う", "hint": ""},
+      {"word": "長", "pinyin": "cháng", "katakana": "", "meaning": "長い", "hint": ""},
+      {"word": "場", "pinyin": "chǎng", "katakana": "", "meaning": "場（試合や映画の回数の量詞）", "hint": "一場比賽（一つの試合）"},
+      {"word": "嚐/嘗", "pinyin": "cháng", "katakana": "", "meaning": "味わう", "hint": "嚐嚐看（味見してみて）"},
+      {"word": "吵", "pinyin": "chǎo", "katakana": "", "meaning": "うるさい", "hint": "太吵了（うるさすぎる）"},
+      {"word": "炒", "pinyin": "chǎo", "katakana": "", "meaning": "炒める", "hint": "炒飯（チャーハン）"},
+      {"word": "尺", "pinyin": "chǐ", "katakana": "", "meaning": "定規、ものさし", "hint": ""},
+      {"word": "吃", "pinyin": "chī", "katakana": "", "meaning": "食べる", "hint": "吃飯（ご飯を食べる）"},
+      {"word": "除", "pinyin": "chú", "katakana": "", "meaning": "除する、割る", "hint": ""},
+      {"word": "出", "pinyin": "chū", "katakana": "", "meaning": "出る", "hint": "出去（出て行く）"},
+      {"word": "穿", "pinyin": "chuān", "katakana": "", "meaning": "着る、履く", "hint": "衣服や靴を身につけること"},
+      {"word": "傳", "pinyin": "chuán", "katakana": "", "meaning": "伝える、送る", "hint": "傳訊息（メッセージを送る）"},
+      {"word": "詞", "pinyin": "cí", "katakana": "", "meaning": "語彙、単語", "hint": "生詞（新出単語）"},
+      {"word": "次", "pinyin": "cì", "katakana": "", "meaning": "回（量詞）", "hint": "一次（1回）"},
+      {"word": "大", "pinyin": "dà", "katakana": "", "meaning": "大きい", "hint": ""},
+      {"word": "打", "pinyin": "dǎ", "katakana": "", "meaning": "打つ、する（球技など）", "hint": "打球（球技をする）、打電話（電話をかける）"},
+      {"word": "答", "pinyin": "dá", "katakana": "", "meaning": "答える", "hint": ""},
+      {"word": "搭", "pinyin": "dā", "katakana": "", "meaning": "乗る", "hint": "搭捷運（MRTに乗る）坐と同じ"},
+      {"word": "戴", "pinyin": "dài", "katakana": "", "meaning": "身につける（アクセサリー類）", "hint": "時計、メガネ、帽子などに使う"},
+      {"word": "袋", "pinyin": "dài", "katakana": "", "meaning": "袋", "hint": ""},
+      {"word": "帶", "pinyin": "dài", "katakana": "", "meaning": "持つ、連れて行く", "hint": "帶東西（物を持つ）、帶人（人を連れる）"},
+      {"word": "到", "pinyin": "dào", "katakana": "", "meaning": "到着する、〜まで", "hint": ""},
+      {"word": "道", "pinyin": "dào", "katakana": "", "meaning": "道（料理を数える量詞）", "hint": "一道菜（一品の料理）"},
+      {"word": "地", "pinyin": "de", "katakana": "", "meaning": "〜に（副詞化する助詞）", "hint": "形容詞を副詞化する（例：高興地說）"},
+      {"word": "的", "pinyin": "de", "katakana": "", "meaning": "〜の", "hint": "所属・修飾を表す助詞"},
+      {"word": "得", "pinyin": "de", "katakana": "", "meaning": "〜の程度が…である", "hint": "動詞の後に結果や程度の補語を導く"},
+      {"word": "等", "pinyin": "děng", "katakana": "", "meaning": "待つ", "hint": "等一下（ちょっと待って）"},
+      {"word": "燈", "pinyin": "dēng", "katakana": "", "meaning": "電気、ランプ", "hint": ""},
+      {"word": "底", "pinyin": "dǐ", "katakana": "", "meaning": "底", "hint": "月底（月末）"},
+      {"word": "低", "pinyin": "dī", "katakana": "", "meaning": "低い", "hint": ""},
+      {"word": "地", "pinyin": "dì", "katakana": "", "meaning": "地面、土地", "hint": ""},
+      {"word": "第", "pinyin": "dì", "katakana": "", "meaning": "第〜", "hint": "順序を表す（例：第一）"},
+      {"word": "點", "pinyin": "diǎn", "katakana": "", "meaning": "〜時 / 少し", "hint": "時間（〜時）、または「一點（少し）」"},
+      {"word": "電", "pinyin": "diàn", "katakana": "", "meaning": "電気", "hint": ""},
+      {"word": "店", "pinyin": "diàn", "katakana": "", "meaning": "店", "hint": ""},
+      {"word": "懂", "pinyin": "dǒng", "katakana": "", "meaning": "わかる、理解する", "hint": "聽懂了（聞いて理解した）"},
+      {"word": "動", "pinyin": "dòng", "katakana": "", "meaning": "動く", "hint": ""},
+      {"word": "讀", "pinyin": "dú", "katakana": "", "meaning": "読む、勉強する", "hint": "讀書（本を読む、勉強する）"},
+      {"word": "度", "pinyin": "dù", "katakana": "", "meaning": "度（温度などの単位）", "hint": ""},
+      {"word": "多", "pinyin": "duō", "katakana": "", "meaning": "多い", "hint": ""},
+      {"word": "朵", "pinyin": "duǒ", "katakana": "", "meaning": "朵（花や雲の量詞）", "hint": "一朵花（一輪の花）"},
+      {"word": "飯", "pinyin": "fàn", "katakana": "", "meaning": "ご飯", "hint": ""},
+      {"word": "煩", "pinyin": "fán", "katakana": "", "meaning": "煩わしい、イライラする", "hint": "好煩（あーうざい/イライラする）"},
+      {"word": "份", "pinyin": "fèn", "katakana": "", "meaning": "份（セット、部数を数える量詞）", "hint": "一份報紙（一部の新聞）"},
+      {"word": "分", "pinyin": "fēn", "katakana": "", "meaning": "分", "hint": "時間の単位、または点数"},
+      {"word": "封", "pinyin": "fēng", "katakana": "", "meaning": "封、通（手紙の量詞）", "hint": "一封信（一通の手紙）"},
+      {"word": "風", "pinyin": "fēng", "katakana": "", "meaning": "風", "hint": "颳風（風が吹く）"},
+      {"word": "乾", "pinyin": "gān", "katakana": "", "meaning": "乾く、乾燥している", "hint": "乾杯（乾杯する）の乾"},
+      {"word": "敢", "pinyin": "gǎn", "katakana": "", "meaning": "あえて〜する、〜する勇気がある", "hint": "不敢（〜する勇気がない）"},
+      {"word": "歌", "pinyin": "gē", "katakana": "", "meaning": "歌", "hint": "量詞は「首(shǒu)」"},
+      {"word": "個", "pinyin": "ge", "katakana": "", "meaning": "個 / 人", "hint": "最も一般的な量詞（数え詞）"},
+      {"word": "各", "pinyin": "gè", "katakana": "", "meaning": "各々、それぞれ", "hint": ""},
+      {"word": "狗", "pinyin": "gǒu", "katakana": "", "meaning": "犬", "hint": ""},
+      {"word": "夠", "pinyin": "gòu", "katakana": "", "meaning": "足りる", "hint": "不夠（足りない）"},
+      {"word": "關", "pinyin": "guān", "katakana": "", "meaning": "閉める、消す", "hint": "關門（ドアを閉める）、關燈（電気を消す）"},
+      {"word": "罐", "pinyin": "guàn", "katakana": "", "meaning": "缶（量詞）", "hint": "一罐可樂（一缶のコーラ）"},
+      {"word": "逛", "pinyin": "guàng", "katakana": "", "meaning": "ぶらぶら歩く", "hint": ""},
+      {"word": "光", "pinyin": "guāng", "katakana": "", "meaning": "光、〜だけ（副詞）", "hint": "吃光了（すっかり食べてしまった）"},
+      {"word": "過", "pinyin": "guò", "katakana": "", "meaning": "〜したことがある", "hint": "経験を表す（去過＝行ったことがある）"},
+      {"word": "國", "pinyin": "guó", "katakana": "", "meaning": "国", "hint": ""},
+      {"word": "過", "pinyin": "guò", "katakana": "", "meaning": "過ぎる、〜したことがある", "hint": "去過（行ったことがある）"},
+      {"word": "海", "pinyin": "hǎi", "katakana": "", "meaning": "海", "hint": ""},
+      {"word": "還", "pinyin": "hái", "katakana": "", "meaning": "まだ、さらに", "hint": "還沒（まだ〜ない）"},
+      {"word": "號", "pinyin": "hào", "katakana": "", "meaning": "日、番号", "hint": "日付を言うときの話し言葉（今天幾號？）"},
+      {"word": "好", "pinyin": "hǎo", "katakana": "", "meaning": "良い", "hint": ""},
+      {"word": "喝", "pinyin": "hē", "katakana": "", "meaning": "飲む", "hint": ""},
+      {"word": "河", "pinyin": "hé", "katakana": "", "meaning": "川", "hint": ""},
+      {"word": "和", "pinyin": "hé", "katakana": "", "meaning": "〜と", "hint": "A和B（AとB）"},
+      {"word": "花/花兒", "pinyin": "huā / huār", "katakana": "", "meaning": "花", "hint": ""},
+      {"word": "畫/畫兒", "pinyin": "huà / huàr", "katakana": "", "meaning": "絵、絵を描く", "hint": ""},
+      {"word": "還", "pinyin": "huán", "katakana": "", "meaning": "返す", "hint": "hái（まだ）と発音が異なるので注意"},
+      {"word": "換", "pinyin": "huàn", "katakana": "", "meaning": "換える、着替える", "hint": "換錢（両替する）"},
+      {"word": "回", "pinyin": "huí", "katakana": "", "meaning": "帰る、戻る", "hint": "回家（家に帰る）"},
+      {"word": "會", "pinyin": "huì", "katakana": "", "meaning": "〜できる、〜だろう", "hint": "学習して習得した能力、または未来の推測"},
+      {"word": "或", "pinyin": "huò", "katakana": "", "meaning": "あるいは", "hint": "或者と同じ"},
+      {"word": "火", "pinyin": "huǒ", "katakana": "", "meaning": "火", "hint": ""},
+      {"word": "極", "pinyin": "jí", "katakana": "", "meaning": "極めて", "hint": "好極了（極めて良い）"},
+      {"word": "雞", "pinyin": "jī", "katakana": "", "meaning": "鶏", "hint": ""},
+      {"word": "寄", "pinyin": "jì", "katakana": "", "meaning": "郵送する、送る", "hint": "寄信（手紙を送る）"},
+      {"word": "幾", "pinyin": "jǐ", "katakana": "", "meaning": "いくつ", "hint": "数を尋ねる疑問詞（主に10以下の数）"},
+      {"word": "急", "pinyin": "jí", "katakana": "", "meaning": "急ぐ、焦る", "hint": "別急（焦らないで）"},
+      {"word": "假", "pinyin": "jià", "katakana": "", "meaning": "休み", "hint": "請假（休みをとる）"},
+      {"word": "家", "pinyin": "jiā", "katakana": "", "meaning": "家", "hint": ""},
+      {"word": "加", "pinyin": "jiā", "katakana": "", "meaning": "足す、加える", "hint": "加油（がんばれ）"},
+      {"word": "見", "pinyin": "jiàn", "katakana": "", "meaning": "会う、見る", "hint": "見面（会う）"},
+      {"word": "件", "pinyin": "jiàn", "katakana": "", "meaning": "件、着（量詞）", "hint": "服や事柄を数える"},
+      {"word": "間", "pinyin": "jiān", "katakana": "", "meaning": "部屋、〜間（量詞）", "hint": "一間房間（一つの部屋）"},
+      {"word": "減", "pinyin": "jiǎn", "katakana": "", "meaning": "減らす、引く", "hint": ""},
+      {"word": "腳", "pinyin": "jiǎo", "katakana": "", "meaning": "足", "hint": ""},
+      {"word": "交", "pinyin": "jiāo", "katakana": "", "meaning": "提出する、交際する", "hint": "交作業（宿題を出す）、交朋友（友達を作る）"},
+      {"word": "教", "pinyin": "jiāo", "katakana": "", "meaning": "教える", "hint": "教中文（中国語を教える）"},
+      {"word": "叫", "pinyin": "jiào", "katakana": "", "meaning": "呼ぶ、〜という名前である", "hint": "我叫〜（私の名前は〜です）"},
+      {"word": "街", "pinyin": "jiē", "katakana": "", "meaning": "通り、街", "hint": "逛街（街をぶらぶらする）"},
+      {"word": "借", "pinyin": "jiè", "katakana": "", "meaning": "借りる、貸す", "hint": ""},
+      {"word": "接", "pinyin": "jiē", "katakana": "", "meaning": "迎える、受け取る、出る（電話）", "hint": "接電話（電話に出る）"},
+      {"word": "進", "pinyin": "jìn", "katakana": "", "meaning": "入る", "hint": "進來（入ってくる）"},
+      {"word": "近", "pinyin": "jìn", "katakana": "", "meaning": "近い", "hint": ""},
+      {"word": "舊", "pinyin": "jiù", "katakana": "", "meaning": "古い", "hint": "物が古い場合（人は「老」）"},
+      {"word": "久", "pinyin": "jiǔ", "katakana": "", "meaning": "長い（時間が）", "hint": "好久不見（お久しぶり）"},
+      {"word": "就", "pinyin": "jiù", "katakana": "", "meaning": "すぐに、〜だけ", "hint": "副詞としてよく使う"},
+      {"word": "九", "pinyin": "jiǔ", "katakana": "", "meaning": "9", "hint": "数字"},
+      {"word": "酒", "pinyin": "jiǔ", "katakana": "", "meaning": "酒", "hint": ""},
+      {"word": "橘(子)", "pinyin": "jú(zi)", "katakana": "", "meaning": "みかん", "hint": ""},
+      {"word": "句子", "pinyin": "jùzi", "katakana": "", "meaning": "文、センテンス", "hint": ""},
+      {"word": "考", "pinyin": "kǎo", "katakana": "", "meaning": "試験を受ける", "hint": "考試（試験）の動詞部分"},
+      {"word": "烤", "pinyin": "kǎo", "katakana": "", "meaning": "焼く", "hint": "烤肉（焼肉、BBQ）"},
+      {"word": "課", "pinyin": "kè", "katakana": "", "meaning": "授業、〜課", "hint": ""},
+      {"word": "渴", "pinyin": "kě", "katakana": "", "meaning": "喉が渇く", "hint": "口渴（喉が渇いた）"},
+      {"word": "顆", "pinyin": "kē", "katakana": "", "meaning": "粒（小さな丸いものを数える量詞）", "hint": ""},
+      {"word": "可能", "pinyin": "kěnéng", "katakana": "", "meaning": "可能だ、〜かもしれない", "hint": ""},
+      {"word": "可能", "pinyin": "kěnéng", "katakana": "", "meaning": "かもしれない、可能", "hint": ""},
+      {"word": "空", "pinyin": "kòng", "katakana": "", "meaning": "空き、暇", "hint": "有空（暇がある）"},
+      {"word": "空", "pinyin": "kōng", "katakana": "", "meaning": "空（から）、空（そら）", "hint": "天空（空）"},
+      {"word": "苦", "pinyin": "kǔ", "katakana": "", "meaning": "苦い", "hint": ""},
+      {"word": "哭", "pinyin": "kū", "katakana": "", "meaning": "泣く", "hint": ""},
+      {"word": "塊", "pinyin": "kuài", "katakana": "", "meaning": "〜元（お金の単位）、塊の量詞", "hint": ""},
+      {"word": "快", "pinyin": "kuài", "katakana": "", "meaning": "速い", "hint": ""},
+      {"word": "辣", "pinyin": "là", "katakana": "", "meaning": "辛い", "hint": "太辣了（辛すぎる）"},
+      {"word": "啦", "pinyin": "la", "katakana": "", "meaning": "〜だ（語気助詞）", "hint": "了(le)＋啊(a) の融合音"},
+      {"word": "拉", "pinyin": "lā", "katakana": "", "meaning": "引く、引っ張る", "hint": "ドアの「引く」など"},
+      {"word": "累", "pinyin": "lèi", "katakana": "", "meaning": "疲れる", "hint": "很累（とても疲れた）"},
+      {"word": "類", "pinyin": "lèi", "katakana": "", "meaning": "種類", "hint": "人類、種類 など"},
+      {"word": "離", "pinyin": "lí", "katakana": "", "meaning": "〜から（距離）", "hint": "離這裡很遠（ここから遠い）"},
+      {"word": "裡/裏", "pinyin": "lǐ", "katakana": "", "meaning": "中", "hint": "裡面（中）"},
+      {"word": "連", "pinyin": "lián", "katakana": "", "meaning": "〜でさえ", "hint": "連他也不知道（彼でさえ知らない）"},
+      {"word": "臉", "pinyin": "liǎn", "katakana": "", "meaning": "顔", "hint": "洗臉（顔を洗う）"},
+      {"word": "輛", "pinyin": "liàng", "katakana": "", "meaning": "台（車両を数える量詞）", "hint": "一輛車（一台の車）"},
+      {"word": "涼", "pinyin": "liáng", "katakana": "", "meaning": "涼しい、冷たい", "hint": "水很涼（水が冷たい）"},
+      {"word": "兩", "pinyin": "liǎng", "katakana": "", "meaning": "2、ふたつ", "hint": "量詞の前で使う"},
+      {"word": "零", "pinyin": "líng", "katakana": "", "meaning": "ゼロ", "hint": ""},
+      {"word": "另", "pinyin": "lìng", "katakana": "", "meaning": "別の", "hint": "另外の略"},
+      {"word": "六", "pinyin": "liù", "katakana": "", "meaning": "6", "hint": "数字"},
+      {"word": "流", "pinyin": "liú", "katakana": "", "meaning": "流れる", "hint": ""},
+      {"word": "留", "pinyin": "liú", "katakana": "", "meaning": "残す、とどまる", "hint": "留言（メッセージを残す）"},
+      {"word": "嗎", "pinyin": "ma", "katakana": "", "meaning": "〜ですか？", "hint": "疑問文の最後に置く"},
+      {"word": "馬", "pinyin": "mǎ", "katakana": "", "meaning": "馬", "hint": "騎馬（馬に乗る）"},
+      {"word": "買", "pinyin": "mǎi", "katakana": "", "meaning": "買う", "hint": "3声。超頻出！"},
+      {"word": "賣", "pinyin": "mài", "katakana": "", "meaning": "売る", "hint": "4声（下がる音）"},
+      {"word": "滿", "pinyin": "mǎn", "katakana": "", "meaning": "満ちている、いっぱいだ", "hint": "客滿（満席）"},
+      {"word": "慢", "pinyin": "màn", "katakana": "", "meaning": "遅い", "hint": "慢慢來（ゆっくりでいいよ）"},
+      {"word": "毛", "pinyin": "máo", "katakana": "", "meaning": "角（1元の10分の1）", "hint": "通貨単位"},
+      {"word": "貓", "pinyin": "māo", "katakana": "", "meaning": "猫", "hint": ""},
+      {"word": "美", "pinyin": "měi", "katakana": "", "meaning": "美しい", "hint": ""},
+      {"word": "沒", "pinyin": "méi", "katakana": "", "meaning": "ない", "hint": "沒有の省略形。有の否定は必ず沒を使う"},
+      {"word": "每", "pinyin": "měi", "katakana": "", "meaning": "毎〜、〜ごと", "hint": "每天（毎日）"},
+      {"word": "哪", "pinyin": "nǎ", "katakana": "", "meaning": "どの、どれ", "hint": "疑問詞。哪裡（どこ）"},
+      {"word": "哪", "pinyin": "na", "katakana": "", "meaning": "（語気助詞）", "hint": "文末に置いて語気を和らげる"},
+      {"word": "那", "pinyin": "nà", "katakana": "", "meaning": "あれ、それ", "hint": "遠いものを指す"},
+      {"word": "拿", "pinyin": "ná", "katakana": "", "meaning": "持つ、取る", "hint": "手でつかみ取る動作"},
+      {"word": "那裡/那裏/那兒", "pinyin": "nàlǐ / nàr", "katakana": "", "meaning": "あそこ", "hint": ""},
+      {"word": "哪裡/哪裏/哪兒", "pinyin": "nǎlǐ / nǎr", "katakana": "", "meaning": "どこ", "hint": "疑問詞"},
+      {"word": "難", "pinyin": "nán", "katakana": "", "meaning": "難しい", "hint": ""},
+      {"word": "男", "pinyin": "nán", "katakana": "", "meaning": "男", "hint": ""},
+      {"word": "年", "pinyin": "nián", "katakana": "", "meaning": "年", "hint": ""},
+      {"word": "念/唸", "pinyin": "niàn", "katakana": "", "meaning": "読む（声に出して）", "hint": "念書（勉強する）とも使う"},
+      {"word": "年級", "pinyin": "niánjí", "katakana": "", "meaning": "学年", "hint": "一年級（1年生）"},
+      {"word": "年紀", "pinyin": "niánjì", "katakana": "", "meaning": "年齢", "hint": ""},
+      {"word": "怕", "pinyin": "pà", "katakana": "", "meaning": "恐れる、怖い", "hint": "可怕（恐ろしい）"},
+      {"word": "爬", "pinyin": "pá", "katakana": "", "meaning": "登る、這う", "hint": "爬山（登山する）"},
+      {"word": "派對", "pinyin": "pàiduì", "katakana": "", "meaning": "パーティー", "hint": "外来語"},
+      {"word": "排隊", "pinyin": "páiduì", "katakana": "", "meaning": "並ぶ", "hint": "台灣人喜歡排隊（台湾人は並ぶのが好き）"},
+      {"word": "騎", "pinyin": "qí", "katakana": "", "meaning": "乗る（またがるもの）", "hint": "騎車（バイク・自転車に乗る）"},
+      {"word": "起", "pinyin": "qǐ", "katakana": "", "meaning": "起きる、〜から", "hint": ""},
+      {"word": "七", "pinyin": "qī", "katakana": "", "meaning": "7", "hint": "数字"},
+      {"word": "淺", "pinyin": "qiǎn", "katakana": "", "meaning": "浅い", "hint": ""},
+      {"word": "千", "pinyin": "qiān", "katakana": "", "meaning": "千", "hint": ""},
+      {"word": "錢", "pinyin": "qián", "katakana": "", "meaning": "お金", "hint": ""},
+      {"word": "請", "pinyin": "qǐng", "katakana": "", "meaning": "頼む、ごちそうする、どうぞ", "hint": "我請客（私が奢るよ）"},
+      {"word": "輕", "pinyin": "qīng", "katakana": "", "meaning": "軽い", "hint": ""},
+      {"word": "三", "pinyin": "sān", "katakana": "", "meaning": "3", "hint": "数字"},
+      {"word": "傘", "pinyin": "sǎn", "katakana": "", "meaning": "傘", "hint": "量詞は「把」"},
+      {"word": "試", "pinyin": "shì", "katakana": "", "meaning": "試す", "hint": "試試看（試してみる）"},
+      {"word": "時", "pinyin": "shí", "katakana": "", "meaning": "時", "hint": ""},
+      {"word": "十", "pinyin": "shí", "katakana": "", "meaning": "10", "hint": "数字"},
+      {"word": "是", "pinyin": "shì", "katakana": "", "meaning": "〜である", "hint": "AはBである"},
+      {"word": "市", "pinyin": "shì", "katakana": "", "meaning": "市", "hint": "台北市 など"},
+      {"word": "濕/溼", "pinyin": "shī", "katakana": "", "meaning": "湿っている、濡れる", "hint": ""},
+      {"word": "瘦", "pinyin": "shòu", "katakana": "", "meaning": "痩せている", "hint": ""},
+      {"word": "熟", "pinyin": "shóu", "katakana": "", "meaning": "熟している、火が通っている", "hint": "肉熟了（肉に火が通った）"},
+      {"word": "收", "pinyin": "shōu", "katakana": "", "meaning": "受け取る、片付ける", "hint": "收到（受け取る）、收拾（片付ける）"},
+      {"word": "手", "pinyin": "shǒu", "katakana": "", "meaning": "手", "hint": ""},
+      {"word": "樹", "pinyin": "shù", "katakana": "", "meaning": "木", "hint": "量詞は「棵(kē)」"},
+      {"word": "書", "pinyin": "shū", "katakana": "", "meaning": "本", "hint": "量詞は「本(běn)」"},
+      {"word": "書架", "pinyin": "shūjià", "katakana": "", "meaning": "本棚", "hint": ""},
+      {"word": "暑假", "pinyin": "shǔjià", "katakana": "", "meaning": "夏休み", "hint": "放暑假（夏休みになる）"},
+      {"word": "死", "pinyin": "sǐ", "katakana": "", "meaning": "死ぬ、極度に〜だ", "hint": "累死了（死ぬほど疲れた）"},
+      {"word": "四", "pinyin": "sì", "katakana": "", "meaning": "4", "hint": "数字"},
+      {"word": "算", "pinyin": "suàn", "katakana": "", "meaning": "計算する、〜と見なす", "hint": "算了（もういいよ、気にしないで）"},
+      {"word": "酸", "pinyin": "suān", "katakana": "", "meaning": "酸っぱい", "hint": "疲労による痛みを表すことも（手很酸）"},
+      {"word": "他/她", "pinyin": "tā", "katakana": "", "meaning": "彼/彼女", "hint": "3人称"},
+      {"word": "它", "pinyin": "tā", "katakana": "", "meaning": "それ", "hint": "人間以外の事物や動物を指す"},
+      {"word": "台", "pinyin": "tái", "katakana": "", "meaning": "台（機械の量詞）", "hint": "一台電腦（一台のパソコン）"},
+      {"word": "太", "pinyin": "tài", "katakana": "", "meaning": "あまりにも〜すぎる", "hint": "太好了（すばらしい、よかった）"},
+      {"word": "他們/她們", "pinyin": "tāmen", "katakana": "", "meaning": "彼ら/彼女ら", "hint": "複数形"},
+      {"word": "它們", "pinyin": "tāmen", "katakana": "", "meaning": "それら", "hint": "事物や動物の複数形"},
+      {"word": "糖", "pinyin": "táng", "katakana": "", "meaning": "砂糖、飴", "hint": ""},
+      {"word": "湯", "pinyin": "tāng", "katakana": "", "meaning": "スープ", "hint": "喝湯（スープを飲む）"},
+      {"word": "替", "pinyin": "tì", "katakana": "", "meaning": "〜の代わりに", "hint": ""},
+      {"word": "踢", "pinyin": "tī", "katakana": "", "meaning": "蹴る", "hint": ""},
+      {"word": "提", "pinyin": "tí", "katakana": "", "meaning": "提げる、言及する", "hint": ""},
+      {"word": "題", "pinyin": "tí", "katakana": "", "meaning": "題、問題（量詞）", "hint": "這題怎麼做？（この問題はどうやるの？）"},
+      {"word": "甜", "pinyin": "tián", "katakana": "", "meaning": "甘い", "hint": ""},
+      {"word": "天", "pinyin": "tiān", "katakana": "", "meaning": "日", "hint": "日数を数える量詞（兩天＝二日間）"},
+      {"word": "跳", "pinyin": "tiào", "katakana": "", "meaning": "跳ぶ", "hint": ""},
+      {"word": "條", "pinyin": "tiáo", "katakana": "", "meaning": "條（細長いものを数える量詞）", "hint": "一條魚（一匹の魚）"},
+      {"word": "聽", "pinyin": "tīng", "katakana": "", "meaning": "聞く", "hint": "耳で聞くこと"},
+      {"word": "停", "pinyin": "tíng", "katakana": "", "meaning": "止まる", "hint": "停車（車を停める）"},
+      {"word": "頭", "pinyin": "tóu", "katakana": "", "meaning": "頭", "hint": "頭痛（頭が痛い）"},
+      {"word": "偷", "pinyin": "tōu", "katakana": "", "meaning": "盗む", "hint": "小偷（泥棒）"},
+      {"word": "玩", "pinyin": "wán", "katakana": "", "meaning": "遊ぶ", "hint": ""},
+      {"word": "完", "pinyin": "wán", "katakana": "", "meaning": "終わる、〜し終える", "hint": "吃完（食べ終わる）結果補語として多用"},
+      {"word": "碗", "pinyin": "wǎn", "katakana": "", "meaning": "お椀、〜杯（量詞）", "hint": "一碗麵（一杯の麺）"},
+      {"word": "晚", "pinyin": "wǎn", "katakana": "", "meaning": "遅い", "hint": "太晚了（遅すぎる）"},
+      {"word": "萬", "pinyin": "wàn", "katakana": "", "meaning": "万", "hint": ""},
+      {"word": "往", "pinyin": "wǎng", "katakana": "", "meaning": "〜へ向かって", "hint": "往前走（前へ向かって歩く）"},
+      {"word": "忘", "pinyin": "wàng", "katakana": "", "meaning": "忘れる", "hint": "忘了（忘れた）"},
+      {"word": "喂", "pinyin": "wèi", "katakana": "", "meaning": "おや、おい（呼びかけ）", "hint": "呼びかける時の4声"},
+      {"word": "位", "pinyin": "wèi", "katakana": "", "meaning": "〜名様", "hint": "人を数える丁寧な量詞（幾位？＝何名様ですか）"},
+      {"word": "喂(ㄨㄟˊ)", "pinyin": "wéi", "katakana": "", "meaning": "もしもし（電話）", "hint": "電話に出る時の2声"},
+      {"word": "聞", "pinyin": "wén", "katakana": "", "meaning": "匂いを嗅ぐ", "hint": "聞起來（嗅いだところ〜だ）"},
+      {"word": "問", "pinyin": "wèn", "katakana": "", "meaning": "問う、聞く（質問する）", "hint": "「聽（耳で聞く）」との違いに注意"},
+      {"word": "五", "pinyin": "wǔ", "katakana": "", "meaning": "5", "hint": "数字"},
+      {"word": "舞", "pinyin": "wǔ", "katakana": "", "meaning": "踊り", "hint": "跳舞（踊る）"},
+      {"word": "鹹", "pinyin": "xián", "katakana": "", "meaning": "しょっぱい", "hint": ""},
+      {"word": "先", "pinyin": "xiān", "katakana": "", "meaning": "先に、まず", "hint": "我先走（お先に失礼します）"},
+      {"word": "香", "pinyin": "xiāng", "katakana": "", "meaning": "香りがよい", "hint": "好香（良い匂いがする）"},
+      {"word": "像", "pinyin": "xiàng", "katakana": "", "meaning": "似ている、〜のようだ", "hint": ""},
+      {"word": "想", "pinyin": "xiǎng", "katakana": "", "meaning": "〜したい、思う", "hint": "想吃（食べたい）"},
+      {"word": "向", "pinyin": "xiàng", "katakana": "", "meaning": "〜に向かって", "hint": "向右轉（右へ曲がる）"},
+      {"word": "笑", "pinyin": "xiào", "katakana": "", "meaning": "笑う", "hint": ""},
+      {"word": "小", "pinyin": "xiǎo", "katakana": "", "meaning": "小さい", "hint": ""},
+      {"word": "信", "pinyin": "xìn", "katakana": "", "meaning": "手紙、信じる", "hint": "寫信（手紙を書く）"},
+      {"word": "新", "pinyin": "xīn", "katakana": "", "meaning": "新しい", "hint": ""},
+      {"word": "心", "pinyin": "xīn", "katakana": "", "meaning": "心", "hint": ""},
+      {"word": "行", "pinyin": "xíng", "katakana": "", "meaning": "よい、OKだ", "hint": "行不行？（いいですか？）"},
+      {"word": "姓", "pinyin": "xìng", "katakana": "", "meaning": "名字(は〜である)", "hint": "動詞としても使う「我姓〜（私の姓は〜です）」"},
+      {"word": "須", "pinyin": "xū", "katakana": "", "meaning": "〜しなければならない", "hint": "必須の略"},
+      {"word": "需", "pinyin": "xū", "katakana": "", "meaning": "必要とする", "hint": "需要の略"},
+      {"word": "學", "pinyin": "xué", "katakana": "", "meaning": "学ぶ", "hint": ""},
+      {"word": "雪", "pinyin": "xuě", "katakana": "", "meaning": "雪", "hint": ""},
+      {"word": "眼鏡", "pinyin": "yǎnjìng", "katakana": "", "meaning": "メガネ", "hint": "戴眼鏡（メガネをかける）"},
+      {"word": "眼睛", "pinyin": "yǎnjīng", "katakana": "", "meaning": "目", "hint": "量詞は「隻」や「雙」"},
+      {"word": "藥", "pinyin": "yào", "katakana": "", "meaning": "薬", "hint": "吃藥（薬を飲む）※喝ではない点に注意"},
+      {"word": "要", "pinyin": "yào", "katakana": "", "meaning": "〜したい、要る、〜するつもりだ", "hint": ""},
+      {"word": "鑰匙", "pinyin": "yàoshi", "katakana": "", "meaning": "鍵", "hint": ""},
+      {"word": "要是", "pinyin": "yàoshì", "katakana": "", "meaning": "もし〜なら", "hint": "要是〜的話（もし〜ならば）"},
+      {"word": "也", "pinyin": "yě", "katakana": "", "meaning": "〜も", "hint": "我也是（私もです）"},
+      {"word": "夜", "pinyin": "yè", "katakana": "", "meaning": "夜", "hint": ""},
+      {"word": "一", "pinyin": "yī", "katakana": "", "meaning": "1", "hint": "数字"},
+      {"word": "已", "pinyin": "yǐ", "katakana": "", "meaning": "すでに", "hint": "已經の略"},
+      {"word": "一般", "pinyin": "yībān", "katakana": "", "meaning": "一般的だ、普通", "hint": "一般來說（一般的に言って）"},
+      {"word": "一半", "pinyin": "yībàn", "katakana": "", "meaning": "半分", "hint": ""},
+      {"word": "有", "pinyin": "yǒu", "katakana": "", "meaning": "ある、持っている", "hint": ""},
+      {"word": "油", "pinyin": "yóu", "katakana": "", "meaning": "油、ガソリン", "hint": ""},
+      {"word": "又", "pinyin": "yòu", "katakana": "", "meaning": "また", "hint": "過去の繰り返された動作に使う"},
+      {"word": "游", "pinyin": "yóu", "katakana": "", "meaning": "泳ぐ、遊ぶ", "hint": ""},
+      {"word": "有用", "pinyin": "yǒuyòng", "katakana": "", "meaning": "役に立つ", "hint": "沒有用（役に立たない）"},
+      {"word": "游泳", "pinyin": "yóuyǒng", "katakana": "", "meaning": "泳ぐ", "hint": ""},
+      {"word": "雨", "pinyin": "yǔ", "katakana": "", "meaning": "雨", "hint": ""},
+      {"word": "魚", "pinyin": "yú", "katakana": "", "meaning": "魚", "hint": "量詞は「條(tiáo)」"},
+      {"word": "圓", "pinyin": "yuán", "katakana": "", "meaning": "丸い", "hint": ""},
+      {"word": "遠", "pinyin": "yuǎn", "katakana": "", "meaning": "遠い", "hint": ""},
+      {"word": "元", "pinyin": "yuán", "katakana": "", "meaning": "元（通貨単位）", "hint": "話し言葉では「塊(kuài)」をよく使う"},
+      {"word": "月", "pinyin": "yuè", "katakana": "", "meaning": "月", "hint": ""},
+      {"word": "越", "pinyin": "yuè", "katakana": "", "meaning": "ますます", "hint": "越來越好（ますます良くなる）"},
+      {"word": "約", "pinyin": "yuē", "katakana": "", "meaning": "約束する、誘う", "hint": ""},
+      {"word": "再", "pinyin": "zài", "katakana": "", "meaning": "再び、また", "hint": "未来の反復を表す（例：再見）"},
+      {"word": "在", "pinyin": "zài", "katakana": "", "meaning": "〜にある、〜にいる", "hint": "場所を示す"},
+      {"word": "在", "pinyin": "zài", "katakana": "", "meaning": "〜にいる、〜で", "hint": "場所や進行形を示す"},
+      {"word": "張", "pinyin": "zhāng", "katakana": "", "meaning": "枚（紙や机を数える量詞）", "hint": "一張紙（一枚の紙）"},
+      {"word": "長", "pinyin": "zhǎng", "katakana": "", "meaning": "成長する、生える", "hint": "「cháng（長い）」と発音が違うので注意"},
+      {"word": "著", "pinyin": "zhe", "katakana": "", "meaning": "〜している", "hint": "動作や状態の持続を表す"},
+      {"word": "這", "pinyin": "zhè", "katakana": "", "meaning": "これ", "hint": "近いものを指す"},
+      {"word": "整", "pinyin": "zhěng", "katakana": "", "meaning": "丸〜、整った", "hint": "整天（丸一日）"},
+      {"word": "正", "pinyin": "zhèng", "katakana": "", "meaning": "ちょうど〜している", "hint": "正在（まさに〜しているところ）"},
+      {"word": "只", "pinyin": "zhǐ", "katakana": "", "meaning": "〜だけ", "hint": ""},
+      {"word": "紙", "pinyin": "zhǐ", "katakana": "", "meaning": "紙", "hint": ""},
+      {"word": "隻", "pinyin": "zhī", "katakana": "", "meaning": "匹、羽（量詞）", "hint": "動物を数える一番一般的な量詞"},
+      {"word": "枝", "pinyin": "zhī", "katakana": "", "meaning": "本（枝状のものを数える量詞）", "hint": "一枝筆（一本のペン）"},
+      {"word": "支", "pinyin": "zhī", "katakana": "", "meaning": "支（棒状のものを数える量詞）", "hint": "一支給（一本のペン）"},
+      {"word": "鐘", "pinyin": "zhōng", "katakana": "", "meaning": "鐘、時計", "hint": "幾點鐘？（何時？）"},
+      {"word": "種", "pinyin": "zhǒng", "katakana": "", "meaning": "種類", "hint": "這種類（こういう種類）"},
+      {"word": "中", "pinyin": "zhōng", "katakana": "", "meaning": "中", "hint": ""},
+      {"word": "重", "pinyin": "zhòng", "katakana": "", "meaning": "重い", "hint": ""},
+      {"word": "住", "pinyin": "zhù", "katakana": "", "meaning": "住む", "hint": "「在（〜に）」とセットで使うことが多い"},
+      {"word": "祝", "pinyin": "zhù", "katakana": "", "meaning": "祝う、祈る", "hint": "祝你生日快樂（誕生日おめでとう）"},
+      {"word": "豬", "pinyin": "zhū", "katakana": "", "meaning": "豚", "hint": ""},
+      {"word": "做", "pinyin": "zuò", "katakana": "", "meaning": "する、作る", "hint": ""},
+      {"word": "坐", "pinyin": "zuò", "katakana": "", "meaning": "座る、乗る", "hint": "坐車（車に乗る）"},
+      {"word": "座", "pinyin": "zuò", "katakana": "", "meaning": "座（大きなものを数える量詞）", "hint": "一座山（一つの山）"}
+    ];
+
+    const TARGET_SCORE = 3;
+    const MOCK_COUNT = 20;
+
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+    function App() {
+      const [gameState, setGameState] = useState('start'); 
+      const [gameType, setGameType] = useState('practice');
+      const [gameMode, setGameMode] = useState('standard');
+      const [wordStats, setWordStats] = useState({});
+      const [currentWord, setCurrentWord] = useState(null);
+      const [options, setOptions] = useState([]);
+      const [selectedOption, setSelectedOption] = useState(null);
+      const [chunkIndex, setChunkIndex] = useState(0);
+      const [mockList, setMockList] = useState([]);
+      const [mockIdx, setMockIdx] = useState(0);
+      const [mockScore, setMockScore] = useState(0);
+
+      // グループ分けロジック
+      const chunks = useMemo(() => {
+        const res = [];
+        let cur = [];
+        const getB = (p) => (p || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z]/g, '');
+        wordData.forEach((w, i) => {
+          if (cur.length >= 60 && i > 0 && getB(w.pinyin) !== getB(wordData[i-1].pinyin)) {
+            res.push(cur); cur = [];
+          }
+          cur.push(w);
+        });
+        if (cur.length > 0) res.push(cur);
+        return res;
+      }, []);
+
+      const playAudio = (t) => {
+        if (!("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = "zh-TW"; u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      };
+
+      // リスニング自動再生
+      useEffect(() => {
+        if (gameState === 'quiz' && currentWord && !selectedOption && gameMode === 'listening') {
+          playAudio(currentWord.word);
+        }
+      }, [currentWord, gameState, gameMode, selectedOption]);
+
+      const startPractice = (mode, idx) => {
+        setGameType('practice'); setGameMode(mode); setChunkIndex(idx);
+        const target = chunks[idx];
+        const stats = {}; target.forEach(w => stats[w.word] = 0);
+        setWordStats(stats); setGameState('quiz');
+        genQuestion(target, stats);
+      };
+
+      const startMock = () => {
+        setGameType('mock'); setGameMode('standard');
+        const list = shuffle(wordData).slice(0, MOCK_COUNT);
+        setMockList(list); setMockIdx(0); setMockScore(0);
+        setGameState('quiz'); genMockQuestion(list, 0);
+      };
+
+      const genQuestion = (list, stats, prev) => {
+        let active = list.filter(w => stats[w.word] < TARGET_SCORE);
+        if (active.length === 0) { setGameState('completed'); return; }
+        if (active.length > 1 && prev) active = active.filter(w => w.word !== prev);
+        const target = active[Math.floor(Math.random() * active.length)];
+        const d = shuffle(wordData.filter(w => w.meaning !== target.meaning)).slice(0, 3).map(w => w.meaning);
+        setCurrentWord(target); setOptions(shuffle([target.meaning, ...d])); setSelectedOption(null);
+      };
+
+      const genMockQuestion = (list, i) => {
+        if (i >= list.length) { setGameState('completed'); return; }
+        const target = list[i];
+        const d = shuffle(wordData.filter(w => w.meaning !== target.meaning)).slice(0, 3).map(w => w.meaning);
+        setCurrentWord(target); setOptions(shuffle([target.meaning, ...d])); setSelectedOption(null);
+      };
+
+      const handleAnswer = (opt) => {
+        if (selectedOption) return;
+        setSelectedOption(opt);
+        if (gameMode === 'standard') playAudio(currentWord.word);
+        if (opt === currentWord.meaning) {
+          if (gameType === 'practice') setWordStats(p => ({...p, [currentWord.word]: p[currentWord.word] + 1}));
+          else setMockScore(s => s + 1);
+        }
+      };
+
+      if (gameState === 'start') {
+        return (
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
+              <h1 className="text-2xl font-bold mb-6 text-slate-800">台湾華語 単語テスト</h1>
+              <div className="bg-purple-50 p-5 rounded-2xl mb-6 border border-purple-100">
+                <h3 className="font-bold text-purple-900 mb-2">模擬試験モード</h3>
+                <button onClick={startMock} className="w-full bg-purple-600 text-white font-bold py-3 rounded-xl shadow-lg active:scale-95 transition-all">ランダム20問</button>
+              </div>
+              <div className="space-y-3 max-h-64 overflow-y-auto px-2">
+                {chunks.map((c, i) => (
+                  <div key={i} className="bg-slate-50 p-4 rounded-xl text-left border border-slate-200">
+                    <div className="flex justify-between mb-2"><span className="font-bold">グループ {i+1}</span><span className="text-xs text-slate-400">{c.length}語</span></div>
+                    <div className="flex gap-2">
+                      <button onClick={() => startPractice('standard', i)} className="flex-1 bg-blue-600 text-white py-2 rounded-lg text-sm font-bold">通常</button>
+                      <button onClick={() => startPractice('listening', i)} className="flex-1 bg-orange-500 text-white py-2 rounded-lg text-sm font-bold">リスニング</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (gameState === 'completed') {
+        return (
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
+              <Trophy size={60} className="mx-auto text-yellow-500 mb-4" />
+              <h2 className="text-2xl font-bold mb-4">{gameType === 'mock' ? '試験終了' : 'グループ制覇'}</h2>
+              {gameType === 'mock' && <div className="text-5xl font-black text-purple-600 mb-4">{mockScore} / 20</div>}
+              <button onClick={() => setGameState('start')} className="w-full bg-slate-800 text-white font-bold py-4 rounded-xl">トップに戻る</button>
+            </div>
+          </div>
+        );
+      }
+
+      // --- クイズ画面メインロジック ---
+      const isHidden = gameMode === 'listening' && !selectedOption;
+      const progress = gameType === 'practice' 
+        ? (Object.values(wordStats).reduce((a, b) => a + b, 0) / (chunks[chunkIndex].length * TARGET_SCORE)) * 100
+        : (mockIdx / MOCK_COUNT) * 100;
+
+      return (
+        <div className="min-h-screen flex flex-col items-center p-4">
+          <div className="w-full max-w-md mt-4">
+            <div className="w-full bg-slate-200 h-2 rounded-full mb-6">
+              <div className="bg-blue-500 h-2 rounded-full transition-all" style={{width: `${progress}%`}}></div>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-lg p-6 mb-6 min-h-[220px] flex flex-col justify-center text-center relative overflow-hidden">
+              {isHidden ? (
+                <div className="flex flex-col items-center">
+                  <button onClick={() => playAudio(currentWord.word)} className="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4">
+                    <Volume2 size={40} />
+                  </button>
+                  <p className="text-slate-400">音声を聞いて選んでください</p>
+                </div>
+              ) : (
+                <div>
+                  <h2 className="text-5xl font-bold text-slate-800 mb-2">{currentWord.word}</h2>
+                  <p className="text-slate-400">{currentWord.pinyin}</p>
+                </div>
+              )}
+              {gameType === 'practice' && !selectedOption && (
+                <div className="flex justify-center gap-1 mt-4">
+                  {[...Array(TARGET_SCORE)].map((_, i) => (
+                    <Star key={i} size={20} fill={i < wordStats[currentWord.word] ? "#FACC15" : "none"} className={i < wordStats[currentWord.word] ? "text-yellow-400" : "text-slate-200"} />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-3">
+              {options.map((opt, i) => (
+                <button key={i} onClick={() => handleAnswer(opt)} disabled={!!selectedOption} className={`w-full p-4 rounded-2xl border-2 text-left font-bold transition-all ${
+                  !selectedOption ? "bg-white border-slate-100 hover:border-blue-400" :
+                  opt === currentWord.meaning ? "bg-green-100 border-green-500 text-green-700" :
+                  opt === selectedOption ? "bg-red-100 border-red-500 text-red-700" : "bg-slate-50 border-slate-50 text-slate-300"
+                }`}>{opt}</button>
+              ))}
+            </div>
+
+            {selectedOption && (
+              <div className="mt-6 animate-in">
+                <div className="bg-blue-50 p-4 rounded-2xl mb-4 border border-blue-100">
+                  <p className="text-xs text-blue-400 font-bold mb-1 uppercase">Pinyin & Hint</p>
+                  <p className="font-bold text-blue-900">{currentWord.pinyin}</p>
+                  {currentWord.hint && <p className="text-sm text-slate-600 mt-2">{currentWord.hint}</p>}
+                </div>
+                <button onClick={() => gameType === 'practice' ? genQuestion(chunks[chunkIndex], wordStats, currentWord.word) : (setMockIdx(m => m + 1), genMockQuestion(mockList, mockIdx + 1))} className="w-full bg-slate-800 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2">
+                  <span>次へ</span><ArrowRight size={20} />
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

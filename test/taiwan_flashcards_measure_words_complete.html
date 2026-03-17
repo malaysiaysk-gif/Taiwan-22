@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台湾華語 量詞（数え方）完全版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+    .animate-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-slate-100">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+
+    // --- アイコン ---
+    const Play = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>);
+    const RefreshCw = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>);
+    const Trophy = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>);
+    const Star = ({ size = 24, fill = "none", className = "" }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>);
+    const Volume2 = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>);
+    const Headphones = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>);
+    const CheckCircle = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>);
+    const XCircle = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>);
+    const ArrowRight = ({ size = 24 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>);
+
+    // ==========================================
+    // １．単語データ（自動で埋め込まれました）
+    // ==========================================
+    const wordData = [
+      {"word": "妹妹/妹", "pinyin": "mèimei / mèi", "katakana": "", "meaning": "妹", "hint": "家族呼称"},
+      {"word": "分", "pinyin": "fēn", "katakana": "", "meaning": "分", "hint": "時間の単位、または点数"},
+      {"word": "電腦", "pinyin": "diànnǎo", "katakana": "", "meaning": "パソコン、コンピュータ", "hint": "直訳：電子の脳。量詞は「台」"},
+      {"word": "筆", "pinyin": "bǐ", "katakana": "", "meaning": "筆、ペン", "hint": "量詞は「枝(zhī)」"},
+      {"word": "電視(機)", "pinyin": "diànshì(jī)", "katakana": "", "meaning": "テレビ", "hint": "量詞は「台」"},
+      {"word": "書", "pinyin": "shū", "katakana": "", "meaning": "本", "hint": "量詞は「本(běn)」"},
+      {"word": "公共汽車/公車", "pinyin": "gōnggòngqìchē / gōngchē", "katakana": "", "meaning": "バス", "hint": "台湾では公車が一般的"},
+      {"word": "車(子)", "pinyin": "chē(zi)", "katakana": "", "meaning": "車", "hint": "量詞は「輛(liàng)」"},
+      {"word": "這裡/這裏/這兒", "pinyin": "zhèlǐ / zhèr", "katakana": "", "meaning": "ここ", "hint": "台湾では「這裡」をよく使う"},
+      {"word": "大家", "pinyin": "dàjiā", "katakana": "", "meaning": "みんな", "hint": "大家好（みなさんこんにちは）"},
+      {"word": "天", "pinyin": "tiān", "katakana": "", "meaning": "日", "hint": "日数を数える量詞（兩天＝二日間）"},
+      {"word": "鐘頭", "pinyin": "zhōngtóu", "katakana": "", "meaning": "時間（〜時間）", "hint": "小時と同じ意味（一個鐘頭＝1時間）"},
+      {"word": "房(子)", "pinyin": "fáng(zi)", "katakana": "", "meaning": "家、建物", "hint": "量詞は「棟」や「間」"},
+      {"word": "魚", "pinyin": "yú", "katakana": "", "meaning": "魚", "hint": "量詞は「條(tiáo)」"},
+      {"word": "歌", "pinyin": "gē", "katakana": "", "meaning": "歌", "hint": "量詞は「首(shǒu)」"},
+      {"word": "計程車", "pinyin": "jìchéngchē", "katakana": "", "meaning": "タクシー", "hint": "量詞は「輛」または「部」"},
+      {"word": "眼睛", "pinyin": "yǎnjīng", "katakana": "", "meaning": "目", "hint": "量詞は「隻」や「雙」"},
+      {"word": "鞋(子)", "pinyin": "xié(zi)", "katakana": "", "meaning": "靴", "hint": "量詞は「雙(shuāng)」"},
+      {"word": "衣服/衣", "pinyin": "yīfú / yī", "katakana": "", "meaning": "服", "hint": "量詞は「件(jiàn)」"},
+      {"word": "筷(子)", "pinyin": "kuài(zi)", "katakana": "", "meaning": "箸", "hint": "量詞は「雙(shuāng)」"},
+      {"word": "小吃", "pinyin": "xiǎochī", "katakana": "", "meaning": "軽食、スナック、屋台メシ", "hint": "台湾名物といえばこれ"},
+      {"word": "香蕉", "pinyin": "xiāngjiāo", "katakana": "", "meaning": "バナナ", "hint": "台湾の名産品"},
+      {"word": "市", "pinyin": "shì", "katakana": "", "meaning": "市", "hint": "台北市 など"},
+      {"word": "禮拜", "pinyin": "lǐbài", "katakana": "", "meaning": "曜日、週", "hint": "下個禮拜（来週）"},
+      {"word": "華語/華文", "pinyin": "huáyǔ / huáwén", "katakana": "", "meaning": "中国語", "hint": "台湾でよく使われる中国語の呼称"},
+      {"word": "鳥", "pinyin": "niǎo", "katakana": "", "meaning": "鳥", "hint": "量詞は「隻」"},
+      {"word": "樹", "pinyin": "shù", "katakana": "", "meaning": "木", "hint": "量詞は「棵(kē)」"},
+      {"word": "腳踏車/自行車", "pinyin": "jiǎotàchē / zìxíngchē", "katakana": "", "meaning": "自転車", "hint": "台湾では腳踏車が一般的"},
+      {"word": "汽車", "pinyin": "qìchē", "katakana": "", "meaning": "自動車", "hint": "台湾ではバス（公共汽車）を指すことも多い"},
+      {"word": "飯店", "pinyin": "fàndiàn", "katakana": "", "meaning": "ホテル、大きなレストラン", "hint": "台湾では立派なホテルを飯店と呼ぶ"},
+      {"word": "照片/相片", "pinyin": "zhàopiàn / xiàngpiàn", "katakana": "", "meaning": "写真", "hint": "量詞は「張(zhāng)」"},
+      {"word": "南/南部", "pinyin": "nán / nánbù", "katakana": "", "meaning": "南、南部", "hint": "台南、南部 など"},
+      {"word": "北/北部", "pinyin": "běi / běibù", "katakana": "", "meaning": "北、北部", "hint": "台北、北部 など"},
+      {"word": "襪(子)", "pinyin": "wà(zi)", "katakana": "", "meaning": "靴下", "hint": "量詞は「雙(shuāng)」"},
+      {"word": "裙(子)", "pinyin": "qún(zi)", "katakana": "", "meaning": "スカート", "hint": "量詞は「件」または「條」"},
+      {"word": "褲(子)", "pinyin": "kù(zi)", "katakana": "", "meaning": "ズボン", "hint": "量詞は「件」または「條」"},
+      {"word": "青菜", "pinyin": "qīngcài", "katakana": "", "meaning": "青菜、野菜", "hint": "燙青菜（茹で野菜：台湾の定番）"},
+      {"word": "盤/盤(子)", "pinyin": "pán(zi)", "katakana": "", "meaning": "皿", "hint": "量詞としても使う（一盤菜）"},
+      {"word": "例(子)", "pinyin": "lì(zi)", "katakana": "", "meaning": "例", "hint": "舉個例子（例えば〜）"},
+      {"word": "國小", "pinyin": "guóxiǎo", "katakana": "", "meaning": "小学校", "hint": "國民小學の略。台湾では通常これを使う"},
+      {"word": "中學", "pinyin": "zhōngxué", "katakana": "", "meaning": "中学校", "hint": "台湾では國中（國民中學）と言うのが一般的"},
+      {"word": "學期", "pinyin": "xuéqí", "katakana": "", "meaning": "学期", "hint": "下個學期（来学期）"},
+      {"word": "位子", "pinyin": "wèizi", "katakana": "", "meaning": "席、座席", "hint": "請回位子（席に戻ってください）"},
+      {"word": "傘", "pinyin": "sǎn", "katakana": "", "meaning": "傘", "hint": "量詞は「把」"},
+      {"word": "環保", "pinyin": "huánbǎo", "katakana": "", "meaning": "エコ、環境保護", "hint": "環保杯（マイボトル）など台湾で超頻出"},
+      {"word": "垃圾", "pinyin": "lèsè", "katakana": "", "meaning": "ゴミ", "hint": "台湾では「lājī」ではなく「lèsè」と発音する"},
+      {"word": "摩托車/機車", "pinyin": "mótuōchē / jīchē", "katakana": "", "meaning": "バイク", "hint": "台湾では「機車」が一般的"},
+      {"word": "捷運", "pinyin": "jiéyùn", "katakana": "", "meaning": "MRT（台湾の地下鉄）", "hint": "台湾独自の言い方"},
+      {"word": "豆漿", "pinyin": "dòujiāng", "katakana": "", "meaning": "豆乳", "hint": "台湾の朝食の定番"},
+      {"word": "其中", "pinyin": "qízhōng", "katakana": "", "meaning": "その中", "hint": "其中一個（そのうちの1つ）"}
+    ];
+
+    const TARGET_SCORE = 3;
+    const MOCK_COUNT = 20;
+
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+    function App() {
+      const [gameState, setGameState] = useState('start'); 
+      const [gameType, setGameType] = useState('practice');
+      const [gameMode, setGameMode] = useState('standard');
+      const [wordStats, setWordStats] = useState({});
+      const [currentWord, setCurrentWord] = useState(null);
+      const [options, setOptions] = useState([]);
+      const [selectedOption, setSelectedOption] = useState(null);
+      const [chunkIndex, setChunkIndex] = useState(0);
+      const [mockList, setMockList] = useState([]);
+      const [mockIdx, setMockIdx] = useState(0);
+      const [mockScore, setMockScore] = useState(0);
+
+      // グループ分け: 単語数が少ない場合はそのまま1グループか、15語ずつにする
+      const chunks = useMemo(() => {
+        const res = [];
+        const chunkSize = 15;
+        for (let i = 0; i < wordData.length; i += chunkSize) {
+          res.push(wordData.slice(i, i + chunkSize));
+        }
+        return res;
+      }, []);
+
+      const playAudio = (t) => {
+        if (!("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = "zh-TW"; u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+      };
+
+      useEffect(() => {
+        if (gameState === 'quiz' && currentWord && !selectedOption && gameMode === 'listening') {
+          playAudio(currentWord.word);
+        }
+      }, [currentWord, gameState, gameMode, selectedOption]);
+
+      const startPractice = (mode, idx) => {
+        setGameType('practice'); setGameMode(mode); setChunkIndex(idx);
+        const target = chunks[idx];
+        const stats = {}; target.forEach(w => stats[w.word] = 0);
+        setWordStats(stats); setGameState('quiz');
+        genQuestion(target, stats);
+      };
+
+      const startMock = () => {
+        setGameType('mock'); setGameMode('standard');
+        const qCount = Math.min(MOCK_COUNT, wordData.length);
+        const list = shuffle(wordData).slice(0, qCount);
+        setMockList(list); setMockIdx(0); setMockScore(0);
+        setGameState('quiz'); genMockQuestion(list, 0);
+      };
+
+      const genQuestion = (list, stats, prev) => {
+        let active = list.filter(w => stats[w.word] < TARGET_SCORE);
+        if (active.length === 0) { setGameState('completed'); return; }
+        if (active.length > 1 && prev) active = active.filter(w => w.word !== prev);
+        const target = active[Math.floor(Math.random() * active.length)];
+        const otherMeanings = wordData.filter(w => w.meaning !== target.meaning).map(w => w.meaning);
+        const d = shuffle(otherMeanings).slice(0, 3);
+        setCurrentWord(target); setOptions(shuffle([target.meaning, ...d])); setSelectedOption(null);
+      };
+
+      const genMockQuestion = (list, i) => {
+        if (i >= list.length) { setGameState('completed'); return; }
+        const target = list[i];
+        const otherMeanings = wordData.filter(w => w.meaning !== target.meaning).map(w => w.meaning);
+        const d = shuffle(otherMeanings).slice(0, 3);
+        setCurrentWord(target); setOptions(shuffle([target.meaning, ...d])); setSelectedOption(null);
+      };
+
+      const handleAnswer = (opt) => {
+        if (selectedOption) return;
+        setSelectedOption(opt);
+        if (gameMode === 'standard') playAudio(currentWord.word);
+        if (opt === currentWord.meaning) {
+          if (gameType === 'practice') setWordStats(p => ({...p, [currentWord.word]: p[currentWord.word] + 1}));
+          else setMockScore(s => s + 1);
+        }
+      };
+
+      if (gameState === 'start') {
+        return (
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
+              <h1 className="text-2xl font-bold mb-6 text-slate-800 flex items-center justify-center gap-2">
+                <span className="bg-teal-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-xl">D</span>
+                台湾華語 量詞（数え方）
+              </h1>
+              
+              <div className="bg-purple-50 p-5 rounded-2xl mb-6 border border-purple-100">
+                <h3 className="font-bold text-purple-900 mb-2">模擬試験モード</h3>
+                <button onClick={startMock} className="w-full bg-purple-600 text-white font-bold py-3 rounded-xl shadow-lg active:scale-95 transition-all">ランダム20問</button>
+              </div>
+              
+              <div className="space-y-3 max-h-64 overflow-y-auto px-2">
+                {chunks.map((c, i) => {
+                  return (
+                    <div key={i} className="bg-slate-50 p-4 rounded-xl text-left border border-slate-200">
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="font-bold">グループ {i+1}</span>
+                        <span className="text-xs text-slate-400 font-bold bg-slate-200 px-2 py-1 rounded-md">{c.length}語</span>
+                      </div>
+                      <p className="text-xs text-teal-600 font-semibold mb-3">名詞と組み合わせる「量詞（単位）」の特訓</p>
+                      
+                      <div className="flex gap-2">
+                        <button onClick={() => startPractice('standard', i)} className="flex-1 bg-teal-600 text-white py-2 rounded-lg text-sm font-bold flex justify-center items-center gap-1"><Play size={16} fill="currentColor"/>通常</button>
+                        <button onClick={() => startPractice('listening', i)} className="flex-1 bg-orange-500 text-white py-2 rounded-lg text-sm font-bold flex justify-center items-center gap-1"><Headphones size={16}/>リスニング</button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      if (gameState === 'completed') {
+        return (
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full text-center">
+              <Trophy size={60} className="mx-auto text-yellow-500 mb-4" />
+              <h2 className="text-2xl font-bold mb-4">{gameType === 'mock' ? '試験終了' : 'グループ制覇'}</h2>
+              {gameType === 'mock' && <div className="text-5xl font-black text-purple-600 mb-4">{mockScore} / {Math.min(MOCK_COUNT, wordData.length)}</div>}
+              <button onClick={() => setGameState('start')} className="w-full bg-slate-800 text-white font-bold py-4 rounded-xl">トップに戻る</button>
+            </div>
+          </div>
+        );
+      }
+
+      const isHidden = gameMode === 'listening' && !selectedOption;
+      const progress = gameType === 'practice' 
+        ? (Object.values(wordStats).reduce((a, b) => a + b, 0) / (chunks[chunkIndex].length * TARGET_SCORE)) * 100
+        : (mockIdx / Math.min(MOCK_COUNT, wordData.length)) * 100;
+
+      return (
+        <div className="min-h-screen flex flex-col items-center p-4">
+          <div className="w-full max-w-md mt-4">
+            <div className="w-full bg-slate-200 h-2 rounded-full mb-6">
+              <div className={`h-2 rounded-full transition-all ${gameType === 'mock' ? 'bg-purple-500' : 'bg-teal-500'}`} style={{width: `${progress}%`}}></div>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-lg p-6 mb-6 min-h-[220px] flex flex-col justify-center text-center relative overflow-hidden">
+              <span className={`absolute top-4 left-0 w-full text-center text-sm font-semibold tracking-wider ${gameType === 'mock' ? 'text-purple-500' : 'text-teal-500'}`}>
+                {gameType === 'mock' ? `第 ${mockIdx + 1} 問` : (gameMode === 'listening' ? 'リスニング問題' : '問題')}
+              </span>
+              
+              {isHidden ? (
+                <div className="flex flex-col items-center mt-4">
+                  <button onClick={() => playAudio(currentWord.word)} className="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4">
+                    <Volume2 size={40} />
+                  </button>
+                  <p className="text-slate-400">音声を聞いて選んでください</p>
+                </div>
+              ) : (
+                <div className="mt-4">
+                  <h2 className="text-5xl font-bold text-slate-800 mb-2">{currentWord.word}</h2>
+                  <p className="text-slate-400">{currentWord.pinyin}</p>
+                </div>
+              )}
+              {gameType === 'practice' && !selectedOption && (
+                <div className="flex justify-center gap-1 mt-4">
+                  {[...Array(TARGET_SCORE)].map((_, i) => (
+                    <Star key={i} size={20} fill={i < wordStats[currentWord.word] ? "#FACC15" : "none"} className={i < wordStats[currentWord.word] ? "text-yellow-400" : "text-slate-200"} />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-3">
+              {options.map((opt, i) => (
+                <button key={i} onClick={() => handleAnswer(opt)} disabled={!!selectedOption} className={`w-full p-4 rounded-2xl border-2 text-left font-bold transition-all ${
+                  !selectedOption ? "bg-white border-slate-100 hover:border-teal-400" :
+                  opt === currentWord.meaning ? "bg-green-100 border-green-500 text-green-700" :
+                  opt === selectedOption ? "bg-red-100 border-red-500 text-red-700" : "bg-slate-50 border-slate-50 text-slate-300"
+                }`}>{opt}</button>
+              ))}
+            </div>
+
+            {selectedOption && (
+              <div className="mt-6 animate-in">
+                <div className="bg-teal-50 p-4 rounded-2xl mb-4 border border-teal-100">
+                  <p className="text-xs text-teal-600 font-bold mb-1 uppercase">覚えるべき量詞（単位）</p>
+                  <p className="text-lg font-bold text-teal-900">{currentWord.hint}</p>
+                  <p className="text-sm text-teal-700 mt-2">【発音】{currentWord.pinyin}</p>
+                </div>
+                <button onClick={() => gameType === 'practice' ? genQuestion(chunks[chunkIndex], wordStats, currentWord.word) : (setMockIdx(m => m + 1), genMockQuestion(mockList, mockIdx + 1))} className="w-full bg-slate-800 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2">
+                  <span>{gameType === 'mock' && mockIdx === mockList.length - 1 ? '結果を見る' : '次へ'}</span><ArrowRight size={20} />
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
