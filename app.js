@@ -639,7 +639,7 @@ const words = [
   { "zh": "放", "pinyin": "fàng", "jp": "置く、入れる", "note": "放假（休みになる）などの熟語でも使う", "category": "動詞", "subcategory": "基本動作" },
   { "zh": "近", "pinyin": "jìn", "jp": "近い", "note": "", "category": "形容詞", "subcategory": "状態・評価" },
   { "zh": "遠", "pinyin": "yuǎn", "jp": "遠い", "note": "", "category": "形容詞", "subcategory": "状態・評価" },
-  { "zh": "向", "pinyin": "xiàng", "jp": "〜に向かって", "note": "「動作の対象」や「向き」。向右轉（右へ曲がる）", "category": "前置詞", "subcategory": "起点・場所" },
+  { "zh": "向", "pinyin": "xiàng", "jp": "相手や目標と向き合う", "note": "「動作の対象」や「向き」。向右轉（右へ曲がる）", "category": "前置詞", "subcategory": "起点・場所" },
   { "zh": "轉", "pinyin": "zhuǎn", "jp": "曲がる、回る", "note": "", "category": "動詞", "subcategory": "基本動作" },
   { "zh": "掉", "pinyin": "diào", "jp": "落ちる、落とす", "note": "動詞の後に結果補語として付くことも多い", "category": "動詞", "subcategory": "基本動作" },
   { "zh": "一直", "pinyin": "yīzhí", "jp": "ずっと、まっすぐ", "note": "一直走or一直⁺期間", "category": "副詞", "subcategory": "時間・程度" },
