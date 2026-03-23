@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語の発音まとめ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #fdf2f8; /* pink-50 */
+            color: #374151; /* gray-700 */
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+            border-top: 5px solid #ec4899; /* pink-500 */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #ec4899; /* pink-500 */
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(236, 72, 153, 0.4);
+        }
+        .play-btn:hover {
+            background-color: #db2777; /* pink-600 */
+        }
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+        /* トースト通知のアニメーション */
+        @keyframes fadeinout {
+            0%, 100% { opacity: 0; transform: translate(-50%, 20px); }
+            10%, 90% { opacity: 1; transform: translate(-50%, 0); }
+        }
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px 24px;
+            position: fixed;
+            z-index: 50;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadeinout 4s forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <!-- ヘッダー -->
+    <header class="text-center mb-10 mt-4">
+        <h1 class="text-3xl md:text-5xl font-bold text-pink-600 mb-3 flex justify-center items-center gap-3">
+            <i data-lucide="mic-2" class="w-10 h-10"></i>
+            台湾華語の発音まとめ
+        </h1>
+        <p class="text-gray-600 font-medium">クリックして音声を聴きながら、発音の基本をマスターしましょう！</p>
+    </header>
+
+    <!-- メインコンテンツ（グリッド） -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: 声調 -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="activity"></i> 1. 声調（4つのトーン）
+            </h2>
+            <div class="space-y-4 flex-grow">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1">四声（第一声〜第四声）</h3>
+                    <p class="text-sm text-gray-600 mb-2">音の高低変化で意味が変わります。台湾では第三声を低く抑えるのが特徴です。</p>
+                    <button class="play-btn" onclick="playSound('Track_001.mp3')">
+                        <i data-lucide="headphones" class="w-4 h-4"></i> 001 聴く
+                    </button>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-lg text-sm">
+                    <p><b>第一声:</b> 高く平らに (mā / 媽)</p>
+                    <p><b>第二声:</b> 急激に上げる (má / 麻)</p>
+                    <p><b>第三声:</b> 低く抑える (mǎ / 馬)</p>
+                    <p><b>第四声:</b> 高いところから急降下 (mà / 罵)</p>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        軽声
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_002.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 002
+                        </button>
+                    </h3>
+                    <p class="text-sm text-gray-600">他の音節に続けて軽く発音します。（例: 他的 tā de）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: 変調 -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="repeat"></i> 2. 声調の変化（変調）
+            </h2>
+            <div class="space-y-4 flex-grow text-sm">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        第三声の変調
+                        <div class="space-x-1">
+                            <button class="play-btn !text-xs !py-1" onclick="playSound('Track_003.mp3')">
+                                <i data-lucide="headphones" class="w-3 h-3"></i> 003
+                            </button>
+                            <button class="play-btn !text-xs !py-1" onclick="playSound('Track_004.mp3')">
+                                <i data-lucide="headphones" class="w-3 h-3"></i> 004
+                            </button>
+                        </div>
+                    </h3>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li><b>第三声の前:</b> 第二声に変わる（例: 你好 nǐ hǎo → ní hǎo）</li>
+                        <li><b>一、二、四声・軽声の前:</b> 低いまま発音（半三声）</li>
+                    </ul>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        "不" (bù) の変調
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_005.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 005
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">第四声の前に来ると、<b>第二声 (bú)</b> に変わります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: 母音 -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="message-circle"></i> 3. 基本の母音
+            </h2>
+            <div class="space-y-4 flex-grow">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        単母音 (7つ)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_006.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 006
+                        </button>
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-sm font-bold text-pink-600">
+                        <span class="bg-pink-100 px-2 py-1 rounded">a</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">o</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">e</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">i</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">u</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">ü</span>
+                        <span class="bg-pink-100 px-2 py-1 rounded">er</span>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        複合母音
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_007.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 007
+                        </button>
+                    </h3>
+                    <p class="text-sm text-gray-600">複数の文字をなめらかにつなげます。（ai, ei, ao, ou, ia, ie など）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: 鼻母音 -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="wind"></i> 4. 鼻母音
+            </h2>
+            <div class="space-y-4 flex-grow text-sm">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        前鼻母音 (-n で終わる)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_008.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 008
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">舌先を上の歯の裏側にピタリとつけます。「ヌ」と言うつもりで。（an, en, in...）</p>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        後鼻母音 (-ng で終わる)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_009.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 009
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">舌先を上あごにつけず、口を開けたまま「ン」と言います。（ang, eng, ing...）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: 母音の読み分け -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="book-open"></i> 5. 注意すべき母音
+            </h2>
+            <div class="space-y-4 flex-grow text-sm">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        "an" の読み分け (3通り)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_010.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 010
+                        </button>
+                    </h3>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li>通常: 「アン」</li>
+                        <li>ian の時: 日本語の「エン」に近く</li>
+                        <li>üan の時: 「アン」と「エン」の中間</li>
+                    </ul>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        "e" の読み分け (2通り)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_011.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 011
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">通常は「ウ」と「オ」の中間音。ei / ie / uei などの組み合わせでは「エ」に近くなります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6: 子音と「i」 -->
+        <div class="card p-6 flex flex-col h-full">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="ear"></i> 6. 子音と「i」の読み分け
+            </h2>
+            <div class="space-y-4 flex-grow text-sm">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        子音一覧と発音の特徴
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_012.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 012
+                        </button>
+                    </h3>
+                    <p class="text-gray-600 mb-2"><b>無気音</b>(息を出さない)と<b>有気音</b>(息を出す)、<b>そり舌音</b>(舌を少し奥にそり上げる)を区別します。</p>
+                </div>
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-1 flex justify-between items-center">
+                        "i" の読み分け (3通り)
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_013.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 013
+                        </button>
+                    </h3>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li>通常: 「イ」 (yi, bi など)</li>
+                        <li>zhi/chi/shi/ri: そり舌にした時の自然な口で「イ」っぽく</li>
+                        <li>zi/ci/si: 「イ」の口の形で「ウ」</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7: つづりの書き換え -->
+        <div class="card p-6 flex flex-col h-full md:col-span-2 lg:col-span-3">
+            <h2 class="text-xl font-bold text-pink-700 mb-4 flex items-center gap-2 border-b-2 border-pink-100 pb-2">
+                <i data-lucide="pen-tool"></i> 7. ピンインのつづり書き換えルール
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2 flex justify-between items-center">
+                        "y/w" で始まる音節
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_014.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 014
+                        </button>
+                    </h3>
+                    <p class="text-gray-600 mb-2">母音の前に子音がない時、yやwを使って書き替えます。</p>
+                    <ul class="text-gray-500 font-mono">
+                        <li>y (yu以外), yi → <b>i</b></li>
+                        <li>w, wu → <b>u</b></li>
+                        <li>yu → <b>ü</b></li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2 flex justify-between items-center">
+                        "j / q / x" + "ü"
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_015.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 015
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">j, q, xの後にüが来る場合、上の「¨」を省略して <b>u</b> と書きます。<br>※「ウ」ではなく「口をすぼめたイ (ü)」で発音します。</p>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2 flex justify-between items-center">
+                        真ん中の母音の省略
+                        <button class="play-btn !text-xs !py-1" onclick="playSound('Track_016.mp3')">
+                            <i data-lucide="headphones" class="w-3 h-3"></i> 016
+                        </button>
+                    </h3>
+                    <p class="text-gray-600">子音がつくときは、真ん中の "o" や "e" が省略されて書かれます。読む時は軽く補って発音します。</p>
+                    <ul class="text-gray-500 font-mono">
+                        <li>子音 + iu (iou)</li>
+                        <li>子音 + ui (uei)</li>
+                        <li>子音 + un (uen)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center mt-12 mb-6 text-gray-400 text-sm">
+        <p>※ 音声を再生するには、アップロードされた「Track_001.mp3」などのファイルが、このHTMLファイルと同じフォルダに保存されている必要があります。</p>
+    </footer>
+
+    <!-- カスタムトースト通知用 -->
+    <div id="toast"></div>
+
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        // 音声再生ロジック
+        let currentAudio = null;
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.className = "show";
+            setTimeout(function() { 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+
+        function playSound(trackName) {
+            // 前の音声が再生中なら止める
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // 新しい音声を生成して再生
+            currentAudio = new Audio(trackName);
+            
+            currentAudio.play().then(() => {
+                showToast("🎵 " + trackName + " を再生しています...");
+            }).catch(e => {
+                console.error("Audio playback error:", e);
+                showToast("⚠️ ファイルが見つかりません。同じフォルダに " + trackName + " を配置してください。");
+            });
+        }
+    </script>
+</body>
+</html>
