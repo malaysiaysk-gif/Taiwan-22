@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1課 音声フレーズ集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #f0fdf4; /* green-50 */
+            color: #374151; /* gray-700 */
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+            border-top: 5px solid #14b8a6; /* teal-500 */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: #14b8a6; /* teal-500 */
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(20, 184, 166, 0.4);
+        }
+        .play-btn:hover {
+            background-color: #0d9488; /* teal-600 */
+        }
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+        /* トースト通知のアニメーション */
+        @keyframes fadeinout {
+            0%, 100% { opacity: 0; transform: translate(-50%, 20px); }
+            10%, 90% { opacity: 1; transform: translate(-50%, 0); }
+        }
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px 24px;
+            position: fixed;
+            z-index: 50;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadeinout 4s forwards;
+        }
+        .time-badge {
+            background-color: #ccfbf1; /* teal-100 */
+            color: #0f766e; /* teal-700 */
+            font-family: monospace;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <!-- ヘッダー -->
+    <header class="text-center mb-10 mt-4">
+        <h1 class="text-3xl md:text-5xl font-bold text-teal-600 mb-3 flex justify-center items-center gap-3">
+            <i data-lucide="book-open" class="w-10 h-10"></i>
+            第1課 音声学習
+        </h1>
+        <p class="text-gray-600 font-medium">教科書のセクションに合わせて「086.mp3」を部分再生します。</p>
+    </header>
+
+    <!-- ファイル読み込み（ブラウザプレビュー用） -->
+    <div class="max-w-3xl mx-auto bg-white p-4 rounded-xl shadow-sm mb-6 border-l-4 border-teal-500 flex flex-col md:flex-row items-center gap-4">
+        <div class="flex-grow">
+            <h3 class="font-bold text-teal-800 flex items-center gap-2"><i data-lucide="upload-cloud" class="w-5 h-5"></i> ブラウザ上でそのまま使うには：</h3>
+            <p class="text-sm text-gray-600">エラーを防ぐため、お手元の「086.mp3」をここで選択してください。</p>
+        </div>
+        <input type="file" id="audio-upload" accept="audio/*" class="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100" onchange="handleFileUpload(event)">
+    </div>
+
+    <!-- メインコンテンツ（縦長レイアウト） -->
+    <main class="max-w-3xl mx-auto flex flex-col gap-10 items-stretch">
+
+        <!-- Section 1 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>1. 単語（味と温度）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 1, 38, '1. 単語（味と温度）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 0:01 〜 0:38</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <!-- 単語リスト：大きなスペース(space-y-8)と余白(p-6)を設定 -->
+                <div class="space-y-8">
+                    
+                    <!-- Item 1: 甜 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">甜</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄊㄧㄢˊ</div>
+                            <div class="text-base text-gray-500 font-mono">tián</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">甘い</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: 酸 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">酸</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄙㄨㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">suān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">スワン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">酸っぱい</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: 辣 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">辣</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄌㄚˋ</div>
+                            <div class="text-base text-gray-500 font-mono">là</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ラー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">辛い</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: 鹹 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">鹹</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄢˊ</div>
+                            <div class="text-base text-gray-500 font-mono">xián</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">しょっぱい</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: 苦 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">苦</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄎㄨˇ</div>
+                            <div class="text-base text-gray-500 font-mono">kǔ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">クゥ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">苦い</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: 好吃/好喝 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">好吃 / 好喝</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄠˇ ㄔ / ㄏㄠˇ ㄏㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">hǎo chī / hǎo hē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ハオチュー / ハオホー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">おいしい</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: 燙/熱 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">燙 / 熱</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄊㄤˋ / ㄖㄜˋ</div>
+                            <div class="text-base text-gray-500 font-mono">tàng / rè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">タン / ルァ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">熱い</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 8: 冰 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">冰</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄅㄧㄥ</div>
+                            <div class="text-base text-gray-500 font-mono">bīng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ビン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">冷たい</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <!-- Section 4 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>4. 単語（方向と位置）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 210, 250, '4. 単語（方向と位置）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 3:30 〜 4:10</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">前</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄢˊ</div>
+                            <div class="text-base text-gray-500 font-mono">qián</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チェン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">前後</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">後</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄡˋ</div>
+                            <div class="text-base text-gray-500 font-mono">hòu</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ホウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">後ろ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">左</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄗㄨㄛˇ</div>
+                            <div class="text-base text-gray-500 font-mono">zuǒ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ズオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">左右</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">右</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄡˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yòu</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ヨウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">右上</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">上</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄕㄤˋ</div>
+                            <div class="text-base text-gray-500 font-mono">shàng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シャン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">上下</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">下</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄚˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xià</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">下</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">東</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄉㄨㄥ</div>
+                            <div class="text-base text-gray-500 font-mono">dōng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ドン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">東西</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">西</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">xī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">西南</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">南</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄋㄢˊ</div>
+                            <div class="text-base text-gray-500 font-mono">nán</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ナン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">南北</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">北</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄅㄟˇ</div>
+                            <div class="text-base text-gray-500 font-mono">běi</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ベイ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">北</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <!-- Section 5 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>5. 単語（乗り物）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 250, 295, '5. 単語（乗り物）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 4:10 〜 4:55</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">汽車</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧˋ ㄔㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">qì chē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チーチャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">車</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">巴士</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄅㄚ ㄕˋ</div>
+                            <div class="text-base text-gray-500 font-mono">bā shì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">バーシュー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">バス</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">火車</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄨㄛˇ ㄔㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">huǒ chē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ホオチャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">電車</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">捷運</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧㄝˊ ㄩㄣˋ</div>
+                            <div class="text-base text-gray-500 font-mono">jié yùn</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジエユン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">地下鉄</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">高鐵</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄍㄠ ㄊㄧㄝˇ</div>
+                            <div class="text-base text-gray-500 font-mono">gāo tiě</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ガオティエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">新幹線</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">飛機</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄈㄟ ㄐㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">fēi jī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">フェイジー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">飛行機</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">船</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄔㄨㄢˊ</div>
+                            <div class="text-base text-gray-500 font-mono">chuán</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チュワン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">船</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">計程車</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧˋ ㄔㄥˊ ㄔㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">jì chéng chē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジーチェンチャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">タクシー</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">機車</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧ ㄔㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">jī chē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジーチャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">バイク</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">腳踏車</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧㄠˇ ㄊㄚˋ ㄔㄜ</div>
+                            <div class="text-base text-gray-500 font-mono">jiǎo tà chē</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジャオターチャー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">自転車</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <!-- Section 6 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>6. 単語（持ち物）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 295, 383, '6. 単語（持ち物）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 4:55 〜 6:23</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">護照</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄨˋ ㄓㄠˋ</div>
+                            <div class="text-base text-gray-500 font-mono">hù zhào</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">フージャオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">パスポート</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">票</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄆㄧㄠˋ</div>
+                            <div class="text-base text-gray-500 font-mono">piào</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ピャオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">チケット</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">錢包</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄢˊ ㄅㄠ</div>
+                            <div class="text-base text-gray-500 font-mono">qián bāo</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チエンバオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">財布</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">現金</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄢˋ ㄐㄧㄣ</div>
+                            <div class="text-base text-gray-500 font-mono">xiàn jīn</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シェンジン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">現金</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">信用卡</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄣˋ ㄩㄥˋ ㄎㄚˇ</div>
+                            <div class="text-base text-gray-500 font-mono">xìn yòng kǎ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンヨンカー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">クレジットカード</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">行李箱</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥˊ ㄌㄧˇ ㄒㄧㄤ</div>
+                            <div class="text-base text-gray-500 font-mono">xíng lǐ xiāng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンリーシャン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">スーツケース</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">手錶</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄕㄡˇ ㄅㄧㄠˇ</div>
+                            <div class="text-base text-gray-500 font-mono">shǒu biǎo</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ショウビャオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">腕時計</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">手機</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄕㄡˇ ㄐㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">shǒu jī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ショウジー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">スマートフォン</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">充電器</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄔㄨㄥ ㄉㄧㄢˋ ㄑㄧˋ</div>
+                            <div class="text-base text-gray-500 font-mono">chōng diàn qì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チョンディエンチー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">充電器</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">WIFI機</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">WIFI ㄐㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">wifi jī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ワイファイジー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">WiFiルーター</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">眼鏡</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄢˇ ㄐㄧㄥˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yǎn jìng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">イェンジン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">メガネ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">相機</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄤˋ ㄐㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">xiàng jī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シャンジー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">カメラ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">藥</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄠˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yào</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ヤオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">薬</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">衛生紙</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄨㄟˋ ㄕㄥ ㄓˇ</div>
+                            <div class="text-base text-gray-500 font-mono">wèi shēng zhǐ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ウェイシェンジュー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">ティッシュ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">手帕</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄕㄡˇ ㄆㄚˋ</div>
+                            <div class="text-base text-gray-500 font-mono">shǒu pà</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ショウパー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">ハンカチ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">後背包</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄡˋ ㄅㄟ ㄅㄠ</div>
+                            <div class="text-base text-gray-500 font-mono">hòu bēi bāo</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ホウベイバオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">バックパック</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">鑰匙</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄠˋ ㄕ˙</div>
+                            <div class="text-base text-gray-500 font-mono">yào shi</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ヤオシュ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">鍵</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-3xl font-bold text-teal-800">隱形眼鏡</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-lg text-gray-700 font-mono tracking-widest mb-1">ㄧㄣˇ ㄒㄧㄥˊ ㄧㄢˇ ㄐㄧㄥˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yǐn xíng yǎn jìng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">インシンイェンジン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">コンタクトレンズ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">口罩</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄎㄡˇ ㄓㄠˋ</div>
+                            <div class="text-base text-gray-500 font-mono">kǒu zhào</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">コウジャオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">マスク</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">帽子</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄇㄠˋ ㄗ˙</div>
+                            <div class="text-base text-gray-500 font-mono">mào zi</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">マオズ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">帽子</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8 -->
+        <!-- Section 8 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>8. 単語（感情と評価）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 497, 550, '8. 単語（感情と評価）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 8:17 〜 9:10</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">有趣</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄡˇ ㄑㄩˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yǒu qù</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ヨウチュー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">面白い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">開心</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄎㄞ ㄒㄧㄣ</div>
+                            <div class="text-base text-gray-500 font-mono">kāi xīn</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">カイシン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">楽しい</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">漂亮</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄆㄧㄠˋ ㄌㄧㄤ˙</div>
+                            <div class="text-base text-gray-500 font-mono">piào liang</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ピャオリャン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">綺麗だ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">可愛</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄎㄜˇ ㄞˋ</div>
+                            <div class="text-base text-gray-500 font-mono">kě' ài</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">カーアイ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">可愛い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">愉快</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄩˊ ㄎㄨㄞˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yú kuài</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ユークワイ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">愉快だ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">很棒</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄣˇ ㄅㄤˋ</div>
+                            <div class="text-base text-gray-500 font-mono">hěn bàng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ヘンバン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">素敵だ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">滿足</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄇㄢˇ ㄗㄨˊ</div>
+                            <div class="text-base text-gray-500 font-mono">mǎn zú</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">マンズウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">満足だ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">難過</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄋㄢˊ ㄍㄨㄛˋ</div>
+                            <div class="text-base text-gray-500 font-mono">nán guò</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ナングオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">悲しい</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">不甘心</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄅㄨˋ ㄍㄢ ㄒㄧㄣ</div>
+                            <div class="text-base text-gray-500 font-mono">bù gān xīn</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ブーガンシン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">悔しい</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">累</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄌㄟˋ</div>
+                            <div class="text-base text-gray-500 font-mono">lèi</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">レイ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">疲れた</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">害怕</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄏㄞˋ ㄆㄚˋ</div>
+                            <div class="text-base text-gray-500 font-mono">hài pà</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ハイパー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">怖い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">羨慕</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄢˋ ㄇㄨˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xiàn mù</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シェンムウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">羨ましい</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9 -->
+        <!-- Section 9 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>9. 単語（天気）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 550, 620, '9. 単語（天気）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 9:10 〜 10:20</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">晴天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄥˊ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">qíng tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チンティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">晴れ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">雨天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄩˇ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">yǔ tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ユウティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">雨</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">陰天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧㄣ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">yīn tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">インティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">曇り</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">下雪</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄚˋ ㄒㄩㄝˇ</div>
+                            <div class="text-base text-gray-500 font-mono">xià xuě</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シャーシュエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">雪</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">熱</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄖㄜˋ</div>
+                            <div class="text-base text-gray-500 font-mono">rè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ルァ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">暑い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">悶熱</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄇㄣ ㄖㄜˋ</div>
+                            <div class="text-base text-gray-500 font-mono">mēn rè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">メンルァ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">蒸し暑い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">冷</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄌㄥˇ</div>
+                            <div class="text-base text-gray-500 font-mono">lěng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">レン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">寒い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">涼爽</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄌㄧㄤˊ ㄕㄨㄤˇ</div>
+                            <div class="text-base text-gray-500 font-mono">liáng shuǎng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">リャンシュワン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">涼しい</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">強風</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄤˊ ㄈㄥ</div>
+                            <div class="text-base text-gray-500 font-mono">qiáng fēng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チャンフォン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">強風</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">颱風</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄊㄞˊ ㄈㄥ</div>
+                            <div class="text-base text-gray-500 font-mono">tái fēng</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">タイフォン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">台風</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">乾燥</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄍㄢ ㄗㄠˋ</div>
+                            <div class="text-base text-gray-500 font-mono">gān zào</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ガンザオ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">乾燥している</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">高濕度</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄍㄠ ㄕ ㄉㄨˋ</div>
+                            <div class="text-base text-gray-500 font-mono">gāo shī dù</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ガオスードゥ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">湿度が高い</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">天氣</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄊㄧㄢ ㄑㄧˋ</div>
+                            <div class="text-base text-gray-500 font-mono">tiān qì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ティエンチー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">天気</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-3xl font-bold text-teal-800">傾盆大雨</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-lg text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄥ ㄆㄣˊ ㄉㄚˋ ㄩˇ</div>
+                            <div class="text-base text-gray-500 font-mono">qīng pén dà yǔ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チンペンダーユウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">土砂降り</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">梅雨季</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄇㄟˊ ㄩˇ ㄐㄧˋ</div>
+                            <div class="text-base text-gray-500 font-mono">méi yǔ jì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">メイユウジー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">梅雨</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-3xl font-bold text-teal-800">午後雷陣雨</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-base text-gray-700 font-mono tracking-widest mb-1">ㄨˇ ㄏㄡˋ ㄌㄟˊ ㄓㄣˋ ㄩˇ</div>
+                            <div class="text-base text-gray-500 font-mono">wǔ hòu léi zhèn yǔ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ウーホウレイジェンユウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">夕立</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 14 -->
+        <!-- Section 14 -->
+        <div class="card p-6 md:p-10 flex flex-col">
+            <h2 class="text-2xl font-bold text-teal-800 mb-3 border-b-2 border-teal-100 pb-3">
+                <span>14. 単語（月・曜日・季節）</span>
+            </h2>
+            <div class="mb-6 flex flex-wrap items-center gap-4">
+                <button class="play-btn" onclick="playAudioSection('086.mp3', 925, null, '14. 単語（月・曜日・季節）')">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i> 音声を再生
+                </button>
+                <span class="time-badge"><i data-lucide="clock" class="w-4 h-4 inline"></i> 15:25 〜 最後まで</span>
+            </div>
+            
+            <div class="text-sm text-gray-700 mb-8 flex-grow flex flex-col">
+                <div class="space-y-8">
+                    
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">一月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄧ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">yī yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">イーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">1月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">二月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄦˋ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">èr yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">アーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">2月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">三月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄙㄢ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">sān yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">サンユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">3月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">四月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄙˋ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">sì yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">スーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">4月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">五月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄨˇ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">wǔ yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ウーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">5月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">六月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄌㄧㄡˋ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">liù yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">リョウユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">6月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">七月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">qī yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">7月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">八月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄅㄚ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">bā yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">バーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">8月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">九月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧㄡˇ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">jiǔ yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジョウユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">9月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">十月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄕˊ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">shí yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">スーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">10月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">十一月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄕˊ ㄧ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">shí yī yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">スーイーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">11月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">十二月</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄕˊ ㄦˋ ㄩㄝˋ</div>
+                            <div class="text-base text-gray-500 font-mono">shí èr yuè</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">スーアーユエ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">12月</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期一</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄧ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí yī</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーイー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">月曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期二</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄦˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí èr</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーアー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">火曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期三</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄙㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí sān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーサン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">水曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期四</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄙˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí sì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチースー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">木曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期五</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄨˇ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí wǔ</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーウー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">金曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期六</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄌㄧㄡˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí liù</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーリョウ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">土曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-4xl font-bold text-teal-800">星期日</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄥ ㄑㄧˊ ㄖˋ</div>
+                            <div class="text-base text-gray-500 font-mono">xīng qí rì</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シンチーリュー</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">日曜日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">季節</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄐㄧˋ ㄐㄧㄝˊ</div>
+                            <div class="text-base text-gray-500 font-mono">jì jié</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ジージェ</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">季節</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">春天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄔㄨㄣ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">chūn tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チュンティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">春</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">夏天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄒㄧㄚˋ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">xià tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">シャーティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">夏</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">秋天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄑㄧㄡ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">qiū tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">チョウティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">秋</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-2xl p-6 flex flex-col items-center gap-4">
+                        <div class="text-5xl font-bold text-teal-800">冬天</div>
+                        <div class="flex flex-col items-center bg-white/80 w-full rounded-xl py-3 shadow-sm">
+                            <div class="text-2xl text-gray-700 font-mono tracking-widest mb-1">ㄉㄨㄥ ㄊㄧㄢ</div>
+                            <div class="text-base text-gray-500 font-mono">dōng tiān</div>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full mt-2">
+                            <span class="text-base text-gray-600 bg-white px-5 py-2 rounded-full shadow-sm border border-teal-50">ドンティエン</span>
+                            <span class="text-xl font-bold text-teal-900 bg-white px-6 py-2 rounded-full shadow-sm border border-teal-50">冬</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center mt-16 mb-8 text-gray-400 text-sm">
+        <p>※ 「086.mp3」をこのHTMLファイルと同じフォルダに配置してご利用ください。</p>
+        <button onclick="stopAudio()" class="mt-4 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full font-bold inline-flex items-center gap-2 transition-colors shadow-sm">
+            <i data-lucide="square" class="w-5 h-5"></i> 音声を停止する
+        </button>
+    </footer>
+
+    <!-- カスタムトースト通知用 -->
+    <div id="toast"></div>
+
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+
+        let currentAudio = null;
+        let customAudioUrl = null;
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.className = "show";
+            setTimeout(function() { 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+
+        // ファイルアップロードの処理
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // 前のURLがあればメモリ解放
+                if (customAudioUrl) {
+                    URL.revokeObjectURL(customAudioUrl);
+                }
+                customAudioUrl = URL.createObjectURL(file);
+                showToast("✅ 音声を読み込みました！再生ボタンを押してください。");
+            }
+        }
+
+        // 強制停止ボタン用
+        function stopAudio() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.ontimeupdate = null;
+                showToast("⏹️ 再生を停止しました");
+            }
+        }
+
+        // 開始秒と終了秒を指定して再生する関数
+        function playAudioSection(trackName, startTime, endTime, sectionName) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.ontimeupdate = null;
+                currentAudio.onended = null;
+                currentAudio.onerror = null;
+                currentAudio.onloadedmetadata = null;
+            }
+
+            // アップロードされた音声があればそれを、なければローカルのtrackNameを使用
+            const sourceUrl = customAudioUrl || trackName;
+            currentAudio = new Audio(sourceUrl);
+
+            // ファイルが見つからなかった時のエラーハンドリング
+            currentAudio.onerror = function() {
+                showToast("⚠️ 音声が見つかりません。画面上部のファイル選択から「086.mp3」を読み込んでください。");
+            };
+
+            // 【重要】メタデータ（音声の長さ情報など）がロードされてから秒数を指定・再生する
+            currentAudio.onloadedmetadata = function() {
+                currentAudio.currentTime = startTime;
+
+                if (endTime !== null) {
+                    currentAudio.ontimeupdate = function() {
+                        if (currentAudio.currentTime >= endTime) {
+                            currentAudio.pause();
+                            currentAudio.ontimeupdate = null;
+                            showToast("⏹️ 「" + sectionName + "」の再生が完了しました");
+                        }
+                    };
+                } else {
+                    currentAudio.onended = function() {
+                        showToast("⏹️ 最後まで再生しました");
+                    };
+                }
+                
+                currentAudio.play().then(() => {
+                    showToast("🎵 「" + sectionName + "」を再生中...");
+                }).catch(e => {
+                    console.error("Audio playback error:", e);
+                    showToast("⚠️ 再生エラーが発生しました。");
+                });
+            };
+        }
+    </script>
+</body>
+</html>
