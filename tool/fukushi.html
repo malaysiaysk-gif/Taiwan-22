@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOCFL 必修語彙・文法 コア意味チートシート</title>
+    <title>TOCFL 必修語彙・文法 コア意味チートシート（完全版）</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -11,6 +11,7 @@
         body {
             font-family: 'Noto Sans JP', 'Noto Sans TC', sans-serif;
             background-color: #f3f4f6;
+            line-height: 1.6;
         }
         .card-hover:hover {
             transform: translateY(-2px);
@@ -20,279 +21,340 @@
             background: linear-gradient(transparent 60%, #fde047 60%);
             font-weight: bold;
         }
+        /* ピンインのサイズを大幅にアップ */
+        .pinyin {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: normal;
+            margin-left: 0.35rem;
+            letter-spacing: 0.02em;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased p-4 md:p-8">
 
-    <header class="max-w-5xl mx-auto mb-8 text-center">
-        <h1 class="text-3xl md:text-4xl font-black text-indigo-900 mb-2 tracking-tight">
-            <i class="fa-solid fa-map-location-dot mr-2"></i>TOCFL コア意味・使い分け MAP
+    <header class="max-w-6xl mx-auto mb-10 text-center">
+        <h1 class="text-3xl md:text-5xl font-black text-indigo-900 mb-4 tracking-tight leading-tight">
+            <i class="fa-solid fa-map-location-dot mr-3"></i>TOCFL コア意味 MAP
         </h1>
-        <p class="text-gray-600 font-medium">台湾華語（繁体字）試験直前対策！漢字のイメージで迷いを断つチートシート</p>
+        <p class="text-gray-600 font-bold text-base md:text-xl">台湾華語 試験直前対策！<br class="md:hidden">文の骨組みと漢字のイメージを掴む</p>
     </header>
 
-    <main class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        <!-- 1. 空間・方向 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-blue-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-blue-600">
-                <i class="fa-solid fa-location-arrow text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">1. 空間と方向（ベクトル）</h2>
-            </div>
-            <div class="space-y-4">
-                <div class="bg-blue-50 p-3 rounded-lg">
-                    <div class="flex justify-between items-baseline mb-1">
-                        <span class="text-lg font-bold">在 <span class="text-sm font-normal text-blue-400 ml-1">zài</span></span>
-                        <span class="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded">点・静止</span>
-                    </div>
-                    <p class="text-sm">コア：<span class="core-hl">ある地点に留まっている存在</span></p>
-                    <p class="text-xs text-gray-600 mt-1">※到着を意味する「到 <span class="text-[10px]">dào</span>」や書面語の「於 <span class="text-[10px]">yú</span>」と区別。</p>
+        <!-- 左カラム -->
+        <div class="space-y-8 lg:col-span-1">
+            <!-- 1. 空間・方向 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-blue-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-blue-600">
+                    <i class="fa-solid fa-location-arrow text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">1. 空間・方向</h2>
                 </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-gray-50 border border-gray-200 p-2 rounded">
-                        <div class="font-bold text-center border-b pb-1 mb-1">往 <span class="text-xs font-normal text-gray-400 ml-1">wǎng</span></div>
-                        <p class="text-xs text-center"><span class="core-hl text-red-600">目的地</span>への移動</p>
-                        <p class="text-[10px] text-gray-500 mt-1 text-center">後ろに「人」は不可</p>
+                <div class="space-y-5 text-base">
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <span class="font-bold text-2xl">在<span class="pinyin">zài</span></span>
+                            <span class="text-xs md:text-sm bg-blue-200 text-blue-800 px-2 py-1 rounded font-bold">点・静止</span>
+                        </div>
+                        <p class="text-base md:text-lg">コア：<span class="core-hl">ある地点に留まる</span></p>
                     </div>
-                    <div class="bg-gray-50 border border-gray-200 p-2 rounded">
-                        <div class="font-bold text-center border-b pb-1 mb-1">向 <span class="text-xs font-normal text-gray-400 ml-1">xiàng</span></div>
-                        <p class="text-xs text-center"><span class="core-hl text-red-600">対象(人)</span>への向き</p>
-                        <p class="text-[10px] text-gray-500 mt-1 text-center">向他借錢（彼に借りる）</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border-2 border-gray-200 p-3 rounded-xl text-center bg-gray-50">
+                            <div class="font-bold text-xl border-b-2 border-gray-200 pb-2 mb-2">往<span class="pinyin">wǎng</span></div>
+                            <p class="text-sm md:text-base"><span class="core-hl text-red-600">目的地</span>へ移動</p>
+                        </div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl text-center bg-gray-50">
+                            <div class="font-bold text-xl border-b-2 border-gray-200 pb-2 mb-2">向<span class="pinyin">xiàng</span></div>
+                            <p class="text-sm md:text-base"><span class="core-hl text-red-600">対象(人)</span>へ向く</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 2. 例示・仮定 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-green-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-green-600">
-                <i class="fa-solid fa-lightbulb text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">2. 例示と仮定（もしも・例えば）</h2>
-            </div>
-            <div class="space-y-4">
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-green-50 p-2 rounded">
-                        <div class="font-bold text-green-800">例如 <span class="text-xs font-normal text-green-600 ml-1">lìrú</span></div>
-                        <p class="text-xs"><span class="font-bold">事実の列挙</span> (フォーマル)</p>
+            <!-- 2. 例示・累加 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-lime-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-lime-600">
+                    <i class="fa-solid fa-layer-group text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">2. 例示・展開</h2>
+                </div>
+                <div class="space-y-5 text-base">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-lime-50 p-3 rounded-xl border border-lime-100">
+                            <div class="font-bold text-xl text-lime-800 mb-1">例如<span class="pinyin block md:inline mt-1 md:mt-0">lìrú</span></div>
+                            <p class="text-sm md:text-base font-bold text-gray-700">事実の列挙 <br><span class="text-xs font-normal text-gray-500">(フォーマル)</span></p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-xl border border-lime-100">
+                            <div class="font-bold text-xl text-lime-800 mb-1">比方<span class="pinyin block md:inline mt-1 md:mt-0">bǐfāng</span></div>
+                            <p class="text-sm md:text-base font-bold text-gray-700">想像の例え <br><span class="text-xs font-normal text-gray-500">(カジュアル)</span></p>
+                        </div>
                     </div>
-                    <div class="bg-green-50 p-2 rounded">
-                        <div class="font-bold text-green-800">比方(說) <span class="text-xs font-normal text-green-600 ml-1">bǐfāng(shuō)</span></div>
-                        <p class="text-xs"><span class="font-bold">想像の例え</span> (カジュアル)</p>
+                    <div class="bg-gray-50 border-2 border-gray-200 p-4 rounded-xl">
+                        <span class="font-bold text-xl text-gray-800 block mb-2">不但<span class="pinyin">búdàn</span>...，而且<span class="pinyin">érqiě</span>...</span>
+                        <p class="text-base md:text-lg">コア：<span class="core-hl">範囲の拡張</span></p>
+                        <p class="text-sm font-bold text-gray-500 mt-2">（～だけでなく、さらに～）</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-emerald-50 border border-emerald-100 p-2 rounded">
-                        <div class="font-bold text-emerald-800">如果 <span class="text-xs font-normal text-emerald-600 ml-1">rúguǒ</span></div>
-                        <p class="text-xs"><span class="font-bold">論理的</span>な仮定 (フラット)</p>
-                    </div>
-                    <div class="bg-emerald-50 border border-emerald-100 p-2 rounded relative">
-                        <span class="absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white text-[10px] px-1 rounded-full animate-pulse">台湾頻出</span>
-                        <div class="font-bold text-emerald-800">要是 <span class="text-xs font-normal text-emerald-600 ml-1">yàoshi</span></div>
-                        <p class="text-xs"><span class="font-bold">感情的</span>な仮定 (期待/不満)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 3. 逆説・選択 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-yellow-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-yellow-600">
-                <i class="fa-solid fa-code-branch text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">3. 逆説と選択（分岐点）</h2>
-            </div>
-            <table class="w-full text-sm text-left">
-                <tbody>
-                    <tr class="border-b">
-                        <td class="py-2 font-bold text-orange-600 w-24">可是<span class="block text-[10px] font-normal text-orange-400">kěshì</span></td>
-                        <td class="py-2"><span class="core-hl">感情・主観</span>「～だけどね」(口語)</td>
-                    </tr>
-                    <tr class="border-b">
-                        <td class="py-2 font-bold text-gray-600">但是<span class="block text-[10px] font-normal text-gray-400">dànshì</span></td>
-                        <td class="py-2"><span class="core-hl">論理・客観</span>「しかし」(書面・強い)</td>
-                    </tr>
-                    <tr class="border-b">
-                        <td class="py-2 font-bold text-teal-600">或者<span class="block text-[10px] font-normal text-teal-400">huòzhě</span></td>
-                        <td class="py-2">フラットな並列 (標準的)</td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 font-bold text-teal-600 relative">或是<span class="block text-[10px] font-normal text-teal-400">huòshì</span>
-                            <span class="absolute top-3 -right-2 flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span></span>
-                        </td>
-                        <td class="py-2">テンポよい提示 (台湾で超頻出)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <!-- 3. スピード・強調 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-red-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-red-600">
+                    <i class="fa-solid fa-bolt text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">3. スピード・強調</h2>
+                </div>
+                <div class="space-y-5 text-base">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-red-50 p-3 rounded-xl border-l-4 border-red-500">
+                            <span class="font-bold text-xl">立刻</span><span class="pinyin block md:inline mt-1 md:mt-0">lìkè</span><br>
+                            <span class="text-sm md:text-base text-gray-700 font-bold mt-1 block">物理的直後(0秒)</span>
+                        </div>
+                        <div class="bg-orange-50 p-3 rounded-xl border-l-4 border-orange-500">
+                            <span class="font-bold text-xl">馬上</span><span class="pinyin block md:inline mt-1 md:mt-0">mǎshàng</span><br>
+                            <span class="text-sm md:text-base text-gray-700 font-bold mt-1 block">主観的(意志の速さ)</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-xl text-center font-bold text-base md:text-lg border-2 border-gray-200">
+                        <span class="text-red-600 text-xl">一</span> [条件] <span class="text-red-600 text-xl">就</span> <span class="text-sm">(立刻/馬上)</span> [結果]<br>
+                        <span class="font-normal text-sm md:text-base text-gray-600 block mt-2">～すると、すぐさま～する</span>
+                    </div>
+                    
+                    <div class="border-t-2 border-dashed border-gray-300 pt-5 mt-2">
+                        <div class="font-bold mb-3 text-gray-800 text-lg md:text-xl"><i class="fa-solid fa-arrow-up-right-dots mr-2 text-red-500"></i>極端なエスカレート</div>
+                        <div class="bg-red-50 p-4 rounded-xl mb-3 border border-red-100 relative overflow-hidden shadow-sm">
+                            <div class="absolute top-0 right-0 bg-red-200 text-red-800 text-xs font-bold px-3 py-1 rounded-bl-lg">超頻出</div>
+                            <span class="font-bold text-xl text-red-700 block mb-2">連<span class="pinyin">lián</span> [極端な例] 都/也<span class="pinyin">dōu/yě</span>...</span>
+                            <p class="text-base md:text-lg mb-2">コア：<span class="core-hl">一番端の網までズルズル引き出す</span></p>
+                            <p class="text-sm md:text-base font-bold text-gray-700 mb-3"><i class="fa-solid fa-link text-red-400 mr-1"></i>普通あり得ない事柄を繋ぐ<span class="text-red-600 ml-1">（〜でさえ、〜すら）</span></p>
+                            <div class="bg-white inline-block px-3 py-1.5 rounded-lg border border-red-200">
+                                <span class="text-sm font-bold text-gray-800"><span class="text-red-600">連</span>小孩<span class="text-red-600">都</span>知道</span><br>
+                                <span class="text-xs font-normal text-gray-500">子供でさえ知っている</span>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                            <span class="font-bold text-xl text-orange-800 block mb-2">甚至<span class="pinyin">shènzhì</span></span>
+                            <p class="text-base md:text-lg">コア：<span class="core-hl">階段をさらに一段超える</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-        <!-- 4. 程度・感嘆 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-pink-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-pink-600">
-                <i class="fa-solid fa-temperature-arrow-up text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">4. 程度・感嘆（么シリーズ）</h2>
-            </div>
-            <div class="space-y-3">
-                <div class="bg-pink-50 p-2 rounded flex items-center justify-between">
-                    <div>
-                        <span class="font-bold text-pink-700 text-lg">多麼 <span class="text-sm font-normal text-pink-400 ml-1">duōme</span></span>
-                        <span class="text-xs text-gray-600 ml-1">+ 形容詞 + 啊！</span>
-                    </div>
-                    <span class="text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded">主観的感嘆</span>
+        <!-- 中カラム -->
+        <div class="space-y-8 lg:col-span-1">
+            <!-- 4. 条件・仮定 (超重要) -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-emerald-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-emerald-600">
+                    <i class="fa-solid fa-filter text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">4. 条件・仮定</h2>
                 </div>
-                <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="border border-gray-200 p-2 rounded">
-                        <span class="font-bold">這麼</span> <span class="text-[10px] font-normal text-gray-400 ml-1">zhème</span> <br><span class="text-xs text-gray-500">近い(目の前の驚き)</span>
+                <div class="space-y-5 text-base">
+                    <!-- もしも -->
+                    <div class="flex flex-col space-y-3 bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                        <div class="flex justify-between items-center border-b border-emerald-200 pb-2">
+                            <span class="font-bold text-xl text-emerald-900">如果<span class="pinyin">rúguǒ</span></span>
+                            <span class="text-sm font-bold text-gray-600">論理的(If)</span>
+                        </div>
+                        <div class="flex justify-between items-center relative pt-1">
+                            <span class="font-bold text-xl text-emerald-900">要是<span class="pinyin">yàoshi</span></span>
+                            <div class="text-right">
+                                <span class="bg-red-500 text-white px-2 py-0.5 rounded text-xs font-bold mb-1 inline-block">台湾で頻出</span><br>
+                                <span class="text-sm font-bold text-gray-600">感情的(期待/不満)</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="border border-gray-200 p-2 rounded">
-                        <span class="font-bold">那麼</span> <span class="text-[10px] font-normal text-gray-400 ml-1">nàme</span> <br><span class="text-xs text-gray-500">遠い(離れた事への言及)</span>
+                    
+                    <!-- 必須条件 vs 十分条件 -->
+                    <div class="border-2 border-emerald-200 rounded-xl p-4 bg-white">
+                        <div class="font-bold text-lg md:text-xl text-teal-800 border-b-2 border-emerald-100 pb-2 mb-3">
+                            只要<span class="pinyin">zhǐyào</span> vs 只有<span class="pinyin">zhǐyǒu</span>
+                        </div>
+                        <div class="flex mb-4 items-start bg-gray-50 p-3 rounded-lg">
+                            <span class="font-bold text-xl text-teal-700 w-20 shrink-0">只要</span>
+                            <div>
+                                <span class="text-base font-bold text-gray-800 block mb-1">最低限の条件<br><span class="text-sm font-normal text-gray-600">(～しさえすれば)</span></span>
+                                <div class="text-sm font-bold text-gray-700 mt-2 bg-white px-2 py-1 border rounded inline-block">↳ 後ろは必ず <span class="text-red-500 text-lg">就</span></div>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-gray-50 p-3 rounded-lg">
+                            <span class="font-bold text-xl text-teal-700 w-20 shrink-0">只有</span>
+                            <div>
+                                <span class="text-base font-bold text-gray-800 block mb-1">唯一の条件<br><span class="text-sm font-normal text-gray-600">(～してはじめて/～しか)</span></span>
+                                <div class="text-sm font-bold text-gray-700 mt-2 bg-white px-2 py-1 border rounded inline-block">↳ 後ろは必ず <span class="text-blue-500 text-lg">才</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="border border-gray-200 p-2 rounded">
-                        <span class="font-bold">怎麼</span> <span class="text-[10px] font-normal text-gray-400 ml-1">zěnme</span> <br><span class="text-xs text-gray-500">疑問(原因・方法)</span>
-                    </div>
-                    <div class="border border-gray-200 p-2 rounded">
-                        <span class="font-bold">相當</span> <span class="text-[10px] font-normal text-gray-400 ml-1">xiāngdāng</span> <br><span class="text-xs text-gray-500">程度(釣り合い/予想以上)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 5. 時間・頻度 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-purple-500 p-6 card-hover transition-all md:col-span-2">
-            <div class="flex items-center mb-4 text-purple-600">
-                <i class="fa-solid fa-hourglass-half text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">5. 時間・頻度（点と線）</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
-                    <div class="font-bold text-lg mb-2 text-center border-b border-purple-200 pb-1">總 vs 一直</div>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold text-purple-700">總是 <span class="text-[10px] font-normal ml-1">zǒngshì</span>：</span> <span class="core-hl">点の集合 (習慣)</span><br><span class="text-xs text-gray-600">その時が来れば100%そうなる。</span></li>
-                        <li><span class="font-bold text-purple-700">一直 <span class="text-[10px] font-normal ml-1">yīzhí</span>：</span> <span class="core-hl">線の継続 (無中断)</span><br><span class="text-xs text-gray-600">ある期間、一度も途切れない。</span></li>
-                    </ul>
+                    <!-- 条件の無効化 -->
+                    <div class="bg-gray-800 text-white p-4 rounded-xl shadow-inner">
+                        <span class="font-bold text-xl block mb-2">不管<span class="pinyin text-gray-300">bùguǎn</span>...，都...</span>
+                        <p class="text-base md:text-lg">コア：<span class="text-yellow-300 font-bold border-b-2 border-yellow-300 pb-1">条件の無効化</span></p>
+                        <p class="text-sm text-gray-300 mt-3 font-bold">（～であろうと関係なく）<br>※後ろに疑問詞や選択を伴う</p>
+                    </div>
                 </div>
-                <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
-                    <div class="font-bold text-lg mb-2 text-center border-b border-purple-200 pb-1">過去の視点</div>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold text-purple-700">剛 <span class="text-[10px] font-normal ml-1">gāng</span>：</span> 動作のタイミング (副詞)<br><span class="text-xs text-gray-600">動詞の前（剛到家）</span></li>
-                        <li><span class="font-bold text-purple-700">剛才 <span class="text-[10px] font-normal ml-1">gāngcái</span>：</span> 時間のポイント (名詞)<br><span class="text-xs text-gray-600">主語の前後（剛才誰來？）</span></li>
-                    </ul>
-                </div>
-                <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
-                    <div class="font-bold text-lg mb-2 text-center border-b border-purple-200 pb-1">以前 vs 過去</div>
-                    <ul class="text-sm space-y-2">
-                        <li><span class="font-bold text-purple-700">以前 <span class="text-[10px] font-normal ml-1">yǐqián</span>：</span> 基準点からの「前」<br><span class="text-xs text-gray-600">三年以前 / 睡覺以前</span></li>
-                        <li><span class="font-bold text-purple-700">過去 <span class="text-[10px] font-normal ml-1">guòqù</span>：</span> 流れていった「昔」<br><span class="text-xs text-gray-600">単独で「昔はね…」と語る時</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 6. スピード・即時 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-red-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-red-600">
-                <i class="fa-solid fa-bolt text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">6. スピード（すぐ・直後）</h2>
-            </div>
-            <div class="space-y-3">
-                <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="bg-red-50 p-2 rounded border-l-2 border-red-400">
-                        <span class="font-bold">立刻</span> <span class="text-[10px] text-gray-500 ml-1">lìkè</span><br><span class="text-xs text-gray-600"><span class="core-hl">物理的直後</span>(0秒待機)</span>
-                    </div>
-                    <div class="bg-orange-50 p-2 rounded border-l-2 border-orange-400">
-                        <span class="font-bold">馬上</span> <span class="text-[10px] text-gray-500 ml-1">mǎshàng</span><br><span class="text-xs text-gray-600"><span class="core-hl">主観的急ぎ</span>(意志の速さ)</span>
-                    </div>
-                    <div class="bg-yellow-50 p-2 rounded border-l-2 border-yellow-400">
-                        <span class="font-bold">趕快</span> <span class="text-[10px] text-gray-500 ml-1">gǎnkuài</span><br><span class="text-xs text-gray-600">態度の催促(急げ！)</span>
-                    </div>
-                    <div class="bg-pink-50 p-2 rounded border-l-2 border-pink-400">
-                        <span class="font-bold">連忙</span> <span class="text-[10px] text-gray-500 ml-1">liánmáng</span><br><span class="text-xs text-gray-600">反応の慌て(過去の描写)</span>
-                    </div>
+            <!-- 5. 逆説・選択 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-amber-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-amber-600">
+                    <i class="fa-solid fa-code-branch text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">5. 逆説・選択</h2>
                 </div>
-                <div class="mt-3 bg-gray-100 p-3 rounded text-sm text-center font-bold">
-                    <span class="text-red-600">一 <span class="text-[10px] font-normal ml-1">yī</span></span> [条件] <span class="text-red-600">就 <span class="text-[10px] font-normal ml-1">jiù</span></span> (立刻/馬上) [結果]
-                    <p class="text-xs font-normal text-gray-500 mt-1">～すると、すぐさま～する（ピタッと接着）</p>
-                </div>
-            </div>
-        </section>
+                <div class="space-y-5 text-base">
+                    <!-- 逆説の強さ -->
+                    <div class="border-2 border-amber-200 rounded-xl p-4">
+                        <div class="font-bold text-gray-800 text-base md:text-lg mb-3 border-b-2 border-amber-100 pb-2 bg-amber-50 px-2 rounded-t">逆説 (しかし/でも)</div>
+                        <table class="w-full text-base">
+                            <tr class="border-b border-gray-200"><td class="py-3 font-bold w-20 text-lg">但是<span class="block pinyin -ml-0 mt-1">dànshì</span></td><td class="py-3 font-bold text-gray-700">客観・論理 <br><span class="text-sm font-normal text-gray-500">(強い転換)</span></td></tr>
+                            <tr class="border-b border-gray-200"><td class="py-3 font-bold text-orange-600 text-lg">可是<span class="block pinyin -ml-0 mt-1">kěshì</span></td><td class="py-3 font-bold text-gray-700">主観・感情 <br><span class="text-sm font-normal text-gray-500">(口語・言い訳)</span></td></tr>
+                            <tr><td class="py-3 font-bold text-gray-500 text-lg">不過<span class="block pinyin -ml-0 mt-1">búguò</span></td><td class="py-3 font-bold text-gray-700">補足・軽い逆説 <br><span class="text-sm font-normal text-gray-500">(ただ～)</span></td></tr>
+                        </table>
+                    </div>
 
-        <!-- 7. 数量・確率 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-cyan-500 p-6 card-hover transition-all">
-            <div class="flex items-center mb-4 text-cyan-600">
-                <i class="fa-solid fa-scale-balanced text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">7. 数量・推測・確信</h2>
-            </div>
-            <div class="space-y-4">
-                <div class="flex justify-between items-center border-b pb-2">
-                    <div class="w-1/2 pr-2 border-r">
-                        <div class="font-bold text-cyan-800 text-sm mb-1"><i class="fa-solid fa-apple-whole mr-1"></i>一些 <span class="text-[10px] font-normal text-gray-500 ml-1">yìxiē</span></div>
-                        <p class="text-[10px] text-gray-600"><span class="core-hl">可算・個数</span> (いくつかのモノ)</p>
-                    </div>
-                    <div class="w-1/2 pl-2">
-                        <div class="font-bold text-cyan-800 text-sm mb-1"><i class="fa-solid fa-droplet mr-1"></i>一點 <span class="text-[10px] font-normal text-gray-500 ml-1">yìdiǎn</span></div>
-                        <p class="text-[10px] text-gray-600"><span class="core-hl">不可算・量</span> (少量のコト)</p>
-                        <p class="text-[9px] text-red-500 mt-1">※台湾では「兒」をつけない</p>
-                    </div>
-                </div>
-                
-                <div class="text-sm">
-                    <div class="font-bold mb-1 text-gray-700 border-b border-dashed border-gray-300 pb-1">確信度のグラデーション</div>
-                    <div class="flex flex-col space-y-1 mt-2">
-                        <div class="flex justify-between"><span class="font-bold text-red-600">肯定 <span class="text-[10px] font-normal text-gray-400">kěndìng</span> / 一定 <span class="text-[10px] font-normal text-gray-400">yídìng</span></span> <span class="text-xs text-gray-500">100% 断定/決意</span></div>
-                        <div class="flex justify-between"><span class="font-bold text-orange-500">大概 <span class="text-[10px] font-normal text-gray-400">dàgài</span></span> <span class="text-xs text-gray-500">80% おおよそ</span></div>
-                        <div class="flex justify-between"><span class="font-bold text-yellow-600">可能 <span class="text-[10px] font-normal text-gray-400">kěnéng</span></span> <span class="text-xs text-gray-500">50% あり得る</span></div>
-                        <div class="flex justify-between"><span class="font-bold text-green-600">也許 <span class="text-[10px] font-normal text-gray-400">yěxǔ</span> / 說不定 <span class="text-[10px] font-normal text-gray-400">shuōbudìng</span></span> <span class="text-xs text-gray-500">30% ひょっとしたら</span></div>
-                        <div class="flex justify-between bg-gray-100 px-1 rounded"><span class="font-bold text-gray-600">不一定 <span class="text-[10px] font-normal text-gray-400">bù yídìng</span></span> <span class="text-xs text-gray-500">50/50 限らない(保留)</span></div>
+                    <!-- 選択 (AかBか) -->
+                    <div class="border-2 border-amber-200 rounded-xl p-4">
+                        <div class="font-bold text-gray-800 text-base md:text-lg mb-3 border-b-2 border-amber-100 pb-2 bg-amber-50 px-2 rounded-t">選択 (A か B か)</div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <div><span class="font-bold text-xl text-amber-800 block">還是<span class="pinyin">háishì</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">※「やっぱり」の意味も</span></div>
+                                <span class="bg-red-100 text-red-800 text-sm px-3 py-1 rounded font-black border border-red-200 shadow-sm">疑問文 (？)</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <div>
+                                    <span class="font-bold text-xl text-amber-800 block mb-2">或者<span class="pinyin">huòzhě</span></span>
+                                    <span class="font-bold text-xl text-amber-800 block">或是<span class="pinyin">huòshì</span> <span class="bg-red-500 text-white px-2 py-0.5 rounded text-[10px] align-top ml-1">台湾</span></span>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded font-black border border-blue-200 shadow-sm">平叙文 (。)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- 8. 紛らわしいペア決戦 -->
-        <section class="bg-white rounded-2xl shadow-sm border-t-4 border-indigo-500 p-6 card-hover transition-all md:col-span-2">
-            <div class="flex items-center mb-4 text-indigo-600">
+        <!-- 右カラム -->
+        <div class="space-y-8 lg:col-span-1">
+            <!-- 6. 程度・感嘆 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-pink-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-pink-600">
+                    <i class="fa-solid fa-temperature-arrow-up text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">6. 程度・感嘆</h2>
+                </div>
+                <div class="space-y-4 text-base">
+                    <div class="bg-pink-50 p-4 rounded-xl flex flex-col justify-between items-start border border-pink-100">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="font-bold text-pink-700 text-2xl">多麼<span class="pinyin">duōme</span></span>
+                            <span class="text-xs md:text-sm bg-pink-200 text-pink-900 px-2 py-1 rounded font-bold">主観的感嘆</span>
+                        </div>
+                        <span class="text-base font-bold text-gray-700 bg-white px-3 py-1 rounded-lg border border-pink-200 w-full text-center">+ 形容詞 + <span class="text-pink-600 text-xl">啊！</span></span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm md:text-base">
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-lg block border-b pb-1 mb-1">這麼</span><span class="pinyin block mb-1">zhème</span><span class="font-bold text-gray-700">近い<br><span class="text-xs font-normal text-gray-500">(目の前の事)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-lg block border-b pb-1 mb-1">那麼</span><span class="pinyin block mb-1">nàme</span><span class="font-bold text-gray-700">遠い<br><span class="text-xs font-normal text-gray-500">(離れた事)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-lg block border-b pb-1 mb-1">怎麼</span><span class="pinyin block mb-1">zěnme</span><span class="font-bold text-gray-700">疑問<br><span class="text-xs font-normal text-gray-500">(原因・方法)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-lg block border-b pb-1 mb-1">相當</span><span class="pinyin block mb-1">xiāngdāng</span><span class="font-bold text-gray-700">程度<br><span class="text-xs font-normal text-gray-500">(予想以上)</span></span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. 数量・推測 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-cyan-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-cyan-600">
+                    <i class="fa-solid fa-scale-balanced text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">7. 数量・推測</h2>
+                </div>
+                <div class="space-y-5">
+                    <div class="flex text-base border-b-2 border-gray-100 pb-5">
+                        <div class="w-1/2 pr-3 border-r-2 border-gray-100">
+                            <div class="font-bold text-cyan-800 text-xl mb-2">一些<span class="pinyin block md:inline mt-1 md:mt-0">yìxiē</span></div>
+                            <p class="text-sm font-bold text-gray-700 bg-cyan-50 p-2 rounded"><span class="core-hl">可算・個数</span><br><span class="text-xs font-normal">(a few)</span></p>
+                        </div>
+                        <div class="w-1/2 pl-3">
+                            <div class="font-bold text-cyan-800 text-xl mb-2">一點<span class="pinyin block md:inline mt-1 md:mt-0">yìdiǎn</span></div>
+                            <p class="text-sm font-bold text-gray-700 bg-cyan-50 p-2 rounded"><span class="core-hl">不可算・量</span><br><span class="text-xs font-normal">(a little)</span></p>
+                        </div>
+                    </div>
+                    <div class="text-base">
+                        <div class="font-bold mb-3 text-gray-800 text-lg bg-gray-100 py-1 px-3 rounded text-center">確信度のグラデーション</div>
+                        <div class="flex flex-col space-y-3 p-2">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2"><span class="font-bold text-xl text-red-600">肯定 / 一定</span> <span class="text-sm font-bold text-gray-700 bg-red-50 px-2 py-1 rounded">100% 断定</span></div>
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2"><span class="font-bold text-lg text-orange-500">大概</span> <span class="text-sm font-bold text-gray-700">80% おおよそ</span></div>
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2"><span class="font-bold text-lg text-yellow-600">可能</span> <span class="text-sm font-bold text-gray-700">50% あり得る</span></div>
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-2"><span class="font-bold text-lg text-green-600">也許 / 說不定</span> <span class="text-sm font-bold text-gray-700">30% ひょっとしたら</span></div>
+                            <div class="flex justify-between items-center bg-gray-100 p-2 rounded-lg mt-2"><span class="font-bold text-lg text-gray-700">不一定</span> <span class="text-sm font-bold text-gray-700">限らない(保留)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. 時間・頻度 -->
+            <section class="bg-white rounded-2xl shadow-sm border-t-8 border-purple-500 p-6 md:p-8 card-hover transition-all">
+                <div class="flex items-center mb-5 text-purple-600">
+                    <i class="fa-solid fa-hourglass-half text-2xl mr-3"></i>
+                    <h2 class="text-xl md:text-2xl font-bold">8. 時間・頻度</h2>
+                </div>
+                <div class="space-y-4 text-base">
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
+                        <div class="font-bold text-lg md:text-xl mb-3 text-purple-900 border-b border-purple-200 pb-2">總<span class="pinyin">zǒngshì</span> <span class="text-gray-400 mx-2">vs</span> 一直<span class="pinyin">yīzhí</span></div>
+                        <p class="mb-3 font-bold text-gray-800"><span class="text-xl text-purple-700">總是：</span> <span class="core-hl">点の集合 (習慣)</span><br><span class="text-sm font-normal text-gray-600 ml-2">↳ 100%そうなる</span></p>
+                        <p class="font-bold text-gray-800"><span class="text-xl text-purple-700">一直：</span> <span class="core-hl">線の継続 (無中断)</span><br><span class="text-sm font-normal text-gray-600 ml-2">↳ 一度も途切れない</span></p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-xl block border-b pb-1 mb-1">剛</span><span class="pinyin block mb-1">gāng</span><span class="text-sm font-bold text-gray-700">動詞の前<br><span class="text-xs font-normal text-gray-500">(副詞)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-xl block border-b pb-1 mb-1">剛才</span><span class="pinyin block mb-1">gāngcái</span><span class="text-sm font-bold text-gray-700">時間の時点<br><span class="text-xs font-normal text-gray-500">(名詞)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-xl block border-b pb-1 mb-1">以前</span><span class="pinyin block mb-1">yǐqián</span><span class="text-sm font-bold text-gray-700">基準から前<br><span class="text-xs font-normal text-gray-500">(相対的)</span></span></div>
+                        <div class="border-2 border-gray-200 p-3 rounded-xl bg-gray-50"><span class="font-bold text-xl block border-b pb-1 mb-1">過去</span><span class="pinyin block mb-1">guòqù</span><span class="text-sm font-bold text-gray-700">流れた昔<br><span class="text-xs font-normal text-gray-500">(単独で使う)</span></span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 9. 紛らわしいペア決戦 (フルウィズ) -->
+        <section class="bg-white rounded-2xl shadow-sm border-t-8 border-indigo-500 p-6 md:p-8 card-hover transition-all lg:col-span-3">
+            <div class="flex items-center mb-6 text-indigo-600">
                 <i class="fa-solid fa-handshake-angle text-2xl mr-3"></i>
-                <h2 class="text-xl font-bold">8. 紛らわしいペア決戦（見分け方）</h2>
+                <h2 class="text-xl md:text-2xl font-bold">9. 紛らわしいペア決戦（見分け方）</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-base">
                 <!-- ペア1 -->
-                <div class="bg-white border-2 border-gray-100 rounded-lg p-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">発見・納得</div>
-                    <div class="mb-2"><span class="font-bold text-lg text-indigo-700">難怪</span> <span class="text-[10px] text-gray-500 ml-1">nánguài</span><br><span class="text-xs text-gray-600">納得の論理 (標準)</span></div>
-                    <div class="border-t pt-2"><span class="font-bold text-lg text-indigo-700">怪不得</span> <span class="text-[10px] text-gray-500 ml-1">guàibùdé</span><br><span class="text-xs text-gray-600"><span class="core-hl">発見の驚き</span> (台湾口語)</span></div>
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 relative shadow-sm">
+                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">発見・納得</div>
+                    <div class="mb-3 mt-2"><span class="font-bold text-xl text-indigo-800 block">難怪<span class="pinyin">nánguài</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">納得の論理(標準)</span></div>
+                    <div class="border-t-2 border-gray-100 pt-3"><span class="font-bold text-xl text-indigo-800 block">怪不得<span class="pinyin">guàibùdé</span></span><span class="text-sm font-bold text-gray-600 mt-1 block"><span class="core-hl">発見の驚き</span>(台湾)</span></div>
                 </div>
                 <!-- ペア2 -->
-                <div class="bg-white border-2 border-gray-100 rounded-lg p-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">突発</div>
-                    <div class="mb-2"><span class="font-bold text-lg text-indigo-700">突然</span> <span class="text-[10px] text-gray-500 ml-1">tūrán</span><br><span class="text-xs text-gray-600">状態そのもの <br>※「很突然」OK</span></div>
-                    <div class="border-t pt-2"><span class="font-bold text-lg text-indigo-700">忽然</span> <span class="text-[10px] text-gray-500 ml-1">hūrán</span><br><span class="text-xs text-gray-600">動作のタイミング <br>※動詞の前のみ</span></div>
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 relative shadow-sm">
+                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">突発</div>
+                    <div class="mb-3 mt-2"><span class="font-bold text-xl text-indigo-800 block">突然<span class="pinyin">tūrán</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">状態(很突然OK)</span></div>
+                    <div class="border-t-2 border-gray-100 pt-3"><span class="font-bold text-xl text-indigo-800 block">忽然<span class="pinyin">hūrán</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">動作(動詞の前のみ)</span></div>
                 </div>
                 <!-- ペア3 -->
-                <div class="bg-white border-2 border-gray-100 rounded-lg p-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">あらわす</div>
-                    <div class="mb-2"><span class="font-bold text-lg text-indigo-700">表現</span> <span class="text-[10px] text-gray-500 ml-1">biǎoxiàn</span><br><span class="text-xs text-gray-600"><span class="core-hl">パフォーマンス</span>(態度)</span></div>
-                    <div class="border-t pt-2"><span class="font-bold text-lg text-indigo-700">表示</span> <span class="text-[10px] text-gray-500 ml-1">biǎoshì</span><br><span class="text-xs text-gray-600">意思のアナウンス(言葉)</span></div>
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 relative shadow-sm">
+                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">あらわす</div>
+                    <div class="mb-3 mt-2"><span class="font-bold text-xl text-indigo-800 block">表現<span class="pinyin">biǎoxiàn</span></span><span class="text-sm font-bold text-gray-600 mt-1 block"><span class="core-hl">行動</span>(パフォーマンス)</span></div>
+                    <div class="border-t-2 border-gray-100 pt-3"><span class="font-bold text-xl text-indigo-800 block">表示<span class="pinyin">biǎoshì</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">意思のアナウンス(言葉)</span></div>
                 </div>
                 <!-- ペア4 -->
-                <div class="bg-white border-2 border-gray-100 rounded-lg p-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-[10px] px-2 py-1 rounded-bl">とくに</div>
-                    <div class="mb-2"><span class="font-bold text-lg text-indigo-700">尤其</span> <span class="text-[10px] text-gray-500 ml-1">yóuqí</span><br><span class="text-xs text-gray-600"><span class="core-hl">比較・抽出</span><br>(群から飛び出る)</span></div>
-                    <div class="border-t pt-2"><span class="font-bold text-lg text-indigo-700">特別</span> <span class="text-[10px] text-gray-500 ml-1">tèbié</span><br><span class="text-xs text-gray-600">個性・異質<br>(他とは違う属性)</span></div>
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4 relative shadow-sm">
+                    <div class="absolute top-0 right-0 bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">とくに</div>
+                    <div class="mb-3 mt-2"><span class="font-bold text-xl text-indigo-800 block">尤其<span class="pinyin">yóuqí</span></span><span class="text-sm font-bold text-gray-600 mt-1 block"><span class="core-hl">抽出</span>(群から出る)</span></div>
+                    <div class="border-t-2 border-gray-100 pt-3"><span class="font-bold text-xl text-indigo-800 block">特別<span class="pinyin">tèbié</span></span><span class="text-sm font-bold text-gray-600 mt-1 block">個性・異質(他と違う)</span></div>
                 </div>
             </div>
 
-            <div class="mt-4 bg-indigo-50 p-3 rounded-lg border border-indigo-100 text-sm flex flex-col md:flex-row justify-between items-center gap-2">
-                <div><span class="font-bold">必須 <span class="text-[10px] font-normal text-gray-500 ml-1">bìxū</span></span> ＝ 行動強制（＋<span class="text-red-500 font-bold">動詞</span>）</div>
-                <div class="hidden md:block text-gray-300">|</div>
-                <div><span class="font-bold">必需 <span class="text-[10px] font-normal text-gray-500 ml-1">bìxū</span></span> ＝ 物の必要性（＋<span class="text-blue-500 font-bold">名詞</span>）</div>
-                <div class="hidden md:block text-gray-300">|</div>
-                <div><span class="font-bold">一共 <span class="text-[10px] font-normal text-gray-500">yígòng</span> vs 總共 <span class="text-[10px] font-normal text-gray-500">zǒnggòng</span></span> ＝ 足し算 vs 統計</div>
+            <div class="mt-6 bg-indigo-50 p-4 md:p-6 rounded-xl border-2 border-indigo-100 text-base md:text-lg flex flex-col lg:flex-row justify-around items-center gap-4 text-center">
+                <div class="bg-white px-4 py-2 rounded-lg border shadow-sm w-full lg:w-auto"><span class="font-bold text-xl">必須</span><span class="pinyin">bìxū</span> <br class="lg:hidden"><span class="text-gray-400 mx-2 hidden lg:inline">＝</span> 行動強制（＋<span class="text-red-600 font-bold">動詞</span>）</div>
+                <div class="hidden lg:block text-gray-300 text-2xl">|</div>
+                <div class="bg-white px-4 py-2 rounded-lg border shadow-sm w-full lg:w-auto"><span class="font-bold text-xl">必需</span><span class="pinyin">bìxū</span> <br class="lg:hidden"><span class="text-gray-400 mx-2 hidden lg:inline">＝</span> 物の必要性（＋<span class="text-blue-600 font-bold">名詞</span>）</div>
+                <div class="hidden lg:block text-gray-300 text-2xl">|</div>
+                <div class="bg-white px-4 py-2 rounded-lg border shadow-sm w-full lg:w-auto"><span class="font-bold text-xl text-indigo-800">一共</span> <span class="text-sm">vs</span> <span class="font-bold text-xl text-indigo-800">總共</span> <br class="lg:hidden"><span class="text-gray-400 mx-2 hidden lg:inline">＝</span> レジの足し算 <span class="text-sm">vs</span> 統計データ</div>
             </div>
         </section>
 
     </main>
 
-    <footer class="max-w-5xl mx-auto mt-8 mb-4 text-center text-sm text-gray-500">
-        <p>Tip: スマホのブラウザで「ホーム画面に追加」すると、試験会場での直前見直しに便利です。</p>
+    <footer class="max-w-6xl mx-auto mt-12 mb-8 text-center text-sm md:text-base text-gray-500 font-bold">
+        <p class="bg-gray-200 inline-block px-4 py-2 rounded-full"><i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>Tip: スマホのブラウザで「ホーム画面に追加」すると、いつでもサクッと復習できます。</p>
     </footer>
 
 </body>
