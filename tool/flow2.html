@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band B 超完全攻略マスターリスト (v11 閲覧特化・全ピンイン版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2pdf.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .chinese-font {
+            font-family: 'Noto Serif TC', serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .pinyin {
+            font-family: sans-serif;
+            font-weight: 500;
+        }
+        .check-table th {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-weight: 700;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .check-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+        .check-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* PDF生成・印刷時の設定 (複数ページ前提) */
+        @media print {
+            body { 
+                background-color: white; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            .no-print { display: none !important; }
+            .print-break { break-inside: avoid; }
+            .print-break-before { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 text-base">
+
+    <!-- Action Bar (No Print) -->
+    <div class="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-end no-print gap-4 items-center" id="action-bar">
+         <div class="text-base text-slate-500 self-center hidden md:block">※ 閲覧特化版です。印刷すると複数ページになります。</div>
+        <button onclick="window.print()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-lg inline-flex items-center transition text-lg">
+            <svg class="fill-current w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+            通常印刷
+        </button>
+        <button onclick="generatePDF()" id="pdf-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-flex items-center transition shadow-lg text-lg">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            PDFダウンロード
+        </button>
+    </div>
+
+    <div id="loading-msg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 text-white font-bold text-2xl">
+        PDF生成中...（ページ数が多いため少し時間がかかります）
+    </div>
+
+    <!-- Main Container -->
+    <div id="content-to-print" class="max-w-7xl mx-auto bg-white rounded-2xl overflow-hidden card-shadow print-break">
+        
+        <!-- Header -->
+        <header class="gradient-header text-white p-8 md:p-12 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-wide">TOCFL Band B 超完全攻略リスト</h1>
+            <p class="text-blue-100 text-lg md:text-xl font-medium">v11 閲覧特化版：大文字＆全単語ピンイン完備</p>
+        </header>
+
+        <div class="p-6 md:p-10">
+            
+            <!-- Section 1: Connection Pairs Table -->
+            <div class="mb-12">
+                <h2 class="flex items-center text-2xl md:text-3xl font-bold text-slate-800 mb-5 border-b-4 border-blue-500 pb-3">
+                    <span class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 text-lg font-bold">1</span>
+                    接続詞コンビネーション（黄金ペア）
+                </h2>
+                <div class="mb-6 text-slate-700 font-bold bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-base md:text-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <span><span class="text-red-500 text-xl">★超重要：</span> 迷ったら「それは既に起きた事実(Fact)か？」それとも「まだ起きていない想像(Future)か？」で判断！</span>
+                    <span class="text-sm bg-red-100 text-red-800 px-3 py-2 rounded-lg block">※「如果...才」は基本的に存在しません（才は唯一条件）</span>
+                </div>
+                
+                <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                    <table class="w-full text-left border-collapse text-base md:text-lg">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 uppercase tracking-wider text-sm md:text-base">
+                                <th class="p-5 font-bold whitespace-nowrap border-b-2 border-slate-200 w-32">時系列/論理</th>
+                                <th class="p-5 font-bold text-center border-b-2 border-slate-200 min-w-[160px]">前半 (A)</th>
+                                <th class="p-4 text-center text-slate-400 border-b-2 border-slate-200 w-12">➡</th>
+                                <th class="p-5 font-bold text-center border-b-2 border-slate-200 min-w-[160px]">後半 (B)</th>
+                                <th class="p-5 font-bold border-b-2 border-slate-200">ロジック / ニュアンス / 必勝法</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-700 divide-y divide-slate-100">
+
+                            <!-- ================= GROUP: FACT ================= -->
+                            <tr class="bg-slate-200 text-slate-800 font-bold text-lg md:text-xl">
+                                <td colspan="5" class="p-4 pl-6 border-y-2 border-slate-300">
+                                    ▼ 【確定・事実】 Past / Present / Fact <span class="text-sm font-normal ml-3 text-slate-600">※既に起きたこと、または変わらない事実</span>
+                                </td>
+                            </tr>
+
+                            <!-- 逆接 -->
+                            <tr class="hover:bg-purple-50 transition">
+                                <td class="p-5 font-bold text-purple-600 text-lg">逆接<br><span class="text-sm text-slate-500 font-normal">事実・過去</span></td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">雖然 / 雖</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">suīrán / suī</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">但是 / 然而</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">dànshì / rán'ér</div>
+                                    <div class="text-sm text-slate-500 mt-2"><span class="chinese-font">可是</span> kěshì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    事実に対する逆接。<span class="font-bold text-purple-700 chinese-font">但是</span> (dànshì) ＞ <span class="chinese-font">可是</span> (kěshì) (但是の方が逆転コア)。<br>
+                                    ※「<span class="chinese-font">然而</span> (rán'ér)」はフォーマル（書き言葉）版。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-purple-50 transition">
+                                <td class="p-5 font-bold text-purple-600 text-lg">逆接<br><span class="text-sm text-slate-500 font-normal">固執・譲歩</span></td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">儘管</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">jǐnguǎn</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">但是 / 還是</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">dànshì / háishì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    ～にもかかわらず。<span class="font-bold text-red-600">事実として困難がある</span>が、それでもやる。<br>
+                                    ※「<span class="chinese-font">還是</span> (háishì)」があると「それでもやる感」がUP！「<span class="chinese-font">即使</span> (jíshǐ)」(仮定)との違いに注意。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-purple-50 transition">
+                                <td class="p-5 font-bold text-purple-600 text-lg">逆接<br><span class="text-sm text-slate-500 font-normal">評価</span></td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">固然</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">gùrán</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-purple-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">但是</div>
+                                    <div class="text-sm text-purple-600 pinyin mt-1">dànshì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Aのメリットはあるが（もちろんAだが）、Bのデメリットになる。
+                                </td>
+                            </tr>
+
+                            <!-- 原因・根拠 -->
+                            <tr class="hover:bg-green-50 transition border-t-2 border-slate-200">
+                                <td class="p-5 font-bold text-green-600 text-lg">原因<br><span class="text-sm text-slate-500 font-normal">理由・起因</span></td>
+                                <td class="p-5 text-center bg-green-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">因為 / 由於</div>
+                                    <div class="text-sm text-green-600 pinyin mt-1">yīnwèi / yóuyú</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-green-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">所以</div>
+                                    <div class="text-sm text-green-600 pinyin mt-1">suǒyǐ</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    ～なので、～だ。※「<span class="chinese-font">由於</span> (yóuyú)」は「<span class="chinese-font">因為</span> (yīnwèi)」の書き言葉（フォーマル）版。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition">
+                                <td class="p-5 font-bold text-green-600 text-lg">根拠<br><span class="text-sm text-slate-500 font-normal">解決・当然</span></td>
+                                <td class="p-5 text-center bg-green-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">既然</div>
+                                    <div class="text-sm text-green-600 pinyin mt-1">jìrán</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-green-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">就 / 應該 / 那</div>
+                                    <div class="text-sm text-green-600 pinyin mt-1">jiù / yīnggāi / nà</div>
+                                    <div class="text-sm text-slate-500 mt-2"><span class="chinese-font">只好</span> zhǐhǎo</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    <span class="font-bold text-green-700">状況確認(既然 jìrán) → 解決策(就/那/應該/只能/只好)</span> の黄金ペア。<br>
+                                    何らかの事実が確定している場合。「みんな暇なら(既然)、行こう(就)」。
+                                </td>
+                            </tr>
+
+                            <!-- 累加・並列・訂正 -->
+                            <tr class="hover:bg-blue-50 transition border-t-2 border-slate-200">
+                                <td class="p-5 font-bold text-blue-600 text-lg">累加<br><span class="text-sm text-slate-500 font-normal">追加・強調</span></td>
+                                <td class="p-5 text-center bg-blue-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不但 / 不僅</div>
+                                    <div class="text-sm text-blue-600 pinyin mt-1">búdàn / bùjǐn</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-blue-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">而且 / 更 / 越</div>
+                                    <div class="text-sm text-blue-600 pinyin mt-1">érqiě / gèng / yuè</div>
+                                    <div class="text-sm text-slate-500 mt-2"><span class="chinese-font">甚至</span> shènzhì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    AだけでなくBも。※「<span class="chinese-font">不僅</span> (bùjǐn)」は悪い意外性が強い。<br>
+                                    後ろに<span class="font-bold text-blue-700">「更(gèng)」「越(yuè)」等の強調</span>や、極端な例を示す<span class="font-bold text-blue-700">「甚至(shènzhì: ひどい時は)」</span>が来やすい。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-red-50 transition">
+                                <td class="p-5 font-bold text-red-600 text-lg">意外<br><span class="text-sm text-slate-500 font-normal">逆効果</span></td>
+                                <td class="p-5 text-center bg-red-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不但不 / 沒</div>
+                                    <div class="text-sm text-red-600 pinyin mt-1">búdàn bù / méi</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-red-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-red-600">反而 / 卻 / 倒</div>
+                                    <div class="text-sm text-red-600 pinyin mt-1">fǎn'ér / què / dào</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    期待されたAにならなかったばかりか、<span class="font-bold text-red-600">かえって悪い結果B</span>になった(皮肉)。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-5 font-bold text-slate-600 text-lg">並列<br><span class="text-sm text-slate-500 font-normal">両立</span></td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">既 / 又</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">jì / yòu</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">也 / 又</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">yě / yòu</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Aでもあり、Bでもある。(又A又B)。※「<span class="chinese-font">連</span>(lián)...<span class="chinese-font">都/也</span>(dōu/yě)(AでさえBだ)」も並列の仲間。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-5 font-bold text-slate-600 text-lg">選択<br><span class="text-sm text-slate-500 font-normal">確定二択</span></td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不是</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">búshì</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">就是</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">jiùshì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    AかBのどちらかだ。行動パターンが限られている時。
+                                </td>
+                            </tr>
+                             <tr class="hover:bg-slate-50 transition">
+                                <td class="p-5 font-bold text-slate-600 text-lg">訂正<br><span class="text-sm text-slate-500 font-normal">強調</span></td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不是</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">búshì</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">而是</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">érshì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Aではなく、実はBだ。（Bを強調する）。<span class="text-red-500 font-bold">※後に「<span class="chinese-font">是</span> (shì)」が続くことはない。</span>
+                                </td>
+                            </tr>
+
+
+                            <!-- ================= GROUP: HYPOTHESIS ================= -->
+                            <tr class="bg-orange-100 text-orange-900 font-bold text-lg md:text-xl">
+                                <td colspan="5" class="p-4 pl-6 border-y-2 border-orange-200">
+                                    ▼ 【仮定・未来】 Future / Hypothesis / Will <span class="text-sm font-normal ml-3 text-orange-700">※まだ起きていない、もし～なら</span>
+                                </td>
+                            </tr>
+
+                            <!-- 仮定・譲歩 -->
+                            <tr class="hover:bg-indigo-50 transition">
+                                <td class="p-5 font-bold text-indigo-600 text-lg">仮定<br><span class="text-sm text-slate-500 font-normal">最悪・非現実</span></td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">即使 / 就算</div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">jíshǐ / jiùsuàn</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">也 / 還是</div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">yě / háishì</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    たとえ～だとしても(Even if)。<span class="font-bold text-red-600">「最悪のケースを1つ」</span>指定する。<br>
+                                    <span class="font-bold text-indigo-700">★後ろに 也 (yě) がいる？→ 即使 に賭ける！</span> ※「<span class="chinese-font">就算</span>」は即使の話し言葉。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-indigo-50 transition">
+                                <td class="p-5 font-bold text-indigo-600 text-lg">仮定<br><span class="text-sm text-slate-500 font-normal">通常・提案</span></td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">如果 / 假使<br><span class="text-xl">要是</span></div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">rúguǒ / jiǎshǐ / yàoshi</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">就</div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">jiù</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    もし～なら。※「<span class="chinese-font">假使/假如</span> (jiǎshǐ/jiǎrú)」はフォーマル版。「<span class="chinese-font">要是</span> (yàoshi)」はカジュアル。<br>
+                                    <span class="font-bold text-indigo-700">★「要是」は「提案(吧 ba)」の相棒になりやすい。不快(病気)の時など。</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-indigo-50 transition">
+                                <td class="p-5 font-bold text-indigo-600 text-lg">仮定<br><span class="text-sm text-slate-500 font-normal">反実仮想</span></td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">要不是</div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">yàobúshì</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-indigo-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">就 / 哪能</div>
+                                    <div class="text-sm text-indigo-600 pinyin mt-1">jiù / nǎnéng</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Aがなければ、Bになっていた（<span class="chinese-font">就</span>）。Aがなければ、Bになる事はなかった（<span class="chinese-font">哪能</span>：反語）。
+                                </td>
+                            </tr>
+
+                            <!-- 条件・警告 -->
+                            <tr class="hover:bg-teal-50 transition border-t-2 border-slate-200">
+                                <td class="p-5 font-bold text-teal-600 text-lg">条件<br><span class="text-sm text-slate-500 font-normal">低・営業的</span></td>
+                                <td class="p-5 text-center bg-white">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">只要</div>
+                                    <div class="text-sm text-teal-600 pinyin mt-1">zhǐyào</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-white">
+                                    <div class="text-2xl font-bold chinese-font text-teal-600">就</div>
+                                    <div class="text-sm text-teal-600 pinyin mt-1">jiù</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    ～さえすればOK。（安ければすぐ買う等、条件は1つ）
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-teal-50 transition">
+                                <td class="p-5 font-bold text-teal-600 text-lg">条件<br><span class="text-sm text-slate-500 font-normal">高・唯一</span></td>
+                                <td class="p-5 text-center bg-white">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">只有 / 除非</div>
+                                    <div class="text-sm text-teal-600 pinyin mt-1">zhǐyǒu / chúfēi</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-white">
+                                    <div class="text-2xl font-bold chinese-font text-teal-600">才</div>
+                                    <div class="text-sm text-teal-600 pinyin mt-1">cái</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    ～してこそ、はじめて～できる。<br>
+                                    <span class="text-red-500 font-bold">※「<span class="chinese-font">才</span> (cái)」は唯一の条件を示す。「如果...才」は基本的に存在しない。</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-red-50 transition">
+                                <td class="p-5 font-bold text-red-600 text-lg">警告<br><span class="text-sm text-slate-500 font-normal">例外条件</span></td>
+                                <td class="p-5 text-center bg-red-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">除非</div>
+                                    <div class="text-sm text-red-600 pinyin mt-1">chúfēi</div>
+                                    <div class="text-sm text-slate-500">(省略可)</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-red-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">否則 / 不然</div>
+                                    <div class="text-sm text-red-600 pinyin mt-1">fǒuzé / bùrán</div>
+                                    <div class="text-sm text-slate-500 mt-2"><span class="chinese-font">要不然</span> yàobùrán</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    ～しなさい。さもなければ～だ（提案→警告）。<br>
+                                    ※「<span class="chinese-font">不然</span> (bùrán)」は「<span class="chinese-font">否則</span> (fǒuzé)」よりカジュアルで台湾で頻出。否則は接続詞で主語の前に来る。
+                                </td>
+                            </tr>
+
+                            <!-- 比較・選択・無条件 -->
+                            <tr class="hover:bg-yellow-50 transition border-t-2 border-slate-200">
+                                <td class="p-5 font-bold text-yellow-600 text-lg">苦渋選択<br><span class="text-sm text-slate-500 font-normal">意志・決断</span></td>
+                                <td class="p-5 text-center bg-yellow-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">寧可 / 寧願</div>
+                                    <div class="text-sm text-yellow-600 pinyin mt-1">nìngkě / nìngyuàn</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-yellow-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">也不</div>
+                                    <div class="text-sm text-yellow-600 pinyin mt-1">yěbù</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Bするくらいなら(死んでも)Aする。(強い拒絶・意志)
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-yellow-50 transition">
+                                <td class="p-5 font-bold text-yellow-600 text-lg">比較選択<br><span class="text-sm text-slate-500 font-normal">マシな方</span></td>
+                                <td class="p-5 text-center bg-yellow-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">與其(說)</div>
+                                    <div class="text-sm text-yellow-600 pinyin mt-1">yǔqí (shuō)</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-yellow-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不如(說)</div>
+                                    <div class="text-sm text-yellow-600 pinyin mt-1">bùrú (shuō)</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    Aするくらいなら、Bの方がマシだ。（Aというより不如Bと言った方が良い）。
+                                </td>
+                            </tr>
+                             <tr class="hover:bg-orange-50 transition">
+                                <td class="p-5 font-bold text-orange-600 text-lg">譲歩<br><span class="text-sm text-slate-500 font-normal">無条件</span></td>
+                                <td class="p-5 text-center bg-orange-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">不管 / 無論<br><span class="text-xl text-slate-500 mt-2 block">不論 / 任</span></div>
+                                    <div class="text-sm text-orange-600 pinyin mt-1">bùguǎn / wúlùn / búlùn / rèn</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-orange-50/30">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">都 / 也</div>
+                                    <div class="text-sm text-orange-600 pinyin mt-1">dōu / yě</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    いかなる～であっても（何があろうと関係ない）。<br>
+                                    <span class="font-bold text-orange-700">★疑問詞(誰 shéi/什麼 shénme) / 反対語(好壞 hǎohuài) / 選択(A還是B háishì) ＋ 都(dōu) が来たら一択！</span>
+                                </td>
+                            </tr>
+
+                            <!-- 動作の繋がり -->
+                             <tr class="hover:bg-slate-50 transition border-t-2 border-slate-200">
+                                <td class="p-5 font-bold text-slate-600 text-lg">発生<br><span class="text-sm text-slate-500 font-normal">一度・即時</span></td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">一旦 / 一</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">yídàn / yī</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">就</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">jiù</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    <span class="chinese-font">一旦</span>: もしAが一度でも起きるとB。 <span class="chinese-font">一</span>: ～するとすぐにB。
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-5 font-bold text-slate-600 text-lg">同時 / 比例</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">一邊 / 越</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">yìbiān / yuè</div>
+                                </td>
+                                <td class="p-5 text-center text-slate-300 text-2xl">➡</td>
+                                <td class="p-5 text-center bg-slate-50">
+                                    <div class="text-2xl font-bold chinese-font text-slate-800">一邊 / 越</div>
+                                    <div class="text-sm text-slate-500 pinyin mt-1">yìbiān / yuè</div>
+                                </td>
+                                <td class="p-5 text-base md:text-lg leading-relaxed">
+                                    <span class="chinese-font">一邊</span> (AしながらBする)、<span class="chinese-font">越</span> (～すればするほど)。
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 2 & 3 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 print-break-before mb-12">
+                
+                <!-- Section 2: Confusing Words & Traps -->
+                <div>
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-5 border-b-4 border-red-500 pb-3">
+                        <span class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-base font-bold">2</span>
+                        【魔の領域】頻出トラップ・品詞
+                    </h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- Trap 1 & 2 -->
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <div class="trap-box p-5 rounded-xl shadow-sm flex-1">
+                                <div class="font-bold text-red-700 mb-3 text-lg">剛(副詞) vs 剛才(名詞)</div>
+                                <div class="text-base space-y-3">
+                                    <div><span class="font-bold text-lg chinese-font">剛</span> <span class="text-sm text-slate-500 pinyin">gāng</span>:<br> 動詞の直前のみ。主語の前NG。<br>❌剛我來了 ⭕我剛來</div>
+                                    <div class="border-t border-red-200 pt-2"><span class="font-bold text-lg chinese-font">剛才</span> <span class="text-sm text-slate-500 pinyin">gāngcái</span>:<br> 主語の前もOK。「さっき」。</div>
+                                </div>
+                            </div>
+                            <div class="trap-box p-5 rounded-xl shadow-sm flex-1">
+                                <div class="font-bold text-red-700 mb-3 text-lg">後來(過去) vs 以後(未来)</div>
+                                <div class="text-base space-y-3">
+                                    <div><span class="font-bold text-lg chinese-font">後來</span> <span class="text-sm text-slate-500 pinyin">hòulái</span>:<br> 過去の物語専用。「その後」。</div>
+                                    <div class="border-t border-red-200 pt-2"><span class="font-bold text-lg chinese-font">以後</span> <span class="text-sm text-slate-500 pinyin">yǐhòu</span>:<br> これから・～の後。</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 只 Series & 副詞 -->
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <div class="font-bold text-slate-700 mb-4 text-lg border-b pb-2">「只」ファミリー＆重要副詞</div>
+                            <ul class="text-base space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                                <li><span class="font-bold text-lg chinese-font">只好</span> <span class="text-sm text-slate-500 pinyin">zhǐhǎo</span>: するほかない (Negative)</li>
+                                <li><span class="font-bold text-lg chinese-font">只能</span> <span class="text-sm text-slate-500 pinyin">zhǐnéng</span>: するしかない (Sinceペア)</li>
+                                <li><span class="font-bold text-lg chinese-font">只是</span> <span class="text-sm text-slate-500 pinyin">zhǐshì</span>: ただ～なだけ (軽い逆接)</li>
+                                <li><span class="font-bold text-lg chinese-font">只顧</span> <span class="text-sm text-slate-500 pinyin">zhǐgù</span>: ひたすら～する、かまける</li>
+                                <li><span class="font-bold text-lg chinese-font">凡是</span> <span class="text-sm text-slate-500 pinyin">fánshì</span>: あらゆる～はすべて</li>
+                                <li><span class="font-bold text-lg chinese-font">果然</span> <span class="text-sm text-slate-500 pinyin">guǒrán</span>: 案の定 / やはり</li>
+                                <li><span class="font-bold text-lg chinese-font">除了…還</span> <span class="text-sm text-slate-500 pinyin">chúle…hái</span>: ～以外に、さらに</li>
+                                <li><span class="font-bold text-lg text-red-600 chinese-font">才</span> <span class="text-sm text-red-400 pinyin">cái</span>: <span class="text-sm text-slate-600 block">ネガティブ気味。「やっとの事で」</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Time & Aspect Cards -->
+                <div>
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-5 border-b-4 border-green-500 pb-3">
+                        <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-base font-bold">3</span>
+                        時制・アスペクト (時間感覚)
+                    </h2>
+                    
+                    <!-- Timeline Visual -->
+                    <div class="bg-slate-50 p-5 rounded-xl mb-6 border border-slate-200 relative overflow-hidden">
+                        <div class="text-sm text-center text-slate-500 mb-8 flex justify-between px-4 font-bold">
+                            <span>← 過去</span><span>現在 (Live)</span><span>未来 →</span>
+                        </div>
+                        <div class="absolute w-full h-1 bg-slate-300 top-[55%] left-0"></div>
+                        <div class="relative z-10 flex justify-between items-end text-center gap-2 overflow-x-auto pb-4 px-2">
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-3 h-3 bg-slate-400 rounded-full mb-2"></div><div class="text-base font-bold chinese-font">曾經</div><div class="text-xs text-slate-500 pinyin">céngjīng</div></div>
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-3 h-3 bg-slate-500 rounded-full mb-2"></div><div class="text-base font-bold chinese-font">已經</div><div class="text-xs text-slate-500 pinyin">yǐjīng</div></div>
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-3 h-3 bg-slate-400 rounded-full mb-2"></div><div class="text-base font-bold chinese-font">剛才</div><div class="text-xs text-slate-500 pinyin">gāngcái</div></div>
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-4 h-4 bg-green-500 rounded-full mb-2 border-2 border-white shadow"></div><div class="text-lg font-bold text-green-700 chinese-font">正在</div><div class="text-xs text-green-600 pinyin">zhèngzài</div></div>
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-3 h-3 bg-yellow-500 rounded-full mb-2"></div><div class="text-lg font-bold text-yellow-700 chinese-font">正要</div><div class="text-xs text-yellow-600 pinyin">zhèngyào</div></div>
+                            <div class="flex flex-col items-center min-w-[60px]"><div class="w-3 h-3 bg-blue-500 rounded-full mb-2"></div><div class="text-lg font-bold text-blue-700 chinese-font">快要</div><div class="text-xs text-blue-600 pinyin">kuàiyào</div></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white border-l-8 border-green-400 p-4 rounded-xl shadow-sm text-base">
+                            <span class="font-bold text-lg text-green-700 chinese-font">正在</span> <span class="text-sm text-slate-500 pinyin">zhèngzài</span><br> 今まさに～中(Live)。文末の「呢 (ne)」と仲良し。<br>
+                            <div class="border-t border-slate-100 my-2"></div>
+                            <span class="font-bold text-lg text-yellow-600 chinese-font">正要</span> <span class="text-sm text-slate-500 pinyin">zhèngyào</span><br> まさに～しようとしている(直前)。
+                        </div>
+                        <div class="bg-white border-l-8 border-blue-400 p-4 rounded-xl shadow-sm text-base">
+                            <span class="font-bold text-lg text-blue-600 chinese-font">就要</span> <span class="text-sm text-slate-500 pinyin">jiùyào</span><br> 明日・10分後など具体的時間OK。<br>
+                            <div class="border-t border-slate-100 my-2"></div>
+                            <span class="font-bold text-lg text-blue-600 chinese-font">快要</span> <span class="text-sm text-slate-500 pinyin">kuàiyào</span><br> 時間指定不可。「もうすぐ」。
+                        </div>
+                        <div class="bg-white border-l-8 border-indigo-400 p-4 rounded-xl shadow-sm text-base">
+                            <div class="font-bold text-slate-700 mb-2 border-b pb-1">アスペクト助詞 (動詞の後ろ)</div>
+                            <ul class="space-y-1">
+                                <li><span class="font-bold chinese-font text-lg">...過</span> <span class="text-sm text-slate-500 pinyin">guò</span>: かつて～した経験</li>
+                                <li><span class="font-bold chinese-font text-lg">...了</span> <span class="text-sm text-slate-500 pinyin">le</span>: すでに終わった事実・完了</li>
+                                <li><span class="font-bold chinese-font text-lg">...著</span> <span class="text-sm text-slate-500 pinyin">zhe</span>: ～しっぱなし (状態の持続)</li>
+                                <li><span class="font-bold chinese-font text-lg">...得</span> <span class="text-sm text-slate-500 pinyin">de</span>: 程度や結果への橋渡し</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border-l-8 border-teal-400 p-4 rounded-xl shadow-sm text-base">
+                            <span class="font-bold text-lg text-indigo-700 chinese-font">又</span> <span class="text-sm text-slate-500 pinyin">yòu</span> vs <span class="font-bold text-lg text-indigo-700 chinese-font">再</span> <span class="text-sm text-slate-500 pinyin">zài</span><br> 又=過去/事実の「また」、再=未来/意志の「また」。<br>
+                            <div class="border-t border-slate-100 my-2"></div>
+                            <span class="font-bold text-lg text-teal-700 chinese-font">等到</span> <span class="text-sm text-slate-500 pinyin">děngdào</span> vs <span class="font-bold text-lg text-teal-700 chinese-font">直到</span> <span class="text-sm text-slate-500 pinyin">zhídào</span><br> 等到=待って～になったら、直到=～までずっと。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Phrases & Nuance Words -->
+            <div class="print-break-before mb-12">
+                <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-5 border-b-4 border-red-500 pb-3">
+                    <span class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-base font-bold">4</span>
+                    ニュアンス・反対語・「為」ファミリー
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 為 Series -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-lg text-slate-700 mb-4 border-b border-slate-300 pb-2">「為 wèi/wéi」ファミリー</h3>
+                        <ul class="space-y-3 text-base">
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font text-yellow-700">為了</span> <span class="text-sm text-slate-500 pinyin">wèile</span></div><span class="text-slate-600 sm:text-right">～のために (目的・未来)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font text-yellow-700">因為</span> <span class="text-sm text-slate-500 pinyin">yīnwèi</span></div><span class="text-slate-600 sm:text-right">～なので (理由・過去)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font">認為</span> <span class="text-sm text-slate-500 pinyin">rènwéi</span></div><span class="text-slate-600 sm:text-right">～と思う (意見)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font">以為</span> <span class="text-sm text-slate-500 pinyin">yǐwéi</span></div><span class="text-slate-600 sm:text-right">～だと思っていた (勘違い)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font">成為</span> <span class="text-sm text-slate-500 pinyin">chéngwéi</span></div><span class="text-slate-600 sm:text-right">～になる (変化)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font">作為</span> <span class="text-sm text-slate-500 pinyin">zuòwéi</span></div><span class="text-slate-600 sm:text-right">～として (立場・資格)</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-200 pb-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl chinese-font">為何</span> <span class="text-sm text-slate-500 pinyin">wèihé</span></div><span class="text-slate-600 sm:text-right">なぜ (Why) ※硬い</span></li>
+                            <li class="flex flex-col sm:flex-row justify-between sm:items-center bg-yellow-100 p-2 rounded mt-2"><div class="mb-1 sm:mb-0"><span class="font-bold text-xl text-yellow-800 chinese-font">以 A 為 B</span> <span class="text-sm text-yellow-700 pinyin block">yǐ A wéi B</span></div><span class="text-yellow-800 font-bold sm:text-right">AをBとする/みなす</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Antonyms -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 md:col-span-1 lg:col-span-2">
+                        <h3 class="font-bold text-lg text-slate-700 mb-4 border-b border-slate-300 pb-2">反対語ペア（脳内変換で意味を推測！）</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-base">
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">大小</span> <span class="text-sm text-slate-500 pinyin ml-2">dàxiǎo</span></div><span class="text-slate-600 mt-1">サイズ、大きさ</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">遠近</span> <span class="text-sm text-slate-500 pinyin ml-2">yuǎnjìn</span></div><span class="text-slate-600 mt-1">距離、近いか遠いか</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">多少</span> <span class="text-sm text-slate-500 pinyin ml-2">duōshǎo</span></div><span class="text-slate-600 mt-1">量、どれくらい</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">真假</span> <span class="text-sm text-slate-500 pinyin ml-2">zhēnjiǎ</span></div><span class="text-slate-600 mt-1">真偽、本当かどうか</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">高低</span> <span class="text-sm text-slate-500 pinyin ml-2">gāodī</span></div><span class="text-slate-600 mt-1">高さ、レベル</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl text-red-600 chinese-font">輸贏</span> <span class="text-sm text-slate-500 pinyin ml-2">shūyíng</span></div><span class="text-red-600 font-bold mt-1">勝敗 (超頻出)</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">長短</span> <span class="text-sm text-slate-500 pinyin ml-2">chángduǎn</span></div><span class="text-slate-600 mt-1">長さ</span></div>
+                            <div class="flex flex-col border-b border-slate-200 pb-2"><div><span class="font-bold text-xl chinese-font">成敗</span> <span class="text-sm text-slate-500 pinyin ml-2">chéngbài</span></div><span class="text-slate-600 mt-1">成否、成功か失敗か</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5 & 6: Tables & Flow -->
+            <div class="grid grid-cols-1 gap-10 print-break-before">
+                
+                <!-- 速攻判断テーブル -->
+                <div>
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-5 border-b-4 border-indigo-500 pb-3">
+                        <span class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-base font-bold">5</span>
+                        速攻！脳筋判断テーブル
+                    </h2>
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <table class="w-full text-base check-table">
+                            <thead>
+                                <tr><th class="p-4">文中のヒント・相方</th><th class="p-4">入れるべき単語</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-4">後ろに <span class="font-bold text-xl chinese-font">就</span> <span class="text-sm text-slate-500 pinyin">jiù</span> がある</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">如果 / 要是</span> <span class="text-sm text-slate-500 pinyin block">rúguǒ / yàoshi</span> <span class="text-sm text-slate-600">もし～なら</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">後ろに <span class="font-bold text-xl chinese-font">也</span> <span class="text-sm text-slate-500 pinyin">yě</span> がある</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">即使 / 就算</span> <span class="text-sm text-slate-500 pinyin block">jíshǐ / jiùsuàn</span> <span class="text-sm text-slate-600">たとえ～でも</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">後ろに <span class="font-bold text-xl chinese-font">的話</span> <span class="text-sm text-slate-500 pinyin">de huà</span> がある</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">如果 / 要是</span> <span class="text-sm text-slate-500 pinyin block">rúguǒ / yàoshi</span> <span class="text-sm text-slate-600">（～だとしたら）</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4"><span class="text-red-500 font-bold text-lg">「提案(吧 <span class="text-sm pinyin text-red-400">ba</span>)」</span> がある / 不快(病気)</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">要是</span> <span class="text-sm text-slate-500 pinyin block">yàoshi</span> <span class="text-sm text-slate-600">もし（口語）</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4"><span class="text-red-500 font-bold text-lg">疑問詞 / 二択 / 都 <span class="text-sm pinyin text-red-400">dōu</span></span> がある</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">無論 / 不管</span> <span class="text-sm text-slate-500 pinyin block">wúlùn / bùguǎn</span> <span class="text-sm text-slate-600">～に関わらず</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">文が 硬い / 書き言葉</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">若 / 假使</span> <span class="text-sm text-slate-500 pinyin block">ruò / jiǎshǐ</span> <span class="text-sm text-slate-600">もし / 仮に</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">文が 「心配だ」</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">万一</span> <span class="text-sm text-slate-500 pinyin block">wànyī</span> <span class="text-sm text-slate-600">万が一</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4">文が 「これしかない」</td>
+                                    <td class="p-4"><span class="font-bold text-xl text-blue-600 chinese-font">除非</span> <span class="text-sm text-slate-500 pinyin block">chúfēi</span> <span class="text-sm text-slate-600">～でない限り</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 除非 Logic & Flowchart Final Checks -->
+                <div class="print-break-before">
+                    <h2 class="flex items-center text-2xl font-bold text-slate-800 mb-5 border-b-4 border-yellow-500 pb-3">
+                        <span class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-base font-bold">6</span>
+                        除非パターン ＆ FINAL CHECKS
+                    </h2>
+                    
+                    <div class="bg-red-50 rounded-xl shadow-sm border border-red-100 p-6 mb-8">
+                        <div class="font-bold text-red-800 text-lg mb-4 border-b border-red-200 pb-2">除非 <span class="text-sm text-red-600 pinyin">chúfēi</span> (Unless) の構文パターン</div>
+                        <div class="space-y-4 text-base">
+                            <div class="flex flex-col sm:flex-row sm:items-center">
+                                <div class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-lg mr-4 mb-2 sm:mb-0 text-sm whitespace-nowrap inline-block">唯一条件</div>
+                                <div><span class="font-bold chinese-font text-xl block sm:inline">除非……，才……</span> <span class="text-sm text-slate-500 pinyin block sm:inline ml-0 sm:ml-2">chúfēi..., cái...</span> <span class="text-slate-600 block mt-1 sm:mt-0 sm:inline sm:ml-4">〜してはじめて〜する</span></div>
+                            </div>
+                            <div class="border-t border-red-100 my-2"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center">
+                                <div class="bg-red-100 text-red-800 font-bold px-3 py-1 rounded-lg mr-4 mb-2 sm:mb-0 text-sm whitespace-nowrap inline-block">警告</div>
+                                <div><span class="font-bold chinese-font text-xl block sm:inline">除非……，否則/不然……</span> <span class="text-sm text-slate-500 pinyin block sm:inline ml-0 sm:ml-2">chúfēi..., fǒuzé/bùrán...</span> <span class="text-slate-600 block mt-1 sm:mt-0 sm:inline sm:ml-4">〜しない限り〜だ</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border-2 border-slate-200 rounded-xl p-6 shadow-sm relative mt-10">
+                        <div class="absolute -top-4 left-6 bg-slate-100 px-4 py-1 text-sm font-bold text-slate-600 rounded-full border border-slate-200">FINAL CHECKS (迷った時の最後の一手)</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                            <div class="border-t-4 border-purple-500 bg-slate-50 p-6 rounded-xl text-center shadow-sm">
+                                <p class="text-sm text-slate-500 mb-2 font-bold">逆接・矛盾(事実)</p>
+                                <p class="font-bold chinese-font text-3xl text-purple-700">雖然 / 儘管</p>
+                                <p class="text-sm text-purple-500 pinyin mt-2">suīrán / jǐnguǎn</p>
+                            </div>
+                            <div class="border-t-4 border-indigo-500 bg-slate-50 p-6 rounded-xl text-center shadow-sm">
+                                <p class="text-sm text-slate-500 mb-2 font-bold">後ろに「也 yě」</p>
+                                <p class="font-bold chinese-font text-3xl text-indigo-700">即使</p>
+                                <p class="text-sm text-indigo-500 pinyin mt-2">jíshǐ</p>
+                            </div>
+                            <div class="border-t-4 border-yellow-600 bg-slate-50 p-6 rounded-xl text-center shadow-sm">
+                                <p class="text-sm text-slate-500 mb-2 font-bold">脅し・警告</p>
+                                <p class="font-bold chinese-font text-3xl text-yellow-700">否則 / 不然</p>
+                                <p class="text-sm text-yellow-600 pinyin mt-2">fǒuzé / bùrán</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Footer / Stress Relief Tips -->
+        <footer class="bg-slate-100 p-8 md:p-12 text-center text-slate-600 text-base mt-8 border-t border-slate-200">
+            <h3 class="font-bold text-2xl text-slate-800 mb-6">★ ストレスを減らす「解法のコツ」 ★</h3>
+            <p class="mb-8 max-w-3xl mx-auto text-lg">接続詞問題は、文の意味を全部訳そうとすると混乱します。<span class="font-bold text-blue-600">「セット（相方）」</span>だけ見て機械的に選んでみてください。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left max-w-6xl mx-auto mb-10">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="block font-bold text-blue-600 mb-2 text-lg">後ろに「<span class="chinese-font">就</span> <span class="text-sm pinyin text-blue-400">jiù</span>」がある</span>
+                    <span class="text-base leading-relaxed">→ <span class="chinese-font font-bold">既然</span> <span class="text-xs pinyin">jìrán</span> (事実)<br>→ <span class="chinese-font font-bold">只要</span> <span class="text-xs pinyin">zhǐyào</span> (条件)<br>→ <span class="chinese-font font-bold">如果</span> <span class="text-xs pinyin">rúguǒ</span> (仮定)</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="block font-bold text-blue-600 mb-2 text-lg">後ろに「<span class="chinese-font">也</span> <span class="text-sm pinyin text-blue-400">yě</span>」がある</span>
+                    <span class="text-base leading-relaxed">→ <span class="chinese-font font-bold">即使</span> <span class="text-xs pinyin">jíshǐ</span> <br>(たとえ～でも)</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="block font-bold text-blue-600 mb-2 text-lg">後ろに「<span class="chinese-font">但是</span> <span class="text-sm pinyin text-blue-400">dànshì</span>」がある</span>
+                    <span class="text-base leading-relaxed">→ <span class="chinese-font font-bold">雖然</span> <span class="text-xs pinyin">suīrán</span><br>→ <span class="chinese-font font-bold">儘管</span> <span class="text-xs pinyin">jǐnguǎn</span><br>→ <span class="chinese-font font-bold">固然</span> <span class="text-xs pinyin">gùrán</span></span>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <span class="block font-bold text-blue-600 mb-2 text-lg">後ろに「<span class="chinese-font">反而</span> <span class="text-sm pinyin text-blue-400">fǎn'ér</span>」がある</span>
+                    <span class="text-base leading-relaxed">→ <span class="chinese-font font-bold">不但</span> <span class="text-xs pinyin">búdàn</span><br><span class="text-sm text-slate-500 mt-2 block">(※内容が予想外の時のみ)</span></span>
+                </div>
+            </div>
+            <p class="font-black text-3xl text-blue-600 tracking-widest mt-8">GOOD LUCK WITH YOUR EXAM!</p>
+        </footer>
+
+    </div>
+
+    <!-- PDF Generation Script -->
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('content-to-print');
+            const loading = document.getElementById('loading-msg');
+            
+            loading.classList.remove('hidden');
+            
+            const opt = {
+                margin:       [10, 10, 10, 10],
+                filename:     'TOCFL_B_Master_List_v11_Large.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }, // ゆったりレイアウトなので縦(portrait)でもOK
+                pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(function() {
+                loading.classList.add('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>

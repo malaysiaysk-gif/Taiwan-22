@@ -1248,11 +1248,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let bookmarkedIndices = new Set();
   let reviewBookmarkedOnly = false;
 
-  // ★追加：自動再生用の変数
+  // 自動再生用の変数
   let isAutoPlaying = false;
   let autoPlayStep = 0; // 0: 中国語1回目, 1: 中国語2回目, 2: 日本語
 
-  // ===== 音声再生の共通関数（日本語対応版に進化） =====
+  // ★追加：音声ファーストモード用の変数
+  let isAudioFirstMode = false;
+  let audioFirstTimeout = null; // 表示を遅らせるタイマー
+
+  // ===== 音声再生の共通関数 =====
   function playAudio(text, lang = "zh-TW", callback = null) {
     if (!("speechSynthesis" in window)) {
       if (callback) callback();
@@ -1269,11 +1273,9 @@ document.addEventListener("DOMContentLoaded", () => {
     utter.rate = 0.9;
     
     const voices = window.speechSynthesis.getVoices();
-    // 言語コード（zh や ja）が含まれる声を探す
     const targetVoice = voices.find(v => v.lang.includes(lang.split('-')[0]) || v.lang.includes(lang.split('-')[0].toUpperCase()));
     if (targetVoice) { utter.voice = targetVoice; }
 
-    // 読み終わったら次の処理（callback）を実行する
     if (callback) {
       utter.onend = callback;
       utter.onerror = callback;
@@ -1282,14 +1284,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.speechSynthesis.speak(utter);
   }
 
-  // 既存のボタン用に元の名前の関数も残しておく
   function playTaiwanese(text) {
     playAudio(text, "zh-TW");
   }
 
-  // ★追加：自動再生のバケツリレー機能
+  // 自動再生のバケツリレー機能
   function runAutoPlay() {
-    if (!isAutoPlaying) return; // ストップされていたら終了
+    if (!isAutoPlaying) return;
 
     const w = words[currentIndex];
     if (!w) return;
@@ -1299,16 +1300,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (autoPlayStep === 0) {
       autoPlayStep = 1;
-      playAudio(zhText, "zh-TW", runAutoPlay); // 読み終わったら runAutoPlay を再実行
+      playAudio(zhText, "zh-TW", runAutoPlay);
     } else if (autoPlayStep === 1) {
       autoPlayStep = 2;
       playAudio(zhText, "zh-TW", runAutoPlay);
     } else if (autoPlayStep === 2) {
-      autoPlayStep = 0; // ステップをリセット
+      autoPlayStep = 0;
       playAudio(jpText, "ja-JP", () => {
         if (!isAutoPlaying) return;
-        nextWord(); // 画面を次の単語へ
-        setTimeout(runAutoPlay, 1000); // 1秒（1000ミリ秒）待ってから次の単語を再生
+        nextWord();
+        setTimeout(runAutoPlay, 1000);
       });
     }
   }
@@ -1321,36 +1322,87 @@ document.addEventListener("DOMContentLoaded", () => {
     return activeIndices;
   }
 
+  // ★変更：カテゴリと「検索ワード」の両方で絞り込むように進化
   function rebuildActiveIndices() {
-    if (activeCategory === "全部") {
-      activeIndices = words.map((_, i) => i);
-    } else {
-      activeIndices = words
-        .map((w, i) => ({ w, i }))
-        .filter((x) => x.w.category === activeCategory)
-        .map((x) => x.i);
-    }
-    if (activeIndices.length === 0) {
-      activeCategory = "全部";
-      activeIndices = words.map((_, i) => i);
-    }
+    const searchInput = document.getElementById("search-input");
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+    activeIndices = words
+      .map((w, i) => ({ w, i }))
+      .filter((x) => {
+        // カテゴリが一致しているか
+        const matchCategory = (activeCategory === "全部") || (x.w.category === activeCategory);
+        
+        // 検索ワードが含まれているか（中国語・ピンイン・日本語）
+        const matchSearch = searchTerm === "" ||
+          (x.w.zh && x.w.zh.toLowerCase().includes(searchTerm)) ||
+          (x.w.pinyin && x.w.pinyin.toLowerCase().includes(searchTerm)) ||
+          (x.w.jp && x.w.jp.toLowerCase().includes(searchTerm));
+
+        return matchCategory && matchSearch;
+      })
+      .map((x) => x.i);
+
     currentPos = 0;
-    currentIndex = activeIndices[0] || 0;
+    currentIndex = activeIndices.length > 0 ? activeIndices[0] : -1; // 見つからない場合は-1
   }
 
+  // ★変更：音声ファーストモード時の表示制御を追加
   function renderWord() {
-    if (!Array.isArray(words) || words.length === 0) return;
+    const elZh = document.getElementById("word-zh");
+    const elPinyin = document.getElementById("word-pinyin");
+    const elJp = document.getElementById("word-jp");
+    const elNote = document.getElementById("word-note");
+    const elCounter = document.getElementById("word-counter");
+
+    // 検索などで該当単語がない場合
+    if (!Array.isArray(words) || words.length === 0 || currentIndex === -1) {
+      if (elZh) elZh.textContent = "見つかりません";
+      if (elPinyin) elPinyin.textContent = "-";
+      if (elJp) elJp.textContent = "-";
+      if (elNote) elNote.textContent = "";
+      if (elCounter) elCounter.textContent = "0 / 0";
+      return;
+    }
 
     const w = words[currentIndex];
-    document.getElementById("word-zh").textContent = w.zh || "";
-    document.getElementById("word-pinyin").textContent = w.pinyin || "";
-    document.getElementById("word-jp").textContent = w.jp || "";
-    document.getElementById("word-note").textContent = w.note || "";
+    if (elZh) elZh.textContent = w.zh || "";
+    if (elPinyin) elPinyin.textContent = w.pinyin || "";
+    if (elJp) elJp.textContent = w.jp || "";
+    if (elNote) elNote.textContent = w.note || "";
+
+    // 既存の表示遅延タイマーがあればキャンセル
+    if (audioFirstTimeout) clearTimeout(audioFirstTimeout);
+
+    // 音声ファーストモードがON ＆ 自動再生中ではない ＆ クイズ等ではない場合
+    if (isAudioFirstMode && !isAutoPlaying && !isListeningMode) {
+      // 1. 文字を一旦隠す（透明にする）
+      elZh.style.visibility = "hidden";
+      elPinyin.style.visibility = "hidden";
+      elJp.style.visibility = "hidden";
+      elNote.style.visibility = "hidden";
+
+      // 2. 音声を再生する
+      playTaiwanese(w.zh || w.pinyin || "");
+
+      // 3. 約1.5秒（1500ミリ秒）後に文字を表示する
+      audioFirstTimeout = setTimeout(() => {
+        elZh.style.visibility = "visible";
+        elPinyin.style.visibility = "visible";
+        elJp.style.visibility = "visible";
+        elNote.style.visibility = "visible";
+      }, 1500); 
+    } else {
+      // 通常モード：常に表示する
+      elZh.style.visibility = "visible";
+      elPinyin.style.visibility = "visible";
+      elJp.style.visibility = "visible";
+      elNote.style.visibility = "visible";
+    }
 
     const list = getActiveList();
     const pos = list.indexOf(currentIndex);
     const safePos = pos === -1 ? 0 : pos;
-    const elCounter = document.getElementById("word-counter");
     if(elCounter) elCounter.textContent = (safePos + 1) + " / " + list.length;
 
     const bookmarkBtn = document.getElementById("bookmark-btn");
@@ -1501,7 +1553,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== イベントリスナー（各種ボタン） =====
   document.getElementById("next-btn")?.addEventListener("click", () => {
-    // 手動で次へを押したときは自動再生を止める
     if (isAutoPlaying) document.getElementById("autoplay-btn").click();
     nextWord();
   });
@@ -1522,22 +1573,52 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentQuiz) playTaiwanese(words[currentQuiz.correctIndex].zh || words[currentQuiz.correctIndex].pinyin || "");
   });
 
-  // ★追加：自動再生ボタンの処理
   const autoplayBtn = document.getElementById("autoplay-btn");
   if (autoplayBtn) {
     autoplayBtn.addEventListener("click", () => {
-      isAutoPlaying = !isAutoPlaying; // ON/OFFを切り替え
+      isAutoPlaying = !isAutoPlaying;
       
       if (isAutoPlaying) {
         autoplayBtn.textContent = "自動再生 ストップ ⏹️";
         autoplayBtn.classList.add("active");
-        autoPlayStep = 0; // 最初からスタート
+        autoPlayStep = 0;
         runAutoPlay();
       } else {
         autoplayBtn.textContent = "自動再生 スタート ▶️";
         autoplayBtn.classList.remove("active");
-        window.speechSynthesis.cancel(); // 喋っている途中で強制ストップ
+        window.speechSynthesis.cancel();
       }
+    });
+  }
+
+  // ★追加：音声ファーストモードの切替イベント
+  const audioFirstToggle = document.getElementById("audio-first-toggle");
+  if (audioFirstToggle) {
+    audioFirstToggle.addEventListener("change", (e) => {
+      isAudioFirstMode = e.target.checked;
+      renderWord(); // モード切替時にすぐ再描画
+    });
+  }
+
+  // ★追加：検索機能のイベントリスナー（文字を打つたびに検索）
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      rebuildActiveIndices(); // 検索ワードでリストを作り直す
+      
+      reviewWrongOnly = false;
+      reviewBookmarkedOnly = false;
+      
+      const tbw = document.getElementById("toggle-wrong-btn");
+      if (tbw) { tbw.classList.remove("active"); tbw.textContent = "間違えた単語だけ"; }
+      
+      const tbb = document.getElementById("toggle-bookmark-btn");
+      if (tbb) { tbb.classList.remove("active"); tbb.textContent = "ブックマークのみ"; }
+
+      renderWord();
+      currentQuiz = null;
+      const quizMode = document.getElementById("quiz-mode");
+      if (quizMode && quizMode.style.display !== "none") nextQuizQuestion();
     });
   }
 
@@ -1640,7 +1721,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(quizBtn) quizBtn.classList.remove("active");
     if(listeningBtn) listeningBtn.classList.remove("active");
     
-    // モード切替時に自動再生を止める
     if (isAutoPlaying && document.getElementById("autoplay-btn")) document.getElementById("autoplay-btn").click();
   });
 
@@ -1716,31 +1796,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // 初期化
   renderWord();
   updateWrongCount();
-// ==========================================
-// ▼ 追加：画面切り替え（学習画面 ⇔ データ管理画面）▼
-// ==========================================
-const btnToDatabase = document.getElementById('nav-to-database');
-const btnToFlashcard = document.getElementById('nav-to-flashcard');
-const learningView = document.getElementById('learning-view');
-const databaseView = document.getElementById('database-view');
 
-if (btnToDatabase && btnToFlashcard && learningView && databaseView) {
-  // 「データベース管理を開く」をクリックしたとき
-  btnToDatabase.addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルト動作（ページトップへ飛ぶなど）を防ぐ
-    learningView.style.display = 'none';
-    databaseView.style.display = 'block';
-  });
+  // ==========================================
+  // ▼ 画面切り替え（学習画面 ⇔ データ管理画面）▼
+  // ==========================================
+  const btnToDatabase = document.getElementById('nav-to-database');
+  const btnToFlashcard = document.getElementById('nav-to-flashcard');
+  const learningView = document.getElementById('learning-view');
+  const databaseView = document.getElementById('database-view');
 
-  // 「戻る」ボタンをクリックしたとき
-  btnToFlashcard.addEventListener('click', () => {
-    databaseView.style.display = 'none';
-    learningView.style.display = 'block'; 
-  });
-}
-// ==========================================
-// ▲ 画面切り替え処理 ここまで ▲
-// ==========================================
+  if (btnToDatabase && btnToFlashcard && learningView && databaseView) {
+    btnToDatabase.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      learningView.style.display = 'none';
+      databaseView.style.display = 'block';
+    });
 
+    btnToFlashcard.addEventListener('click', () => {
+      databaseView.style.display = 'none';
+      learningView.style.display = 'block'; 
+    });
+  }
 });
-

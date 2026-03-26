@@ -103,6 +103,39 @@
     .btn-blue:hover { background: #1d4ed8; border-color: #2563eb; }
     .btn-red { background: #991b1b; border-color: #7f1d1d; }
     .btn-red:hover { background: #7f1d1d; border-color: #b91c1c; }
+
+    /* ▼ 追加：検索バー・音声ファーストのスタイル ▼ */
+    .search-container { margin-bottom: 20px; }
+    .search-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+    
+    .audio-first-wrapper {
+      margin-top: 16px;
+      text-align: center;
+      background: #f0fdf4;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #bbf7d0;
+    }
+    .audio-first-label {
+      cursor: pointer;
+      font-weight: bold;
+      color: #166534;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .audio-first-checkbox { transform: scale(1.2); }
   </style>
 </head>
 <body>
@@ -111,6 +144,10 @@
 
     <div class="left-sidebar">
       
+      <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="🔍 単語・ピンイン・日本語で検索" />
+      </div>
+
       <div id="category-bar" class="category-bar"></div>
 
       <div class="sheet-links">
@@ -148,6 +185,14 @@
         <div class="autoplay-wrapper">
           <button id="autoplay-btn" class="autoplay-btn">自動再生 スタート ▶️</button>
         </div>
+
+        <div class="audio-first-wrapper">
+          <label class="audio-first-label">
+            <input type="checkbox" id="audio-first-toggle" class="audio-first-checkbox">
+            🎧 音声ファーストモード（音→文字表示）
+          </label>
+        </div>
+
         <div class="wrong-toggle-wrapper">
           <button id="toggle-wrong-btn" class="toggle-wrong-btn">間違えた単語だけ</button>
           <button id="toggle-bookmark-btn" class="toggle-bookmark-btn">ブックマークのみ</button>
@@ -177,7 +222,6 @@
         </div>
       </div>
     </div>
-    
     <div id="database-view" style="display: none; width: 100%;">
       <div class="db-container">
         <div class="db-header">
@@ -188,9 +232,7 @@
         <div class="db-section">
           <h3>🗄️ データ集</h3>
           <div class="tool-links">
-            <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit?gid=1651780604#gid=1651780604" target="_blank" class="tool-btn btn-green">
-              📊 Googleスプレッドシートを開く
-            </a>
+            <a href="https://docs.google.com/spreadsheets/d/1x0RwS9AiIvDpSOL_yICRb68seT6Q2Hd619nzKjcgk3U/edit?gid=1651780604#gid=1651780604" target="_blank" class="tool-btn btn-green">📊 Googleスプレッドシートを開く</a>
           </div>
         </div>
 
@@ -198,14 +240,13 @@
           <h3>🛠️ チートシート集</h3>
           <div class="tool-links">
             <a href="tool/time.html" target="_blank" class="tool-btn">🕒 時間表現マスター図解</a>
-            <a href="tool/time2.html" target="_blank" class="tool-btn">🔧 台湾華語 語順 (準備中)</a>
-            <a href="tool/FLOW.html" target="_blank" class="tool-btn">🔧 接続詞コンビネーション</a>
+            <a href="tool/setsuzoku.html" target="_blank" class="tool-btn">🔧 接続詞コンビネーション1</a>
+            <a href="tool/setsuzoku2.html" target="_blank" class="tool-btn">🔧 接続詞コンビネーション2</a>
             <a href="tool/core1.html" target="_blank" class="tool-btn btn-blue">🎯 Core1</a>
-           <a href="tool/core2.html" target="_blank" class="tool-btn btn-blue">🎯 Core2</a>
-           <a href="tool/fukushi.html" target="_blank" class="tool-btn btn-blue">🎯 Core3</a>
-
-            </div>
-      
+            <a href="tool/core2.html" target="_blank" class="tool-btn btn-blue">🎯 Core2</a>
+            <a href="tool/fukushi.html" target="_blank" class="tool-btn btn-blue">🎯 Core3</a>
+          </div>
+        </div>
 
         <div class="db-section">
           <h3>📝 テスト集</h3>
@@ -214,25 +255,15 @@
             <a href="test/taiwan_flashcards_meaning_complete.html" target="_blank" class="tool-btn btn-green">🎯 意味・品詞テスト</a>
             <a href="test/taiwan_flashcards_collocations_complete.html" target="_blank" class="tool-btn btn-red">🎯 動詞コロケーションテスト</a>
             <a href="test/taiwan_flashcards_measure_words_complete.html" target="_blank" class="tool-btn">🎯 量詞（数え方）テスト</a>
-    <a href="test/timetest1.html" target="_blank" class="tool-btn">🎯 時間関係テスト</a>
-    <a href="test/special.html" target="_blank" class="tool-btn">🎯 スペシャル</a>
-    <a href="test/verb.html" target="_blank" class="tool-btn">🎯 動詞</a>
+            <a href="test/timetest1.html" target="_blank" class="tool-btn">🎯 時間関係テスト</a>
+            <a href="test/special.html" target="_blank" class="tool-btn">🎯 スペシャル</a>
+            <a href="test/verb.html" target="_blank" class="tool-btn">🎯 動詞</a>
+          </div>
+        </div>
 
-
-
-
-
-  </div>
-
-
-     <div class="db-section">
-          <h3>🛠️ テキスト集</h3>
-          <div class="tool-links">
-    <a href="text/text1.html" target="_blank" class="tool-btn">🎯 発音</a>
-    <a href="text/text70.html" target="_blank" class="tool-btn">🎯 patago式</a>
-
-
-  </div>
+      </div>
+    </div>
+    </div>
 
   <script src="app.js"></script>
 </body>
