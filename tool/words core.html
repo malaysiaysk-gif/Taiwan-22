@@ -14,6 +14,9 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* クリック時のアニメーション */
+        .click-animate:active { transform: scale(0.98); }
     </style>
 </head>
 <body class="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
@@ -27,6 +30,10 @@
             <p class="text-slate-500 font-medium text-lg md:text-2xl max-w-4xl mx-auto leading-relaxed">
                 暗記に頼らない！単語の「コア意味」と「よく使う組み合わせ」を視覚的に理解する
             </p>
+            <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full font-bold text-sm md:text-base border border-blue-100 shadow-sm">
+                <i data-lucide="volume-2" class="w-5 h-5"></i>
+                中国語の単語や例文をクリックすると音声が再生されます
+            </div>
         </div>
 
         <!-- Section 1: Core Images & Collocations -->
@@ -38,41 +45,40 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 tracking-tight">1. 頻出単語の「コア意味」と「コロケーション」</h2>
             </div>
             
-            <!-- 2列レイアウトに変更し、余白(gap)も拡大 -->
             <div class="p-5 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 
                 <!-- Card: 還 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-indigo-100 hover:border-indigo-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('還')">
                         <div class="flex items-center gap-4">
                             <div class="bg-indigo-100 text-indigo-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="refresh-cw" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">還</h3>
                         </div>
-                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">hái / huán</span>
+                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">hái / huán <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-indigo-900 bg-indigo-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         元の状態が続く・さらに追加・やっぱり
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('還是')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">還是</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">hái shì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">A or B？ / やっぱり〜する(吧)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('還有')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">還有</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">hái yǒu</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">Add something (あと、それから)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('還沒')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">還沒</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">hái méi</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">still (まだ〜ない) ※還沒來など</span>
                             </div>
@@ -82,36 +88,36 @@
 
                 <!-- Card: 來 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-sky-100 hover:border-sky-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('來')">
                         <div class="flex items-center gap-4">
                             <div class="bg-sky-100 text-sky-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="corner-down-left" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">來</h3>
                         </div>
-                        <span class="bg-sky-50 text-sky-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">lái</span>
+                        <span class="bg-sky-50 text-sky-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">lái <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-sky-900 bg-sky-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         話し手の方へ向かってくる動き
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-sky-50/50 transition-colors click-animate" onclick="speak('過來')">
                             <span class="text-sky-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">過來</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">guò lái</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">こっちへ来る</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-sky-50/50 transition-colors click-animate" onclick="speak('看起來')">
                             <span class="text-sky-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">看起來</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kàn qǐ lái</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜に見える (視覚が向かってくる)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-sky-50/50 transition-colors click-animate" onclick="speak('原來')">
                             <span class="text-sky-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">原來</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">yuán lái</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">もともと / なるほど</span>
                             </div>
@@ -121,36 +127,36 @@
 
                 <!-- Card: 記 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-amber-100 hover:border-amber-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('記')">
                         <div class="flex items-center gap-4">
                             <div class="bg-amber-100 text-amber-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="bookmark" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">記</h3>
                         </div>
-                        <span class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">jì</span>
+                        <span class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">jì <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-amber-900 bg-amber-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         頭や紙に「しるし」を刻み込む
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('記得')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">記得</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jì de</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">覚えている</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('忘記')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">忘記</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">wàng jì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">忘れる</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('筆記')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">筆記</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bǐ jì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">ノート / メモ</span>
                             </div>
@@ -160,36 +166,36 @@
 
                 <!-- Card: 到 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-emerald-100 hover:border-emerald-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('到')">
                         <div class="flex items-center gap-4">
                             <div class="bg-emerald-100 text-emerald-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="map-pin" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">到</h3>
                         </div>
-                        <span class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">dào</span>
+                        <span class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">dào <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-emerald-900 bg-emerald-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         目的地や時間、結果にピタッと到達
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('看到')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">看到</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kàn dào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">見える (視覚が対象に到達)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('到底')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">到底</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">dào dǐ</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">結局 / 一体 (底に到達)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('遲到')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">遲到</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">chí dào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">遅刻する</span>
                             </div>
@@ -199,36 +205,36 @@
 
                 <!-- Card: 得 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-purple-100 hover:border-purple-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('得')">
                         <div class="flex items-center gap-4">
                             <div class="bg-purple-100 text-purple-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="link" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">得</h3>
                         </div>
-                        <span class="bg-purple-50 text-purple-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">de/děi</span>
+                        <span class="bg-purple-50 text-purple-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">de/děi <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-purple-900 bg-purple-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         獲得する / 動詞と結果を繋ぐ接着剤
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-purple-50/50 transition-colors click-animate" onclick="speak('覺得')">
                             <span class="text-purple-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">覺得</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jué de</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜と感じる / 思う</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-purple-50/50 transition-colors click-animate" onclick="speak('記得')">
                             <span class="text-purple-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">記得</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jì de</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">覚えている</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-purple-50/50 transition-colors click-animate" onclick="speak('必須得')">
                             <span class="text-purple-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">必須得 (děi)</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bì xū děi</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜しなければならない</span>
                             </div>
@@ -238,36 +244,36 @@
 
                 <!-- Card: 再 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-rose-100 hover:border-rose-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('再')">
                         <div class="flex items-center gap-4">
                             <div class="bg-rose-100 text-rose-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="repeat" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">再</h3>
                         </div>
-                        <span class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">zài</span>
+                        <span class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">zài <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-rose-900 bg-rose-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         同じ動作が「未来」にもう一度繰り返す
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('再見')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">再見</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zài jiàn</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">さようなら (再び会う)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('再說')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">再說</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zài shuō</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">後で話す / その上、それに</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('再來')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">再來</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zài lái</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">さらに / 次に</span>
                             </div>
@@ -279,57 +285,74 @@
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-orange-200 hover:border-orange-400 hover:shadow-xl transition-all">
                     <div class="flex items-center justify-between mb-5 md:mb-6">
                         <div class="flex items-center gap-4">
-                            <div class="bg-orange-100 text-orange-600 p-3 md:p-4 rounded-2xl">
+                            <div class="bg-orange-100 text-orange-600 p-3 md:p-4 rounded-2xl cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('在和著')">
                                 <i data-lucide="layers" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
-                            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800">在 <span class="text-2xl md:text-4xl text-slate-300 mx-2 md:mx-4 font-medium">vs</span> 著</h3>
+                            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800">
+                                <span class="cursor-pointer hover:text-orange-600 transition-colors click-animate" onclick="speak('在')">在</span>
+                                <span class="text-2xl md:text-4xl text-slate-300 mx-2 md:mx-4 font-medium">vs</span> 
+                                <span class="cursor-pointer hover:text-orange-600 transition-colors click-animate" onclick="speak('著')">著</span>
+                            </h3>
                         </div>
                     </div>
                     <div class="space-y-4 md:space-y-6">
-                        <div class="bg-orange-50 p-4 md:p-6 rounded-2xl border border-orange-100">
+                        <div class="bg-orange-50 p-4 md:p-6 rounded-2xl border border-orange-100 cursor-pointer hover:bg-orange-100/50 transition-colors click-animate" onclick="speak('正在')">
                             <div class="text-base md:text-lg font-bold text-orange-800 mb-3 border-b border-orange-200 pb-2">【在】動作の進行 (動詞の前)</div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3">・<strong class="text-slate-900 text-xl md:text-2xl">正在</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">zhèng zài</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(まさに〜中)</span></div>
+                            <div class="text-lg md:text-xl text-slate-700 mt-3 flex items-center gap-2">
+                                ・<strong class="text-slate-900 text-xl md:text-2xl">正在</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">zhèng zài</span> <i data-lucide="volume-2" class="w-4 h-4 text-orange-400"></i>
+                            </div>
+                            <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(まさに〜中)</div>
                         </div>
                         <div class="bg-orange-50 p-4 md:p-6 rounded-2xl border border-orange-100">
                             <div class="text-base md:text-lg font-bold text-orange-800 mb-3 border-b border-orange-200 pb-2">【著】状態の継続 (動詞の後)</div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3 mb-2">・<strong class="text-slate-900 text-xl md:text-2xl">等著</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">děng zhe</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(待っている状態)</span></div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3">・<strong class="text-slate-900 text-xl md:text-2xl">坐著</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">zuò zhe</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(座っている状態)</span></div>
+                            <div class="cursor-pointer hover:bg-orange-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate mb-2" onclick="speak('等著')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">等著</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">děng zhe</span> <i data-lucide="volume-2" class="w-4 h-4 text-orange-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(待っている状態)</div>
+                            </div>
+                            <div class="cursor-pointer hover:bg-orange-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('坐著')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">坐著</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">zuò zhe</span> <i data-lucide="volume-2" class="w-4 h-4 text-orange-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(座っている状態)</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card: 要 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-red-100 hover:border-red-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('要')">
                         <div class="flex items-center gap-4">
                             <div class="bg-red-100 text-red-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="flag" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">要</h3>
                         </div>
-                        <span class="bg-red-50 text-red-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">yào</span>
+                        <span class="bg-red-50 text-red-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">yào <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-red-900 bg-red-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         手に入れたい意志 / 近い未来の予定
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('需要')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">需要</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">xū yào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">必要とする</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('要是')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">要是</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">yào shì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">もし〜なら</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('快要')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">快要</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kuài yào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">もうすぐ〜になる</span>
                             </div>
@@ -339,36 +362,36 @@
 
                 <!-- Card: 只 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-teal-100 hover:border-teal-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('只')">
                         <div class="flex items-center gap-4">
                             <div class="bg-teal-100 text-teal-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="focus" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">只</h3>
                         </div>
-                        <span class="bg-teal-50 text-teal-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">zhǐ</span>
+                        <span class="bg-teal-50 text-teal-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">zhǐ <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-teal-900 bg-teal-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         それ以外にはない、単一に絞る「〜だけ」
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-teal-50/50 transition-colors click-animate" onclick="speak('只有')">
                             <span class="text-teal-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">只有</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zhǐ yǒu</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜しかない</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-teal-50/50 transition-colors click-animate" onclick="speak('只要')">
                             <span class="text-teal-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">只要</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zhǐ yào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜しさえすれば</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-teal-50/50 transition-colors click-animate" onclick="speak('只是')">
                             <span class="text-teal-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">只是</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zhǐ shì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">ただ〜なだけだ</span>
                             </div>
@@ -378,36 +401,36 @@
 
                 <!-- Card: 使 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-slate-200 hover:border-slate-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('使')">
                         <div class="flex items-center gap-4">
                             <div class="bg-slate-200 text-slate-700 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="wrench" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">使</h3>
                         </div>
-                        <span class="bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">shǐ</span>
+                        <span class="bg-slate-100 text-slate-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">shǐ <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-slate-800 bg-slate-100 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         力や条件を加えて、ある状態に「させる」
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-slate-100/50 transition-colors click-animate" onclick="speak('使用')">
                             <span class="text-slate-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">使用</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">shǐ yòng</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">使う</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-slate-100/50 transition-colors click-animate" onclick="speak('使得')">
                             <span class="text-slate-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">使得</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">shǐ de</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜という結果をもたらす</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-slate-100/50 transition-colors click-animate" onclick="speak('即使')">
                             <span class="text-slate-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">即使</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jí shǐ</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">たとえ〜でも</span>
                             </div>
@@ -417,36 +440,36 @@
 
                 <!-- Card: 不 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-red-100 hover:border-red-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('不')">
                         <div class="flex items-center gap-4">
                             <div class="bg-red-100 text-red-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="slash" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">不</h3>
                         </div>
-                        <span class="bg-red-50 text-red-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">bù</span>
+                        <span class="bg-red-50 text-red-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">bù <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-red-900 bg-red-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         主観的に事実や意志を否定する
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('不錯')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">不錯</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bú cuò</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">いいね / 悪くない</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('不好意思')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">不好意思</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bù hǎo yì si</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">すみません</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-red-50/50 transition-colors click-animate" onclick="speak('不過')">
                             <span class="text-red-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">不過</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bú guò</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">しかし / だけど</span>
                             </div>
@@ -456,36 +479,36 @@
 
                 <!-- Card: 管 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-indigo-100 hover:border-indigo-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('管')">
                         <div class="flex items-center gap-4">
                             <div class="bg-indigo-100 text-indigo-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="shield" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">管</h3>
                         </div>
-                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">guǎn</span>
+                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">guǎn <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-indigo-900 bg-indigo-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         枠にはめて管理・統制する、干渉する
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('管理')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">管理</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">guǎn lǐ</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">管理する</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('不管')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">不管</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bù guǎn</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜に関わらず / かまわない</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('管事')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">管事</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">guǎn shì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">世話を焼く / お節介</span>
                             </div>
@@ -495,36 +518,36 @@
 
                 <!-- Card: 為 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-pink-100 hover:border-pink-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('為')">
                         <div class="flex items-center gap-4">
                             <div class="bg-pink-100 text-pink-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="heart" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">為</h3>
                         </div>
-                        <span class="bg-pink-50 text-pink-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">wèi / wéi</span>
+                        <span class="bg-pink-50 text-pink-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">wèi / wéi <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-pink-900 bg-pink-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         特定の対象(目的・原因)に向かう
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-pink-50/50 transition-colors click-animate" onclick="speak('因為')">
                             <span class="text-pink-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">因為</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">yīn wèi</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">なぜなら</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-pink-50/50 transition-colors click-animate" onclick="speak('為了')">
                             <span class="text-pink-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">為了</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">wèi le</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜のために (目的)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-pink-50/50 transition-colors click-animate" onclick="speak('認為')">
                             <span class="text-pink-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">認為</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">rèn wéi</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">〜と思う / 見なす</span>
                             </div>
@@ -534,36 +557,36 @@
 
                 <!-- Card: 則 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('則')">
                         <div class="flex items-center gap-4">
                             <div class="bg-blue-100 text-blue-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="scale" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">則</h3>
                         </div>
-                        <span class="bg-blue-50 text-blue-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">zé</span>
+                        <span class="bg-blue-50 text-blue-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">zé <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-blue-900 bg-blue-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         法則・規則 / 対比させる「一方〜は」
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-blue-50/50 transition-colors click-animate" onclick="speak('規則')">
                             <span class="text-blue-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">規則</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">guī zé</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">ルール</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-blue-50/50 transition-colors click-animate" onclick="speak('原則')">
                             <span class="text-blue-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">原則</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">yuán zé</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">原則</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-blue-50/50 transition-colors click-animate" onclick="speak('否則')">
                             <span class="text-blue-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">否則</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">fǒu zé</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">さもなければ</span>
                             </div>
@@ -575,58 +598,82 @@
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-emerald-200 hover:border-emerald-400 hover:shadow-xl transition-all">
                     <div class="flex items-center justify-between mb-5 md:mb-6">
                         <div class="flex items-center gap-4">
-                            <div class="bg-emerald-100 text-emerald-600 p-3 md:p-4 rounded-2xl">
+                            <div class="bg-emerald-100 text-emerald-600 p-3 md:p-4 rounded-2xl cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('幫和給')">
                                 <i data-lucide="handshake" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
-                            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800">幫 <span class="text-2xl md:text-4xl text-slate-300 mx-2 md:mx-4 font-medium">vs</span> 給</h3>
+                            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800">
+                                <span class="cursor-pointer hover:text-emerald-600 transition-colors click-animate" onclick="speak('幫')">幫</span> 
+                                <span class="text-2xl md:text-4xl text-slate-300 mx-2 md:mx-4 font-medium">vs</span> 
+                                <span class="cursor-pointer hover:text-emerald-600 transition-colors click-animate" onclick="speak('給')">給</span>
+                            </h3>
                         </div>
                     </div>
                     <div class="space-y-4 md:space-y-6">
                         <div class="bg-emerald-50 p-4 md:p-6 rounded-2xl border border-emerald-100">
                             <div class="text-base md:text-lg font-bold text-emerald-800 mb-3 border-b border-emerald-200 pb-2">【幫】代わりに労力を提供</div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3 mb-2">・<strong class="text-slate-900 text-xl md:text-2xl">幫忙</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">bāng máng</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(手伝う)</span></div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3">・<strong class="text-slate-900 text-xl md:text-2xl">幫我買</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">bāng wǒ mǎi</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(代わりに買って)</span></div>
+                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate mb-2" onclick="speak('幫忙')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">幫忙</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">bāng máng</span> <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(手伝う)</div>
+                            </div>
+                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('幫我買')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">幫我買</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">bāng wǒ mǎi</span> <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(代わりに買って)</div>
+                            </div>
                         </div>
                         <div class="bg-emerald-50 p-4 md:p-6 rounded-2xl border border-emerald-100">
                             <div class="text-base md:text-lg font-bold text-emerald-800 mb-3 border-b border-emerald-200 pb-2">【給】モノや動作を引き渡す</div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3 mb-2">・<strong class="text-slate-900 text-xl md:text-2xl">給我</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">gěi wǒ</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(私にちょうだい)</span></div>
-                            <div class="text-lg md:text-xl text-slate-700 mt-3">・<strong class="text-slate-900 text-xl md:text-2xl">交給</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">jiāo gěi</span><br/><span class="text-base md:text-lg ml-6 text-slate-600">(引き渡す)</span></div>
+                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate mb-2" onclick="speak('給我')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">給我</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">gěi wǒ</span> <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(私にちょうだい)</div>
+                            </div>
+                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('交給')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">交給</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">jiāo gěi</span> <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(引き渡す)</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card: 會 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-amber-100 hover:border-amber-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('會')">
                         <div class="flex items-center gap-4">
                             <div class="bg-amber-100 text-amber-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="lightbulb" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">會</h3>
                         </div>
-                        <span class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">huì</span>
+                        <span class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">huì <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-amber-900 bg-amber-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         習得してできる / 〜するはずだ
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('不會')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">不會</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">bú huì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">できない / 〜しないはず</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('機會')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">機會</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jī huì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">チャンス</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-amber-50/50 transition-colors click-animate" onclick="speak('開會')">
                             <span class="text-amber-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">開會</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kāi huì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">会議をする (人が集まる)</span>
                             </div>
@@ -636,36 +683,36 @@
 
                 <!-- Card: 快 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-rose-100 hover:border-rose-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('快')">
                         <div class="flex items-center gap-4">
                             <div class="bg-rose-100 text-rose-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="fast-forward" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">快</h3>
                         </div>
-                        <span class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">kuài</span>
+                        <span class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">kuài <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-rose-900 bg-rose-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         スピードが速く、シュン！と動く
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('快樂')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">快樂</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kuài lè</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">楽しい (心が弾む)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('快要')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">快要</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kuài yào</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">もうすぐ〜になる</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-rose-50/50 transition-colors click-animate" onclick="speak('快一點')">
                             <span class="text-rose-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">快一點</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">kuài yì diǎn</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">早くして</span>
                             </div>
@@ -675,36 +722,36 @@
 
                 <!-- Card: 點 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-indigo-100 hover:border-indigo-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('點')">
                         <div class="flex items-center gap-4">
                             <div class="bg-indigo-100 text-indigo-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="mouse-pointer-2" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">點</h3>
                         </div>
-                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">diǎn</span>
+                        <span class="bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">diǎn <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-indigo-900 bg-indigo-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         指でツンと突く小さな一点
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('一點點')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">一點點</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">yì diǎn diǎn</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">少し (量の一点)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('點頭')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">點頭</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">diǎn tóu</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">うなずく (動作の一点)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-indigo-50/50 transition-colors click-animate" onclick="speak('重點')">
                             <span class="text-indigo-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">重點</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">zhòng diǎn</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">大事なポイント</span>
                             </div>
@@ -714,36 +761,36 @@
 
                 <!-- Card: 對 -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-emerald-100 hover:border-emerald-400 hover:shadow-xl transition-all">
-                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                    <div class="flex items-center justify-between mb-5 md:mb-6 cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('對')">
                         <div class="flex items-center gap-4">
                             <div class="bg-emerald-100 text-emerald-600 p-3 md:p-4 rounded-2xl">
                                 <i data-lucide="users" class="w-8 h-8 md:w-10 md:h-10"></i>
                             </div>
                             <h3 class="text-5xl md:text-6xl font-black text-slate-800">對</h3>
                         </div>
-                        <span class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide">duì</span>
+                        <span class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-base md:text-xl font-bold tracking-wide flex items-center gap-2">duì <i data-lucide="volume-2" class="w-4 h-4 opacity-50"></i></span>
                     </div>
                     <p class="font-bold text-emerald-900 bg-emerald-50 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 text-lg md:text-xl text-center leading-relaxed">
                         二つのものがピタッと向き合う
                     </p>
-                    <ul class="space-y-4 md:space-y-6 text-slate-600">
-                        <li class="flex items-start gap-3 md:gap-4">
+                    <ul class="space-y-2 md:space-y-3 text-slate-600">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('對不起')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">對不起</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">duì bù qǐ</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">ごめん (顔を向けられない)</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('絕對')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">絕對</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">jué duì</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">絶対</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 md:gap-4">
+                        <li class="flex items-start gap-3 md:gap-4 p-3 -mx-3 rounded-xl cursor-pointer hover:bg-emerald-50/50 transition-colors click-animate" onclick="speak('對話')">
                             <span class="text-emerald-400 mt-1 md:mt-1.5 text-lg md:text-xl">■</span> 
-                            <div class="leading-relaxed">
+                            <div class="leading-relaxed flex-1">
                                 <strong class="text-slate-800 text-xl md:text-2xl">對話</strong> <span class="text-sm md:text-base text-slate-400 font-mono ml-2">duì huà</span><br/>
                                 <span class="text-base md:text-lg mt-1 inline-block">対話する</span>
                             </div>
@@ -782,8 +829,8 @@
                         <div class="bg-slate-200 text-slate-600 rounded-full p-4 md:p-5 mb-6 border-[6px] border-white shadow-lg">
                             <i data-lucide="history" class="w-8 h-8 md:w-10 md:h-10"></i>
                         </div>
-                        <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-shadow">
-                            <div class="font-extrabold text-2xl md:text-3xl text-slate-700 mb-3">剛才 / 剛</div>
+                        <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-all cursor-pointer hover:border-slate-300 click-animate" onclick="speak('我剛才下班了。')">
+                            <div class="font-extrabold text-2xl md:text-3xl text-slate-700 mb-3 flex items-center justify-center gap-2">剛才 / 剛 <i data-lucide="volume-2" class="w-5 h-5 text-slate-400"></i></div>
                             <div class="text-base md:text-lg font-bold text-slate-500 bg-slate-100 py-2 px-4 rounded-xl mb-4">たった今終わった</div>
                             <div class="text-lg md:text-xl text-slate-600 mt-2">我<strong class="text-slate-800 text-xl md:text-2xl mx-1">剛才</strong>下班了。</div>
                             <div class="text-sm md:text-base text-slate-400 font-mono mt-2">wǒ gāng cái xià bān le.</div>
@@ -795,8 +842,8 @@
                         <div class="bg-amber-400 text-white rounded-full p-4 md:p-5 mb-6 border-[6px] border-white shadow-lg ring-4 ring-amber-50">
                             <i data-lucide="play-circle" class="w-8 h-8 md:w-10 md:h-10"></i>
                         </div>
-                        <div class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-shadow">
-                            <div class="font-extrabold text-2xl md:text-3xl text-amber-700 mb-3">正在 / 在</div>
+                        <div class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-all cursor-pointer hover:border-amber-300 click-animate" onclick="speak('我正在學華語。')">
+                            <div class="font-extrabold text-2xl md:text-3xl text-amber-700 mb-3 flex items-center justify-center gap-2">正在 / 在 <i data-lucide="volume-2" class="w-5 h-5 text-amber-500/50"></i></div>
                             <div class="text-base md:text-lg font-bold text-amber-600 bg-amber-100 py-2 px-4 rounded-xl mb-4">今まさに進行中</div>
                             <div class="text-lg md:text-xl text-amber-900 mt-2">我<strong class="text-amber-700 text-xl md:text-2xl mx-1">正在</strong>學華語。</div>
                             <div class="text-sm md:text-base text-amber-700/70 font-mono mt-2">wǒ zhèng zài xué huá yǔ.</div>
@@ -808,8 +855,8 @@
                         <div class="bg-rose-400 text-white rounded-full p-4 md:p-5 mb-6 border-[6px] border-white shadow-lg">
                              <div class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-black text-2xl md:text-3xl">1</div>
                         </div>
-                        <div class="bg-white border-2 border-rose-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-shadow">
-                            <div class="font-extrabold text-2xl md:text-3xl text-rose-600 mb-3">正要</div>
+                        <div class="bg-white border-2 border-rose-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-all cursor-pointer hover:border-rose-300 click-animate" onclick="speak('我正要出門。')">
+                            <div class="font-extrabold text-2xl md:text-3xl text-rose-600 mb-3 flex items-center justify-center gap-2">正要 <i data-lucide="volume-2" class="w-5 h-5 text-rose-400/50"></i></div>
                             <div class="text-base md:text-lg font-bold text-rose-600 bg-rose-50 py-2 px-4 rounded-xl mb-4">まさに〜する直前</div>
                             <div class="text-lg md:text-xl text-rose-800 mt-2">我<strong class="text-rose-600 text-xl md:text-2xl mx-1">正要</strong>出門。</div>
                             <div class="text-sm md:text-base text-rose-400 font-mono mt-2">wǒ zhèng yào chū mén.</div>
@@ -821,8 +868,8 @@
                         <div class="bg-teal-400 text-white rounded-full p-4 md:p-5 mb-6 border-[6px] border-white shadow-lg">
                             <i data-lucide="fast-forward" class="w-8 h-8 md:w-10 md:h-10"></i>
                         </div>
-                        <div class="bg-white border-2 border-teal-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-shadow">
-                            <div class="font-extrabold text-2xl md:text-3xl text-teal-600 mb-3">快要...了</div>
+                        <div class="bg-white border-2 border-teal-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-all cursor-pointer hover:border-teal-300 click-animate" onclick="speak('我快要回國了。')">
+                            <div class="font-extrabold text-2xl md:text-3xl text-teal-600 mb-3 flex items-center justify-center gap-2">快要...了 <i data-lucide="volume-2" class="w-5 h-5 text-teal-400/50"></i></div>
                             <div class="text-base md:text-lg font-bold text-teal-600 bg-teal-50 py-2 px-4 rounded-xl mb-4">もうすぐ〜になる</div>
                             <div class="text-lg md:text-xl text-teal-800 mt-2">我<strong class="text-teal-600 text-xl md:text-2xl mx-1">快要</strong>回國<strong class="text-teal-600 text-xl md:text-2xl mx-1">了</strong>。</div>
                             <div class="text-sm md:text-base text-teal-500 font-mono mt-2">wǒ kuài yào huí guó le.</div>
@@ -834,8 +881,8 @@
                         <div class="bg-blue-500 text-white rounded-full p-4 md:p-5 mb-6 border-[6px] border-white shadow-lg">
                             <i data-lucide="calendar-clock" class="w-8 h-8 md:w-10 md:h-10"></i>
                         </div>
-                        <div class="bg-white border-2 border-blue-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-shadow">
-                            <div class="font-extrabold text-2xl md:text-3xl text-blue-600 mb-3">要</div>
+                        <div class="bg-white border-2 border-blue-200 rounded-3xl p-6 md:p-8 text-center w-full shadow-md hover:shadow-xl transition-all cursor-pointer hover:border-blue-300 click-animate" onclick="speak('明年我要去台灣。')">
+                            <div class="font-extrabold text-2xl md:text-3xl text-blue-600 mb-3 flex items-center justify-center gap-2">要 <i data-lucide="volume-2" class="w-5 h-5 text-blue-400/50"></i></div>
                             <div class="text-base md:text-lg font-bold text-blue-600 bg-blue-50 py-2 px-4 rounded-xl mb-4">〜する予定・意志</div>
                             <div class="text-lg md:text-xl text-blue-800 mt-2">明年我<strong class="text-blue-600 text-xl md:text-2xl mx-1">要</strong>去台灣。</div>
                             <div class="text-sm md:text-base text-blue-400 font-mono mt-2">míng nián wǒ yào qù tái wān.</div>
@@ -848,9 +895,56 @@
 
     </div>
 
-    <!-- 最後にLucideアイコンを初期化して描画 -->
+    <!-- 音声再生とアイコン描画のスクリプト -->
     <script>
+        // Lucideアイコンの初期化
         lucide.createIcons();
+
+        // --- 音声再生 (Web Speech API) の設定 ---
+        const synth = window.speechSynthesis;
+        let taiwanVoice = null;
+
+        // 利用可能な音声リストから台湾華語(または中国語)を探す
+        function setVoice() {
+            const voices = synth.getVoices();
+            // まず 'zh-TW' (台湾) を優先して探す
+            taiwanVoice = voices.find(voice => voice.lang === 'zh-TW') || 
+                          voices.find(voice => voice.lang.includes('zh-HK')) || 
+                          voices.find(voice => voice.lang.startsWith('zh'));
+        }
+
+        // 音声リストが読み込まれたら設定する
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = setVoice;
+        }
+
+        // クリックされたテキストを読み上げる関数
+        function speak(text) {
+            if (!synth) {
+                alert("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+
+            // 既に再生中ならキャンセルして新しく読み上げる
+            if (synth.speaking) {
+                synth.cancel();
+            }
+
+            const utterThis = new SpeechSynthesisUtterance(text);
+            
+            if (taiwanVoice) {
+                utterThis.voice = taiwanVoice;
+            } else {
+                // フォールバック
+                utterThis.lang = 'zh-TW';
+            }
+            
+            // 学習用に少しだけゆっくり再生 (0.85倍速)
+            utterThis.rate = 0.85; 
+            utterThis.pitch = 1.0;
+
+            synth.speak(utterThis);
+        }
     </script>
 </body>
 </html>
