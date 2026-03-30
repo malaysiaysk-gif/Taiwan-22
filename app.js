@@ -1232,6 +1232,8 @@ const words = [
 
 // ===== ここから下がアプリの動く仕組み（ロジック）です =====
 
+// ===== ここから下がアプリの動く仕組み（ロジック）です =====
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // ===== カード表示用変数 =====
@@ -1244,6 +1246,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
   let isListeningMode = false;
 
+  // ▼ 【追加】マスター（3連勝）モード用変数 ▼
+  let isMasterMode = false;
+  let masterPool = [];      // 抽出された30単語のインデックス
+  let masterStreaks = {};   // 各単語の連続正解数 { index: 連続回数 }
+
   // ブックマーク保存用変数
   let bookmarkedIndices = new Set();
   let reviewBookmarkedOnly = false;
@@ -1252,7 +1259,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let isAutoPlaying = false;
   let autoPlayStep = 0; // 0: 中国語1回目, 1: 中国語2回目, 2: 日本語
 
-  // ★追加：音声ファーストモード用の変数
+  // 音声ファーストモード用の変数
   let isAudioFirstMode = false;
   let audioFirstTimeout = null; // 表示を遅らせるタイマー
 
@@ -1322,7 +1329,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return activeIndices;
   }
 
-  // ★変更：カテゴリと「検索ワード」の両方で絞り込むように進化
   function rebuildActiveIndices() {
     const searchInput = document.getElementById("search-input");
     const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
@@ -1347,7 +1353,6 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = activeIndices.length > 0 ? activeIndices[0] : -1; // 見つからない場合は-1
   }
 
-  // ★変更：音声ファーストモード時の表示制御を追加
   function renderWord() {
     const elZh = document.getElementById("word-zh");
     const elPinyin = document.getElementById("word-pinyin");
@@ -1375,17 +1380,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (audioFirstTimeout) clearTimeout(audioFirstTimeout);
 
     // 音声ファーストモードがON ＆ 自動再生中ではない ＆ クイズ等ではない場合
-    if (isAudioFirstMode && !isAutoPlaying && !isListeningMode) {
-      // 1. 文字を一旦隠す（透明にする）
+    if (isAudioFirstMode && !isAutoPlaying && !isListeningMode && !isMasterMode) {
       elZh.style.visibility = "hidden";
       elPinyin.style.visibility = "hidden";
       elJp.style.visibility = "hidden";
       elNote.style.visibility = "hidden";
 
-      // 2. 音声を再生する
       playTaiwanese(w.zh || w.pinyin || "");
 
-      // 3. 約1.5秒（1500ミリ秒）後に文字を表示する
       audioFirstTimeout = setTimeout(() => {
         elZh.style.visibility = "visible";
         elPinyin.style.visibility = "visible";
@@ -1450,8 +1452,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuiz = null;
 
   function createQuizQuestion() {
-    const correctIndex = activeIndices[Math.floor(Math.random() * activeIndices.length)] || 0;
-    const sourceIndices = activeIndices.length >= 4 ? activeIndices : words.map((_, i) => i);
+    let correctIndex;
+    let sourceIndices = activeIndices.length >= 4 ? activeIndices : words.map((_, i) => i);
+    
+    // ▼ マスターモードの出題ロジック
+    if (isMasterMode) {
+      if (masterPool.length === 0) return null; // 全て3連勝したらnullを返してクリア
+      // 3連勝していない単語の中からランダム出題
+      correctIndex = masterPool[Math.floor(Math.random() * masterPool.length)];
+    } else {
+      // 通常モードの出題ロジック
+      correctIndex = activeIndices[Math.floor(Math.random() * activeIndices.length)] || 0;
+    }
+
     const indices = new Set();
     indices.add(correctIndex);
     while (indices.size < 4 && indices.size < words.length) {
@@ -1478,7 +1491,7 @@ document.addEventListener("DOMContentLoaded", () => {
     qZh.textContent = w.zh || "";
     qPinyin.textContent = w.pinyin || "";
 
-    if (isListeningMode) {
+    if (isListeningMode || isMasterMode) {
       if(quizInstruction) quizInstruction.textContent = "音声を聞いて意味を選んでください";
       if(quizTargetContainer) quizTargetContainer.style.visibility = "hidden";
       if(quizSpeakBtn) quizSpeakBtn.style.display = "block";
@@ -1500,6 +1513,13 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => handleAnswerClick(btn, question));
       optContainer.appendChild(btn);
     });
+
+    // ▼ マスターモード：問題文に連勝数と残り単語数を表示
+    if (isMasterMode) {
+      const streak = masterStreaks[question.correctIndex];
+      if (quizInstruction) quizInstruction.textContent = `音声を聞いて意味を選んでください (現在 ${streak} 連勝中 / 目標 3連勝)`;
+      document.getElementById("master-remain").textContent = masterPool.length;
+    }
   }
 
   function handleAnswerClick(clickedBtn, question) {
@@ -1511,7 +1531,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (buttons.some((b) => b.disabled)) return;
     
     const quizTargetContainer = document.getElementById("quiz-target-container");
-    if (isListeningMode && quizTargetContainer) {
+    if ((isListeningMode || isMasterMode) && quizTargetContainer) {
       quizTargetContainer.style.visibility = "visible";
     }
 
@@ -1526,12 +1546,29 @@ document.addEventListener("DOMContentLoaded", () => {
       if (clickedIndex === correctIndex) {
         feedbackEl.textContent = "正解！";
         feedbackEl.style.color = "#16a34a";
+        
+        // ▼ マスターモード：正解時の連勝カウント処理
+        if (isMasterMode) {
+          masterStreaks[correctIndex]++;
+          feedbackEl.textContent = `正解！ (${masterStreaks[correctIndex]} 回連続)`;
+          if (masterStreaks[correctIndex] >= 3) {
+             // 3連勝達成でプールから除外
+             masterPool = masterPool.filter(idx => idx !== correctIndex);
+             feedbackEl.textContent = "🎉 3連勝達成！この単語はマスターしました！";
+          }
+        }
       } else {
         feedbackEl.textContent = "不正解…　正解：「" + words[correctIndex].jp + "」";
         feedbackEl.style.color = "#dc2626";
         if (!wrongMap[correctIndex]) wrongMap[correctIndex] = 0;
         wrongMap[correctIndex] += 1;
         updateWrongCount();
+        
+        // ▼ マスターモード：不正解時は連勝を0にリセット
+        if (isMasterMode) {
+          masterStreaks[correctIndex] = 0;
+          feedbackEl.textContent += " (連勝がリセットされました)";
+        }
       }
     }
     const nextBtn = document.getElementById("quiz-next-btn");
@@ -1547,7 +1584,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function nextQuizQuestion() {
     const nextBtn = document.getElementById("quiz-next-btn");
     if (nextBtn) nextBtn.style.display = "none";
+    
     currentQuiz = createQuizQuestion();
+    
+    // ▼ マスターモードのクリア判定
+    if (isMasterMode && !currentQuiz) {
+      document.getElementById("quiz-instruction").textContent = "🏆 全問クリア！";
+      document.getElementById("quiz-target-container").style.visibility = "visible";
+      document.getElementById("quiz-zh").textContent = "おめでとうございます";
+      document.getElementById("quiz-pinyin").textContent = "抽出された単語をすべて3回連続で正解しました！";
+      document.getElementById("quiz-options").innerHTML = "";
+      document.getElementById("quiz-feedback").textContent = "";
+      document.getElementById("quiz-speak-btn").style.display = "none";
+      document.getElementById("master-remain").textContent = "0";
+      return;
+    }
+    
     renderQuiz(currentQuiz);
   }
 
@@ -1591,7 +1643,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ★追加：音声ファーストモードの切替イベント
   const audioFirstToggle = document.getElementById("audio-first-toggle");
   if (audioFirstToggle) {
     audioFirstToggle.addEventListener("change", (e) => {
@@ -1600,11 +1651,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ★追加：検索機能のイベントリスナー（文字を打つたびに検索）
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("input", () => {
-      rebuildActiveIndices(); // 検索ワードでリストを作り直す
+      rebuildActiveIndices(); 
       
       reviewWrongOnly = false;
       reviewBookmarkedOnly = false;
@@ -1712,9 +1762,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardBtn = document.getElementById("mode-card-btn");
   const quizBtn = document.getElementById("mode-quiz-btn");
   const listeningBtn = document.getElementById("mode-listening-btn");
+  
+  const masterBtn = document.getElementById("mode-master-btn");
+  const masterStatus = document.getElementById("master-status");
 
   if (cardBtn) cardBtn.addEventListener("click", () => {
     isListeningMode = false;
+    isMasterMode = false;
+    if(masterStatus) masterStatus.style.display = "none";
+    if(masterBtn) { masterBtn.classList.remove("active"); masterBtn.style.background = "white"; masterBtn.style.color = "#f59e0b"; }
+
     if(cardMode) cardMode.style.display = "";
     if(quizMode) quizMode.style.display = "none";
     cardBtn.classList.add("active");
@@ -1726,6 +1783,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (quizBtn) quizBtn.addEventListener("click", () => {
     isListeningMode = false;
+    isMasterMode = false;
+    if(masterStatus) masterStatus.style.display = "none";
+    if(masterBtn) { masterBtn.classList.remove("active"); masterBtn.style.background = "white"; masterBtn.style.color = "#f59e0b"; }
+
     if(cardMode) cardMode.style.display = "none";
     if(quizMode) quizMode.style.display = "";
     quizBtn.classList.add("active");
@@ -1739,6 +1800,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (listeningBtn) listeningBtn.addEventListener("click", () => {
     isListeningMode = true;
+    isMasterMode = false;
+    if(masterStatus) masterStatus.style.display = "none";
+    if(masterBtn) { masterBtn.classList.remove("active"); masterBtn.style.background = "white"; masterBtn.style.color = "#f59e0b"; }
+
     if(cardMode) cardMode.style.display = "none";
     if(quizMode) quizMode.style.display = "";
     listeningBtn.classList.add("active");
@@ -1747,6 +1812,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!currentQuiz) nextQuizQuestion();
     else renderQuiz(currentQuiz); 
     
+    if (isAutoPlaying && document.getElementById("autoplay-btn")) document.getElementById("autoplay-btn").click();
+  });
+
+  // ▼ マスターモード起動ボタン ▼
+  if (masterBtn) masterBtn.addEventListener("click", () => {
+    isListeningMode = true; // 音声を聞いて当てるのでリスニング形式
+    isMasterMode = true;
+    
+    if(cardMode) cardMode.style.display = "none";
+    if(quizMode) quizMode.style.display = "";
+    if(masterStatus) masterStatus.style.display = "block";
+    
+    masterBtn.classList.add("active");
+    masterBtn.style.background = "#f59e0b";
+    masterBtn.style.color = "white";
+    if(cardBtn) cardBtn.classList.remove("active");
+    if(quizBtn) quizBtn.classList.remove("active");
+    if(listeningBtn) listeningBtn.classList.remove("active");
+    
+    // 現在選ばれているカテゴリ(activeIndices)からランダムに最大30単語を抽出
+    let pool = [...activeIndices];
+    pool.sort(() => Math.random() - 0.5);
+    masterPool = pool.slice(0, 30);
+    masterStreaks = {};
+    masterPool.forEach(idx => { masterStreaks[idx] = 0; }); // 連勝数を0で初期化
+    
+    if (masterPool.length === 0) {
+      alert("このカテゴリに単語がありません。");
+      return;
+    }
+    
+    nextQuizQuestion();
     if (isAutoPlaying && document.getElementById("autoplay-btn")) document.getElementById("autoplay-btn").click();
   });
 

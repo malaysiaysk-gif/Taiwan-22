@@ -162,6 +162,8 @@
         <button id="mode-card-btn" class="mode-btn active">カード</button>
         <button id="mode-quiz-btn" class="mode-btn">クイズ</button>
         <button id="mode-listening-btn" class="mode-btn">リスニング</button>
+        <!-- ▼ 追加：3連勝マスターボタン ▼ -->
+        <button id="mode-master-btn" class="mode-btn" style="border-color: #f59e0b; color: #f59e0b;">3連勝マスター</button>
       </div>
 
       <div id="card-mode">
@@ -200,6 +202,11 @@
       </div>
 
       <div id="quiz-mode" class="quiz" style="display: none;">
+        <!-- ▼ 追加：マスターモード用の進行状況表示 ▼ -->
+        <div id="master-status" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: #d97706; font-size: 16px;">
+          🔥 残り <span id="master-remain">30</span> 単語をマスターしよう！
+        </div>
+
         <div class="card quiz-card">
           <div class="quiz-label" id="quiz-instruction">意味を選んでください（4択）</div>
           
