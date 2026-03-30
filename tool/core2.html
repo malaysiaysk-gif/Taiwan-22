@@ -9,6 +9,8 @@
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8fafc; color: #334155; }
         .keyword-badge { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: bold; margin: 2px; }
+        /* クリック時のアニメーション */
+        .click-animate:active { transform: scale(0.95); }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -20,8 +22,11 @@
         <h1 class="text-3xl md:text-5xl font-black text-blue-900 mb-3 tracking-tight">
             🇹🇼 台湾華語・補語スパルタチートシート
         </h1>
-        <p class="text-lg md:text-xl text-slate-600 font-bold">
+        <p class="text-lg md:text-xl text-slate-600 font-bold mb-2">
             ～ 「出來」vs「起來」の頂上決戦 ＆ メタ解法完全網羅版 ～
+        </p>
+        <p class="text-sm text-blue-600 font-bold bg-blue-50 inline-block px-3 py-1 rounded-full">
+            💡 ピンイン・単語をクリックすると台湾華語の音声が流れます
         </p>
     </header>
 
@@ -55,29 +60,37 @@
                         <tbody>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">kàn chūlái</span>
-                                    <span class="block font-bold text-lg leading-none">看出來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('看出來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-emerald-500 transition-colors">kàn chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-emerald-600 transition-colors leading-none">看出來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">（見て）見破る、見分ける<br><span class="text-sm text-slate-500">例: 見た目が変わってたので…本心を見抜く</span></td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">tīng chūlái</span>
-                                    <span class="block font-bold text-lg leading-none">聽出來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('聽出來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-emerald-500 transition-colors">tīng chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-emerald-600 transition-colors leading-none">聽出來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">（聞いて）聞き分ける<br><span class="text-sm text-slate-500">例: 誰の声か当てる、嘘を聞き抜く</span></td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5">xiǎng chūlái</span>
-                                    <span class="block font-bold text-lg text-emerald-600 leading-none">想出來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('想出來')">
+                                        <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5 group-hover:text-emerald-600 transition-colors">xiǎng chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg text-emerald-600 group-hover:text-emerald-700 transition-colors leading-none">想出來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">（考えて）ひねり出す<br><span class="text-sm text-slate-500 font-bold text-emerald-600">※頭を使う系。新しいアイデア、プラン</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">xiě chūlái</span>
-                                    <span class="block font-bold text-lg leading-none">寫出來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('寫出來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-emerald-500 transition-colors">xiě chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-emerald-600 transition-colors leading-none">寫出來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">（書いて）形にする<br><span class="text-sm text-slate-500">例: 白紙の状態から文章を書き出す</span></td>
                             </tr>
@@ -110,29 +123,37 @@
                         <tbody>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-purple-400 font-normal leading-none mb-0.5">xiǎng qǐlái</span>
-                                    <span class="block font-bold text-lg text-purple-600 leading-none">想起來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('想起來')">
+                                        <span class="block text-[11px] text-purple-400 font-normal leading-none mb-0.5 group-hover:text-purple-600 transition-colors">xiǎng qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg text-purple-600 group-hover:text-purple-700 transition-colors leading-none">想起來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">（記憶を）思い出す<br><span class="text-sm text-slate-500 font-bold text-purple-600">※以前、名前を忘れた、昔会った人</span></td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">kàn qǐlái</span>
-                                    <span class="block font-bold text-lg leading-none">看起來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('看起來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-purple-500 transition-colors">kàn qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-purple-600 transition-colors leading-none">看起來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">見た目は〜だ（印象）<br><span class="text-sm text-slate-500">例: 普通、綺麗、高そう</span></td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">tīng qǐlái</span>
-                                    <span class="block font-bold text-lg leading-none">聽起來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('聽起來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-purple-500 transition-colors">tīng qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-purple-600 transition-colors leading-none">聽起來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">聞いた感じは〜だ（印象）<br><span class="text-sm text-slate-500">例: 面白そう、変だ</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 w-32 align-top">
-                                    <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">xiào qǐlái</span>
-                                    <span class="block font-bold text-lg leading-none">笑起來</span>
+                                    <div class="cursor-pointer group inline-block click-animate" onclick="speak('笑起來')">
+                                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-purple-500 transition-colors">xiào qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                        <span class="block font-bold text-lg group-hover:text-purple-600 transition-colors leading-none">笑起來</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 text-slate-700">笑い出す（開始）<br><span class="text-sm text-slate-500">例: 急に笑い始める、泣き出す(哭起來)</span></td>
                             </tr>
@@ -149,23 +170,23 @@
                 ⚠️ 最重要トラップ：「想（考える）」の三段活用
             </h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div class="bg-white p-3 rounded shadow-sm border border-red-100">
+                <div class="bg-white p-3 rounded shadow-sm border border-red-100 cursor-pointer group click-animate hover:bg-emerald-50 transition-colors" onclick="speak('想出來')">
                     <div class="mb-2">
-                        <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5">xiǎng chūlái</span>
+                        <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5">xiǎng chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
                         <div class="font-bold text-lg text-emerald-700 leading-none">想 出來</div>
                     </div>
                     <p class="text-slate-600">ウンウン唸って、新しいアイデアやプランを<strong class="text-slate-800">「ひねり出す（産出）」</strong>。</p>
                 </div>
-                <div class="bg-white p-3 rounded shadow-sm border border-red-100">
+                <div class="bg-white p-3 rounded shadow-sm border border-red-100 cursor-pointer group click-animate hover:bg-orange-50 transition-colors" onclick="speak('想到')">
                     <div class="mb-2">
-                        <span class="block text-[11px] text-orange-500 font-normal leading-none mb-0.5">xiǎng dào</span>
+                        <span class="block text-[11px] text-orange-500 font-normal leading-none mb-0.5">xiǎng dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
                         <div class="font-bold text-lg text-orange-700 leading-none">想 到</div>
                     </div>
                     <p class="text-slate-600">パッと<strong class="text-slate-800">「思いつく・行き着く・予想する」</strong>。（例：沒想到＝予想しなかった）</p>
                 </div>
-                <div class="bg-white p-3 rounded shadow-sm border border-red-100">
+                <div class="bg-white p-3 rounded shadow-sm border border-red-100 cursor-pointer group click-animate hover:bg-purple-50 transition-colors" onclick="speak('想起來')">
                     <div class="mb-2">
-                        <span class="block text-[11px] text-purple-500 font-normal leading-none mb-0.5">xiǎng qǐlái</span>
+                        <span class="block text-[11px] text-purple-500 font-normal leading-none mb-0.5">xiǎng qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
                         <div class="font-bold text-lg text-purple-700 leading-none">想 起來</div>
                     </div>
                     <p class="text-slate-600">昔の記憶や忘れていたことを<strong class="text-slate-800">「思い出す（想起）」</strong>。</p>
@@ -191,18 +212,24 @@
                 </div>
                 <ul class="space-y-4">
                     <li class="border-b pb-2">
-                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">kàn wán</span>
-                        <div class="font-bold text-lg leading-none mb-1">看完</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('看完')">
+                            <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-slate-600">kàn wán <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-slate-900 transition-colors">看完</div>
+                        </div>
                         <div class="text-sm text-slate-600">読み終える、見終える<br>(本、映画、宿題)</div>
                     </li>
                     <li class="border-b pb-2">
-                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">chī wán</span>
-                        <div class="font-bold text-lg leading-none mb-1">吃完</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('吃完')">
+                            <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-slate-600">chī wán <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-slate-900 transition-colors">吃完</div>
+                        </div>
                         <div class="text-sm text-slate-600">食べ終える、完食する<br>(ご飯、不舒服で食べきれない)</div>
                     </li>
                     <li>
-                        <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">zuò wán</span>
-                        <div class="font-bold text-lg leading-none mb-1">做完</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('做完')">
+                            <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-slate-600">zuò wán <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-slate-900 transition-colors">做完</div>
+                        </div>
                         <div class="text-sm text-slate-600">やり遂げる、終わらせる<br>(宿題、仕事、任務)</div>
                     </li>
                 </ul>
@@ -219,23 +246,31 @@
                 </div>
                 <ul class="space-y-4">
                     <li class="border-b border-orange-100 pb-2">
-                        <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5">mǎi dào</span>
-                        <div class="font-bold text-lg leading-none mb-1">買到</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('買到')">
+                            <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5 group-hover:text-orange-500">mǎi dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-orange-600 transition-colors">買到</div>
+                        </div>
                         <div class="text-sm text-slate-600">（手に入りにくい物を）買う<br>(チケット、限定品)</div>
                     </li>
                     <li class="border-b border-orange-100 pb-2">
-                        <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5">shōu dào</span>
-                        <div class="font-bold text-lg leading-none mb-1">收到</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('收到')">
+                            <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5 group-hover:text-orange-500">shōu dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-orange-600 transition-colors">收到</div>
+                        </div>
                         <div class="text-sm text-slate-600">（無事に）受け取る<br>(手紙、荷物、メール)</div>
                     </li>
                     <li class="border-b border-orange-100 pb-2">
-                        <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5">bàn dào</span>
-                        <div class="font-bold text-lg leading-none mb-1">辦到</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('辦到')">
+                            <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5 group-hover:text-orange-500">bàn dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-orange-600 transition-colors">辦到</div>
+                        </div>
                         <div class="text-sm text-slate-600">（困難な事を）成し遂げる<br>(不可能、約束、高い目標)</div>
                     </li>
                     <li>
-                        <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5">kàn dào</span>
-                        <div class="font-bold text-lg leading-none mb-1">看到</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('看到')">
+                            <span class="block text-[11px] text-orange-400/80 font-normal leading-none mb-0.5 group-hover:text-orange-500">kàn dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-orange-600 transition-colors">看到</div>
+                        </div>
                         <div class="text-sm text-slate-600">目に入る、見つける<br>(探し物、偶然見かける)</div>
                     </li>
                 </ul>
@@ -252,18 +287,24 @@
                 </div>
                 <ul class="space-y-4">
                     <li class="border-b border-blue-100 pb-2">
-                        <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5">bàn hǎo</span>
-                        <div class="font-bold text-lg leading-none mb-1">辦好</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('辦好')">
+                            <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5 group-hover:text-blue-500">bàn hǎo <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-blue-600 transition-colors">辦好</div>
+                        </div>
                         <div class="text-sm text-slate-600">しっかりやる、事務処理<br>(手続き、ミス厳禁、完璧に)</div>
                     </li>
                     <li class="border-b border-blue-100 pb-2">
-                        <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5">mǎi hǎo</span>
-                        <div class="font-bold text-lg leading-none mb-1">買好</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('買好')">
+                            <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5 group-hover:text-blue-500">mǎi hǎo <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-blue-600 transition-colors">買好</div>
+                        </div>
                         <div class="text-sm text-slate-600">（準備として）買っておく<br>(航空券:旅行前、食材:料理前)</div>
                     </li>
                     <li>
-                        <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5">zhǔnbèi hǎo</span>
-                        <div class="font-bold text-lg leading-none mb-1">準備好</div>
+                        <div class="cursor-pointer group inline-block click-animate" onclick="speak('準備好')">
+                            <span class="block text-[11px] text-blue-400/80 font-normal leading-none mb-0.5 group-hover:text-blue-500">zhǔnbèi hǎo <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                            <div class="font-bold text-lg leading-none mb-1 group-hover:text-blue-600 transition-colors">準備好</div>
+                        </div>
                         <div class="text-sm text-slate-600">準備万端にする<br>(自分完結の努力。試験前、出発前)</div>
                     </li>
                 </ul>
@@ -288,40 +329,50 @@
                 <tbody class="divide-y divide-slate-100">
                     <tr class="hover:bg-slate-50">
                         <td class="p-4 align-top">
-                            <span class="block text-[11px] text-teal-500 font-normal leading-none mb-0.5">kàn qǐlái</span>
-                            <span class="block font-black text-lg text-teal-700 leading-none">看起來</span>
+                            <div class="cursor-pointer group inline-block click-animate" onclick="speak('看起來')">
+                                <span class="block text-[11px] text-teal-500 font-normal leading-none mb-0.5 group-hover:text-teal-600">kàn qǐlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                <span class="block font-black text-lg text-teal-700 group-hover:text-teal-800 transition-colors leading-none">看起來</span>
+                            </div>
                         </td>
                         <td class="p-4 align-top"><span class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-sm font-bold">印象</span>（見たところ）</td>
                         <td class="p-4 text-slate-600">子犬みたいだ。<br><span class="text-xs text-red-500 font-bold">※直後に形容詞が来る</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                         <td class="p-4 align-top">
-                            <span class="block text-[11px] text-orange-500 font-normal leading-none mb-0.5">kàn jiàn / kàn dào</span>
-                            <span class="block font-black text-lg text-orange-600 leading-none">看見 / 看到</span>
+                            <div class="cursor-pointer group inline-block click-animate" onclick="speak('看見')">
+                                <span class="block text-[11px] text-orange-500 font-normal leading-none mb-0.5 group-hover:text-orange-600">kàn jiàn / kàn dào <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                <span class="block font-black text-lg text-orange-600 group-hover:text-orange-700 transition-colors leading-none">看見 / 看到</span>
+                            </div>
                         </td>
                         <td class="p-4 align-top"><span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm font-bold">発見</span>（視界に入る）</td>
                         <td class="p-4 text-slate-600">あ、子犬が入った（見つけた）！<br><span class="text-xs text-slate-500">※探し物、偶然の発見</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                         <td class="p-4 align-top">
-                            <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5">kàn chūlái</span>
-                            <span class="block font-black text-lg text-emerald-600 leading-none">看出來</span>
+                            <div class="cursor-pointer group inline-block click-animate" onclick="speak('看出來')">
+                                <span class="block text-[11px] text-emerald-500 font-normal leading-none mb-0.5 group-hover:text-emerald-600">kàn chūlái <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                <span class="block font-black text-lg text-emerald-600 group-hover:text-emerald-700 transition-colors leading-none">看出來</span>
+                            </div>
                         </td>
                         <td class="p-4 align-top"><span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-sm font-bold">判別</span>（正体を見破る）</td>
                         <td class="p-4 text-slate-600">（なまり等で）日本人だとわかった。<br><span class="text-xs text-slate-500">※変装、違い、間違い探し</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                         <td class="p-4 align-top">
-                            <span class="block text-[11px] text-red-400 font-normal leading-none mb-0.5">kàn bù dǒng</span>
-                            <span class="block font-black text-lg text-red-600 leading-none">看不懂</span>
+                            <div class="cursor-pointer group inline-block click-animate" onclick="speak('看不懂')">
+                                <span class="block text-[11px] text-red-400 font-normal leading-none mb-0.5 group-hover:text-red-500">kàn bù dǒng <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                <span class="block font-black text-lg text-red-600 group-hover:text-red-700 transition-colors leading-none">看不懂</span>
+                            </div>
                         </td>
                         <td class="p-4 align-top"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm font-bold">理解不能</span>（意味不明）</td>
                         <td class="p-4 text-slate-600">（字が難しくて）読めない、意味が分からない。</td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                         <td class="p-4 align-top">
-                            <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5">kàn bù wán</span>
-                            <span class="block font-black text-lg text-slate-700 leading-none">看不完</span>
+                            <div class="cursor-pointer group inline-block click-animate" onclick="speak('看不完')">
+                                <span class="block text-[11px] text-slate-400 font-normal leading-none mb-0.5 group-hover:text-slate-500">kàn bù wán <span class="opacity-0 group-hover:opacity-100 text-[10px]">🔊</span></span>
+                                <span class="block font-black text-lg text-slate-700 group-hover:text-slate-900 transition-colors leading-none">看不完</span>
+                            </div>
                         </td>
                         <td class="p-4 align-top"><span class="bg-slate-200 text-slate-800 px-2 py-1 rounded text-sm font-bold">多すぎ</span>（終わらない）</td>
                         <td class="p-4 text-slate-600">（写真が多すぎて）最後まで見きれない。</td>
@@ -338,6 +389,30 @@
     </footer>
 
 </div>
+
+<script>
+    // Web Speech API を使った音声読み上げ機能
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            // 再生中の音声をキャンセル（連打対策）
+            window.speechSynthesis.cancel();
+            
+            // 新しい読み上げを作成
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // 台湾華語に設定
+            utterance.lang = 'zh-TW'; 
+            
+            // 学習用のため少しゆっくりめに設定 (0.8 〜 0.9程度がおすすめ)
+            utterance.rate = 0.85; 
+            
+            // 再生
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("お使いのブラウザは音声読み上げ(Web Speech API)に対応していません。");
+        }
+    }
+</script>
 
 </body>
 </html>

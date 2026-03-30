@@ -21,13 +21,36 @@
             background: linear-gradient(transparent 60%, #fde047 60%);
             font-weight: bold;
         }
-        /* ピンインのサイズを大幅にアップ */
+        /* ピンインのスタイル（クリックできるデザインに強化） */
         .pinyin {
             font-size: 0.9rem;
             color: #6b7280;
             font-weight: normal;
             margin-left: 0.35rem;
             letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0.1rem 0.3rem;
+            border-radius: 0.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        .pinyin:hover {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+        }
+        .pinyin:active {
+            background-color: #c7d2fe;
+            transform: scale(0.95);
+        }
+        /* 音声アイコン用の疑似要素 */
+        .pinyin::after {
+            content: '\f028';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.7em;
+            opacity: 0.6;
         }
     </style>
 </head>
@@ -354,8 +377,62 @@
     </main>
 
     <footer class="max-w-6xl mx-auto mt-12 mb-8 text-center text-sm md:text-base text-gray-500 font-bold">
-        <p class="bg-gray-200 inline-block px-4 py-2 rounded-full"><i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>Tip: スマホのブラウザで「ホーム画面に追加」すると、いつでもサクッと復習できます。</p>
+        <p class="bg-blue-100 text-blue-800 inline-block px-5 py-2.5 rounded-full mb-3 shadow-sm border border-blue-200">
+            <i class="fa-solid fa-volume-up mr-2"></i>Tip: 各単語のピンイン（アルファベット）をクリックすると、台湾華語の音声が流れます！
+        </p>
+        <br>
+        <p class="bg-gray-200 inline-block px-4 py-2 rounded-full">
+            <i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>Tip: スマホのブラウザで「ホーム画面に追加」すると、いつでもサクッと復習できます。
+        </p>
     </footer>
 
+    <!-- 音声再生用のスクリプト -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pinyinElements = document.querySelectorAll('.pinyin');
+            const synth = window.speechSynthesis;
+
+            pinyinElements.forEach(el => {
+                // ホバー時のツールチップを設定
+                el.title = "クリックして発音を聞く";
+
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    let textToSpeak = "";
+                    
+                    // DOMの構造を利用して、ピンインの直前にある漢字を取得する
+                    if (el.previousSibling && el.previousSibling.nodeType === Node.TEXT_NODE) {
+                        textToSpeak = el.previousSibling.textContent;
+                    } 
+                    // 直前にテキストが無い場合のフォールバック（親要素のテキストからピンイン部分を除外）
+                    if (!textToSpeak.trim() && el.parentElement) {
+                        const clone = el.parentElement.cloneNode(true);
+                        clone.querySelectorAll('.pinyin').forEach(n => n.remove());
+                        textToSpeak = clone.textContent;
+                    }
+
+                    // 取得した文字列の中から、漢字のみを抽出する（音声エンジンが記号や日本語を誤読するのを防ぐため）
+                    const chineseMatch = textToSpeak.match(/[\u4e00-\u9fa5]+/g);
+                    if (chineseMatch) {
+                        textToSpeak = chineseMatch.join(''); 
+                    } else {
+                        // 漢字が見つからない場合はピンインの文字列をそのまま投げる
+                        textToSpeak = el.textContent; 
+                    }
+
+                    // 音声を再生
+                    if (textToSpeak && synth) {
+                        synth.cancel(); // 連続クリック時に前の音声をキャンセル
+                        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                        utterance.lang = 'zh-TW'; // 台湾華語（繁体字/台湾アクセント）
+                        utterance.rate = 0.8; // 学習用に少しゆっくりめのスピード
+                        synth.speak(utterance);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

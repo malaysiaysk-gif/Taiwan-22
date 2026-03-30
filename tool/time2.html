@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>台湾華語チートシート：動詞・形容詞の「前」と「後ろ」【完全版】</title>
+  <title>台湾華語チートシート：動詞・形容詞の「前」と「後ろ」【完全版・音声付】</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -31,6 +31,25 @@
       z-index: 0;
     }
     .wrong-strike { text-decoration: line-through; color: #ef4444; }
+    
+    /* 音声再生用ホバーアニメーション */
+    .pinyin-audio {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      cursor: pointer;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+    }
+    .pinyin-audio:hover {
+      background-color: #e0f2fe;
+      color: #0284c7;
+      transform: scale(1.05);
+    }
+    .pinyin-audio:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 p-2 md:p-6 lg:p-8">
@@ -39,7 +58,8 @@
     <!-- Header -->
     <header class="text-center mb-8">
       <h1 class="text-2xl md:text-4xl font-bold text-indigo-900 mb-3">🇹🇼 台湾華語 語順マスター・チートシート</h1>
-      <p class="text-base md:text-lg text-slate-600">中国語は <span class="text-blue-600 font-bold">「動詞の前」</span> に条件を積み上げ、<span class="text-green-600 font-bold">「動詞の後ろ」</span> で結果を補います。</p>
+      <p class="text-base md:text-lg text-slate-600 mb-2">中国語は <span class="text-blue-600 font-bold">「動詞の前」</span> に条件を積み上げ、<span class="text-green-600 font-bold">「動詞の後ろ」</span> で結果を補います。</p>
+      <p class="text-sm text-sky-600 font-bold bg-sky-50 inline-block px-3 py-1 rounded-full border border-sky-200">💡 ピンイン（🔊）をクリックすると音声が流れます</p>
     </header>
 
     <!-- Master Formula (Horizontal Timeline) -->
@@ -47,25 +67,53 @@
       <h2 class="text-xl font-bold text-slate-800 mb-4 text-center border-b pb-2">🌟 語順のフルコース（完璧な並び順）</h2>
       <div class="flex flex-nowrap items-center min-w-[800px] justify-between text-center pb-2">
         
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">主語</div><div class="font-bold text-lg tc bg-slate-100 rounded py-1">我<br><span class="text-xs font-normal text-slate-500">wǒ</span></div><div class="text-xs mt-1">私は</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">主語</div>
+          <div class="font-bold text-lg tc bg-slate-100 rounded py-1">我<br><span class="text-xs font-normal text-slate-500 pinyin-audio" onclick="speak('我')">wǒ 🔊</span></div>
+          <div class="text-xs mt-1">私は</div>
+        </div>
         <div class="text-slate-300">＋</div>
         
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">時間</div><div class="font-bold text-lg tc bg-blue-100 text-blue-800 rounded py-1">昨天<br><span class="text-xs font-normal text-blue-600">zuótiān</span></div><div class="text-xs mt-1">昨日</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">時間</div>
+          <div class="font-bold text-lg tc bg-blue-100 text-blue-800 rounded py-1">昨天<br><span class="text-xs font-normal text-blue-600 pinyin-audio" onclick="speak('昨天')">zuótiān 🔊</span></div>
+          <div class="text-xs mt-1">昨日</div>
+        </div>
         <div class="text-slate-300">＋</div>
 
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">否定</div><div class="font-bold text-lg tc bg-red-100 text-red-800 rounded py-1">沒<br><span class="text-xs font-normal text-red-600">méi</span></div><div class="text-xs mt-1">〜しなかった</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">否定</div>
+          <div class="font-bold text-lg tc bg-red-100 text-red-800 rounded py-1">沒<br><span class="text-xs font-normal text-red-600 pinyin-audio" onclick="speak('沒')">méi 🔊</span></div>
+          <div class="text-xs mt-1">〜しなかった</div>
+        </div>
         <div class="text-slate-300">＋</div>
 
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">助動詞</div><div class="font-bold text-lg tc bg-yellow-100 text-yellow-800 rounded py-1">想<br><span class="text-xs font-normal text-yellow-600">xiǎng</span></div><div class="text-xs mt-1">〜したい</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">助動詞</div>
+          <div class="font-bold text-lg tc bg-yellow-100 text-yellow-800 rounded py-1">想<br><span class="text-xs font-normal text-yellow-600 pinyin-audio" onclick="speak('想')">xiǎng 🔊</span></div>
+          <div class="text-xs mt-1">〜したい</div>
+        </div>
         <div class="text-slate-300">＋</div>
 
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">場所/相手</div><div class="font-bold text-lg tc bg-blue-100 text-blue-800 rounded py-1">在家<br><span class="text-xs font-normal text-blue-600">zài jiā</span></div><div class="text-xs mt-1">家で</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">場所/相手</div>
+          <div class="font-bold text-lg tc bg-blue-100 text-blue-800 rounded py-1">在家<br><span class="text-xs font-normal text-blue-600 pinyin-audio" onclick="speak('在家')">zài jiā 🔊</span></div>
+          <div class="text-xs mt-1">家で</div>
+        </div>
         <div class="text-slate-300 text-xl font-bold">➡</div>
 
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">動詞</div><div class="font-bold text-2xl tc bg-indigo-600 text-white rounded py-2 shadow-md">吃<br><span class="text-sm font-normal text-indigo-200">chī</span></div><div class="text-xs mt-1 font-bold">食べる</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">動詞</div>
+          <div class="font-bold text-2xl tc bg-indigo-600 text-white rounded py-2 shadow-md">吃<br><span class="text-sm font-normal text-indigo-200 pinyin-audio" onclick="speak('吃')">chī 🔊</span></div>
+          <div class="text-xs mt-1 font-bold">食べる</div>
+        </div>
         <div class="text-slate-300 text-xl font-bold">➡</div>
 
-        <div class="flex-1 px-2"><div class="text-sm text-slate-500 mb-1">結果/経験</div><div class="font-bold text-lg tc bg-green-100 text-green-800 rounded py-1">過<br><span class="text-xs font-normal text-green-600">guò</span></div><div class="text-xs mt-1">〜したこと(が)</div></div>
+        <div class="flex-1 px-2">
+          <div class="text-sm text-slate-500 mb-1">結果/経験</div>
+          <div class="font-bold text-lg tc bg-green-100 text-green-800 rounded py-1">過<br><span class="text-xs font-normal text-green-600 pinyin-audio" onclick="speak('過')">guò 🔊</span></div>
+          <div class="text-xs mt-1">〜したこと(が)</div>
+        </div>
         
       </div>
       <p class="text-center mt-4 text-slate-600 text-sm">「私は昨日、家で食べたいと思ったことはなかった」</p>
@@ -76,7 +124,7 @@
 
       <!-- LEFT: BEFORE VERB (The busy side) -->
       <div class="flex-[3] bg-blue-50/50 border-2 border-blue-200 rounded-3xl p-6 relative">
-        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-1 rounded-full font-bold shadow-sm text-sm md:text-base">
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-1 rounded-full font-bold shadow-sm text-sm md:text-base whitespace-nowrap">
           ⬅️ 前に置く（渋滞しやすい！）
         </div>
         
@@ -88,12 +136,12 @@
             <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100 timeline-dot">
               <h3 class="font-bold text-blue-700 mb-1">🕒 時間（いつ）</h3>
               <p class="tc text-slate-700"><span class="bg-blue-100 text-blue-800 px-1 rounded font-bold">今天</span> 我很忙。</p>
-              <p class="text-xs text-slate-500 mt-1">Jīntiān wǒ hěn máng.<br>（今日、私はとても忙しい）</p>
+              <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('今天我很忙。')">Jīntiān wǒ hěn máng. 🔊</span><br>（今日、私はとても忙しい）</p>
             </div>
             <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100 timeline-dot">
               <h3 class="font-bold text-red-600 mb-1">🚫 否定（しない・しなかった）</h3>
               <p class="tc text-slate-700">我 <span class="bg-red-100 text-red-800 px-1 rounded font-bold">不/沒</span> 喜歡。</p>
-              <p class="text-xs text-slate-500 mt-1">Wǒ bù/méi xǐhuān.<br>（私は好きではない／〜しなかった）</p>
+              <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('我不喜歡。我沒喜歡。')">Wǒ bù/méi xǐhuān. 🔊</span><br>（私は好きではない／〜しなかった）</p>
             </div>
           </div>
 
@@ -102,12 +150,12 @@
             <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100 timeline-dot">
               <h3 class="font-bold text-yellow-600 mb-1">💭 助動詞（気持ち・能力）</h3>
               <p class="tc text-slate-700">你 <span class="bg-yellow-100 text-yellow-800 px-1 rounded font-bold">應該/想</span> 去。</p>
-              <p class="text-xs text-slate-500 mt-1">Nǐ yīnggāi/xiǎng qù.<br>（あなたは行くべきだ／行きたい）</p>
+              <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('你應該去。你想去。')">Nǐ yīnggāi/xiǎng qù. 🔊</span><br>（あなたは行くべきだ／行きたい）</p>
             </div>
             <div class="bg-white rounded-xl p-4 shadow-sm border border-blue-100 timeline-dot">
               <h3 class="font-bold text-blue-700 mb-1">📍 場所・相手（在, 跟, 給）</h3>
               <p class="tc text-slate-700">我 <span class="bg-blue-100 text-blue-800 px-1 rounded font-bold">跟朋友</span> 吃飯。</p>
-              <p class="text-xs text-slate-500 mt-1">Wǒ gēn péngyǒu chīfàn.<br>（友達とご飯を食べる）</p>
+              <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('我跟朋友吃飯。')">Wǒ gēn péngyǒu chīfàn. 🔊</span><br>（友達とご飯を食べる）</p>
             </div>
           </div>
 
@@ -118,22 +166,22 @@
               <div>
                 <span class="tc font-bold text-indigo-700">都 (dōu) 全部</span><br>
                 <span class="tc text-sm">我們 <strong class="text-blue-600">都</strong> 喜歡。</span><br>
-                <span class="text-xs text-slate-500">Wǒmen dōu xǐhuān.</span>
+                <span class="text-xs text-slate-500 pinyin-audio" onclick="speak('我們都喜歡。')">Wǒmen dōu xǐhuān. 🔊</span>
               </div>
               <div>
                 <span class="tc font-bold text-indigo-700">有一點 (yǒuyìdiǎn) ちょっと</span><br>
                 <span class="tc text-sm"><strong class="text-blue-600">有一點</strong> 冷。</span><br>
-                <span class="text-xs text-slate-500">Yǒuyìdiǎn lěng.</span>
+                <span class="text-xs text-slate-500 pinyin-audio" onclick="speak('有一點冷。')">Yǒuyìdiǎn lěng. 🔊</span>
               </div>
               <div>
                 <span class="tc font-bold text-indigo-700">就 (jiù) もう(早い)</span><br>
                 <span class="tc text-sm">12點 <strong class="text-blue-600">就</strong> 睡覺。</span><br>
-                <span class="text-xs text-slate-500">Shí'èr diǎn jiù shuìjiào.</span>
+                <span class="text-xs text-slate-500 pinyin-audio" onclick="speak('十二點就睡覺。')">Shí'èr diǎn jiù shuìjiào. 🔊</span>
               </div>
               <div>
                 <span class="tc font-bold text-indigo-700">才 (cái) やっと(遅い)</span><br>
                 <span class="tc text-sm">12點 <strong class="text-blue-600">才</strong> 睡覺。</span><br>
-                <span class="text-xs text-slate-500">Shí'èr diǎn cái shuìjiào.</span>
+                <span class="text-xs text-slate-500 pinyin-audio" onclick="speak('十二點才睡覺。')">Shí'èr diǎn cái shuìjiào. 🔊</span>
               </div>
             </div>
           </div>
@@ -162,14 +210,14 @@
             <h3 class="font-bold text-green-700 mb-1">🎵 様態補語（結果の状態）</h3>
             <p class="tc text-slate-700 font-bold mb-1">得 (de)</p>
             <p class="tc text-slate-600 text-sm">他唱 <strong class="text-green-600 bg-green-100 px-1 rounded">得</strong> 很好聽。</p>
-            <p class="text-xs text-slate-500 mt-1">Tā chàng de hěn hǎotīng.<br>（彼は歌うのが上手だ）</p>
+            <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('他唱得很好聽。')">Tā chàng de hěn hǎotīng. 🔊</span><br>（彼は歌うのが上手だ）</p>
           </div>
 
           <div class="bg-white rounded-xl p-4 shadow-sm border border-green-100">
             <h3 class="font-bold text-green-700 mb-1">⚖️ 程度（要望・比較）</h3>
             <p class="tc text-slate-700 font-bold mb-1">一點 (yìdiǎn)</p>
             <p class="tc text-slate-600 text-sm">請便宜 <strong class="text-green-600 bg-green-100 px-1 rounded">一點</strong>。</p>
-            <p class="text-xs text-slate-500 mt-1">Qǐng piányí yìdiǎn.<br>（もう少し安くして）</p>
+            <p class="text-xs text-slate-500 mt-1"><span class="pinyin-audio" onclick="speak('請便宜一點。')">Qǐng piányí yìdiǎn. 🔊</span><br>（もう少し安くして）</p>
           </div>
 
           <div class="bg-white rounded-xl p-4 shadow-sm border border-green-100">
@@ -177,15 +225,15 @@
             <ul class="space-y-3 text-sm">
               <li class="tc">
                 <strong class="text-green-700">過 (guò)</strong> : 吃 <strong class="text-green-600 bg-green-100 px-1 rounded">過</strong>
-                <div class="text-xs text-slate-500 mt-1 font-sans">chī guò (食べた事がある)</div>
+                <div class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('吃過')">chī guò 🔊</span> (食べた事がある)</div>
               </li>
               <li class="tc">
                 <strong class="text-green-700">了 (le)</strong> : 買 <strong class="text-green-600 bg-green-100 px-1 rounded">了</strong>
-                <div class="text-xs text-slate-500 mt-1 font-sans">mǎi le (買った)</div>
+                <div class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('買了')">mǎi le 🔊</span> (買った)</div>
               </li>
               <li class="tc">
                 <strong class="text-green-700">一下 (yíxià)</strong> : 等 <strong class="text-green-600 bg-green-100 px-1 rounded">一下</strong>
-                <div class="text-xs text-slate-500 mt-1 font-sans">děng yíxià (ちょっと待って)</div>
+                <div class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('等一下')">děng yíxià 🔊</span> (ちょっと待って)</div>
               </li>
             </ul>
           </div>
@@ -195,7 +243,7 @@
 
     </div>
 
-    <!-- NEW SECTION: Common Traps for Japanese Speakers -->
+    <!-- Common Traps for Japanese Speakers -->
     <div class="mt-12 bg-red-50 border-t-4 border-red-500 rounded-xl shadow-md p-6">
       <h2 class="text-2xl font-bold text-red-800 mb-6 text-center flex items-center justify-center">
         <span class="text-3xl mr-2">⚠️</span> 日本人学習者が陥りやすい！語順の3大トラップ
@@ -211,7 +259,7 @@
           <div class="bg-slate-50 p-3 rounded text-sm tc space-y-2">
             <p class="wrong-strike">❌ 今天 <span class="font-bold">是</span> 很冷。</p>
             <p class="text-green-700">✅ 今天 <span class="font-bold">很</span> 冷。</p>
-            <p class="text-xs text-slate-500 mt-1 font-sans">Jīntiān hěn lěng.<br>※肯定文の形容詞には、ただの飾りとして「很(hěn)」を置くのがルール。</p>
+            <p class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('今天很冷。')">Jīntiān hěn lěng. 🔊</span><br>※肯定文の形容詞には、ただの飾りとして「很(hěn)」を置くのがルール。</p>
           </div>
         </div>
 
@@ -219,11 +267,11 @@
         <div class="bg-white rounded-lg p-5 shadow-sm border border-red-100">
           <div class="bg-red-100 text-red-800 text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ②：時間</div>
           <h3 class="font-bold text-lg mb-2">「いつ」と「長さ」の混同</h3>
-          <p class="text-sm text-slate-600 mb-4">日本語はどちらも前に置けますが、中国語は「いつ(点)」は前、「どのくらい(長さ)」は後ろと厳密に分かれます。</p>
+          <p class="text-sm text-slate-600 mb-4">中国語は「いつ(点)」は前、「どのくらい(長さ)」は後ろと厳密に分かれます。</p>
           <div class="bg-slate-50 p-3 rounded text-sm tc space-y-2">
             <p class="wrong-strike">❌ 我 <span class="font-bold">兩個小時</span> 看書。</p>
             <p class="text-green-700">✅ 我 看書 看了 <span class="font-bold">兩個小時</span>。</p>
-            <p class="text-xs text-slate-500 mt-1 font-sans">Wǒ kànshū kàn le liǎng ge xiǎoshí.<br>「昨天(きのう)」など発生したタイミングは動詞の前。「兩小時(2時間)」などかかった時間は動詞の後ろ！</p>
+            <p class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('我看書看了兩個小時。')">Wǒ kànshū kàn le liǎng ge xiǎoshí. 🔊</span><br>「昨天(きのう)」など発生したタイミングは動詞の前。「兩小時(2時間)」などかかった時間は動詞の後ろ！</p>
           </div>
         </div>
 
@@ -235,14 +283,14 @@
           <div class="bg-slate-50 p-3 rounded text-sm tc space-y-2">
             <p class="wrong-strike">❌ 我 吃飯 <span class="font-bold">在餐廳</span>。</p>
             <p class="text-green-700">✅ 我 <span class="font-bold">在餐廳</span> 吃飯。</p>
-            <p class="text-xs text-slate-500 mt-1 font-sans">Wǒ zài cāntīng chīfàn.<br>※例外：「住(住む)」「放(置く)」など、移動した結果そこにとどまる一部の動詞だけは「住在台北(zhù zài Táiběi)」と後ろに置きます。</p>
+            <p class="text-xs text-slate-500 mt-1 font-sans"><span class="pinyin-audio" onclick="speak('我在餐廳吃飯。')">Wǒ zài cāntīng chīfàn. 🔊</span><br>※例外：「住(住む)」「放(置く)」など、一部の動詞だけは「住在台北(zhù zài Táiběi)」と後ろに置きます。</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- NEW SECTION: Question Patterns -->
+    <!-- Question Patterns -->
     <div class="mt-12 bg-orange-50 border-t-4 border-orange-500 rounded-xl shadow-md p-6">
       <h2 class="text-2xl font-bold text-orange-900 mb-6 text-center flex items-center justify-center">
         <span class="text-3xl mr-2">❓</span> 疑問文の語順パターン（完全網羅）
@@ -262,7 +310,7 @@
             <div class="border-t border-slate-200 my-2"></div>
             <p class="text-slate-500 text-xs">【疑問】あなたは台湾が好きですか？</p>
             <p class="tc font-bold text-orange-700">你喜歡台灣 <span class="text-xl">嗎？</span></p>
-            <p class="text-xs text-slate-500 font-sans">Nǐ xǐhuān Táiwān ma?</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('你喜歡台灣嗎？')">Nǐ xǐhuān Táiwān ma? 🔊</span></p>
           </div>
         </div>
 
@@ -277,7 +325,7 @@
             <div class="border-t border-slate-200 my-2"></div>
             <p class="text-slate-500 text-xs">【疑問】昨日、<span class="font-bold text-slate-700">どこ</span>に行きましたか？</p>
             <p class="tc font-bold text-orange-700">昨天去 <span class="text-xl">哪裡？</span></p>
-            <p class="text-xs text-slate-500 font-sans">Zuótiān qù nǎlǐ?</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('昨天去哪裡？')">Zuótiān qù nǎlǐ? 🔊</span></p>
           </div>
         </div>
 
@@ -289,17 +337,17 @@
           <div class="bg-slate-50 p-3 rounded text-sm space-y-2">
             <p class="text-slate-500 text-xs">要不要(yào bú yào)：要る？要らない？</p>
             <p class="tc font-bold text-orange-700">你 <span class="text-lg">去不去</span> 台灣？</p>
-            <p class="text-xs text-slate-500 font-sans">Nǐ qù bú qù Táiwān? (台湾行く？行かない？)</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('你去不去台灣？')">Nǐ qù bú qù Táiwān? 🔊</span> (行く？行かない？)</p>
             <div class="border-t border-slate-200 my-2"></div>
             <p class="tc font-bold text-orange-700">你 <span class="text-lg">有沒有</span> 吃飯？</p>
-            <p class="text-xs text-slate-500 font-sans">Nǐ yǒu méi yǒu chīfàn? (ご飯食べた？)</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('你有沒有吃飯？')">Nǐ yǒu méi yǒu chīfàn? 🔊</span> (ご飯食べた？)</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- NEW SECTION: "De" Patterns (Complements) -->
+    <!-- "De" Patterns (Complements) -->
     <div class="mt-12 bg-teal-50 border-t-4 border-teal-500 rounded-xl shadow-md p-6">
       <h2 class="text-2xl font-bold text-teal-900 mb-6 text-center flex items-center justify-center">
         <span class="text-3xl mr-2">🧩</span> 台湾華語の壁！「得(de)」の3大パターン
@@ -316,11 +364,11 @@
           <div class="bg-slate-50 p-3 rounded text-sm space-y-2">
             <p class="text-slate-500 text-xs">【例】中国語を話すのが上手だ。</p>
             <p class="tc font-bold text-teal-800">中文說 <span class="text-lg text-teal-600">得</span> 很好。</p>
-            <p class="text-xs text-slate-500 font-sans">Zhōngwén shuō de hěn hǎo.</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('中文說得很好。')">Zhōngwén shuō de hěn hǎo. 🔊</span></p>
             <div class="border-t border-slate-200 my-2"></div>
             <p class="text-slate-500 text-xs">【例】走るのがとても速い。</p>
             <p class="tc font-bold text-teal-800">跑 <span class="text-lg text-teal-600">得</span> 很快。</p>
-            <p class="text-xs text-slate-500 font-sans">Pǎo de hěn kuài.</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('跑得很快。')">Pǎo de hěn kuài. 🔊</span></p>
           </div>
         </div>
 
@@ -332,11 +380,11 @@
           <div class="bg-slate-50 p-3 rounded text-sm space-y-2">
             <p class="text-slate-500 text-xs">【例】死ぬほど疲れた。</p>
             <p class="tc font-bold text-teal-800">累 <span class="text-lg text-teal-600">得</span> 要命。</p>
-            <p class="text-xs text-slate-500 font-sans">Lèi de yàomìng.</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('累得要命。')">Lèi de yàomìng. 🔊</span></p>
             <div class="border-t border-slate-200 my-2"></div>
             <p class="text-slate-500 text-xs">【例】死ぬほど暑い（台湾で超頻出！）</p>
             <p class="tc font-bold text-teal-800">熱 <span class="text-lg text-teal-600">得</span> 半死。</p>
-            <p class="text-xs text-slate-500 font-sans">Rè de bànsǐ.</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('熱得半死。')">Rè de bànsǐ. 🔊</span></p>
           </div>
         </div>
 
@@ -349,20 +397,23 @@
           <div class="bg-slate-50 p-3 rounded text-sm space-y-2">
             <p class="text-slate-500 text-xs">【肯定：聞いて理解できる】</p>
             <p class="tc font-bold text-teal-800">聽 <span class="text-lg text-teal-600">得</span> 懂</p>
-            <p class="text-xs text-slate-500 font-sans">tīng de dǒng</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('聽得懂')">tīng de dǒng 🔊</span></p>
             <div class="border-t border-slate-200 my-2"></div>
             <p class="text-slate-500 text-xs">【否定：聞いて理解<span class="font-bold text-red-500">できない</span>】</p>
             <p class="tc font-bold text-red-700">聽 <span class="text-lg text-red-500">不</span> 懂</p>
-            <p class="text-xs text-slate-500 font-sans">tīng bù dǒng</p>
+            <p class="text-xs text-slate-500 font-sans"><span class="pinyin-audio" onclick="speak('聽不懂')">tīng bù dǒng 🔊</span></p>
             <div class="border-t border-slate-200 my-2"></div>
              <p class="text-slate-500 text-xs">【例】食べ切れる？ / 食べ切れない</p>
-             <p class="tc font-bold text-teal-800">吃得完？ / 吃不完。</p>
+             <p class="tc font-bold text-teal-800">
+               <span class="pinyin-audio" onclick="speak('吃得完？')">吃得完？ 🔊</span> / 
+               <span class="pinyin-audio" onclick="speak('吃不完。')">吃不完。 🔊</span>
+             </p>
           </div>
         </div>
 
       </div>
 
-      <!-- NEW SECTION: 得(děi) Special Trap -->
+      <!-- 得(děi) Special Trap -->
       <div class="mt-6 bg-red-50 border border-red-200 rounded-xl shadow-sm p-5 relative overflow-hidden">
         <div class="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-br-lg">番外編・超重要トラップ</div>
         <h3 class="font-bold text-xl mb-2 text-red-800 mt-4 flex items-center">
@@ -373,35 +424,42 @@
           <div class="bg-white p-4 rounded border border-red-100">
             <p class="text-slate-500 text-xs mb-1">【例】もう行かなくちゃ！（超頻出フレーズ）</p>
             <p class="tc font-bold text-slate-800">我 <span class="text-xl text-red-600 bg-red-100 px-1 rounded">得</span> 走了。</p>
-            <p class="text-xs text-slate-500 font-sans mt-1">Wǒ děi zǒu le.</p>
+            <p class="text-xs text-slate-500 font-sans mt-1"><span class="pinyin-audio" onclick="speak('我得走了。')">Wǒ děi zǒu le. 🔊</span></p>
           </div>
           <div class="bg-white p-4 rounded border border-red-100">
             <p class="text-slate-500 text-xs mb-1">【例】あなたは薬を飲まなければならない。</p>
             <p class="tc font-bold text-slate-800">你 <span class="text-xl text-red-600 bg-red-100 px-1 rounded">得</span> 吃藥。</p>
-            <p class="text-xs text-slate-500 font-sans mt-1">Nǐ děi chī yào.</p>
+            <p class="text-xs text-slate-500 font-sans mt-1"><span class="pinyin-audio" onclick="speak('你得吃藥。')">Nǐ děi chī yào. 🔊</span></p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- NEW SECTION: Common Traps for Japanese Speakers -->
-    <div class="mt-12 bg-red-50 border-t-4 border-red-500 rounded-xl shadow-md p-6">
-          <h3 class="font-bold text-lg mb-2 text-purple-800">② イラストの「真逆」を疑え</h3>
-          <p class="text-sm text-slate-600 mb-3">イラストを見て答える問題では、**「絵と正反対の状況」**を説明するダミーが必ず用意されます。</p>
+    <!-- TOCFL Test Strategies (Fixed Layout Section) -->
+    <div class="mt-12 bg-purple-50 border-t-4 border-purple-500 rounded-xl shadow-md p-6">
+      <h2 class="text-2xl font-bold text-purple-900 mb-6 text-center flex items-center justify-center">
+        <span class="text-3xl mr-2">🎧</span> TOCFL (Band A) リスニング試験対策
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Strategy 2 -->
+        <div class="bg-white rounded-lg p-5 shadow-sm border border-purple-100">
+          <h3 class="font-bold text-lg mb-2 text-purple-800">① イラストの「真逆」を疑え</h3>
+          <p class="text-sm text-slate-600 mb-3">イラストを見て答える問題では、<strong class="text-purple-700">「絵と正反対の状況」</strong>を説明するダミーが必ず用意されます。</p>
           <ul class="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-100">
-            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>絵が「机の下(下面)」<br>→ ダミーは高確率で「上面(上)」や「裡面(中)」。</div></li>
-            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>絵が「笑っている(高興)」<br>→ ダミーは「生氣(怒る)」「難過(悲しい)」。</div></li>
+            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>絵が「机の下(<span class="pinyin-audio" onclick="speak('下面')">xiàmiàn 🔊</span>)」<br>→ ダミーは高確率で「上面(上)」や「裡面(中)」。</div></li>
+            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>絵が「笑っている(<span class="pinyin-audio" onclick="speak('高興')">gāoxìng 🔊</span>)」<br>→ ダミーは「生氣(怒る)」「難過(悲しい)」。</div></li>
           </ul>
         </div>
 
-        <!-- Strategy 3: Time and Numbers Traps -->
+        <!-- Strategy 3 -->
         <div class="bg-white rounded-lg p-5 shadow-sm border border-purple-100 relative overflow-hidden">
           <div class="absolute top-0 right-0 bg-purple-200 text-purple-800 text-xs font-bold px-2 py-1 rounded-bl-lg">全パート共通</div>
-          <h3 class="font-bold text-lg mb-2 text-purple-800">③ 「数字・時間」の鉄板トラップ</h3>
+          <h3 class="font-bold text-lg mb-2 text-purple-800">② 「数字・時間」の鉄板トラップ</h3>
           <p class="text-sm text-slate-600 mb-3">数字の聞き取り・読み取りは、TOCFL Band A の最大の壁であり得点源です。</p>
           <ul class="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-100">
-            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>**「2」の罠**<br>時刻の2時は「二點」ではなく「<span class="font-bold text-red-600 tc">兩點</span>」。二點という選択肢は即消去。</div></li>
-            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div>**言い換えの罠**<br>音声で「1時30分」と言い、選択肢は「<span class="font-bold text-red-600 tc">一點半</span>」になっているパターンは超頻出。</div></li>
+            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div><strong>「2」の罠</strong><br>時刻の2時は「二點」ではなく「<span class="font-bold text-red-600 tc pinyin-audio" onclick="speak('兩點')">兩點 (liǎng diǎn) 🔊</span>」。二點という選択肢は即消去。</div></li>
+            <li class="flex items-start"><span class="text-purple-600 mr-1">▶</span> <div><strong>言い換えの罠</strong><br>音声で「1時30分」と言い、選択肢は「<span class="font-bold text-red-600 tc pinyin-audio" onclick="speak('一點半')">一點半 (yī diǎn bàn) 🔊</span>」になっているパターンは超頻出。</div></li>
           </ul>
         </div>
 
@@ -409,6 +467,45 @@
     </div>
 
   </div>
+
+  <!-- Audio Playback Script -->
+  <script>
+    // ブラウザの音声エンジンをあらかじめロードしておく（Chrome対策）
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+      };
+    }
+
+    // 音声読み上げ関数
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        alert("お使いのブラウザは音声読み上げ機能（Web Speech API）に対応していません。");
+        return;
+      }
+
+      // 読み上げ中の音声をキャンセルして新しく再生
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      // 台湾華語 (繁体字) に設定
+      utterance.lang = 'zh-TW';
+      
+      // デバイスにインストールされている音声リストを取得し、台湾の声を優先
+      const voices = window.speechSynthesis.getVoices();
+      const twVoice = voices.find(voice => voice.lang === 'zh-TW' || voice.lang === 'zh-Hant-TW');
+      
+      if (twVoice) {
+        utterance.voice = twVoice;
+      }
+
+      // 話すスピード（1.0が標準。少しゆっくりにしたい場合は0.85などに変更可能）
+      utterance.rate = 0.9; 
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  </script>
 
 </body>
 </html>
