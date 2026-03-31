@@ -15,9 +15,18 @@
         .tc {
             font-family: 'Noto Sans TC', sans-serif;
         }
+        /* カスタム通知用のスタイル */
+        #notification {
+            transition: opacity 0.3s ease-in-out;
+        }
     </style>
 </head>
-<body class="antialiased min-h-screen pb-12">
+<body class="antialiased min-h-screen pb-12 relative">
+
+    <!-- 通知エリア -->
+    <div id="notification" class="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-50">
+        お使いのブラウザは音声再生に対応していません。
+    </div>
 
     <!-- Header -->
     <header class="bg-teal-600 text-white py-12 px-6 text-center shadow-md relative overflow-hidden">
@@ -464,6 +473,134 @@
                 </div>
             </div>
 
+            <!-- カード：写真を撮る -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-fuchsia-500 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>📸 写真を撮る</span>
+                    <span class="text-fuchsia-200 text-sm">目的語の有無</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">拍照</div>
+                                <div class="text-xs text-slate-500">pāizhào</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真を撮る</span>
+                                <p class="text-sm">最も一般的。カジュアルな撮影から広く使われる。対象を言う時は「拍」だけを使う事が多い。<br><span class="text-fuchsia-600 tc text-xs">例：拍風景（風景を撮る）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">照相</div>
+                                <div class="text-xs text-slate-500">zhàoxiàng</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真撮影する</span>
+                                <p class="text-sm">やや改まった表現。<b>後ろに目的語（何を撮るか）を置けない離合詞。</b><br><span class="text-fuchsia-600 tc text-xs">❌ 照相風景 → ⭕️ 照風景</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード：送る -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-lime-600 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>📦 送る・届ける</span>
+                    <span class="text-lime-200 text-sm">手段の違い</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">送</div>
+                                <div class="text-xs text-slate-500">sòng</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">届ける・贈る</span>
+                                <p class="text-sm"><b>人が直接</b>持っていく、またはプレゼントする（贈る）時に使う。<br><span class="text-lime-700 tc text-xs">例：送禮物（プレゼントを贈る）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">寄</div>
+                                <div class="text-xs text-slate-500">jì</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">郵送する</span>
+                                <p class="text-sm"><b>郵便や宅配便など</b>、システムを使って物を送る時に使う。<br><span class="text-lime-700 tc text-xs">例：寄信（手紙を出す）</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード：身につける -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-pink-400 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>👕 身につける</span>
+                    <span class="text-pink-100 text-sm">部位と種類</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">穿</div>
+                                <div class="text-xs text-slate-500">chuān</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">着る・履く</span>
+                                <p class="text-sm">服、ズボン、靴、靴下など、<b>体を通すもの</b>全般。<br><span class="text-pink-600 tc text-xs">例：穿衣服、穿鞋子</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">戴</div>
+                                <div class="text-xs text-slate-500">dài</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">被る・つける</span>
+                                <p class="text-sm">帽子、眼鏡、時計、アクセサリーなど、<b>体に付加するもの</b>。<br><span class="text-pink-600 tc text-xs">例：戴帽子、戴眼鏡</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード：教える -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-cyan-600 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>📢 教える</span>
+                    <span class="text-cyan-200 text-sm">知識 vs 情報</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">教</div>
+                                <div class="text-xs text-slate-500">jiāo</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">指導する</span>
+                                <p class="text-sm">勉強、技術、言語など、<b>時間をかけて身につくこと</b>を教える時に使う。<br><span class="text-cyan-700 tc text-xs">例：教中文（中国語を教える）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">告訴</div>
+                                <div class="text-xs text-slate-500">gàosù</div>
+                            </div>
+                            <div>
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block border border-red-200">日本人の盲点</span>
+                                <p class="text-sm text-slate-700">電話番号、名前、道順など、<b>「情報を伝える」だけの意味の「教える」</b>はこちらを使います。<br><span class="text-red-600 tc text-xs">⭕️ 告訴我你的電話號碼<br>❌ 教我你的電話號碼</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- カード：その他ペア -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 md:col-span-2">
                 <div class="bg-slate-500 text-white py-3 px-5 font-bold flex justify-between items-center">
@@ -792,6 +929,55 @@
                 </ul>
             </div>
 
+            <!-- グループ: tiao -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: tiao</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700">條</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">tiáo</span>
+                            <span class="block text-xs">細長いもの(量詞)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700">跳</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">tiào</span>
+                            <span class="block text-xs">跳ぶ/跳舞(踊る)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: chuan / chuang -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: n / ng</div>
+                <ul class="space-y-2">
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800">穿</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">chuān</span>
+                            <span class="block text-xs">着る</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-200">
+                        <span class="tc text-xl font-bold text-amber-700">床</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">chuáng</span>
+                            <span class="block text-xs">ベッド</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800">窗</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">chuāng</span>
+                            <span class="block text-xs">窓</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
         </div>
 
         <!-- PART 3: 定番の引っかけ -->
@@ -951,6 +1137,42 @@
                 </div>
             </div>
 
+            <!-- カード：「少し」のワナ -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-emerald-600 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>🤏 「少し」のワナ</span>
+                    <span class="text-emerald-200 text-sm">語順が逆転！</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4 items-center">
+                            <div class="w-16 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">一點</div>
+                                <div class="text-xs text-slate-500">yìdiǎn</div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-slate-100 rounded p-2 text-sm font-mono text-center">
+                                    <span class="text-blue-600">形容詞</span> + <span class="text-emerald-600 font-bold tc">一點</span>
+                                </div>
+                                <p class="text-xs mt-1 text-slate-600">比較して「（もっと）〜してほしい」という要求や変化。<br>例：便宜一點（もう少し安くして）</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
+                            <div class="w-16 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800">有點</div>
+                                <div class="text-xs text-slate-500">yǒudiǎn</div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-slate-100 rounded p-2 text-sm font-mono text-center">
+                                    <span class="text-emerald-600 font-bold tc">有點</span> + <span class="text-red-500">ネガティブな形容詞</span>
+                                </div>
+                                <p class="text-xs mt-1 text-slate-600">自分にとって「少し〜だ（嫌だなぁ）」という不満や状況。<br>例：有點貴（ちょっと高いなぁ）</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
         <div class="text-center bg-teal-50 rounded-xl p-6 border border-teal-100">
@@ -961,6 +1183,17 @@
     </main>
 
     <script>
+        // カスタム通知機能（alertの代用）
+        function showNotification(message) {
+            const notif = document.getElementById('notification');
+            notif.textContent = message;
+            notif.classList.remove('opacity-0');
+            
+            setTimeout(() => {
+                notif.classList.add('opacity-0');
+            }, 3000);
+        }
+
         // TTS (Text-to-Speech) 設定：台湾華語の音声再生
         document.addEventListener('DOMContentLoaded', () => {
             // 中国語の漢字がセットされているクラス（文字サイズが大きいもの）を全て取得
@@ -1003,7 +1236,7 @@
 
                         window.speechSynthesis.speak(utterance);
                     } else {
-                        alert("お使いのブラウザは音声再生に対応していません。");
+                        showNotification("お使いのブラウザは音声再生に対応していません。");
                     }
                 });
             });
