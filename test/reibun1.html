@@ -44,7 +44,7 @@
 <body class="antialiased min-h-screen pb-16">
 
     <!-- 通知エリア -->
-    <div id="notification" class="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-50">
+    <div id="notification" class="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-50 transition-opacity duration-300">
         お使いのブラウザは音声再生に対応していません。
     </div>
 
@@ -66,18 +66,27 @@
         </div>
     </header>
 
-    <!-- コントロールバー（全て開閉） -->
-    <div class="max-w-4xl mx-auto px-4 mt-6 flex justify-end gap-3">
-        <button onclick="toggleAllAnswers(true)" class="text-sm font-bold text-teal-600 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-200 hover:bg-teal-100 transition-colors">
-            全て開く
-        </button>
-        <button onclick="toggleAllAnswers(false)" class="text-sm font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-200 transition-colors">
-            全て閉じる
-        </button>
+    <!-- コントロールバー（自動再生 ＆ 全て開閉） -->
+    <div class="max-w-4xl mx-auto px-4 mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <!-- 自動再生トグル -->
+        <div class="w-full md:w-auto">
+            <button id="autoplay-btn" onclick="toggleAutoPlay()" class="w-full md:w-auto text-base font-bold text-indigo-600 bg-indigo-50 px-5 py-2.5 rounded-lg border-2 border-indigo-200 hover:bg-indigo-100 transition-colors shadow-sm flex items-center justify-center gap-2">
+                <span class="text-xl">▶</span> <span>自動再生を開始</span>
+            </button>
+        </div>
+        <!-- 開閉トグル -->
+        <div class="flex gap-3 w-full md:w-auto">
+            <button onclick="toggleAllAnswers(true)" class="flex-1 md:flex-none text-sm font-bold text-teal-600 bg-teal-50 px-4 py-2 rounded-lg border border-teal-200 hover:bg-teal-100 transition-colors shadow-sm">
+                全て開く
+            </button>
+            <button onclick="toggleAllAnswers(false)" class="flex-1 md:flex-none text-sm font-bold text-slate-500 bg-slate-100 px-4 py-2 rounded-lg border border-slate-200 hover:bg-slate-200 transition-colors shadow-sm">
+                全て閉じる
+            </button>
+        </div>
     </div>
 
     <!-- メインコンテンツ (JSで生成) -->
-    <main id="app-container" class="max-w-4xl mx-auto px-4 mt-4 space-y-10">
+    <main id="app-container" class="max-w-4xl mx-auto px-4 mt-6 space-y-10">
         <!-- ここにフレーズリストがレンダリングされます -->
     </main>
 
@@ -91,129 +100,135 @@
             {
                 category: "🧍 1. 基本の人称・紹介・認識",
                 items: [
-                    { id: 1, zh: "我是日本人。", py: "Wǒ shì Rìběnrén.", jp: "私は日本人です。" },
-                    { id: 2, zh: "你叫什麼名字？", py: "Nǐ jiào shénme míngzi?", jp: "あなたの名前は何ですか？" },
-                    { id: 3, zh: "那個男的是誰？", py: "Nàge nán de shì shéi?", jp: "あの男の人は誰ですか？" },
-                    { id: 4, zh: "我們是學生。", py: "Wǒmen shì xuéshēng.", jp: "私たちは学生です。" },
-                    { id: 5, zh: "您好，請問...", py: "Nín hǎo, qǐngwèn...", jp: "こんにちは、お尋ねします..." },
-                    { id: 6, zh: "這是我的書。", py: "Zhè shì wǒ de shū.", jp: "これは私の本です。" },
-                    { id: 7, zh: "她是我的好朋友。", py: "Tā shì wǒ de hǎo péngyǒu.", jp: "彼女は私の親友です。" },
-                    { id: 8, zh: "很高興認識你。", py: "Hěn gāoxìng rènshì nǐ.", jp: "あなたと知り合えて嬉しいです。" },
-                    { id: 9, zh: "你知道這件事嗎？", py: "Nǐ zhīdào zhè jiàn shì ma?", jp: "あなたはこの事を知っていますか？" },
-                    { id: 10, zh: "我以為他是老師。", py: "Wǒ yǐwéi tā shì lǎoshī.", jp: "私は彼が先生だと思い込んでいました。", note: "「以為（yǐwéi）」は「（実際は違ったが）〜だと思い込む」という誤解を表す超重要単語。リスニングで「実際はどうだったか？」を問われます。" },
-                    { id: 11, zh: "我覺得有點難。", py: "Wǒ juéde yǒudiǎn nán.", jp: "私は少し難しいと感じます。" },
-                    { id: 12, zh: "他懂很多事情。", py: "Tā dǒng hěn duō shìqíng.", jp: "彼は多くのことを理解しています。" },
-                    { id: 13, zh: "我想學中文。", py: "Wǒ xiǎng xué Zhōngwén.", jp: "私は中国語を学びたいです。" },
-                    { id: 14, zh: "他每天念書。", py: "Tā měitiān niànshū.", jp: "彼は毎日勉強します。" },
-                    { id: 15, zh: "大家一起學習吧！", py: "Dàjiā yìqǐ xuéxí ba!", jp: "みんなで一緒に学習しましょう！" }
+                    { id: 1, zh: "我是日本人。", py: "Wǒ shì Rìběnrén.", jp: "私は日本人です。", note: "<strong class='text-amber-700'>【是】</strong> A=Bを表す基本動詞。否定は「不」を使います。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:是不是|py:shìbùshì]〜？（〜ですよね？）という反復疑問文がリスニングで頻出です。" },
+                    { id: 2, zh: "你叫什麼名字？", py: "Nǐ jiào shénme míngzi?", jp: "あなたの名前は何ですか？", note: "<strong class='text-amber-700'>【叫】</strong> 〜という名前である、呼ぶ。類義語に[zh:稱呼|py:chēnghū]（丁寧な呼び方）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:請叫他來|py:qǐng jiào tā lái]（彼を呼んできてください）のような使役（〜させる）の用法もBand Aで狙われます。" },
+                    { id: 3, zh: "那個男的是誰？", py: "Nàge nán de shì shéi?", jp: "あの男の人は誰ですか？", note: "<strong class='text-amber-700'>【的】</strong> [zh:男的|py:nán de]で名詞化（男の人）されます。<strong class='text-amber-700'>【誰】</strong> shéi/shuíと二つの発音があります。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:誰的|py:shéi de]（誰の）と所有を表す形に注意してください。" },
+                    { id: 4, zh: "我們是學生。", py: "Wǒmen shì xuéshēng.", jp: "私たちは学生です。", note: "<strong class='text-amber-700'>【我們】</strong> 私たち。話し言葉では[zh:咱|py:zán]を使う地域もありますが、台湾ではあまり使いません。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 複数形の「們」は人称代名詞と人を表す名詞にしか付きません（❌[zh:狗們|py:gǒu men]）。" },
+                    { id: 5, zh: "您好，請問...", py: "Nín hǎo, qǐngwèn...", jp: "こんにちは、お尋ねします...", note: "<strong class='text-amber-700'>【您】</strong> 「你」の敬称。<strong class='text-amber-700'>【請問】</strong> お尋ねします。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「請問」は質問前のクッション言葉です。[zh:問問題|py:wèn wèntí]（質問をする）のように動詞と名詞の使い分けに注意。" },
+                    { id: 6, zh: "這是我的書。", py: "Zhè shì wǒ de shū.", jp: "これは私の本です。", note: "<strong class='text-amber-700'>【這】</strong> これ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 指示代名詞（這/那）＋量詞＋名詞の語順が必須です（例：[zh:這本書|py:zhè běn shū]）。[zh:這書|py:zhè shū]とは言えません。" },
+                    { id: 7, zh: "她是我的好朋友。", py: "Tā shì wǒ de hǎo péngyǒu.", jp: "彼女は私の親友です。", note: "<strong class='text-amber-700'>【好】</strong> ここでは形容詞ではなく「とても仲が良い」という意味。類義語[zh:老朋友|py:lǎo péngyǒu]（昔からの友人）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「好＋動詞」で「〜しやすい、美しい」という形容詞を作る用法（[zh:好吃|py:hǎochī]、[zh:好看|py:hǎokàn]など）も頻出。" },
+                    { id: 8, zh: "很高興認識你。", py: "Hěn gāoxìng rènshì nǐ.", jp: "あなたと知り合えて嬉しいです。", note: "<strong class='text-amber-700'>【認識】</strong> （人を）知っている、知り合う。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「認識」は人との面識。「知道」は事実の認識。[zh:我認識他，可是不知道他住哪裡|py:wǒ rènshì tā, kěshì bù zhīdào tā zhù nǎlǐ]（彼とは面識があるが、住処は知らない）の違いが頻出。" },
+                    { id: 9, zh: "你知道這件事嗎？", py: "Nǐ zhīdào zhè jiàn shì ma?", jp: "あなたはこの事を知っていますか？", note: "<strong class='text-amber-700'>【知道】</strong> （事実や情報を）知っている、わかる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 事柄を数える量詞は「件」。[zh:這件事|py:zhè jiàn shì]の並び替え問題や穴埋め問題に注意。" },
+                    { id: 10, zh: "我以為他是老師。", py: "Wǒ yǐwéi tā shì lǎoshī.", jp: "私は彼が先生だと思い込んでいました。", note: "<strong class='text-amber-700'>【以為】</strong> 〜だと思い込む。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「実際は違った」という誤解のニュアンスが含まれます。リスニングで「実際はどうだったか？」を問われます。" },
+                    { id: 11, zh: "我覺得有點難。", py: "Wǒ juéde yǒudiǎn nán.", jp: "私は少し難しいと感じます。", note: "<strong class='text-amber-700'>【覺得】</strong> （主観的に）〜と感じる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「覺得」は主観的な感覚、「認為」は客観的・論理的な思考を表します。読解問題の筆者の主張でキーになります。" },
+                    { id: 12, zh: "他懂很多事情。", py: "Tā dǒng hěn duō shìqíng.", jp: "彼は多くのことを理解しています。", note: "<strong class='text-amber-700'>【懂】</strong> （学んで・聞いて）理解する、わかる。類義語「明白」「了解」。<strong class='text-amber-700'>【事情】</strong> 事柄。話し言葉では単に[zh:事|py:shì]とも言います。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:聽懂|py:tīng dǒng]や[zh:看不懂|py:kàn bù dǒng]など結果補語・可能補語の形で非常によく出題されます。" },
+                    { id: 13, zh: "我想學中文。", py: "Wǒ xiǎng xué Zhōngwén.", jp: "私は中国語を学びたいです。", note: "<strong class='text-amber-700'>【想】</strong> 〜したい（願望）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 単なる願望の「想」と、行動を伴う強い意志・要求の「要」のニュアンスの違いが問われます。" },
+                    { id: 14, zh: "他每天念書。", py: "Tā měitiān niànshū.", jp: "彼は毎日勉強します。", note: "<strong class='text-amber-700'>【念書】</strong> 勉強する。類義語[zh:學習|py:xuéxí]。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「念」は本来「声に出して読む」ことですが、台湾では広く「勉強する・学校に通う」意味で使われます。離合詞なので[zh:念三個小時的書|py:niàn sān ge xiǎoshí de shū]と分解できます。" },
+                    { id: 15, zh: "大家一起學習吧！", py: "Dàjiā yìqǐ xuéxí ba!", jp: "みんなで一緒に学習しましょう！", note: "<strong class='text-amber-700'>【大家】</strong> みんな。代名詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「一起＋動詞」の語順。並び替え問題で❌[zh:大家學習一起|py:dàjiā xuéxí yìqǐ]としないように注意。" }
                 ]
             },
             {
                 category: "🔢 2. 数字・時間・量詞のワナ",
                 items: [
-                    { id: 16, zh: "現在幾點？", py: "Xiànzài jǐ diǎn?", jp: "今何時ですか？" },
-                    { id: 17, zh: "現在十點。", py: "Xiànzài shí diǎn.", jp: "今10時です。" },
-                    { id: 18, zh: "你有幾張票？", py: "Nǐ yǒu jǐ zhāng piào?", jp: "あなたはチケット（平たいもの）を何枚持っていますか？" },
-                    { id: 19, zh: "我有兩張。", py: "Wǒ yǒu liǎng zhāng.", jp: "私は2枚持っています。", note: "「幾（jǐ）」は10以下の数を想定し、後ろに「量詞（張など）」が必須です。「二（èr）」ではなく「兩（liǎng）」を使う点も並び替え問題の定番です。" },
-                    { id: 20, zh: "這本書多少錢？", py: "Zhè běn shū duōshǎo qián?", jp: "この本（綴じられたもの）はいくらですか？", note: "「多少（duōshǎo）」は10以上の数を想定し、後ろの量詞を省略できます（多少\"個\"錢とは言わない）。" },
-                    { id: 21, zh: "兩百塊。", py: "Liǎng bǎi kuài.", jp: "200元です。" },
-                    { id: 22, zh: "一萬塊太貴了！", py: "Yí wàn kuài tài guì le!", jp: "1万円（1万元）は高すぎます！" },
-                    { id: 23, zh: "我買了兩件衣服。", py: "Wǒ mǎi le liǎng jiàn yīfú.", jp: "私は服を2着買いました。" },
-                    { id: 24, zh: "外面有三輛車。", py: "Wàimiàn yǒu sān liàng chē.", jp: "外に車（乗り物）が3台あります。" },
-                    { id: 25, zh: "這裡有一條河。", py: "Zhèlǐ yǒu yì tiáo hé.", jp: "ここに川（細長いもの）が1本あります。", note: "「件（服・事柄）」「輛（車）」「條（細長いもの、ズボンなど）」の使い分けは穴埋め問題の最頻出ポイントです。" },
-                    { id: 26, zh: "我明天有事。", py: "Wǒ míngtiān yǒu shì.", jp: "私は明日用事があります。" },
-                    { id: 27, zh: "我七點就起床了。", py: "Wǒ qī diǎn jiù qǐchuáng le.", jp: "私は7時にはもう起きました。（早い感覚）" },
-                    { id: 28, zh: "他十二點才睡覺。", py: "Tā shí'èr diǎn cái shuìjiào.", jp: "彼は12時になってやっと寝ました。（遅い感覚）", note: "「就（jiù）」は予想より早い・スムーズ（もう）、「才（cái）」は予想より遅い・手間取った（やっと）。リスニングで「この人は何時に起きたか？」などの計算問題に絡んできます。" },
-                    { id: 29, zh: "今天很晚了。", py: "Jīntiān hěn wǎn le.", jp: "今日はもう遅いです。" },
-                    { id: 30, zh: "我吃了一碗麵。", py: "Wǒ chī le yì wǎn miàn.", jp: "私は麺をお椀で1杯食べました。" },
-                    { id: 31, zh: "你什麼時候來？", py: "Nǐ shénme shíhòu lái?", jp: "あなたはいつ来ますか？" },
-                    { id: 32, zh: "已經結束了。", py: "Yǐjīng jiéshù le.", jp: "もう終わりました。" },
-                    { id: 33, zh: "我做完了。", py: "Wǒ zuò wán le.", jp: "私はやり終わりました。", note: "「結束（jiéshù）」は事柄が終わること。「完（wán）」は動詞の後ろについて「〜し終わる（結果補語）」として使います。" },
-                    { id: 34, zh: "快一點！", py: "Kuài yìdiǎn!", jp: "少し急いで！（もっと速くして）" },
-                    { id: 35, zh: "請等一下。", py: "Qǐng děng yíxià.", jp: "少し待ってください。" }
+                    { id: 16, zh: "現在幾點？", py: "Xiànzài jǐ diǎn?", jp: "今何時ですか？", note: "<strong class='text-amber-700'>【現在】</strong> いま。<strong class='text-amber-700'>【點】</strong> 時。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「幾點」は時刻を尋ねます。[zh:幾個小時|py:jǐ ge xiǎoshí]（何時間）という時間の長さを問う表現との違いに注意。" },
+                    { id: 17, zh: "現在十點。", py: "Xiànzài shí diǎn.", jp: "今10時です。", note: "<strong class='text-amber-700'>【點】</strong> 時。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 2時は❌[zh:二點|py:èr diǎn]ではなく⭕️[zh:兩點|py:liǎng diǎn]です。基本ですがリスニングでよく出ます。" },
+                    { id: 18, zh: "你有幾張票？", py: "Nǐ yǒu jǐ zhāng piào?", jp: "あなたはチケット（平たいもの）を何枚持っていますか？", note: "<strong class='text-amber-700'>【張】</strong> 平たいものの量詞。票、紙、桌子などに使います。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 疑問詞「幾」は10以下の数を想定し、必ず後ろに量詞が必要です。[zh:幾個|py:jǐ ge]などの形になります。" },
+                    { id: 19, zh: "我有兩張。", py: "Wǒ yǒu liǎng zhāng.", jp: "私は2枚持っています。", note: "<strong class='text-amber-700'>【兩】</strong> 2つ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 量詞の前では「二（èr）」ではなく「兩（liǎng）」を使います。並び替えや誤文訂正の定番トラップです。" },
+                    { id: 20, zh: "這本書多少錢？", py: "Zhè běn shū duōshǎo qián?", jp: "この本（綴じられたもの）はいくらですか？", note: "<strong class='text-amber-700'>【多少】</strong> いくつ、いくら。10以上の数を想定します。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 疑問詞「多少」の後ろの量詞は省略できます（❌[zh:多少個錢|py:duōshǎo ge qián]とは言わない）。「幾」との文法的な違いです。" },
+                    { id: 21, zh: "兩百塊。", py: "Liǎng bǎi kuài.", jp: "200元です。", note: "<strong class='text-amber-700'>【塊】</strong> お金の単位（元）の話し言葉。書き言葉では[zh:元|py:yuán]。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> お金の「塊」と速いの[zh:快|py:kuài]の発音問題（ピンイン選択）に注意。" },
+                    { id: 22, zh: "一萬塊太貴了！", py: "Yí wàn kuài tài guì le!", jp: "1万円（1万元）は高すぎます！", note: "<strong class='text-amber-700'>【貴】</strong> 高い（値段が）。反義語は[zh:便宜|py:piányí]（安い）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:太〜了|py:tài...le]（〜すぎる）はよくセットで使われます。「了」を忘れないように。" },
+                    { id: 23, zh: "我買了兩件衣服。", py: "Wǒ mǎi le liǎng jiàn yīfú.", jp: "私は服を2着買いました。", note: "<strong class='text-amber-700'>【件】</strong> 服や事柄の量詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「兩件衣服」の語順（数＋量詞＋名詞）は絶対ルール。並び替えでよく狙われます。" },
+                    { id: 24, zh: "外面有三輛車。", py: "Wàimiàn yǒu sān liàng chē.", jp: "外に車（乗り物）が3台あります。", note: "<strong class='text-amber-700'>【輛】</strong> 乗り物（車、自転車など）の量詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 存在を表す「有」は、「場所（外面）＋有＋人/物」の語順になります。" },
+                    { id: 25, zh: "這裡有一條河。", py: "Zhèlǐ yǒu yì tiáo hé.", jp: "ここに川（細長いもの）が1本あります。", note: "<strong class='text-amber-700'>【條】</strong> 細長いもの（川、道、ズボン、魚など）の量詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 量詞の使い分け（件、輛、條、張など）は空欄補充で最頻出ポイントです。" },
+                    { id: 26, zh: "我明天有事。", py: "Wǒ míngtiān yǒu shì.", jp: "私は明日用事があります。", note: "<strong class='text-amber-700'>【明天】</strong> 明日。<strong class='text-amber-700'>【事】</strong> 用事。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 時間を表す言葉（明天）は、主語の前か後ろに置きますが、動詞の後ろには置けません（❌[zh:我有事明天|py:wǒ yǒu shì míngtiān]）。" },
+                    { id: 27, zh: "我七點就起床了。", py: "Wǒ qī diǎn jiù qǐchuáng le.", jp: "私は7時にはもう起きました。（早い感覚）", note: "<strong class='text-amber-700'>【就】</strong> （予想より早く）もう。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 副詞「就」の位置は必ず動詞の前。文末の「了」とセットで「スムーズに完了した」ニュアンスを表します。" },
+                    { id: 28, zh: "他十二點才睡覺。", py: "Tā shí'èr diǎn cái shuìjiào.", jp: "彼は12時になってやっと寝ました。（遅い感覚）", note: "<strong class='text-amber-700'>【才】</strong> （予想より遅く）やっと。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「就」との対比。遅れや不満のニュアンスを含みます。リスニングで「この人は何時に起きたか？」などの計算問題に絡みます。" },
+                    { id: 29, zh: "今天很晚了。", py: "Jīntiān hěn wǎn le.", jp: "今日はもう遅いです。", note: "<strong class='text-amber-700'>【晚】</strong> 遅い、夜。反義語は「早」。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 文末の「了」は過去形ではなく「状態の変化（遅い状態になった）」を表します。" },
+                    { id: 30, zh: "我吃了一碗麵。", py: "Wǒ chī le yì wǎn miàn.", jp: "私は麺をお椀で1杯食べました。", note: "<strong class='text-amber-700'>【碗】</strong> お椀。量詞としても名詞としても使います。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 動作の完了を表す「了」の位置に注意。目的語に修飾語（[zh:一碗|py:yì wǎn]）がある場合は動詞の直後に「了」を置きます。" },
+                    { id: 31, zh: "你什麼時候來？", py: "Nǐ shénme shíhòu lái?", jp: "あなたはいつ来ますか？", note: "<strong class='text-amber-700'>【什麼時候】</strong> いつ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 疑問詞ですが文の語順は平叙文と同じです。[zh:幾點|py:jǐ diǎn]（何時）とは異なり、日付や大まかな時間を問います。" },
+                    { id: 32, zh: "已經結束了。", py: "Yǐjīng jiéshù le.", jp: "もう終わりました。", note: "<strong class='text-amber-700'>【已經】</strong> すでに。<strong class='text-amber-700'>【結束】</strong> （事柄が）終わる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「已經」は副詞なので必ず動詞の前に置きます。文末の「了」とセットで使われることが多いです。" },
+                    { id: 33, zh: "我做完了。", py: "Wǒ zuò wán le.", jp: "私はやり終わりました。", note: "<strong class='text-amber-700'>【完】</strong> 終わる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:做完|py:zuò wán]（やり終える）や[zh:吃完|py:chī wán]（食べ終える）など、動詞の後ろに置いて「〜し終わる」という結果補語の用法が必須です。" },
+                    { id: 34, zh: "快一點！", py: "Kuài yìdiǎn!", jp: "少し急いで！（もっと速くして）", note: "<strong class='text-amber-700'>【快】</strong> 速い。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:快一點|py:kuài yìdiǎn]は相手への要求（もっと〜して）。[zh:有點快|py:yǒudiǎn kuài]は自分にとっての不満（少し〜すぎる）。語順が命です。" },
+                    { id: 35, zh: "請等一下。", py: "Qǐng děng yíxià.", jp: "少し待ってください。", note: "<strong class='text-amber-700'>【等】</strong> 待つ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「一下」は動詞の後ろに付き、動作の時間が短いこと、またはちょっと試みることを表します。" }
                 ]
             },
             {
                 category: "🛍️ 3. 買い物・食事・モノ",
                 items: [
-                    { id: 36, zh: "我要去買東西。", py: "Wǒ yào qù mǎi dōngxī.", jp: "私は買い物に行くつもりです。" },
-                    { id: 37, zh: "這個不賣。", py: "Zhège bú mài.", jp: "これは売りません。" },
-                    { id: 38, zh: "你想吃什麼菜？", py: "Nǐ xiǎng chī shénme cài?", jp: "あなたはどんな料理が食べたいですか？" },
-                    { id: 39, zh: "台灣菜很好吃。", py: "Táiwān cài hěn hǎochī.", jp: "台湾料理はとても美味しいです。" },
-                    { id: 40, zh: "我吃得很飽。", py: "Wǒ chī de hěn bǎo.", jp: "私はお腹いっぱい食べました。" },
-                    { id: 41, zh: "請給我一個包子。", py: "Qǐng gěi wǒ yí ge bāozi.", jp: "私に肉まんを1つください。" },
-                    { id: 42, zh: "你的包包在哪裡？", py: "Nǐ de bāobāo zài nǎlǐ?", jp: "あなたのカバンはどこですか？" },
-                    { id: 43, zh: "這件衣服有點小。", py: "Zhè jiàn yīfú yǒudiǎn xiǎo.", jp: "この服は少し小さいです。（不満）" },
-                    { id: 44, zh: "有大一點的嗎？", py: "Yǒu dà yìdiǎn de ma?", jp: "もう少し大きいのはありますか？（要求）", note: "語順が逆転！「有點＋形容詞」は自分にとってネガティブな不満（ちょっと〜だ）。「形容詞＋一點」は比較や相手への要求（もう少し〜して）。並び替え問題の定番トラップです。" },
-                    { id: 45, zh: "我要買新手機。", py: "Wǒ yào mǎi xīn shǒujī.", jp: "私は新しいスマホを買うつもりです。", note: "「想（〜したい）」は単なる願望、「要（〜するつもりだ・〜が必要だ）」は行動を伴う強い意志や要求。ニュアンスの違いが問われます。" },
-                    { id: 46, zh: "漂亮的花。", py: "Piàoliang de huā.", jp: "きれいな花。" },
-                    { id: 47, zh: "他很會畫畫。", py: "Tā hěn huì huàhuà.", jp: "彼は絵を描くのがとても上手（できる）です。" },
-                    { id: 48, zh: "請打開書。", py: "Qǐng dǎkāi shū.", jp: "本を開いてください。" },
-                    { id: 49, zh: "門開了。", py: "Mén kāi le.", jp: "ドアが開きました。", note: "「打開（dǎkāi）」は意図的・具体的な動作（開ける）、「開（kāi）」は状態の変化（開く・点く）。" },
-                    { id: 50, zh: "我忘記了。", py: "Wǒ wàngjì le.", jp: "私は忘れました。" },
-                    { id: 51, zh: "昨天我寫了一封信。", py: "Zuótiān wǒ xiě le yì fēng xìn.", jp: "昨日私は手紙を1通書きました。" },
-                    { id: 52, zh: "我的心很痛。", py: "Wǒ de xīn hěn tòng.", jp: "私は心がとても痛いです。" },
-                    { id: 53, zh: "這些字太小了。", py: "Zhèxiē zì tài xiǎo le.", jp: "これらの文字は小さすぎます。" },
-                    { id: 54, zh: "我自己去。", py: "Wǒ zìjǐ qù.", jp: "私は自分で行きます。" },
-                    { id: 55, zh: "這是送給你的。", py: "Zhè shì sòng gěi nǐ de.", jp: "これはあなたへのプレゼント（贈るもの）です。" }
+                    { id: 36, zh: "我要去買東西。", py: "Wǒ yào qù mǎi dōngxī.", jp: "私は買い物に行くつもりです。", note: "<strong class='text-amber-700'>【東西】</strong> モノ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 物の[zh:東西|py:dōngxi]と方角の[zh:東西|py:dōngxī]は声調が異なります（方角は第1声・第1声）。" },
+                    { id: 37, zh: "這個不賣。", py: "Zhège bú mài.", jp: "これは売りません。", note: "<strong class='text-amber-700'>【賣】</strong> 売る。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 買うの[zh:買|py:mǎi]は第3声、売るの[zh:賣|py:mài]は第4声。リスニングやピンイン選択で引っ掛けられます。" },
+                    { id: 38, zh: "你想吃什麼菜？", py: "Nǐ xiǎng chī shénme cài?", jp: "あなたはどんな料理が食べたいですか？", note: "<strong class='text-amber-700'>【菜】</strong> 料理、野菜。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:什麼菜|py:shénme cài]で「どんな料理」。[zh:日本菜|py:Rìběn cài]（日本料理）や[zh:做菜|py:zuò cài]（料理をする）のように使います。" },
+                    { id: 39, zh: "台灣菜很好吃。", py: "Táiwān cài hěn hǎochī.", jp: "台湾料理はとても美味しいです。", note: "<strong class='text-amber-700'>【好吃】</strong> 美味しい。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「好＋動詞」で形容詞化するパターン（例：[zh:好看|py:hǎokàn]＝美しい、[zh:好聽|py:hǎotīng]＝耳に心地よい）は造語力が高いです。" },
+                    { id: 40, zh: "我吃得很飽。", py: "Wǒ chī de hěn bǎo.", jp: "私はお腹いっぱい食べました。", note: "<strong class='text-amber-700'>【飽】</strong> お腹がいっぱい。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:吃得很飽|py:chī de hěn bǎo]の「得」は様態補語（～の度合いが～だ）。「動詞＋得＋形容詞」の並び替え頻出です。" },
+                    { id: 41, zh: "請給我一個包子。", py: "Qǐng gěi wǒ yí ge bāozi.", jp: "私に肉まんを1つください。", note: "<strong class='text-amber-700'>【包子】</strong> 肉まん。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「給（与える）」は二重目的語をとる動詞。「給＋人＋物」の語順になります。" },
+                    { id: 42, zh: "你的包包在哪裡？", py: "Nǐ de bāobāo zài nǎlǐ?", jp: "あなたのカバンはどこですか？", note: "<strong class='text-amber-700'>【哪裡】</strong> どこ。台湾では[zh:哪兒|py:nǎ'er]より「哪裡」が一般的。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> あそこの[zh:那裡|py:nàlǐ]との発音（第3声と第4声）の違いに注意。" },
+                    { id: 43, zh: "這件衣服有點小。", py: "Zhè jiàn yīfú yǒudiǎn xiǎo.", jp: "この服は少し小さいです。（不満）", note: "<strong class='text-amber-700'>【有點】</strong> 少し（不満）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「有點＋形容詞」は話し手にとってマイナスの状況（少し小さすぎる等）を表します。" },
+                    { id: 44, zh: "有大一點的嗎？", py: "Yǒu dà yìdiǎn de ma?", jp: "もう少し大きいのはありますか？（要求）", note: "<strong class='text-amber-700'>【一點】</strong> 少し。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「形容詞＋一點」は比較や相手への要求（もう少し〜して）。❌[zh:有點大|py:yǒudiǎn dà]（ちょっと大きい）と語順が逆転する定番トラップです。" },
+                    { id: 45, zh: "我要買新手機。", py: "Wǒ yào mǎi xīn shǒujī.", jp: "私は新しいスマホを買うつもりです。", note: "<strong class='text-amber-700'>【手機】</strong> スマートフォン。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 通信機器の量詞は[zh:支|py:zhī]や[zh:部|py:bù]を使います。[zh:買|py:mǎi]（買う）と[zh:要|py:yào]（必要・意志）の組み合わせ。" },
+                    { id: 46, zh: "漂亮的花。", py: "Piàoliang de huā.", jp: "きれいな花。", note: "<strong class='text-amber-700'>【漂亮】</strong> きれいだ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 名詞を修飾する際の「的」。形容詞が2音節以上（漂亮など）の場合は「的」が必須です（[zh:很好的人|py:hěn hǎo de rén]など）。" },
+                    { id: 47, zh: "他很會畫畫。", py: "Tā hěn huì huàhuà.", jp: "彼は絵を描くのがとても上手（できる）です。", note: "<strong class='text-amber-700'>【畫畫】</strong> 絵を描く。前の畫が動詞、後ろの畫が名詞の離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「很會＋動詞」は「～するのがとても上手だ」という頻出表現。" },
+                    { id: 48, zh: "請打開書。", py: "Qǐng dǎkāi shū.", jp: "本を開いてください。", note: "<strong class='text-amber-700'>【打開】</strong> 開ける。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 結果補語[zh:開|py:kāi]。本を開く、箱を開けるなど意図的な動作には[zh:打開|py:dǎkāi]を使います。" },
+                    { id: 49, zh: "門開了。", py: "Mén kāi le.", jp: "ドアが開きました。", note: "<strong class='text-amber-700'>【開】</strong> 開く、点く。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:門開了|py:mén kāi le]（ドアが開いた）は状態の変化。「開」は電気やエアコンを点ける時にも使います（[zh:開冷氣|py:kāi lěngqì]）。" },
+                    { id: 50, zh: "我忘記了。", py: "Wǒ wàngjì le.", jp: "私は忘れました。", note: "<strong class='text-amber-700'>【忘記】</strong> 忘れる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 後ろに動詞フレーズを置いて[zh:忘記買|py:wàngjì mǎi]（買うのを忘れた）や[zh:忘記帶|py:wàngjì dài]（持ってくるのを忘れた）という形もよく出ます。" },
+                    { id: 51, zh: "昨天我寫了一封信。", py: "Zuótiān wǒ xiě le yì fēng xìn.", jp: "昨日私は手紙を1通書きました。", note: "<strong class='text-amber-700'>【封】</strong> 手紙の量詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「寫了一封信」の語順。過去の動作の回数や量は、動詞と名詞（目的語）の間に置きます（❌[zh:寫了信一封|py:xiě le xìn yì fēng]）。" },
+                    { id: 52, zh: "我的心很痛。", py: "Wǒ de xīn hěn tòng.", jp: "私は心がとても痛いです。", note: "<strong class='text-amber-700'>【痛】</strong> 痛い。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:疼|py:téng]も痛いを意味しますが、台湾では[zh:痛|py:tòng]の方がよく使われます。" },
+                    { id: 53, zh: "這些字太小了。", py: "Zhèxiē zì tài xiǎo le.", jp: "これらの文字は小さすぎます。", note: "<strong class='text-amber-700'>【字】</strong> 文字。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「太～了（～すぎる）」の構文。並び替え問題で「了」を忘れがちなので注意。" },
+                    { id: 54, zh: "我自己去。", py: "Wǒ zìjǐ qù.", jp: "私は自分で行きます。", note: "<strong class='text-amber-700'>【自己】</strong> 自分。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 副詞的に使われ、必ず動詞の前に置きます（[zh:自己做|py:zìjǐ zuò]、[zh:自己吃|py:zìjǐ chī]）。" },
+                    { id: 55, zh: "這是送給你的。", py: "Zhè shì sòng gěi nǐ de.", jp: "これはあなたへのプレゼント（贈るもの）です。", note: "<strong class='text-amber-700'>【送】</strong> 贈る、見送る、届ける。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:送給|py:sòng gěi]＋人で「人にプレゼントする」。「送」は多義語なので文脈での判断が必要です。" }
                 ]
             },
             {
                 category: "🏃 4. 移動・身体の動作・できる",
                 items: [
-                    { id: 56, zh: "我搭捷運去學校。", py: "Wǒ dā jiéyùn qù xuéxiào.", jp: "私はMRT（地下鉄）に乗って学校へ行きます。" },
-                    { id: 57, zh: "他騎腳踏車。", py: "Tā qí jiǎotàchē.", jp: "彼は自転車に乗ります（またがる）。" },
-                    { id: 58, zh: "請上車。", py: "Qǐng shàng chē.", jp: "乗車してください。" },
-                    { id: 59, zh: "往南走。", py: "Wǎng nán zǒu.", jp: "南へ向かって歩きます。" },
-                    { id: 60, zh: "在夜市可以吃很多東西。", py: "Zài yèshì kěyǐ chī hěn duō dōngxī.", jp: "夜市ではたくさんのものが食べられます。" },
-                    { id: 61, zh: "我會游泳。", py: "Wǒ huì yóuyǒng.", jp: "私は泳げます。" },
-                    { id: 62, zh: "明天我能去。", py: "Míngtiān wǒ néng qù.", jp: "明日私は行けます。", note: "可能の使い分け。「會＝学習・練習してできる（泳げる等）」、「能＝状況的・物理的にできる（明日行ける等）」、「可以＝許可されている」。穴埋め問題で頻出です。" },
-                    { id: 63, zh: "請幫我。", py: "Qǐng bāng wǒ.", jp: "私を手伝ってください。" },
-                    { id: 64, zh: "謝謝你的幫忙。", py: "Xièxie nǐ de bāngmáng.", jp: "手伝ってくれてありがとう。", note: "「幫（bāng）」の後ろには人（目的語）を置けますが、「幫忙（bāngmáng）」はそれ自体が「手伝いをする」という完成したセットなので、後ろに目的語を置けません（❌幫忙我 → ⭕️幫我）。" },
-                    { id: 65, zh: "我看見他了。", py: "Wǒ kànjiàn tā le.", jp: "私は彼を見かけました（視界に入った）。" },
-                    { id: 66, zh: "你聽見了嗎？", py: "Nǐ tīngjiàn le ma?", jp: "聞こえましたか？（耳に入った）", note: "「看/聽」は動作そのもの（見る/聞く）、「看見/聽見」は結果（視界に入る/聞こえる）です。読解の細かいニュアンスで問われます。" },
-                    { id: 67, zh: "聽音樂。", py: "Tīng yīnyuè.", jp: "音楽を聴く。" },
-                    { id: 68, zh: "看電影。", py: "Kàn diànyǐng.", jp: "映画を見る。" },
-                    { id: 69, zh: "我可以問你嗎？", py: "Wǒ kěyǐ wèn nǐ ma?", jp: "あなたに質問しても（聞いても）いいですか？" },
-                    { id: 70, zh: "請回答我的問題。", py: "Qǐng huídá wǒ de wèntí.", jp: "私の質問に答えてください。" },
-                    { id: 71, zh: "幫我拍照，好嗎？", py: "Bāng wǒ pāizhào, hǎo ma?", jp: "写真を撮ってくれませんか？" },
-                    { id: 72, zh: "我穿新衣服。", py: "Wǒ chuān xīn yīfú.", jp: "私は新しい服を着ます。" },
-                    { id: 73, zh: "戴帽子。", py: "Dài màozi.", jp: "帽子を被る。", note: "身につける系の動詞の使い分け。体を通す服・靴・ズボンは「穿（chuān）」、頭や体に付加する帽子・眼鏡・時計・アクセサリーは「戴（dài）」です。" },
-                    { id: 74, zh: "床在窗戶旁邊。", py: "Chuáng zài chuānghù pángbiān.", jp: "ベッドは窓のそばにあります。" },
-                    { id: 75, zh: "寄包裹。", py: "Jì bāoguǒ.", jp: "小包を郵送する。" }
+                    { id: 56, zh: "我搭捷運去學校。", py: "Wǒ dā jiéyùn qù xuéxiào.", jp: "私はMRT（地下鉄）に乗って学校へ行きます。", note: "<strong class='text-amber-700'>【搭】</strong> 乗る。台湾でよく使われる交通機関に乗る動詞（類義語：[zh:坐|py:zuò]）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 連動文。交通手段（[zh:搭捷運|py:dā jiéyùn]）は、行き先（[zh:去學校|py:qù xuéxiào]）の前に置きます。" },
+                    { id: 57, zh: "他騎腳踏車。", py: "Tā qí jiǎotàchē.", jp: "彼は自転車に乗ります（またがる）。", note: "<strong class='text-amber-700'>【騎】</strong> （またがって）乗る。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 自転車やバイク（[zh:機車|py:jīchē]）に使います。車や電車に乗る場合は「坐」や「搭」を使い分けます。" },
+                    { id: 58, zh: "請上車。", py: "Qǐng shàng chē.", jp: "乗車してください。", note: "<strong class='text-amber-700'>【上車】</strong> 乗車する。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:上火車|py:shàng huǒchē]（汽車に乗る）のように、間に名詞を入れることができます。降りる時は[zh:下車|py:xiàchē]。" },
+                    { id: 59, zh: "往南走。", py: "Wǎng nán zǒu.", jp: "南へ向かって歩きます。", note: "<strong class='text-amber-700'>【往】</strong> 〜に向かって。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「往＋方向＋動詞（[zh:往南走|py:wǎng nán zǒu]）」の語順。並び替えで狙われます。" },
+                    { id: 60, zh: "在夜市可以吃很多東西。", py: "Zài yèshì kěyǐ chī hěn duō dōngxī.", jp: "夜市ではたくさんのものが食べられます。", note: "<strong class='text-amber-700'>【夜市】</strong> ナイトマーケット。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「夜市」は場所なので、場所で何かをする場合、文頭や主語の後ろに[zh:在|py:zài]（～で）が必要です。" },
+                    { id: 61, zh: "我會游泳。", py: "Wǒ huì yóuyǒng.", jp: "私は泳げます。", note: "<strong class='text-amber-700'>【會】</strong> できる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 泳ぐことは「学習・練習」が必要なので「會」を使います。「能」や「可以」との穴埋め選択に注意。" },
+                    { id: 62, zh: "明天我能去。", py: "Míngtiān wǒ néng qù.", jp: "明日私は行けます。", note: "<strong class='text-amber-700'>【能】</strong> できる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:明天有空，所以我能去|py:míngtiān yǒu kòng, suǒyǐ wǒ néng qù]（明日暇だから行ける）という、客観的な条件による状況の可能を表します。" },
+                    { id: 63, zh: "請幫我。", py: "Qǐng bāng wǒ.", jp: "私を手伝ってください。", note: "<strong class='text-amber-700'>【幫】</strong> 手伝う。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「幫＋人＋動詞（人が～するのを手伝う/代わりにする）」の形。[zh:幫我買|py:bāng wǒ mǎi]（私の代わりに買って）など頻出。" },
+                    { id: 64, zh: "謝謝你的幫忙。", py: "Xièxie nǐ de bāngmáng.", jp: "手伝ってくれてありがとう。", note: "<strong class='text-amber-700'>【幫忙】</strong> 手伝い（をする）。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「幫」の後ろには目的語（人）を置けますが、「幫忙」は単語として完結しているため後ろに人を置けません（❌[zh:幫忙我|py:bāngmáng wǒ]）。" },
+                    { id: 65, zh: "我看見他了。", py: "Wǒ kànjiàn tā le.", jp: "私は彼を見かけました（視界に入った）。", note: "<strong class='text-amber-700'>【看見】</strong> 見える（結果）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「看」は見るという動作、「見」は視覚に入ったという結果補語。" },
+                    { id: 66, zh: "你聽見了嗎？", py: "Nǐ tīngjiàn le ma?", jp: "聞こえましたか？（耳に入った）", note: "<strong class='text-amber-700'>【聽見】</strong> 聞こえる。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:聽到了嗎？|py:tīngdào le ma?]も同じ意味。動作ではなく「聞こえた」という結果補語のニュアンスを理解しているかが問われます。" },
+                    { id: 67, zh: "聽音樂。", py: "Tīng yīnyuè.", jp: "音楽を聴く。", note: "<strong class='text-amber-700'>【音樂】</strong> 音楽。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「樂」は多音字。音楽の場合は「yuè」、楽しい（[zh:快樂|py:kuàilè]）の場合は「lè」と発音します。" },
+                    { id: 68, zh: "看電影。", py: "Kàn diànyǐng.", jp: "映画を見る。", note: "<strong class='text-amber-700'>【電影】</strong> 映画。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 映画やテレビは[zh:看|py:kàn]を使います。[zh:見|py:jiàn]（面会する）ではありません。" },
+                    { id: 69, zh: "我可以問你嗎？", py: "Wǒ kěyǐ wèn nǐ ma?", jp: "あなたに質問しても（聞いても）いいですか？", note: "<strong class='text-amber-700'>【問】</strong> 質問する。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:問問題|py:wèn wèntí]（質問を質問する）という同族目的語（動詞と名詞が同じ語源）の形を取ることがあります。" },
+                    { id: 70, zh: "請回答我的問題。", py: "Qǐng huídá wǒ de wèntí.", jp: "私の質問に答えてください。", note: "<strong class='text-amber-700'>【回答】</strong> 答える。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 動詞。名詞の[zh:答案|py:dá'àn]（答え）との品詞の違いに注意。" },
+                    { id: 71, zh: "幫我拍照，好嗎？", py: "Bāng wǒ pāizhào, hǎo ma?", jp: "写真を撮ってくれませんか？", note: "<strong class='text-amber-700'>【拍照】</strong> 写真を撮る。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 文末の「好嗎？」は相手に提案や同意を求める時の決まり文句。" },
+                    { id: 72, zh: "我穿新衣服。", py: "Wǒ chuān xīn yīfú.", jp: "私は新しい服を着ます。", note: "<strong class='text-amber-700'>【穿】</strong> （服や靴を）着る、履く。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 身につけるものの動詞選択。体を通す服やズボン・靴は「穿」を使います。" },
+                    { id: 73, zh: "戴帽子。", py: "Dài màozi.", jp: "帽子を被る。", note: "<strong class='text-amber-700'>【戴】</strong> （帽子・眼鏡などを）身につける。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 体に付加する帽子、眼鏡、時計、アクセサリー、手袋などは「戴」です。「穿」との使い分けが必須。" },
+                    { id: 74, zh: "床在窗戶旁邊。", py: "Chuáng zài chuānghù pángbiān.", jp: "ベッドは窓のそばにあります。", note: "<strong class='text-amber-700'>【旁邊】</strong> そば、隣。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 方位詞は名詞の後ろに付きます（[zh:窗戶旁邊|py:chuānghù pángbiān]）。❌[zh:旁邊窗戶|py:pángbiān chuānghù]とは言えません。" },
+                    { id: 75, zh: "寄包裹。", py: "Jì bāoguǒ.", jp: "小包を郵送する。", note: "<strong class='text-amber-700'>【寄】</strong> 郵送する。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:寄信|py:jì xìn]（手紙を出す）など発送する側の動作です。受け取る場合は[zh:收|py:shōu]です。" }
                 ]
             },
             {
                 category: "💬 5. コミュニケーション・日常の決まり文句",
                 items: [
-                    { id: 76, zh: "他說他很忙。", py: "Tā shuō tā hěn máng.", jp: "彼はとても忙しいと言っています。" },
-                    { id: 77, zh: "我們在說話。", py: "Wǒmen zài shuōhuà.", jp: "私たちは話をしています。" },
-                    { id: 78, zh: "老師講得很清楚。", py: "Lǎoshī jiǎng de hěn qīngchǔ.", jp: "先生の説明はとてもわかりやすいです。" },
-                    { id: 79, zh: "我們談一談吧。", py: "Wǒmen tán yì tán ba.", jp: "私たち少し話し合いましょう。" },
-                    { id: 80, zh: "喜歡和朋友聊天。", py: "Xǐhuān hé péngyǒu liáotiān.", jp: "友達とおしゃべりするのが好きです。", note: "「說話（話をする）」や「聊天（雑談する）」は離合詞（動詞＋目的語のセット）。後ろにさらに内容（目的語）を置くことはできません。内容を言うときは「說」や「講」を使います。" },
-                    { id: 81, zh: "告訴我你的電話。", py: "Gàosù wǒ nǐ de diànhuà.", jp: "あなたの電話番号を教えてください（情報伝達）。" },
-                    { id: 82, zh: "老師教我們中文。", py: "Lǎoshī jiāo wǒmen Zhōngwén.", jp: "先生は私たちに中国語を教えます（技術指導）。", note: "日本人が直訳で一番間違えやすいポイント！電話番号や道順など単なる情報を伝える時は「告訴」、時間をかけて技術や知識を教える時は「教」です。（❌教我你的名字 → ⭕️告訴我你的名字）" },
-                    { id: 83, zh: "台北市很大。", py: "Táiběi shì hěn dà.", jp: "台北市はとても広いです。" },
-                    { id: 84, zh: "有幾間房間？", py: "Yǒu jǐ jiān fángjiān?", jp: "部屋はいくつ（何部屋）ありますか？" },
-                    { id: 85, zh: "這個字怎麼念？", py: "Zhège zì zěnme niàn?", jp: "この漢字はどう読みますか？" },
-                    { id: 86, zh: "那不是我的錯。", py: "Nà bú shì wǒ de cuò.", jp: "それは私のせいではありません。" },
-                    { id: 87, zh: "我想休息一下。", py: "Wǒ xiǎng xiūxí yíxià.", jp: "少し休みたいです。" },
-                    { id: 88, zh: "這個週末你有空嗎？", py: "Zhège zhōumò nǐ yǒu kòng ma?", jp: "今週末、暇（時間）はありますか？" },
-                    { id: 89, zh: "對不起，我遲到了。", py: "Duìbùqǐ, wǒ chídào le.", jp: "ごめんなさい、遅刻しました。" },
-                    { id: 90, zh: "沒關係。", py: "Méi guānxi.", jp: "大丈夫です（気にしないで）。" },
-                    { id: 91, zh: "歡迎光臨！", py: "Huānyíng guānglín!", jp: "いらっしゃいませ！" },
-                    { id: 92, zh: "請問洗手間在哪裡？", py: "Qǐngwèn xǐshǒujiān zài nǎlǐ?", jp: "すみません、お手洗いはどこですか？" },
-                    { id: 93, zh: "我要一杯咖啡。", py: "Wǒ yào yì bēi kāfēi.", jp: "コーヒーを1杯ください（強い意志・要求）。" },
-                    { id: 94, zh: "冰的還是熱的？", py: "Bīng de háishì rè de?", jp: "アイスですか、それともホットですか？" },
-                    { id: 95, zh: "可以刷卡嗎？", py: "Kěyǐ shuākǎ ma?", jp: "クレジットカードは使えますか？" },
-                    { id: 96, zh: "很好吃。", py: "Hěn hǎochī.", jp: "とても美味しいです。" },
-                    { id: 97, zh: "太辣了！", py: "Tài là le!", jp: "辛すぎます！" },
-                    { id: 98, zh: "明天見。", py: "Míngtiān jiàn.", jp: "また明日。" },
-                    { id: 99, zh: "你是哪國人？", py: "Nǐ shì nǎ guórén?", jp: "あなたはどこの国の人ですか？" },
-                    { id: 100, zh: "我認為這很重要。", py: "Wǒ rènwéi zhè hěn zhòngyào.", jp: "私はこれがとても重要だと考えます。", note: "「覺得（juéde）」は個人の主観的な感覚（～な気がする）ですが、「認為（rènwéi）」は論理的・客観的な判断に基づいた意見（～だと考える）です。読解問題の筆者の主張などでキーワードになります。" }
+                    { id: 76, zh: "他說他很忙。", py: "Tā shuō tā hěn máng.", jp: "彼はとても忙しいと言っています。", note: "<strong class='text-amber-700'>【說】</strong> 言う。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:他說|py:tā shuō]～のように後ろに文（[zh:他很忙|py:tā hěn máng]）を直接目的語として取ることができます。" },
+                    { id: 77, zh: "我們在說話。", py: "Wǒmen zài shuōhuà.", jp: "私たちは話をしています。", note: "<strong class='text-amber-700'>【說話】</strong> 話をする。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「說話」の後ろにさらに目的語は置けません。話す内容を言う時は「說」のみを使います。" },
+                    { id: 78, zh: "老師講得很清楚。", py: "Lǎoshī jiǎng de hěn qīngchǔ.", jp: "先生の説明はとてもわかりやすいです。", note: "<strong class='text-amber-700'>【清楚】</strong> はっきりしている、明確だ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「動詞＋得＋形容詞（樣態補語）」。[zh:講得很清楚|py:jiǎng de hěn qīngchǔ]（説明の仕方がわかりやすい）。" },
+                    { id: 79, zh: "我們談一談吧。", py: "Wǒmen tán yì tán ba.", jp: "私たち少し話し合いましょう。", note: "<strong class='text-amber-700'>【談】</strong> 話し合う。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「動詞＋一＋動詞（ちょっと〜する）」。気軽なニュアンスや試みのニュアンスを出します（[zh:看看|py:kànkan]など）。" },
+                    { id: 80, zh: "喜歡和朋友聊天。", py: "Xǐhuān hé péngyǒu liáotiān.", jp: "友達とおしゃべりするのが好きです。", note: "<strong class='text-amber-700'>【聊天】</strong> おしゃべりする。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「和/跟＋人＋聊天（人と雑談する）」の語順。後ろに直接人を置けません（❌[zh:聊天朋友|py:liáotiān péngyǒu]）。" },
+                    { id: 81, zh: "告訴我你的電話。", py: "Gàosù wǒ nǐ de diànhuà.", jp: "あなたの電話番号を教えてください（情報伝達）。", note: "<strong class='text-amber-700'>【告訴】</strong> （情報を）教える、伝える。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 電話番号や名前など、単なる情報を伝える時は[zh:告訴|py:gàosù]です。[zh:教|py:jiāo]（技術を教える）との引っ掛け。" },
+                    { id: 82, zh: "老師教我們中文。", py: "Lǎoshī jiāo wǒmen Zhōngwén.", jp: "先生は私たちに中国語を教えます（技術指導）。", note: "<strong class='text-amber-700'>【教】</strong> （知識や技術を）教える。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 発音は第1声（jiāo）。[zh:教我們中文|py:jiāo wǒmen Zhōngwén]のように二重目的語（人＋物）を取ります。" },
+                    { id: 83, zh: "台北市很大。", py: "Táiběi shì hěn dà.", jp: "台北市はとても広いです。", note: "<strong class='text-amber-700'>【大】</strong> 大きい。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 中国語の形容詞述語文では[zh:很|py:hěn]を置くのが基本（比較の意味を打ち消すため）。❌[zh:台北市大|py:Táiběi shì dà]とはあまり言いません。" },
+                    { id: 84, zh: "有幾間房間？", py: "Yǒu jǐ jiān fángjiān?", jp: "部屋はいくつ（何部屋）ありますか？", note: "<strong class='text-amber-700'>【間】</strong> 部屋の量詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「房間」は名詞、「間」は量詞。[zh:這間房間|py:zhè jiān fángjiān]（この部屋）の形に注意。" },
+                    { id: 85, zh: "這個字怎麼念？", py: "Zhège zì zěnme niàn?", jp: "この漢字はどう読みますか？", note: "<strong class='text-amber-700'>【怎麼】</strong> どのように。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「怎麼＋動詞」で「どうやって～する（方法）」。[zh:怎麼念|py:zěnme niàn]（どう読む）や[zh:怎麼去|py:zěnme qù]（どう行く）。" },
+                    { id: 86, zh: "那不是我的錯。", py: "Nà bú shì wǒ de cuò.", jp: "それは私のせいではありません。", note: "<strong class='text-amber-700'>【錯】</strong> 間違い、過ち（名詞）。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「錯」は形容詞（間違っている）や結果補語（[zh:寫錯了|py:xiě cuò le]＝書き間違えた）としても超頻出。" },
+                    { id: 87, zh: "我想休息一下。", py: "Wǒ xiǎng xiūxí yíxià.", jp: "少し休みたいです。", note: "<strong class='text-amber-700'>【休息】</strong> 休む。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「一下」は動詞の後ろに付き、動作の時間が短いことを表します。" },
+                    { id: 88, zh: "這個週末你有空嗎？", py: "Zhège zhōumò nǐ yǒu kòng ma?", jp: "今週末、暇（時間）はありますか？", note: "<strong class='text-amber-700'>【有空】</strong> 暇がある。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:空|py:kòng]は第4声。[zh:沒空|py:méi kòng]（時間がない）の形もよく出ます。" },
+                    { id: 89, zh: "對不起，我遲到了。", py: "Duìbùqǐ, wǒ chídào le.", jp: "ごめんなさい、遅刻しました。", note: "<strong class='text-amber-700'>【遲到】</strong> 遅刻する。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 結果を表す「了」が文末に必要です。[zh:我遲到了十分鐘|py:wǒ chídào le shí fēnzhōng]（10分遅刻した）の語順に注意。" },
+                    { id: 90, zh: "沒關係。", py: "Méi guānxi.", jp: "大丈夫です（気にしないで）。", note: "<strong class='text-amber-700'>【沒關係】</strong> 構わない、大丈夫。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「對不起」への返答。[zh:有關係|py:yǒu guānxi]（関係がある/問題がある）の否定形。" },
+                    { id: 91, zh: "歡迎光臨！", py: "Huānyíng guānglín!", jp: "いらっしゃいませ！", note: "<strong class='text-amber-700'>【歡迎】</strong> 歓迎する。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 店に入る時の決まり文句。リスニングで場所を問われる問題（[zh:這裡是哪裡？|py:zhèlǐ shì nǎlǐ?]）の大きなヒントになります。" },
+                    { id: 92, zh: "請問洗手間在哪裡？", py: "Qǐngwèn xǐshǒujiān zài nǎlǐ?", jp: "すみません、お手洗いはどこですか？", note: "<strong class='text-amber-700'>【洗手間】</strong> お手洗い。類義語「廁所」。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:請問～在哪裡？|py:qǐngwèn ~ zài nǎlǐ?]は場所を尋ねる必須フレーズ。" },
+                    { id: 93, zh: "我要一杯咖啡。", py: "Wǒ yào yì bēi kāfēi.", jp: "コーヒーを1杯ください（強い意志・要求）。", note: "<strong class='text-amber-700'>【要】</strong> 欲しい、必要だ。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 行動を伴う強い要求。カフェやレストランでの注文時によく使います。" },
+                    { id: 94, zh: "冰的還是熱的？", py: "Bīng de háishì rè de?", jp: "アイスですか、それともホットですか？", note: "<strong class='text-amber-700'>【還是】</strong> それとも。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 疑問文で使う選択接続詞。平叙文で「あるいは」と言う時は[zh:或者|py:huòzhě]を使います。" },
+                    { id: 95, zh: "可以刷卡嗎？", py: "Kěyǐ shuākǎ ma?", jp: "クレジットカードは使えますか？", note: "<strong class='text-amber-700'>【刷卡】</strong> クレジットカードで払う。離合詞。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 現金の時は[zh:付現|py:fùxiàn]や[zh:付錢|py:fùqián]。決済に関する単語はリスニング頻出。" },
+                    { id: 96, zh: "很好吃。", py: "Hěn hǎochī.", jp: "とても美味しいです。", note: "<strong class='text-amber-700'>【好吃】</strong> 美味しい。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 飲み物が美味しい時は「好吃」ではなく[zh:好喝|py:hǎohē]を使います。" },
+                    { id: 97, zh: "太辣了！", py: "Tài là le!", jp: "辛すぎます！", note: "<strong class='text-amber-700'>【辣】</strong> 辛い。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:酸|py:suān]（酸っぱい）、[zh:甜|py:tián]（甘い）、[zh:苦|py:kǔ]（苦い）、[zh:辣|py:là]（辛い）、[zh:鹹|py:xián]（しょっぱい）の味覚形容詞は頻出。" },
+                    { id: 98, zh: "明天見。", py: "Míngtiān jiàn.", jp: "また明日。", note: "<strong class='text-amber-700'>【見】</strong> 会う。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> [zh:明天見|py:míngtiān jiàn]（また明日）や[zh:再見|py:zàijiàn]（さようなら）。時間＋見の形になります。" },
+                    { id: 99, zh: "你是哪國人？", py: "Nǐ shì nǎ guórén?", jp: "あなたはどこの国の人ですか？", note: "<strong class='text-amber-700'>【哪】</strong> どの。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 疑問詞の[zh:哪|py:nǎ]と指示詞の[zh:那|py:nà]。発音と漢字の違いが致命傷になります。" },
+                    { id: 100, zh: "我認為這很重要。", py: "Wǒ rènwéi zhè hěn zhòngyào.", jp: "私はこれがとても重要だと考えます。", note: "<strong class='text-amber-700'>【認為】</strong> （客観的に）考える、認める。<br>🎯 <strong class='text-teal-700'>TOCFLの罠：</strong> 「覺得」は感覚、「認為」は論理的な思考。長文読解で筆者の意見を拾う時のキーワードです。" }
                 ]
             }
         ];
+
+        // 自動再生用変数
+        const allItems = phraseData.flatMap(section => section.items);
+        let isAutoPlaying = false;
+        let autoPlayIndex = 0;
+        let autoPlayTimeout = null;
 
         // 答えの表示/非表示を切り替える関数
         window.toggleAnswer = function(btn) {
@@ -246,12 +261,9 @@
                 const content = btn.nextElementSibling;
                 const isHidden = content.classList.contains('hidden');
                 
-                // 開く指示が来ていて、現在閉じているならクリックして開く
                 if (open && isHidden) {
                     toggleAnswer(btn);
-                } 
-                // 閉じる指示が来ていて、現在開いているならクリックして閉じる
-                else if (!open && !isHidden) {
+                } else if (!open && !isHidden) {
                     toggleAnswer(btn);
                 }
             });
@@ -262,16 +274,13 @@
             const container = document.getElementById('app-container');
             
             phraseData.forEach(section => {
-                // セクションのラッパー
                 const sectionEl = document.createElement('section');
                 
-                // セクションタイトル
                 const titleEl = document.createElement('h2');
                 titleEl.className = "text-xl md:text-2xl font-bold text-slate-800 mb-6 sticky top-0 bg-slate-50/90 backdrop-blur py-3 z-10 border-b-2 border-teal-200";
                 titleEl.textContent = section.category;
                 sectionEl.appendChild(titleEl);
 
-                // アイテムのグリッド/リスト
                 const listEl = document.createElement('div');
                 listEl.className = "space-y-4";
 
@@ -279,24 +288,28 @@
                     const card = document.createElement('div');
                     card.className = "bg-white p-4 md:p-5 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow";
 
-                    // Note（解説）のHTML生成
                     let noteHtml = '';
                     if (item.note) {
+                        // ▼ 独自タグ [zh:漢字|py:ピンイン] を、インラインの音声再生ボタンに置換する処理
+                        const processedNote = item.note.replace(/\[zh:(.+?)\|py:(.+?)\]/g, 
+                            `<button class="inline-audio-btn text-teal-700 bg-teal-50 hover:bg-teal-200 border border-teal-200 rounded px-1.5 py-0.5 mx-0.5 transition-colors duration-200 align-baseline cursor-pointer font-bold" data-text="$1" onclick="playInlineAudio(event, '$1')">$1 <span class="text-xs text-teal-600/80 font-mono font-normal">($2)</span> 🔊</button>`
+                        );
+
                         noteHtml = `
-                            <div class="mt-4 bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-sm text-amber-900 leading-relaxed">
-                                <strong class="text-amber-600">🎯 TOCFLの罠：</strong> ${item.note}
+                            <div class="mt-4 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg text-sm text-slate-700 leading-relaxed shadow-sm">
+                                ${processedNote}
                             </div>
                         `;
                     }
 
-                    // カードの中身（最初はピンインと再生ボタンだけ。クリックで答え表示）
+                    // data-id を付与して要素を特定しやすくする
                     card.innerHTML = `
                         <div class="flex gap-3 md:gap-4">
                             <div class="text-teal-500 font-bold text-xl md:text-2xl w-8 shrink-0 text-right mt-2">${item.id}.</div>
                             <div class="flex-1 space-y-3">
                                 
                                 <!-- ピンインと音声ボタン -->
-                                <button class="pinyin-btn w-full flex items-center justify-center gap-3 bg-teal-50 hover:bg-teal-100 text-teal-800 font-mono text-base md:text-xl px-4 py-4 rounded-xl border-2 border-teal-200 cursor-pointer shadow-sm" data-text="${item.zh}">
+                                <button class="pinyin-btn w-full flex items-center justify-center gap-3 bg-teal-50 hover:bg-teal-100 text-teal-800 font-mono text-base md:text-xl px-4 py-4 rounded-xl border-2 border-teal-200 cursor-pointer shadow-sm transition-all" data-text="${item.zh}" data-id="${item.id}">
                                     <span class="text-2xl">🔊</span> <span class="tracking-wide">${item.py}</span>
                                 </button>
                                 
@@ -305,7 +318,7 @@
                                     クリックして答えを見る ▼
                                 </button>
                                 
-                                <!-- 隠しコンテンツ（漢字、日本語、解説） -->
+                                <!-- 隠しコンテンツ -->
                                 <div class="hidden-content hidden mt-3 pt-3 border-t border-slate-100">
                                     <div class="text-2xl md:text-3xl font-bold text-slate-800 tc mb-2 tracking-wide text-center md:text-left">${item.zh}</div>
                                     <div class="text-base md:text-lg text-slate-600 font-medium text-center md:text-left">${item.jp}</div>
@@ -323,7 +336,155 @@
             });
         }
 
-        // カスタム通知
+        // 自動再生トグル
+        window.toggleAutoPlay = function() {
+            const btn = document.getElementById('autoplay-btn');
+            
+            if (isAutoPlaying) {
+                // 停止処理
+                isAutoPlaying = false;
+                btn.innerHTML = '<span class="text-xl">▶</span> <span>自動再生を開始</span>';
+                btn.classList.replace('bg-red-50', 'bg-indigo-50');
+                btn.classList.replace('text-red-600', 'text-indigo-600');
+                btn.classList.replace('border-red-200', 'border-indigo-200');
+                btn.classList.replace('hover:bg-red-100', 'hover:bg-indigo-100');
+                
+                window.speechSynthesis.cancel();
+                clearTimeout(autoPlayTimeout);
+                
+                // 全てのハイライトをリセット
+                document.querySelectorAll('.pinyin-btn').forEach(b => {
+                    b.classList.remove('bg-teal-500', 'text-white', 'border-teal-600', 'scale-105');
+                    if (!b.classList.contains('bg-teal-50')) {
+                        b.classList.add('bg-teal-50', 'text-teal-800', 'border-teal-200');
+                    }
+                });
+            } else {
+                // 開始処理
+                isAutoPlaying = true;
+                btn.innerHTML = '<span class="text-xl">■</span> <span>自動再生を停止</span>';
+                btn.classList.replace('bg-indigo-50', 'bg-red-50');
+                btn.classList.replace('text-indigo-600', 'text-red-600');
+                btn.classList.replace('border-indigo-200', 'border-red-200');
+                btn.classList.replace('hover:bg-indigo-100', 'hover:bg-red-100');
+                
+                // 最初から（または途中から）再生
+                if (autoPlayIndex >= allItems.length) autoPlayIndex = 0;
+                playAutoItem();
+            }
+        };
+
+        // 自動再生のコアルーチン
+        function playAutoItem() {
+            if (!isAutoPlaying) return;
+            if (autoPlayIndex >= allItems.length) {
+                toggleAutoPlay(); // 最後までいったら停止
+                return;
+            }
+
+            const item = allItems[autoPlayIndex];
+            const buttons = document.querySelectorAll('.pinyin-btn');
+            const targetBtn = Array.from(buttons).find(b => b.getAttribute('data-id') == item.id);
+
+            if (targetBtn) {
+                // 画面の中央にスクロール
+                targetBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // 一旦すべてのハイライトを消す
+                buttons.forEach(b => {
+                    b.classList.remove('bg-teal-500', 'text-white', 'border-teal-600', 'scale-105');
+                    if (!b.classList.contains('bg-teal-50')) {
+                        b.classList.add('bg-teal-50', 'text-teal-800', 'border-teal-200');
+                    }
+                });
+
+                // 今読んでいるものをハイライト
+                targetBtn.classList.add('bg-teal-500', 'text-white', 'border-teal-600', 'scale-105');
+                targetBtn.classList.remove('bg-teal-50', 'text-teal-800', 'border-teal-200');
+            }
+
+            let playCount = 0;
+
+            function speak() {
+                if (!isAutoPlaying) return;
+
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(item.zh);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 1.0; // ナチュラルスピードで再生
+
+                const voices = window.speechSynthesis.getVoices();
+                const twVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-Hant-TW');
+                if (twVoice) utterance.voice = twVoice;
+
+                utterance.onend = () => {
+                    if (!isAutoPlaying) return;
+                    playCount++;
+                    
+                    if (playCount < 2) {
+                        // 1回目終了後、0.5秒あけて2回目を再生
+                        autoPlayTimeout = setTimeout(speak, 500);
+                    } else {
+                        // 2回目終了後、ハイライトを元に戻して3秒後に次へ
+                        if (targetBtn) {
+                            targetBtn.classList.remove('bg-teal-500', 'text-white', 'border-teal-600', 'scale-105');
+                            targetBtn.classList.add('bg-teal-50', 'text-teal-800', 'border-teal-200');
+                        }
+                        autoPlayIndex++;
+                        autoPlayTimeout = setTimeout(playAutoItem, 3000); // 3秒待機
+                    }
+                };
+
+                utterance.onerror = (e) => {
+                    console.error("TTS Error", e);
+                    if (isAutoPlaying) {
+                        autoPlayIndex++;
+                        autoPlayTimeout = setTimeout(playAutoItem, 3000);
+                    }
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+
+            speak();
+        }
+
+        // ▼ 追加：解説内のインライン音声ボタンをクリックした時の処理
+        window.playInlineAudio = function(e, text) {
+            e.stopPropagation(); // トグルなど親要素のクリックイベント発火を防ぐ
+            
+            // 自動再生中なら停止させる
+            if (isAutoPlaying) {
+                toggleAutoPlay();
+            }
+            
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; // 少しゆっくりめに
+                
+                const voices = window.speechSynthesis.getVoices();
+                const twVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-Hant-TW');
+                if (twVoice) utterance.voice = twVoice;
+                
+                const btn = e.currentTarget;
+                const originalBg = btn.className;
+                
+                // 再生中のハイライト効果
+                btn.classList.add('bg-teal-500', 'text-white', 'border-teal-600');
+                btn.classList.remove('bg-teal-50', 'text-teal-700', 'border-teal-200', 'hover:bg-teal-200');
+                
+                utterance.onend = () => {
+                    btn.className = originalBg;
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                showNotification("お使いのブラウザは音声再生に対応していません。");
+            }
+        };
+
         function showNotification(message) {
             const notif = document.getElementById('notification');
             notif.textContent = message;
@@ -333,33 +494,37 @@
             }, 3000);
         }
 
-        // 音声再生機能 (TTS)
+        // 手動での音声再生機能
         function setupAudio() {
             document.addEventListener('click', (e) => {
                 const btn = e.target.closest('.pinyin-btn');
                 if (!btn) return;
 
+                // もし自動再生中なら、手動クリックで安全に停止させる
+                if (isAutoPlaying) {
+                    toggleAutoPlay();
+                }
+
                 const textToSpeak = btn.getAttribute('data-text');
                 
                 if ('speechSynthesis' in window) {
-                    window.speechSynthesis.cancel(); // 前の音声をキャンセル
+                    window.speechSynthesis.cancel();
 
                     const utterance = new SpeechSynthesisUtterance(textToSpeak);
-                    utterance.lang = 'zh-TW'; // 台湾華語
-                    utterance.rate = 0.85;    // 少しゆっくり
+                    utterance.lang = 'zh-TW';
+                    utterance.rate = 0.85; // 手動の時は少しゆっくり
 
-                    // 台湾華語のボイスを取得
                     const voices = window.speechSynthesis.getVoices();
                     const twVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-Hant-TW');
                     if (twVoice) utterance.voice = twVoice;
 
-                    // 再生中の視覚効果
-                    const originalBg = btn.className;
-                    btn.classList.add('bg-teal-500', 'text-white', 'border-teal-600');
+                    const originalClasses = btn.className;
+                    btn.classList.add('bg-teal-500', 'text-white', 'border-teal-600', 'scale-105');
                     btn.classList.remove('bg-teal-50', 'text-teal-800', 'border-teal-200');
                     
                     utterance.onend = () => {
-                        btn.className = originalBg;
+                        // クラスを元に戻す
+                        btn.className = originalClasses;
                     };
 
                     window.speechSynthesis.speak(utterance);
@@ -368,7 +533,6 @@
                 }
             });
 
-            // 音声リストの非同期読み込み対応
             if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
                 window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
             }
