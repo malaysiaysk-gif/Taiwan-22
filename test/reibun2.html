@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOCFL Band-A 必須量詞＆方位詞</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+    .animation-fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Hide scrollbar for category tabs if it overflows on very small screens */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-stone-100 p-4 md:p-8 text-gray-800 pb-20 min-h-screen">
+
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-8 mt-4">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-stone-800 mb-4 tracking-tight">
+        TOCFL Band-A 必須量詞＆方位詞
+      </h1>
+      <p class="text-stone-600 font-bold md:text-lg">
+        全パターンの「使い方」と「試験の罠」を完全網羅！
+      </p>
+    </header>
+
+    <!-- Tabs Container -->
+    <div id="tabs-container" class="flex flex-wrap justify-center gap-2 mb-10 bg-white p-2 rounded-2xl shadow-sm border border-stone-200">
+      <!-- Tabs will be rendered here by JS -->
+    </div>
+
+    <!-- Status Count -->
+    <div id="status-count" class="text-right text-stone-500 font-bold mb-4">
+      表示中: 0 パターン
+    </div>
+
+    <!-- Flow Cards Container -->
+    <div id="cards-container" class="space-y-10">
+      <!-- Cards will be rendered here by JS -->
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // 全データの定義（ご要望の全単語を網羅）
+    // ==========================================
+    const flowData = [
+      // --- 🍎 飲食・容器グループ (food) ---
+      {
+        id: 'food_1', category: 'food',
+        body: { zh: '嘴巴', pinyin: 'zuǐba', jp: '口', emoji: '👄', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '蘋果', pinyin: 'píngguǒ', jp: 'りんご', emoji: '🍎', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '吃', verbPy: 'chī', verbJp: '食べる', measure: '一顆', measurePy: 'yì kē', measureJp: '1個', label: '顆 (丸いもの)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '妹妹吃了一顆很甜的蘋果。', pinyin: 'Mèimei chī le yì kē hěn tián de píngguǒ.', jp: '妹はとても甘いりんごを1個食べた。' },
+        note: '【超重要】台湾では丸い果物は「個」より「顆」をよく使います。「果」という字が入っているので覚えやすいです。星、歯、電池なども「顆」です。'
+      },
+      {
+        id: 'food_2', category: 'food',
+        body: { zh: '盤子', pinyin: 'pánzi', jp: 'お皿', emoji: '🍽️', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '蛋糕', pinyin: 'dàngāo', jp: 'ケーキ', emoji: '🍰', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '吃', verbPy: 'chī', verbJp: '食べる', measure: '一塊', measurePy: 'yí kuài', measureJp: '1切れ', label: '塊 (かたまり/お金)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '我想吃一塊巧克力蛋糕。', pinyin: 'Wǒ xiǎng chī yí kuài qiǎokèlì dàngāo.', jp: '私はチョコレートケーキを1切れ食べたい。' },
+        note: 'ケーキ、肉、石などゴロッとした固まりに使います。また、お金（一塊錢＝1元）を数える時に必須の単語です。'
+      },
+      {
+        id: 'food_3', category: 'food',
+        body: { zh: '烤箱', pinyin: 'kǎoxiāng', jp: 'オーブン', emoji: '♨️', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '披薩', pinyin: 'pīzà', jp: 'ピザ', emoji: '🍕', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '烤', verbPy: 'kǎo', verbJp: '焼く', measure: '一片', measurePy: 'yí piàn', measureJp: '1切れ', label: '片 (薄い切れ端)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '他昨天吃了一片披薩。', pinyin: 'Tā zuótiān chī le yí piàn pīzà.', jp: '彼は昨日ピザを1切れ食べた。' },
+        note: '食パン、クッキー、葉っぱなど、薄くスライスされたもの。「張」は最初から平らなもの、「片」は切られたものというイメージです。'
+      },
+      {
+        id: 'food_4', category: 'food',
+        body: { zh: '餐廳', pinyin: 'cāntīng', jp: 'レストラン', emoji: '🏪', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '牛肉麵', pinyin: 'niúròumiàn', jp: '牛肉麺', emoji: '🍜', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '點', verbPy: 'diǎn', verbJp: '注文する', measure: '一碗', measurePy: 'yì wǎn', measureJp: '1杯', label: '碗 (お椀)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '我去餐廳點了一碗牛肉麵。', pinyin: 'Wǒ qù cāntīng diǎn le yì wǎn niúròumiàn.', jp: '私はレストランに行って牛肉麺を1杯注文した。' },
+        note: 'ご飯、麺、スープなどに。台湾の食堂（小吃店）で注文する際に毎日使います。口頭テストやリスニングで頻出です！'
+      },
+      {
+        id: 'food_5', category: 'food',
+        body: { zh: '桌子', pinyin: 'zhuōzi', jp: '机', emoji: '🪑', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '餃子', pinyin: 'jiǎozi', jp: '餃子', emoji: '🥟', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'state-measure', verb: '放著', verbPy: 'fàng zhe', verbJp: '置いてある', measure: '一盤', measurePy: 'yì pán', measureJp: '1皿', label: '盤 (お皿)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '桌上放著一盤好吃的餃子。', pinyin: 'Zhuō shàng fàngzhe yì pán hǎochī de jiǎozi.', jp: '机の上に美味しい餃子が1皿置いてある。' },
+        note: '餃子、チャーハン、パスタなど、平らなお皿に盛られた料理に使います。'
+      },
+      {
+        id: 'food_6', category: 'food',
+        body: { zh: '超市', pinyin: 'chāoshì', jp: 'スーパー', emoji: '🛒', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '餅乾', pinyin: 'bǐnggān', jp: 'クッキー', emoji: '🍪', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '買', verbPy: 'mǎi', verbJp: '買う', measure: '一包', measurePy: 'yì bāo', measureJp: '1袋', label: '包 (袋・包み)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '弟弟買了一包巧克力餅乾。', pinyin: 'Dìdi mǎi le yì bāo qiǎokèlì bǐnggān.', jp: '弟はチョコレートクッキーを1袋買った。' },
+        note: 'スナック菓子、ティッシュ、ゴミなど、袋（ビニール袋や紙袋）に入っている状態のものを数えます。'
+      },
+      {
+        id: 'food_7', category: 'food',
+        body: { zh: '藥局', pinyin: 'yàojú', jp: '薬局', emoji: '🏥', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '口罩', pinyin: 'kǒuzhào', jp: 'マスク', emoji: '😷', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '買', verbPy: 'mǎi', verbJp: '買う', measure: '一盒', measurePy: 'yì hé', measureJp: '1箱', label: '盒 (箱)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '媽媽去藥局買了一盒口罩。', pinyin: 'Māma qù yàojú mǎi le yì hé kǒuzhào.', jp: '母は薬局に行ってマスクを1箱買った。' },
+        note: 'お弁当（便當）、チョコレート、マスクなど箱型の容器に入っている状態のものを数えます。'
+      },
+      {
+        id: 'food_8', category: 'food',
+        body: { zh: '杯子', pinyin: 'bēizi', jp: 'コップ', emoji: '🥛', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '咖啡', pinyin: 'kāfēi', jp: 'コーヒー', emoji: '☕', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '喝', verbPy: 'hē', verbJp: '飲む', measure: '一杯', measurePy: 'yì bēi', measureJp: '1杯', label: '杯 (カップ)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '早上我喜歡喝一杯熱咖啡。', pinyin: 'Zǎoshang wǒ xǐhuān hē yì bēi rè kāfēi.', jp: '朝、私は熱いコーヒーを1杯飲むのが好きだ。' },
+        note: 'コーヒー、お茶、水など、コップに入った状態の数え方です。'
+      },
+      {
+        id: 'food_9', category: 'food',
+        body: { zh: '冰箱', pinyin: 'bīngxiāng', jp: '冷蔵庫', emoji: '🧊', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '啤酒', pinyin: 'píjiǔ', jp: 'ビール', emoji: '🍺', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '拿', verbPy: 'ná', verbJp: '取る', measure: '一瓶', measurePy: 'yì píng', measureJp: '1本', label: '瓶 (ボトル)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '冰箱裡有一瓶冰啤酒。', pinyin: 'Bīngxiāng lǐ yǒu yì píng bīng píjiǔ.', jp: '冷蔵庫の中に冷たいビールが1本ある。' },
+        note: 'ビール、コーラなど、瓶やペットボトルに入った状態の数え方です。'
+      },
+      {
+        id: 'food_10', category: 'food',
+        body: { zh: '嘴巴', pinyin: 'zuǐba', jp: '口', emoji: '😋', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '可樂', pinyin: 'kělè', jp: 'コーラ', emoji: '🥤', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '喝', verbPy: 'hē', verbJp: '飲む', measure: '一罐', measurePy: 'yí guàn', measureJp: '1缶', label: '罐 (缶/ジャー)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '天氣很熱，我想喝一罐可樂。', pinyin: 'Tiānqì hěn rè, wǒ xiǎng hē yí guàn kělè.', jp: 'とても暑いので、私は缶コーラを1本飲みたい。' },
+        note: '【追加】缶や壺に入っているもの。「聽(tīng)」も缶の意味ですが、台湾ではコーラやビールなどの缶は「罐(guàn)」をよく使います。'
+      },
+      {
+        id: 'food_11', category: 'food',
+        body: { zh: '夜市', pinyin: 'yèshì', jp: '夜市', emoji: '🏮', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '烤肉', pinyin: 'kǎoròu', jp: '焼肉(串)', emoji: '🍢', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '買', verbPy: 'mǎi', verbJp: '買う', measure: '一串', measurePy: 'yí chuàn', measureJp: '1串', label: '串 (串刺し)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '我去夜市買了一串烤肉。', pinyin: 'Wǒ qù yèshì mǎi le yí chuàn kǎoròu.', jp: '私は夜市に行って肉の串焼きを1本買った。' },
+        note: '【追加】串に刺さったもの。台湾の夜市文化で頻出するので、リスニングや会話のトピックで非常に役立ちます。'
+      },
+      {
+        id: 'food_12', category: 'food',
+        body: { zh: '超市', pinyin: 'chāoshì', jp: 'スーパー', emoji: '🛒', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        item: { zh: '雞蛋', pinyin: 'jīdàn', jp: '卵', emoji: '🥚', color: 'bg-rose-50 text-rose-900 border-rose-200' },
+        grammar: { type: 'verb-measure', verb: '買', verbPy: 'mǎi', verbJp: '買う', measure: '一打', measurePy: 'yì dá', measureJp: '1ダース', label: '打 (12個)', bgClass: 'bg-rose-100 border-rose-300 text-rose-800' },
+        sentence: { zh: '媽媽在超市買了一打雞蛋。', pinyin: 'Māma zài chāoshì mǎi le yì dá jīdàn.', jp: '母はスーパーで卵を1ダース買った。' },
+        note: '【追加】1ダース(12個)。英語のdozenからの外来語。卵や瓶ビールなどをまとめ買いする際によく使われます。'
+      },
+
+      // --- 👕 形状・日用品・身につけるグループ (shape) ---
+      {
+        id: 'shape_1', category: 'shape',
+        body: { zh: '頭', pinyin: 'tóu', jp: 'あたま', emoji: '👦', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '帽子', pinyin: 'màozi', jp: '帽子', emoji: '🧢', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '戴', verbPy: 'dài', verbJp: 'かぶる', measure: '兩頂', measurePy: 'liǎng dǐng', measureJp: '2つ', label: '頂 (帽子など)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '他頭上戴著兩頂紅色的帽子。', pinyin: 'Tā tóu shàng dàizhe liǎng dǐng hóngsè de màozi.', jp: '彼は頭に2つの赤い帽子をかぶっている。' },
+        note: '帽子、メガネ、時計などアクセサリー類は「穿」ではなく「戴」を使います。'
+      },
+      {
+        id: 'shape_2', category: 'shape',
+        body: { zh: '身體', pinyin: 'shēntǐ', jp: '体(上半身)', emoji: '👕', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '衣服', pinyin: 'yīfú', jp: '服', emoji: '🧥', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '穿', verbPy: 'chuān', verbJp: '着る', measure: '一件', measurePy: 'yí jiàn', measureJp: '1着', label: '件 (上着/事)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '我今天穿了一件新衣服。', pinyin: 'Wǒ jīntiān chuān le yí jiàn xīn yīfú.', jp: '私は今日、新しい服を1着着た。' },
+        note: '「件」は服（上着）だけでなく「事（一件事）」にも使います。ズボンには使いません。'
+      },
+      {
+        id: 'shape_3', category: 'shape',
+        body: { zh: '腿', pinyin: 'tuǐ', jp: '脚', emoji: '🦵', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '褲子', pinyin: 'kùzi', jp: 'ズボン', emoji: '👖', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '穿', verbPy: 'chuān', verbJp: '履く', measure: '一條', measurePy: 'yì tiáo', measureJp: '1本', label: '條 (細長いもの)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '哥哥穿著一條藍色的褲子。', pinyin: 'Gēge chuānzhe yì tiáo lánsè de kùzi.', jp: '兄は青いズボンを履いている。' },
+        note: 'ズボン、スカート、ネクタイ、魚、道など「細長いもの」に使います。'
+      },
+      {
+        id: 'shape_4', category: 'shape',
+        body: { zh: '腳', pinyin: 'jiǎo', jp: '足', emoji: '🦶', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '鞋子', pinyin: 'xiézi', jp: '靴', emoji: '👟', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '穿', verbPy: 'chuān', verbJp: '履く', measure: '一雙', measurePy: 'yì shuāng', measureJp: '1足', label: '雙 (ペア)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '妹妹買了一雙白色的鞋子。', pinyin: 'Mèimei mǎi le yì shuāng báisè de xiézi.', jp: '妹は白い靴を1足買った。' },
+        note: '靴、靴下、箸など「ペア（2つで1組）」のものに使います。2つでも「兩」は使いません！'
+      },
+      {
+        id: 'shape_5', category: 'shape',
+        body: { zh: '圖書館', pinyin: 'túshūguǎn', jp: '図書館', emoji: '🏛️', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '字典', pinyin: 'zìdiǎn', jp: '辞書', emoji: '📖', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '借', verbPy: 'jiè', verbJp: '借りる', measure: '一本', measurePy: 'yì běn', measureJp: '1冊', label: '本 (書籍)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '我去圖書館借了一本字典。', pinyin: 'Wǒ qù túshūguǎn jiè le yì běn zìdiǎn.', jp: '私は図書館に行って辞書を1冊借りた。' },
+        note: '本、雑誌、ノート、辞書に。日本語の「細長いもの＝本」につられないように注意！'
+      },
+      {
+        id: 'shape_6', category: 'shape',
+        body: { zh: '鉛筆盒', pinyin: 'qiānbǐhé', jp: '筆箱', emoji: '✏️', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '筆', pinyin: 'bǐ', jp: 'ペン', emoji: '🖊️', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '用', verbPy: 'yòng', verbJp: '使う', measure: '一枝', measurePy: 'yì zhī', measureJp: '1本', label: '枝 (棒状のもの)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '學生用一枝黑色的筆寫字。', pinyin: 'Xuéshēng yòng yì zhī hēisè de bǐ xiězì.', jp: '学生は1本の黒いペンで字を書く。' },
+        note: 'ペンや鉛筆など「細くて棒状のもの」に使います。'
+      },
+      {
+        id: 'shape_7', category: 'shape',
+        body: { zh: '手', pinyin: 'shǒu', jp: '手', emoji: '✋', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '雨傘', pinyin: 'yǔsǎn', jp: '傘', emoji: '☔', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'state-measure', verb: '拿著', verbPy: 'ná zhe', verbJp: '持っている', measure: '一把', measurePy: 'yì bǎ', measureJp: '1本', label: '把 (取っ手がある)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '他手裡拿著一把雨傘。', pinyin: 'Tā shǒu lǐ názhe yì bǎ yǔsǎn.', jp: '彼は手に1本の傘を持っている。' },
+        note: '椅子や傘など、手で持つところ（取っ手）があるものに使います。'
+      },
+      {
+        id: 'shape_8', category: 'shape',
+        body: { zh: '桌子', pinyin: 'zhuōzi', jp: '机', emoji: '🪑', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        item: { zh: '照片', pinyin: 'zhàopiàn', jp: '写真', emoji: '🖼️', color: 'bg-amber-50 text-amber-900 border-amber-200' },
+        grammar: { type: 'verb-measure', verb: '看', verbPy: 'kàn', verbJp: '見る', measure: '一張', measurePy: 'yì zhāng', measureJp: '1枚', label: '張 (平らで広い)', bgClass: 'bg-amber-100 border-amber-300 text-amber-800' },
+        sentence: { zh: '他在看一張舊照片。', pinyin: 'Tā zài kàn yì zhāng jiù zhàopiàn.', jp: '彼は1枚の古い写真を見ている。' },
+        note: '紙や写真だけでなく、机（一張桌子）やベッドなど「平らで広い面がある家具」にも使います。'
+      },
+
+      // --- 🏢 場所・乗り物・機械グループ (place) ---
+      {
+        id: 'place_1', category: 'place',
+        body: { zh: '學校', pinyin: 'xuéxiào', jp: '学校', emoji: '🏫', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        item: { zh: '教室', pinyin: 'jiàoshì', jp: '教室', emoji: '🚪', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        grammar: { type: 'verb-measure', verb: '去', verbPy: 'qù', verbJp: '行く', measure: '一間', measurePy: 'yì jiān', measureJp: '1部屋', label: '間 (区切られた空間)', bgClass: 'bg-sky-100 border-sky-300 text-sky-800' },
+        sentence: { zh: '學校旁邊有一間新餐廳。', pinyin: 'Xuéxiào pángbiān yǒu yì jiān xīn cāntīng.', jp: '学校の隣に新しいレストランが1軒ある。' },
+        note: '部屋、お店、教室、学校など「区切られた空間」に使います。'
+      },
+      {
+        id: 'place_2', category: 'place',
+        body: { zh: '路上', pinyin: 'lùshang', jp: '道', emoji: '🛣️', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        item: { zh: '便利商店', pinyin: 'biànlì shāngdiàn', jp: 'コンビニ', emoji: '🏪', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        grammar: { type: 'verb-measure', verb: '去', verbPy: 'qù', verbJp: '行く', measure: '一家', measurePy: 'yì jiā', measureJp: '1店舗', label: '家 (店舗・企業)', bgClass: 'bg-sky-100 border-sky-300 text-sky-800' },
+        sentence: { zh: '這家便利商店有很多好吃的東西。', pinyin: 'Zhè jiā biànlì shāngdiàn yǒu hěn duō hǎochī de dōngxi.', jp: 'このコンビニには美味しいものがたくさんある。' },
+        note: '「間」と似ていますが、会社、レストラン、コンビニなど営利目的の組織やビジネスの拠点には「家」がよく使われます。'
+      },
+      {
+        id: 'place_3', category: 'place',
+        body: { zh: '車站', pinyin: 'chēzhàn', jp: '駅', emoji: '🚉', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        item: { zh: '高鐵', pinyin: 'gāotiě', jp: '新幹線', emoji: '🚄', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        grammar: { type: 'verb-measure', verb: '搭', verbPy: 'dā', verbJp: '乗る', measure: '一班', measurePy: 'yì bān', measureJp: '1本/便', label: '班 (定期交通機関)', bgClass: 'bg-sky-100 border-sky-300 text-sky-800' },
+        sentence: { zh: '下一班高鐵什麼時候來？', pinyin: 'Xià yì bān gāotiě shénme shíhòu lái?', jp: '次の新幹線はいつ来ますか？' },
+        note: '新幹線、飛行機、電車、バスなど、時刻表に従って運行されている定期交通機関に使います。（例：下一班公車）'
+      },
+      {
+        id: 'place_4', category: 'place',
+        body: { zh: '路上', pinyin: 'lùshang', jp: '道', emoji: '🛣️', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        item: { zh: '汽車', pinyin: 'qìchē', jp: '車', emoji: '🚗', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        grammar: { type: 'verb-measure', verb: '開', verbPy: 'kāi', verbJp: '運転する', measure: '一輛', measurePy: 'yí liàng', measureJp: '1台', label: '輛 (乗り物)', bgClass: 'bg-sky-100 border-sky-300 text-sky-800' },
+        sentence: { zh: '爸爸開著一輛新汽車。', pinyin: 'Bàba kāizhe yí liàng xīn qìchē.', jp: '父は新しい車を運転している。' },
+        note: '車、自転車、バスなど。「車へん」がついているので覚えやすいです。'
+      },
+      {
+        id: 'place_5', category: 'place',
+        body: { zh: '客廳', pinyin: 'kètīng', jp: 'リビング', emoji: '🛋️', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        item: { zh: '電視', pinyin: 'diànshì', jp: 'テレビ', emoji: '📺', color: 'bg-sky-50 text-sky-900 border-sky-200' },
+        grammar: { type: 'verb-measure', verb: '看', verbPy: 'kàn', verbJp: '見る', measure: '一臺', measurePy: 'yì tái', measureJp: '1台', label: '臺 (機械)', bgClass: 'bg-sky-100 border-sky-300 text-sky-800' },
+        sentence: { zh: '客廳裡有一臺大電視。', pinyin: 'Kètīng lǐ yǒu yì tái dà diànshì.', jp: 'リビングに大きなテレビが1台ある。' },
+        note: 'テレビ、パソコン、冷蔵庫、スマホなど、大型家電や機械に使います。'
+      },
+
+      // --- 👤 人・動物・事柄グループ (other) ---
+      {
+        id: 'other_1', category: 'other',
+        body: { zh: '學校', pinyin: 'xuéxiào', jp: '学校', emoji: '🏫', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '學生', pinyin: 'xuéshēng', jp: '学生', emoji: '🧑‍🎓', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '有', verbPy: 'yǒu', verbJp: 'いる', measure: '三個', measurePy: 'sān ge', measureJp: '3人', label: '個 (万能量詞)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '學校裡有三個新學生。', pinyin: 'Xuéxiào lǐ yǒu sān ge xīn xuéshēng.', jp: '学校に3人の新しい学生がいる。' },
+        note: '人、果物、カバン、コップなど。迷ったらこれ。一番汎用性が高いですが、試験ではより適切な量詞が問われます。'
+      },
+      {
+        id: 'other_2', category: 'other',
+        body: { zh: '教室', pinyin: 'jiàoshì', jp: '教室', emoji: '👨‍🏫', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '老師', pinyin: 'lǎoshī', jp: '先生', emoji: '👩‍🏫', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '有', verbPy: 'yǒu', verbJp: 'いる', measure: '兩位', measurePy: 'liǎng wèi', measureJp: '2名', label: '位 (丁寧な人)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '教室裡有兩位老師。', pinyin: 'Jiàoshì lǐ yǒu liǎng wèi lǎoshī.', jp: '教室に2人の先生がいる。' },
+        note: '先生、お客さん、目上の人など、丁寧な数え方。試験では「老師」と一緒に来ることが多いです。'
+      },
+      {
+        id: 'other_3', category: 'other',
+        body: { zh: '公園', pinyin: 'gōngyuán', jp: '公園', emoji: '🌳', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '狗', pinyin: 'gǒu', jp: '犬', emoji: '🐕', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '看見', verbPy: 'kànjiàn', verbJp: '見える', measure: '一隻', measurePy: 'yì zhī', measureJp: '1匹', label: '隻 (動物)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '公園裡有一隻可愛的狗。', pinyin: 'Gōngyuán lǐ yǒu yì zhī kě\'ài de gǒu.', jp: '公園に可愛い犬が1匹いる。' },
+        note: '犬、猫、鳥など小さな動物全般。※台湾では犬も「隻」が多いです。'
+      },
+      {
+        id: 'other_4', category: 'other',
+        body: { zh: '公司', pinyin: 'gōngsī', jp: '会社', emoji: '🏢', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '工作', pinyin: 'gōngzuò', jp: '仕事', emoji: '💼', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '找', verbPy: 'zhǎo', verbJp: '探す', measure: '一份', measurePy: 'yí fèn', measureJp: '1つ', label: '份 (セット・仕事)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '大學畢業後，我想找一份好工作。', pinyin: 'Dàxué bìyè hòu, wǒ xiǎng zhǎo yí fèn hǎo gōngzuò.', jp: '大学卒業後、私は良い仕事を1つ探したい。' },
+        note: '仕事（工作）、新聞、セットメニューなど「1セット」というまとまり。就活の話題で「一份工作」とよく出ます。'
+      },
+      {
+        id: 'other_5', category: 'other',
+        body: { zh: 'KTV', pinyin: 'KTV', jp: 'カラオケ', emoji: '🎤', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '歌', pinyin: 'gē', jp: '歌', emoji: '🎵', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '唱', verbPy: 'chàng', verbJp: '歌う', measure: '一首', measurePy: 'yì shǒu', measureJp: '1曲', label: '首 (歌・詩)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '他在KTV唱了一首好聽的歌。', pinyin: 'Tā zài KTV chàng le yì shǒu hǎotīng de gē.', jp: '彼はカラオケで素敵な歌を1曲歌った。' },
+        note: '歌、音楽。趣味の話や、KTV（カラオケ）の話題の時に必ず出てきます。'
+      },
+      {
+        id: 'other_6', category: 'other',
+        body: { zh: '台灣', pinyin: 'Táiwān', jp: '台湾', emoji: '🇹🇼', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '台北', pinyin: 'Táiběi', jp: '台北', emoji: '🏙️', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '去過', verbPy: 'qùguò', verbJp: '行った', measure: '一次', measurePy: 'yí cì', measureJp: '1回', label: '次 (動作の回数)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '我去過一次台灣。', pinyin: 'Wǒ qùguò yí cì Táiwān.', jp: '私は台湾に1回行ったことがある。' },
+        note: '経験、行く回数など。名詞ではなく、動詞の回数を数える「動量詞」の基本です。（例：去過一次）'
+      },
+      {
+        id: 'other_7', category: 'other',
+        body: { zh: '公園', pinyin: 'gōngyuán', jp: '公園', emoji: '⛲', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '人', pinyin: 'rén', jp: '人', emoji: '👥', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '有', verbPy: 'yǒu', verbJp: 'いる', measure: '一群', measurePy: 'yì qún', measureJp: '1群れ', label: '群 (群れ・集団)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '公園裡有一群人在運動。', pinyin: 'Gōngyuán lǐ yǒu yì qún rén zài yùndòng.', jp: '公園に運動している人の群れ（集団）がいる。' },
+        note: '【追加】人や動物の「群れ・集団」。大勢いることを表す時に「很多個」よりも自然な表現です。（一群鳥＝鳥の群れ）'
+      },
+      {
+        id: 'other_8', category: 'other',
+        body: { zh: '路上', pinyin: 'lùshang', jp: '道', emoji: '🛣️', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        item: { zh: '夫妻', pinyin: 'fūqī', jp: '夫婦', emoji: '👫', color: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
+        grammar: { type: 'verb-measure', verb: '看見', verbPy: 'kànjiàn', verbJp: '見る', measure: '一對', measurePy: 'yí duì', measureJp: '1組', label: '對 (人・動物のペア)', bgClass: 'bg-emerald-100 border-emerald-300 text-emerald-800' },
+        sentence: { zh: '我看到一對夫妻在散步。', pinyin: 'Wǒ kàndào yí duì fūqī zài sànbù.', jp: '私は一組の夫婦が散歩しているのを見た。' },
+        note: '【追加】靴や箸などの無生物のペアは「雙(shuāng)」、夫婦や恋人など「人や動物のペア」は「對(duì)」を使います。'
+      },
+
+      // --- 📍 位置・方向・対義語グループ (position & opposite) ---
+      {
+        id: 'pos_1', category: 'position',
+        body: { zh: '桌子', pinyin: 'zhuōzi', jp: '机', emoji: '🪑', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        item: { zh: '狗', pinyin: 'gǒu', jp: '犬', emoji: '🐕', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        grammar: { type: 'position', main: '在下面', mainPy: 'zài xià miàn', mainJp: '下にいる', label: '位置・方向', bgClass: 'bg-indigo-100 border-indigo-300 text-indigo-800' },
+        sentence: { zh: '桌子下面有一隻狗。', pinyin: 'Zhuōzi xiàmiàn yǒu yì zhī gǒu.', jp: '机の下に犬がいます。' },
+        note: '「机の上にいる」など、写真と逆の位置を示すダミー選択肢の定番です！'
+      },
+      {
+        id: 'pos_2', category: 'position',
+        body: { zh: '照片', pinyin: 'zhàopiàn', jp: '写真', emoji: '🖼️', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        item: { zh: '朋友', pinyin: 'péngyǒu', jp: '友達', emoji: '🧑‍🤝‍🧑', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        grammar: { type: 'position', main: '在裡面', mainPy: 'zài lǐ miàn', mainJp: '中にいる', label: '位置・方向', bgClass: 'bg-indigo-100 border-indigo-300 text-indigo-800' },
+        sentence: { zh: '照片裡面有我的朋友。', pinyin: 'Zhàopiàn lǐmiàn yǒu wǒ de péngyǒu.', jp: '写真の中に私の友達がいます。' },
+        note: '❌ 日本語の「写真の中」は「照片裡(裡面)」です。「中(zhōng)」は使わないので注意してください。'
+      },
+      {
+        id: 'pos_3', category: 'position',
+        body: { zh: '椅子', pinyin: 'yǐzi', jp: '椅子', emoji: '🪑', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        item: { zh: '貓', pinyin: 'māo', jp: '猫', emoji: '🐈', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        grammar: { type: 'position', main: '在旁邊', mainPy: 'zài páng biān', mainJp: '隣にいる', label: '位置・方向', bgClass: 'bg-indigo-100 border-indigo-300 text-indigo-800' },
+        sentence: { zh: '椅子旁邊有一隻貓。', pinyin: 'Yǐzi pángbiān yǒu yì zhī māo.', jp: '椅子の隣に猫がいます。' },
+        note: '日本語の「隣（同種のもの）」より範囲が広く、左右どちらにあっても「旁邊」が使えます。'
+      },
+      {
+        id: 'pos_4', category: 'position',
+        body: { zh: '銀行', pinyin: 'yínháng', jp: '銀行', emoji: '🏦', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        item: { zh: '郵局', pinyin: 'yóujú', jp: '郵便局', emoji: '🏣', color: 'bg-indigo-50 text-indigo-900 border-indigo-200' },
+        grammar: { type: 'position', main: '在對面', mainPy: 'zài duì miàn', mainJp: '向かいにある', label: '位置・方向', bgClass: 'bg-indigo-100 border-indigo-300 text-indigo-800' },
+        sentence: { zh: '銀行對面有一間郵局。', pinyin: 'Yínháng duìmiàn yǒu yì jiān yóujú.', jp: '銀行の向かいに郵便局があります。' },
+        note: '道を挟んだ向かいや、写真の中で人が向かい合って座っている時などによく出ます。'
+      },
+      {
+        id: 'pos_5', category: 'position',
+        body: { zh: '商店', pinyin: 'shāngdiàn', jp: 'お店', emoji: '🏪', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        item: { zh: '東西', pinyin: 'dōngxi', jp: '品物', emoji: '🛍️', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        grammar: { type: 'opposite', verbA: '買', verbAPy: 'mǎi', verbAJp: '買う', verbB: '賣', verbBPy: 'mài', verbBJp: '売る', label: '対比（買う / 売る）', bgClass: 'bg-slate-100 border-slate-300 text-slate-800' },
+        sentence: { zh: '客人在買東西，店員在賣東西。', pinyin: 'Kèrén zài mǎi dōngxi, diànyuán zài mài dōngxi.', jp: '客は品物を買っていて、店員は品物を売っています。' },
+        note: '上の「十」の有無と、三声・四声の違いに注意。レジのイラストなどで主語と動詞が逆のダミー選択肢がよく出ます！'
+      },
+      {
+        id: 'pos_6', category: 'position',
+        body: { zh: '圖書館', pinyin: 'túshūguǎn', jp: '図書館', emoji: '🏛️', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        item: { zh: '書', pinyin: 'shū', jp: '本', emoji: '📕', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        grammar: { type: 'opposite', verbA: '借', verbAPy: 'jiè', verbAJp: '借りる', verbB: '還', verbBPy: 'huán', verbBJp: '返す', label: '対比（借りる / 返す）', bgClass: 'bg-slate-100 border-slate-300 text-slate-800' },
+        sentence: { zh: '我去圖書館借書，明天還書。', pinyin: 'Wǒ qù túshūguǎn jiè shū, míngtiān huán shū.', jp: '私は図書館へ本を借りに行き、明日本を返します。' },
+        note: '「還」は副詞の hái（まだ）と同じ漢字なので、図書館のイラストなどでは動詞の「返す」だと見抜いてください。'
+      },
+      {
+        id: 'pos_7', category: 'position',
+        body: { zh: '人', pinyin: 'rén', jp: '人', emoji: '🧑', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        item: { zh: '門', pinyin: 'mén', jp: 'ドア', emoji: '🚪', color: 'bg-slate-50 text-slate-900 border-slate-200' },
+        grammar: { type: 'opposite', verbA: '推', verbAPy: 'tuī', verbAJp: '押す', verbB: '拉', verbBPy: 'lā', verbBJp: '引く', label: '対比（押す / 引く）', bgClass: 'bg-slate-100 border-slate-300 text-slate-800' },
+        sentence: { zh: '進去要推門，出來要拉門。', pinyin: 'Jìnqù yào tuī mén, chūlái yào lā mén.', jp: '入る時はドアを押し、出る時はドアを引きます。' },
+        note: 'ドアの開け閉めや、カート・スーツケースを操作しているイラストでよく出題されます。'
+      }
+    ];
+
+    const CATEGORIES = [
+      { id: 'all', label: 'すべて', emoji: '🌟' },
+      { id: 'food', label: '飲食・容器', emoji: '🍔' },
+      { id: 'shape', label: '形状・日用品', emoji: '👕' },
+      { id: 'place', label: '場所・乗り物', emoji: '🏢' },
+      { id: 'other', label: '人・事・回数', emoji: '👤' },
+      { id: 'position', label: '位置・対義語', emoji: '📍' },
+    ];
+
+    let activeCat = 'all';
+
+    // 音声読み上げ機能 (台湾華語設定)
+    function speak(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // 連続再生をリセット
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW'; // 台湾華語（繁体字）の音声を指定
+        utterance.rate = 0.9;     // 少しゆっくりで聞き取りやすく
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("お使いのブラウザは音声読み上げに対応していません。");
+      }
+    }
+
+    // タブの描画
+    function renderTabs() {
+      const tabsContainer = document.getElementById('tabs-container');
+      tabsContainer.innerHTML = CATEGORIES.map(cat => {
+        const isActive = activeCat === cat.id;
+        const btnClass = isActive 
+          ? 'bg-stone-800 text-white shadow-md scale-105' 
+          : 'bg-transparent text-stone-500 hover:bg-stone-100';
+        return `
+          <button
+            onclick="changeCategory('${cat.id}')"
+            class="px-4 py-2 rounded-xl font-bold text-sm md:text-base transition-all duration-200 flex items-center gap-2 ${btnClass}"
+          >
+            <span>${cat.emoji}</span> ${cat.label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // カテゴリ変更
+    function changeCategory(catId) {
+      activeCat = catId;
+      renderTabs();
+      renderCards();
+    }
+
+    // カードの描画
+    function renderCards() {
+      const displayData = flowData.filter(item => activeCat === 'all' || item.category === activeCat);
+      document.getElementById('status-count').textContent = `表示中: ${displayData.length} パターン`;
+
+      const cardsContainer = document.getElementById('cards-container');
+      cardsContainer.innerHTML = displayData.map(flow => {
+        
+        let grammarHtml = '';
+        if (flow.grammar.type === 'verb-measure' || flow.grammar.type === 'state-measure') {
+          grammarHtml = `
+            <div class="flex items-stretch justify-center gap-2 w-full mb-1">
+              <div class="flex-1 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-sm border border-current/20 p-2 cursor-pointer hover:bg-white hover:scale-105 transition-all" onclick="speak('${flow.grammar.verb}')" title="発音を聞く">
+                <span class="text-[10px] font-bold opacity-60 mb-1 tracking-wider">動詞</span>
+                <span class="text-3xl font-extrabold drop-shadow-sm mb-1">${flow.grammar.verb}</span>
+                <span class="text-[11px] font-mono font-bold opacity-70 mb-1">🔊 ${flow.grammar.verbPy}</span>
+                <span class="text-xs font-bold bg-current/10 px-2 py-1 rounded w-full text-center truncate">${flow.grammar.verbJp}</span>
+              </div>
+              <div class="flex items-center justify-center">
+                <span class="text-xl font-black opacity-30">+</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-sm border border-current/20 p-2 cursor-pointer hover:bg-white hover:scale-105 transition-all" onclick="speak('${flow.grammar.measure}')" title="発音を聞く">
+                <span class="text-[10px] font-bold opacity-60 mb-1 tracking-wider">量詞</span>
+                <span class="text-3xl font-extrabold drop-shadow-sm mb-1">${flow.grammar.measure}</span>
+                <span class="text-[11px] font-mono font-bold opacity-70 mb-1">🔊 ${flow.grammar.measurePy}</span>
+                <span class="text-xs font-bold bg-current/10 px-2 py-1 rounded w-full text-center truncate">${flow.grammar.measureJp}</span>
+              </div>
+            </div>
+          `;
+        } else if (flow.grammar.type === 'position') {
+          grammarHtml = `
+            <div class="flex items-stretch justify-center w-full mb-1">
+              <div class="flex-1 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-sm border border-current/20 p-3 cursor-pointer hover:bg-white hover:scale-105 transition-all" onclick="speak('${flow.grammar.main}')" title="発音を聞く">
+                <span class="text-[10px] font-bold opacity-60 mb-1 tracking-wider">方位詞</span>
+                <span class="text-3xl font-extrabold drop-shadow-sm mb-1 tracking-widest">${flow.grammar.main}</span>
+                <span class="text-[11px] font-mono font-bold opacity-70 mb-2">🔊 ${flow.grammar.mainPy}</span>
+                <span class="text-sm font-bold bg-current/10 px-3 py-1 rounded w-full text-center">${flow.grammar.mainJp}</span>
+              </div>
+            </div>
+          `;
+        } else if (flow.grammar.type === 'opposite') {
+          grammarHtml = `
+            <div class="flex items-stretch justify-center gap-2 w-full mb-1">
+              <div class="flex-1 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-sm border border-current/20 p-2 cursor-pointer hover:bg-white hover:scale-105 transition-all" onclick="speak('${flow.grammar.verbA}')" title="発音を聞く">
+                <span class="text-3xl font-extrabold drop-shadow-sm mb-1">${flow.grammar.verbA}</span>
+                <span class="text-[11px] font-mono font-bold opacity-70 mb-1">🔊 ${flow.grammar.verbAPy}</span>
+                <span class="text-xs font-bold bg-current/10 px-2 py-1 rounded w-full text-center truncate">${flow.grammar.verbAJp}</span>
+              </div>
+              <div class="flex items-center justify-center">
+                <span class="text-sm font-black opacity-40 italic">VS</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-sm border border-current/20 p-2 cursor-pointer hover:bg-white hover:scale-105 transition-all" onclick="speak('${flow.grammar.verbB}')" title="発音を聞く">
+                <span class="text-3xl font-extrabold drop-shadow-sm mb-1">${flow.grammar.verbB}</span>
+                <span class="text-[11px] font-mono font-bold opacity-70 mb-1">🔊 ${flow.grammar.verbBPy}</span>
+                <span class="text-xs font-bold bg-current/10 px-2 py-1 rounded w-full text-center truncate">${flow.grammar.verbBJp}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        const noteHtml = flow.note ? `
+          <div class="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 shadow-sm">
+            <span class="text-2xl leading-none">💡</span>
+            <p class="text-amber-200 text-sm md:text-base leading-relaxed font-bold tracking-wide">
+              ${flow.note}
+            </p>
+          </div>
+        ` : '';
+
+        return `
+          <div class="bg-white rounded-[2rem] shadow-md border border-stone-200 overflow-hidden hover:shadow-xl transition-all duration-300 group animation-fade-in">
+            <!-- 1. Step Flow Section (Top) -->
+            <div class="p-5 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-3 bg-gradient-to-b from-white to-stone-50">
+              
+              <!-- Step 1: Base / Actor -->
+              <div class="flex flex-col items-center justify-center w-full md:w-[30%] p-5 rounded-3xl border-[3px] bg-white ${flow.body.color} shadow-sm group-hover:-translate-y-1 transition-transform">
+                <span class="text-5xl mb-3 drop-shadow-sm">${flow.body.emoji}</span>
+                <span class="text-2xl font-extrabold">${flow.body.zh}</span>
+                <span 
+                  onclick="speak('${flow.body.zh}')"
+                  class="text-sm font-bold opacity-70 mt-1 cursor-pointer hover:opacity-100 hover:text-black flex items-center gap-1 transition-colors bg-white/50 px-2 py-0.5 rounded-md"
+                  title="クリックして発音を聞く"
+                >
+                  🔊 ${flow.body.pinyin}
+                </span>
+                <span class="text-xs mt-2 bg-white/80 px-3 py-1 rounded-full border border-current opacity-80">${flow.body.jp}</span>
+              </div>
+
+              <!-- Arrow -->
+              <div class="text-stone-300 font-black text-3xl transform rotate-90 md:rotate-0">➔</div>
+
+              <!-- Step 2: Target / Item -->
+              <div class="flex flex-col items-center justify-center w-full md:w-[30%] p-5 rounded-3xl border-[3px] bg-white ${flow.item.color} shadow-sm group-hover:-translate-y-1 transition-transform delay-75">
+                <span class="text-5xl mb-3 drop-shadow-sm">${flow.item.emoji}</span>
+                <span class="text-2xl font-extrabold">${flow.item.zh}</span>
+                <span 
+                  onclick="speak('${flow.item.zh}')"
+                  class="text-sm font-bold opacity-70 mt-1 cursor-pointer hover:opacity-100 hover:text-black flex items-center gap-1 transition-colors bg-white/50 px-2 py-0.5 rounded-md"
+                  title="クリックして発音を聞く"
+                >
+                  🔊 ${flow.item.pinyin}
+                </span>
+                <span class="text-xs mt-2 bg-white/80 px-3 py-1 rounded-full border border-current opacity-80">${flow.item.jp}</span>
+              </div>
+
+              <!-- Arrow -->
+              <div class="text-stone-300 font-black text-3xl transform rotate-90 md:rotate-0">➔</div>
+
+              <!-- Step 3: Grammar Logic -->
+              <div class="flex flex-col items-center justify-center w-full md:w-[35%] p-5 rounded-3xl border-[3px] shadow-inner ${flow.grammar.bgClass}">
+                ${grammarHtml}
+                <span class="text-xs mt-3 bg-white/60 px-3 py-1.5 rounded-full font-bold uppercase tracking-wider">${flow.grammar.label}</span>
+              </div>
+
+            </div>
+
+            <!-- 2. Sentence & Note Section (Bottom) -->
+            <div class="bg-stone-800 text-stone-100 p-6 md:p-8 flex items-start gap-5 border-t-[6px] border-stone-700">
+              <div class="text-4xl mt-1 opacity-90 drop-shadow-md">📖</div>
+              <div class="flex-1 flex flex-col">
+                <div class="text-2xl md:text-3xl font-bold tracking-wide mb-2 leading-tight">
+                  ${flow.sentence.zh}
+                </div>
+                
+                <div 
+                  onclick="speak('${flow.sentence.zh}')"
+                  class="text-stone-400 font-medium text-base md:text-lg mb-4 font-mono cursor-pointer hover:text-stone-200 flex items-center gap-2 transition-colors w-max"
+                  title="クリックして例文の発音を聞く"
+                >
+                  🔊 ${flow.sentence.pinyin}
+                </div>
+                
+                <div class="text-stone-300 font-bold text-sm md:text-base bg-stone-700/60 self-start px-4 py-2 rounded-xl border border-stone-600 shadow-inner">
+                  ${flow.sentence.jp}
+                </div>
+
+                ${noteHtml}
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 初期化
+    renderTabs();
+    renderCards();
+  </script>
+</body>
+</html>
