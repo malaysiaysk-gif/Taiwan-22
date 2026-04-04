@@ -127,6 +127,72 @@
       <div class="bg-slate-50 border-t border-slate-100 py-3">
         <p class="text-center text-slate-600 text-sm font-medium">日本語訳：「私は昨日、家で食べたいと思ったことはなかった」</p>
       </div>
+
+      <!-- Object Formula Addition -->
+      <div class="border-t-2 border-dashed border-slate-200 p-4 md:p-6 bg-white">
+        <h3 class="text-base md:text-lg font-bold text-slate-700 mb-2 text-center flex items-center justify-center gap-2">
+          <span>📦</span> 名詞のデコレーション（量詞と形容詞の語順）
+        </h3>
+        <p class="text-center text-sm text-slate-600 mb-4">名詞（目的語）の前に「量」や「色」などの情報を足す時は、<span class="font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded">数字 ＋ 量詞 ＋ 形容詞 ＋ 的</span> の順になります。</p>
+        
+        <div class="overflow-x-auto hide-scrollbar">
+          <div class="flex flex-nowrap items-center min-w-[750px] justify-center text-center pb-2 mt-4">
+            
+            <div class="flex-none px-2 group">
+              <div class="text-sm text-slate-500 mb-1">主語＋動詞</div>
+              <div class="font-bold text-lg tc bg-slate-100 rounded-lg py-2 px-4 border border-slate-200 text-slate-700">他買了</div>
+              <button onclick="speak('他買了')" class="mt-2 text-xs font-normal text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded transition-colors w-full">tā mǎi le 🔊</button>
+            </div>
+            
+            <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            
+            <div class="flex-none px-2 group">
+              <div class="text-sm text-pink-600 font-bold mb-1">数字</div>
+              <div class="font-bold text-lg tc bg-pink-50 text-pink-700 rounded-lg py-2 px-4 border border-pink-100">十五</div>
+              <button onclick="speak('十五')" class="mt-2 text-xs font-normal text-pink-700 bg-pink-50 hover:bg-pink-100 px-2 py-1 rounded transition-colors w-full">shíwǔ 🔊</button>
+            </div>
+            
+            <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            
+            <div class="flex-none px-2 group">
+              <div class="text-sm text-purple-600 font-bold mb-1">量詞</div>
+              <div class="font-bold text-lg tc bg-purple-50 text-purple-700 rounded-lg py-2 px-4 border border-purple-100">頂</div>
+              <button onclick="speak('頂')" class="mt-2 text-xs font-normal text-purple-700 bg-purple-50 hover:bg-purple-100 px-2 py-1 rounded transition-colors w-full">dǐng 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">帽子などの単位</div>
+            </div>
+            
+            <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            
+            <div class="flex-none px-2 group">
+              <div class="text-sm text-orange-600 font-bold mb-1">形容詞</div>
+              <div class="font-bold text-lg tc bg-orange-50 text-orange-700 rounded-lg py-2 px-4 border border-orange-100">紅色</div>
+              <button onclick="speak('紅色')" class="mt-2 text-xs font-normal text-orange-700 bg-orange-50 hover:bg-orange-100 px-2 py-1 rounded transition-colors w-full">hóngsè 🔊</button>
+            </div>
+            
+            <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            
+            <div class="flex-none px-2 group">
+              <div class="text-sm text-slate-500 mb-1">接着剤</div>
+              <div class="font-bold text-lg tc bg-slate-100 rounded-lg py-2 px-3 border border-slate-200">的</div>
+              <button onclick="speak('的')" class="mt-2 text-xs font-normal text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded transition-colors w-full">de 🔊</button>
+            </div>
+            
+            <div class="text-slate-300 text-2xl font-bold px-2">➡</div>
+            
+            <div class="flex-none px-2 group relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">名詞</div>
+              <div class="font-bold text-2xl tc bg-white rounded-lg py-3 px-6 shadow-lg transform scale-105 border-2 border-slate-300 text-slate-800">帽子</div>
+              <button onclick="speak('帽子')" class="mt-3 text-xs font-normal text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded transition-colors w-full">màozi 🔊</button>
+            </div>
+            
+          </div>
+        </div>
+        <div class="text-center mt-6">
+          <button onclick="speak('他買了十五頂紅色的帽子。')" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-pink-900 bg-pink-100 hover:bg-pink-200 px-6 py-2.5 rounded-full shadow-sm border border-pink-200 transition-colors">
+            <span>🔊 全文を再生：</span> 他買了十五頂紅色的帽子。<span class="font-normal text-pink-700 text-xs ml-1">（彼は15個の赤い帽子を買った）</span>
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Main Columns -->
@@ -164,11 +230,17 @@
           <!-- Aux & Prep -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
-              <h3 class="font-bold text-yellow-600 mb-2 flex items-center gap-1"><span class="text-xl">💭</span> 助動詞（気持ち・能力）</h3>
-              <p class="tc text-slate-700 text-lg">你 <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-bold">應該/想</span> 去。</p>
-              <div class="mt-3 flex items-center justify-between border-t border-slate-50 pt-2">
-                <span class="text-xs text-slate-500">（行くべきだ／行きたい）</span>
-                <button onclick="speak('你應該去。你想去。')" class="text-xs font-mono text-yellow-600 bg-yellow-50 hover:bg-yellow-100 px-2 py-1 rounded transition-colors flex items-center gap-1">Nǐ yīnggāi/xiǎng qù. 🔊</button>
+              <h3 class="font-bold text-yellow-600 mb-2 flex items-center gap-1"><span class="text-xl">💭</span> 助動詞（気持ち・義務）</h3>
+              <p class="tc text-slate-700 text-lg">你 <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-bold">想 / 得</span> 去。</p>
+              <div class="mt-3 flex flex-col gap-2 border-t border-slate-50 pt-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] text-slate-500">（〜したい）</span>
+                  <button onclick="speak('你想去。')" class="text-[11px] font-mono text-yellow-600 bg-yellow-50 hover:bg-yellow-100 px-2 py-1 rounded transition-colors">xiǎng 🔊</button>
+                </div>
+                <div class="flex items-center justify-between bg-red-50 px-1.5 py-1 rounded border border-red-100">
+                  <span class="text-[11px] text-red-600 font-bold">（〜しなきゃ！）</span>
+                  <button onclick="speak('你得去。')" class="text-[11px] font-mono text-red-600 bg-red-100 hover:bg-red-200 px-2 py-1 rounded transition-colors">děi (デイ) 🔊</button>
+                </div>
               </div>
             </div>
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
@@ -299,10 +371,10 @@
     <!-- Common Traps for Japanese Speakers -->
     <section class="bg-red-50 border-t-4 border-red-500 rounded-3xl shadow-sm p-6 md:p-8">
       <h2 class="text-2xl md:text-3xl font-bold text-red-800 mb-8 text-center flex items-center justify-center gap-2">
-        <span>⚠️</span> 日本人学習者が陥りやすい！語順の3大トラップ
+        <span>⚠️</span> 日本人学習者が陥りやすい！語順の4大トラップ
       </h2>
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         <!-- Trap 1: Adjectives and 是 -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
@@ -352,6 +424,30 @@
               <button onclick="speak('我在餐廳吃飯。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
             </div>
             <p class="text-xs text-slate-500 mt-2 leading-relaxed">※例外：「住(住む)」「放(置く)」など、一部の動詞だけは「住在台北」と後ろに置きます。</p>
+          </div>
+        </div>
+
+        <!-- Trap 4: 在 vs 有 (NEW) -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
+          <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ④：存在の「ある/いる」</div>
+          <h3 class="font-bold text-lg mb-3">「在」と「有」の混同</h3>
+          <p class="text-sm text-slate-600 mb-4 leading-relaxed">日本語はどちらも「ある」ですが、中国語は<strong class="text-blue-600">特定のもの(主語)がどこにあるか</strong>か、<strong class="text-green-600">ある場所(主語)に何があるか</strong>で使い分けます。</p>
+          <div class="bg-slate-50 p-4 rounded-xl text-sm tc space-y-3 border border-slate-100">
+            <div class="flex justify-between items-center bg-blue-50 p-2 rounded-lg border border-blue-100">
+              <div>
+                <p class="text-slate-500 text-[10px] mb-1">【在】私のペンは机に<strong class="text-blue-600">ある</strong>（AはBにある）</p>
+                <p class="text-blue-900">我的筆 <span class="font-bold text-blue-600 text-lg bg-white px-1 rounded shadow-sm">在</span> 桌子上。</p>
+              </div>
+              <button onclick="speak('我的筆在桌子上。')" class="text-xs bg-white text-blue-700 hover:bg-blue-100 px-2 py-1 rounded shadow-sm border border-blue-100">🔊</button>
+            </div>
+            <div class="flex justify-between items-center bg-green-50 p-2 rounded-lg border border-green-100">
+              <div>
+                <p class="text-slate-500 text-[10px] mb-1">【有】机の上にペンが<strong class="text-green-600">ある</strong>（BにAがある）</p>
+                <p class="text-green-900">桌子上 <span class="font-bold text-green-600 text-lg bg-white px-1 rounded shadow-sm">有</span> 筆。</p>
+              </div>
+              <button onclick="speak('桌子上有筆。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
+            </div>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">※「有」の後ろには、必ず<span class="font-bold">「不特定のもの」</span>（×私のペン ◯ペン）が来ます。</p>
           </div>
         </div>
 
