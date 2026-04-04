@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台湾華語 数字徹底攻略！</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* カスタムスタイルが必要な場合はここに追加 */
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#fdfbf7] p-4 md:p-8 text-slate-800">
+
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+    
+    <!-- Header Section -->
+    <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-8 text-white text-center relative overflow-hidden">
+      <div class="absolute top-0 right-0 opacity-10 transform translate-x-4 -translate-y-4">
+        <i data-lucide="book-open" width="120" height="120"></i>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-3 relative z-10">
+        台湾華語 数字徹底攻略！
+      </h1>
+      <h2 class="text-xl md:text-2xl font-medium opacity-90 relative z-10">
+        「2」の特別ルール ＆ 3桁の罠
+      </h2>
+    </div>
+
+    <div class="p-6 md:p-8 space-y-8">
+
+      <!-- Section 1: The Core Rule -->
+      <section class="bg-orange-50 rounded-xl p-6 border-l-4 border-orange-400">
+        <h3 class="text-xl font-bold text-orange-800 mb-4 flex items-center">
+          <i data-lucide="lightbulb" class="mr-2"></i>
+          大原則：「二 (èr)」 と 「兩 (liǎng)」 の違い
+        </h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="text-lg font-bold text-slate-700 mb-2 flex items-center">
+              二
+              <button onclick="speak('二', event)" class="ml-2 flex items-center text-sm text-slate-500 hover:text-blue-600 transition-colors bg-slate-50 hover:bg-blue-50 px-2 py-0.5 rounded-full" title="音声を再生">
+                <i data-lucide="volume-2" width="14" height="14" class="mr-1"></i> èr
+              </button>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">単なる数字、順番、数学的な数え方</p>
+            <ul class="text-sm space-y-1">
+              <li>• 1, 2, 3... (一, 二, 三)</li>
+              <li>• 2階 (二樓)</li>
+              <li>• 2月 (二月)</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="text-lg font-bold text-teal-600 mb-2 flex items-center">
+              兩
+              <button onclick="speak('兩', event)" class="ml-2 flex items-center text-sm text-teal-600 hover:text-blue-600 transition-colors bg-teal-50 hover:bg-blue-50 px-2 py-0.5 rounded-full" title="音声を再生">
+                <i data-lucide="volume-2" width="14" height="14" class="mr-1"></i> liǎng
+              </button>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">量詞（〜個、〜本など）と一緒に使う場合</p>
+            <ul class="text-sm space-y-1">
+              <li class="flex items-center text-teal-700 font-medium">
+                <i data-lucide="check-circle-2" width="16" height="16" class="mr-1"></i> 
+                <button onclick="speak('兩個', event)" class="hover:bg-teal-50 px-1 rounded transition-colors inline-flex items-center" title="音声を再生">兩個 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></button> (2個)
+              </li>
+              <li class="flex items-center text-teal-700 font-medium">
+                <i data-lucide="check-circle-2" width="16" height="16" class="mr-1"></i> 
+                <button onclick="speak('兩瓶', event)" class="hover:bg-teal-50 px-1 rounded transition-colors inline-flex items-center" title="音声を再生">兩瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></button> (2本)
+              </li>
+              <li class="flex items-center text-red-500 line-through"><i data-lucide="x-circle" width="16" height="16" class="mr-1"></i> 二個 / 二瓶</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: 11, 12, 20, 21 -->
+      <section>
+        <h3 class="text-xl font-bold text-slate-800 mb-4 border-b-2 border-slate-200 pb-2">
+          10の位・1の位の「2」はどうなる？
+        </h3>
+        <p class="mb-4 text-slate-600 font-medium">
+          量詞がついても、10以上の数字の一部になっている「2」はすべて『二』を使います！
+        </p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <!-- 11 -->
+          <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+            <div class="text-3xl font-black text-slate-300 mb-1">11</div>
+            <div class="text-xl font-bold text-slate-700">十一</div>
+            <button onclick="speak('十一', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-slate-500 hover:text-blue-600 transition-colors py-1 rounded bg-slate-200/50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> shí yī
+            </button>
+          </div>
+          <!-- 12 -->
+          <div class="bg-emerald-50 p-4 rounded-xl text-center border border-emerald-200 relative">
+            <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+              重要!
+            </div>
+            <div class="text-3xl font-black text-emerald-200 mb-1">12</div>
+            <div class="text-xl font-bold text-emerald-700">十二</div>
+            <button onclick="speak('十二', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-emerald-600 hover:text-blue-600 transition-colors py-1 rounded bg-emerald-100/50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> shí èr
+            </button>
+            <div class="mt-2 text-sm font-medium text-emerald-800">
+              <span class="cursor-pointer hover:text-blue-600 flex items-center justify-center" onclick="speak('十二瓶', event)" title="音声を再生">⭕ 十二瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></span>
+              <span class="opacity-70">❌ 十兩瓶</span>
+            </div>
+          </div>
+          <!-- 20 -->
+          <div class="bg-emerald-50 p-4 rounded-xl text-center border border-emerald-200 relative">
+             <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+              重要!
+            </div>
+            <div class="text-3xl font-black text-emerald-200 mb-1">20</div>
+            <div class="text-xl font-bold text-emerald-700">二十</div>
+            <button onclick="speak('二十', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-emerald-600 hover:text-blue-600 transition-colors py-1 rounded bg-emerald-100/50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> èr shí
+            </button>
+             <div class="mt-2 text-sm font-medium text-emerald-800">
+              <span class="cursor-pointer hover:text-blue-600 flex items-center justify-center" onclick="speak('二十瓶', event)" title="音声を再生">⭕ 二十瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></span>
+              <span class="opacity-70">❌ 兩十瓶</span>
+            </div>
+          </div>
+          <!-- 21 -->
+          <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+            <div class="text-3xl font-black text-slate-300 mb-1">21</div>
+            <div class="text-xl font-bold text-slate-700">二十一</div>
+            <button onclick="speak('二十一', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-slate-500 hover:text-blue-600 transition-colors py-1 rounded bg-slate-200/50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> èr shí yī
+            </button>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-slate-500 text-center">
+          ※ユーザー例文：「<button onclick="speak('冰箱裡有十二瓶冰啤酒', event)" class="inline-flex items-center hover:text-blue-600 mx-1 border-b border-blue-200 bg-blue-50/50 px-1 rounded" title="音声を再生"><i data-lucide="volume-2" width="14" height="14" class="mr-1"></i>冰箱裡有<strong class="text-emerald-600 mx-0.5">十二</strong>瓶冰啤酒。</button>」
+        </div>
+      </section>
+
+      <!-- Section 3: 3〜9は通常ルール -->
+      <section class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+        <h3 class="text-xl font-bold text-blue-800 mb-4 border-b-2 border-blue-200 pb-2 flex items-center">
+          <i data-lucide="check-circle-2" class="mr-2"></i>
+          比較：3〜9は「通常ルール」で安心！
+        </h3>
+        <p class="mb-4 text-slate-600 font-medium">
+          「2」のような特殊な変化はありません。量詞がついてもいつでも同じ漢字（三、四...）を使います。（例として「3」で比較）
+        </p>
+        
+        <div class="grid grid-cols-3 gap-3">
+          <!-- 13 -->
+          <div class="bg-white p-4 rounded-xl text-center border border-blue-100 shadow-sm">
+            <div class="text-3xl font-black text-blue-200 mb-1">13</div>
+            <div class="text-xl font-bold text-slate-700">十三</div>
+            <button onclick="speak('十三', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-blue-500 hover:text-blue-700 transition-colors py-1 rounded bg-blue-50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> shí sān
+            </button>
+            <div class="mt-2 text-sm font-medium text-blue-700">
+              <span class="cursor-pointer hover:text-blue-900 flex items-center justify-center" onclick="speak('十三瓶', event)" title="音声を再生">⭕ 十三瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></span>
+            </div>
+          </div>
+          <!-- 30 -->
+          <div class="bg-white p-4 rounded-xl text-center border border-blue-100 shadow-sm">
+            <div class="text-3xl font-black text-blue-200 mb-1">30</div>
+            <div class="text-xl font-bold text-slate-700">三十</div>
+            <button onclick="speak('三十', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-blue-500 hover:text-blue-700 transition-colors py-1 rounded bg-blue-50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> sān shí
+            </button>
+            <div class="mt-2 text-sm font-medium text-blue-700">
+              <span class="cursor-pointer hover:text-blue-900 flex items-center justify-center" onclick="speak('三十瓶', event)" title="音声を再生">⭕ 三十瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></span>
+            </div>
+          </div>
+          <!-- 31 -->
+          <div class="bg-white p-4 rounded-xl text-center border border-blue-100 shadow-sm">
+            <div class="text-3xl font-black text-blue-200 mb-1">31</div>
+            <div class="text-xl font-bold text-slate-700">三十一</div>
+            <button onclick="speak('三十一', event)" class="mt-1 inline-flex items-center justify-center w-full text-xs text-blue-500 hover:text-blue-700 transition-colors py-1 rounded bg-blue-50 hover:bg-blue-100" title="音声を再生">
+              <i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> sān shí yī
+            </button>
+            <div class="mt-2 text-sm font-medium text-blue-700">
+              <span class="cursor-pointer hover:text-blue-900 flex items-center justify-center" onclick="speak('三十一瓶', event)" title="音声を再生">⭕ 三十一瓶 <i data-lucide="volume-2" width="12" height="12" class="ml-1 opacity-50"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-slate-500 text-center">
+          ※ 4〜9も全く同じルールです。（十四、四十、四十一...）
+        </div>
+      </section>
+
+      <!-- Section 4: 3桁の数 -->
+      <section class="bg-purple-50 rounded-xl p-6 border border-purple-200">
+        <h3 class="text-xl font-bold text-purple-800 mb-4 border-b-2 border-purple-200 pb-2 flex items-center">
+          <i data-lucide="alert-triangle" class="mr-2"></i>
+          3桁の数（百の位）の言い方と TOCFLの罠
+        </h3>
+        
+        <div class="space-y-4">
+          <p class="text-sm text-slate-600 mb-2">
+            3桁になると、真ん中の「0」の扱いや、省略形など、TOCFLで超頻出の引っかけポイントが登場します。
+          </p>
+          
+          <!-- 100, 101, 110 -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- 100 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-slate-300">
+              <div class="text-2xl font-black text-slate-200 mb-1">100</div>
+              <button onclick="speak('一百', event)" class="font-bold text-slate-700 text-lg flex items-center hover:text-blue-600 transition-colors" title="音声を再生">
+                一百 <i data-lucide="volume-2" width="16" height="16" class="ml-1 opacity-50"></i>
+              </button>
+              <div class="text-xs text-slate-500 mt-1">yī bǎi (基本形)</div>
+            </div>
+            <!-- 101 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-purple-500 relative">
+              <div class="absolute -top-3 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">超頻出!</div>
+              <div class="text-2xl font-black text-purple-200 mb-1">101</div>
+              <button onclick="speak('一百零一', event)" class="font-bold text-purple-700 text-lg flex items-center hover:text-blue-600 transition-colors" title="音声を再生">
+                一百<span class="text-red-500 mx-0.5">零</span>一 <i data-lucide="volume-2" width="16" height="16" class="ml-1 opacity-50"></i>
+              </button>
+              <p class="text-xs text-slate-600 mt-2 font-medium">真ん中に「0」がある場合は必ず「零 (líng)」を読みます。</p>
+            </div>
+            <!-- 110 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-purple-400 relative">
+              <div class="absolute -top-3 -right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">口語注意</div>
+              <div class="text-2xl font-black text-purple-200 mb-1">110</div>
+              <div class="font-bold text-slate-700 text-lg flex flex-col gap-1">
+                <button onclick="speak('一百一十', event)" class="flex items-center hover:text-blue-600 transition-colors text-sm" title="音声を再生">
+                  一百一十 <i data-lucide="volume-2" width="14" height="14" class="ml-1 opacity-50"></i> (正式)
+                </button>
+                <button onclick="speak('一百一', event)" class="flex items-center text-orange-600 hover:text-blue-600 transition-colors" title="音声を再生">
+                  一百一 <i data-lucide="volume-2" width="16" height="16" class="ml-1 opacity-50"></i> (省略形)
+                </button>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-2 leading-tight">台湾では「一百一」と言うと110を指します。101と勘違いしないよう注意！</p>
+            </div>
+          </div>
+
+          <!-- 222 vs 333 -->
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-emerald-400 mt-4">
+            <h4 class="font-bold text-slate-800 mb-2">3桁での「2」と「3」の比較</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-emerald-50 p-3 rounded">
+                <div class="text-xl font-black text-emerald-200 mb-1">222</div>
+                <button onclick="speak('兩百二十二', event)" class="font-bold text-emerald-700 flex items-center hover:text-blue-600 transition-colors w-full text-left" title="音声を再生">
+                  <span class="text-teal-600 mr-0.5">兩</span>百<span class="text-emerald-600 mx-0.5">二</span>十<span class="text-emerald-600 ml-0.5">二</span> <i data-lucide="volume-2" width="16" height="16" class="ml-2 opacity-50"></i>
+                </button>
+                <div class="text-xs text-emerald-600 mt-1">
+                  百の位の2は台湾では通常「兩」！10と1の位は「二」になります。
+                </div>
+              </div>
+              <div class="bg-blue-50 p-3 rounded">
+                <div class="text-xl font-black text-blue-200 mb-1">333</div>
+                <button onclick="speak('三百三十三', event)" class="font-bold text-blue-700 flex items-center hover:text-blue-600 transition-colors w-full text-left" title="音声を再生">
+                  三百三十三 <i data-lucide="volume-2" width="16" height="16" class="ml-2 opacity-50"></i>
+                </button>
+                <div class="text-xs text-blue-600 mt-1">すべて同じ「三」のままでOKです。</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 5: Other TOCFL Traps -->
+      <section class="bg-red-50 rounded-xl p-6 border border-red-100">
+        <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center">
+          <i data-lucide="alert-triangle" class="mr-2"></i>
+          まだまだある！初級で差がつく「2」のひっかけ
+        </h3>
+        
+        <div class="space-y-4">
+          <!-- Trap 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-red-500">
+            <h4 class="font-bold text-slate-800 mb-2">①：「二樓」と「兩層樓」の違い</h4>
+            <p class="text-sm text-slate-600 mb-2">
+              順番を表す序数には「二」を使いますが、意味が変わってしまうひっかけ問題がよく出ます。
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-3">
+              <div>
+                <div class="font-bold text-slate-700 flex items-center">
+                  二樓 
+                  <button onclick="speak('二樓', event)" class="ml-2 text-slate-500 hover:text-blue-600 bg-slate-100 hover:bg-blue-100 px-1.5 py-0.5 rounded text-xs inline-flex items-center transition-colors" title="音声を再生"><i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> èr lóu</button>
+                </div>
+                <div class="text-sm text-emerald-600 font-medium mt-1">意味：2階（2nd floor）</div>
+              </div>
+              <div>
+                <div class="font-bold text-slate-700 flex items-center">
+                  兩層樓 
+                  <button onclick="speak('兩層樓', event)" class="ml-2 text-slate-500 hover:text-blue-600 bg-slate-100 hover:bg-blue-100 px-1.5 py-0.5 rounded text-xs inline-flex items-center transition-colors" title="音声を再生"><i data-lucide="volume-2" width="12" height="12" class="mr-1"></i> liǎng céng lóu</button>
+                </div>
+                <div class="text-sm text-teal-600 font-medium mt-1">意味：2つのフロア分</div>
+              </div>
+            </div>
+            <div class="text-xs text-slate-500 mt-2 bg-slate-50 p-2 rounded">
+              ※口語で「兩樓」と言うと「2階建て」や「2階分のスペース」の意味に誤解されがちです。
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-red-500">
+            <h4 class="font-bold text-slate-800 mb-2">②：「半」のつく時間表現</h4>
+            <p class="text-sm text-slate-600 mb-2">
+              「2時半」と「2時間半」は、どちらに「兩」を使うでしょうか？正解は<strong class="text-red-600">「時間に関する2はすべて『兩』」</strong>です。
+            </p>
+            <ul class="text-sm space-y-2 mt-3">
+              <li class="flex items-center">
+                <i data-lucide="check-circle-2" width="16" height="16" class="text-emerald-500 mr-2 shrink-0"></i> 
+                <button onclick="speak('兩點半', event)" class="flex items-center hover:bg-emerald-50 px-2 py-1 rounded transition-colors w-full text-left" title="音声を再生">
+                  <span class="w-24 font-bold inline-block">兩點半</span> 
+                  <i data-lucide="volume-2" width="14" height="14" class="text-slate-400 mr-2 shrink-0"></i> 
+                  <span class="text-slate-600">(2:30 / 2時半)</span>
+                </button>
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check-circle-2" width="16" height="16" class="text-emerald-500 mr-2 shrink-0"></i> 
+                <button onclick="speak('兩個半小時', event)" class="flex items-center hover:bg-emerald-50 px-2 py-1 rounded transition-colors w-full text-left" title="音声を再生">
+                  <span class="w-24 font-bold inline-block">兩個半小時</span> 
+                  <i data-lucide="volume-2" width="14" height="14" class="text-slate-400 mr-2 shrink-0"></i> 
+                  <span class="text-slate-600">(2.5 hours / 2時間半)</span>
+                </button>
+              </li>
+              <li class="flex items-center text-red-500 text-xs mt-1 px-2">
+                <i data-lucide="x-circle" width="14" height="14" class="mr-1 shrink-0"></i> ※「二點」と言うと台湾では間違い扱いで減点されます！
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+    
+    <!-- Footer -->
+    <div class="bg-slate-100 p-4 text-center text-sm text-slate-500 flex items-center justify-center">
+      <i data-lucide="info" width="16" height="16" class="mr-1"></i>
+      TOCFL（華語文能力測験）Band A〜Bの文法・語彙対策用インフォグラフィック
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // 音声再生用の関数（台湾華語の音声を指定）
+    function speak(text, e) {
+      if (e) e.stopPropagation(); // 親要素のクリックイベント発火を防ぐ
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // 連続クリック時の音声キューをクリア
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW'; // 台湾華語に設定
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  </script>
+</body>
+</html>

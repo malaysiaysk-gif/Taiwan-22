@@ -435,7 +435,7 @@ const words = [
   { "zh": "願意", "pinyin": "yuànyì", "jp": "〜したいと思う、喜んで〜する", "note": "", "category": "動詞", "subcategory": "状態・思考" },
   { "zh": "習慣", "pinyin": "xíguàn", "jp": "習慣、慣れる", "note": "習慣了（もう慣れた）", "category": "動詞", "subcategory": "状態・思考" },
   { "zh": "當然", "pinyin": "dāngrán", "jp": "もちろん", "note": "", "category": "副詞", "subcategory": "程度・強調" },
-  { "zh": "更", "pinyin": "gèng", "jp": "さらに、もっと", "note": "更好（さらに良い）", "category": "副詞", "subcategory": "程度・強調" },
+  { "zh": "更", "pinyin": "gèng", "jp": "程度のレベルアップ（もっと〜）", "note": "更好（さらに良い）", "category": "副詞", "subcategory": "程度・強調" },
   { "zh": "醫院", "pinyin": "yīyuàn", "jp": "病院", "note": "", "category": "名詞", "subcategory": "場所" },
   { "zh": "公司", "pinyin": "gōngsī", "jp": "会社", "note": "", "category": "名詞", "subcategory": "場所" },
   { "zh": "辦公室", "pinyin": "bàngōngshì", "jp": "オフィス、事務所", "note": "", "category": "名詞", "subcategory": "場所" },
