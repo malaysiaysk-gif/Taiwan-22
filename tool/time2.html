@@ -189,15 +189,36 @@
 
           <!-- Adverbs (Tricky ones) -->
           <div class="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-l-indigo-500 border-y border-r border-slate-100 timeline-dot md:ml-0 ml-2">
-            <h3 class="font-bold text-indigo-800 mb-4 flex items-center gap-1"><span class="text-xl">✨</span> 副詞・程度（要注意！）</h3>
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-bold text-indigo-800 flex items-center gap-1"><span class="text-xl">✨</span> 副詞（也, 都, 一起 など）</h3>
+              <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-1 rounded font-bold border border-indigo-200">時間より必ず「後」！</span>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="bg-indigo-50/50 p-3 rounded-lg">
                 <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">都 <span class="text-sm font-normal text-slate-500">(dōu) 全部</span></span>
+                  <span class="tc font-bold text-indigo-700 text-lg">也 <span class="text-sm font-normal text-slate-500">(yě) 〜も</span></span>
+                </div>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">也</strong> 去。</span>
+                  <button onclick="speak('我也去。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
+                </div>
+              </div>
+              <div class="bg-indigo-50/50 p-3 rounded-lg">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-lg">都 <span class="text-sm font-normal text-slate-500">(dōu) 全部/みんな</span></span>
                 </div>
                 <div class="flex items-center justify-between mt-1">
                   <span class="tc text-sm text-slate-700">我們 <strong class="text-indigo-600">都</strong> 喜歡。</span>
                   <button onclick="speak('我們都喜歡。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
+                </div>
+              </div>
+              <div class="bg-indigo-50/50 p-3 rounded-lg">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-lg">一起 <span class="text-sm font-normal text-slate-500">(yìqǐ) 一緒に</span></span>
+                </div>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="tc text-sm text-slate-700">明天 <strong class="text-indigo-600">一起</strong> 吃。</span>
+                  <button onclick="speak('明天一起吃。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
                 </div>
               </div>
               <div class="bg-indigo-50/50 p-3 rounded-lg">
@@ -209,22 +230,37 @@
                   <button onclick="speak('有一點冷。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
                 </div>
               </div>
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">就 <span class="text-sm font-normal text-slate-500">(jiù) もう(早い)</span></span>
-                </div>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-3 pt-2 border-t border-slate-100">※「他們<strong class="text-indigo-600">星期六也</strong>有課」のように、副詞は時間詞（いつ）より後ろに置きます。</p>
+          </div>
+
+          <!-- Degree Adverbs (NEW from Image) -->
+          <div class="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-l-pink-500 border-y border-r border-slate-100 timeline-dot md:ml-0 ml-2 mt-4">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-bold text-pink-800 flex items-center gap-1"><span class="text-xl">📈</span> 程度の副詞（形容詞をパワーアップ）</h3>
+              <span class="text-[10px] bg-pink-100 text-pink-800 px-2 py-1 rounded font-bold border border-pink-200">形容詞の直前！</span>
+            </div>
+            <p class="text-sm text-slate-600 mb-3 leading-relaxed">形容詞には「是（です）」を使わない代わりに、これらの言葉を<strong class="bg-pink-50 px-1 rounded text-pink-700">形容詞の直前</strong>に置いて程度を表します。</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
+                <div class="tc font-bold text-pink-700 text-lg mb-1">非常 <span class="text-[11px] font-normal text-slate-500">(fēicháng) とても</span></div>
                 <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">12點 <strong class="text-indigo-600">就</strong> 睡覺。</span>
-                  <button onclick="speak('十二點就睡覺。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
+                  <span class="tc text-sm text-slate-700">這個 <strong class="text-pink-600">非常</strong> 好喝。</span>
+                  <button onclick="speak('這個非常好喝。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
                 </div>
               </div>
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">才 <span class="text-sm font-normal text-slate-500">(cái) やっと(遅い)</span></span>
-                </div>
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
+                <div class="tc font-bold text-pink-700 text-lg mb-1">最 <span class="text-[11px] font-normal text-slate-500">(zuì) 一番</span></div>
                 <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">12點 <strong class="text-indigo-600">才</strong> 睡覺。</span>
-                  <button onclick="speak('十二點才睡覺。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
+                  <span class="tc text-sm text-slate-700">台北 <strong class="text-pink-600">最</strong> 好。</span>
+                  <button onclick="speak('台北最好。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+                </div>
+              </div>
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
+                <div class="tc font-bold text-pink-700 text-lg mb-1">比較 <span class="text-[11px] font-normal text-slate-500">(bǐjiào) わりと</span></div>
+                <div class="flex items-center justify-between mt-1">
+                  <span class="tc text-sm text-slate-700">我的 <strong class="text-pink-600">比較</strong> 可愛。</span>
+                  <button onclick="speak('我的比較可愛。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
                 </div>
               </div>
             </div>
@@ -403,14 +439,41 @@
             </p>
           </div>
 
+          <!-- Example 3 (NEW: 連動文) -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <p class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【動詞が2つ（連動文） ＋ 名詞のデコ】</p>
+            <div class="flex justify-between items-start mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <p class="tc font-bold text-lg text-slate-800 leading-relaxed">媽媽 <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded shadow-sm">去藥局</span> <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded shadow-sm">買了</span> <span class="bg-pink-100 text-pink-800 px-1.5 py-0.5 rounded shadow-sm">十盒口罩</span>。</p>
+              <button onclick="speak('媽媽去藥局買了十盒口罩。')" class="text-sm bg-white text-slate-600 hover:bg-slate-100 px-3 py-2 rounded shadow-sm border border-slate-200 ml-3 transition-colors">🔊</button>
+            </div>
+            <p class="text-sm text-slate-700 font-bold mb-2">お母さんは薬局に行って、10箱のマスクを買った。</p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              「行く」「買う」のように動詞が2つ以上ある文（連動文）は、<strong class="text-indigo-600 border-b-2 border-indigo-200">行動が起きる順番（時間の流れ）</strong>通りに並べるだけ！<br>
+              ①薬局に行く（去藥局） ➔ ②買う（買了） ➔ ③10箱のマスク（十盒口罩）という、迷いのない完璧な語順です。
+            </p>
+          </div>
+
         </div>
+
+        <!-- 💡 的の省略ルール (NEW) -->
+        <div class="mt-6 bg-yellow-50 border border-yellow-200 p-4 rounded-xl shadow-sm flex gap-3 items-start">
+          <div class="text-2xl mt-1">💡</div>
+          <div>
+            <h4 class="font-bold text-yellow-800 text-sm mb-1">【例外】所属を表す「的」の省略</h4>
+            <p class="text-xs text-yellow-900 leading-relaxed">
+              「私の家」「彼らの会社」など、自分と密接な関係・所属を表す場合、「的」は省略するのが自然です。<br>
+              （<span class="text-red-500 line-through mr-1">我的家</span>➔ <span class="font-bold text-green-700 bg-green-100 px-1 rounded">我家</span> / <span class="text-red-500 line-through mr-1">他們的公司</span>➔ <span class="font-bold text-green-700 bg-green-100 px-1 rounded">他們公司</span>）
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- 4. Common Traps for Japanese Speakers -->
     <section class="bg-red-50 border-t-4 border-red-500 rounded-3xl shadow-sm p-6 md:p-8">
       <h2 class="text-2xl md:text-3xl font-bold text-red-800 mb-8 text-center flex items-center justify-center gap-2">
-        <span>⚠️</span> 4. 日本人学習者が陥りやすい語順の4大トラップ
+        <span>⚠️</span> 4. 日本人学習者が陥りやすい語順の5大トラップ
       </h2>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -428,45 +491,11 @@
               <p class="text-green-800">✅ 今天 <span class="font-bold text-green-600">很</span> 冷。</p>
               <button onclick="speak('今天很冷。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
             </div>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">※肯定文の形容詞には、ただの飾りとして「很(hěn)」を置くのがルール。</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">※肯定文の形容詞には、ただの飾りとして「很(hěn)」を置くのがルール。「非常(とても)」や「最(一番)」などに置き換えることもできます。</p>
           </div>
         </div>
 
-        <!-- Trap 2: Time point vs Duration -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
-          <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ②：時間</div>
-          <h3 class="font-bold text-lg mb-3">「いつ」と「長さ」の混同</h3>
-          <p class="text-sm text-slate-600 mb-4 leading-relaxed">中国語は「いつ(点)」は前、「どのくらい(長さ)」は後ろと厳密に分かれます。</p>
-          <div class="bg-slate-50 p-4 rounded-xl text-sm tc space-y-3 border border-slate-100">
-            <div class="flex justify-between items-center">
-              <p class="wrong-strike">❌ 我 <span class="font-bold text-slate-800">兩個小時</span> 看書。</p>
-            </div>
-            <div class="flex justify-between items-center bg-green-50 p-2 rounded-lg border border-green-100">
-              <p class="text-green-800">✅ 我看書看了 <span class="font-bold text-green-600">兩個小時</span>。</p>
-              <button onclick="speak('我看書看了兩個小時。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
-            </div>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">「昨天(きのう)」など発生したタイミングは動詞の前。「兩小時(2時間)」などかかった時間は動詞の後ろ！</p>
-          </div>
-        </div>
-
-        <!-- Trap 3: Location vs Verb -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
-          <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ③：場所</div>
-          <h3 class="font-bold text-lg mb-3">「在〜」を後ろに置いちゃう</h3>
-          <p class="text-sm text-slate-600 mb-4 leading-relaxed">英語や日本語のクセで、場所を一番最後に持ってくる間違いが多発します。</p>
-          <div class="bg-slate-50 p-4 rounded-xl text-sm tc space-y-3 border border-slate-100">
-            <div class="flex justify-between items-center">
-              <p class="wrong-strike">❌ 我 吃飯 <span class="font-bold text-slate-800">在餐廳</span>。</p>
-            </div>
-            <div class="flex justify-between items-center bg-green-50 p-2 rounded-lg border border-green-100">
-              <p class="text-green-800">✅ 我 <span class="font-bold text-green-600">在餐廳</span> 吃飯。</p>
-              <button onclick="speak('我在餐廳吃飯。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
-            </div>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">※例外：「住(住む)」「放(置く)」など、一部の動詞だけは「住在台北」と後ろに置きます。</p>
-          </div>
-        </div>
-
-        <!-- Trap 4: 在 vs 有 (NEW) -->
+        <!-- Trap 4: 在 vs 有 -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
           <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ④：存在の「ある/いる」</div>
           <h3 class="font-bold text-lg mb-3">「在」と「有」の混同</h3>
@@ -487,6 +516,40 @@
               <button onclick="speak('桌子上有筆。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
             </div>
             <p class="text-xs text-slate-500 mt-2 leading-relaxed">※「有」の後ろには、必ず<span class="font-bold">「不特定のもの」</span>（×私のペン ◯ペン）が来ます。</p>
+          </div>
+        </div>
+
+        <!-- Trap 5: 也 (NEW from Image) -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border-2 border-red-400 hover:shadow-lg transition-shadow lg:col-span-2">
+          <div class="flex items-start justify-between">
+            <div class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3 shadow-sm">トラップ⑤：副詞の「也(も)」【超重要】</div>
+            <span class="text-2xl animate-bounce">⚠️</span>
+          </div>
+          <h3 class="font-bold text-xl mb-3 text-red-800">「わたしも！」で文を終わらせる</h3>
+          <p class="text-sm text-slate-700 mb-4 leading-relaxed">日本語の「わたしも！」につられて、<strong class="bg-red-100 px-1 rounded">「我也 (Wǒ yě)」だけで返事をしてしまう間違い</strong>が多発します！<br>中国語の副詞（也、都など）は単独で述語になれないため、必ず後ろに動詞か形容詞を補う必要があります。</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-slate-50 p-4 rounded-xl text-sm space-y-3 border border-slate-200">
+              <p class="text-slate-500 text-[11px] mb-1 font-bold">Aさん：私は台東が好きです。</p>
+              <div class="flex justify-between items-center bg-white p-2 rounded border border-slate-200 shadow-sm">
+                <p class="tc font-bold text-slate-800">我喜歡台東。</p>
+                <button onclick="speak('我喜歡台東。')" class="text-xs bg-slate-100 text-slate-600 hover:bg-slate-200 px-2 py-1 rounded">🔊</button>
+              </div>
+            </div>
+            
+            <div class="bg-red-50 p-4 rounded-xl text-sm space-y-3 border border-red-200">
+              <p class="text-red-700 text-[11px] mb-1 font-bold">Bさん：わたしも！ (Me too)</p>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center bg-white p-2 rounded border border-red-100 opacity-70">
+                  <p class="wrong-strike">❌ 我也。</p>
+                  <span class="text-[10px] text-red-500 font-bold">※通じません！</span>
+                </div>
+                <div class="flex justify-between items-center bg-white p-2 rounded border-2 border-green-400 shadow-sm transform scale-105">
+                  <p class="tc font-bold text-green-700 text-lg">我也<span class="text-green-600 bg-green-100 px-1 rounded underline">喜歡</span>。</p>
+                  <button onclick="speak('我也喜歡。')" class="text-xs bg-green-50 text-green-700 hover:bg-green-100 px-2 py-1 rounded">🔊</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
