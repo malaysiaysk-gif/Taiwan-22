@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A リスニング対策</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* カスタムの微調整用スタイル */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        
+        /* 隠す（ぼかし）設定 */
+        .content-hidden .secret-target {
+            filter: blur(8px);
+            opacity: 0.3;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* 表示時（ぼかし解除）の設定 */
+        body.global-reveal .content-hidden .secret-target,
+        .question-container:not(.content-hidden) .secret-target {
+            filter: blur(0px);
+            opacity: 1;
+            pointer-events: auto;
+            user-select: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+
+    <header class="max-w-4xl mx-auto mb-6 text-center">
+        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL Band A リスニング対策</h1>
+        <p class="text-slate-600">パート2 (問答理解) - 音声読み上げ付き学習アプリ</p>
+        <p class="text-sm text-slate-500 mt-2">※まずは「2回再生して表示」で音声を聴き取り、テキストを確認しましょう。</p>
+    </header>
+
+    <!-- グローバル表示切り替えボタン -->
+    <div class="max-w-4xl mx-auto mb-6 flex justify-end">
+        <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>すべての解答・スクリプトを表示</span>
+        </button>
+    </div>
+
+    <main id="app-content" class="max-w-4xl mx-auto space-y-8">
+        <!-- JSでここにコンテンツが生成されます -->
+    </main>
+
+    <footer class="text-center mt-12 text-slate-500 text-sm">
+        <p>※ご使用のブラウザやOSによって、音声の読み上げ機能がサポートされていない場合があります。</p>
+    </footer>
+
+    <script>
+        // 問題データ
+        const questionsData = [
+            {
+                id: 11,
+                script: [
+                { speaker: "男", text: "剛剛那個年輕人在飯店裡吃了什麼食物？", jp: "さっきあの若者はレストランで何を食べましたか？" },
+                { speaker: "女", text: "他吃了一碗麵。", jp: "彼は麺を一杯食べました。" }
+                ],
+                vocab: [
+                { word: "剛剛", pinyin: "gāng gāng", jp: "さっき、たった今", speak: "剛剛" },
+                { word: "年輕人", pinyin: "nián qīng rén", jp: "若者", speak: "年輕人" },
+                { word: "飯店", pinyin: "fàn diàn", jp: "レストラン、食堂", speak: "飯店" },
+                { word: "碗", pinyin: "wǎn", jp: "お椀、〜杯", speak: "碗" },
+                { word: "麵", pinyin: "miàn", jp: "麺", speak: "麵" },
+                { word: "老人", pinyin: "lǎo rén", jp: "お年寄り (不正解A)", speak: "老人" },
+                { word: "飯", pinyin: "fàn", jp: "ご飯 (不正解C)", speak: "飯" }
+                ],
+                meta: "絵を見た瞬間に「おじいさん(A) vs 若者(B,C)」と「麺(A,B) vs ご飯(C)」の違いに気づくのがカギです。音声で「年輕人（若者）」と「麵（麺）」が聞こえた瞬間に(B)が確定します。",
+                ans: "B"
+            },
+            {
+                id: 12,
+                script: [
+                { speaker: "女", text: "你要不要去博物館？", jp: "博物館に行きませんか？" },
+                { speaker: "男", text: "好啊！", jp: "いいですね！" }
+                ],
+                vocab: [
+                { word: "要不要", pinyin: "yào bú yào", jp: "〜しませんか？（勧誘）", speak: "要不要" },
+                { word: "博物館", pinyin: "bó wù guǎn", jp: "博物館", speak: "博物館" },
+                { word: "好啊", pinyin: "hǎo a", jp: "いいよ！（賛成の相槌）", speak: "好啊" },
+                { word: "遊樂園", pinyin: "yóu lè yuán", jp: "遊園地 (不正解B)", speak: "遊樂園" },
+                { word: "動物園", pinyin: "dòng wù yuán", jp: "動物園 (不正解C)", speak: "動物園" }
+                ],
+                meta: "絵の場所がそれぞれ(A)博物館、(B)遊園地、(C)動物園と明確に違います。「博物館」という単語を一発で聞き取れれば秒殺できる問題です。",
+                ans: "A"
+            },
+            {
+                id: 13,
+                script: [
+                { speaker: "男", text: "這是您的巧克力蛋糕，請問還需要什麼嗎？", jp: "こちらチョコレートケーキです。他に何か必要ですか？" },
+                { speaker: "女", text: "請再給我一個湯匙，我們要一起吃。", jp: "スプーンをもう一つください、一緒に食べるので。" }
+                ],
+                vocab: [
+                { word: "巧克力蛋糕", pinyin: "qiǎo kè lì dàn gāo", jp: "チョコレートケーキ", speak: "巧克力蛋糕" },
+                { word: "還需要〜嗎", pinyin: "hái xū yào 〜 ma", jp: "まだ〜が必要ですか？", speak: "還需要嗎" },
+                { word: "湯匙", pinyin: "tāng chí", jp: "スプーン", speak: "湯匙" },
+                { word: "一起", pinyin: "yì qǐ", jp: "一緒に", speak: "一起" },
+                { word: "叉子", pinyin: "chā zi", jp: "フォーク (不正解A)", speak: "叉子" },
+                { word: "冰淇淋", pinyin: "bīng qí lín", jp: "アイスクリーム (不正解B)", speak: "冰淇淋" }
+                ],
+                meta: "女性の吹き出しに注目。(A)はフォーク、(B)(C)はスプーンです。「湯匙(スプーン)」で(A)が消えます。さらに、机の上に最初からあるのが「ケーキ(蛋糕)」なので、アイスクリームの(B)は脱落します。",
+                ans: "C"
+            },
+            {
+                id: 14,
+                script: [
+                { speaker: "女", text: "我昨天打電話給你，你怎麼沒接電話？", jp: "昨日あなたに電話したのに、どうして電話に出なかったの？" },
+                { speaker: "男", text: "我的手機壞了。", jp: "私のスマホが壊れたんだ。" }
+                ],
+                vocab: [
+                { word: "打電話", pinyin: "dǎ diàn huà", jp: "電話をかける", speak: "打電話" },
+                { word: "沒接", pinyin: "méi jiē", jp: "（電話に）出ない", speak: "沒接" },
+                { word: "手機", pinyin: "shǒu jī", jp: "スマホ、携帯電話", speak: "手機" },
+                { word: "壞了", pinyin: "huài le", jp: "壊れた", speak: "壞了" },
+                { word: "電腦", pinyin: "diàn nǎo", jp: "パソコン (不正解C)", speak: "電腦" }
+                ],
+                meta: "女性が「電話」という単語を連発するため、つい(A)の固定電話を選びたくなります。しかし、質問の核（原因）は男性のセリフ「手機（スマホ）が壞了（壊れた）」にあります。",
+                ans: "B"
+            },
+            {
+                id: 15,
+                script: [
+                { speaker: "男", text: "哪一個是妳的妹妹？", jp: "どの人があなたの妹ですか？" },
+                { speaker: "女", text: "那個短頭髮，戴眼鏡的是我妹妹。", jp: "あの短い髪で、メガネをかけているのが私の妹です。" }
+                ],
+                vocab: [
+                { word: "哪一個", pinyin: "nǎ yí ge", jp: "どの人、どれ", speak: "哪一個" },
+                { word: "短頭髮", pinyin: "duǎn tóu fa", jp: "短い髪", speak: "短頭髮" },
+                { word: "戴", pinyin: "dài", jp: "身につける", speak: "戴" },
+                { word: "眼鏡", pinyin: "yǎn jìng", jp: "メガネ", speak: "眼鏡" },
+                { word: "長頭髮", pinyin: "cháng tóu fa", jp: "長い髪 (不正解A)", speak: "長頭髮" }
+                ],
+                meta: "人物の外見描写の鉄板問題です。(C)の「短頭髮」＋「戴眼鏡」の2つの条件を満たすものを探します。",
+                ans: "C"
+            },
+            {
+                id: 16,
+                script: [
+                { speaker: "女", text: "這家店為什麼這麼多人在排隊？", jp: "この店はどうしてこんなにたくさんの人が並んでいるの？" },
+                { speaker: "男", text: "因為這裡的衣服很便宜，很多人來這裡買衣服。", jp: "ここの服はとても安いので、たくさんの人が服を買いに来ているからです。" }
+                ],
+                vocab: [
+                { word: "為什麼", pinyin: "wèi shén me", jp: "なぜ、どうして", speak: "為什麼" },
+                { word: "排隊", pinyin: "pái duì", jp: "並ぶ、行列を作る", speak: "排隊" },
+                { word: "因為", pinyin: "yīn wèi", jp: "なぜなら", speak: "因為" },
+                { word: "衣服", pinyin: "yī fú", jp: "服", speak: "衣服" },
+                { word: "便宜", pinyin: "pián yi", jp: "安い", speak: "便宜" },
+                { word: "醫院", pinyin: "yī yuàn", jp: "病院 (不正解A)", speak: "醫院" },
+                { word: "水果店", pinyin: "shuǐ guǒ diàn", jp: "果物屋 (不正解C)", speak: "水果店" }
+                ],
+                meta: "(A)病院/薬、(B)服屋、(C)果物屋。「為什麼(なぜ)」に対する「因為(なぜなら)」の後の「衣服(服)」が聞き取れれば正解できます。",
+                ans: "B"
+            },
+            {
+                id: 17,
+                script: [
+                { speaker: "男", text: "聽說這家店的牛排和漢堡很好吃，妳要試一試嗎？", jp: "この店のステーキとハンバーガーは美味しいらしいよ、試してみない？" },
+                { speaker: "女", text: "我不能吃肉，請幫我點一份青菜。", jp: "私は肉が食べられないの。野菜を1人前注文して。" }
+                ],
+                vocab: [
+                { word: "聽說", pinyin: "tīng shuō", jp: "〜だそうだ、〜と聞いている", speak: "聽說" },
+                { word: "牛排", pinyin: "niú pái", jp: "ステーキ", speak: "牛排" },
+                { word: "漢堡", pinyin: "hàn bǎo", jp: "ハンバーガー", speak: "漢堡" },
+                { word: "不能吃肉", pinyin: "bù néng chī ròu", jp: "肉を食べることができない", speak: "不能吃肉" },
+                { word: "點", pinyin: "diǎn", jp: "注文する", speak: "點" },
+                { word: "青菜", pinyin: "qīng cài", jp: "野菜、青菜", speak: "青菜" }
+                ],
+                meta: "超・頻出の引っかけパターンです！最初に「牛排(A)」「漢堡(B)」とわざと選択肢の単語を出してきますが、女性の「不能吃肉（肉ダメ）」の否定から最終的に「青菜(C)」に着地します。最初に出てきた単語には飛びつかないこと。",
+                ans: "C"
+            },
+            {
+                id: 18,
+                script: [
+                { speaker: "男", text: "媽媽，我找了客廳和房間，怎麼都沒看見我新買的小說？", jp: "お母さん、リビングと部屋を探したんだけど、新しく買った小説が見当たらないよ。" },
+                { speaker: "女", text: "你昨天放在浴室裡了。", jp: "昨日バスルームに置いていたわよ。" }
+                ],
+                vocab: [
+                { word: "找", pinyin: "zhǎo", jp: "探す", speak: "找" },
+                { word: "客廳", pinyin: "kè tīng", jp: "リビング", speak: "客廳" },
+                { word: "房間", pinyin: "fáng jiān", jp: "部屋、寝室", speak: "房間" },
+                { word: "看見", pinyin: "kàn jiàn", jp: "見える、見つける", speak: "看見" },
+                { word: "浴室", pinyin: "yù shì", jp: "浴室、バスルーム", speak: "浴室" }
+                ],
+                meta: "17番と同じ「ダミー語彙」です。男性が探した場所として「客廳(B)」「房間(C)」が出ますが、そこにはありません。最終的に見つかった場所「浴室(A)」が正解です。",
+                ans: "A"
+            },
+            {
+                id: 19,
+                script: [
+                { speaker: "女", text: "我上次送你的畫你放在哪裡了？", jp: "この前あげた絵、どこに置いた？" },
+                { speaker: "男", text: "我把它掛在冰箱後面的牆上了。", jp: "冷蔵庫の後ろの壁に掛けたよ。" }
+                ],
+                vocab: [
+                { word: "送", pinyin: "sòng", jp: "贈る、プレゼントする", speak: "送" },
+                { word: "掛", pinyin: "guà", jp: "掛ける", speak: "掛" },
+                { word: "冰箱", pinyin: "bīng xiāng", jp: "冷蔵庫", speak: "冰箱" },
+                { word: "後面", pinyin: "hòu miàn", jp: "後ろ", speak: "後面" },
+                { word: "牆", pinyin: "qiáng", jp: "壁", speak: "牆" },
+                { word: "上", pinyin: "shàng", jp: "上", speak: "上" },
+                { word: "上面", pinyin: "shàng miàn", jp: "上 (不正解B)", speak: "上面" },
+                { word: "前面", pinyin: "qián miàn", jp: "前 (不正解C)", speak: "前面" }
+                ],
+                meta: "Band Aで最も差がつく「位置関係」です。「後面（後ろ）」と「牆上（壁の上）」を聞き取り、冷蔵庫の裏に掛かっている(A)を選びます。",
+                ans: "A"
+            },
+            {
+                id: 20,
+                script: [
+                { speaker: "男", text: "聽說小美要表演，是鋼琴表演嗎？", jp: "小美が発表するらしいけど、ピアノの発表？" },
+                { speaker: "女", text: "她以前表演過鋼琴，但是這次是吉他表演。", jp: "彼女は以前ピアノを発表したけど、今回はギターの発表よ。" }
+                ],
+                vocab: [
+                { word: "表演", pinyin: "biǎo yǎn", jp: "パフォーマンス、発表する", speak: "表演" },
+                { word: "鋼琴", pinyin: "gāng qín", jp: "ピアノ", speak: "鋼琴" },
+                { word: "以前", pinyin: "yǐ qián", jp: "以前", speak: "以前" },
+                { word: "但是", pinyin: "dàn shì", jp: "しかし（超重要マーカー）", speak: "但是" },
+                { word: "這次", pinyin: "zhè cì", jp: "今回", speak: "這次" },
+                { word: "吉他", pinyin: "jí tā", jp: "ギター", speak: "吉他" },
+                { word: "小提琴", pinyin: "xiǎo tí qín", jp: "バイオリン (不正解C)", speak: "小提琴" }
+                ],
+                meta: "「鋼琴(A)」という単語が出ますが、「以前(昔)」の話です。「但是(しかし)」という逆接の接続詞の後は「最も重要な情報（正解）」が来ます。「但是這次(しかし今回は)〜吉他(ギター)」で(B)になります。",
+                ans: "B"
+            },
+            {
+                id: 21,
+                script: [
+                { speaker: "女", text: "已經晚上九點了，辦公室裡怎麼還有人？", jp: "もう夜の9時なのに、オフィスにどうしてまだ人がいるの？" },
+                { speaker: "男", text: "是蘇經理和小蔡，他們兩個還在開會。", jp: "スーマネージャーと小蔡だよ、あの二人はまだ会議をしているんだ。" }
+                ],
+                vocab: [
+                { word: "晚上", pinyin: "wǎn shàng", jp: "夜", speak: "晚上" },
+                { word: "辦公室", pinyin: "bàn gōng shì", jp: "オフィス、事務所", speak: "辦公室" },
+                { word: "兩個", pinyin: "liǎng ge", jp: "2人", speak: "兩個" },
+                { word: "開會", pinyin: "kāi huì", jp: "会議をする", speak: "開會" },
+                { word: "白天", pinyin: "bái tiān", jp: "昼間 (不正解A)", speak: "白天" },
+                { word: "一個人", pinyin: "yí ge rén", jp: "1人 (不正解C)", speak: "一個人" }
+                ],
+                meta: "条件1：「晚上（夜）」→ (A)が消える。条件2：「兩個（2人）」「開會（会議中）」→ (C)が消える。(B)が正解。",
+                ans: "B"
+            },
+            {
+                id: 22,
+                script: [
+                { speaker: "男", text: "他們兩個人都很生氣，不知道他們在說什麼？", jp: "あの二人ともすごく怒っているけど、何を話しているんだろう？" },
+                { speaker: "女", text: "他們一討論小孩的事情，就會不太開心。", jp: "彼らは子供の事を話し合うと、いつも不機嫌になるのよ。" }
+                ],
+                vocab: [
+                { word: "生氣", pinyin: "shēng qì", jp: "怒る", speak: "生氣" },
+                { word: "討論", pinyin: "tǎo lùn", jp: "話し合う、議論する", speak: "討論" },
+                { word: "小孩", pinyin: "xiǎo hái", jp: "子供", speak: "小孩" },
+                { word: "不太開心", pinyin: "bú tài kāi xīn", jp: "あまり楽しくない、機嫌が悪い", speak: "不太開心" },
+                { word: "打架", pinyin: "dǎ jià", jp: "喧嘩する (不正解A)", speak: "打架" },
+                { word: "聊天", pinyin: "liáo tiān", jp: "おしゃべりする (不正解B)", speak: "聊天" }
+                ],
+                meta: "(A)は取っ組み合い。(B)は普通の話し合い。(C)はお互い怒って口論（生氣＋討論）しています。絵の表情と「生氣(怒る)」を一致させます。",
+                ans: "C"
+            },
+            {
+                id: 23,
+                script: [
+                { speaker: "女", text: "為什麼他今天沒來上班？", jp: "どうして彼は今日仕事（出社）に来ていないの？" },
+                { speaker: "男", text: "因為他在家裡準備明天的報告。", jp: "明日のプレゼンの準備を家でしているからだよ。" }
+                ],
+                vocab: [
+                { word: "上班", pinyin: "shàng bān", jp: "出勤する", speak: "上班" },
+                { word: "家裡", pinyin: "jiā lǐ", jp: "家の中、自宅", speak: "家裡" },
+                { word: "準備", pinyin: "zhǔn bèi", jp: "準備する", speak: "準備" },
+                { word: "報告", pinyin: "bào gào", jp: "報告、プレゼン", speak: "報告" },
+                { word: "會議室", pinyin: "huì yì shì", jp: "会議室 (不正解C)", speak: "會議室" }
+                ],
+                meta: "「出社していない＝オフィスや会議室ではない」ので(A)(C)は違います。「家裡（家）」で準備している(B)を選びます。",
+                ans: "B"
+            },
+            {
+                id: 24,
+                script: [
+                { speaker: "女", text: "你們在山上新租的房子怎麼樣？", jp: "あなたたちが山の上に新しく借りた家はどう？" },
+                { speaker: "男", text: "房子很不錯。樓下房間有一個大窗戶。", jp: "家はすごくいいよ。下の階（1階）の部屋には大きな窓があるんだ。" }
+                ],
+                vocab: [
+                { word: "山上", pinyin: "shān shàng", jp: "山の上", speak: "山上" },
+                { word: "租", pinyin: "zū", jp: "借りる", speak: "租" },
+                { word: "不錯", pinyin: "bú cuò", jp: "悪くない", speak: "不錯" },
+                { word: "樓下", pinyin: "lóu xià", jp: "下の階、1階", speak: "樓下" },
+                { word: "窗戶", pinyin: "chuāng hù", jp: "窓", speak: "窗戶" },
+                { word: "海邊", pinyin: "hǎi biān", jp: "海辺 (不正解A,B)", speak: "海邊" }
+                ],
+                meta: "(A)は海辺/川、(B)も海辺/川ですが、「山上（山）」と言っているので背景が山の(C)が正解です。",
+                ans: "C"
+            },
+            {
+                id: 25,
+                script: [
+                { speaker: "男", text: "美美，我的那件短袖襯衫呢？", jp: "メイメイ、俺のあの半袖シャツは？" },
+                { speaker: "女", text: "我剛洗好，現在還沒乾喔！", jp: "洗い終わったばかりで、今はまだ乾いていないよ！" }
+                ],
+                vocab: [
+                { word: "短袖襯衫", pinyin: "duǎn xiù chèn shān", jp: "半袖シャツ", speak: "短袖襯衫" },
+                { word: "剛〜好", pinyin: "gāng 〜 hǎo", jp: "〜し終わったばかり", speak: "剛好" },
+                { word: "還沒", pinyin: "hái méi", jp: "まだ〜していない", speak: "還沒" },
+                { word: "乾", pinyin: "gān", jp: "乾く", speak: "乾" },
+                { word: "乾了", pinyin: "gān le", jp: "乾いた (不正解B)", speak: "乾了" },
+                { word: "洗衣服", pinyin: "xǐ yī fú", jp: "服を洗う (不正解C)", speak: "洗衣服" }
+                ],
+                meta: "「洗（洗う）」という言葉で(C)の洗っている最中の絵を選ばないように注意。「洗好（洗い終わった）」状態で、「還沒乾（まだ乾いていない＝濡れている）」なので、干して水滴が落ちている(A)が正解です。",
+                ans: "A"
+            },
+            {
+                id: 26,
+                script: [
+                { speaker: "男", text: "聽說小明家附近的風景很漂亮，是嗎？", jp: "小明の家の近くの風景は綺麗らしいね、そうなの？" },
+                { speaker: "女", text: "是啊！但是那裡冬天的溫度很低，你去找他要穿暖一點。", jp: "そうよ！でもあそこは冬の気温がとても低いから、会いに行くなら少し暖かく着たほうがいいわ。" }
+                ],
+                vocab: [
+                { word: "風景", pinyin: "fēng jǐng", jp: "風景", speak: "風景" },
+                { word: "冬天", pinyin: "dōng tiān", jp: "冬", speak: "冬天" },
+                { word: "溫度", pinyin: "wēn dù", jp: "温度、気温", speak: "溫度" },
+                { word: "很低", pinyin: "hěn dī", jp: "低い", speak: "很低" },
+                { word: "穿暖一點", pinyin: "chuān nuǎn yì diǎn", jp: "少し暖かく着る", speak: "穿暖一點" },
+                { word: "圍巾", pinyin: "wéi jīn", jp: "マフラー (絵C)", speak: "圍巾" },
+                { word: "帽子", pinyin: "mào zi", jp: "帽子 (絵C)", speak: "帽子" }
+                ],
+                meta: "「冬天（冬）」「溫度很低（気温が低い）」「穿暖一點（暖かく着る）」というキーワードから、マフラーと帽子をしている(C)を選びます。",
+                ans: "C"
+            },
+            {
+                id: 27,
+                script: [
+                { speaker: "女", text: "你覺得認識臺灣最好的方法是什麼？", jp: "台湾を知るための最も良い方法は何だと思う？" },
+                { speaker: "男", text: "看書、看電視介紹都不錯，但是最好的方法就是你自己去旅行。", jp: "本を読んだり、テレビの紹介を見たりするのも悪くないけど、最も良い方法は自分で旅行に行くことだよ。" }
+                ],
+                vocab: [
+                { word: "認識", pinyin: "rèn shì", jp: "知る、認識する", speak: "認識" },
+                { word: "最好", pinyin: "zuì hǎo", jp: "最も良い、一番良い", speak: "最好" },
+                { word: "看書", pinyin: "kàn shū", jp: "本を読む", speak: "看書" },
+                { word: "看電視", pinyin: "kàn diàn shì", jp: "テレビを見る", speak: "看電視" },
+                { word: "旅行", pinyin: "lǚ xíng", jp: "旅行する", speak: "旅行" }
+                ],
+                meta: "第20題の進化版です。「看書(B)」「看電視(C)」とわざと言及して迷わせます。「但是(しかし)」の後の「最(一番)」が結論になります。結論は「旅行(A)」です。",
+                ans: "A"
+            },
+            {
+                id: 28,
+                script: [
+                { speaker: "男", text: "小美，你的新家怎麼樣？", jp: "小美、新しい家はどう？" },
+                { speaker: "女", text: "別說了，我搬到公寓去，結果樓上的小孩經常往下丟垃圾，環境非常髒。", jp: "言わないで、マンションに引っ越したんだけど、上の階の子供がよく下に向かってゴミを投げるから、環境がすごく汚いの。" }
+                ],
+                vocab: [
+                { word: "搬", pinyin: "bān", jp: "引っ越す", speak: "搬" },
+                { word: "樓上", pinyin: "lóu shàng", jp: "上の階", speak: "樓上" },
+                { word: "經常", pinyin: "jīng cháng", jp: "しょっちゅう、よく", speak: "經常" },
+                { word: "往下", pinyin: "wǎng xià", jp: "下に向かって", speak: "往下" },
+                { word: "丟垃圾", pinyin: "diū lè sè", jp: "ゴミを捨てる、投げる", speak: "丟垃圾" },
+                { word: "髒", pinyin: "zāng", jp: "汚い", speak: "髒" },
+                { word: "往上", pinyin: "wǎng shàng", jp: "上に向かって (不正解B)", speak: "往上" },
+                { word: "澆水", pinyin: "jiāo shuǐ", jp: "水をやる (不正解A)", speak: "澆水" }
+                ],
+                meta: "「誰が」「どこから」「どこへ」動作をしているかを絵と一致させます。「樓上的小孩（上の階の子供）」が「往下丟（下に向かって投げる）」。この条件を満たしているのは(C)の絵だけです。",
+                ans: "C"
+            }
+        ];
+
+        // 状態管理
+        let playingId = null;
+        let playingType = null; // 'single' | 'vocab' | 'conversation'
+        let isGlobalReveal = false;
+
+        // すべて表示/隠す トグル処理
+        function toggleGlobalReveal() {
+            isGlobalReveal = !isGlobalReveal;
+            if (isGlobalReveal) {
+                document.body.classList.add('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i><span>すべて隠す</span>`;
+            } else {
+                document.body.classList.remove('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i><span>すべての解答・スクリプトを表示</span>`;
+            }
+            lucide.createIcons({root: document.getElementById('global-reveal-btn')});
+        }
+
+        // 単一の問題を表示状態にする
+        function revealQuestion(qId) {
+            const el = document.getElementById(`question-${qId}`);
+            if (el) {
+                el.classList.remove('content-hidden');
+            }
+        }
+
+        // UIをリセットする関数
+        function resetActiveUI() {
+            if (playingId) {
+                const btn = document.getElementById(playingId);
+                if (btn) {
+                    if (playingType === 'vocab') {
+                        // 単語ボタンのリセット
+                        const icon = btn.querySelector('.lucide-volume-2');
+                        if (icon) {
+                            icon.classList.remove('animate-pulse', 'text-blue-600');
+                            icon.classList.add('text-blue-400');
+                        }
+                    } else if (playingType === 'single') {
+                        // スクリプトボタンのリセット
+                        btn.classList.remove('text-indigo-600', 'bg-indigo-100');
+                        btn.classList.add('text-slate-400');
+                        const icon = btn.querySelector('.lucide-play');
+                        if (icon) {
+                            icon.setAttribute('fill', 'none');
+                        }
+                    } else if (playingType === 'conversation') {
+                        // 会話再生ボタンのリセット
+                        btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                        btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                        lucide.createIcons({root: btn});
+                    }
+                }
+            }
+        }
+
+        // 会話を2回再生してテキストを表示する関数
+        function playConversation(qId, btnId) {
+            if (!('speechSynthesis' in window)) {
+                alert("お使いのブラウザは音声再生に対応していません。ChromeやSafariをご利用ください。");
+                return;
+            }
+
+            // 既存の音声をキャンセルしてUIをリセット
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = 'conversation';
+
+            const btn = document.getElementById(btnId);
+            if(btn) {
+                btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
+                lucide.createIcons({root: btn});
+            }
+
+            const q = questionsData.find(x => x.id === qId);
+            if (!q) return;
+
+            // 2回分のテキストリストを作成
+            const utterances = [];
+            for(let i=0; i<2; i++) {
+                q.script.forEach(line => {
+                    utterances.push(line.text);
+                });
+            }
+
+            let currentIndex = 0;
+
+            function speakNext() {
+                if (playingId !== btnId) return; // 途中でキャンセルされた場合
+                
+                if (currentIndex >= utterances.length) {
+                    // 全ての再生が完了したら、UIを戻してテキストを表示
+                    resetActiveUI();
+                    playingId = null;
+                    playingType = null;
+                    revealQuestion(qId);
+                    return;
+                }
+
+                const text = utterances[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW'; // 台湾華語
+                utterance.rate = 0.85;
+
+                utterance.onend = () => {
+                    currentIndex++;
+                    setTimeout(() => {
+                        if (playingId === btnId) {
+                            speakNext();
+                        }
+                    }, 600); // セリフの間に600msの空白を入れる
+                };
+                utterance.onerror = () => {
+                    currentIndex++;
+                    if (playingId === btnId) speakNext();
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+
+            speakNext();
+        }
+
+        // 単一テキストの音声読み上げ関数
+        function speakText(text, btnId, isVocab) {
+            if (!('speechSynthesis' in window)) {
+                alert("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW'; 
+            utterance.rate = 0.85;    
+
+            utterance.onstart = () => {
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    if (isVocab) {
+                        const icon = btn.querySelector('.lucide-volume-2');
+                        if (icon) {
+                            icon.classList.remove('text-blue-400');
+                            icon.classList.add('animate-pulse', 'text-blue-600');
+                        }
+                    } else {
+                        btn.classList.remove('text-slate-400');
+                        btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                        const icon = btn.querySelector('.lucide-play');
+                        if (icon) {
+                            icon.setAttribute('fill', 'currentColor');
+                        }
+                    }
+                }
+            };
+
+            utterance.onend = () => {
+                resetActiveUI();
+                playingId = null;
+                playingType = null;
+            };
+            utterance.onerror = () => {
+                resetActiveUI();
+                playingId = null;
+                playingType = null;
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // DOMの生成
+        function renderApp() {
+            const container = document.getElementById('app-content');
+            let html = '';
+
+            questionsData.forEach(q => {
+                let scriptHtml = q.script.map((line, idx) => {
+                    const btnId = `btn-line-${q.id}-${idx}`;
+                    const speakerBg = line.speaker === '男' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700';
+                    return `
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
+                            <div class="flex items-center gap-2 sm:w-1/6">
+                                <span class="font-bold px-2 py-1 rounded text-sm ${speakerBg}">
+                                    ${line.speaker}
+                                </span>
+                                <button 
+                                    id="${btnId}"
+                                    onclick="speakText('${line.text}', '${btnId}', false)"
+                                    class="secret-target p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400"
+                                    title="音声を再生"
+                                >
+                                    <i data-lucide="play" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="sm:w-5/6 secret-target transition-all duration-500 delay-100">
+                                <p class="text-lg font-medium text-slate-800 mb-1">${line.text}</p>
+                                <p class="text-slate-600 text-sm">${line.jp}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                let vocabHtml = q.vocab.map((v, idx) => {
+                    const btnId = `btn-vocab-${q.id}-${idx}`;
+                    return `
+                        <div class="flex items-center gap-3 border border-slate-100 bg-white p-2.5 rounded-lg hover:border-indigo-200 transition-colors shadow-sm secret-target transition-all duration-500 delay-200">
+                            <button
+                                id="${btnId}"
+                                onclick="speakText('${v.speak}', '${btnId}', true)"
+                                class="flex-shrink-0 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-md font-mono text-sm transition-colors group"
+                                title="発音を聞く"
+                            >
+                                <i data-lucide="volume-2" class="w-4 h-4 text-blue-400 group-hover:text-blue-600"></i>
+                                ${v.pinyin}
+                            </button>
+                            <div class="flex flex-col justify-center">
+                                <span class="font-bold text-slate-800">${v.word}</span>
+                                <span class="text-xs text-slate-500">${v.jp}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                html += `
+                    <article id="question-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <!-- Header -->
+                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
+                                <button onclick="playConversation(${q.id}, 'btn-conv-${q.id}')" id="btn-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    2回再生して表示
+                                </button>
+                            </div>
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>正解: ${q.ans}</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            <!-- Script Section -->
+                            <section>
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">スクリプトと和訳</h3>
+                                <div class="space-y-3">
+                                    ${scriptHtml}
+                                </div>
+                            </section>
+
+                            <!-- Vocabulary Section -->
+                            <section>
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">重要単語</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    ${vocabHtml}
+                                </div>
+                            </section>
+
+                            <!-- Meta Strategy Section -->
+                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
+                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i>
+                                    <h4>メタ解法ポイント</h4>
+                                </div>
+                                <p class="text-amber-900 text-sm leading-relaxed">
+                                    ${q.meta}
+                                </p>
+                            </section>
+                        </div>
+                    </article>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // 初期化処理
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApp();
+            // Lucideアイコンの初期化 (描画後に実行)
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
