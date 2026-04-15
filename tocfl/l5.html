@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Pinyin Pro (自動ピンイン付与ライブラリ) -->
+    <script src="https://unpkg.com/pinyin-pro"></script>
     <style>
         /* カスタムの微調整用スタイル */
         body {
@@ -36,7 +38,7 @@
 
     <header class="max-w-4xl mx-auto mb-6 text-center">
         <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL Band A リスニング対策</h1>
-        <p class="text-slate-600">パート2 (問答理解) - 音声読み上げ付き学習アプリ</p>
+        <p class="text-slate-600">パート2 (問答理解) & パート3 (對話理解) - 音声付き学習アプリ</p>
         <p class="text-sm text-slate-500 mt-2">※まずは「2回再生して表示」で音声を聴き取り、テキストを確認しましょう。</p>
     </header>
 
@@ -52,12 +54,13 @@
         <!-- JSでここにコンテンツが生成されます -->
     </main>
 
-    <footer class="text-center mt-12 text-slate-500 text-sm">
+    <footer class="text-center mt-12 mb-8 text-slate-500 text-sm">
         <p>※ご使用のブラウザやOSによって、音声の読み上げ機能がサポートされていない場合があります。</p>
+        <p class="mt-1">※ピンインは自動生成のため、一部台湾華語の実際の発音と異なる場合があります（例: 垃圾 lè sè → lā jī など）。</p>
     </footer>
 
     <script>
-        // 問題データ
+        // 問題データ (第二部分: 11-28, 第三部分: 29-39)
         const questionsData = [
             {
                 id: 11,
@@ -366,6 +369,230 @@
                 ],
                 meta: "「誰が」「どこから」「どこへ」動作をしているかを絵と一致させます。「樓上的小孩（上の階の子供）」が「往下丟（下に向かって投げる）」。この条件を満たしているのは(C)の絵だけです。",
                 ans: "C"
+            },
+            // ここから 第三部分 對話理解
+            {
+                id: 29,
+                script: [
+                { speaker: "男", text: "我們等一下三點在書店門口前見面嗎？", jp: "私たち後で3時に本屋の入り口前で待ち合わせする？" },
+                { speaker: "女", text: "我覺得有一點晚，我們可以早半個小時嗎？", jp: "少し遅いと思うわ、30分早くできる？" },
+                { speaker: "男", text: "好啊，那一樣在書店門口前見嗎？", jp: "いいよ、じゃあ同じく本屋の入り口前で待ち合わせでいい？" },
+                { speaker: "女", text: "對，書店門口見！", jp: "ええ、本屋の入り口で会いましょう！" },
+                { speaker: "問", text: "請問他們幾點見面？", jp: "質問：彼らは何時に待ち合わせしますか？" }
+                ],
+                vocab: [
+                { word: "等一下", pinyin: "děng yí xià", jp: "後で、ちょっと待って", speak: "等一下" },
+                { word: "門口", pinyin: "mén kǒu", jp: "入り口、出入り口", speak: "門口" },
+                { word: "見面", pinyin: "jiàn miàn", jp: "会う、待ち合わせる", speak: "見面" },
+                { word: "晚", pinyin: "wǎn", jp: "遅い", speak: "晚" },
+                { word: "早", pinyin: "zǎo", jp: "早い", speak: "早" },
+                { word: "半個小時", pinyin: "bàn ge xiǎo shí", jp: "30分、半時間", speak: "半個小時" }
+                ],
+                meta: "時間の計算問題です。最初の提案は「三點（3時）」ですが、女性が「早半個小時（30分早く）」と提案し、男性が同意しています。したがって3時の30分前である「2時半」が正解になります。",
+                ans: "C"
+            },
+            {
+                id: 30,
+                script: [
+                { speaker: "男", text: "請問妳要找什麼書？", jp: "どんな本をお探しですか？" },
+                { speaker: "女", text: "我正在找介紹日本風景的旅遊書。", jp: "日本の風景を紹介する旅行の本を探しています。" },
+                { speaker: "男", text: "妳看到上面號碼了嗎？如果妳要找日本的書，那在中間二號。", jp: "上の番号が見えますか？日本の本をお探しなら、真ん中の2番にあります。" },
+                { speaker: "女", text: "謝謝。", jp: "ありがとうございます。" },
+                { speaker: "問", text: "請問介紹日本風景的書放在哪裡？", jp: "質問：日本の風景を紹介する本はどこに置いてありますか？" }
+                ],
+                vocab: [
+                { word: "找", pinyin: "zhǎo", jp: "探す", speak: "找" },
+                { word: "介紹", pinyin: "jiè shào", jp: "紹介する", speak: "介紹" },
+                { word: "風景", pinyin: "fēng jǐng", jp: "風景", speak: "風景" },
+                { word: "旅遊書", pinyin: "lǚ yóu shū", jp: "旅行ガイドブック", speak: "旅遊書" },
+                { word: "號碼", pinyin: "hào mǎ", jp: "番号", speak: "號碼" },
+                { word: "如果", pinyin: "rú guǒ", jp: "もし〜なら", speak: "如果" },
+                { word: "中間", pinyin: "zhōng jiān", jp: "真ん中", speak: "中間" }
+                ],
+                meta: "目的の場所を聞き取る問題です。男性のセリフ「在中間2號（真ん中の2番にあります）」がポイントです。番号が振られた本棚の絵から「2番（中間）」を選びます。",
+                ans: "B"
+            },
+            {
+                id: 31,
+                script: [
+                { speaker: "男", text: "來這家店的人真多。", jp: "この店に来る人は本当に多いね。" },
+                { speaker: "女", text: "是啊！這家冰淇淋店有很多種味道的冰淇淋。", jp: "そうね！このアイスクリーム屋にはたくさんの味のアイスクリームがあるの。" },
+                { speaker: "男", text: "我想吃巧克力和牛奶口味的，我們進去吃吧！", jp: "僕はチョコレートとミルク味のが食べたいな、中に入って食べよう！" },
+                { speaker: "女", text: "好，我請客。", jp: "いいよ、私がおごるわ。" },
+                { speaker: "問", text: "請問他們等一下要做什麼？", jp: "質問：彼らはこの後何をしますか？" }
+                ],
+                vocab: [
+                { word: "冰淇淋", pinyin: "bīng qí lín", jp: "アイスクリーム", speak: "冰淇淋" },
+                { word: "味道", pinyin: "wèi dào", jp: "味、におい", speak: "味道" },
+                { word: "巧克力", pinyin: "qiǎo kè lì", jp: "チョコレート", speak: "巧克力" },
+                { word: "牛奶", pinyin: "niú nǎi", jp: "牛乳、ミルク", speak: "牛奶" },
+                { word: "口味", pinyin: "kǒu wèi", jp: "味、フレーバー", speak: "口味" },
+                { word: "進去", pinyin: "jìn qù", jp: "入っていく", speak: "進去" },
+                { word: "請客", pinyin: "qǐng kè", jp: "おごる、ごちそうする", speak: "請客" }
+                ],
+                meta: "「冰淇淋店（アイスクリーム屋）」「巧克力和牛奶口味（チョコとミルク味）」「進去吃吧（入って食べよう）」という会話から、これからアイスクリームを食べる場面の絵を選びます。「請客（おごる）」も日常でよく使う重要単語です。",
+                ans: "A"
+            },
+            {
+                id: 32,
+                script: [
+                { speaker: "男", text: "照片裡這些人是妳的家人嗎？你們在哪裡拍的？", jp: "写真に写っているこの人たちは君の家族？どこで撮ったの？" },
+                { speaker: "女", text: "是啊，這是我的爸爸媽媽。這張照片是在船上拍的。", jp: "そうよ、これは私の父と母。この写真は船の上で撮ったの。" },
+                { speaker: "男", text: "這個戴帽子的人是誰？", jp: "この帽子を被っている人は誰？" },
+                { speaker: "女", text: "這是我爺爺。他已經七十歲了。", jp: "これは私のおじいちゃん。もう70歳なの。" },
+                { speaker: "問", text: "請問他們說的是哪一張照片？", jp: "質問：彼らが話しているのはどの写真ですか？" }
+                ],
+                vocab: [
+                { word: "照片", pinyin: "zhào piàn", jp: "写真", speak: "照片" },
+                { word: "家人", pinyin: "jiā rén", jp: "家族", speak: "家人" },
+                { word: "拍", pinyin: "pāi", jp: "撮る", speak: "拍" },
+                { word: "船上", pinyin: "chuán shàng", jp: "船の上", speak: "船上" },
+                { word: "戴", pinyin: "dài", jp: "身につける、被る", speak: "戴" },
+                { word: "帽子", pinyin: "mào zi", jp: "帽子", speak: "帽子" },
+                { word: "爺爺", pinyin: "yé ye", jp: "おじいちゃん（父方）", speak: "爺爺" }
+                ],
+                meta: "絵探し問題の典型です。条件1「在船上拍的（船の上で撮った）」、条件2「戴帽子的人是我爺爺（帽子を被っているおじいちゃんがいる）」。この2つの条件を同時に満たす写真を選びます。",
+                ans: "C"
+            },
+            {
+                id: 33,
+                script: [
+                { speaker: "男", text: "要不要喝點兒啤酒？", jp: "ビールを少し飲まない？" },
+                { speaker: "女", text: "不行，我等一下要開車。", jp: "だめよ、私この後車を運転するから。" },
+                { speaker: "男", text: "那，喝點兒汽水吧？", jp: "じゃあ、サイダーを少し飲む？" },
+                { speaker: "女", text: "我還是喝茶好了。", jp: "やっぱりお茶にしておくわ。" },
+                { speaker: "問", text: "請問這位小姐決定喝什麼？", jp: "質問：この女性は何を飲むことに決めましたか？" }
+                ],
+                vocab: [
+                { word: "啤酒", pinyin: "pí jiǔ", jp: "ビール", speak: "啤酒" },
+                { word: "開車", pinyin: "kāi chē", jp: "車を運転する", speak: "開車" },
+                { word: "汽水", pinyin: "qì shuǐ", jp: "炭酸飲料、サイダー", speak: "汽水" },
+                { word: "還是〜好了", pinyin: "hái shì 〜 hǎo le", jp: "やっぱり〜にする、〜した方がいい", speak: "還是好了" },
+                { word: "決定", pinyin: "jué dìng", jp: "決定する、決める", speak: "決定" }
+                ],
+                meta: "提案を次々と断っていくパターンです。「啤酒（ビール）」は運転するからダメ、「汽水（サイダー）」も断り、最終的に「喝茶好了（お茶にする）」と決定しています。",
+                ans: "B"
+            },
+            {
+                id: 34,
+                script: [
+                { speaker: "男", text: "妳的房間這麼亂，為什麼不整理？", jp: "君の部屋こんなに散らかっているのに、どうして整理しないの？" },
+                { speaker: "女", text: "我本來上星期日要整理房間，但是我的經理要我去公司。", jp: "もともと先週の日曜日に部屋を整理するつもりだったんだけど、マネージャーに会社に来るように言われたのよ。" },
+                { speaker: "男", text: "那妳今天看了一個下午的書，為什麼不打掃？", jp: "じゃあ君は今日午後ずっと本を読んでいたのに、どうして掃除しないの？" },
+                { speaker: "女", text: "好啦！我明天會整理。", jp: "わかったわよ！明日整理するわ。" },
+                { speaker: "問", text: "請問這位小姐明天打算做什麼？", jp: "質問：この女性は明日何をするつもりですか？" }
+                ],
+                vocab: [
+                { word: "亂", pinyin: "luàn", jp: "散らかっている、乱れている", speak: "亂" },
+                { word: "整理", pinyin: "zhěng lǐ", jp: "整理する、片付ける", speak: "整理" },
+                { word: "本來", pinyin: "běn lái", jp: "もともと", speak: "本來" },
+                { word: "經理", pinyin: "jīng lǐ", jp: "マネージャー、支配人", speak: "經理" },
+                { word: "打掃", pinyin: "dǎ sǎo", jp: "掃除する", speak: "打掃" },
+                { word: "打算", pinyin: "dǎ suàn", jp: "〜するつもりだ", speak: "打算" }
+                ],
+                meta: "行動する日を特定する問題です。「上星期日（先週の日曜）」、「今天（今日）」、「明天（明日）」と様々な日の行動が出てきます。質問は「明天（明日）」の予定なので、女性が最後に「我明天會整理（明日整理するわ）」と答えている内容を選びます。",
+                ans: "A"
+            },
+            {
+                id: 35,
+                script: [
+                { speaker: "男", text: "這裡的天氣怎麼樣？", jp: "ここの天気はどう？" },
+                { speaker: "女", text: "冬天太冷，夏天太熱。", jp: "冬は寒すぎるし、夏は暑すぎるわ。" },
+                { speaker: "男", text: "那麼春天呢？", jp: "じゃあ春は？" },
+                { speaker: "女", text: "常常下雨。", jp: "よく雨が降るわ。" },
+                { speaker: "問", text: "請問這裡的春天常常怎麼樣？", jp: "質問：ここの春はよくどうなりますか？" }
+                ],
+                vocab: [
+                { word: "天氣", pinyin: "tiān qì", jp: "天気", speak: "天氣" },
+                { word: "冷", pinyin: "lěng", jp: "寒い", speak: "冷" },
+                { word: "熱", pinyin: "rè", jp: "暑い", speak: "熱" },
+                { word: "春天", pinyin: "chūn tiān", jp: "春", speak: "春天" },
+                { word: "常常", pinyin: "cháng cháng", jp: "よく、しばしば", speak: "常常" },
+                { word: "下雨", pinyin: "xià yǔ", jp: "雨が降る", speak: "下雨" }
+                ],
+                meta: "季節の天気を問う問題です。冬（寒い）、夏（暑い）の情報はダミーです。質問で聞かれている「春天（春）」の天気は、女性が「常常下雨（よく雨が降る）」と答えているため、雨が降っている絵を選びます。",
+                ans: "C"
+            },
+            {
+                id: 36,
+                script: [
+                { speaker: "男", text: "我想找王先生。", jp: "王さんを訪ねたいのですが。" },
+                { speaker: "女", text: "請問您和他約好了嗎？", jp: "彼と約束はされていますか？" },
+                { speaker: "男", text: "沒有。是他要我來找他的。", jp: "していません。彼が私に訪ねてくるように言ったのです。" },
+                { speaker: "女", text: "您先留下您的電話，我會請王先生打電話給您。", jp: "まずお電話番号を残していただけますか、王さんからあなたに電話するように伝えます。" },
+                { speaker: "問", text: "請問這位小姐要這位先生做什麼？", jp: "質問：この女性はこの男性に何を求めていますか？" }
+                ],
+                vocab: [
+                { word: "約好", pinyin: "yuē hǎo", jp: "約束している", speak: "約好" },
+                { word: "留下", pinyin: "liú xià", jp: "残す", speak: "留下" },
+                { word: "電話", pinyin: "diàn huà", jp: "電話（番号）", speak: "電話" },
+                { word: "請", pinyin: "qǐng", jp: "〜にお願いして…させる", speak: "請" }
+                ],
+                meta: "受付でのやり取りの状況把握です。女性が最後に「留下您的電話（あなたの電話番号を残して）」とお願いしています。電話番号を書いている、または伝えている様子の絵を選びます。",
+                ans: "B"
+            },
+            {
+                id: 37,
+                script: [
+                { speaker: "男", text: "小春的生日快到了，我們一起送他禮物，怎麼樣？", jp: "小春の誕生日がもうすぐ来るね、一緒にプレゼントを贈るのはどう？" },
+                { speaker: "女", text: "好啊！他喜歡畫畫，我們可以送他畫畫用的筆。", jp: "いいわね！彼は絵を描くのが好きだから、絵を描くためのペンを贈ろう。" },
+                { speaker: "男", text: "嗯，還可以送他放筆的袋子。", jp: "うん、さらにペンを入れる袋も贈れるね。" },
+                { speaker: "女", text: "好啊，今天下課以後我們一起去買禮物吧。", jp: "いいわね、今日授業が終わったら一緒にプレゼントを買いに行きましょう。" },
+                { speaker: "問", text: "請問他們決定送什麼？", jp: "質問：彼らは何を贈ることに決めましたか？" }
+                ],
+                vocab: [
+                { word: "生日", pinyin: "shēng rì", jp: "誕生日", speak: "生日" },
+                { word: "禮物", pinyin: "lǐ wù", jp: "プレゼント、贈り物", speak: "禮物" },
+                { word: "畫畫", pinyin: "huà huà", jp: "絵を描く", speak: "畫畫" },
+                { word: "筆", pinyin: "bǐ", jp: "ペン、筆記用具", speak: "筆" },
+                { word: "袋子", pinyin: "dài zi", jp: "袋（放筆的袋子＝ペンケース）", speak: "袋子" },
+                { word: "下課以後", pinyin: "xià kè yǐ hòu", jp: "授業が終わった後", speak: "下課以後" }
+                ],
+                meta: "女性が「畫畫用的筆（絵を描くためのペン）」を提案し、男性が「放筆的袋子（ペンを入れる袋＝ペンケース）」を追加提案し、女性も賛成しています。ペンとペンケース（袋）のセットの絵を選びます。",
+                ans: "C"
+            },
+            {
+                id: 38,
+                script: [
+                { speaker: "男", text: "妳看電視新聞了嗎？有一個很可怕的消息。", jp: "テレビのニュース見た？すごく恐ろしいニュースがあったよ。" },
+                { speaker: "女", text: "什麼可怕的消息？", jp: "何の恐ろしいニュース？" },
+                { speaker: "男", text: "妳快點開電視，我剛剛才看到的。", jp: "早くテレビをつけて、僕たった今見たばかりなんだ。" },
+                { speaker: "女", text: "我上網看過新聞了，可是沒看到什麼可怕的消息。", jp: "ネットでニュースを見たけど、恐ろしいニュースなんて見なかったわ。" },
+                { speaker: "問", text: "請問這位先生從哪裡知道可怕的消息？", jp: "質問：この男性はどこから恐ろしいニュースを知りましたか？" }
+                ],
+                vocab: [
+                { word: "電視新聞", pinyin: "diàn shì xīn wén", jp: "テレビのニュース", speak: "電視新聞" },
+                { word: "可怕", pinyin: "kě pà", jp: "恐ろしい、怖い", speak: "可怕" },
+                { word: "消息", pinyin: "xiāo xí", jp: "知らせ、ニュース", speak: "消息" },
+                { word: "快點", pinyin: "kuài diǎn", jp: "早く〜して", speak: "快點" },
+                { word: "開", pinyin: "kāi", jp: "（電源を）つける", speak: "開電視" },
+                { word: "剛剛", pinyin: "gāng gāng", jp: "たった今", speak: "剛剛" },
+                { word: "上網", pinyin: "shàng wǎng", jp: "インターネットをする", speak: "上網" }
+                ],
+                meta: "メディアの手段を問う問題です。女性は「上網（ネット）」で見ましたが、質問は「這位先生（この男性）」の手段です。男性は最初に「看電視新聞了嗎（テレビのニュース見た？）」、次に「快點開電視（早くテレビをつけて）」と言っているので、テレビから情報を得ています。",
+                ans: "A"
+            },
+            {
+                id: 39,
+                script: [
+                { speaker: "男", text: "妳想吃什麼?", jp: "何食べたい？" },
+                { speaker: "女", text: "聽說這裡的北京烤鴨很好吃。", jp: "ここの北京ダックはとても美味しいらしいわ。" },
+                { speaker: "男", text: "我們點一隻烤鴨，一碗酸辣湯，怎麼樣？", jp: "じゃあ北京ダックを1羽と、サンラータンを1杯注文するのはどう？" },
+                { speaker: "女", text: "再點一個糖醋魚吧！", jp: "さらに白身魚の甘酢あんかけも頼みましょう！" },
+                { speaker: "問", text: "請問他們應該在什麼地方？", jp: "質問：彼らはどこにいると考えられますか？" }
+                ],
+                vocab: [
+                { word: "聽說", pinyin: "tīng shuō", jp: "〜だそうだ、〜らしい", speak: "聽說" },
+                { word: "北京烤鴨", pinyin: "běi jīng kǎo yā", jp: "北京ダック", speak: "北京烤鴨" },
+                { word: "點", pinyin: "diǎn", jp: "注文する", speak: "點" },
+                { word: "隻", pinyin: "zhī", jp: "匹、羽（動物を数える量詞）", speak: "一隻" },
+                { word: "酸辣湯", pinyin: "suān là tāng", jp: "サンラータン", speak: "酸辣湯" },
+                { word: "糖醋魚", pinyin: "táng cù yú", jp: "白身魚の甘酢あんかけ", speak: "糖醋魚" },
+                { word: "應該", pinyin: "yīng gāi", jp: "〜のはずだ、〜であるべきだ", speak: "應該" },
+                { word: "地方", pinyin: "dì fāng", jp: "場所", speak: "地方" }
+                ],
+                meta: "注文している料理の名前（北京烤鴨、酸辣湯、糖醋魚）と、「點（注文する）」という動詞から、彼らがレストラン（中餐廳）にいることが推測できます。",
+                ans: "C"
             }
         ];
 
@@ -409,7 +636,7 @@
                         }
                     } else if (playingType === 'single') {
                         // スクリプトボタンのリセット
-                        btn.classList.remove('text-indigo-600', 'bg-indigo-100');
+                        btn.classList.remove('text-indigo-600', 'bg-indigo-100', 'text-emerald-600', 'bg-emerald-100');
                         btn.classList.add('text-slate-400');
                         const icon = btn.querySelector('.lucide-play');
                         if (icon) {
@@ -449,11 +676,26 @@
             const q = questionsData.find(x => x.id === qId);
             if (!q) return;
 
-            // 2回分のテキストリストを作成
+            // 2回分のテキストリストを作成（ポーズ時間を含むオブジェクトにする）
             const utterances = [];
             for(let i=0; i<2; i++) {
-                q.script.forEach(line => {
-                    utterances.push(line.text);
+                q.script.forEach((line, index) => {
+                    let delay = 600; // 基本のポーズ時間
+                    
+                    // 第3部(id>=29)で「問」の前のセリフの後は少し長めにする
+                    if (q.id >= 29 && index === q.script.length - 2) {
+                        delay = 1200;
+                    }
+                    
+                    // 1回目の最後（＝2回目に入る前）は長めのポーズにする
+                    if (i === 0 && index === q.script.length - 1) {
+                        delay = 2000;
+                    }
+
+                    utterances.push({
+                        text: line.text,
+                        delayAfter: delay
+                    });
                 });
             }
 
@@ -471,18 +713,19 @@
                     return;
                 }
 
-                const text = utterances[currentIndex];
-                const utterance = new SpeechSynthesisUtterance(text);
+                const currentItem = utterances[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(currentItem.text);
                 utterance.lang = 'zh-TW'; // 台湾華語
                 utterance.rate = 0.85;
 
                 utterance.onend = () => {
+                    const delay = currentItem.delayAfter;
                     currentIndex++;
                     setTimeout(() => {
                         if (playingId === btnId) {
                             speakNext();
                         }
-                    }, 600); // セリフの間に600msの空白を入れる
+                    }, delay); // 設定した空白時間を入れる
                 };
                 utterance.onerror = () => {
                     currentIndex++;
@@ -496,7 +739,7 @@
         }
 
         // 単一テキストの音声読み上げ関数
-        function speakText(text, btnId, isVocab) {
+        function speakText(text, btnId, isVocab, speakerType) {
             if (!('speechSynthesis' in window)) {
                 alert("お使いのブラウザは音声再生に対応していません。");
                 return;
@@ -523,7 +766,11 @@
                         }
                     } else {
                         btn.classList.remove('text-slate-400');
-                        btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                        if (speakerType === '問') {
+                            btn.classList.add('text-emerald-600', 'bg-emerald-100');
+                        } else {
+                            btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                        }
                         const icon = btn.querySelector('.lucide-play');
                         if (icon) {
                             icon.setAttribute('fill', 'currentColor');
@@ -546,15 +793,80 @@
             window.speechSynthesis.speak(utterance);
         }
 
+        // テキストをルビ（下付きピンイン）付きのHTMLに変換する関数
+        function getRubyText(text) {
+            if (typeof pinyinPro === 'undefined') return text;
+            try {
+                // pinyin-proで文字ごとのピンイン配列を取得
+                const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
+                const charArr = Array.from(text);
+                
+                let html = '';
+                for (let i = 0; i < charArr.length; i++) {
+                    const char = charArr[i];
+                    const py = pinyinArr[i];
+                    
+                    // 漢字の場合のみルビを振る
+                    if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
+                        html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                    } else {
+                        html += `<span class="mx-[1px]">${char}</span>`;
+                    }
+                }
+                return html;
+            } catch (e) {
+                console.error("ピンイン変換エラー:", e);
+                return text;
+            }
+        }
+
         // DOMの生成
         function renderApp() {
             const container = document.getElementById('app-content');
             let html = '';
 
+            let isPart2Inserted = false;
+            let isPart3Inserted = false;
+
             questionsData.forEach(q => {
+                // セクション見出しの挿入
+                if (q.id >= 11 && q.id < 29 && !isPart2Inserted) {
+                    html += `
+                        <div class="py-4 mb-2">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="headphones" class="w-6 h-6"></i>
+                                第二部分 問答理解
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">1往復の会話を聞いて、正解の絵を選びます。</p>
+                        </div>
+                    `;
+                    isPart2Inserted = true;
+                }
+                if (q.id >= 29 && !isPart3Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                                第三部分 對話理解
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">複数回のやり取りの対話を聞いて、最後の質問に対する正解の絵を選びます。</p>
+                        </div>
+                    `;
+                    isPart3Inserted = true;
+                }
+
+
                 let scriptHtml = q.script.map((line, idx) => {
                     const btnId = `btn-line-${q.id}-${idx}`;
-                    const speakerBg = line.speaker === '男' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700';
+                    
+                    let speakerBg = 'bg-slate-100 text-slate-700'; // デフォルト
+                    if (line.speaker === '男') speakerBg = 'bg-blue-100 text-blue-700';
+                    else if (line.speaker === '女') speakerBg = 'bg-pink-100 text-pink-700';
+                    else if (line.speaker === '問') speakerBg = 'bg-emerald-100 text-emerald-700';
+
+                    // ピンイン付きHTMLを取得
+                    const rubyText = getRubyText(line.text);
+
                     return `
                         <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
                             <div class="flex items-center gap-2 sm:w-1/6">
@@ -563,7 +875,7 @@
                                 </span>
                                 <button 
                                     id="${btnId}"
-                                    onclick="speakText('${line.text}', '${btnId}', false)"
+                                    onclick="speakText('${line.text}', '${btnId}', false, '${line.speaker}')"
                                     class="secret-target p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400"
                                     title="音声を再生"
                                 >
@@ -571,7 +883,7 @@
                                 </button>
                             </div>
                             <div class="sm:w-5/6 secret-target transition-all duration-500 delay-100">
-                                <p class="text-lg font-medium text-slate-800 mb-1">${line.text}</p>
+                                <p class="text-xl font-medium text-slate-800 mb-4 leading-relaxed">${rubyText}</p>
                                 <p class="text-slate-600 text-sm">${line.jp}</p>
                             </div>
                         </div>
