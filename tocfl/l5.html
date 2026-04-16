@@ -38,7 +38,7 @@
 
     <header class="max-w-4xl mx-auto mb-6 text-center">
         <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL Band A リスニング対策</h1>
-        <p class="text-slate-600">パート2 (問答理解) & パート3 (對話理解) - 音声付き学習アプリ</p>
+        <p class="text-slate-600">パート1 (看圖回答) 〜 パート4 (對話) - 音声付き学習アプリ</p>
         <p class="text-sm text-slate-500 mt-2">※まずは「2回再生して表示」で音声を聴き取り、テキストを確認しましょう。</p>
     </header>
 
@@ -60,8 +60,206 @@
     </footer>
 
     <script>
-        // 問題データ (第二部分: 11-28, 第三部分: 29-39)
+        // 問題データ (第一部分: 1-10, 第二部分: 11-28, 第三部分: 29-39, 第四部分: 41-50)
         const questionsData = [
+            // ここから 第一部分 看圖回答
+            {
+                id: 1,
+                script: [
+                { speaker: "問", text: "圖片裡有幾個學生？", jp: "写真には何人の学生がいますか？" }
+                ],
+                choices: [
+                "（A）三個",
+                "（B）四個",
+                "（C）七個"
+                ],
+                vocab: [
+                { word: "圖片", pinyin: "tú piàn", jp: "写真、画像", speak: "圖片" },
+                { word: "幾個", pinyin: "jǐ ge", jp: "何人、いくつ", speak: "幾個" },
+                { word: "學生", pinyin: "xué shēng", jp: "学生", speak: "學生" }
+                ],
+                meta: "「幾個（何人）」と聞かれているので、画像にいる学生の人数を数える問題です。「三（3）」「四（4）」「七（7）」の数字の聞き分けがポイントです。（※本アプリでは便宜上Bを正解としています）",
+                ans: "B"
+            },
+            {
+                id: 2,
+                script: [
+                { speaker: "問", text: "這個人在做什麼運動？", jp: "この人は何のスポーツをしていますか？" }
+                ],
+                choices: [
+                "（A）他在打籃球",
+                "（B）他在打網球",
+                "（C）他在打棒球"
+                ],
+                vocab: [
+                { word: "做什麼", pinyin: "zuò shén me", jp: "何をしている", speak: "做什麼" },
+                { word: "運動", pinyin: "yùn dòng", jp: "スポーツ、運動", speak: "運動" },
+                { word: "打籃球", pinyin: "dǎ lán qiú", jp: "バスケットボールをする", speak: "打籃球" },
+                { word: "打網球", pinyin: "dǎ wǎng qiú", jp: "テニスをする", speak: "打網球" },
+                { word: "打棒球", pinyin: "dǎ bàng qiú", jp: "野球をする", speak: "打棒球" }
+                ],
+                meta: "「打（球技をする）」という動詞に続くスポーツ名の語彙力が問われます。「籃球（バスケ）」「網球（テニス）」「棒球（野球）」の音を正確に把握しましょう。",
+                ans: "A"
+            },
+            {
+                id: 3,
+                script: [
+                { speaker: "問", text: "請問小美喜歡做什麼？", jp: "小美は何をするのが好きですか？" }
+                ],
+                choices: [
+                "（A）她喜歡打掃",
+                "（B）她喜歡做菜",
+                "（C）她喜歡洗衣服"
+                ],
+                vocab: [
+                { word: "喜歡", pinyin: "xǐ huān", jp: "好きだ", speak: "喜歡" },
+                { word: "打掃", pinyin: "dǎ sǎo", jp: "掃除する", speak: "打掃" },
+                { word: "做菜", pinyin: "zuò cài", jp: "料理をする", speak: "做菜" },
+                { word: "洗衣服", pinyin: "xǐ yī fú", jp: "服を洗う、洗濯する", speak: "洗衣服" }
+                ],
+                meta: "日常の家事に関する動詞フレーズの聞き分けです。画像に描かれている行動と一致するものを選択します。",
+                ans: "B"
+            },
+            {
+                id: 4,
+                script: [
+                { speaker: "問", text: "弟弟今天怎麼沒去上課？", jp: "弟は今日どうして授業に行かなかったのですか？" }
+                ],
+                choices: [
+                "（A）他腳痛",
+                "（B）他頭痛",
+                "（C）他肚子痛"
+                ],
+                vocab: [
+                { word: "怎麼", pinyin: "zěn me", jp: "どうして、なぜ", speak: "怎麼" },
+                { word: "沒去上課", pinyin: "méi qù shàng kè", jp: "授業に行かなかった", speak: "沒去上課" },
+                { word: "腳痛", pinyin: "jiǎo tòng", jp: "足が痛い", speak: "腳痛" },
+                { word: "頭痛", pinyin: "tóu tòng", jp: "頭が痛い", speak: "頭痛" },
+                { word: "肚子痛", pinyin: "dù zi tòng", jp: "お腹が痛い", speak: "肚子痛" }
+                ],
+                meta: "体の部位の語彙問題です。絵の人物がどこを押さえているか（痛がっているか）を確認し、「腳（足）」「頭（頭）」「肚子（お腹）」から選びます。",
+                ans: "B"
+            },
+            {
+                id: 5,
+                script: [
+                { speaker: "問", text: "小明給美美什麼？", jp: "小明は美美に何をあげましたか？" }
+                ],
+                choices: [
+                "（A）水果",
+                "（B）蛋糕",
+                "（C）餃子"
+                ],
+                vocab: [
+                { word: "給", pinyin: "gěi", jp: "あげる、与える", speak: "給" },
+                { word: "水果", pinyin: "shuǐ guǒ", jp: "果物、フルーツ", speak: "水果" },
+                { word: "蛋糕", pinyin: "dàn gāo", jp: "ケーキ", speak: "蛋糕" },
+                { word: "餃子", pinyin: "jiǎo zi", jp: "餃子", speak: "餃子" }
+                ],
+                meta: "食べ物の語彙力テストです。「水果（果物）」「蛋糕（ケーキ）」「餃子（餃子）」の聞き分けが求められます。",
+                ans: "A"
+            },
+            {
+                id: 6,
+                script: [
+                { speaker: "問", text: "這位先生現在在做什麼？", jp: "この男性は今何をしていますか？" }
+                ],
+                choices: [
+                "（A）他在教室上網",
+                "（B）他在辦公室工作",
+                "（C）他在辦公室上網"
+                ],
+                vocab: [
+                { word: "現在", pinyin: "xiàn zài", jp: "今、現在", speak: "現在" },
+                { word: "教室", pinyin: "jiào shì", jp: "教室", speak: "教室" },
+                { word: "上網", pinyin: "shàng wǎng", jp: "インターネットをする", speak: "上網" },
+                { word: "辦公室", pinyin: "bàn gōng shì", jp: "オフィス、事務所", speak: "辦公室" },
+                { word: "工作", pinyin: "gōng zuò", jp: "仕事をする、働く", speak: "工作" }
+                ],
+                meta: "「場所」と「動作」の2つの条件を組み合わせた問題です。教室かオフィスか、ネットをしているか仕事をしているかの組み合わせを聞き取ります。",
+                ans: "B"
+            },
+            {
+                id: 7,
+                script: [
+                { speaker: "問", text: "小女孩在做什麼？", jp: "女の子は何をしていますか？" }
+                ],
+                choices: [
+                "（A）她在寄信",
+                "（B）她在寫信",
+                "（C）她在打電話"
+                ],
+                vocab: [
+                { word: "小女孩", pinyin: "xiǎo nǚ hái", jp: "女の子", speak: "小女孩" },
+                { word: "寄信", pinyin: "jì xìn", jp: "手紙を出す、郵送する", speak: "寄信" },
+                { word: "寫信", pinyin: "xiě xìn", jp: "手紙を書く", speak: "寫信" },
+                { word: "打電話", pinyin: "dǎ diàn huà", jp: "電話をかける", speak: "打電話" }
+                ],
+                meta: "動作の語彙問題です。特に「寄信（手紙を出す）」と「寫信（手紙を書く）」の違いを正確に聞き分け、絵の状況と一致させます。",
+                ans: "A"
+            },
+            {
+                id: 8,
+                script: [
+                { speaker: "問", text: "圖片裡有什麼？", jp: "写真には何がありますか？" }
+                ],
+                choices: [
+                "（A）一枝鉛筆和兩本字典",
+                "（B）一本字典和兩支毛筆",
+                "（C）一本雜誌和兩本課本"
+                ],
+                vocab: [
+                { word: "枝 / 支", pinyin: "zhī", jp: "〜本（細長いものを数える量詞）", speak: "枝" },
+                { word: "鉛筆", pinyin: "qiān bǐ", jp: "鉛筆", speak: "鉛筆" },
+                { word: "本", pinyin: "běn", jp: "〜冊（本などを数える量詞）", speak: "本" },
+                { word: "字典", pinyin: "zì diǎn", jp: "辞書", speak: "字典" },
+                { word: "毛筆", pinyin: "máo bǐ", jp: "毛筆、筆", speak: "毛筆" },
+                { word: "雜誌", pinyin: "zá zhì", jp: "雑誌", speak: "雜誌" },
+                { word: "課本", pinyin: "kè běn", jp: "教科書", speak: "課本" }
+                ],
+                meta: "「数字＋量詞＋名詞」の組み合わせを正確に聞き取る問題です。数とアイテムの名称が一致している選択肢を選びます。",
+                ans: "A"
+            },
+            {
+                id: 9,
+                script: [
+                { speaker: "問", text: "他們在做什麼？", jp: "彼らは何をしていますか？" }
+                ],
+                choices: [
+                "（A）他們一邊看電視，一邊吃東西",
+                "（B）他們一邊吃東西，一邊和狗玩",
+                "（C）他們一邊和狗玩，一邊看電視"
+                ],
+                vocab: [
+                { word: "一邊～一邊...", pinyin: "yì biān ~ yì biān ...", jp: "〜しながら…する", speak: "一邊" },
+                { word: "看電視", pinyin: "kàn diàn shì", jp: "テレビを見る", speak: "看電視" },
+                { word: "吃東西", pinyin: "chī dōng xi", jp: "ものを食べる", speak: "吃東西" },
+                { word: "和狗玩", pinyin: "hé gǒu wán", jp: "犬と遊ぶ", speak: "和狗玩" }
+                ],
+                meta: "Band A 頻出文法の「一邊～一邊...（〜しながら…する）」を用いた問題です。同時に行われている2つの動作を正確に聞き取ります。",
+                ans: "A"
+            },
+            {
+                id: 10,
+                script: [
+                { speaker: "問", text: "這裡有哪些動物？", jp: "ここにはどんな動物がいますか？" }
+                ],
+                choices: [
+                "（A）這裡都是馬",
+                "（B）這裡有馬也有牛",
+                "（C）這裡只有牛沒有馬"
+                ],
+                vocab: [
+                { word: "哪些", pinyin: "nǎ xiē", jp: "どの（複数のものを指す）", speak: "哪些" },
+                { word: "動物", pinyin: "dòng wù", jp: "動物", speak: "動物" },
+                { word: "都", pinyin: "dōu", jp: "すべて", speak: "都是" },
+                { word: "也", pinyin: "yě", jp: "〜も", speak: "也有" },
+                { word: "只有～沒有...", pinyin: "zhǐ yǒu ~ méi yǒu ...", jp: "〜しかなく…はいない", speak: "只有" }
+                ],
+                meta: "「都是（すべて〜だ）」「有〜也有…（〜も…もいる）」「只有〜沒有…（〜しかなく…はいない）」といった存在の有無と全称・部分の文法を聞き分ける問題です。",
+                ans: "B"
+            },
+            // ここから 第二部分 問答理解
             {
                 id: 11,
                 script: [
@@ -278,7 +476,7 @@
                 { word: "家裡", pinyin: "jiā lǐ", jp: "家の中、自宅", speak: "家裡" },
                 { word: "準備", pinyin: "zhǔn bèi", jp: "準備する", speak: "準備" },
                 { word: "報告", pinyin: "bào gào", jp: "報告、プレゼン", speak: "報告" },
-                { word: "會議室", pinyin: "huì yì shì", jp: "会議室 (不正解C)", speak: "會議室" }
+                { word: "會議室", pinyin: "huì yì shì", jp: "會議室 (不正解C)", speak: "會議室" }
                 ],
                 meta: "「出社していない＝オフィスや会議室ではない」ので(A)(C)は違います。「家裡（家）」で準備している(B)を選びます。",
                 ans: "B"
@@ -500,10 +698,10 @@
                 { speaker: "女", text: "冬天太冷，夏天太熱。", jp: "冬は寒すぎるし、夏は暑すぎるわ。" },
                 { speaker: "男", text: "那麼春天呢？", jp: "じゃあ春は？" },
                 { speaker: "女", text: "常常下雨。", jp: "よく雨が降るわ。" },
-                { speaker: "問", text: "請問這裡的春天常常怎麼樣？", jp: "質問：ここの春はよくどうなりますか？" }
+                { speaker: "問", text: "請問這裡的春天常常怎麼樣？", jp: "質問：ここは春はよくどうなりますか？" }
                 ],
                 vocab: [
-                { word: "天氣", pinyin: "tiān qì", jp: "天気", speak: "天氣" },
+                { word: "天氣", pinyin: "tiān qì", jp: "天氣", speak: "天氣" },
                 { word: "冷", pinyin: "lěng", jp: "寒い", speak: "冷" },
                 { word: "熱", pinyin: "rè", jp: "暑い", speak: "熱" },
                 { word: "春天", pinyin: "chūn tiān", jp: "春", speak: "春天" },
@@ -593,6 +791,275 @@
                 ],
                 meta: "注文している料理の名前（北京烤鴨、酸辣湯、糖醋魚）と、「點（注文する）」という動詞から、彼らがレストラン（中餐廳）にいることが推測できます。",
                 ans: "C"
+            },
+            // ここから 第四部分 對話
+            {
+                id: 41,
+                script: [
+                { speaker: "男", text: "我昨天運動了一整天。", jp: "昨日一日中運動したんだ。" },
+                { speaker: "女", text: "你看你，累到說不了話了？", jp: "ほら、疲れて口もきけないくらいじゃない？" },
+                { speaker: "男", text: "喔，不是因為運動，是因為我早上五點就起床了，所以想睡覺。", jp: "ああ、運動のせいじゃなくて、朝5時に起きたから眠いんだ。" },
+                { speaker: "女", text: "你這樣沒辦法上班，我幫你請假，你快回去睡吧！", jp: "そんなんじゃ仕事に行けないわよ、代わりに休みを取ってあげるから、早く帰って寝なさい！" },
+                { speaker: "問", text: "請問這位小姐為什麼要幫這位先生請假？", jp: "質問：この女性はどうしてこの男性の代わりに休みを取ろうとしているのですか？" }
+                ],
+                choices: [
+                "（A）因為他想睡覺",
+                "（B）因為他想運動",
+                "（C）因為他不想上班",
+                "（D）因為他起不了床"
+                ],
+                vocab: [
+                { word: "一整天", pinyin: "yì zhěng tiān", jp: "丸一日、一日中", speak: "一整天" },
+                { word: "累", pinyin: "lèi", jp: "疲れる", speak: "累" },
+                { word: "說不了話", pinyin: "shuō bù liǎo huà", jp: "話すことができない", speak: "說不了話" },
+                { word: "起床", pinyin: "qǐ chuáng", jp: "起きる、起床する", speak: "起床" },
+                { word: "幫", pinyin: "bāng", jp: "（代わりに）〜してあげる、手伝う", speak: "幫" },
+                { word: "請假", pinyin: "qǐng jià", jp: "休みを取る", speak: "請假" }
+                ],
+                meta: "男性が「不是因為運動（運動のせいではない）」と否定し、「因為…想睡覺（〜だから眠い）」と言っています。女性は「你這樣沒辦法上班（これでは仕事に行けない）」と判断して休みを代わりに取る（幫你請假）と提案しています。男性が眠くて仕事に行けない状態だからです。",
+                ans: "A"
+            },
+            {
+                id: 42,
+                script: [
+                { speaker: "男", text: "妳上個禮拜的旅行怎麼樣？", jp: "先週の旅行はどうだった？" },
+                { speaker: "女", text: "還不錯。交通方便、風景漂亮，我想去的地方都去了。", jp: "悪くなかったわ。交通は便利だし、景色は綺麗だし、行きたいところは全部行ったわ。" },
+                { speaker: "男", text: "那真是個開心的旅行。", jp: "それは本当に楽しい旅行だったね。" },
+                { speaker: "女", text: "嗯，雖然每件事都不錯，但是我回國的時候，把錢包掉在旅館了。", jp: "うん、すべての事が良かったんだけど、帰国する時に財布をホテルに落としちゃったの。" },
+                { speaker: "問", text: "關於這位小姐，下面哪一個是對的？", jp: "質問：この女性について、次のうちどれが正しいですか？" }
+                ],
+                choices: [
+                "（A）她旅行時不小心掉了東西",
+                "（B）她旅行時有些想去的地方沒去",
+                "（C）她覺得旅行時最麻煩的是交通",
+                "（D）她覺得旅行最重要的是風景漂亮"
+                ],
+                vocab: [
+                { word: "禮拜", pinyin: "lǐ bài", jp: "週、〜曜日", speak: "禮拜" },
+                { word: "交通", pinyin: "jiāo tōng", jp: "交通", speak: "交通" },
+                { word: "方便", pinyin: "fāng biàn", jp: "便利だ", speak: "方便" },
+                { word: "漂亮", pinyin: "piào liàng", jp: "きれいだ", speak: "漂亮" },
+                { word: "雖然", pinyin: "suī rán", jp: "〜だけれども", speak: "雖然" },
+                { word: "掉", pinyin: "diào", jp: "落とす、失くす", speak: "掉" },
+                { word: "錢包", pinyin: "qián bāo", jp: "財布", speak: "錢包" },
+                { word: "旅館", pinyin: "lǚ guǎn", jp: "旅館、ホテル", speak: "旅館" }
+                ],
+                meta: "「雖然〜但是…（〜だが、しかし…）」の後は重要な情報が来ます。前半は旅行を褒めていますが、「但是（しかし）」の後に「把錢包掉在旅館了（財布をホテルに落とした）」という失敗談が来ています。財布を紛失したという選択肢が正解です。",
+                ans: "A"
+            },
+            {
+                id: 43,
+                script: [
+                { speaker: "男", text: "妳怎麼了？好像不太開心的樣子。", jp: "どうしたの？あまり嬉しくなさそうだけど。" },
+                { speaker: "女", text: "我沒事，我每次考試的時候就會這樣。", jp: "なんでもないわ、毎回試験の時はこうなるのよ。" },
+                { speaker: "男", text: "可是昨天不是已經考完了嗎？", jp: "でも昨日もう試験終わったんじゃないの？" },
+                { speaker: "女", text: "是啊，可是我很擔心沒考好。", jp: "そうよ、でもうまくできなかったんじゃないかって心配なの。" },
+                { speaker: "問", text: "這位小姐為什麼不開心？", jp: "質問：この女性はどうして嬉しくないのですか？" }
+                ],
+                choices: [
+                "（A）她怕考得不好",
+                "（B）她的成績不好",
+                "（C）她沒參加考試",
+                "（D）她怕題目寫不完"
+                ],
+                vocab: [
+                { word: "怎麼了", pinyin: "zěn me le", jp: "どうしたの？", speak: "怎麼了" },
+                { word: "好像", pinyin: "hǎo xiàng", jp: "まるで〜のようだ、〜みたいだ", speak: "好像" },
+                { word: "樣子", pinyin: "yàng zi", jp: "様子、見た目", speak: "樣子" },
+                { word: "每次", pinyin: "měi cì", jp: "毎回、そのたびに", speak: "每次" },
+                { word: "考完", pinyin: "kǎo wán", jp: "試験が終わる", speak: "考完" },
+                { word: "擔心", pinyin: "dān xīn", jp: "心配する", speak: "擔心" },
+                { word: "沒考好", pinyin: "méi kǎo hǎo", jp: "試験がうまくできなかった", speak: "沒考好" }
+                ],
+                meta: "男性が「已經考完了嗎（もう終わったのでは？）」と聞き、女性が「擔心沒考好（うまくできなかったか心配）」と答えています。試験前の緊張ではなく、試験後の結果に対する不安が不機嫌の理由です。",
+                ans: "A"
+            },
+            {
+                id: 44,
+                script: [
+                { speaker: "女", text: "王先生嗎？您好，我是住在您家樓下的陳太太。", jp: "王さんですか？こんにちは、あなたの家の階下に住んでいる陳です。" },
+                { speaker: "男", text: "請問有什麼事嗎？", jp: "何かご用でしょうか？" },
+                { speaker: "女", text: "我總是聽到您走路的聲音，有時還聽到您與女朋友大聲地講話。我找您好幾次了，可是您都不在家。", jp: "いつもあなたの足音が聞こえて、時には彼女と大声で話しているのも聞こえます。何度かお訪ねしたのですが、いつもご不在でした。" },
+                { speaker: "男", text: "啊！不好意思，不好意思，我會注意的。", jp: "あっ！すみません、すみません、気をつけます。" },
+                { speaker: "問", text: "陳太太為什麼找王先生？", jp: "質問：陳奥さんはなぜ王さんを訪ねたのですか？" }
+                ],
+                choices: [
+                "（A）想請他搬家",
+                "（B）想請他吃飯",
+                "（C）介紹女朋友給他",
+                "（D）請他注意聲音的大小"
+                ],
+                vocab: [
+                { word: "樓下", pinyin: "lóu xià", jp: "下の階", speak: "樓下" },
+                { word: "總是", pinyin: "zǒng shì", jp: "いつも", speak: "總是" },
+                { word: "聲音", pinyin: "shēng yīn", jp: "音、声", speak: "聲音" },
+                { word: "有時", pinyin: "yǒu shí", jp: "時には", speak: "有時" },
+                { word: "大聲", pinyin: "dà shēng", jp: "大声で", speak: "大聲" },
+                { word: "好幾次", pinyin: "hǎo jǐ cì", jp: "何度も、数回", speak: "好幾次" },
+                { word: "注意", pinyin: "zhù yì", jp: "注意する、気をつける", speak: "注意" }
+                ],
+                meta: "「樓下（下の階）」の住人が「走路的聲音（歩く音）」や「大聲地講話（大声で話す）」についてクレームを言いに来ています。騒音に注意してもらうのが訪問の理由です。",
+                ans: "D"
+            },
+            {
+                id: 45,
+                script: [
+                { speaker: "男", text: "妳昨天怎麼那麼晚才睡？", jp: "昨日どうしてあんなに遅く寝たの？" },
+                { speaker: "女", text: "我昨天十二點多睡的，我不覺得晚啊！", jp: "昨日は12時過ぎに寝たのよ、遅いとは思わないけど！" },
+                { speaker: "男", text: "都半夜了，還不晚？這麼晚才睡覺對身體很不好。", jp: "もう夜中だよ、遅くないって？こんなに遅く寝るのは体によくないよ。" },
+                { speaker: "女", text: "還好吧？我一直都是這個時間睡覺，也沒生什麼病。", jp: "そうかな？ずっとこの時間に寝ているけど、病気なんてしてないわ。" },
+                { speaker: "問", text: "請問這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
+                ],
+                choices: [
+                "（A）她習慣在不同的時間睡覺",
+                "（B）她每天都是這個時間起床",
+                "（C）她認為睡覺對健康有影響",
+                "（D）她不覺得自己很晚才睡覺"
+                ],
+                vocab: [
+                { word: "那麼", pinyin: "nà me", jp: "あんなに、そんなに", speak: "那麼" },
+                { word: "才", pinyin: "cái", jp: "やっと、〜して初めて（遅さを強調）", speak: "才" },
+                { word: "半夜", pinyin: "bàn yè", jp: "夜中、深夜", speak: "半夜" },
+                { word: "身體", pinyin: "shēn tǐ", jp: "体、健康", speak: "身體" },
+                { word: "一直", pinyin: "yì zhí", jp: "ずっと、常に", speak: "一直" },
+                { word: "生病", pinyin: "shēng bìng", jp: "病気になる", speak: "生病" }
+                ],
+                meta: "男性は「体によくない（對身體很不好）」と心配していますが、女性は「我不覺得晚（遅いと思わない）」「也沒生什麼病（病気もしていない）」と反論しています。女性は自分の睡眠時間（12時過ぎ）を遅いと思っておらず、問題ないと考えています。",
+                ans: "D"
+            },
+            {
+                id: 46,
+                script: [
+                { speaker: "男", text: "夏天到了，我們明天去海邊吧！", jp: "夏になったね、明日海辺に行こうよ！" },
+                { speaker: "女", text: "好啊！你覺得我應該穿短裙好呢？還是短褲好呢？", jp: "いいね！ミニスカートがいいと思う？それともショートパンツがいいかな？" },
+                { speaker: "男", text: "我覺得妳應該穿短褲，因為我們要在沙灘上打球。", jp: "ショートパンツがいいと思うよ、砂浜で球技をするからね。" },
+                { speaker: "女", text: "好啊，明天見。", jp: "わかった、また明日。" },
+                { speaker: "問", text: "請問這位先生說了什麼？", jp: "質問：この男性は何と言いましたか？" }
+                ],
+                choices: [
+                "（A）他剛從海邊回來",
+                "（B）他喜歡夏天去海邊玩",
+                "（C）他給這位小姐買了褲子",
+                "（D）他約了這位小姐明天去運動"
+                ],
+                vocab: [
+                { word: "夏天", pinyin: "xià tiān", jp: "夏", speak: "夏天" },
+                { word: "海邊", pinyin: "hǎi biān", jp: "海辺", speak: "海邊" },
+                { word: "短裙", pinyin: "duǎn qún", jp: "ミニスカート", speak: "短裙" },
+                { word: "短褲", pinyin: "duǎn kù", jp: "ショートパンツ、半ズボン", speak: "短褲" },
+                { word: "沙灘", pinyin: "shā tān", jp: "砂浜、ビーチ", speak: "沙灘" },
+                { word: "打球", pinyin: "dǎ qiú", jp: "球技をする（バレーボールなど）", speak: "打球" }
+                ],
+                meta: "男性は「明天去海邊吧（明日海辺に行こう）」と誘い、服装について「應該穿短褲（ショートパンツを着るべきだ）」と答えています。理由は海辺で運動する（打球）からです。",
+                ans: "D"
+            },
+            {
+                id: 47,
+                script: [
+                { speaker: "男", text: "為了妳的生日，我想請妳吃蛋糕。", jp: "君の誕生日のために、ケーキをごちそうしたいな。" },
+                { speaker: "女", text: "你人來我就很開心了，蛋糕，我來準備就好了。", jp: "あなたが来てくれるだけで嬉しいわ、ケーキは私が準備するからいいわよ。" },
+                { speaker: "男", text: "這是為了感謝妳請我參加明天的生日舞會，或是妳有更想要的禮物嗎？", jp: "明日の誕生日パーティーに呼んでくれたお礼だよ、それとももっと欲しいプレゼントがあるの？" },
+                { speaker: "女", text: "你太客氣了。吃蛋糕和收禮物都不是最重要的事。", jp: "気を使いすぎよ。ケーキを食べることやプレゼントをもらうことは一番大事なことじゃないわ。" },
+                { speaker: "問", text: "請問這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
+                ],
+                choices: [
+                "（A）她不想請這位先生吃蛋糕",
+                "（B）她想幫這位先生慶祝生日",
+                "（C）她要朋友來參加舞會就好",
+                "（D）她想要大家一起唱生日歌"
+                ],
+                vocab: [
+                { word: "為了", pinyin: "wèi le", jp: "〜のために", speak: "為了" },
+                { word: "請", pinyin: "qǐng", jp: "おごる、ごちそうする", speak: "請吃" },
+                { word: "準備", pinyin: "zhǔn bèi", jp: "準備する", speak: "準備" },
+                { word: "感謝", pinyin: "gǎn xiè", jp: "感謝する、お礼をする", speak: "感謝" },
+                { word: "舞會", pinyin: "wǔ huì", jp: "パーティー（ダンスパーティーなど）", speak: "舞會" },
+                { word: "更", pinyin: "gèng", jp: "さらに、もっと", speak: "更" },
+                { word: "客氣", pinyin: "kè qì", jp: "遠慮する、気をつかう", speak: "客氣" },
+                { word: "收", pinyin: "shōu", jp: "受け取る", speak: "收禮物" }
+                ],
+                meta: "女性は最初から「你人來我就很開心了（あなたが来てくれるだけで嬉しい）」と言っており、最後にも「吃蛋糕和收禮物都不是最重要的事（ケーキやプレゼントは一番重要ではない）」と念を押しています。参加してくれること自体が一番嬉しいという意味です。",
+                ans: "C"
+            },
+            {
+                id: 48,
+                script: [
+                { speaker: "男", text: "我要去逛百貨公司，要一起嗎？", jp: "デパートに買い物に行くんだけど、一緒に行く？" },
+                { speaker: "女", text: "我最近花了太多錢了，還是不要吧。", jp: "最近お金を使いすぎちゃったから、やめておくわ。" },
+                { speaker: "男", text: "最近百貨公司有活動，很多商品不但很便宜，還會給很多試用的東西。", jp: "最近デパートでイベントをやってて、多くの商品が安いだけでなく、試供品もたくさんくれるんだよ。" },
+                { speaker: "女", text: "喔，有不用花錢的啊！那我們快走吧！", jp: "へえ、お金を使わなくていいのがあるのね！じゃあ早く行きましょう！" },
+                { speaker: "問", text: "為什麼這位小姐想去百貨公司？", jp: "質問：どうしてこの女性はデパートに行きたくなったのですか？" }
+                ],
+                choices: [
+                "（A）她想拿商店送的東西",
+                "（B）她最近很想花錢買東西",
+                "（C）她想要這位先生送她禮物",
+                "（D）她想和這位先生一起去逛街"
+                ],
+                vocab: [
+                { word: "逛", pinyin: "guàng", jp: "ぶらぶら歩く、見て回る", speak: "逛" },
+                { word: "百貨公司", pinyin: "bǎi huò gōng sī", jp: "デパート、百貨店", speak: "百貨公司" },
+                { word: "花錢", pinyin: "huā qián", jp: "お金を使う", speak: "花錢" },
+                { word: "活動", pinyin: "huó dòng", jp: "イベント、キャンペーン", speak: "活動" },
+                { word: "不但〜還", pinyin: "bú dàn 〜 hái", jp: "〜だけでなく、さらに…", speak: "不但" },
+                { word: "便宜", pinyin: "pián yi", jp: "安い", speak: "便宜" },
+                { word: "試用", pinyin: "shì yòng", jp: "お試し用、試供品", speak: "試用" }
+                ],
+                meta: "女性はお金がないので断っていましたが、男性の「給很多試用的東西（試供品をたくさんくれる）」という言葉を聞いて、「有不用花錢的啊（お金を使わなくていいものがあるのね）」と食いついています。無料の試供品がもらえるからです。",
+                ans: "A"
+            },
+            {
+                id: 49,
+                script: [
+                { speaker: "男", text: "今天天氣好熱，我們在家吹冷氣多好，還是不要去買衣服了。", jp: "今日はすごく暑いね、家でクーラーに当たっていたらどんなにいいか、やっぱり服を買いに行くのはやめよう。" },
+                { speaker: "女", text: "不行，你昨天答應我今天要出門買衣服。", jp: "だめよ、昨日私に今日服を買いに出かけるって約束したじゃない。" },
+                { speaker: "男", text: "可是妳沒發現衣服已經很多了嗎？", jp: "でも、君の服はもうたくさんあるって気づいてないの？" },
+                { speaker: "女", text: "我覺得，你只是怕太晚回家，沒辦法看棒球比賽！", jp: "ただ帰りが遅くなって、野球の試合が見られなくなるのが怖いだけでしょ！" },
+                { speaker: "問", text: "請問下面哪一個是對的？", jp: "質問：次のうち正しいのはどれですか？" }
+                ],
+                choices: [
+                "（A）這位先生今天想留在家裡",
+                "（B）這位小姐怕自己太晚回家",
+                "（C）他們兩人今天都想看棒球比賽",
+                "（D）他們已經買完衣服回家休息了"
+                ],
+                vocab: [
+                { word: "吹冷氣", pinyin: "chuī lěng qì", jp: "クーラー（冷房）にあたる", speak: "吹冷氣" },
+                { word: "答應", pinyin: "dā yìng", jp: "約束する、承諾する", speak: "答應" },
+                { word: "出門", pinyin: "chū mén", jp: "外出する", speak: "出門" },
+                { word: "發現", pinyin: "fā xiàn", jp: "気づく、発見する", speak: "發現" },
+                { word: "只是", pinyin: "zhǐ shì", jp: "ただ〜なだけだ", speak: "只是" },
+                { word: "怕", pinyin: "pà", jp: "恐れる、嫌がる", speak: "怕" },
+                { word: "棒球比賽", pinyin: "bàng qiú bǐ sài", jp: "野球の試合", speak: "棒球比賽" }
+                ],
+                meta: "男性は「暑いから」「服はたくさんあるから」と理由をつけて外出を渋っていますが、女性に「你只是怕太晚回家，沒辦法看棒球比賽（帰りが遅くなって野球が見られないのが嫌なだけ）」と図星を指されています。男性の本当の目的は家で野球を見ることです。",
+                ans: "A"
+            },
+            {
+                id: 50,
+                script: [
+                { speaker: "男", text: "小姐，這是昨天跟你們買的牛奶，味道有點奇怪，我想換一瓶新的。", jp: "すみません、これは昨日そちらで買った牛乳ですが、味が少しおかしいので、新しいものと交換したいです。" },
+                { speaker: "女", text: "請問您帶了發票嗎？", jp: "レシートはお持ちですか？" },
+                { speaker: "男", text: "喔，我沒帶來。", jp: "あ、持ってきていません。" },
+                { speaker: "女", text: "我們要看到發票，才能換東西，不好意思。", jp: "レシートを確認しないと交換できません、申し訳ありません。" },
+                { speaker: "問", text: "這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
+                ],
+                choices: [
+                "（A）她要把錢還給客人",
+                "（B）東西賣出去就不能換了",
+                "（C）她沒有東西可以換給客人",
+                "（D）沒有發票，就不能換東西"
+                ],
+                vocab: [
+                { word: "奇怪", pinyin: "qí guài", jp: "変だ、おかしい", speak: "奇怪" },
+                { word: "換", pinyin: "huàn", jp: "交換する", speak: "換" },
+                { word: "瓶", pinyin: "píng", jp: "瓶、ボトル（量詞）", speak: "瓶" },
+                { word: "帶", pinyin: "dài", jp: "持ってくる", speak: "帶" },
+                { word: "發票", pinyin: "fā piào", jp: "レシート、領収書", speak: "發票" },
+                { word: "才能", pinyin: "cái néng", jp: "（条件を満たして）ようやく〜できる", speak: "才能" }
+                ],
+                meta: "男性が商品の交換（換一瓶新的）を求めていますが、女性は「發票（レシート）」の有無を確認し、持ってきていないと聞いて「我們要看到發票，才能換東西（レシートを見ないと交換できない）」と断っています。レシートがないと交換できないというのが結論です。",
+                ans: "D"
             }
         ];
 
@@ -682,12 +1149,13 @@
                 q.script.forEach((line, index) => {
                     let delay = 600; // 基本のポーズ時間
                     
-                    // 第3部(id>=29)で「問」の前のセリフの後は少し長めにする
+                    // 第3部,第4部(id>=29)で「問」の前のセリフの後は少し長めにする
                     if (q.id >= 29 && index === q.script.length - 2) {
                         delay = 1200;
                     }
                     
                     // 1回目の最後（＝2回目に入る前）は長めのポーズにする
+                    // ※第1部（id < 11）はセリフが1つしかないので、そのセリフの後に長めのポーズを入れる
                     if (i === 0 && index === q.script.length - 1) {
                         delay = 2000;
                     }
@@ -825,14 +1293,28 @@
             const container = document.getElementById('app-content');
             let html = '';
 
+            let isPart1Inserted = false;
             let isPart2Inserted = false;
             let isPart3Inserted = false;
+            let isPart4Inserted = false;
 
             questionsData.forEach(q => {
                 // セクション見出しの挿入
-                if (q.id >= 11 && q.id < 29 && !isPart2Inserted) {
+                if (q.id >= 1 && q.id < 11 && !isPart1Inserted) {
                     html += `
                         <div class="py-4 mb-2">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="image" class="w-6 h-6"></i>
+                                第一部分 看圖回答
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">質問を聞いて、画像（本アプリでは省略）に合致する選択肢を選びます。</p>
+                        </div>
+                    `;
+                    isPart1Inserted = true;
+                }
+                if (q.id >= 11 && q.id < 29 && !isPart2Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
                             <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
                                 <i data-lucide="headphones" class="w-6 h-6"></i>
                                 第二部分 問答理解
@@ -842,7 +1324,7 @@
                     `;
                     isPart2Inserted = true;
                 }
-                if (q.id >= 29 && !isPart3Inserted) {
+                if (q.id >= 29 && q.id < 41 && !isPart3Inserted) {
                     html += `
                         <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
                             <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
@@ -854,7 +1336,18 @@
                     `;
                     isPart3Inserted = true;
                 }
-
+                if (q.id >= 41 && !isPart4Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                第四部分 對話
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">やや長めの対話を聞き、状況や話し手の意図を把握して、最後の質問に答えます。</p>
+                        </div>
+                    `;
+                    isPart4Inserted = true;
+                }
 
                 let scriptHtml = q.script.map((line, idx) => {
                     const btnId = `btn-line-${q.id}-${idx}`;
@@ -911,6 +1404,44 @@
                     `;
                 }).join('');
 
+                let choicesHtml = '';
+                if (q.choices) {
+                    choicesHtml = `
+                        <section>
+                            <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選択肢</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                ${q.choices.map((choice, cIdx) => {
+                                    const optionMatch = choice.match(/[A-D]/);
+                                    const optionLetter = optionMatch ? optionMatch[0] : '';
+                                    const isCorrect = optionLetter === q.ans;
+                                    const rubyChoice = getRubyText(choice);
+                                    
+                                    const btnId = `btn-choice-${q.id}-${optionLetter || cIdx}`;
+                                    // （A）などの記号を削除して読ませる
+                                    const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, '').replace(/'/g, "\\'");
+                                    
+                                    return `
+                                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
+                                        <div class="flex items-start gap-2">
+                                            <button 
+                                                id="${btnId}"
+                                                onclick="speakText('${speakTextStr}', '${btnId}', false)"
+                                                class="secret-target flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5"
+                                                title="音声を再生"
+                                            >
+                                                <i data-lucide="play" class="w-4 h-4"></i>
+                                            </button>
+                                            <span class="text-slate-800 leading-relaxed">${rubyChoice}</span>
+                                        </div>
+                                        ${isCorrect ? `<span class="secret-target flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : ''}
+                                    </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </section>
+                    `;
+                }
+
                 html += `
                     <article id="question-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                         <!-- Header -->
@@ -929,6 +1460,8 @@
                         </div>
 
                         <div class="p-6 space-y-6">
+                            ${choicesHtml}
+                            
                             <!-- Script Section -->
                             <section>
                                 <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">スクリプトと和訳</h3>
