@@ -42,17 +42,54 @@
         <p class="text-sm text-slate-500 mt-2">※まずは「2回再生して表示」で音声を聴き取り、テキストを確認しましょう。</p>
     </header>
 
-    <!-- グローバル表示切り替えボタン -->
-    <div class="max-w-4xl mx-auto mb-6 flex justify-end">
-        <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
-            <i data-lucide="eye" class="w-4 h-4"></i>
-            <span>すべての解答・スクリプトを表示</span>
-        </button>
+    <!-- タブナビゲーション -->
+    <div class="max-w-4xl mx-auto mb-6 flex justify-center gap-4">
+        <button onclick="switchTab('listening')" id="tab-listening" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">リスニング学習</button>
+        <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカード</button>
     </div>
 
-    <main id="app-content" class="max-w-4xl mx-auto space-y-8">
-        <!-- JSでここにコンテンツが生成されます -->
-    </main>
+    <!-- リスニングビュー -->
+    <div id="listening-view">
+        <!-- グローバル表示切り替えボタン -->
+        <div class="max-w-4xl mx-auto mb-6 flex justify-end">
+            <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>すべての解答・スクリプトを表示</span>
+            </button>
+        </div>
+
+        <main id="app-content" class="max-w-4xl mx-auto space-y-8">
+            <!-- JSでここにコンテンツが生成されます -->
+        </main>
+    </div>
+
+    <!-- フラッシュカードビュー -->
+    <div id="flashcard-view" class="hidden max-w-2xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-10 flex flex-col items-center">
+            <!-- モード切替 -->
+            <div class="flex gap-2 mb-8 bg-slate-100 p-1 rounded-lg">
+                <button onclick="setFlashcardMode('vocab')" id="fc-mode-vocab" class="px-4 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all">重要単語</button>
+                <button onclick="setFlashcardMode('sentence')" id="fc-mode-sentence" class="px-4 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all">センテンス</button>
+            </div>
+
+            <!-- カードエリア -->
+            <div id="flashcard-container" class="w-full cursor-pointer" onclick="handleCardClick()">
+                <!-- JSでカードを描画 -->
+            </div>
+
+            <!-- コントロール -->
+            <div class="mt-8 flex justify-between items-center w-full">
+                <button onclick="prevCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="前のカード (左矢印キー)"><i data-lucide="chevron-left" class="w-8 h-8"></i></button>
+                <div class="flex items-center gap-4">
+                    <button onclick="reshuffleCards()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors rounded-full hover:bg-indigo-50" title="順番を新しくシャッフルする"><i data-lucide="shuffle" class="w-5 h-5"></i></button>
+                    <span id="fc-counter" class="text-slate-500 font-mono font-medium"></span>
+                </div>
+                <button onclick="nextCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="次のカード (右矢印キー)"><i data-lucide="chevron-right" class="w-8 h-8"></i></button>
+            </div>
+            
+            <p class="mt-4 text-xs text-slate-400 text-center">※キーボードの「スペースキー」でカードを裏返し、「左右の矢印キー」で移動できます。</p>
+        </div>
+    </div>
 
     <footer class="text-center mt-12 mb-8 text-slate-500 text-sm">
         <p>※ご使用のブラウザやOSによって、音声の読み上げ機能がサポートされていない場合があります。</p>
@@ -1495,6 +1532,271 @@
 
             container.innerHTML = html;
         }
+
+        // --- フラッシュカード機能 ---
+        let allVocabs = [];
+        let allSentences = [];
+        let flashcards = [];
+        let fcMode = 'vocab';
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let isFcTextRevealed = false; // 文字が公開されているか
+
+        // タブ切り替え
+        function switchTab(tabId) {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            if (tabId === 'listening') {
+                document.getElementById('listening-view').classList.remove('hidden');
+                document.getElementById('flashcard-view').classList.add('hidden');
+                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+            } else {
+                document.getElementById('listening-view').classList.add('hidden');
+                document.getElementById('flashcard-view').classList.remove('hidden');
+                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+                
+                initFlashcards();
+            }
+        }
+
+        // データを抽出してシャッフル
+        function initFlashcardsData() {
+            const vocabMap = new Map();
+            questionsData.forEach(q => {
+                // 不正解の選択肢語彙（ダミー）などは混乱を防ぐため省く
+                if (q.vocab) {
+                    q.vocab.forEach(v => {
+                        if (!vocabMap.has(v.word) && !v.jp.includes('不正解')) {
+                            vocabMap.set(v.word, v);
+                        }
+                    });
+                }
+                if (q.script) {
+                    q.script.forEach(s => {
+                        // 質問文(問)は除外
+                        if (s.speaker !== '問' && s.text) {
+                            allSentences.push(s);
+                        }
+                    });
+                }
+            });
+            allVocabs = Array.from(vocabMap.values());
+        }
+
+        function shuffle(array) {
+            let currentIndex = array.length,  randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function setFlashcardMode(mode) {
+            fcMode = mode;
+            if (mode === 'vocab') {
+                document.getElementById('fc-mode-vocab').className = "px-4 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-sentence').className = "px-4 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                flashcards = shuffle([...allVocabs]);
+            } else {
+                document.getElementById('fc-mode-sentence').className = "px-4 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-vocab').className = "px-4 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                flashcards = shuffle([...allSentences]);
+            }
+            currentCardIndex = 0;
+            isCardFlipped = false;
+            isFcTextRevealed = false;
+            renderFlashcard();
+        }
+
+        function initFlashcards() {
+            if (allVocabs.length === 0) {
+                initFlashcardsData();
+            }
+            setFlashcardMode(fcMode);
+        }
+
+        function handleCardClick() {
+            if (!isCardFlipped && !isFcTextRevealed) {
+                revealFcText();
+            } else {
+                flipCard();
+            }
+        }
+
+        function revealFcText(e) {
+            if (e) e.stopPropagation();
+            isFcTextRevealed = true;
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            const container = document.getElementById('flashcard-container');
+            const counter = document.getElementById('fc-counter');
+            
+            if (flashcards.length === 0) return;
+            
+            counter.innerText = `${currentCardIndex + 1} / ${flashcards.length}`;
+            
+            const card = flashcards[currentCardIndex];
+            let frontHtml = '';
+            let backHtml = '';
+            let btnId = `fc-btn-${currentCardIndex}`;
+            
+            // ぼかしクラスの適用
+            const blurClass = !isFcTextRevealed ? 'filter blur-md select-none opacity-40' : '';
+
+            if (fcMode === 'vocab') {
+                frontHtml = `
+                    <div class="text-center ${blurClass} transition-all duration-500">
+                        <div class="text-4xl font-bold text-slate-800 mb-4">${card.word}</div>
+                        <div class="text-xl text-slate-500 font-mono mb-4">${card.pinyin}</div>
+                    </div>
+                `;
+                backHtml = `
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-emerald-700">${card.jp}</div>
+                    </div>
+                `;
+            } else {
+                const rubyText = getRubyText(card.text);
+                frontHtml = `
+                    <div class="text-center ${blurClass} transition-all duration-500">
+                        <div class="text-2xl font-medium text-slate-800 mb-6 leading-relaxed">${rubyText}</div>
+                    </div>
+                `;
+                backHtml = `
+                    <div class="text-center">
+                        <div class="text-xl font-bold text-emerald-700 leading-relaxed">${card.jp}</div>
+                    </div>
+                `;
+            }
+
+            const speakTextStr = fcMode === 'vocab' ? card.speak : card.text;
+            const isVocab = fcMode === 'vocab';
+            
+            // 未表示時のオーバーレイ
+            let overlayHtml = '';
+            if (!isCardFlipped && !isFcTextRevealed) {
+                overlayHtml = `
+                    <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-white/40 backdrop-blur-[1px] rounded-2xl">
+                        <button 
+                            id="fc-center-play-btn"
+                            onclick="event.stopPropagation(); speakText('${speakTextStr.replace(/'/g, "\\'")}', 'fc-center-play-btn', ${isVocab})"
+                            class="mb-4 bg-indigo-100 text-indigo-700 border border-indigo-300 font-bold py-3 px-8 rounded-full shadow-md hover:bg-indigo-200 transition-colors flex items-center gap-2"
+                        >
+                            <i data-lucide="volume-2" class="w-6 h-6"></i>
+                            音声を聴く
+                        </button>
+                        <button 
+                            onclick="event.stopPropagation(); revealFcText(event)" 
+                            class="bg-white border border-slate-300 text-slate-700 font-bold py-2 px-6 rounded-full shadow-sm hover:bg-slate-50 transition-colors flex items-center gap-2"
+                        >
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                            文字を表示 (Space)
+                        </button>
+                    </div>
+                `;
+            }
+
+            let bottomHint = '';
+            if (!isFcTextRevealed && !isCardFlipped) {
+                bottomHint = 'クリック または Space で文字を表示';
+            } else if (isCardFlipped) {
+                bottomHint = 'クリック または Space で Question に戻る';
+            } else {
+                bottomHint = 'クリック または Space で裏返す (日本語訳)';
+            }
+            
+            container.innerHTML = `
+                <div class="relative w-full min-h-[300px] bg-slate-50 rounded-2xl border-2 border-slate-200 p-8 flex flex-col justify-center items-center transition-all duration-300 hover:border-indigo-200 group shadow-sm">
+                    
+                    ${overlayHtml}
+
+                    <button 
+                        id="${btnId}"
+                        onclick="event.stopPropagation(); speakText('${speakTextStr.replace(/'/g, "\\'")}', '${btnId}', ${isVocab})"
+                        class="absolute top-4 right-4 p-3 rounded-full bg-white border border-slate-200 text-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 shadow-sm transition-colors z-20"
+                        title="音声を再生"
+                    >
+                        <i data-lucide="volume-2" class="w-6 h-6"></i>
+                    </button>
+                    
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded bg-slate-200 text-xs font-bold text-slate-500 uppercase tracking-widest z-20">
+                        ${isCardFlipped ? 'Answer' : 'Question'}
+                    </div>
+
+                    <div id="fc-content" class="w-full mt-4">
+                        ${isCardFlipped ? backHtml : frontHtml}
+                    </div>
+                    
+                    <div class="absolute bottom-4 text-sm text-slate-400 opacity-50 group-hover:opacity-100 transition-opacity flex items-center gap-1 z-20">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+                        ${bottomHint}
+                    </div>
+                </div>
+            `;
+            lucide.createIcons({root: container});
+        }
+
+        function flipCard() {
+            isCardFlipped = !isCardFlipped;
+            renderFlashcard();
+        }
+
+        function nextCard() {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+            if (currentCardIndex < flashcards.length - 1) {
+                currentCardIndex++;
+                isCardFlipped = false;
+                isFcTextRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                isCardFlipped = false;
+                isFcTextRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function reshuffleCards() {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+            flashcards = shuffle([...flashcards]);
+            currentCardIndex = 0;
+            isCardFlipped = false;
+            isFcTextRevealed = false;
+            renderFlashcard();
+        }
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (!isCardFlipped && !isFcTextRevealed) {
+                        revealFcText();
+                    } else {
+                        flipCard();
+                    }
+                } else if (e.code === 'ArrowRight') {
+                    nextCard();
+                } else if (e.code === 'ArrowLeft') {
+                    prevCard();
+                }
+            }
+        });
 
         // 初期化処理
         document.addEventListener('DOMContentLoaded', () => {
