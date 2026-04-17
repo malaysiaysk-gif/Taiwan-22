@@ -44,7 +44,6 @@
     <!-- タブナビゲーション -->
     <div class="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-3">
         <button onclick="switchTab('list')" id="tab-list" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">一覧学習</button>
-        <button onclick="switchTab('random')" id="tab-random" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">ランダムテスト</button>
         <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカード</button>
     </div>
 
@@ -59,74 +58,6 @@
         <main id="list-content" class="space-y-8">
             <!-- JSでここにコンテンツが生成されます -->
         </main>
-    </div>
-
-    <!-- 2. ランダムテストビュー -->
-    <div id="random-test-view" class="hidden max-w-4xl mx-auto">
-        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-            <!-- ヘッダー部分 -->
-            <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-                <div class="flex items-center gap-4">
-                    <h2 id="random-test-title" class="text-xl font-bold text-indigo-800 shrink-0">問題</h2>
-                    <span id="random-test-progress" class="text-sm text-slate-500 font-mono"></span>
-                </div>
-                <button id="btn-random-play" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-4 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
-                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                    音声を2回再生
-                </button>
-            </div>
-
-            <!-- コンテンツ部分 -->
-            <div class="p-6">
-                <!-- 選択肢 -->
-                <section id="random-choices-container" class="mb-8">
-                    <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選択肢</h3>
-                    <div id="random-choices" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- JSで選択肢を描画 -->
-                    </div>
-                </section>
-
-                <!-- 解答表示ボタン -->
-                <button id="btn-reveal-random" onclick="revealRandomAnswer()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg border border-slate-300 transition-colors flex justify-center items-center gap-2 mb-6">
-                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
-                    解答と解説を表示
-                </button>
-
-                <!-- 解答・解説エリア (初期は非表示) -->
-                <div id="random-answer-area" class="hidden space-y-8 animate-fade-in">
-                    <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-lg font-bold">
-                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>
-                        <span id="random-correct-ans" class="text-lg"></span>
-                    </div>
-
-                    <section>
-                        <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">スクリプトと和訳</h3>
-                        <div id="random-script" class="space-y-3"></div>
-                    </section>
-
-                    <section>
-                        <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">重要単語</h3>
-                        <div id="random-vocab" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
-                    </section>
-
-                    <section class="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                        <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
-                            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i>
-                            <h4>メタ解法ポイント</h4>
-                        </div>
-                        <p id="random-meta" class="text-amber-900 text-sm leading-relaxed"></p>
-                    </section>
-                </div>
-
-                <!-- 次の問題へ -->
-                <div class="mt-8 pt-6 border-t border-slate-100 flex justify-end">
-                    <button onclick="nextRandomQuestion()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg font-bold shadow-sm transition-colors">
-                        次の問題へ
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- 3. フラッシュカードビュー -->
@@ -1053,7 +984,7 @@
             window.speechSynthesis.cancel();
             resetActiveUI();
 
-            const views = ['list', 'random', 'flashcard'];
+            const views = ['list', 'flashcard'];
             views.forEach(v => {
                 document.getElementById(`${v}-view`).classList.add('hidden');
                 document.getElementById(`tab-${v}`).className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
@@ -1062,10 +993,8 @@
             document.getElementById(`${tabId}-view`).classList.remove('hidden');
             document.getElementById(`tab-${tabId}`).className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
 
-            if (tabId === 'random' && randomQueue.length === 0) {
-                initRandomTest();
-            } else if (tabId === 'flashcard') {
-                initFlashcards();
+            if (tabId === 'flashcard') {
+                setFlashcardMode(fcMode); // タブを開くたびに毎回シャッフルして初期化
             }
         }
 
@@ -1352,80 +1281,6 @@
         }
 
         // ==========================================
-        // 2. ランダムテストのロジック
-        // ==========================================
-        let randomQueue = [];
-        let currentRandomQ = null;
-        let randomCompletedCount = 0;
-
-        function initRandomTest() {
-            // シャッフルしてキューを作成
-            randomQueue = [...questionsData].sort(() => Math.random() - 0.5);
-            randomCompletedCount = 0;
-            nextRandomQuestion();
-        }
-
-        function nextRandomQuestion() {
-            window.speechSynthesis.cancel();
-            resetActiveUI();
-            
-            if (randomQueue.length === 0) {
-                // 1周したら再度シャッフル
-                randomQueue = [...questionsData].sort(() => Math.random() - 0.5);
-            }
-            currentRandomQ = randomQueue.pop();
-            randomCompletedCount++;
-
-            // UIの初期化
-            document.getElementById('random-test-title').innerText = `問題 (ID: ${currentRandomQ.id})`;
-            document.getElementById('random-test-progress').innerText = `${randomCompletedCount}問目`;
-            
-            // 再生ボタンのセットアップ
-            const playBtn = document.getElementById('btn-random-play');
-            playBtn.onclick = () => playConversation(currentRandomQ.id, 'btn-random-play');
-            playBtn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i>音声を2回再生`;
-            playBtn.className = "flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-4 py-2 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors";
-
-            // 選択肢の描画 (解答シークレットなし)
-            const choicesEl = document.getElementById('random-choices');
-            if (currentRandomQ.choices && currentRandomQ.choices.length > 0) {
-                choicesEl.innerHTML = generateChoicesHtml(currentRandomQ.choices, currentRandomQ.id, null, false, 'rand');
-                document.getElementById('random-choices-container').style.display = 'block';
-            } else {
-                choicesEl.innerHTML = '';
-                document.getElementById('random-choices-container').style.display = 'none';
-            }
-
-            // 解答エリアを隠す
-            document.getElementById('random-answer-area').classList.add('hidden');
-            document.getElementById('btn-reveal-random').classList.remove('hidden');
-
-            lucide.createIcons();
-        }
-
-        function revealRandomAnswer() {
-            document.getElementById('btn-reveal-random').classList.add('hidden');
-            const ansArea = document.getElementById('random-answer-area');
-            ansArea.classList.remove('hidden');
-
-            document.getElementById('random-correct-ans').innerText = `正解: ${currentRandomQ.ans}`;
-            document.getElementById('random-script').innerHTML = generateScriptHtml(currentRandomQ.script, currentRandomQ.id, 'rand');
-            
-            const vocabHtml = generateVocabHtml(currentRandomQ.vocab, currentRandomQ.id, 'rand');
-            document.getElementById('random-vocab').innerHTML = vocabHtml;
-            document.getElementById('random-vocab').parentElement.style.display = vocabHtml ? 'block' : 'none';
-
-            document.getElementById('random-meta').innerText = currentRandomQ.meta;
-
-            // 選択肢エリアに正解のマークをつけるため再描画
-            if (currentRandomQ.choices && currentRandomQ.choices.length > 0) {
-                 document.getElementById('random-choices').innerHTML = generateChoicesHtml(currentRandomQ.choices, currentRandomQ.id, currentRandomQ.ans, false, 'rand');
-            }
-
-            lucide.createIcons();
-        }
-
-        // ==========================================
         // 3. フラッシュカードのロジック
         // ==========================================
         let allVocabs = [];
@@ -1471,10 +1326,6 @@
             isCardFlipped = false;
             isFcTextRevealed = false;
             renderFlashcard();
-        }
-
-        function initFlashcards() {
-            if (flashcards.length === 0) setFlashcardMode(fcMode);
         }
 
         function handleCardClick() {
