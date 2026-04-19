@@ -495,6 +495,40 @@
           </div>
         </div>
 
+        <!-- Trap 2: Time point vs Duration -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
+          <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ②：時間</div>
+          <h3 class="font-bold text-lg mb-3">「いつ」と「長さ」の混同</h3>
+          <p class="text-sm text-slate-600 mb-4 leading-relaxed">中国語は「いつ(点)」は前、「どのくらい(長さ)」は後ろと厳密に分かれます。</p>
+          <div class="bg-slate-50 p-4 rounded-xl text-sm tc space-y-3 border border-slate-100">
+            <div class="flex justify-between items-center">
+              <p class="wrong-strike">❌ 我 <span class="font-bold text-slate-800">兩個小時</span> 看書。</p>
+            </div>
+            <div class="flex justify-between items-center bg-green-50 p-2 rounded-lg border border-green-100">
+              <p class="text-green-800">✅ 我看書看了 <span class="font-bold text-green-600">兩個小時</span>。</p>
+              <button onclick="speak('我看書看了兩個小時。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
+            </div>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">「昨天(きのう)」など発生したタイミングは動詞の前。「兩小時(2時間)」などかかった時間は動詞の後ろ！</p>
+          </div>
+        </div>
+
+        <!-- Trap 3: Location vs Verb -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
+          <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ③：場所</div>
+          <h3 class="font-bold text-lg mb-3">「在〜」を後ろに置いちゃう</h3>
+          <p class="text-sm text-slate-600 mb-4 leading-relaxed">英語や日本語のクセで、場所を一番最後に持ってくる間違いが多発します。</p>
+          <div class="bg-slate-50 p-4 rounded-xl text-sm tc space-y-3 border border-slate-100">
+            <div class="flex justify-between items-center">
+              <p class="wrong-strike">❌ 我 吃飯 <span class="font-bold text-slate-800">在餐廳</span>。</p>
+            </div>
+            <div class="flex justify-between items-center bg-green-50 p-2 rounded-lg border border-green-100">
+              <p class="text-green-800">✅ 我 <span class="font-bold text-green-600">在餐廳</span> 吃飯。</p>
+              <button onclick="speak('我在餐廳吃飯。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm">🔊</button>
+            </div>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">※例外：「住(住む)」「放(置く)」など、一部の動詞だけは「住在台北」と後ろに置きます。</p>
+          </div>
+        </div>
+
         <!-- Trap 4: 在 vs 有 -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-red-100 hover:shadow-md transition-shadow">
           <div class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">トラップ④：存在の「ある/いる」</div>
@@ -763,10 +797,119 @@
       </div>
     </section>
 
-    <!-- 7. Meta Perspective / 10 Secrets -->
+    <!-- 7. "Ba" Construction & Spatial Rules (NEWLY ADDED) -->
+    <section class="bg-cyan-50 border-t-4 border-cyan-500 rounded-3xl shadow-sm p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-cyan-900 mb-4 text-center flex items-center justify-center gap-2">
+        <span>🪄</span> 7. 最難関！「把(bǎ)」構文と空間のズームイン
+      </h2>
+      
+      <div class="max-w-3xl mx-auto mb-8 bg-white p-5 rounded-2xl border border-cyan-200 shadow-sm">
+        <p class="text-sm md:text-base text-slate-700 leading-relaxed text-center">
+          <strong class="text-cyan-800">【メタ視点：なぜ「把」を使うの？】</strong><br>
+          中国語は<span class="font-bold text-cyan-700 bg-cyan-100 px-2 py-0.5 rounded shadow-sm mx-1">「動詞の後ろに結果や場所を置きたい」</span>言語です。<br>
+          「書く」という動作の結果、文字が「黒板の上」に残る。この結果を言いたい時、目的語（答え）まで動詞の後ろに置くと大渋滞してしまいます。そこで、目的語を「把」で包んで<strong>動詞の前に退避</strong>させるという交通整理を行っているのです！
+        </p>
+      </div>
+
+      <!-- Format -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-cyan-100 mb-6 overflow-x-auto hide-scrollbar">
+        <h3 class="font-bold text-lg text-cyan-800 mb-4 text-center">基本フォーマット：処置の流れ</h3>
+        <div class="flex flex-nowrap items-center justify-center min-w-[600px] text-center gap-2">
+          <div class="flex-1 p-3 bg-slate-100 border-2 border-slate-200 rounded-lg">
+            <span class="block text-xs text-slate-600 font-bold mb-1">主語 (Who)</span>
+            <span class="text-lg font-bold">Ｓ</span>
+          </div>
+          <div class="text-xl font-bold text-slate-300">+</div>
+          <div class="flex-1 p-3 bg-cyan-100 border-2 border-cyan-300 rounded-lg shadow-inner">
+            <span class="block text-xs text-cyan-600 font-bold mb-1">マーカー</span>
+            <span class="text-lg font-bold">把</span>
+          </div>
+          <div class="text-xl font-bold text-slate-300">+</div>
+          <div class="flex-1 p-3 bg-slate-100 border-2 border-slate-200 rounded-lg border-dashed">
+            <span class="block text-xs text-slate-600 font-bold mb-1">対象 (What)</span>
+            <span class="text-lg font-bold text-slate-700">Ｏ</span>
+          </div>
+          <div class="text-xl font-bold text-slate-300">+</div>
+          <div class="flex-1 p-3 bg-indigo-100 border-2 border-indigo-200 rounded-lg">
+            <span class="block text-xs text-indigo-600 font-bold mb-1">動詞 (Do)</span>
+            <span class="text-lg font-bold text-indigo-800">Ｖ</span>
+          </div>
+          <div class="text-xl font-bold text-slate-300">+</div>
+          <div class="flex-1 p-3 bg-green-100 border-2 border-green-200 rounded-lg">
+            <span class="block text-xs text-green-600 font-bold mb-1">結果/場所 (Where)</span>
+            <span class="text-lg font-bold text-green-800">補足</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Examples -->
+      <h3 class="font-bold text-xl text-cyan-900 mb-4 pl-2 border-l-4 border-cyan-400">実例の解剖</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Example 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-cyan-100 shadow-sm hover:shadow-md transition-shadow">
+          <h4 class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【例1】学校での指示</h4>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 flex justify-between items-center">
+            <div class="tc font-bold text-lg md:text-xl text-slate-800 leading-relaxed space-x-1">
+              <span>你</span>
+              <span class="text-cyan-600 bg-cyan-50 px-1 rounded shadow-sm">把</span>
+              <span class="text-slate-600 underline decoration-slate-300 underline-offset-4">數學作業的答案</span>
+              <span class="text-indigo-600">寫</span>
+              <span class="text-green-600">在黑板上</span>
+              <span class="text-slate-500">吧！</span>
+            </div>
+            <button onclick="speak('你把數學作業的答案寫在黑板上吧！')" class="text-xs bg-white text-cyan-600 hover:bg-cyan-100 px-2 py-2 rounded shadow-sm border border-cyan-100 ml-2">🔊</button>
+          </div>
+          <div class="space-y-2 text-sm text-slate-600 bg-slate-50/50 p-3 rounded-lg">
+            <p><span class="font-bold text-slate-700 bg-slate-200 px-1 rounded mr-1">対象</span> 数学の宿題の答え</p>
+            <p><span class="font-bold text-slate-700 bg-slate-200 px-1 rounded mr-1">結果</span> 「書く」だけでなく「黒板に（残す）」という変化。</p>
+          </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-cyan-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+          <h4 class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【例2】物の配置と空間のズームイン</h4>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 flex justify-between items-center">
+            <div class="tc font-bold text-lg md:text-xl text-slate-800 leading-relaxed space-x-1">
+              <span>我</span>
+              <span class="text-cyan-600 bg-cyan-50 px-1 rounded shadow-sm">把</span>
+              <span class="text-slate-600 underline decoration-slate-300 underline-offset-4">它</span>
+              <span class="text-indigo-600">掛</span>
+              <span class="text-green-600">在冰箱後面的牆上</span>
+              <span class="text-slate-500">了。</span>
+            </div>
+            <button onclick="speak('我把它掛在冰箱後面的牆上了。')" class="text-xs bg-white text-cyan-600 hover:bg-cyan-100 px-2 py-2 rounded shadow-sm border border-cyan-100 ml-2">🔊</button>
+          </div>
+          
+          <div class="mt-4 pt-4 border-t border-slate-100">
+            <p class="font-bold text-cyan-800 mb-2 text-sm flex items-center gap-1"><span>📷</span> メタ視点：場所の入れ子構造</p>
+            <p class="text-[11px] md:text-xs text-slate-600 mb-3 leading-relaxed">中国語の複雑な場所表現は、カメラがズームインするように<strong class="text-cyan-700">「大きな基準」➔「方位」➔「具体的な面」</strong>へと絞り込んでいきます（的で繋ぐ）。</p>
+            <div class="flex items-center justify-between bg-cyan-50 p-3 rounded-lg text-sm text-center border border-cyan-100 shadow-inner">
+               <div class="flex-1">
+                  <span class="text-[10px] text-cyan-600 font-bold block mb-1">Step 1: 基準物</span>
+                  <span class="font-bold tc text-slate-700">冰箱</span><br><span class="text-[10px] text-slate-500">(冷蔵庫)</span>
+               </div>
+               <div class="text-cyan-400 font-bold">➔</div>
+               <div class="flex-1">
+                  <span class="text-[10px] text-cyan-600 font-bold block mb-1">Step 2: 方位</span>
+                  <span class="font-bold tc text-slate-700">後面</span><br><span class="text-[10px] text-slate-500">(の後ろ)</span>
+               </div>
+               <div class="text-cyan-400 font-bold">➔</div>
+               <div class="flex-1">
+                  <span class="text-[10px] text-cyan-600 font-bold block mb-1">Step 3: 接地面</span>
+                  <span class="font-bold tc text-slate-700">的牆上</span><br><span class="text-[10px] text-slate-500">(の壁の上)</span>
+               </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. Meta Perspective / 10 Secrets -->
     <section class="bg-blue-50/50 border-t-4 border-blue-500 rounded-3xl shadow-sm p-6 md:p-8">
       <h2 class="text-2xl md:text-3xl font-black text-indigo-900 mb-2 text-center flex items-center justify-center gap-2">
-        <span>👁️‍🗨️</span> 7. 文法試験攻略のメタ視点
+        <span>👁️‍🗨️</span> 8. 文法試験攻略のメタ視点
       </h2>
       <p class="text-center text-slate-600 mb-8 font-medium">〜 出題者の意図と空間認識を見抜く10の極意 〜</p>
 
@@ -1018,10 +1161,10 @@
       </div>
     </section>
 
-    <!-- 8. TOCFL Test Strategies -->
+    <!-- 9. TOCFL Test Strategies -->
     <section class="bg-purple-50 border-t-4 border-purple-500 rounded-3xl shadow-sm p-6 md:p-8">
       <h2 class="text-2xl md:text-3xl font-bold text-purple-900 mb-8 text-center flex items-center justify-center gap-2">
-        <span>🎧</span> 8. TOCFL (Band A) リスニング試験対策
+        <span>🎧</span> 9. TOCFL (Band A) リスニング試験対策
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
