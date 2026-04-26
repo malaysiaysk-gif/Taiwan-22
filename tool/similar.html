@@ -9,13 +9,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
         body {
             font-family: 'Noto Sans JP', 'Noto Sans TC', sans-serif;
-            background-color: #f0fdfa; /* Tailwind teal-50 */
-            color: #334155; /* Tailwind slate-700 */
+            background-color: #f0fdfa;
+            color: #334155;
         }
         .tc {
             font-family: 'Noto Sans TC', sans-serif;
         }
-        /* カスタム通知用のスタイル */
         #notification {
             transition: opacity 0.3s ease-in-out;
         }
@@ -36,7 +35,6 @@
             <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight">必須単語マスター<br><span class="text-teal-200">似た意味</span> ＆ <span class="text-teal-200">似た音</span></h1>
             <p class="text-lg md:text-xl text-teal-50">紛らわしい単語を整理して、読解・リスニングのスコアを底上げしよう！</p>
             
-            <!-- 音声再生の案内バッジを追加 -->
             <div class="mt-6 inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-white text-sm backdrop-blur-sm border border-white/30 shadow-sm">
                 <span class="text-lg">🔊</span> 漢字をクリックすると台湾式音声が再生されます
             </div>
@@ -96,7 +94,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">說</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">說</div>
                                 <div class="text-xs text-slate-500">shuō</div>
                             </div>
                             <div>
@@ -106,7 +104,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">說話</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">說話</div>
                                 <div class="text-xs text-slate-500">shuōhuà</div>
                             </div>
                             <div>
@@ -116,7 +114,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">講</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">講</div>
                                 <div class="text-xs text-slate-500">jiǎng</div>
                             </div>
                             <div>
@@ -126,7 +124,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">談</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">談</div>
                                 <div class="text-xs text-slate-500">tán</div>
                             </div>
                             <div>
@@ -136,7 +134,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">聊(天)</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">聊(天)</div>
                                 <div class="text-xs text-slate-500">liáo(tiān)</div>
                             </div>
                             <div>
@@ -158,7 +156,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">覺得</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">覺得</div>
                                 <div class="text-xs text-slate-500">juéde</div>
                             </div>
                             <div>
@@ -168,7 +166,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">想</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">想</div>
                                 <div class="text-xs text-slate-500">xiǎng</div>
                             </div>
                             <div>
@@ -178,7 +176,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">認為</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">認為</div>
                                 <div class="text-xs text-slate-500">rènwéi</div>
                             </div>
                             <div>
@@ -188,7 +186,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-red-600">以為</div>
+                                <div class="text-2xl font-bold tc text-red-600 speakable">以為</div>
                                 <div class="text-xs text-red-400">yǐwéi</div>
                             </div>
                             <div>
@@ -210,7 +208,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">學</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">學</div>
                                 <div class="text-xs text-slate-500">xué</div>
                             </div>
                             <div>
@@ -220,7 +218,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">學習</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">學習</div>
                                 <div class="text-xs text-slate-500">xuéxí</div>
                             </div>
                             <div>
@@ -230,7 +228,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">讀(書)</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">讀(書)</div>
                                 <div class="text-xs text-slate-500">dú(shū)</div>
                             </div>
                             <div>
@@ -240,7 +238,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">念書</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">念書</div>
                                 <div class="text-xs text-slate-500">niànshū</div>
                             </div>
                             <div>
@@ -262,7 +260,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">能</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">能</div>
                                 <div class="text-xs text-slate-500">néng</div>
                             </div>
                             <div>
@@ -272,7 +270,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">可以</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">可以</div>
                                 <div class="text-xs text-slate-500">kěyǐ</div>
                             </div>
                             <div>
@@ -282,7 +280,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">會</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">會</div>
                                 <div class="text-xs text-slate-500">huì</div>
                             </div>
                             <div>
@@ -304,7 +302,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">知道</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">知道</div>
                                 <div class="text-xs text-slate-500">zhīdào</div>
                             </div>
                             <div>
@@ -314,7 +312,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">認識</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">認識</div>
                                 <div class="text-xs text-slate-500">rènshì</div>
                             </div>
                             <div>
@@ -324,7 +322,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">懂</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">懂</div>
                                 <div class="text-xs text-slate-500">dǒng</div>
                             </div>
                             <div>
@@ -334,7 +332,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">了解</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">了解</div>
                                 <div class="text-xs text-slate-500">liǎojiě</div>
                             </div>
                             <div>
@@ -356,7 +354,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">幫</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">幫</div>
                             </div>
                             <div class="flex-1">
                                 <div class="bg-slate-100 rounded p-2 text-sm font-mono text-center">
@@ -367,7 +365,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">幫忙</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">幫忙</div>
                             </div>
                             <div class="flex-1">
                                 <div class="bg-slate-100 rounded p-2 text-sm font-mono text-center relative overflow-hidden">
@@ -381,7 +379,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">幫助</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">幫助</div>
                             </div>
                             <div class="flex-1">
                                 <div class="bg-slate-100 rounded p-2 text-sm font-mono text-center">
@@ -402,19 +400,19 @@
                 </div>
                 <div class="p-5 flex flex-col justify-center h-full">
                     <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 speakable cursor-pointer hover:border-teal-400 transition-colors">
                             <div class="text-3xl mb-2">💺</div>
                             <div class="text-xl font-bold tc text-slate-800">坐 / 搭</div>
                             <div class="text-xs text-slate-500 mb-2">zuò / dā</div>
                             <p class="text-xs text-slate-600">座席があるもの<br>車、電車など</p>
                         </div>
-                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 speakable cursor-pointer hover:border-teal-400 transition-colors">
                             <div class="text-3xl mb-2">🚲</div>
                             <div class="text-xl font-bold tc text-slate-800">騎</div>
                             <div class="text-xs text-slate-500 mb-2">qí</div>
                             <p class="text-xs text-slate-600">またがるもの<br>自転車、バイクなど</p>
                         </div>
-                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 col-span-2 flex items-center justify-center gap-4">
+                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 col-span-2 flex items-center justify-center gap-4 speakable cursor-pointer hover:border-teal-400 transition-colors">
                             <div class="text-3xl">🚶‍♂️⬆️</div>
                             <div class="text-left">
                                 <div class="text-xl font-bold tc text-slate-800">上</div>
@@ -436,7 +434,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">方便</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">方便</div>
                                 <div class="text-xs text-slate-500">fāngbiàn</div>
                             </div>
                             <div>
@@ -446,7 +444,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">塞車</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">塞車</div>
                                 <div class="text-xs text-slate-500">sāichē</div>
                             </div>
                             <div>
@@ -456,7 +454,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">捷運</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">捷運</div>
                                 <div class="text-xs text-slate-500">jiéyùn</div>
                             </div>
                             <div>
@@ -480,11 +478,11 @@
                         <div>
                             <div class="bg-slate-100 rounded-t p-2 text-center text-sm font-bold border-b border-slate-200">見る 👀</div>
                             <div class="border border-slate-100 rounded-b p-3 space-y-3">
-                                <div>
+                                <div class="speakable cursor-pointer hover:bg-orange-50 transition-colors p-1 rounded">
                                     <div class="font-bold tc text-slate-800">看 <span class="font-normal text-xs text-slate-500 ml-1">kàn</span></div>
                                     <div class="text-xs text-slate-600">意識的に見る(動作)</div>
                                 </div>
-                                <div>
+                                <div class="speakable cursor-pointer hover:bg-orange-50 transition-colors p-1 rounded">
                                     <div class="font-bold tc text-slate-800">看見 <span class="font-normal text-xs text-slate-500 ml-1">kànjian</span></div>
                                     <div class="text-xs text-slate-600">視界に入る(結果)</div>
                                 </div>
@@ -494,11 +492,11 @@
                         <div>
                             <div class="bg-slate-100 rounded-t p-2 text-center text-sm font-bold border-b border-slate-200">聞く 👂</div>
                             <div class="border border-slate-100 rounded-b p-3 space-y-3">
-                                <div>
+                                <div class="speakable cursor-pointer hover:bg-orange-50 transition-colors p-1 rounded">
                                     <div class="font-bold tc text-slate-800">聽 <span class="font-normal text-xs text-slate-500 ml-1">tīng</span></div>
                                     <div class="text-xs text-slate-600">耳を傾ける(動作)</div>
                                 </div>
-                                <div>
+                                <div class="speakable cursor-pointer hover:bg-orange-50 transition-colors p-1 rounded">
                                     <div class="font-bold tc text-slate-800">聽見 <span class="font-normal text-xs text-slate-500 ml-1">tīngjian</span></div>
                                     <div class="text-xs text-slate-600">耳に入る(結果)</div>
                                 </div>
@@ -506,7 +504,7 @@
                         </div>
                     </div>
                     <div class="mt-4 bg-orange-50 p-3 rounded-lg border border-orange-100">
-                        <div class="flex items-center gap-2 mb-1">
+                        <div class="flex items-center gap-2 mb-1 speakable cursor-pointer w-max hover:text-teal-600 transition-colors">
                             <span class="font-bold tc text-orange-700 text-lg">問</span>
                             <span class="text-xs text-orange-600">wèn</span>
                         </div>
@@ -525,7 +523,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">拍照</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">拍照</div>
                                 <div class="text-xs text-slate-500">pāizhào</div>
                             </div>
                             <div>
@@ -535,7 +533,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">照相</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">照相</div>
                                 <div class="text-xs text-slate-500">zhàoxiàng</div>
                             </div>
                             <div>
@@ -557,7 +555,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">送</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">送</div>
                                 <div class="text-xs text-slate-500">sòng</div>
                             </div>
                             <div>
@@ -567,7 +565,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">寄</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">寄</div>
                                 <div class="text-xs text-slate-500">jì</div>
                             </div>
                             <div>
@@ -589,7 +587,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">穿</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">穿</div>
                                 <div class="text-xs text-slate-500">chuān</div>
                             </div>
                             <div>
@@ -599,7 +597,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">戴</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">戴</div>
                                 <div class="text-xs text-slate-500">dài</div>
                             </div>
                             <div>
@@ -621,7 +619,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">教</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">教</div>
                                 <div class="text-xs text-slate-500">jiāo</div>
                             </div>
                             <div>
@@ -631,7 +629,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">告訴</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">告訴</div>
                                 <div class="text-xs text-slate-500">gàosù</div>
                             </div>
                             <div>
@@ -653,7 +651,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">熱</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">熱</div>
                                 <div class="text-xs text-slate-500">rè</div>
                             </div>
                             <div>
@@ -663,7 +661,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">燙</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">燙</div>
                                 <div class="text-xs text-slate-500">tàng</div>
                             </div>
                             <div>
@@ -673,7 +671,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">暖和</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">暖和</div>
                                 <div class="text-xs text-slate-500">nuǎnhuo</div>
                             </div>
                             <div>
@@ -695,7 +693,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">冷</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">冷</div>
                                 <div class="text-xs text-slate-500">lěng</div>
                             </div>
                             <div>
@@ -705,7 +703,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">涼快</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">涼快</div>
                                 <div class="text-xs text-slate-500">liángkuai</div>
                             </div>
                             <div>
@@ -727,7 +725,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">一直走</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">一直走</div>
                                 <div class="text-xs text-slate-500">yīzhí zǒu</div>
                             </div>
                             <div>
@@ -737,22 +735,32 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">轉</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">轉</div>
                                 <div class="text-xs text-slate-500">zhuǎn</div>
                             </div>
                             <div>
                                 <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">曲がる</span>
-                                <p class="text-sm"><span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">左轉</span>（zuǒ zhuǎn / 左折）と <span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">右轉</span>（yòu zhuǎn / 右折）。「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">往左轉</span>（左へ曲がる）」のように「往（〜へ）」をつけることも多いです。</p>
+                                <p class="text-sm"><span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">左轉</span>（左折）と <span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">右轉</span>（右折）。道案内では「轉角（zhuǎnjiǎo / 曲がり角）」で曲がります。</p>
                             </div>
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">路口</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">路口</div>
                                 <div class="text-xs text-slate-500">lùkǒu</div>
                             </div>
                             <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">交差点・曲がり角</span>
-                                <p class="text-sm">道案内の目印として頻出。「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">紅綠燈</span>（hónglǜdēng / 信号）」と一緒に覚えましょう！<br><span class="speakable text-indigo-600 tc text-xs hover:text-teal-500 transition-colors">例：下個路口右轉</span>（次の交差点で右折する）</p>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">交差点・角</span>
+                                <p class="text-sm">道案内の目印。交差点にある「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">紅綠燈</span>（hónglǜdēng / 信号機）」も超頻出キーワード！</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3 bg-indigo-50 -mx-5 px-5 pb-3 rounded-b-xl">
+                            <div class="w-20 shrink-0 text-center mt-2">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">第一條路</div>
+                                <div class="text-xs text-slate-500">dì yī tiáo lù</div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded mb-1 inline-block">1本目の道</span>
+                                <p class="text-sm text-slate-700">「在第二個路口右轉（2つ目の交差点で右折）」など、順序を数える表現はリスニングの地図問題で必ず出ます。</p>
                             </div>
                         </li>
                     </ul>
@@ -769,7 +777,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">客廳</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">客廳</div>
                                 <div class="text-xs text-slate-500">kètīng</div>
                             </div>
                             <div>
@@ -779,7 +787,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">臥室</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">臥室</div>
                                 <div class="text-xs text-slate-500">wòshì</div>
                             </div>
                             <div>
@@ -789,7 +797,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">洗手間</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">洗手間</div>
                                 <div class="text-xs text-slate-500">xǐshǒujiān</div>
                             </div>
                             <div>
@@ -799,7 +807,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">廚房</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">廚房</div>
                                 <div class="text-xs text-slate-500">chúfáng</div>
                             </div>
                             <div>
@@ -821,7 +829,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">打掃</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">打掃</div>
                                 <div class="text-xs text-slate-500">dǎsǎo</div>
                             </div>
                             <div>
@@ -831,7 +839,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">掃地</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">掃地</div>
                                 <div class="text-xs text-slate-500">sǎodì</div>
                             </div>
                             <div>
@@ -841,7 +849,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">擦</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">擦</div>
                                 <div class="text-xs text-slate-500">cā</div>
                             </div>
                             <div>
@@ -851,7 +859,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">整理</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">整理</div>
                                 <div class="text-xs text-slate-500">zhěnglǐ</div>
                             </div>
                             <div>
@@ -873,7 +881,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">雞</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">雞</div>
                                 <div class="text-xs text-slate-500">jī</div>
                             </div>
                             <div>
@@ -883,7 +891,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">鳥</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">鳥</div>
                                 <div class="text-xs text-slate-500">niǎo</div>
                             </div>
                             <div>
@@ -893,7 +901,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">牛 / 豬</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">牛 / 豬</div>
                                 <div class="text-xs text-slate-500">niú / zhū</div>
                             </div>
                             <div>
@@ -915,7 +923,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">警察</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">警察</div>
                                 <div class="text-xs text-slate-500">jǐngchá</div>
                             </div>
                             <div>
@@ -925,7 +933,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">司機</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">司機</div>
                                 <div class="text-xs text-slate-500">sījī</div>
                             </div>
                             <div>
@@ -935,7 +943,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">老闆</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">老闆</div>
                                 <div class="text-xs text-slate-500">lǎobǎn</div>
                             </div>
                             <div>
@@ -945,7 +953,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">服務生</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">服務生</div>
                                 <div class="text-xs text-slate-500">fúwùshēng</div>
                             </div>
                             <div>
@@ -955,7 +963,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">醫生</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">醫生</div>
                                 <div class="text-xs text-slate-500">yīshēng</div>
                             </div>
                             <div>
@@ -975,31 +983,31 @@
                 <div class="p-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     <div class="bg-slate-50 p-3 rounded border border-slate-100">
                         <div class="text-xs text-slate-500 mb-1">買う/売る</div>
-                        <div class="font-bold tc text-slate-800 text-lg">買 <span class="font-normal text-xs text-slate-400">mǎi</span></div>
-                        <div class="font-bold tc text-slate-800 text-lg mt-1">賣 <span class="font-normal text-xs text-slate-400">mài</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">買 <span class="font-normal text-xs text-slate-400">mǎi</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg mt-1 speakable cursor-pointer hover:text-teal-500 transition-colors">賣 <span class="font-normal text-xs text-slate-400">mài</span></div>
                         <p class="text-xs mt-2 text-slate-600">上の「十」の有無と声調(3声/4声)の違いに注意。</p>
                     </div>
                     <div class="bg-slate-50 p-3 rounded border border-slate-100">
                         <div class="text-xs text-slate-500 mb-1">開ける/つける</div>
-                        <div class="font-bold tc text-slate-800 text-lg">開 <span class="font-normal text-xs text-slate-400">kāi</span></div>
-                        <div class="font-bold tc text-slate-800 text-lg mt-1">打開 <span class="font-normal text-xs text-slate-400">dǎkāi</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">開 <span class="font-normal text-xs text-slate-400">kāi</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg mt-1 speakable cursor-pointer hover:text-teal-500 transition-colors">打開 <span class="font-normal text-xs text-slate-400">dǎkāi</span></div>
                         <p class="text-xs mt-2 text-slate-600">打開は「開く」という具体的な動作を強調。</p>
                     </div>
                     <div class="bg-slate-50 p-3 rounded border border-slate-100">
                         <div class="text-xs text-slate-500 mb-1">忘れる</div>
-                        <div class="font-bold tc text-slate-800 text-lg">忘 <span class="font-normal text-xs text-slate-400">wàng</span></div>
-                        <div class="font-bold tc text-slate-800 text-lg mt-1">忘記 <span class="font-normal text-xs text-slate-400">wàngjì</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">忘 <span class="font-normal text-xs text-slate-400">wàng</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg mt-1 speakable cursor-pointer hover:text-teal-500 transition-colors">忘記 <span class="font-normal text-xs text-slate-400">wàngjì</span></div>
                         <p class="text-xs mt-2 text-slate-600">忘記の方が2音節で単独・目的語の前で使いやすい。</p>
                     </div>
                     <div class="bg-slate-50 p-3 rounded border border-slate-100">
                         <div class="text-xs text-slate-500 mb-1">答える</div>
-                        <div class="font-bold tc text-slate-800 text-lg">答 <span class="font-normal text-xs text-slate-400">dá</span></div>
-                        <div class="font-bold tc text-slate-800 text-lg mt-1">回答 <span class="font-normal text-xs text-slate-400">huídá</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">答 <span class="font-normal text-xs text-slate-400">dá</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg mt-1 speakable cursor-pointer hover:text-teal-500 transition-colors">回答 <span class="font-normal text-xs text-slate-400">huídá</span></div>
                     </div>
                     <div class="bg-slate-50 p-3 rounded border border-slate-100">
                         <div class="text-xs text-slate-500 mb-1">終わる</div>
-                        <div class="font-bold tc text-slate-800 text-lg">結束 <span class="font-normal text-xs text-slate-400">jiéshù</span></div>
-                        <div class="font-bold tc text-slate-800 text-lg mt-1">完 <span class="font-normal text-xs text-slate-400">wán</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">結束 <span class="font-normal text-xs text-slate-400">jiéshù</span></div>
+                        <div class="font-bold tc text-slate-800 text-lg mt-1 speakable cursor-pointer hover:text-teal-500 transition-colors">完 <span class="font-normal text-xs text-slate-400">wán</span></div>
                         <p class="text-xs mt-2 text-slate-600">結束は「事の終了」。完は動詞の後ろで結果補語に。</p>
                     </div>
                 </div>
@@ -1021,23 +1029,23 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: shi</div>
                 <ul class="space-y-2">
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
-                        <span class="tc text-lg font-bold text-slate-800">是</span>
+                        <span class="tc text-lg font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">是</span>
                         <span class="text-xs text-slate-500">shì (〜である)</span>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
-                        <span class="tc text-lg font-bold text-slate-800">事</span>
+                        <span class="tc text-lg font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">事</span>
                         <span class="text-xs text-slate-500">shì (事/用事)</span>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
-                        <span class="tc text-lg font-bold text-slate-800">市</span>
+                        <span class="tc text-lg font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">市</span>
                         <span class="text-xs text-slate-500">shì (市)</span>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-100">
-                        <span class="tc text-lg font-bold text-amber-700">時</span>
+                        <span class="tc text-lg font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">時</span>
                         <span class="text-xs text-amber-600">shí (時)</span>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-100">
-                        <span class="tc text-lg font-bold text-amber-700">十</span>
+                        <span class="tc text-lg font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">十</span>
                         <span class="text-xs text-amber-600">shí (10)</span>
                     </li>
                 </ul>
@@ -1048,14 +1056,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: jian</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">間</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">間</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">jiān</span>
                             <span class="block text-xs">部屋(量詞)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">件</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">件</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">jiàn</span>
                             <span class="block text-xs">服/事(量詞)</span>
@@ -1069,21 +1077,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: xin</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">新</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">新</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">xīn</span>
                             <span class="block text-xs">新しい</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">心</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">心</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">xīn</span>
                             <span class="block text-xs">心</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">信</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">信</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">xìn</span>
                             <span class="block text-xs">手紙</span>
@@ -1097,14 +1105,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: hua</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">花</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">花</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">huā</span>
                             <span class="block text-xs">花</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">畫</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">畫</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">huà</span>
                             <span class="block text-xs">絵</span>
@@ -1118,14 +1126,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: zi</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">字</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">字</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">zì</span>
                             <span class="block text-xs">文字</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">自</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">自</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">zì</span>
                             <span class="block text-xs">自〜</span>
@@ -1139,14 +1147,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: bao</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">包</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">包</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">bāo</span>
                             <span class="block text-xs">カバン/量詞</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">飽</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">飽</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">bǎo</span>
                             <span class="block text-xs">お腹いっぱい</span>
@@ -1160,14 +1168,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: kuai</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">快</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">快</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">kuài</span>
                             <span class="block text-xs">速い</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">塊</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">塊</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">kuài</span>
                             <span class="block text-xs">〜元(量詞)</span>
@@ -1181,21 +1189,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: nan</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">男</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">男</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">nán</span>
                             <span class="block text-xs">男</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">南</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">南</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">nán</span>
                             <span class="block text-xs">南</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">難</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">難</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">nán</span>
                             <span class="block text-xs">難しい</span>
@@ -1209,21 +1217,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: wan</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">晚</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">晚</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">wǎn</span>
                             <span class="block text-xs">遅い/夜</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">碗</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">碗</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">wǎn</span>
                             <span class="block text-xs">お椀(量詞)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">萬</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">萬</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">wàn</span>
                             <span class="block text-xs">一万</span>
@@ -1237,14 +1245,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: liang</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">兩</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">兩</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">liǎng</span>
                             <span class="block text-xs">2/ふたつ</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">輛</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">輛</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">liàng</span>
                             <span class="block text-xs">台(量詞)</span>
@@ -1258,14 +1266,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: cai</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">才</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">才</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">cái</span>
                             <span class="block text-xs">やっと</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">菜</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">菜</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">cài</span>
                             <span class="block text-xs">料理/野菜</span>
@@ -1279,14 +1287,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: mai</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">買</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">買</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500">mǎi</span>
                             <span class="block text-xs">買う</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">賣</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">賣</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">mài</span>
                             <span class="block text-xs">売る</span>
@@ -1300,14 +1308,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: tiao</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">條</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">條</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">tiáo</span>
                             <span class="block text-xs">細長いもの(量詞)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">跳</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">跳</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-bold">tiào</span>
                             <span class="block text-xs">跳ぶ/跳舞(踊る)</span>
@@ -1321,21 +1329,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: jiao</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">交</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">交</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">jiāo</span>
                             <span class="block text-xs">交わる/交通</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
-                        <span class="tc text-xl font-bold text-amber-700">腳</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">腳</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">jiǎo</span>
                             <span class="block text-xs">足(腳踏車)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
-                        <span class="tc text-xl font-bold text-amber-700">叫</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">叫</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">jiào</span>
                             <span class="block text-xs">呼ぶ/〜という名だ</span>
@@ -1349,28 +1357,28 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: n / ng</div>
                 <ul class="space-y-2">
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">穿</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">穿</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">chuān</span>
                             <span class="block text-xs">着る</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">船</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">船</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">chuán</span>
                             <span class="block text-xs">船</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-200">
-                        <span class="tc text-xl font-bold text-amber-700">床</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">床</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">chuáng</span>
                             <span class="block text-xs">ベッド</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">窗</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">窗</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">chuāng</span>
                             <span class="block text-xs">窓</span>
@@ -1384,14 +1392,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: man / mang</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">慢</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">慢</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">màn</span>
                             <span class="block text-xs">遅い(速度)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
-                        <span class="tc text-xl font-bold text-amber-700">忙</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">忙</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">máng</span>
                             <span class="block text-xs">忙しい</span>
@@ -1405,14 +1413,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ti</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
-                        <span class="tc text-xl font-bold text-slate-800">踢</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">踢</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">tī</span>
                             <span class="block text-xs">蹴る</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">替</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">替</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">tì</span>
                             <span class="block text-xs">代わる/〜のために</span>
@@ -1426,14 +1434,14 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: yao</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">要</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">要</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">yào</span>
                             <span class="block text-xs">〜したい/必要だ</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">藥</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">藥</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">yào</span>
                             <span class="block text-xs">薬</span>
@@ -1447,21 +1455,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ge</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">哥</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">哥</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">gē</span>
                             <span class="block text-xs">兄(哥哥)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">歌</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">歌</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">gē</span>
                             <span class="block text-xs">歌(唱歌)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">個</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">個</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">gè</span>
                             <span class="block text-xs">個(量詞)</span>
@@ -1475,21 +1483,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: zuo</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">做</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">做</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">zuò</span>
                             <span class="block text-xs">する/作る</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">坐</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">坐</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">zuò</span>
                             <span class="block text-xs">座る/乗る</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">昨</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">昨</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">zuó</span>
                             <span class="block text-xs">昨日(昨天)</span>
@@ -1503,21 +1511,21 @@
                 <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ke</div>
                 <ul class="space-y-3">
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">課</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">課</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">kè</span>
                             <span class="block text-xs">授業(上課)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
-                        <span class="tc text-xl font-bold text-amber-700">客</span>
+                        <span class="tc text-xl font-bold text-amber-700 speakable cursor-pointer hover:text-teal-500 transition-colors">客</span>
                         <div class="text-right">
                             <span class="block text-xs text-amber-600 font-mono font-bold">kè</span>
                             <span class="block text-xs">客(客人)</span>
                         </div>
                     </li>
                     <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
-                        <span class="tc text-xl font-bold text-slate-800">渇</span>
+                        <span class="tc text-xl font-bold text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">渇</span>
                         <div class="text-right">
                             <span class="block text-xs text-slate-500 font-mono">kě</span>
                             <span class="block text-xs">のどが渇く</span>
@@ -1547,7 +1555,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">張</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">張</div>
                                 <div class="text-xs text-slate-500">zhāng</div>
                             </div>
                             <div>
@@ -1557,7 +1565,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">本</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">本</div>
                                 <div class="text-xs text-slate-500">běn</div>
                             </div>
                             <div>
@@ -1567,7 +1575,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">條</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">條</div>
                                 <div class="text-xs text-slate-500">tiáo</div>
                             </div>
                             <div>
@@ -1577,7 +1585,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">件</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">件</div>
                                 <div class="text-xs text-slate-500">jiàn</div>
                             </div>
                             <div>
@@ -1599,7 +1607,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">就</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">就</div>
                                 <div class="text-xs text-slate-500">jiù</div>
                             </div>
                             <div>
@@ -1609,12 +1617,44 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">才</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">才</div>
                                 <div class="text-xs text-slate-500">cái</div>
                             </div>
                             <div>
                                 <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded mb-1 inline-block">やっと</span>
                                 <p class="text-sm">予想より「遅い」、時間がかかった感覚。<br><span class="text-orange-600 tc text-xs">例：他九點才來。（9時になってやっと来た）</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード：教える・教わる -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-blue-600 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>👨‍🏫 誰が先生？のワナ</span>
+                    <span class="text-blue-200 text-sm">教 vs 學</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">教</div>
+                                <div class="text-xs text-slate-500">jiāo</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">教える</span>
+                                <p class="text-sm">自分が先生になって相手に知識を与える動作。<br><span class="text-blue-600 tc text-xs">例：我教你。（私があなたに教える）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">跟…學</div>
+                                <div class="text-xs text-slate-500">gēn...xué</div>
+                            </div>
+                            <div>
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block border border-red-200">〜に教わる</span>
+                                <p class="text-sm text-slate-700">「跟（〜と）」を使いますが、<b>「A 跟 B 學」は「AがBに教わる（Aが生徒、Bが先生）」</b>という意味になります！読解やリスニングの引っかけで超頻出。<br><span class="text-red-600 tc text-xs font-bold">例：我跟他學。（私は彼に教わっている）</span></p>
                             </div>
                         </li>
                     </ul>
@@ -1631,7 +1671,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">想</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">想</div>
                                 <div class="text-xs text-slate-500">xiǎng</div>
                             </div>
                             <div>
@@ -1641,7 +1681,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">要</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">要</div>
                                 <div class="text-xs text-slate-500">yào</div>
                             </div>
                             <div>
@@ -1663,7 +1703,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">幾</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">幾</div>
                                 <div class="text-xs text-slate-500">jǐ</div>
                             </div>
                             <div>
@@ -1673,7 +1713,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">多少</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">多少</div>
                                 <div class="text-xs text-slate-500">duōshǎo</div>
                             </div>
                             <div>
@@ -1695,7 +1735,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">為什麼</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">為什麼</div>
                                 <div class="text-xs text-slate-500">wèishéme</div>
                             </div>
                             <div>
@@ -1705,7 +1745,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">怎麼</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">怎麼</div>
                                 <div class="text-xs text-slate-500">zěnme</div>
                             </div>
                             <div>
@@ -1715,7 +1755,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3 bg-teal-50 -mx-5 px-5 pb-3 rounded-b-xl">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">…的</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">…的</div>
                                 <div class="text-xs text-slate-500">de</div>
                             </div>
                             <div>
@@ -1737,7 +1777,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">一點</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">一點</div>
                                 <div class="text-xs text-slate-500">yìdiǎn</div>
                             </div>
                             <div class="flex-1">
@@ -1749,7 +1789,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">有點</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">有點</div>
                                 <div class="text-xs text-slate-500">yǒudiǎn</div>
                             </div>
                             <div class="flex-1">
@@ -1773,7 +1813,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">不</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">不</div>
                                 <div class="text-xs text-slate-500">bù</div>
                             </div>
                             <div class="flex-1">
@@ -1783,7 +1823,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-16 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">沒</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">沒</div>
                                 <div class="text-xs text-slate-500">méi</div>
                             </div>
                             <div class="flex-1">
@@ -1813,7 +1853,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">好不好</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">好不好</div>
                                 <div class="text-xs text-slate-500">hǎo bu hǎo</div>
                             </div>
                             <div class="flex-1">
@@ -1823,7 +1863,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">對不對</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">對不對</div>
                                 <div class="text-xs text-slate-500">duì bu duì</div>
                             </div>
                             <div class="flex-1">
@@ -1833,7 +1873,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">是不是</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">是不是</div>
                                 <div class="text-xs text-slate-500">shì bu shì</div>
                             </div>
                             <div class="flex-1">
@@ -1843,7 +1883,7 @@
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-4">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">要不要</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">要不要</div>
                                 <div class="text-xs text-slate-500">yào bu yào</div>
                             </div>
                             <div class="flex-1">
@@ -2162,7 +2202,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">危險</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">危險</div>
                                 <div class="text-xs text-slate-500">wēixiǎn</div>
                             </div>
                             <div>
@@ -2172,7 +2212,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">小心</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">小心</div>
                                 <div class="text-xs text-slate-500">xiǎoxīn</div>
                             </div>
                             <div>
@@ -2194,7 +2234,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">糟糕</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">糟糕</div>
                                 <div class="text-xs text-slate-500">zāogāo</div>
                             </div>
                             <div>
@@ -2204,7 +2244,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">奇怪</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">奇怪</div>
                                 <div class="text-xs text-slate-500">qíguài</div>
                             </div>
                             <div>
@@ -2214,7 +2254,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
                             <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">救命</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">救命</div>
                                 <div class="text-xs text-slate-500">jiùmìng</div>
                             </div>
                             <div>
@@ -2236,7 +2276,7 @@
                     <ul class="space-y-4">
                         <li class="flex gap-4">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">太棒了</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">太棒了</div>
                                 <div class="text-xs text-slate-500">tài bàng le</div>
                             </div>
                             <div>
@@ -2246,7 +2286,7 @@
                         </li>
                         <li class="flex gap-4 border-t border-slate-100 pt-3">
                             <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800">讚</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">讚</div>
                                 <div class="text-xs text-slate-500">zàn</div>
                             </div>
                             <div>
@@ -2591,34 +2631,28 @@
                             <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">下面 <span class="font-normal text-xs text-slate-400">xiàmiàn</span></div>
                         </div>
                     </div>
+                    <div class="mt-3 text-xs text-slate-600 bg-indigo-50 p-2 rounded">
+                        💡 <b>左邊 / 右邊</b>：イラスト問題では、登場人物の主観（彼らの右手側など）ではなく<b>「あなたから見て」</b>左か右かで判断します！
+                    </div>
                 </div>
             </div>
 
-            <!-- カード：内外・間・そば -->
+            <!-- カード：内外・間・周辺 -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
                 <div class="bg-teal-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>📦 内外・間・そば</span>
+                    <span>📦 内外・間・周辺</span>
                     <span class="text-teal-200 text-sm">相対的な位置</span>
                 </div>
                 <div class="p-5">
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-center">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">裡面</div>
-                                <div class="text-xs text-slate-500">lǐmiàn</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">裡面 / 外面</div>
+                                <div class="text-xs text-slate-500">lǐmiàn / wàimiàn</div>
                             </div>
                             <div class="flex-1">
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">中・内側</span>
-                                <p class="text-xs text-slate-600 mt-1">「外（外面 wàimiàn）」の反対。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
-                            <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">外面</div>
-                                <div class="text-xs text-slate-500">wàimiàn</div>
-                            </div>
-                            <div class="flex-1">
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">外・外側</span>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">中・内側 / 外・外側</span>
+                                <p class="text-xs text-slate-600 mt-1">「裡面」の「裡」は台湾の繁体字特有の形なので見慣れておきましょう。</p>
                             </div>
                         </li>
                         <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
@@ -2631,14 +2665,24 @@
                                 <p class="text-xs text-slate-600 mt-1">「在A和B的中間（AとBの間にある）」の形でよく出ます。</p>
                             </div>
                         </li>
-                        <li class="flex gap-4 items-center border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
+                        <li class="flex gap-4 items-center border-t border-slate-100 pt-3">
                             <div class="w-20 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">旁邊</div>
-                                <div class="text-xs text-slate-500">pángbiān</div>
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">旁邊 / 附近</div>
+                                <div class="text-xs text-slate-500">pángbiān / fùjìn</div>
                             </div>
                             <div class="flex-1">
-                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block">隣・そば</span>
-                                <p class="text-xs text-slate-700 mt-1">「すぐ隣」や「横」を表す超重要単語！リスニングで場所を特定するキーになります。</p>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">すぐ隣 / 近く（付近）</span>
+                                <p class="text-xs text-slate-700 mt-1">「旁邊」は道がない隣接状態。「附近」は少し離れていてもOKな「近く」。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-center border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
+                            <div class="w-20 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">對面 / 斜對面</div>
+                                <div class="text-xs text-slate-500">duìmiàn / xié duìmiàn</div>
+                            </div>
+                            <div class="flex-1">
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block">向かい側 / 斜め向かい</span>
+                                <p class="text-xs text-slate-700 mt-1">「旁邊」との違いに注意！道路などを挟んで向かい合っている状態は「對面」です。</p>
                             </div>
                         </li>
                     </ul>
@@ -3356,1269 +3400,4 @@
 
             <!-- カード：定番の中華・台湾料理 -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 md:col-span-3">
-                <div class="bg-red-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🥢 定番の中華・台湾料理</span>
-                    <span class="text-red-200 text-sm">レストランの話題で登場</span>
-                </div>
-                <div class="p-5">
-                    <div class="grid md:grid-cols-4 gap-4">
-                        <div class="bg-red-50 p-3 rounded-xl border border-red-100 text-center">
-                            <div class="text-xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">北京烤鴨</div>
-                            <div class="text-xs text-slate-500 mb-1">Běijīng kǎoyā</div>
-                            <span class="bg-white text-red-700 text-[10px] px-2 py-1 rounded border border-red-200 inline-block font-bold">北京ダック</span>
-                            <p class="text-xs text-slate-600 mt-2 text-left">「烤」は焼く、「鴨」はカモ（アヒル）のこと。高級な中華料理の代表。</p>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-xl border border-red-100 text-center">
-                            <div class="text-xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">糖醋魚</div>
-                            <div class="text-xs text-slate-500 mb-1">tángcùyú</div>
-                            <span class="bg-white text-red-700 text-[10px] px-2 py-1 rounded border border-red-200 inline-block font-bold">魚の甘酢あんかけ</span>
-                            <p class="text-xs text-slate-600 mt-2 text-left">「糖（砂糖）」と「醋（お酢）」で味付けした魚料理。味が想像しやすい名前です。</p>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-xl border border-red-100 text-center">
-                            <div class="text-xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">牛肉麵</div>
-                            <div class="text-xs text-slate-500 mb-1">niúròumiàn</div>
-                            <span class="bg-white text-red-700 text-[10px] px-2 py-1 rounded border border-red-200 inline-block font-bold">牛肉麺</span>
-                            <p class="text-xs text-slate-600 mt-2 text-left">台湾の国民食。煮込んだ牛肉が乗ったスープ麺です。</p>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-xl border border-red-100 text-center">
-                            <div class="text-xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">小籠包</div>
-                            <div class="text-xs text-slate-500 mb-1">xiǎolóngbāo</div>
-                            <span class="bg-white text-red-700 text-[10px] px-2 py-1 rounded border border-red-200 inline-block font-bold">小籠包（ショウロンポウ）</span>
-                            <p class="text-xs text-slate-600 mt-2 text-left">中に熱いスープ（湯 tāng）が入っているので「小心燙（火傷に注意）」とセットになります。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 15: 最後に「jia」がつく重要単語 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-lime-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 15</span>
-            <h2 class="text-2xl font-bold text-slate-800">最後に「jia」がつく重要単語</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-lime-400">同じ「jia」の音でも、「家・加（1声）」と「假（4声）」で意味が全く異なります。声調と漢字をセットで覚えましょう！</p>
-
-        <div class="grid md:grid-cols-3 gap-6 mb-12">
-            
-            <!-- カード：家 (jiā) -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-amber-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🏠 家・人 (jiā)</span>
-                    <span class="text-amber-100 text-sm">第1声</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">搬家</div>
-                                <div class="text-xs text-slate-500">bānjiā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">引っ越しする</span>
-                                <p class="text-sm">「搬」は「運ぶ・移動する」という意味。住まいを移すシチュエーションで頻出。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">大家</div>
-                                <div class="text-xs text-slate-500">dàjiā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">みんな・皆様</span>
-                                <p class="text-sm">「大家好（みなさんこんにちは）」のように、複数人に呼びかける時の定番表現です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">國家</div>
-                                <div class="text-xs text-slate-500">guójiā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">国家・国</span>
-                                <p class="text-sm">国を指す言葉。「你是哪個國家的人？（あなたはどこの国の人ですか）」など。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：假 (jià) -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-rose-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🌴 休み (jià)</span>
-                    <span class="text-rose-100 text-sm">第4声に注意！</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">請假</div>
-                                <div class="text-xs text-slate-500">qǐngjià</div>
-                            </div>
-                            <div>
-                                <span class="bg-rose-100 text-rose-800 text-xs px-2 py-1 rounded mb-1 inline-block border border-rose-200">休みを取る</span>
-                                <p class="text-sm">病気や用事で<b>「自分から願い出て」</b>休むこと。学校や職場に欠席連絡をする場面で必ず出ます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">放假</div>
-                                <div class="text-xs text-slate-500">fàngjià</div>
-                            </div>
-                            <div>
-                                <span class="bg-rose-100 text-rose-800 text-xs px-2 py-1 rounded mb-1 inline-block border border-rose-200">休みになる</span>
-                                <p class="text-sm">祝日や週末など、<b>「カレンダー通りに」</b>学校や会社が休みになること。「請假」との違いが超重要！</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">暑假</div>
-                                <div class="text-xs text-slate-500">shǔjià</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">夏休み</span>
-                                <p class="text-sm">長期休みの話題で頻出。ちなみに冬休みは「<span class="speakable font-bold tc text-rose-600 hover:text-teal-500 transition-colors">寒假</span>（hánjià）」と言います。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：加 (jiā) -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-teal-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>➕ 加える (jiā)</span>
-                    <span class="text-teal-100 text-sm">第1声</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">參加</div>
-                                <div class="text-xs text-slate-500">cānjiā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">参加する</span>
-                                <p class="text-sm">イベント、会議、試合などに「参加する」という非常に重要な動詞です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">增加</div>
-                                <div class="text-xs text-slate-500">zēngjiā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">増える・増やす</span>
-                                <p class="text-sm">数や量が多くなること。Band A後半〜Band Bにかけてグラフやデータの問題でよく見かけます。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 16: 家族の呼称と紛らわしい代名詞 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-cyan-700 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 16</span>
-            <h2 class="text-2xl font-bold text-slate-800">家族の呼称と紛らわしい代名詞</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-cyan-500">リスニングで「この人は誰ですか？」という関係性を問う問題や、同じ音（tā）の聞き分けは Band A の頻出ポイントです。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：子供 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-sky-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>👦 息子と娘</span>
-                    <span class="text-sky-100 text-sm">ペアで覚える</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">兒子</div>
-                                <div class="text-xs text-slate-500">érzi</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">息子</span>
-                                <p class="text-sm">男性の子供。「<span class="speakable font-bold tc text-sky-600 hover:text-teal-500 transition-colors">我兒子</span>（私の息子）」のように使います。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">女兒</div>
-                                <div class="text-xs text-slate-500">nǚ'ér</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">娘</span>
-                                <p class="text-sm">女性の子供。「兒子」との聞き分けが超重要です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">孩子</div>
-                                <div class="text-xs text-slate-500">háizi</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">子供</span>
-                                <p class="text-sm">性別を問わない「子供」。「男孩子（男の子）」「女孩子（女の子）」という言い方も一般的です。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：兄弟姉妹 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-indigo-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>👬 兄弟姉妹</span>
-                    <span class="text-indigo-100 text-sm">年齢差に注意</span>
-                </div>
-                <div class="p-5">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
-                            <div class="text-xs text-slate-500 mb-1">兄</div>
-                            <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">哥哥 <span class="font-normal text-xs text-slate-400 italic">gēge</span></div>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
-                            <div class="text-xs text-slate-500 mb-1">弟</div>
-                            <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">弟弟 <span class="font-normal text-xs text-slate-400 italic">dìdi</span></div>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
-                            <div class="text-xs text-slate-500 mb-1">姉</div>
-                            <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">姊姊 <span class="font-normal text-xs text-slate-400 italic">jiějie</span></div>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
-                            <div class="text-xs text-slate-500 mb-1">妹</div>
-                            <div class="font-bold tc text-slate-800 text-lg speakable cursor-pointer hover:text-teal-500 transition-colors">妹妹 <span class="font-normal text-xs text-slate-400 italic">mèimei</span></div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-600 border-t border-slate-100 pt-3">
-                        まとめて言う時は「<span class="speakable font-bold tc text-indigo-600">兄弟姊妹</span>（xiōngdì jiěmèi）」と言います。
-                    </p>
-                </div>
-            </div>
-
-            <!-- カード：代名詞 tā -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 md:col-span-2">
-                <div class="bg-rose-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>👥 リスニング最大の難関：tā の使い分け</span>
-                    <span class="text-rose-100 text-sm">発音はすべて同じ！</span>
-                </div>
-                <div class="p-5">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-100 text-center">
-                            <div class="text-3xl mb-2">👨</div>
-                            <div class="text-2xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">他</div>
-                            <div class="text-xs text-slate-500 mb-2">tā</div>
-                            <span class="bg-white text-rose-700 text-xs px-2 py-1 rounded border border-rose-200 inline-block font-bold">彼 (He)</span>
-                            <p class="text-xs text-slate-600 mt-2">男性または性別不明のグループを指す基本の「彼」。</p>
-                        </div>
-                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-100 text-center">
-                            <div class="text-3xl mb-2">👩</div>
-                            <div class="text-2xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">她</div>
-                            <div class="text-xs text-slate-500 mb-2">tā</div>
-                            <span class="bg-white text-rose-700 text-xs px-2 py-1 rounded border border-rose-200 inline-block font-bold">彼女 (She)</span>
-                            <p class="text-xs text-slate-600 mt-2">女性を指す時の「彼女」。部首が「女」になっています。</p>
-                        </div>
-                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-100 text-center">
-                            <div class="text-3xl mb-2">📦</div>
-                            <div class="text-2xl font-bold tc text-slate-800 speakable cursor-pointer hover:text-teal-500 transition-colors">它</div>
-                            <div class="text-xs text-slate-500 mb-2">tā</div>
-                            <span class="bg-white text-rose-700 text-xs px-2 py-1 rounded border border-rose-200 inline-block font-bold">それ (It)</span>
-                            <p class="text-xs text-slate-600 mt-2">動物やモノ、事柄を指す時の「それ」。リスニングでは前の文脈を掴むのが命！</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 17: 家の中の家具・家電 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-stone-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 17</span>
-            <h2 class="text-2xl font-bold text-slate-800">家の中の家具・家電</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-stone-400">部屋探しのシチュエーション（「有冷氣嗎？」など）や、日常の家事の話題で超頻出です。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：必須の家電 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-blue-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🔌 必須の家電</span>
-                    <span class="text-blue-200 text-sm">部屋探しで重要</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">冷氣</div>
-                                <div class="text-xs text-slate-500">lěngqì</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">エアコン（冷房）</span>
-                                <p class="text-sm">台湾の必須家電。暖房がないことが多いのでエアコンは「冷氣」と呼びます。<br><span class="speakable text-blue-600 tc text-xs hover:text-teal-500 transition-colors">例：有冷氣嗎？（エアコンはありますか？）</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">電視</div>
-                                <div class="text-xs text-slate-500">diànshì</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">テレビ</span>
-                                <p class="text-sm">「<span class="speakable font-bold tc text-blue-600 hover:text-teal-500 transition-colors">看電視</span>（テレビを見る）」のフレーズは日常会話の基本中の基本です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">冰箱</div>
-                                <div class="text-xs text-slate-500">bīngxiāng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">冷蔵庫</span>
-                                <p class="text-sm">氷（冰）の箱（箱）で冷蔵庫。「把飲料放進冰箱（飲み物を冷蔵庫に入れる）」など。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">洗衣機</div>
-                                <div class="text-xs text-slate-500">xǐyījī</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">洗濯機</span>
-                                <p class="text-sm">服（衣）を洗う（洗）機械（機）。台湾ではベランダに置かれていることも多いです。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：大型家具 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-amber-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🪑 家具・インテリア</span>
-                    <span class="text-amber-200 text-sm">部屋の中にあるもの</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">沙發</div>
-                                <div class="text-xs text-slate-500">shāfā</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">ソファ</span>
-                                <p class="text-sm">英語のSofaから来た外来語。「坐在沙發上（ソファに座る）」と空間の位置（上）とセットで出ます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">床</div>
-                                <div class="text-xs text-slate-500">chuáng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">ベッド</span>
-                                <p class="text-sm">起きることを「<span class="speakable font-bold tc text-amber-700 hover:text-teal-500 transition-colors">起床</span>（qǐchuáng）」と言います。「床」は窓（窗）とピンインが似ているので注意！（PART 2参照）</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">桌子</div>
-                                <div class="text-xs text-slate-500">zhuōzi</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">机・テーブル</span>
-                                <p class="text-sm">「桌上（机の上）」の形で超頻出。ペアで「<span class="speakable font-bold tc text-amber-700 hover:text-teal-500 transition-colors">椅子</span>（yǐzi / 椅子）」も覚えましょう！</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 18: 水・ドリンクと調味料 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-cyan-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 18</span>
-            <h2 class="text-2xl font-bold text-slate-800">水・ドリンクと調味料</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-cyan-400">レストランでの注文や、料理のシチュエーションで必ず出ます。「開水」の独特なニュアンスに注意！</p>
-
-        <div class="grid md:grid-cols-3 gap-6 mb-12">
-            
-            <!-- カード：水の種類 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-sky-400 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>💧 水の温度</span>
-                    <span class="text-sky-100 text-sm">レストランで必須</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">開水</div>
-                                <div class="text-xs text-slate-500">kāishuǐ</div>
-                            </div>
-                            <div>
-                                <span class="bg-red-50 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block border border-red-200">沸かした水・お冷</span>
-                                <p class="text-sm"><b>一度沸騰させて飲めるようにした水</b>のこと。レストランで「水ください」という時はコレ！<br><span class="speakable text-sky-700 tc text-xs hover:text-teal-500 transition-colors">例：麻煩先給我一杯開水。</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">冰水</div>
-                                <div class="text-xs text-slate-500">bīngshuǐ</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">冷水・氷水</span>
-                                <p class="text-sm">台湾の食堂では常温の水が出ることが多いので、冷たい水が欲しい時は「冰水」と言います。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">熱水</div>
-                                <div class="text-xs text-slate-500">rèshuǐ</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">お湯</span>
-                                <p class="text-sm">飲むための「お湯」だけでなく、お風呂の「お湯」としても使います（洗熱水澡）。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：その他の飲み物 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-emerald-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🥤 よく飲むもの</span>
-                    <span class="text-emerald-100 text-sm">朝食・カフェ</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">飲料</div>
-                                <div class="text-xs text-slate-500">yǐnliào</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">飲み物・ドリンク</span>
-                                <p class="text-sm">ドリンク全般を指します。台湾の街中にあるドリンクスタンドは「<span class="speakable font-bold tc text-emerald-600 hover:text-teal-500 transition-colors">飲料店</span>」と呼びます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">牛奶</div>
-                                <div class="text-xs text-slate-500">niúnǎi</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">牛乳</span>
-                                <p class="text-sm">コーヒーに入れるミルクのことも指します。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">豆漿</div>
-                                <div class="text-xs text-slate-500">dòujiāng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">豆乳</span>
-                                <p class="text-sm">台湾の朝食の定番！甘いもの（甜豆漿）としょっぱいもの（鹹豆漿）があります。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：調味料 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-amber-700 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🧂 味付け・調味料</span>
-                    <span class="text-amber-200 text-sm">料理の話題で</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">糖</div>
-                                <div class="text-xs text-slate-500">táng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">砂糖・飴</span>
-                                <p class="text-sm">料理やドリンクに入れる砂糖。「<span class="speakable font-bold tc text-amber-700 hover:text-teal-500 transition-colors">多放一點糖</span>（砂糖を少し多めに入れて）」と「放（入れる）」と一緒に使います。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">鹽</div>
-                                <div class="text-xs text-slate-500">yán</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">塩</span>
-                                <p class="text-sm">「<span class="speakable font-bold tc text-amber-700 hover:text-teal-500 transition-colors">太鹹了</span>（tài xián le / しょっぱすぎる）」という形容詞と一緒によく出ます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">醬油</div>
-                                <div class="text-xs text-slate-500">jiàngyóu</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">醤油</span>
-                                <p class="text-sm">日本と並んで台湾の食卓にも欠かせない基本の調味料です。水餃子などにつけて食べます。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 19: 日常の生活動作（朝〜夜） -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-indigo-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 19</span>
-            <h2 class="text-2xl font-bold text-slate-800">日常の生活動作（朝〜夜）</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-indigo-400">「那先去刷牙（じゃあ先に歯を磨いて）」など、朝の準備や夜の動作はリスニングで非常に会話に盛り込まれやすいです。動詞と名詞のセット（離合詞）になっているのが特徴です。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：洗面・入浴 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-cyan-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🪥 洗面・入浴</span>
-                    <span class="text-cyan-100 text-sm">水回りの動作</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">刷牙</div>
-                                <div class="text-xs text-slate-500">shuāyá</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">歯を磨く</span>
-                                <p class="text-sm">ブラシでこする動作「刷」＋「牙（歯）」。<br><span class="speakable text-cyan-700 tc text-xs hover:text-teal-500 transition-colors">例：睡覺以前要刷牙。</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">洗臉</div>
-                                <div class="text-xs text-slate-500">xǐliǎn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">顔を洗う</span>
-                                <p class="text-sm">「洗（洗う）」＋「臉（顔）」。朝起きたらまず行う動作として出題されます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">洗澡</div>
-                                <div class="text-xs text-slate-500">xǐzǎo</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">シャワーを浴びる・入浴する</span>
-                                <p class="text-sm">台湾は湯船に浸からないのが一般的なので、基本的には「シャワーを浴びる」という意味で使われます。<br><span class="speakable text-cyan-700 tc text-xs hover:text-teal-500 transition-colors">例：我先去洗澡。</span>（先にシャワー浴びてくるね）</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：睡眠 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-indigo-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🛌 睡眠</span>
-                    <span class="text-indigo-200 text-sm">一日の始まりと終わり</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">起床</div>
-                                <div class="text-xs text-slate-500">qǐchuáng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">起きる</span>
-                                <p class="text-sm">ベッド（床）から起き上がる（起）。<br><span class="speakable text-indigo-700 tc text-xs hover:text-teal-500 transition-colors">例：你明天幾點起床？</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">睡覺</div>
-                                <div class="text-xs text-slate-500">shuìjiào</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">寝る</span>
-                                <p class="text-sm">眠るという動作。離合詞なので、間に時間を表す言葉を入れることがあります（例：睡八個小時的覺）。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 20: 情報メディアと通信 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-slate-700 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 20</span>
-            <h2 class="text-2xl font-bold text-slate-800">情報メディアと通信</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-slate-500">ニュースや情報を得る手段です。「看（見る・読む）」や「聽（聞く）」などの動詞とセットで覚えましょう。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：読むメディア -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-sky-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>📰 読むメディア</span>
-                    <span class="text-sky-200 text-sm">「看」を使う</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">報紙</div>
-                                <div class="text-xs text-slate-500">bàozhǐ</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">新聞</span>
-                                <p class="text-sm">「<span class="speakable font-bold tc text-sky-700 hover:text-teal-500 transition-colors">看報紙</span>（新聞を読む）」のフレーズが頻出。量詞は広げるものなので「份（fèn）」や「張（zhāng）」を使います。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">雜誌</div>
-                                <div class="text-xs text-slate-500">zázhì</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">雑誌</span>
-                                <p class="text-sm">本と同じように綴じられているので、量詞は「<span class="speakable font-bold tc text-sky-700 hover:text-teal-500 transition-colors">本</span>（běn）」を使います（一本雜誌）。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">新聞</div>
-                                <div class="text-xs text-slate-500">xīnwén</div>
-                            </div>
-                            <div>
-                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block border border-red-200 font-bold">ニュース（新聞紙ではない）</span>
-                                <p class="text-sm text-slate-700">日本語の「新聞（紙）」と混同しがちですが、中国語では<b>「ニュース（出来事）」</b>のことです。<br><span class="speakable text-sky-700 tc text-xs hover:text-teal-500 transition-colors">例：看電視新聞</span>（テレビのニュースを見る）</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：聞く・通信メディア -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-emerald-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>📻 聞く・その他の通信</span>
-                    <span class="text-emerald-200 text-sm">手段と動作</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">廣播</div>
-                                <div class="text-xs text-slate-500">guǎngbō</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">ラジオ・放送</span>
-                                <p class="text-sm">「<span class="speakable font-bold tc text-emerald-700 hover:text-teal-500 transition-colors">聽廣播</span>（ラジオを聞く）」の形で出題されます。運転手さん（司機）が聞いているシチュエーションなどが多いです。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">網路</div>
-                                <div class="text-xs text-slate-500">wǎnglù</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">インターネット</span>
-                                <p class="text-sm">ネットサーフィンをすることは「上網（shàngwǎng）」と言います。「網路上的新聞（ネットのニュース）」など。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">信</div>
-                                <div class="text-xs text-slate-500">xìn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">手紙</span>
-                                <p class="text-sm">「寫信（手紙を書く）」や「寄信（手紙を送る）」の動詞とセットで重要です。PART 2でも触れたように「心 / 新」と音が同じなので注意。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 21: 台湾華語らしさ全開！文末の語気詞 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-pink-400 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 21</span>
-            <h2 class="text-2xl font-bold text-slate-800">台湾華語らしさ全開！文末の語気詞</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-pink-300">リスニングで頻出。文の意味を大きく変えるわけではありませんが、話者の「感情」や「ニュアンス」を伝える重要な役割を持っています。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：喔 / 啊 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-pink-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>💬 喔 (o) / 啊 (a)</span>
-                    <span class="text-pink-100 text-sm">親しみ・念押し</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">喔</div>
-                                <div class="text-xs text-slate-500">o / wō</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜だよ！ / わかったよ</span>
-                                <p class="text-sm">台湾で非常によく使われます。相手への<b>「念押し・お知らせ（〜だよ）」</b>や、親しみを込めた<b>「相槌（わかったよ）」</b>を表します。<br><span class="speakable text-pink-600 tc text-xs hover:text-teal-500 transition-colors">例：還沒乾喔！</span>（まだ乾いてないよ！）<br><span class="speakable text-pink-600 tc text-xs hover:text-teal-500 transition-colors">例：好喔！</span>（いいよ！/了解！）</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">啊</div>
-                                <div class="text-xs text-slate-500">a / ya</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜だね！ / 〜よ</span>
-                                <p class="text-sm">感情を込めたり、語気を和らげたりします。「是啊（そうだね）」「對啊（そうだよ）」の形で相槌として超頻出。前の音によって「呀(ya)」「哇(wa)」などに変化します。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：吧 / 呢 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-fuchsia-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🤔 吧 (ba) / 呢 (ne)</span>
-                    <span class="text-fuchsia-100 text-sm">推測・疑問</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">吧</div>
-                                <div class="text-xs text-slate-500">ba</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜でしょう？ / 〜しよう</span>
-                                <p class="text-sm"><b>「推測（だよね？）」</b>や<b>「提案（〜しようよ）」</b>を表します。「嗎（ですか？）」よりも話し手が答えに確信を持っている時に使います。<br><span class="speakable text-fuchsia-600 tc text-xs hover:text-teal-500 transition-colors">例：你是日本人吧？</span>（日本人だよね？）<br><span class="speakable text-fuchsia-600 tc text-xs hover:text-teal-500 transition-colors">例：走吧！</span>（行こう！）</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-16 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">呢</div>
-                                <div class="text-xs text-slate-500">ne</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜は？ / 〜しているよ</span>
-                                <p class="text-sm"><b>「オウム返し（あなたはどう？）」</b>の疑問や、<b>「進行・持続（今〜しているんだよ）」</b>を強調します。<br><span class="speakable text-fuchsia-600 tc text-xs hover:text-teal-500 transition-colors">例：我很好，你呢？</span>（私は元気です、あなたは？）<br><span class="speakable text-fuchsia-600 tc text-xs hover:text-teal-500 transition-colors">例：他在睡覺呢。</span>（彼、寝ているんだよ）</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 22: オフィス・学校の機器と動作 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-indigo-700 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 22</span>
-            <h2 class="text-2xl font-bold text-slate-800">オフィス・学校の機器と動作</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-indigo-500">職場や学校で「今何をしているか」を尋ねるリスニングでよく出ます。機器の名前と「動詞」のセットで覚えましょう！</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：事務機器 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-indigo-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🖨️ 事務機器</span>
-                    <span class="text-indigo-100 text-sm">受信・コピー</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">傳真</div>
-                                <div class="text-xs text-slate-500">chuánzhēn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">FAX</span>
-                                <p class="text-sm">FAXを受け取る（受信する）時は「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">收傳真</span>（shōu chuánzhēn）」と言います。「收」は受け取る・しまうという意味です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">影印</div>
-                                <div class="text-xs text-slate-500">yǐngyìn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">コピー（する）</span>
-                                <p class="text-sm">「影を印字する」でコピー。書類をコピーするシチュエーションで頻出。コピー機は「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">影印機</span>」です。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：パソコンとネット -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-cyan-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>💻 パソコンとネット</span>
-                    <span class="text-cyan-100 text-sm">現代の必須単語</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">電腦</div>
-                                <div class="text-xs text-slate-500">diànnǎo</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">パソコン</span>
-                                <p class="text-sm">電気（電）の脳（腦）。パソコンを使う時は「<span class="speakable font-bold tc text-cyan-700 hover:text-teal-500 transition-colors">用電腦</span>（yòng diànnǎo）」、電源をつける時は「開電腦」です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">上網</div>
-                                <div class="text-xs text-slate-500">shàngwǎng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">インターネットをする</span>
-                                <p class="text-sm">ネットに繋ぐ、ネットサーフィンをすること。PART 20の「網路（インターネット）」とセットで覚えましょう。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">電子郵件</div>
-                                <div class="text-xs text-slate-500">diànzǐ yóujiàn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">Eメール</span>
-                                <p class="text-sm">メールを受信するのは「<span class="speakable font-bold tc text-cyan-700 hover:text-teal-500 transition-colors">收電子郵件</span>」、送る時は「<span class="speakable font-bold tc text-cyan-700 hover:text-teal-500 transition-colors">寄電子郵件</span>」です。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 23: 交通の拠点・乗り場 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-blue-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 23</span>
-            <h2 class="text-2xl font-bold text-slate-800">交通の拠点・乗り場</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-blue-500">どこへ向かうのか、どこで待つのか。移動の起点・終点となる重要語彙です。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：陸の交通 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-amber-600 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🚉 陸の拠点</span>
-                    <span class="text-amber-100 text-sm">駅とバス停</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">車站</div>
-                                <div class="text-xs text-slate-500">chēzhàn</div>
-                            </div>
-                            <div>
-                                <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded mb-1 inline-block font-bold">駅・乗り場（全般）</span>
-                                <p class="text-sm">鉄道の駅だけでなく、バスの停留所なども含めた「乗り場全般」を指す広い言葉です。「在車站等你（駅で待つよ）」など。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">火車站</div>
-                                <div class="text-xs text-slate-500">huǒchēzhàn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">鉄道の駅</span>
-                                <p class="text-sm">「火車（鉄道・汽車）」の駅。台湾鉄路（台鉄）の駅を指します。MRTの駅は「捷運站」です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">公車站</div>
-                                <div class="text-xs text-slate-500">gōngchēzhàn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">バス停</span>
-                                <p class="text-sm">バス（公車）の停留所。「坐公車（バスに乗る）」と一緒に覚えましょう。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：空の交通・その他 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-sky-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>✈️ 空の交通・その他</span>
-                    <span class="text-sky-100 text-sm">空港と駐車場</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">機場</div>
-                                <div class="text-xs text-slate-500">jīchǎng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">空港</span>
-                                <p class="text-sm">「飛機場（fēijīchǎng）」と言うこともあります。「<span class="speakable font-bold tc text-sky-700 hover:text-teal-500 transition-colors">去機場接朋友</span>（空港に友達を迎えに行く）」のような表現が定番です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">停車場</div>
-                                <div class="text-xs text-slate-500">tíngchēchǎng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">駐車場</span>
-                                <p class="text-sm">車を停める（停）場所（場）。車を駐車する動作自体は「<span class="speakable font-bold tc text-sky-700 hover:text-teal-500 transition-colors">停車</span>（tíngchē）」と言います。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 24: 頻出副詞「還」と「還是」 -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-orange-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 24</span>
-            <h2 class="text-2xl font-bold text-slate-800">頻出副詞「還」と「還是」</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-orange-400">「しかし」と勘違いしやすい要注意ワード！状況が「続く」のか、「追加」されるのかで使い分けます。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：還是（やはり・まだ） -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-orange-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>⏳ 還是 (háishì)</span>
-                    <span class="text-orange-100 text-sm">状況が継続する</span>
-                </div>
-                <div class="p-5">
-                    <p class="text-sm text-slate-600 mb-4">AかBかを尋ねる「それとも」の意味のほかに、<b>「（状況が変わらず）やはり・依然として・まだ」</b>という意味で非常によく使われます。「しかし（但是）」ではありません！</p>
-                    <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
-                        <div class="font-bold text-xl text-slate-800 mb-1 speakable cursor-pointer hover:text-teal-500 transition-colors">我還是不懂。</div>
-                        <div class="text-xs text-slate-500 mb-3">Wǒ háishì bù dǒng.</div>
-                        <span class="bg-white text-orange-700 text-xs px-2 py-1 rounded border border-orange-200 inline-block font-bold mb-2">私はやっぱり（まだ）分かりません。</span>
-                        <p class="text-sm text-slate-700">説明された後でも、状況が変わらず理解できていないことを表します。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- カード：還（さらに・他に） -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-yellow-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>➕ 還 (hái)</span>
-                    <span class="text-yellow-100 text-sm">追加する</span>
-                </div>
-                <div class="p-5">
-                    <p class="text-sm text-slate-600 mb-4">まだ〜していない（還沒）の意味のほかに、<b>「もっと・さらに・他に（追加して）」</b>という意味があります。レストランの注文や買い物で必須の表現です。</p>
-                    <div class="space-y-4">
-                        <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-100">
-                            <div class="font-bold text-lg text-slate-800 mb-1 speakable cursor-pointer hover:text-teal-500 transition-colors">還要點菜嗎？</div>
-                            <div class="text-xs text-slate-500 mb-2">Hái yào diǎn cài ma?</div>
-                            <span class="bg-white text-yellow-700 text-xs px-2 py-1 rounded border border-yellow-200 inline-block font-bold">さらに（追加で）注文しますか？</span>
-                        </div>
-                        <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-100">
-                            <div class="font-bold text-lg text-slate-800 mb-1 speakable cursor-pointer hover:text-teal-500 transition-colors">還要別的嗎？</div>
-                            <div class="text-xs text-slate-500 mb-2">Hái yào bié de ma?</div>
-                            <span class="bg-white text-yellow-700 text-xs px-2 py-1 rounded border border-yellow-200 inline-block font-bold">他に何か要りますか？</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 25: 聴解・イラスト問題の必勝シチュエーション -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-purple-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 25</span>
-            <h2 class="text-2xl font-bold text-slate-800">聴解・イラスト問題の必勝シチュエーション</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-purple-500">リスニングのイラスト選択問題で必ず狙われる「場面設定」や「ギャップ」のポイントです。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：病院と乗り物 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-purple-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🏥 病院と乗り物</span>
-                    <span class="text-purple-100 text-sm">状況判断</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">掛號</div>
-                                <div class="text-xs text-slate-500">guàhào</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">受付をする</span>
-                                <p class="text-sm">病院の受付カウンター（看護師など）の絵を探します。駅の切符売り場や映画館は不正解です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">載人</div>
-                                <div class="text-xs text-slate-500">zài rén</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">人を乗せる</span>
-                                <p class="text-sm">バイクや自転車の絵で「<span class="speakable font-bold tc text-purple-600 hover:text-teal-500 transition-colors">自己騎</span>（一人で乗る）」か「載（人を後ろに乗せる）」かの違いに注意。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">幫人</div>
-                                <div class="text-xs text-slate-500">bāng rén</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">人に〜してあげる</span>
-                                <p class="text-sm">「幫人＋動詞（例：幫人看病）」。主語が医者や店員など<b>サービスを提供する側</b>の絵になります。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：状態とギャップ -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-indigo-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>💡 状態とギャップ</span>
-                    <span class="text-indigo-100 text-sm">視覚的引っかけ</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">關著</div>
-                                <div class="text-xs text-slate-500">guānzhe</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">閉まっている</span>
-                                <p class="text-sm">「<span class="speakable font-bold tc text-indigo-600 hover:text-teal-500 transition-colors">都是關著的</span>（どちらも閉まっている）」。複数の対象（ドアと窓など）が「全て」その状態を持続しているかチェックします。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">都沒(有)</div>
-                                <div class="text-xs text-slate-500">dōu méiyǒu</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">一つも（一人も）ない</span>
-                                <p class="text-sm">「一個也沒有」。完全にゼロの状態を探します。店員がいても「客」がゼロなら正解です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3 bg-red-50 -mx-5 px-5 pb-3 rounded-b-xl">
-                            <div class="w-20 shrink-0 text-center text-xl font-bold text-slate-800 mt-2">
-                                理想<br>vs<br>現実
-                            </div>
-                            <div>
-                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-1 inline-block border border-red-200">Aが欲しいが、Bをもらった</span>
-                                <p class="text-sm text-slate-700">「<span class="speakable font-bold tc text-indigo-700 hover:text-teal-500 transition-colors">想要 A，但是收到 B</span>」。頭の吹き出し（理想）と、実際に手に持っている物（現実）が違う絵を選びます。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- PART 26: 必須の文法・構文パターン -->
-        <div class="mb-4 flex items-center gap-3 mt-8">
-            <span class="bg-emerald-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 26</span>
-            <h2 class="text-2xl font-bold text-slate-800">必須の文法・構文パターン</h2>
-        </div>
-        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-emerald-400">状況を特定する重要な文法です。「完了」か「進行中」かなどの違いを見極めましょう。</p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-            
-            <!-- カード：時間とタイミング -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-orange-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>⏱️ 時間とタイミング</span>
-                    <span class="text-orange-100 text-sm">時間の計算</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">快要…了</div>
-                                <div class="text-xs text-slate-500">kuàiyào...le</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">もうすぐ〜になる</span>
-                                <p class="text-sm">「完全にそうなる直前の状態」を探します。水ならフチまで、時間ならその時刻の数分前の時計の絵になります。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">早 / 晚</div>
-                                <div class="text-xs text-slate-500">zǎo / wǎn</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">早い / 遅い</span>
-                                <p class="text-sm">「今天晚了半小時（今日は30分遅れた）」。基準の時間から「プラス（遅い）」か「マイナス（早い）」かを正確に計算して時計の絵を選びます。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">先經過</div>
-                                <div class="text-xs text-slate-500">xiān jīngguò</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">先に〜を通り過ぎる</span>
-                                <p class="text-sm">「到B以前，會先經過A（Bに着く前にAを通り過ぎる）」。目的地の<b>手前</b>にある建物を探します。順序の引っかけに注意！</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：動作と比較 -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-blue-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🔄 動作と比較</span>
-                    <span class="text-blue-100 text-sm">行動と結果</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">一邊…一邊</div>
-                                <div class="text-xs text-slate-500">yìbiān...yìbiān</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜しながら〜する</span>
-                                <p class="text-sm">2つの動作を「同時進行」している絵を選びます。順番に行うのは「先...再...」です。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">…完</div>
-                                <div class="text-xs text-slate-500">...wán</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜し終える</span>
-                                <p class="text-sm">動詞＋完（完了）。動作が終わった結果を見ます。薬なら「すでに飲んで無くなっている」状態の絵。</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">一樣多</div>
-                                <div class="text-xs text-slate-500">yíyàng duō</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">同じくらい多い</span>
-                                <p class="text-sm">「大人跟小孩一樣多（大人と子供は同数だ）」。イラスト内の人数や量を数え、同じ数になっているものを選びます。</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="text-center bg-teal-50 rounded-xl p-6 border border-teal-100">
-            <p class="text-teal-800 font-bold mb-2">💡 学習のアドバイス</p>
-            <p class="text-sm text-teal-700">単語帳で字面だけを覚えるのではなく、短い例文（フレーズ）を作って<b>「声に出して」</b>覚えるのが一番の近道です。加油！</p>
-        </div>
-
-    </main>
-
-    <script>
-        // カスタム通知機能（alertの代用）
-        function showNotification(message) {
-            const notif = document.getElementById('notification');
-            notif.textContent = message;
-            notif.classList.remove('opacity-0');
-            
-            setTimeout(() => {
-                notif.classList.add('opacity-0');
-            }, 3000);
-        }
-
-        // TTS (Text-to-Speech) 設定：台湾華語の音声再生
-        document.addEventListener('DOMContentLoaded', () => {
-            // 中国語の漢字がセットされているクラス（文字サイズが大きいもの）を全て取得
-            const words = document.querySelectorAll('.tc.text-2xl, .tc.text-xl, .tc.text-lg, .speakable');
-            
-            words.forEach(wordEl => {
-                // クリック可能であることを視覚的に示すスタイルを追加
-                wordEl.classList.add('cursor-pointer', 'hover:text-teal-500', 'hover:scale-110', 'transition-all', 'duration-200', 'inline-block');
-                wordEl.title = "クリックして発音を聞く";
-
-                wordEl.addEventListener('click', (e) => {
-                    e.stopPropagation(); // 他のクリックイベントの発火を防ぐ
-                    
-                    // 読み上げるテキストの整形 
-                    // 例: "聊(天)" -> "聊天", "坐 / 搭" -> "坐，搭"（カンマを入れると一呼吸おいて読んでくれます）
-                    let rawText = wordEl.innerText.trim();
-                    let textToSpeak = rawText.replace(/[()]/g, '').replace(/\s*\/\s*/g, '，');
-
-                    if ('speechSynthesis' in window) {
-                        // 連続クリック時に前の音声をキャンセル
-                        window.speechSynthesis.cancel();
-
-                        const utterance = new SpeechSynthesisUtterance(textToSpeak);
-                        utterance.lang = 'zh-TW'; // 台湾華語を指定
-                        utterance.rate = 0.85;    // 学習用に標準より少しだけゆっくり読む
-
-                        // OSやブラウザに搭載されている台湾華語の音声を優先的にセット
-                        const voices = window.speechSynthesis.getVoices();
-                        const twVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-Hant-TW');
-                        if (twVoice) {
-                            utterance.voice = twVoice;
-                        }
-
-                        // 再生中であることがわかるように文字色を一時的に変える
-                        const originalColor = wordEl.style.color;
-                        wordEl.style.color = '#0d9488'; // teal-600
-                        utterance.onend = () => {
-                            wordEl.style.color = originalColor;
-                        };
-
-                        window.speechSynthesis.speak(utterance);
-                    } else {
-                        showNotification("お使いのブラウザは音声再生に対応していません。");
-                    }
-                });
-            });
-
-            // 音声リストの非同期読み込みに対応（初回クリック時に声が出ないバグの防止）
-            if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
-                window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-            }
-        });
-    </script>
-
-    <footer class="text-center mt-12 text-slate-400 text-sm pb-8">
-        Created for TOCFL Preparation
-    </footer>
-
-</body>
-</html>
+                <div class="bg-red-600 text-white py-3 px-
