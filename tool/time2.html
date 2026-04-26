@@ -1216,13 +1216,14 @@
       </div>
     </section>
 
-    <!-- 9. TOCFL Test Strategies -->
+    <!-- 9. TOCFL Test Strategies & Keywords -->
     <section class="bg-purple-50 border-t-4 border-purple-500 rounded-3xl shadow-sm p-6 md:p-8">
-      <h2 class="text-2xl md:text-3xl font-bold text-purple-900 mb-8 text-center flex items-center justify-center gap-2">
-        <span>🎧</span> 9. TOCFL (Band A) リスニング試験対策
+      <h2 class="text-2xl md:text-3xl font-bold text-purple-900 mb-4 text-center flex items-center justify-center gap-2">
+        <span>🎧</span> 9. TOCFL (Band A) リスニング試験対策：イラスト問題の極意
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+      <p class="text-center text-slate-700 mb-8 max-w-2xl mx-auto">イラスト問題は単なる単語テストではありません。<strong>「時間の流れ」「状態の変化」「空間の順序」</strong>など、文法の核となるメタ的な認識が視覚的に問われます。</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Strategy 1 -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-purple-100">
           <div class="flex items-center gap-2 mb-3">
@@ -1273,8 +1274,124 @@
             </li>
           </ul>
         </div>
-
       </div>
+
+      <!-- 鉄板キーワードセクション (ReactのコードをHTML/Tailwind化) -->
+      <div class="bg-white rounded-3xl shadow-md border-t-4 border-fuchsia-500 overflow-hidden">
+        <div class="bg-fuchsia-50 p-4 md:p-6 border-b border-fuchsia-100">
+          <h3 class="text-xl md:text-2xl font-bold text-fuchsia-900 flex items-center gap-2">
+            <span>🎯</span> イラスト問題で狙われる！鉄板パターン＆キーワード
+          </h3>
+        </div>
+        
+        <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Category 1: 時間とタイミング -->
+          <div class="space-y-4">
+            <h4 class="font-bold text-lg text-slate-800 flex items-center gap-2 border-b-2 border-orange-200 pb-1"><span class="text-xl">⏳</span> 時間とタイミング</h4>
+            
+            <div class="bg-orange-50/50 rounded-xl p-4 border border-orange-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-orange-800">快要...了 / 快...</p>
+                <button onclick="speak('水快要滿了')" class="text-xs bg-white text-orange-600 hover:bg-orange-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">もうすぐ〜になる</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：水<strong class="text-orange-600">快要</strong>滿<strong class="text-orange-600">了</strong>（水がもうすぐいっぱいになる）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-orange-700">💡メタ視点：</span>「完全にそうなる直前」を捉えるカメラワーク。水ならフチのギリギリ、時間なら指定時刻の数分前の絵を選びます。</p>
+            </div>
+
+            <div class="bg-orange-50/50 rounded-xl p-4 border border-orange-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-orange-800">早 / 晚</p>
+                <button onclick="speak('今天晚了半小時')" class="text-xs bg-white text-orange-600 hover:bg-orange-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">早い / 遅い</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：今天<strong class="text-orange-600">晚了</strong>半小時（今日は30分遅れた）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-orange-700">💡メタ視点：</span>基準となる時間から「プラス（遅い）」か「マイナス（早い）」かを正確に計算する数学的処理が求められます。</p>
+            </div>
+          </div>
+
+          <!-- Category 2: 動作と状態 -->
+          <div class="space-y-4">
+            <h4 class="font-bold text-lg text-slate-800 flex items-center gap-2 border-b-2 border-blue-200 pb-1"><span class="text-xl">🏃</span> 動作と状態</h4>
+            
+            <div class="bg-blue-50/50 rounded-xl p-4 border border-blue-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-blue-800">一邊...，一邊...</p>
+                <button onclick="speak('一邊寫作業，一邊吃東西')" class="text-xs bg-white text-blue-600 hover:bg-blue-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">〜しながら、〜する</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：<strong class="text-blue-600">一邊</strong>寫作業，<strong class="text-blue-600">一邊</strong>吃東西（宿題をしながら食べる）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-blue-700">💡メタ視点：</span>2つの動作が同じ時間軸で重なっている「同時進行」の絵を探します。順番に行う「先...再...」との区別が重要。</p>
+            </div>
+
+            <div class="bg-blue-50/50 rounded-xl p-4 border border-blue-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-blue-800">動詞 ＋ 完 / 著</p>
+                <div class="flex gap-1">
+                  <button onclick="speak('吃完藥以後')" class="text-xs bg-white text-blue-600 hover:bg-blue-100 px-2 py-1 rounded shadow-sm">完🔊</button>
+                  <button onclick="speak('門跟窗戶都是關著的')" class="text-xs bg-white text-blue-600 hover:bg-blue-100 px-2 py-1 rounded shadow-sm">著🔊</button>
+                </div>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">し終える / 〜している状態</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：吃<strong class="text-blue-600">完</strong>藥以後（薬を飲み終えた後） / 門都是關<strong class="text-blue-600">著</strong>的（ドアが閉まっている）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-blue-700">💡メタ視点：</span>動作が終わった「結果の形」を見ます。薬を吃完なら「薬がなくなっている」、關著なら「その状態が持続している」絵を選びます。</p>
+            </div>
+          </div>
+
+          <!-- Category 3: 否定と比較 -->
+          <div class="space-y-4">
+            <h4 class="font-bold text-lg text-slate-800 flex items-center gap-2 border-b-2 border-rose-200 pb-1"><span class="text-xl">⚖️</span> 否定と比較</h4>
+            
+            <div class="bg-rose-50/50 rounded-xl p-4 border border-rose-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-rose-800">一個也（都）沒有</p>
+                <button onclick="speak('咖啡店裡一個客人也沒有')" class="text-xs bg-white text-rose-600 hover:bg-rose-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">一つも（一人も）〜ない</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：咖啡店裡<strong class="text-rose-600">一個</strong>客人<strong class="text-rose-600">也沒有</strong>（客が一人もいない）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-rose-700">💡メタ視点：</span>存在の「完全なゼロ」を探します。店員がいても「客人(客)」がゼロなら正解。「沒＋動詞（〜していない）」の経験否定の絵にも注意。</p>
+            </div>
+
+            <div class="bg-rose-50/50 rounded-xl p-4 border border-rose-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-rose-800">A 跟 B 一樣多</p>
+                <button onclick="speak('大人跟小孩一樣多')" class="text-xs bg-white text-rose-600 hover:bg-rose-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">AとBは同じくらい多い</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：大人<strong class="text-rose-600">跟</strong>小孩<strong class="text-rose-600">一樣</strong>多（大人と子供が同数）</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-rose-700">💡メタ視点：</span>天秤が釣り合っている状態。イラスト内の人数や量を瞬時にカウントし、「イコール」になっているものを特定します。</p>
+            </div>
+          </div>
+
+          <!-- Category 4: 場所と理想/現実 -->
+          <div class="space-y-4">
+            <h4 class="font-bold text-lg text-slate-800 flex items-center gap-2 border-b-2 border-emerald-200 pb-1"><span class="text-xl">🗺️</span> 空間と状況のギャップ</h4>
+            
+            <div class="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-emerald-800">〜以前，先經過...</p>
+                <button onclick="speak('到第二個路口以前，會先經過銀行')" class="text-xs bg-white text-emerald-600 hover:bg-emerald-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">〜の前に、先に...を通り過ぎる</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：到路口<strong class="text-emerald-600">以前</strong>，會<strong class="text-emerald-600">先</strong>經過銀行</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-emerald-700">💡メタ視点：</span>目的地の「手前」に視点を巻き戻す空間認識。通り過ぎる順序の引っかけ（Aの前にBがある）に要注意。</p>
+            </div>
+
+            <div class="bg-purple-50/50 rounded-xl p-4 border border-purple-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="font-bold text-purple-800">想要 A，但是收到 B</p>
+                <button onclick="speak('想要鞋子，但是收到襪子')" class="text-xs bg-white text-purple-600 hover:bg-purple-100 px-2 py-1 rounded shadow-sm">🔊</button>
+              </div>
+              <p class="text-sm font-medium text-slate-700 mb-2">Aが欲しいけど、Bをもらった</p>
+              <p class="text-xs text-slate-600 bg-white p-2 rounded border border-slate-100 mb-2">例：<strong class="text-purple-600">想要</strong>鞋子，<strong class="text-purple-600">但是</strong>收到襪子</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed"><span class="font-bold text-purple-700">💡メタ視点：</span>視覚情報と概念のギャップ。「頭の吹き出し（理想）」と「手に持っている物（現実）」が違う絵を選びます。「雙(ペア)」などの量詞や「掛號(受付)」「幫人(してあげる側)」などの役割特定の単語にも注意！</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
     <!-- Footer -->
