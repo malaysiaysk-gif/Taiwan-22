@@ -230,6 +230,32 @@
                   <button onclick="speak('有一點冷。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
                 </div>
               </div>
+              
+              <!-- NEW: 正在 / 正要 -->
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-lg">正在 <span class="text-[11px] font-normal text-slate-500">(zhèngzài) 〜している</span></span>
+                </div>
+                <div class="flex flex-col gap-1 mt-1">
+                  <div class="flex items-center justify-between">
+                    <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">正在</strong> 吃飯。</span>
+                    <button onclick="speak('我正在吃飯。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                  </div>
+                  <span class="text-[10px] text-slate-500">（今まさに食べている所）</span>
+                </div>
+              </div>
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-lg">正要 <span class="text-[11px] font-normal text-slate-500">(zhèngyào) 〜する所</span></span>
+                </div>
+                <div class="flex flex-col gap-1 mt-1">
+                  <div class="flex items-center justify-between">
+                    <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">正要</strong> 出門。</span>
+                    <button onclick="speak('我正要出門。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                  </div>
+                  <span class="text-[10px] text-slate-500">（今ちょうど出かける所）</span>
+                </div>
+              </div>
             </div>
             <p class="text-[11px] text-slate-500 mt-3 pt-2 border-t border-slate-100">※「他們<strong class="text-indigo-600">星期六也</strong>有課」のように、副詞は時間詞（いつ）より後ろに置きます。</p>
           </div>
@@ -966,7 +992,7 @@
       <h2 class="text-2xl md:text-3xl font-black text-indigo-900 mb-2 text-center flex items-center justify-center gap-2">
         <span>👁️‍🗨️</span> 8. 文法試験攻略のメタ視点
       </h2>
-      <p class="text-center text-slate-600 mb-8 font-medium">〜 出題者の意図と空間認識を見抜く10の極意 〜</p>
+      <p class="text-center text-slate-600 mb-8 font-medium">〜 出題者の意図と空間認識を見抜く12の極意 〜</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
@@ -1086,29 +1112,71 @@
         </div>
 
         <!-- Card 8 -->
-        <div class="bg-white rounded-2xl p-6 border-l-8 border-sky-500 shadow-sm hover:shadow-md transition-shadow lg:col-span-2">
+        <div class="bg-white rounded-2xl p-6 border-l-8 border-sky-500 shadow-sm hover:shadow-md transition-shadow lg:col-span-1">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-2xl">📦</span>
             <h3 class="text-lg font-bold text-slate-800">8. 名詞の「場所化」魔法</h3>
           </div>
           <p class="text-sm text-slate-600 mb-4">「手」や「机」はそのままでは場所として使えない。「裡(中)・上(上)」などを付けて<strong>空間(ステージ)</strong>に進化させる！</p>
-          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 flex flex-col sm:flex-row justify-around items-center gap-3">
-            <div class="text-sm font-medium flex items-center gap-2">
-              <span class="text-gray-500">客廳(リビング)</span> ➔ <span class="text-sky-600 font-bold text-base bg-sky-50 px-2 py-0.5 rounded">客廳裡</span>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 flex flex-col justify-around gap-2">
+            <div class="text-sm font-medium flex justify-between items-center">
+              <div><span class="text-gray-500 text-xs mr-1">客廳 ➔</span><span class="text-sky-600 font-bold text-base bg-sky-50 px-1 rounded">客廳裡</span></div>
               <button onclick="speak('客廳裡')" class="text-xs bg-white text-slate-600 hover:bg-slate-200 px-2 py-1 rounded shadow-sm border border-slate-200">🔊</button>
             </div>
-            <div class="text-sm font-medium flex items-center gap-2">
-              <span class="text-gray-500">桌子(机)</span> ➔ <span class="text-sky-600 font-bold text-base bg-sky-50 px-2 py-0.5 rounded">桌子上</span>
+            <div class="text-sm font-medium flex justify-between items-center">
+              <div><span class="text-gray-500 text-xs mr-1">桌子 ➔</span><span class="text-sky-600 font-bold text-base bg-sky-50 px-1 rounded">桌子上</span></div>
               <button onclick="speak('桌子上')" class="text-xs bg-white text-slate-600 hover:bg-slate-200 px-2 py-1 rounded shadow-sm border border-slate-200">🔊</button>
             </div>
           </div>
         </div>
 
         <!-- Card 9 -->
-        <div class="bg-white rounded-2xl p-6 border-l-8 border-pink-500 shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-3">
+        <div class="bg-white rounded-2xl p-6 border-l-8 border-fuchsia-500 shadow-sm hover:shadow-md transition-shadow lg:col-span-1">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-2xl">⏱️</span>
+            <h3 class="text-lg font-bold text-slate-800">9. 空欄の罠：「〜的」の相棒</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">出題者は学習者が「いつ＝什麼時候」は知っていても「〜の時＝的時候」を見落とす弱点を突いてきます。空欄の直前に<strong class="text-fuchsia-600 bg-fuchsia-50 px-1 rounded">的</strong>があれば、高確率で<strong class="text-slate-800">時候</strong>が入ります！</p>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 space-y-2">
+            <div class="flex justify-between items-center text-sm font-medium">
+              <div>吃飯<strong class="text-fuchsia-600 font-bold text-lg bg-fuchsia-50 px-1 rounded mx-0.5">的</strong><strong class="text-slate-800 text-lg">時候</strong> <span class="text-[10px] text-slate-500 block">ご飯を食べる時</span></div>
+              <button onclick="speak('吃飯的時候')" class="text-xs bg-white text-slate-600 hover:bg-slate-200 px-2 py-1 rounded shadow-sm border border-slate-200">🔊</button>
+            </div>
+            <div class="border-t border-slate-200 my-1"></div>
+            <div class="flex justify-between items-center text-sm font-medium">
+              <div>放假<strong class="text-fuchsia-600 font-bold text-lg bg-fuchsia-50 px-1 rounded mx-0.5">的</strong><strong class="text-slate-800 text-lg">時候</strong> <span class="text-[10px] text-slate-500 block">休みの時</span></div>
+              <button onclick="speak('放假的時候')" class="text-xs bg-white text-slate-600 hover:bg-slate-200 px-2 py-1 rounded shadow-sm border border-slate-200">🔊</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="bg-white rounded-2xl p-6 border-l-8 border-rose-400 shadow-sm hover:shadow-md transition-shadow lg:col-span-1">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-2xl">🐢</span>
+            <h3 class="text-lg font-bold text-slate-800">10. 遅さの「才」と秒殺消去法</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">話し手が「時間がかかっている・遅い」と感じた時、<strong class="bg-rose-50 text-rose-700 px-1 rounded">時間詞＋才＋動詞</strong>を使います。「才」の意味に加えて、時間詞との「相性」を使った消去法も超重要です！</p>
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 space-y-3">
+            <div class="flex justify-between items-center text-sm font-medium">
+              <div>一個小時後<strong class="text-rose-600 font-bold text-lg bg-rose-50 px-1 rounded mx-0.5">才</strong>回來<br><span class="text-[10px] text-slate-500 block mt-1">1時間後になってようやく帰ってくる</span></div>
+              <button onclick="speak('一個小時後才回來')" class="text-xs bg-white text-slate-600 hover:bg-slate-200 px-2 py-1 rounded shadow-sm border border-slate-200">🔊</button>
+            </div>
+            <div class="border-t border-slate-200"></div>
+            <div>
+              <p class="text-[11px] font-bold text-slate-700 mb-1 flex items-center gap-1"><span class="text-rose-500 text-sm">❌</span> なぜ「常」は秒で消去できるの？</p>
+              <p class="text-[10px] text-slate-600 leading-relaxed">
+                「一個小時後(1時間後)」のような<strong class="text-slate-800 underline decoration-slate-300 underline-offset-2">1回きりの特定の時間</strong>と、「常(よく〜する)」のような<strong class="text-slate-800 bg-white px-1 border border-slate-200 rounded">習慣・繰り返しの頻度副詞</strong>は、水と油のように絶対に混ざりません！（× 1時間後によく帰る）この矛盾を見抜けば、意味を訳さなくても選択肢を消去できます！
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="bg-white rounded-2xl p-6 border-l-8 border-pink-500 shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-2">
           <div class="flex items-center gap-2 mb-4">
             <span class="text-2xl">🎥</span>
-            <h3 class="text-xl font-bold text-slate-800">9. 「有」の超進化：存現文（映像的描写）</h3>
+            <h3 class="text-xl font-bold text-slate-800">11. 「有」の超進化：存現文（映像的描写）</h3>
           </div>
           <p class="text-sm text-slate-600 mb-4">「有（ある）」の代わりに<strong>「動詞＋著（〜されている）」</strong>を使うと、まるで映画のカメラがズームインしたような生き生きとした描写になります。構造は「有」と全く同じ！</p>
           <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 relative">
@@ -1139,11 +1207,11 @@
           </div>
         </div>
 
-        <!-- Card 10 (Comparison Table) -->
+        <!-- Card 12 (Comparison Table) -->
         <div class="bg-slate-800 rounded-3xl p-6 md:p-8 border-l-8 border-yellow-400 shadow-xl md:col-span-2 lg:col-span-3 text-white overflow-hidden">
           <div class="flex items-center gap-3 mb-4">
             <span class="text-3xl">📊</span>
-            <h3 class="text-xl md:text-2xl font-bold text-yellow-400">10. 究極対決！空間と存在のニュアンス比較表</h3>
+            <h3 class="text-xl md:text-2xl font-bold text-yellow-400">12. 究極対決！空間と存在のニュアンス比較表</h3>
           </div>
           <p class="text-sm text-slate-300 mb-6 leading-relaxed">「ある・いる」を表現する4つの文法。主語が「特定」か「不特定」か、何を強調したいかで語順と使う単語が完全に変わります。</p>
           
