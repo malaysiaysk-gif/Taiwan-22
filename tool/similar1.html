@@ -32,7 +32,7 @@
 </head>
 <body class="antialiased min-h-screen pb-12 relative">
 
-    <!-- 通知エリア (構造を修正) -->
+    <!-- 通知エリア -->
     <div id="notification" class="fixed top-4 right-4 bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-50 transform translate-y-[-10px] flex items-center gap-3">
         <span class="text-xl">🔊</span>
         <span id="notification-text" class="font-medium">お使いのブラウザは音声再生に対応していません。</span>
@@ -87,7 +87,7 @@
             </div>
         </section>
 
-        <!-- PART 1: 似た意味の動詞 -->
+        <!-- PART 1: 似た意味の動詞・名詞 -->
         <div class="mb-4 flex items-center gap-3">
             <span class="bg-teal-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 1</span>
             <h2 class="text-2xl font-bold text-slate-800">意味が似ている単語の使い分け</h2>
@@ -355,6 +355,112 @@
                 </div>
             </div>
 
+            <!-- カード：写真を撮る・写真 -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-fuchsia-500 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>📸 写真を撮る・写真</span>
+                    <span class="text-fuchsia-200 text-sm">動詞と名詞</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">拍照</div>
+                                <div class="text-xs text-slate-500">pāizhào</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真を撮る</span>
+                                <p class="text-sm">最も一般的。カジュアルな撮影から広く使われる。対象を言う時は「拍」だけを使う事が多い。<br><span class="text-fuchsia-600 tc text-xs">例：拍風景（風景を撮る）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">照相</div>
+                                <div class="text-xs text-slate-500">zhàoxiàng</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真撮影する</span>
+                                <p class="text-sm">やや改まった表現。<b>後ろに目的語（何を撮るか）を置けない離合詞。</b><br><span class="text-fuchsia-600 tc text-xs">❌ 照相風景 → ⭕️ 照風景</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3 bg-fuchsia-50 -mx-5 px-5 pb-3 rounded-b-xl">
+                            <div class="w-20 shrink-0 text-center mt-2">
+                                <div class="text-2xl font-bold tc text-fuchsia-700 speakable">照片</div>
+                                <div class="text-xs text-fuchsia-600 mt-1 speakable">相片</div>
+                            </div>
+                            <div class="mt-2 flex-1">
+                                <span class="bg-fuchsia-100 text-fuchsia-800 text-xs px-2 py-1 rounded mb-1 inline-block">写真（名詞）</span>
+                                <p class="text-sm text-slate-700">「照片（zhàopiàn）」や「相片（xiàngpiàn）」と言います。量詞は「<span class="speakable font-bold tc text-fuchsia-700 hover:text-teal-500">張</span>（zhāng）」を使います。<br><span class="text-fuchsia-600 tc text-xs">例：一張照片（1枚の写真）</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード：寒い・冷たい -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-blue-400 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>❄️ 寒い・冷たい</span>
+                    <span class="text-blue-100 text-sm">心地よさの違い</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">冷</div>
+                                <div class="text-xs text-slate-500">lěng</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">寒い・冷たい</span>
+                                <p class="text-sm">気温が「寒い」、物が「冷たい」の両方に使う。基本的に<b>ネガティブ（不快）な寒さ</b>。<br><span class="text-blue-600 tc text-xs">例：天氣很冷、冷水（冷水）</span></p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">涼快</div>
+                                <div class="text-xs text-slate-500">liángkuai</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">涼しい</span>
+                                <p class="text-sm">秋の気候や、夏の夕立の後のような<b>「心地よい涼しさ」</b>。「冷」とは違いポジティブなニュアンス。<br><span class="text-blue-600 tc text-xs">例：秋天很涼快</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- カード：家電（冷やすもの） -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
+                <div class="bg-cyan-400 text-white py-3 px-5 font-bold flex justify-between items-center">
+                    <span>🧊 家電（冷やすもの）</span>
+                    <span class="text-cyan-50 text-sm">生活の必須語彙</span>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">冰箱</div>
+                                <div class="text-xs text-slate-500">bīngxiāng</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">冷蔵庫</span>
+                                <p class="text-sm">「氷（冰）の箱（箱）」という成り立ちです。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 border-t border-slate-100 pt-3">
+                            <div class="w-20 shrink-0 text-center">
+                                <div class="text-2xl font-bold tc text-slate-800 speakable">冷氣</div>
+                                <div class="text-xs text-slate-500">lěngqì</div>
+                            </div>
+                            <div>
+                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">クーラー（エアコン）</span>
+                                <p class="text-sm">台湾のリスニングでは空調（kōngtiáo）よりも「冷氣」が圧倒的によく出ます。<br><span class="text-cyan-700 tc text-xs">例：開冷氣（クーラーをつける）</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- カード：手伝う -->
              <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
                 <div class="bg-rose-500 text-white py-3 px-5 font-bold flex justify-between items-center">
@@ -524,38 +630,6 @@
                 </div>
             </div>
 
-            <!-- カード：写真を撮る -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-fuchsia-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>📸 写真を撮る</span>
-                    <span class="text-fuchsia-200 text-sm">目的語の有無</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">拍照</div>
-                                <div class="text-xs text-slate-500">pāizhào</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真を撮る</span>
-                                <p class="text-sm">最も一般的。カジュアルな撮影から広く使われる。対象を言う時は「拍」だけを使う事が多い。<br><span class="text-fuchsia-600 tc text-xs">例：拍風景（風景を撮る）</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">照相</div>
-                                <div class="text-xs text-slate-500">zhàoxiàng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">写真撮影する</span>
-                                <p class="text-sm">やや改まった表現。<b>後ろに目的語（何を撮るか）を置けない離合詞。</b><br><span class="text-fuchsia-600 tc text-xs">❌ 照相風景 → ⭕️ 照風景</span></p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
             <!-- カード：送る -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
                 <div class="bg-lime-600 text-white py-3 px-5 font-bold flex justify-between items-center">
@@ -688,38 +762,6 @@
                             <div>
                                 <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">暖かい</span>
                                 <p class="text-sm">春の気候や、冬に暖房が効いていて<b>「心地よく暖かい」</b>状態。<br><span class="text-red-600 tc text-xs">例：春天很暖和</span></p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- カード：寒い・冷たい -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-blue-400 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>❄️ 寒い・冷たい</span>
-                    <span class="text-blue-100 text-sm">心地よさの違い</span>
-                </div>
-                <div class="p-5">
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">冷</div>
-                                <div class="text-xs text-slate-500">lěng</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">寒い・冷たい</span>
-                                <p class="text-sm">気温が「寒い」、物が「冷たい」の両方に使う。基本的に<b>ネガティブ（不快）な寒さ</b>。<br><span class="text-blue-600 tc text-xs">例：天氣很冷、冷水（冷水）</span></p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 border-t border-slate-100 pt-3">
-                            <div class="w-20 shrink-0 text-center">
-                                <div class="text-2xl font-bold tc text-slate-800 speakable">涼快</div>
-                                <div class="text-xs text-slate-500">liángkuai</div>
-                            </div>
-                            <div>
-                                <span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">涼しい</span>
-                                <p class="text-sm">秋の気候や、夏の夕立の後のような<b>「心地よい涼しさ」</b>。「冷」とは違いポジティブなニュアンス。<br><span class="text-blue-600 tc text-xs">例：秋天很涼快</span></p>
                             </div>
                         </li>
                     </ul>
@@ -1241,11 +1283,18 @@
                             <span class="block text-xs">お椀(量詞)</span>
                         </div>
                     </li>
-                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
                         <span class="tc text-xl font-bold text-slate-800 speakable">萬</span>
                         <div class="text-right">
-                            <span class="block text-xs text-slate-500">wàn</span>
+                            <span class="block text-xs text-slate-500 font-mono">wàn</span>
                             <span class="block text-xs">一万</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">玩</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">wán</span>
+                            <span class="block text-xs">遊ぶ</span>
                         </div>
                     </li>
                 </ul>
