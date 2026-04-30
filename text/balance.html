@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退職カウントダウン - 12月8日へ向けて</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .pulse-text {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center justify-center p-4">
+
+    <main class="w-full max-w-4xl">
+        
+        <!-- カウントダウン セクション -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10 text-center border-t-4 border-indigo-500">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-700 mb-6">12月8日まで、あと...</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
+                    <div id="cd-days" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
+                    <div class="text-sm font-bold text-indigo-400 mt-1">出勤日</div>
+                </div>
+                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
+                    <div id="cd-hours" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
+                    <div class="text-sm font-bold text-indigo-400 mt-1">時間</div>
+                </div>
+                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
+                    <div id="cd-mins" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
+                    <div class="text-sm font-bold text-indigo-400 mt-1">分</div>
+                </div>
+                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
+                    <div id="cd-secs" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
+                    <div class="text-sm font-bold text-indigo-400 mt-1">秒</div>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 rounded-xl p-6 shadow-inner">
+                <p class="text-gray-400 text-sm font-bold mb-2 tracking-widest">総残り秒数 (リアルタイム更新)</p>
+                <div id="cd-total-secs" class="text-5xl md:text-7xl font-mono font-black text-red-500 pulse-text tracking-tighter">
+                    --
+                </div>
+            </div>
+            
+            <!-- プログレスバー -->
+            <div class="mt-8">
+                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                    <span>5月1日</span>
+                    <span id="progress-text">--% 完了</span>
+                    <span>12月8日</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4 shadow-inner">
+                    <div id="progress-bar" class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 目標日時: 2026年12月8日 00:00:00
+        const targetDate = new Date('2026-12-08T00:00:00').getTime();
+        const startDate = new Date('2026-05-01T00:00:00').getTime();
+        
+        // 2026年のマレーシアの主要な全国祝日(予測含む)
+        const holidays2026 = [
+            '2026-05-01', // Labour Day (金)
+            '2026-05-27', // Hari Raya Haji (水 - 予想)
+            '2026-06-01', // Agong's Birthday (月)
+            '2026-06-17', // Awal Muharram (水 - 予想)
+            '2026-08-26', // Maulidur Rasul (水 - 予想)
+            '2026-08-31', // Merdeka Day (月)
+            '2026-09-16', // Malaysia Day (水)
+            '2026-11-09', // Deepavali振替休日 (月 - 11/8が日曜のため)
+        ];
+
+        // 現在日時からの残り出勤日数を計算する関数
+        function getRemainingWorkingDays() {
+            const end = new Date('2026-12-08T00:00:00'); 
+            let workingDays = 0;
+            let current = new Date();
+            current.setHours(0,0,0,0);
+
+            // 5月1日より前なら、5月1日を起点とする
+            const minStart = new Date('2026-05-01T00:00:00');
+            if (current < minStart) {
+                current = new Date(minStart);
+            }
+
+            while (current < end) {
+                const dayOfWeek = current.getDay();
+                const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                
+                const year = current.getFullYear();
+                const month = String(current.getMonth() + 1).padStart(2, '0');
+                const date = String(current.getDate()).padStart(2, '0');
+                const dateString = `${year}-${month}-${date}`;
+
+                const isHoliday = holidays2026.includes(dateString);
+
+                if (!isWeekend && !isHoliday) {
+                    workingDays++;
+                }
+                current.setDate(current.getDate() + 1);
+            }
+            // 有給(8)と病欠(10)を引く
+            return Math.max(0, workingDays - 18);
+        }
+
+        // カウントダウン更新関数
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                // 退職日を過ぎた場合
+                document.getElementById('cd-days').innerText = "0";
+                document.getElementById('cd-hours').innerText = "0";
+                document.getElementById('cd-mins').innerText = "0";
+                document.getElementById('cd-secs').innerText = "0";
+                document.getElementById('cd-total-secs').innerText = "0";
+                document.getElementById('progress-bar').style.width = "100%";
+                document.getElementById('progress-text').innerText = "100% 完了 - 自由です！";
+                return;
+            }
+
+            // 出勤日、時間、分、秒の計算
+            const workingDaysLeft = getRemainingWorkingDays();
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // 総残り秒数の計算
+            const totalSeconds = Math.floor(distance / 1000);
+
+            // DOMへ反映
+            document.getElementById('cd-days').innerText = workingDaysLeft;
+            document.getElementById('cd-hours').innerText = hours;
+            document.getElementById('cd-mins').innerText = minutes;
+            document.getElementById('cd-secs').innerText = seconds;
+            document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
+
+            // プログレスバーの計算 (5月1日〜12月1日を基準とする)
+            const totalDuration = targetDate - startDate;
+            const passedDuration = now - startDate;
+            
+            let progressPercentage = 0;
+            if (passedDuration > 0) {
+                progressPercentage = (passedDuration / totalDuration) * 100;
+            }
+            // 0%〜100%の間に収める
+            progressPercentage = Math.max(0, Math.min(100, progressPercentage));
+            
+            document.getElementById('progress-bar').style.width = progressPercentage + "%";
+            document.getElementById('progress-text').innerText = progressPercentage.toFixed(2) + "% 完了";
+        }
+
+        // 初期実行と1秒ごとのループ
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+    </script>
+</body>
+</html>

@@ -76,10 +76,17 @@
       padding-bottom: 8px;
       color: #e5e7eb;
     }
-    .tool-links {
-      display: flex;
-      flex-direction: column;
+ .tool-links {
+      display: grid; /* flexからgridに変更 */
+      grid-template-columns: repeat(3, 1fr); /* ここで「横3列」に指定 */
       gap: 12px;
+    }
+
+    /* スマホなど画面が狭いときは、縦1列に戻すための設定（追記） */
+    @media screen and (max-width: 768px) {
+      .tool-links {
+        grid-template-columns: 1fr;
+      }
     }
     .tool-btn {
       display: block;
@@ -302,6 +309,8 @@
           <div class="tool-links">
             <a href="text/text1.html" target="_blank" class="tool-btn btn-blue">🎯 テキスト発音</a>
             <a href="text/text70.html" target="_blank" class="tool-btn btn-green">🎯 テキスト単語70</a>
+           <a href="text/balance.html" target="_blank" class="tool-btn btn-green">🎯 残り日数</a>
+
 
 
 
