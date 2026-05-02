@@ -66,6 +66,23 @@
                     <div id="progress-bar" class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
                 </div>
             </div>
+
+            <!-- おもしろスケール表示 -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 shadow-sm">
+                    <div class="text-xs text-indigo-400 font-bold mb-2">👶 人生 (80年) で例えると...</div>
+                    <div id="scale-life" class="font-bold text-gray-700 text-sm leading-tight">--</div>
+                </div>
+                <div class="bg-yellow-50/50 p-4 rounded-xl border border-yellow-100 shadow-sm">
+                    <div class="text-xs text-yellow-500 font-bold mb-2">🛕 ピラミッド (全210段) なら...</div>
+                    <div id="scale-pyramid" class="font-bold text-gray-700 text-sm leading-tight">--</div>
+                </div>
+                <div class="bg-red-50/50 p-4 rounded-xl border border-red-100 shadow-sm">
+                    <div class="text-xs text-red-400 font-bold mb-2">🏛️ ローマ帝国 で言うと...</div>
+                    <div id="scale-rome" class="font-bold text-gray-700 text-sm leading-tight">--</div>
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -165,6 +182,48 @@
             
             document.getElementById('progress-bar').style.width = progressPercentage + "%";
             document.getElementById('progress-text').innerText = progressPercentage.toFixed(2) + "% 完了";
+
+            // --- おもしろスケール表示の計算 ---
+            
+            // 1. 人生スケール (80歳換算)
+            const lifeAge = Math.floor((progressPercentage / 100) * 80);
+            let lifeText = `${lifeAge}歳 `;
+            if (progressPercentage === 0) lifeText = "0歳<br><span class='text-xs text-gray-500'>(オギャー！産まれたて)</span>";
+            else if (progressPercentage >= 100) lifeText = "80歳<br><span class='text-xs text-gray-500'>(大往生・新たな来世へ！)</span>";
+            else if (lifeAge < 10) lifeText += "<br><span class='text-xs text-gray-500'>(まだまだこれから！)</span>";
+            else if (lifeAge < 20) lifeText += "<br><span class='text-xs text-gray-500'>(青春真っ只中！一番楽しい時期)</span>";
+            else if (lifeAge < 30) lifeText += "<br><span class='text-xs text-gray-500'>(社会の荒波に揉まれ中...)</span>";
+            else if (lifeAge < 40) lifeText += "<br><span class='text-xs text-gray-500'>(働き盛り・中間管理職の悲哀)</span>";
+            else if (lifeAge < 50) lifeText += "<br><span class='text-xs text-gray-500'>(人生の折り返し地点)</span>";
+            else if (lifeAge < 60) lifeText += "<br><span class='text-xs text-gray-500'>(酸いも甘いも噛み分けた)</span>";
+            else if (lifeAge < 70) lifeText += "<br><span class='text-xs text-gray-500'>(悠々自適の準備中)</span>";
+            else lifeText += "<br><span class='text-xs text-gray-500'>(悟りの境地・もうすぐゴール！)</span>";
+
+            // 2. ピラミッドスケール (約210段換算)
+            const pyramidSteps = Math.floor((progressPercentage / 100) * 210);
+            let pyramidText = `第${pyramidSteps}段目 `;
+            if (progressPercentage === 0) pyramidText = "0段目<br><span class='text-xs text-gray-500'>(更地の測量中・先は長い)</span>";
+            else if (progressPercentage >= 100) pyramidText = "210段目<br><span class='text-xs text-gray-500'>(キャップストーン設置！歴史に名を刻む)</span>";
+            else if (pyramidSteps < 50) pyramidText += "<br><span class='text-xs text-gray-500'>(土台作りが一番しんどい)</span>";
+            else if (pyramidSteps < 100) pyramidText += "<br><span class='text-xs text-gray-500'>(形が見えてきて少し楽しい)</span>";
+            else if (pyramidSteps < 150) pyramidText += "<br><span class='text-xs text-gray-500'>(高所作業で足がすくむ)</span>";
+            else pyramidText += "<br><span class='text-xs text-gray-500'>(頂上はもうすぐそこ！)</span>";
+
+            // 3. ローマ帝国スケール
+            let romeText = "";
+            if (progressPercentage === 0) romeText = "王政ローマ・建国神話<br><span class='text-xs text-gray-500'>(まだ国すらできてない)</span>";
+            else if (progressPercentage >= 100) romeText = "帝国滅亡・中世の幕開け<br><span class='text-xs text-gray-500'>(全ての軛から解き放たれた！)</span>";
+            else if (progressPercentage < 10) romeText = "アウグストゥス時代<br><span class='text-xs text-gray-500'>(初代皇帝・希望の始まり)</span>";
+            else if (progressPercentage < 30) romeText = "五賢帝時代<br><span class='text-xs text-gray-500'>(パクス・ロマーナ・一番安定して平和)</span>";
+            else if (progressPercentage < 50) romeText = "カラカラ帝時代<br><span class='text-xs text-gray-500'>(アントニヌス勅令・ちょっと迷走気味)</span>";
+            else if (progressPercentage < 70) romeText = "軍人皇帝時代<br><span class='text-xs text-gray-500'>(大混乱期・毎日がサバイバル)</span>";
+            else if (progressPercentage < 90) romeText = "コンスタンティヌス大帝時代<br><span class='text-xs text-gray-500'>(新体制構築・終わりへの準備)</span>";
+            else romeText = "末期・テオドシウス帝<br><span class='text-xs text-gray-500'>(東西分裂直前・ラストスパート)</span>";
+
+            // DOMへ反映
+            document.getElementById('scale-life').innerHTML = lifeText;
+            document.getElementById('scale-pyramid').innerHTML = pyramidText;
+            document.getElementById('scale-rome').innerHTML = romeText;
         }
 
         // 初期実行と1秒ごとのループ
