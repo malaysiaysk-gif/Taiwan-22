@@ -58,9 +58,9 @@
             <!-- プログレスバー -->
             <div class="mt-8">
                 <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
-                    <span>5月1日</span>
-                    <span id="progress-text">--% 完了</span>
-                    <span>12月8日</span>
+                    <span>5月1日 8:00</span>
+                    <span id="progress-text">--% | 状態確認中</span>
+                    <span>12月8日 17:00</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-4 shadow-inner">
                     <div id="progress-bar" class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
@@ -102,6 +102,46 @@
             '2026-09-16', // Malaysia Day (水)
             '2026-11-09', // Deepavali振替休日 (月 - 11/8が日曜のため)
         ];
+
+        // 業務時間（平日 8:00〜17:00、祝日除く）のミリ秒を計算する関数
+        function calculateWorkingTimeMs(startTimestamp, endTimestamp) {
+            if (startTimestamp >= endTimestamp) return 0;
+            
+            let totalMs = 0;
+            let current = new Date(startTimestamp);
+            
+            while (current.getTime() < endTimestamp) {
+                const year = current.getFullYear();
+                const month = String(current.getMonth() + 1).padStart(2, '0');
+                const date = String(current.getDate()).padStart(2, '0');
+                const dateString = `${year}-${month}-${date}`;
+                
+                const dayOfWeek = current.getDay();
+                const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                const isHoliday = holidays2026.includes(dateString);
+                
+                // 営業日の場合
+                if (!isWeekend && !isHoliday) {
+                    const workStart = new Date(current);
+                    workStart.setHours(8, 0, 0, 0);
+                    const workEnd = new Date(current);
+                    workEnd.setHours(17, 0, 0, 0);
+                    
+                    const calcStart = Math.max(current.getTime(), workStart.getTime());
+                    const calcEnd = Math.min(endTimestamp, workEnd.getTime());
+                    
+                    if (calcStart < calcEnd) {
+                        totalMs += (calcEnd - calcStart);
+                    }
+                }
+                
+                // 翌日の 00:00:00 に進める
+                current.setDate(current.getDate() + 1);
+                current.setHours(0, 0, 0, 0);
+            }
+            
+            return totalMs;
+        }
 
         // 現在日時からの残り出勤日数を計算する関数
         function getRemainingWorkingDays() {
@@ -169,19 +209,34 @@
             document.getElementById('cd-secs').innerText = seconds;
             document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
 
-            // プログレスバーの計算 (5月1日〜12月1日を基準とする)
-            const totalDuration = targetDate - startDate;
-            const passedDuration = now - startDate;
+            // プログレスバーの計算 (業務時間ベース: 5/1 8:00 〜 12/8 17:00)
+            const targetWorkEnd = new Date('2026-12-08T17:00:00').getTime();
+            const startWorkBegin = new Date('2026-05-01T08:00:00').getTime();
+            
+            const totalWorkMs = calculateWorkingTimeMs(startWorkBegin, targetWorkEnd);
+            const passedWorkMs = calculateWorkingTimeMs(startWorkBegin, now);
             
             let progressPercentage = 0;
-            if (passedDuration > 0) {
-                progressPercentage = (passedDuration / totalDuration) * 100;
+            if (totalWorkMs > 0) {
+                progressPercentage = (passedWorkMs / totalWorkMs) * 100;
             }
             // 0%〜100%の間に収める
             progressPercentage = Math.max(0, Math.min(100, progressPercentage));
             
             document.getElementById('progress-bar').style.width = progressPercentage + "%";
-            document.getElementById('progress-text').innerText = progressPercentage.toFixed(2) + "% 完了";
+            
+            // 現在が業務時間内かどうか判定してステータス表示
+            const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}-${String(new Date().getDate()).padStart(2,'0')}`;
+            const isWeekendNow = (new Date().getDay() === 0 || new Date().getDay() === 6);
+            const isHolidayNow = holidays2026.includes(todayStr);
+            const hourNow = new Date().getHours();
+            const isWorkingHoursNow = (!isWeekendNow && !isHolidayNow && hourNow >= 8 && hourNow < 17);
+
+            if (isWorkingHoursNow) {
+                document.getElementById('progress-text').innerHTML = `<span class="text-green-600 font-black">▶ 業務中 (現在: ${progressPercentage.toFixed(5)}%)</span>`;
+            } else {
+                document.getElementById('progress-text').innerHTML = `<span class="text-orange-500 font-bold">⏸ 業務外 (現在の進捗 ${progressPercentage.toFixed(5)}% を保持中)</span>`;
+            }
 
             // --- おもしろスケール表示の計算 ---
             
