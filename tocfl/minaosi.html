@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A メタ攻略インフォグラフィック（完全版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+        .bg-gradient-1 { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
+        .bg-gradient-2 { background: linear-gradient(135deg, #f59e0b, #b45309); }
+        .highlight-marker {
+            background: linear-gradient(transparent 60%, #fef08a 60%);
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body class="p-2 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-slate-50 rounded-3xl shadow-2xl overflow-hidden">
+        
+        <!-- Header -->
+        <header class="bg-slate-900 text-white p-8 md:p-12 text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-400 to-transparent"></div>
+            <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-4 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-teal-200">
+                TOCFL Band A 読解メタ攻略<span class="text-xl align-top">【完全版】</span>
+            </h1>
+            <p class="text-lg md:text-xl font-medium text-slate-300 relative z-10">〜 意味の海で迷わない！「パズルの形」と「出題者の罠」〜</p>
+        </header>
+
+        <div class="p-4 md:p-8 space-y-12">
+
+            <!-- ==========================================
+                 1. 空所補充編（文法パズル）
+                 ========================================== -->
+            <section>
+                <div class="bg-gradient-1 text-white inline-block px-6 py-2 rounded-r-full font-bold text-xl md:text-2xl mb-8 shadow-md flex items-center gap-2 -ml-4 md:-ml-8">
+                    <i class="ph-fill ph-puzzle-piece"></i> １．空所補充編（文法パズルと品詞の支配）
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- ① 次のワード予測 -->
+                    <div class="bg-white rounded-2xl p-5 border-t-4 border-blue-500 shadow-md">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-blue-800">
+                            <i class="ph-fill ph-binoculars text-xl"></i> 次のワードを予測せよ！
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">空欄の前のキーワードを見れば、選択肢の「グループ」が確定する。</p>
+                        <ul class="space-y-3 text-sm">
+                            <li class="p-3 bg-blue-50 rounded-lg">
+                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">要 / 想 / 打算</span> ➡ <span class="font-bold text-red-600">動詞（アクション）</span>
+                            </li>
+                            <li class="p-3 bg-blue-50 rounded-lg">
+                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">很 / 非常 / 真</span> ➡ <span class="font-bold text-amber-600">形容詞（状態/感情）</span>
+                            </li>
+                            <li class="p-3 bg-blue-50 rounded-lg">
+                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">被</span> ➡ <span class="font-bold text-slate-700">犯人（名詞）</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ② 構造助詞「三兄弟」 -->
+                    <div class="bg-white rounded-2xl p-5 border-t-4 border-teal-500 shadow-md">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-teal-800">
+                            <i class="ph-fill ph-users-three text-xl"></i> 構造助詞「三兄弟」
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">パズルの凹凸を決定づける最強の接着剤。</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="p-2 border border-slate-100 rounded">
+                                <div class="font-bold text-slate-700">① 的 (de) <span class="text-xs font-normal text-slate-500 ml-1">名詞化・所有</span></div>
+                                <div class="text-teal-600 mt-1">例：玩的<b class="text-rose-500">東西</b>（遊ぶ<b class="text-rose-500">物</b>）</div>
+                            </li>
+                            <li class="p-2 border border-slate-100 rounded">
+                                <div class="font-bold text-slate-700">② 得 (de) <span class="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ 結果</span></div>
+                                <div class="text-teal-600 mt-1">例：<b class="text-blue-500">跑</b>得<b class="text-amber-500">快</b>（<b class="text-blue-500">走った</b>結果、<b class="text-amber-500">速い</b>）</div>
+                            </li>
+                            <li class="p-2 border border-slate-100 rounded">
+                                <div class="font-bold text-slate-700">③ 地 (de) <span class="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ アクション</span></div>
+                                <div class="text-teal-600 mt-1">例：高興地<b class="text-blue-500">笑</b>（嬉しそうに<b class="text-blue-500">笑う</b>）</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ③ 並列と主語の支配力 -->
+                    <div class="bg-white rounded-2xl p-5 border-t-4 border-indigo-500 shadow-md">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-800">
+                            <i class="ph-fill ph-magnet text-xl"></i> 並列と主語の支配力
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="bg-indigo-50 p-2 rounded">
+                                <b class="text-indigo-700 block mb-1">「、」の磁力（並列）</b>
+                                前後は<span class="highlight-marker">同じ種類（品詞や方向性）</span>が並ぶ。<br>
+                                ✕ <span class="text-xs">遊ぶ物(名詞) 、 愉快だ(形容詞)</span><br>
+                                ◯ <span class="text-xs">楽しく遊ぶ(状態) 、 愉快だ(状態)</span>
+                            </li>
+                            <li class="bg-indigo-50 p-2 rounded">
+                                <b class="text-indigo-700 block mb-1">主語文のルール</b>
+                                「誰・何が主語か」を見極める。<br>
+                                <span class="text-rose-600 font-bold">主語文の中に別の主語文は入らない！</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ④ 前置詞マーカー -->
+                    <div class="bg-white rounded-2xl p-5 border-t-4 border-cyan-500 shadow-md">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-cyan-800">
+                            <i class="ph-fill ph-map-pin-line text-xl"></i> 場所と人のマーカー
+                        </h3>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">在</span>
+                                <span>100%<b class="text-rose-500">「場所」</b>が来る。（在...裡）</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">跟</span>
+                                <span><b class="text-blue-600">「人」</b>とセットになる。<br>
+                                <span class="text-xs text-slate-500">・跟 + 人 + 說話（〜と話す）</span><br>
+                                <span class="text-xs text-slate-500">・跟 + 人 + 學（〜から学ぶ）</span></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">對</span>
+                                <span>〜に対して（対象・態度）</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ⑤ 構文・接続詞 -->
+                    <div class="bg-white rounded-2xl p-5 border-t-4 border-violet-500 shadow-md lg:col-span-2">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-violet-800">
+                            <i class="ph-fill ph-link text-xl"></i> 鉄板の接続詞・比較構文
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <b class="text-violet-700">条件クリア：只要 A，就 B</b><br>
+                                <span class="text-slate-600 text-xs">「Aになると必ずBする」</span><br>
+                                例：只要有空，就找工作做。
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <b class="text-violet-700">比較・強調：A 比 B 更...</b><br>
+                                <span class="text-slate-600 text-xs">「BよりもAの方がさらに〜だ」</span><br>
+                                例：照顧身體 比 認真工作 <b class="text-rose-500">更</b>重要。
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <b class="text-violet-700">呼応：每...都...</b><br>
+                                <span class="text-slate-600 text-xs">「どの〜もすべて」</span>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <b class="text-violet-700">強調：不但...更是...</b><br>
+                                <span class="text-slate-600 text-xs">「〜だけでなく、さらに〜だ」</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="h-1 w-full bg-slate-200 rounded-full my-10"></div>
+
+            <!-- ==========================================
+                 2. 意味の総括編（内容理解）
+                 ========================================== -->
+            <section>
+                <div class="bg-gradient-2 text-white inline-block px-6 py-2 rounded-r-full font-bold text-xl md:text-2xl mb-8 shadow-md flex items-center gap-2 -ml-4 md:-ml-8">
+                    <i class="ph-fill ph-magnifying-glass"></i> ２．意味の総括編（引っかけ回避ルール）
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    
+                    <!-- ① 数字と数量の罠 -->
+                    <div class="bg-white rounded-2xl p-6 border-l-4 border-amber-500 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-amber-100 p-2 rounded-lg text-amber-600"><i class="ph-bold ph-math-operations text-2xl"></i></div>
+                            <h3 class="font-bold text-lg text-slate-800">数字・数量の絶妙な罠</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 mb-4">わずかな副詞の違いで、数字の意味が逆転する！</p>
+                        <table class="w-full text-sm text-left border-collapse">
+                            <tbody>
+                                <tr class="border-b border-slate-100">
+                                    <td class="py-2 font-bold text-slate-700">快兩點<b class="text-rose-500">才</b>來</td>
+                                    <td class="py-2 text-slate-600">2時になる直前（1時50分頃）</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 bg-amber-50">
+                                    <td class="py-2 font-bold text-slate-700 px-2">兩百<b class="text-rose-500">多</b>塊</td>
+                                    <td class="py-2 text-slate-600">200元と<b class="text-rose-600">いくらか</b>（例:245元）</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 bg-amber-50">
+                                    <td class="py-2 font-bold text-slate-700 px-2"><b class="text-rose-500">快要</b>兩百塊了</td>
+                                    <td class="py-2 text-slate-600">もうすぐ200元（例:180元）</td>
+                                </tr>
+                                <tr class="border-b border-slate-100">
+                                    <td class="py-2 font-bold text-slate-700">一個<b class="text-rose-500">也</b>沒有</td>
+                                    <td class="py-2 text-slate-600"><b class="text-rose-600">全否定：一人もいない</b></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 font-bold text-slate-700"><b class="text-rose-500">只有</b>一個客人</td>
+                                    <td class="py-2 text-slate-600">限定：一人<b class="text-rose-600">しかいない</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- ② 単語の解像度 -->
+                    <div class="bg-white rounded-2xl p-6 border-l-4 border-emerald-500 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-emerald-100 p-2 rounded-lg text-emerald-600"><i class="ph-bold ph-translate text-2xl"></i></div>
+                            <h3 class="font-bold text-lg text-slate-800">似た単語の解像度</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-center gap-3">
+                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
+                                    <b class="text-emerald-800 block">房子 (一棟)</b>
+                                    <span class="text-xs text-slate-500">独立した「家・建物」</span>
+                                </div>
+                                <div class="text-slate-300 font-bold">VS</div>
+                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
+                                    <b class="text-emerald-800 block">房間 (一個)</b>
+                                    <span class="text-xs text-slate-500">仕切られた「部屋」</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
+                                    <b class="text-emerald-800 block">上學</b>
+                                    <span class="text-xs text-slate-500">学校へ行く（登校）</span>
+                                </div>
+                                <div class="text-slate-300 font-bold">VS</div>
+                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
+                                    <b class="text-emerald-800 block">上課</b>
+                                    <span class="text-xs text-slate-500">授業に出る・受ける</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ③ 抽象化・言い換えの法則 -->
+                    <div class="bg-white rounded-2xl p-6 border-l-4 border-rose-500 shadow-md lg:col-span-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-rose-100 p-2 rounded-lg text-rose-600"><i class="ph-bold ph-arrows-left-right text-2xl"></i></div>
+                            <h3 class="font-bold text-lg text-slate-800">パラフレーズ（抽象化と言い換え）の法則</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">正解の選択肢は、本文の「具体的な状況」を「フワッとした言葉」にまとめていることが多い。</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                                <div class="text-sm text-slate-600 mb-2">読めない + 忙しい</div>
+                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
+                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">準備不足</div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                                <div class="text-sm text-slate-600 mb-2">週末も会社で残業</div>
+                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
+                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">事情很多（仕事が多い）</div>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                                <div class="text-sm text-slate-600 mb-2">病気治った＋バイト＋勉強</div>
+                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
+                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">休息が必要（疲れ回避）</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-rose-50 rounded-lg text-sm border-l-4 border-rose-400">
+                            <b class="text-rose-800 flex items-center gap-2 mb-1"><i class="ph-fill ph-warning-circle text-lg"></i> 時制（テンス）の罠に注意！</b>
+                            <p class="text-slate-700">「剛好（治ったばかり）」＝今は元気。<br>選択肢の「因為他生病了（今も病気だから）」は時制ズレの引っかけ！</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-slate-800 text-slate-300 p-6 text-center text-sm mt-8">
+            <p class="flex items-center justify-center gap-2 font-medium">
+                <i class="ph-fill ph-check-circle text-teal-400 text-xl"></i>
+                ノートの緻密な分析力とメタ視点があれば、Band A突破は確実です！加油！
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
