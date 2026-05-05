@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL対策 必須単語マスター：似た意味＆似た音</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', 'Noto Sans TC', sans-serif;
+            background-color: #f0fdfa;
+            color: #334155;
+        }
+        .tc {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        #notification {
+            transition: all 0.3s ease-in-out;
+        }
+        /* 音声再生可能な要素のホバーエフェクト */
+        .speakable {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+            display: inline-block;
+        }
+        .speakable:hover {
+            transform: scale(1.1);
+            color: #0f766e; /* teal-700 */
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-12 relative">
+
+    <!-- 通知エリア -->
+    <div id="notification" class="fixed top-4 right-4 bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-50 transform translate-y-[-10px] flex items-center gap-3">
+        <span class="text-xl">🔊</span>
+        <span id="notification-text" class="font-medium">お使いのブラウザは音声再生に対応していません。</span>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-teal-600 text-white py-12 px-6 text-center shadow-md relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10" style="background-image: radial-gradient(circle, #ffffff 2px, transparent 2px); background-size: 20px 20px;"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="inline-block py-1 px-3 rounded-full bg-teal-800 text-teal-100 text-sm font-bold tracking-widest mb-4">TOCFL VOCABULARY GUIDE</span>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight">必須単語マスター<br><span class="text-teal-200">似た意味</span> ＆ <span class="text-teal-200">似た音</span></h1>
+            <p class="text-lg md:text-xl text-teal-50">紛らわしい単語を整理して、読解・リスニングのスコアを底上げしよう！</p>
+            
+            <div class="mt-6 inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-white text-sm backdrop-blur-sm border border-white/30 shadow-sm">
+                <span class="text-lg">🔊</span> 漢字をクリックすると台湾式音声が再生されます
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 mt-10">
+
+        <!-- メタ視点セクション -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12 border-t-4 border-amber-400">
+            <div class="flex items-center gap-3 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <h2 class="text-2xl font-bold text-slate-800">メタ視点：なぜこの整理がTOCFLに効くのか？</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-amber-50 rounded-xl p-5">
+                    <h3 class="font-bold text-amber-800 mb-2 flex items-center gap-2">
+                        <span class="bg-amber-200 text-amber-800 w-6 h-6 rounded-full flex items-center justify-center text-sm">1</span>
+                        読解力UP（閱讀）
+                    </h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">「認為（客観的な考え）」と「以為（誤った思い込み）」などの<b>ニュアンスの違い</b>を知ることで、長文における筆者の意図や登場人物の心理を正確に読み取れます。</p>
+                </div>
+                <div class="bg-amber-50 rounded-xl p-5">
+                    <h3 class="font-bold text-amber-800 mb-2 flex items-center gap-2">
+                        <span class="bg-amber-200 text-amber-800 w-6 h-6 rounded-full flex items-center justify-center text-sm">2</span>
+                        聴解力UP（聽力）
+                    </h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">ピンインが同じで声調が違う単語（男 nán / 南 nán / 難 nánなど）はリスニングの定番の罠。<b>文脈と声調をセットで捉える</b>耳を作るトレーニングになります。</p>
+                </div>
+                <div class="bg-amber-50 rounded-xl p-5">
+                    <h3 class="font-bold text-amber-800 mb-2 flex items-center gap-2">
+                        <span class="bg-amber-200 text-amber-800 w-6 h-6 rounded-full flex items-center justify-center text-sm">3</span>
+                        文法力UP（文法）
+                    </h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">「幫（手伝う）」は後ろに目的語（人）を取れますが、「幫忙」は取れません。この<b>構文的ルールの違い</b>は、並び替え問題や空欄補充の強力なヒントになります。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART 2: ピンインが似ている単語 -->
+        <div class="mb-4 flex items-center gap-3 mt-8">
+            <span class="bg-amber-500 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 2</span>
+            <h2 class="text-2xl font-bold text-slate-800">ピンインが同じ・似ている単語</h2>
+        </div>
+        <p class="text-slate-600 mb-6 pl-2 border-l-4 border-amber-400">リスニングで聞き間違えやすいグループです。声調（1〜4声）の違いを意識しましょう。</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            
+            <!-- グループ: shi -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: shi</div>
+                <ul class="space-y-2">
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
+                        <span class="tc text-lg font-bold text-slate-800 speakable">是</span>
+                        <span class="text-xs text-slate-500">shì (〜である)</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
+                        <span class="tc text-lg font-bold text-slate-800 speakable">事</span>
+                        <span class="text-xs text-slate-500">shì (事/用事)</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded">
+                        <span class="tc text-lg font-bold text-slate-800 speakable">市</span>
+                        <span class="text-xs text-slate-500">shì (市)</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-100">
+                        <span class="tc text-lg font-bold text-amber-700 speakable">時</span>
+                        <span class="text-xs text-amber-600">shí (時)</span>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-100">
+                        <span class="tc text-lg font-bold text-amber-700 speakable">十</span>
+                        <span class="text-xs text-amber-600">shí (10)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: jian -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: jian</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">間</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">jiān</span>
+                            <span class="block text-xs">部屋(量詞)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">件</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">jiàn</span>
+                            <span class="block text-xs">服/事(量詞)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: xin -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: xin</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">新</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">xīn</span>
+                            <span class="block text-xs">新しい</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">心</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">xīn</span>
+                            <span class="block text-xs">心</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">信</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">xìn</span>
+                            <span class="block text-xs">手紙</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: hua -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: hua</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">花</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">huā</span>
+                            <span class="block text-xs">花</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">畫</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">huà</span>
+                            <span class="block text-xs">絵</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: zi -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: zi</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">字</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">zì</span>
+                            <span class="block text-xs">文字</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">自</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">zì</span>
+                            <span class="block text-xs">自〜</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: bao -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: bao</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">包</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">bāo</span>
+                            <span class="block text-xs">カバン/量詞</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">飽</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">bǎo</span>
+                            <span class="block text-xs">お腹いっぱい</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: kuai -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: kuai</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">快</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">kuài</span>
+                            <span class="block text-xs">速い</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">塊</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">kuài</span>
+                            <span class="block text-xs">〜元(量詞)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: nan -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: nan</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">男</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">nán</span>
+                            <span class="block text-xs">男</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">南</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">nán</span>
+                            <span class="block text-xs">南</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">難</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">nán</span>
+                            <span class="block text-xs">難しい</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: wan -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: wan</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">晚</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">wǎn</span>
+                            <span class="block text-xs">遅い/夜</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">碗</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">wǎn</span>
+                            <span class="block text-xs">お椀(量詞)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">萬</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">wàn</span>
+                            <span class="block text-xs">一万</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">玩</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">wán</span>
+                            <span class="block text-xs">遊ぶ</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: liang -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: liang</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">兩</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">liǎng</span>
+                            <span class="block text-xs">2/ふたつ</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">輛</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">liàng</span>
+                            <span class="block text-xs">台(量詞)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: cai -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: cai</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">才</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">cái</span>
+                            <span class="block text-xs">やっと</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">菜</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">cài</span>
+                            <span class="block text-xs">料理/野菜</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: mai -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: mai</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">買</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500">mǎi</span>
+                            <span class="block text-xs">買う</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">賣</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">mài</span>
+                            <span class="block text-xs">売る</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: tiao -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: tiao</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">條</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">tiáo</span>
+                            <span class="block text-xs">細長いもの(量詞)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">跳</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-bold">tiào</span>
+                            <span class="block text-xs">跳ぶ/跳舞(踊る)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: jiao -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: jiao</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">交</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">jiāo</span>
+                            <span class="block text-xs">交わる/交通</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">腳</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">jiǎo</span>
+                            <span class="block text-xs">足(腳踏車)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">叫</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">jiào</span>
+                            <span class="block text-xs">呼ぶ/〜という名だ</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: chuan / chuang -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: n / ng</div>
+                <ul class="space-y-2">
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">穿</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">chuān</span>
+                            <span class="block text-xs">着る</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">船</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">chuán</span>
+                            <span class="block text-xs">船</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 px-2 py-1 rounded border border-amber-200">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">床</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">chuáng</span>
+                            <span class="block text-xs">ベッド</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 px-2 py-1 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">窗</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">chuāng</span>
+                            <span class="block text-xs">窓</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: man / mang -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: man / mang</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">慢</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">màn</span>
+                            <span class="block text-xs">遅い(速度)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-200">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">忙</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">máng</span>
+                            <span class="block text-xs">忙しい</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: ti -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ti</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">踢</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">tī</span>
+                            <span class="block text-xs">蹴る</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">替</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">tì</span>
+                            <span class="block text-xs">代わる/〜のために</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: yao -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: yao</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">要</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">yào</span>
+                            <span class="block text-xs">〜したい/必要だ</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">藥</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">yào</span>
+                            <span class="block text-xs">薬</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: ge -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ge</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">哥</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">gē</span>
+                            <span class="block text-xs">兄(哥哥)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">歌</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">gē</span>
+                            <span class="block text-xs">歌(唱歌)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">個</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">gè</span>
+                            <span class="block text-xs">個(量詞)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: zuo -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: zuo</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">做</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">zuò</span>
+                            <span class="block text-xs">する/作る</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">坐</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">zuò</span>
+                            <span class="block text-xs">座る/乗る</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">昨</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">zuó</span>
+                            <span class="block text-xs">昨日(昨天)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- グループ: ke -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border-b-4 border-slate-300 hover:border-amber-400 transition-colors">
+                <div class="text-center font-bold text-slate-400 mb-2 uppercase tracking-widest text-xs">Pinyin: ke</div>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">課</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">kè</span>
+                            <span class="block text-xs">授業(上課)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-amber-50 p-2 rounded border border-amber-100">
+                        <span class="tc text-xl font-bold text-amber-700 speakable">客</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-amber-600 font-mono font-bold">kè</span>
+                            <span class="block text-xs">客(客人)</span>
+                        </div>
+                    </li>
+                    <li class="flex justify-between items-center bg-slate-50 p-2 rounded border border-slate-200">
+                        <span class="tc text-xl font-bold text-slate-800 speakable">渇</span>
+                        <div class="text-right">
+                            <span class="block text-xs text-slate-500 font-mono">kě</span>
+                            <span class="block text-xs">のどが渇く</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- 音声再生＆インタラクション用スクリプト -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speakableElements = document.querySelectorAll('.speakable');
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            let synth = window.speechSynthesis;
+            let hideTimeout;
+
+            // 各要素にクリックイベントを追加
+            speakableElements.forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.stopPropagation(); // イベントの伝播を防ぐ
+                    
+                    let textToSpeak = this.getAttribute('data-text');
+                    
+                    // data-text属性がない場合、要素内の中国語（漢字等）を自動抽出する
+                    if (!textToSpeak) {
+                        // 要素内のテキストを取得
+                        const textContent = this.textContent || this.innerText;
+                        // 漢字のみを抽出する正規表現（ピンインや記号を除外）
+                        const chineseChars = textContent.match(/[\u4e00-\u9fa5]+/g);
+                        
+                        if (chineseChars) {
+                            textToSpeak = chineseChars.join('');
+                        } else {
+                            // もし抽出できなければテキスト全体を代入
+                            textToSpeak = textContent.trim();
+                        }
+                    }
+
+                    if(textToSpeak) {
+                        speak(textToSpeak);
+                    }
+                });
+            });
+
+            // 音声合成関数
+            function speak(text) {
+                if (!synth) {
+                    showNotification('お使いのブラウザは音声再生に対応していません。', true);
+                    return;
+                }
+
+                // 現在読み上げ中の場合はキャンセルして新しく始める
+                if (synth.speaking) {
+                    synth.cancel();
+                }
+                
+                showNotification(`「${text}」の発音を再生中...`, false);
+
+                const utterThis = new SpeechSynthesisUtterance(text);
+                
+                // 台湾華語（繁体字）に設定
+                utterThis.lang = 'zh-TW'; 
+                // 少しだけゆっくり・聞き取りやすく調整
+                utterThis.rate = 0.85; 
+                utterThis.pitch = 1.0;
+
+                utterThis.onend = function () {
+                    hideNotification();
+                }
+                
+                utterThis.onerror = function (event) {
+                    console.error('SpeechSynthesisError:', event.error);
+                    showNotification('音声の再生に失敗しました。', true);
+                    hideTimeout = setTimeout(hideNotification, 3000);
+                }
+
+                synth.speak(utterThis);
+            }
+
+            // 通知UIの表示制御
+            function showNotification(msg, isError) {
+                clearTimeout(hideTimeout);
+                notificationText.innerText = msg;
+                
+                // エラー時と通常時で色を変える
+                if (isError) {
+                    notification.classList.remove('bg-teal-600');
+                    notification.classList.add('bg-red-500');
+                } else {
+                    notification.classList.remove('bg-red-500');
+                    notification.classList.add('bg-teal-600');
+                }
+
+                notification.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+                
+                // 通常は音声終了時に消すが、万が一のために5秒後に自動非表示のフォールバック
+                hideTimeout = setTimeout(hideNotification, 5000);
+            }
+
+            function hideNotification() {
+                notification.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+            }
+        });
+    </script>
+</body>
+</html>
