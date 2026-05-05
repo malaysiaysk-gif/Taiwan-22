@@ -641,16 +641,16 @@
                 </div>
             </div>
 
-            <!-- カード：乗る・交通・移動状況 -->
+            <!-- カード：交通・移動（動作・乗り物・拠点） -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 md:col-span-2">
                 <div class="bg-emerald-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                    <span>🚌 乗る・交通・移動状況</span>
-                    <span class="text-emerald-100 text-sm">乗り物と街の様子</span>
+                    <span>🚌 交通・移動（動作・乗り物・拠点）</span>
+                    <span class="text-emerald-100 text-sm">移動必須ワード</span>
                 </div>
-                <div class="p-5 grid md:grid-cols-2 gap-6">
-                    <!-- 乗る -->
+                <div class="p-5 grid lg:grid-cols-3 gap-6">
+                    <!-- 列1: 乗る・動作 -->
                     <div>
-                        <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">乗る・動作</span></h4>
+                        <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">1. 乗る・動作</span></h4>
                         <div class="grid grid-cols-2 gap-3 mb-3">
                             <div class="bg-emerald-50 p-3 rounded-lg text-center border border-emerald-100">
                                 <div class="text-2xl mb-1">💺</div>
@@ -662,50 +662,108 @@
                                 <div class="text-2xl mb-1">🚲</div>
                                 <div class="text-xl font-bold tc text-slate-800 speakable">騎</div>
                                 <div class="text-[10px] text-slate-500 mb-1">qí</div>
-                                <div class="text-xs text-slate-600">またがるもの<br>自転車、バイクなど</div>
+                                <div class="text-xs text-slate-600">またがるもの<br>自転車、バイク</div>
                             </div>
                         </div>
                         <div class="bg-emerald-50 p-3 rounded-lg flex items-center gap-3 border border-emerald-100">
-                            <div class="text-2xl bg-white rounded p-1 shadow-sm">🚶⬆️</div>
+                            <div class="text-2xl bg-white rounded p-1 shadow-sm">🚶↕️</div>
                             <div>
-                                <div class="text-lg font-bold tc text-slate-800 speakable">上</div>
-                                <div class="text-[10px] text-slate-500 mb-1">shàng</div>
-                                <div class="text-xs text-slate-600">乗り込むという動作・方向。例：<span class="font-bold tc text-emerald-700 speakable speakable-text">上車</span></div>
+                                <div class="text-lg font-bold tc text-slate-800 speakable">上車 / 下車</div>
+                                <div class="text-[10px] text-slate-500 mb-1">shàngchē / xiàchē</div>
+                                <div class="text-xs text-slate-600">乗り降り。「上(乗る)」「下(降りる)」。</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 交通状況 -->
+
+                    <!-- 列2: 乗り物 -->
                     <div>
-                        <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">交通・移動状況</span></h4>
+                        <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">2. 乗り物</span></h4>
                         <ul class="space-y-3">
                             <li class="flex gap-3 items-start">
-                                <div class="w-14 shrink-0 text-center">
-                                    <div class="text-lg font-bold tc text-slate-800 speakable">方便</div>
-                                    <div class="text-[10px] text-slate-500">fāngbiàn</div>
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-lg font-bold tc text-slate-800 speakable">公車</div>
+                                    <div class="text-[10px] text-slate-500">gōngchē</div>
                                 </div>
                                 <div>
-                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">便利だ</span>
-                                    <p class="text-xs text-slate-600">交通の便が良い時によく使う。「不便だ」は「不方便」となる。<br>例：<span class="tc font-bold text-emerald-700 speakable speakable-text">這裡交通很不方便</span></p>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">バス</span>
+                                    <p class="text-xs text-slate-600">台湾の一般路線バスのこと。「巴士(bāshì)」とも言います。</p>
                                 </div>
                             </li>
                             <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
-                                <div class="w-14 shrink-0 text-center">
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-lg font-bold tc text-slate-800 speakable">計程車</div>
+                                    <div class="text-[10px] text-slate-500">jìchéngchē</div>
+                                </div>
+                                <div>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">タクシー</span>
+                                    <p class="text-xs text-slate-600">タクシーを呼ぶ時は「叫計程車」と言います。</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-lg font-bold tc text-slate-800 speakable">飛機</div>
+                                    <div class="text-[10px] text-slate-500">fēijī</div>
+                                </div>
+                                <div>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">飛行機</span>
+                                    <p class="text-xs text-slate-600">乗る時は「搭飛機」や「坐飛機」。</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-sm font-bold tc text-slate-800 speakable">火車<br>高鐵</div>
+                                    <div class="text-[10px] text-slate-500">huǒchē<br>gāotiě</div>
+                                </div>
+                                <div>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">電車・新幹線</span>
+                                    <p class="text-xs text-slate-600">在来線を火車、台湾新幹線を高鐵（高速鐵路）と呼びます。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 列3: 拠点・状況 -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 mb-3 flex items-center gap-2"><span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">3. 拠点・交通状況</span></h4>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3 items-start">
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-lg font-bold tc text-slate-800 speakable">機場</div>
+                                    <div class="text-[10px] text-slate-500">jīchǎng</div>
+                                </div>
+                                <div>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">空港</span>
+                                    <p class="text-xs text-slate-600">飛行場のこと。桃園機場、松山機場など。</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-sm font-bold tc text-slate-800 speakable">捷運站<br>車站</div>
+                                    <div class="text-[10px] text-slate-500">jiéyùnzhàn<br>chēzhàn</div>
+                                </div>
+                                <div>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">MRTの駅・駅</span>
+                                    <p class="text-xs text-slate-600">台湾では地下鉄を「捷運」と呼びます。単に「駅」なら「車站」。</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
+                                <div class="w-16 shrink-0 text-center">
                                     <div class="text-lg font-bold tc text-slate-800 speakable">塞車</div>
                                     <div class="text-[10px] text-slate-500">sāichē</div>
                                 </div>
                                 <div>
                                     <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">渋滞する</span>
-                                    <p class="text-xs text-slate-600">台湾の日常茶飯事。車（車）が塞がる（塞）という成り立ち。<br>例：<span class="tc font-bold text-emerald-700 speakable speakable-text">路上塞車</span></p>
+                                    <p class="text-xs text-slate-600">車（車）が塞がる（塞）という成り立ち。<br>例：<span class="tc font-bold text-emerald-700 speakable speakable-text">路上塞車</span></p>
                                 </div>
                             </li>
                             <li class="flex gap-3 items-start border-t border-slate-100 pt-2">
-                                <div class="w-14 shrink-0 text-center">
-                                    <div class="text-lg font-bold tc text-slate-800 speakable">捷運</div>
-                                    <div class="text-[10px] text-slate-500">jiéyùn</div>
+                                <div class="w-16 shrink-0 text-center">
+                                    <div class="text-lg font-bold tc text-slate-800 speakable">方便</div>
+                                    <div class="text-[10px] text-slate-500">fāngbiàn</div>
                                 </div>
                                 <div>
-                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">地下鉄(MRT)</span>
-                                    <p class="text-xs text-slate-600">台湾で地下鉄は「地鐵」ではなく「捷運」と呼びます。「<span class="tc font-bold text-emerald-700 speakable speakable-text">坐捷運</span>」は必須表現！</p>
+                                    <span class="bg-slate-100 text-slate-600 text-[10px] px-1 py-0.5 rounded mb-1 inline-block border">便利だ</span>
+                                    <p class="text-xs text-slate-600">「不便だ」は「不方便」。<br>例：<span class="tc font-bold text-emerald-700 speakable speakable-text">交通很不方便</span></p>
                                 </div>
                             </li>
                         </ul>
