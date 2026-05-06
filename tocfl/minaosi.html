@@ -1,289 +1,956 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOCFL Band A メタ攻略インフォグラフィック（完全版）</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: #e2e8f0;
-            color: #334155;
-        }
-        .bg-gradient-1 { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
-        .bg-gradient-2 { background: linear-gradient(135deg, #f59e0b, #b45309); }
-        .highlight-marker {
-            background: linear-gradient(transparent 60%, #fef08a 60%);
-            padding: 0 4px;
-        }
-    </style>
-</head>
-<body class="p-2 md:p-8">
+import React, { useState } from 'react';
+import { 
+  Clock, Map, Building, Briefcase, Tv, 
+  ArrowRight, ArrowLeft, ArrowUp, ArrowDown,
+  BookOpen, Home, MapPin, Calendar, Sun, 
+  Car, Coffee, DollarSign, HelpCircle,
+  Utensils, Navigation, MessageCircle, Volume2,
+  Lightbulb, Puzzle, Users, Magnet, Link, 
+  Calculator, Languages, ArrowLeftRight, AlertCircle, Search
+} from 'lucide-react';
 
-    <div class="max-w-6xl mx-auto bg-slate-50 rounded-3xl shadow-2xl overflow-hidden">
+const ChineseStudyNotes = () => {
+  const [activeTab, setActiveTab] = useState('time');
+
+  // ==========================================
+  // 音声再生機能 (台湾華語)
+  // ==========================================
+  const playAudio = (rawText, e) => {
+    if (e) e.stopPropagation();
+    if (!rawText) return;
+    
+    // 括弧内のテキストや、スラッシュの右側（別表現）を除去して純粋な中国語のみを読み上げる
+    // 例: "兩秒 (liǎng miǎo)" -> "兩秒",  "星期日/天" -> "星期日"
+    const text = rawText.replace(/\s*\(.*?\)/g, '').split('/')[0].trim();
+
+    if ('speechSynthesis' in window) {
+      // 連続でクリックした際に前の音声をキャンセルする
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'zh-TW'; // 台湾華語を指定
+      utterance.rate = 0.85;    // 学習用に少しだけゆっくり再生
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  // ==========================================
+  // 1. 時間・日付データ
+  // ==========================================
+  const timeExpressions = {
+    days: [
+      { pinyin: "qiántiān", hanzi: "前天", jp: "一昨日" },
+      { pinyin: "zuótiān", hanzi: "昨天", jp: "昨日" },
+      { pinyin: "jīntiān", hanzi: "今天", jp: "今日" },
+      { pinyin: "míngtiān", hanzi: "明天", jp: "明日" },
+      { pinyin: "hòutiān", hanzi: "後天", jp: "明後日" }
+    ],
+    weeks: [
+      { pinyin: "shàng ge lǐbài", hanzi: "上個禮拜", jp: "先週" },
+      { pinyin: "zhè ge lǐbài", hanzi: "這個禮拜", jp: "今週" },
+      { pinyin: "xià ge lǐbài", hanzi: "下個禮拜", jp: "来週" }
+    ],
+    weekdays: [
+      { hanzi: "星期一", pinyin: "xīngqīyī", jp: "月曜日" },
+      { hanzi: "星期二", pinyin: "xīngqī'èr", jp: "火曜日" },
+      { hanzi: "星期三", pinyin: "xīngqīsān", jp: "水曜日" },
+      { hanzi: "星期四", pinyin: "xīngqīsì", jp: "木曜日" },
+      { hanzi: "星期五", pinyin: "xīngqīwǔ", jp: "金曜日" },
+      { hanzi: "星期六", pinyin: "xīngqīliù", jp: "土曜日" },
+      { hanzi: "星期日/天", pinyin: "xīngqīrì / tiān", jp: "日曜日" },
+      { hanzi: "週末", pinyin: "zhōumò", jp: "週末" }
+    ],
+    units: [
+      { unit: "秒", pinyin: "miǎo", example: "兩秒 (liǎng miǎo)" },
+      { unit: "分", pinyin: "fēn", example: "兩分 (liǎng fēn)" },
+      { unit: "時", pinyin: "diǎn / xiǎoshí", example: "兩個小時 (liǎng ge xiǎoshí)" },
+      { unit: "日", pinyin: "hào / tiān", example: "兩天 (liǎng tiān) / 二號 (èr hào)" },
+      { unit: "週", pinyin: "zhōu / lǐbài", example: "兩個禮拜 (liǎng ge lǐbài)" },
+      { unit: "月", pinyin: "yuè", example: "兩個月 (liǎng ge yuè) / 二月 (èr yuè)" },
+      { unit: "年", pinyin: "nián", example: "兩年 (liǎng nián)" }
+    ],
+    clockWords: [
+      { hanzi: "現在幾點？", pinyin: "xiànzài jǐ diǎn?", jp: "今何時ですか？", isHighlight: true },
+      { hanzi: "點", pinyin: "diǎn", jp: "時 (例: 兩點 2時)" },
+      { hanzi: "分", pinyin: "fēn", jp: "分 (例: 五分 5分)" },
+      { hanzi: "半", pinyin: "bàn", jp: "半 (例: 兩點半 2時半)" },
+      { hanzi: "刻", pinyin: "kè", jp: "15分 (例: 一刻 15分)" }
+    ]
+  };
+
+  // ==========================================
+  // 2. 方向・交通データ
+  // ==========================================
+  const directions = [
+    { pinyin: "shàngmian", hanzi: "上面", jp: "上", icon: <ArrowUp className="w-5 h-5" /> },
+    { pinyin: "xiàmian", hanzi: "下面", jp: "下", icon: <ArrowDown className="w-5 h-5" /> },
+    { pinyin: "zuǒbian", hanzi: "左邊", jp: "左", icon: <ArrowLeft className="w-5 h-5" /> },
+    { pinyin: "yòubian", hanzi: "右邊", jp: "右", icon: <ArrowRight className="w-5 h-5" /> },
+    { pinyin: "qiánmian", hanzi: "前面", jp: "前", icon: null },
+    { pinyin: "hòumian", hanzi: "後面", jp: "後ろ", icon: null },
+    { pinyin: "duìmiàn", hanzi: "對面", jp: "向かい", icon: null },
+    { pinyin: "pángbiān", hanzi: "旁邊", jp: "隣/そば", icon: null },
+    { pinyin: "fùjìn", hanzi: "附近", jp: "近く", icon: <MapPin className="w-5 h-5" /> }
+  ];
+
+  const navigation = [
+    { pinyin: "xiàng zuǒ zhuǎn", hanzi: "向左轉", jp: "左折する" },
+    { pinyin: "xiàng yòu zhuǎn", hanzi: "向右轉", jp: "右折する" },
+    { pinyin: "yìzhí zǒu", hanzi: "一直走", jp: "直進する" },
+    { pinyin: "guò mǎlù", hanzi: "過馬路", jp: "道を渡る" },
+    { pinyin: "hónglǜdēng", hanzi: "紅綠燈", jp: "信号" }
+  ];
+
+  const transportation = [
+    { hanzi: "捷運", pinyin: "jiéyùn", jp: "MRT(地下鉄)" },
+    { hanzi: "公車", pinyin: "gōngchē", jp: "バス" },
+    { hanzi: "火車", pinyin: "huǒchē", jp: "電車・列車" },
+    { hanzi: "高鐵", pinyin: "gāotiě", jp: "新幹線" },
+    { hanzi: "計程車", pinyin: "jìchéngchē", jp: "タクシー" },
+    { hanzi: "飛機", pinyin: "fēijī", jp: "飛行機" },
+    { hanzi: "腳踏車", pinyin: "jiǎotàchē", jp: "自転車" },
+    { hanzi: "機車", pinyin: "jīchē", jp: "バイク" },
+    { hanzi: "走路", pinyin: "zǒulù", jp: "徒歩" }
+  ];
+
+  // ==========================================
+  // 3. 文法・フレーズデータ
+  // ==========================================
+  const grammarData = {
+    questionWords: [
+      { hanzi: "誰", pinyin: "shéi / shuí", jp: "誰" },
+      { hanzi: "什麼", pinyin: "shénme", jp: "何" },
+      { hanzi: "哪裡/哪兒", pinyin: "nǎlǐ / nǎr", jp: "どこ" },
+      { hanzi: "什麼時候", pinyin: "shénme shíhòu", jp: "いつ" },
+      { hanzi: "為什麼", pinyin: "wèishénme", jp: "なぜ" },
+      { hanzi: "怎麼", pinyin: "zěnme", jp: "どのように" },
+      { hanzi: "多少", pinyin: "duōshǎo", jp: "いくら（量・値段）" },
+      { hanzi: "幾個", pinyin: "jǐ ge", jp: "いくつ（10以下の数）" }
+    ],
+    auxVerbs: [
+      { hanzi: "想", pinyin: "xiǎng", jp: "～したい、～と思う（願望）", example: "我想喝茶", exJp: "お茶が飲みたい" },
+      { hanzi: "要", pinyin: "yào", jp: "～が欲しい、～する必要がある（要求）", example: "我要咖啡", exJp: "コーヒーをください" },
+      { hanzi: "喜歡", pinyin: "xǐhuān", jp: "好きだ", example: "我喜歡吃麵包", exJp: "パンを食べるのが好き" }
+    ],
+    money: [
+      { hanzi: "塊 / 元", pinyin: "kuài / yuán", jp: "〜元（基本単位）" },
+      { hanzi: "毛", pinyin: "máo", jp: "〜角（1/10元）" },
+      { hanzi: "百", pinyin: "bǎi", jp: "百 (例: 一百 100)" },
+      { hanzi: "千", pinyin: "qiān", jp: "千 (例: 一千 1,000)" },
+      { hanzi: "萬", pinyin: "wàn", jp: "万 (例: 一萬 10,000)" }
+    ]
+  };
+
+  // ==========================================
+  // 4. 単語帳データ
+  // ==========================================
+  const vocabCategories = {
+    food: {
+      title: "飲食",
+      icon: <Coffee className="w-6 h-6" />,
+      words: [
+        { hanzi: "咖啡", pinyin: "kāfēi", jp: "コーヒー" },
+        { hanzi: "茶", pinyin: "chá", jp: "お茶" },
+        { hanzi: "果汁", pinyin: "guǒzhī", jp: "ジュース" },
+        { hanzi: "牛奶", pinyin: "niúnǎi", jp: "牛乳" },
+        { hanzi: "水", pinyin: "shuǐ", jp: "水" },
+        { hanzi: "麵包", pinyin: "miànbāo", jp: "パン" },
+        { hanzi: "飯", pinyin: "fàn", jp: "ご飯" },
+        { hanzi: "麵", pinyin: "miàn", jp: "麺" }
+      ]
+    },
+    verbs: {
+      title: "基本動詞",
+      icon: <Utensils className="w-6 h-6" />,
+      words: [
+        { hanzi: "吃", pinyin: "chī", jp: "食べる" },
+        { hanzi: "喝", pinyin: "hē", jp: "飲む" },
+        { hanzi: "買", pinyin: "mǎi", jp: "買う" },
+        { hanzi: "賣", pinyin: "mài", jp: "売る" },
+        { hanzi: "去", pinyin: "qù", jp: "行く" },
+        { hanzi: "在", pinyin: "zài", jp: "～にいる/ある" }
+      ]
+    },
+    places: {
+      title: "街の施設",
+      icon: <Building className="w-6 h-6" />,
+      words: [
+        { hanzi: "車站", pinyin: "chēzhàn", jp: "駅" },
+        { hanzi: "飛機場", pinyin: "fēijīchǎng", jp: "空港" },
+        { hanzi: "加油站", pinyin: "jiāyóuzhàn", jp: "ガソリンスタンド" },
+        { hanzi: "停車場", pinyin: "tíngchēchǎng", jp: "駐車場" },
+        { hanzi: "公園", pinyin: "gōngyuán", jp: "公園" },
+        { hanzi: "便利商店", pinyin: "biànlì shāngdiàn", jp: "コンビニ" }
+      ]
+    },
+    house: {
+      title: "家・部屋",
+      icon: <Home className="w-6 h-6" />,
+      words: [
+        { hanzi: "房間", pinyin: "fángjiān", jp: "部屋" },
+        { hanzi: "客廳", pinyin: "kètīng", jp: "リビング" },
+        { hanzi: "臥室", pinyin: "wòshì", jp: "寝室" },
+        { hanzi: "廚房", pinyin: "chúfáng", jp: "キッチン" },
+        { hanzi: "洗手間", pinyin: "xǐshǒujiān", jp: "トイレ" },
+        { hanzi: "床", pinyin: "chuáng", jp: "ベッド" }
+      ]
+    },
+    jobs: {
+      title: "職業・人",
+      icon: <Briefcase className="w-6 h-6" />,
+      words: [
+        { hanzi: "警察", pinyin: "jǐngchá", jp: "警察" },
+        { hanzi: "醫生", pinyin: "yīshēng", jp: "医者" },
+        { hanzi: "護士", pinyin: "hùshì", jp: "看護師" },
+        { hanzi: "服務生", pinyin: "fúwùshēng", jp: "ウェイター" },
+        { hanzi: "司機", pinyin: "sījī", jp: "運転手" },
+        { hanzi: "記者", pinyin: "jìzhě", jp: "記者" }
+      ]
+    },
+    appliances: {
+      title: "家電・モノ",
+      icon: <Tv className="w-6 h-6" />,
+      words: [
+        { hanzi: "冷氣", pinyin: "lěngqì", jp: "エアコン" },
+        { hanzi: "洗衣機", pinyin: "xǐyījī", jp: "洗濯機" },
+        { hanzi: "冰箱", pinyin: "bīngxiāng", jp: "冷蔵庫" },
+        { hanzi: "電視", pinyin: "diànshì", jp: "テレビ" },
+        { hanzi: "報紙", pinyin: "bàozhǐ", jp: "新聞" }
+      ]
+    }
+  };
+
+  // ==========================================
+  // Helper Components
+  // ==========================================
+  const TabButton = ({ id, icon: Icon, label, colorClass }) => (
+    <button 
+      onClick={() => setActiveTab(id)}
+      className={`px-4 py-2 rounded-full font-medium transition-colors flex items-center gap-2 ${
+        activeTab === id ? colorClass : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-100'
+      }`}
+    >
+      <Icon className="w-4 h-4" /> {label}
+    </button>
+  );
+
+  const AudioWord = ({ text, children, className = "" }) => (
+    <span 
+      onClick={(e) => playAudio(text, e)} 
+      className={`cursor-pointer group relative inline-flex items-center gap-1 ${className}`}
+      title="クリックで音声を再生"
+    >
+      {children || text}
+      <Volume2 className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+    </span>
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800 p-4 md:p-8 font-sans">
+      <div className="max-w-6xl mx-auto">
         
-        <!-- Header -->
-        <header class="bg-slate-900 text-white p-8 md:p-12 text-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-400 to-transparent"></div>
-            <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-4 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-teal-200">
-                TOCFL Band A 読解メタ攻略<span class="text-xl align-top">【完全版】</span>
-            </h1>
-            <p class="text-lg md:text-xl font-medium text-slate-300 relative z-10">〜 意味の海で迷わない！「パズルの形」と「出題者の罠」〜</p>
+        {/* Header */}
+        <header className="mb-8 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold text-teal-700 mb-2">中国語学習ノート まとめ</h1>
+          <p className="text-gray-500">文法・単語・表現 ダッシュボード</p>
+          <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
+            <Volume2 className="w-4 h-4" />
+            単語やフレーズをクリックすると台湾華語の音声が再生されます
+          </div>
         </header>
 
-        <div class="p-4 md:p-8 space-y-12">
-
-            <!-- ==========================================
-                 1. 空所補充編（文法パズル）
-                 ========================================== -->
-            <section>
-                <div class="bg-gradient-1 text-white inline-block px-6 py-2 rounded-r-full font-bold text-xl md:text-2xl mb-8 shadow-md flex items-center gap-2 -ml-4 md:-ml-8">
-                    <i class="ph-fill ph-puzzle-piece"></i> １．空所補充編（文法パズルと品詞の支配）
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <!-- ① 次のワード予測 -->
-                    <div class="bg-white rounded-2xl p-5 border-t-4 border-blue-500 shadow-md">
-                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-blue-800">
-                            <i class="ph-fill ph-binoculars text-xl"></i> 次のワードを予測せよ！
-                        </h3>
-                        <p class="text-xs text-slate-500 mb-3">空欄の前のキーワードを見れば、選択肢の「グループ」が確定する。</p>
-                        <ul class="space-y-3 text-sm">
-                            <li class="p-3 bg-blue-50 rounded-lg">
-                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">要 / 想 / 打算</span> ➡ <span class="font-bold text-red-600">動詞（アクション）</span>
-                            </li>
-                            <li class="p-3 bg-blue-50 rounded-lg">
-                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">很 / 非常 / 真</span> ➡ <span class="font-bold text-amber-600">形容詞（状態/感情）</span>
-                            </li>
-                            <li class="p-3 bg-blue-50 rounded-lg">
-                                <span class="font-bold text-blue-700 bg-blue-200 px-2 py-1 rounded mr-2">被</span> ➡ <span class="font-bold text-slate-700">犯人（名詞）</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- ② 構造助詞「三兄弟」 -->
-                    <div class="bg-white rounded-2xl p-5 border-t-4 border-teal-500 shadow-md">
-                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-teal-800">
-                            <i class="ph-fill ph-users-three text-xl"></i> 構造助詞「三兄弟」
-                        </h3>
-                        <p class="text-xs text-slate-500 mb-3">パズルの凹凸を決定づける最強の接着剤。</p>
-                        <ul class="space-y-2 text-sm">
-                            <li class="p-2 border border-slate-100 rounded">
-                                <div class="font-bold text-slate-700">① 的 (de) <span class="text-xs font-normal text-slate-500 ml-1">名詞化・所有</span></div>
-                                <div class="text-teal-600 mt-1">例：玩的<b class="text-rose-500">東西</b>（遊ぶ<b class="text-rose-500">物</b>）</div>
-                            </li>
-                            <li class="p-2 border border-slate-100 rounded">
-                                <div class="font-bold text-slate-700">② 得 (de) <span class="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ 結果</span></div>
-                                <div class="text-teal-600 mt-1">例：<b class="text-blue-500">跑</b>得<b class="text-amber-500">快</b>（<b class="text-blue-500">走った</b>結果、<b class="text-amber-500">速い</b>）</div>
-                            </li>
-                            <li class="p-2 border border-slate-100 rounded">
-                                <div class="font-bold text-slate-700">③ 地 (de) <span class="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ アクション</span></div>
-                                <div class="text-teal-600 mt-1">例：高興地<b class="text-blue-500">笑</b>（嬉しそうに<b class="text-blue-500">笑う</b>）</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- ③ 並列と主語の支配力 -->
-                    <div class="bg-white rounded-2xl p-5 border-t-4 border-indigo-500 shadow-md">
-                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-800">
-                            <i class="ph-fill ph-magnet text-xl"></i> 並列と主語の支配力
-                        </h3>
-                        <ul class="space-y-3 text-sm">
-                            <li class="bg-indigo-50 p-2 rounded">
-                                <b class="text-indigo-700 block mb-1">「、」の磁力（並列）</b>
-                                前後は<span class="highlight-marker">同じ種類（品詞や方向性）</span>が並ぶ。<br>
-                                ✕ <span class="text-xs">遊ぶ物(名詞) 、 愉快だ(形容詞)</span><br>
-                                ◯ <span class="text-xs">楽しく遊ぶ(状態) 、 愉快だ(状態)</span>
-                            </li>
-                            <li class="bg-indigo-50 p-2 rounded">
-                                <b class="text-indigo-700 block mb-1">主語文のルール</b>
-                                「誰・何が主語か」を見極める。<br>
-                                <span class="text-rose-600 font-bold">主語文の中に別の主語文は入らない！</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- ④ 前置詞マーカー -->
-                    <div class="bg-white rounded-2xl p-5 border-t-4 border-cyan-500 shadow-md">
-                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-cyan-800">
-                            <i class="ph-fill ph-map-pin-line text-xl"></i> 場所と人のマーカー
-                        </h3>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">在</span>
-                                <span>100%<b class="text-rose-500">「場所」</b>が来る。（在...裡）</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">跟</span>
-                                <span><b class="text-blue-600">「人」</b>とセットになる。<br>
-                                <span class="text-xs text-slate-500">・跟 + 人 + 說話（〜と話す）</span><br>
-                                <span class="text-xs text-slate-500">・跟 + 人 + 學（〜から学ぶ）</span></span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-cyan-100 text-cyan-800 font-bold px-2 rounded">對</span>
-                                <span>〜に対して（対象・態度）</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- ⑤ 構文・接続詞 -->
-                    <div class="bg-white rounded-2xl p-5 border-t-4 border-violet-500 shadow-md lg:col-span-2">
-                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-violet-800">
-                            <i class="ph-fill ph-link text-xl"></i> 鉄板の接続詞・比較構文
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
-                                <b class="text-violet-700">条件クリア：只要 A，就 B</b><br>
-                                <span class="text-slate-600 text-xs">「Aになると必ずBする」</span><br>
-                                例：只要有空，就找工作做。
-                            </div>
-                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
-                                <b class="text-violet-700">比較・強調：A 比 B 更...</b><br>
-                                <span class="text-slate-600 text-xs">「BよりもAの方がさらに〜だ」</span><br>
-                                例：照顧身體 比 認真工作 <b class="text-rose-500">更</b>重要。
-                            </div>
-                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
-                                <b class="text-violet-700">呼応：每...都...</b><br>
-                                <span class="text-slate-600 text-xs">「どの〜もすべて」</span>
-                            </div>
-                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
-                                <b class="text-violet-700">強調：不但...更是...</b><br>
-                                <span class="text-slate-600 text-xs">「〜だけでなく、さらに〜だ」</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Divider -->
-            <div class="h-1 w-full bg-slate-200 rounded-full my-10"></div>
-
-            <!-- ==========================================
-                 2. 意味の総括編（内容理解）
-                 ========================================== -->
-            <section>
-                <div class="bg-gradient-2 text-white inline-block px-6 py-2 rounded-r-full font-bold text-xl md:text-2xl mb-8 shadow-md flex items-center gap-2 -ml-4 md:-ml-8">
-                    <i class="ph-fill ph-magnifying-glass"></i> ２．意味の総括編（引っかけ回避ルール）
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    
-                    <!-- ① 数字と数量の罠 -->
-                    <div class="bg-white rounded-2xl p-6 border-l-4 border-amber-500 shadow-md">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-amber-100 p-2 rounded-lg text-amber-600"><i class="ph-bold ph-math-operations text-2xl"></i></div>
-                            <h3 class="font-bold text-lg text-slate-800">数字・数量の絶妙な罠</h3>
-                        </div>
-                        <p class="text-sm text-slate-500 mb-4">わずかな副詞の違いで、数字の意味が逆転する！</p>
-                        <table class="w-full text-sm text-left border-collapse">
-                            <tbody>
-                                <tr class="border-b border-slate-100">
-                                    <td class="py-2 font-bold text-slate-700">快兩點<b class="text-rose-500">才</b>來</td>
-                                    <td class="py-2 text-slate-600">2時になる直前（1時50分頃）</td>
-                                </tr>
-                                <tr class="border-b border-slate-100 bg-amber-50">
-                                    <td class="py-2 font-bold text-slate-700 px-2">兩百<b class="text-rose-500">多</b>塊</td>
-                                    <td class="py-2 text-slate-600">200元と<b class="text-rose-600">いくらか</b>（例:245元）</td>
-                                </tr>
-                                <tr class="border-b border-slate-100 bg-amber-50">
-                                    <td class="py-2 font-bold text-slate-700 px-2"><b class="text-rose-500">快要</b>兩百塊了</td>
-                                    <td class="py-2 text-slate-600">もうすぐ200元（例:180元）</td>
-                                </tr>
-                                <tr class="border-b border-slate-100">
-                                    <td class="py-2 font-bold text-slate-700">一個<b class="text-rose-500">也</b>沒有</td>
-                                    <td class="py-2 text-slate-600"><b class="text-rose-600">全否定：一人もいない</b></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 font-bold text-slate-700"><b class="text-rose-500">只有</b>一個客人</td>
-                                    <td class="py-2 text-slate-600">限定：一人<b class="text-rose-600">しかいない</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- ② 単語の解像度 -->
-                    <div class="bg-white rounded-2xl p-6 border-l-4 border-emerald-500 shadow-md">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-emerald-100 p-2 rounded-lg text-emerald-600"><i class="ph-bold ph-translate text-2xl"></i></div>
-                            <h3 class="font-bold text-lg text-slate-800">似た単語の解像度</h3>
-                        </div>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex items-center gap-3">
-                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
-                                    <b class="text-emerald-800 block">房子 (一棟)</b>
-                                    <span class="text-xs text-slate-500">独立した「家・建物」</span>
-                                </div>
-                                <div class="text-slate-300 font-bold">VS</div>
-                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
-                                    <b class="text-emerald-800 block">房間 (一個)</b>
-                                    <span class="text-xs text-slate-500">仕切られた「部屋」</span>
-                                </div>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
-                                    <b class="text-emerald-800 block">上學</b>
-                                    <span class="text-xs text-slate-500">学校へ行く（登校）</span>
-                                </div>
-                                <div class="text-slate-300 font-bold">VS</div>
-                                <div class="w-1/2 bg-emerald-50 p-2 rounded border border-emerald-100 text-center">
-                                    <b class="text-emerald-800 block">上課</b>
-                                    <span class="text-xs text-slate-500">授業に出る・受ける</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- ③ 抽象化・言い換えの法則 -->
-                    <div class="bg-white rounded-2xl p-6 border-l-4 border-rose-500 shadow-md lg:col-span-2">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="bg-rose-100 p-2 rounded-lg text-rose-600"><i class="ph-bold ph-arrows-left-right text-2xl"></i></div>
-                            <h3 class="font-bold text-lg text-slate-800">パラフレーズ（抽象化と言い換え）の法則</h3>
-                        </div>
-                        <p class="text-sm text-slate-600 mb-4">正解の選択肢は、本文の「具体的な状況」を「フワッとした言葉」にまとめていることが多い。</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
-                                <div class="text-sm text-slate-600 mb-2">読めない + 忙しい</div>
-                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
-                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">準備不足</div>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
-                                <div class="text-sm text-slate-600 mb-2">週末も会社で残業</div>
-                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
-                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">事情很多（仕事が多い）</div>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
-                                <div class="text-sm text-slate-600 mb-2">病気治った＋バイト＋勉強</div>
-                                <i class="ph-bold ph-arrow-down text-rose-400 mb-2"></i>
-                                <div class="font-bold text-rose-700 bg-rose-100 py-1 rounded">休息が必要（疲れ回避）</div>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 p-4 bg-rose-50 rounded-lg text-sm border-l-4 border-rose-400">
-                            <b class="text-rose-800 flex items-center gap-2 mb-1"><i class="ph-fill ph-warning-circle text-lg"></i> 時制（テンス）の罠に注意！</b>
-                            <p class="text-slate-700">「剛好（治ったばかり）」＝今は元気。<br>選択肢の「因為他生病了（今も病気だから）」は時制ズレの引っかけ！</p>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
+        {/* Tab Navigation */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8 border-b pb-4">
+          <TabButton id="time" icon={Calendar} label="時間・日付" colorClass="bg-teal-600 text-white" />
+          <TabButton id="direction" icon={Map} label="方向・交通" colorClass="bg-indigo-600 text-white" />
+          <TabButton id="grammar" icon={MessageCircle} label="文法・基本" colorClass="bg-rose-500 text-white" />
+          <TabButton id="vocab" icon={BookOpen} label="ジャンル別単語" colorClass="bg-orange-500 text-white" />
+          {/* 追加: TOCFL攻略タブ */}
+          <TabButton id="tocfl" icon={Lightbulb} label="TOCFL攻略" colorClass="bg-purple-600 text-white" />
         </div>
 
-        <!-- Footer -->
-        <footer class="bg-slate-800 text-slate-300 p-6 text-center text-sm mt-8">
-            <p class="flex items-center justify-center gap-2 font-medium">
-                <i class="ph-fill ph-check-circle text-teal-400 text-xl"></i>
-                ノートの緻密な分析力とメタ視点があれば、Band A突破は確実です！加油！
-            </p>
-        </footer>
+        {/* Content Area */}
+        <div className="bg-white rounded-2xl shadow-sm border p-4 md:p-8">
+          
+          {/* ================================================================================= */}
+          {/* TAB: TIME (時間・日付) */}
+          {/* ================================================================================= */}
+          {activeTab === 'time' && (
+            <div className="space-y-8 animate-in fade-in duration-300">
+              <h2 className="text-2xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3">日付と時間の表現</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Left Column */}
+                <div className="space-y-8">
+                  {/* Days Timeline */}
+                  <div className="bg-teal-50 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <Sun className="w-5 h-5" /> 日・週の流れ
+                    </h3>
+                    <div className="flex justify-between items-center relative mb-8">
+                      <div className="absolute h-1 bg-teal-200 w-full top-1/2 -translate-y-1/2 z-0"></div>
+                      {timeExpressions.days.map((day, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(day.hanzi, e)}
+                             className="relative z-10 flex flex-col items-center bg-teal-50 px-1 py-2 cursor-pointer group hover:bg-teal-100 rounded transition-colors"
+                             title="クリックで音声を再生">
+                          <span className="text-xs text-teal-600 mb-1 whitespace-nowrap">{day.jp}</span>
+                          <div className={`w-3 h-3 rounded-full ${idx === 2 ? 'bg-teal-600 ring-4 ring-teal-200' : 'bg-teal-400'}`}></div>
+                          <span className="font-bold mt-1 text-sm md:text-base flex items-center gap-1 group-hover:text-teal-700">
+                            {day.hanzi}
+                          </span>
+                          <span className="text-xs text-gray-500 flex items-center gap-1">
+                            {day.pinyin}
+                            <Volume2 className="w-3 h-3 text-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="space-y-2">
+                      {timeExpressions.weeks.map((week, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(week.hanzi, e)}
+                             className="flex justify-between p-2 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-md hover:ring-2 hover:ring-teal-200 transition-all group"
+                             title="クリックで音声を再生">
+                          <span className="text-gray-600">{week.jp}</span>
+                          <div className="text-right flex items-center gap-2">
+                            <Volume2 className="w-4 h-4 text-teal-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div>
+                              <span className="font-bold text-teal-800 block md:inline md:mr-2">{week.hanzi}</span>
+                              <span className="text-[10px] md:text-xs text-gray-500">{week.pinyin}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
+                  {/* Units & "Liang" */}
+                  <div className="bg-blue-50 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-blue-900 mb-2 flex items-center gap-2">
+                      <Clock className="w-5 h-5" /> 時間の単位と「兩 (2)」
+                    </h3>
+                    <p className="text-xs text-blue-700 mb-4 bg-blue-100 p-2 rounded">
+                      ※量詞としての「2」は「二(èr)」ではなく「兩(liǎng)」を使います。
+                    </p>
+                    <div className="grid grid-cols-1 gap-2">
+                      {timeExpressions.units.map((unit, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(unit.example, e)}
+                             className="flex items-center p-2 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-md hover:ring-2 hover:ring-blue-200 transition-all group"
+                             title="クリックで音声を再生">
+                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex flex-col items-center justify-center mr-3 shrink-0 group-hover:bg-blue-200 transition-colors">
+                            <span className="font-bold text-blue-800">{unit.unit}</span>
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-bold text-gray-800 text-sm flex items-center gap-2">
+                              {unit.example}
+                              <Volume2 className="w-4 h-4 text-blue-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </p>
+                            <p className="text-xs text-gray-500">{unit.pinyin}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-8">
+                  {/* Weekdays */}
+                  <div className="bg-emerald-50 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-emerald-900 mb-4 flex items-center gap-2">
+                      <Calendar className="w-5 h-5" /> 曜日
+                    </h3>
+                    <div className="grid grid-cols-2 gap-2">
+                      {timeExpressions.weekdays.map((day, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(day.hanzi, e)}
+                             className={`p-2 rounded-lg text-center cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all group relative ${day.hanzi === '週末' ? 'col-span-2 bg-emerald-200 text-emerald-900 hover:bg-emerald-300' : 'bg-white shadow-sm border border-emerald-100 hover:border-emerald-300'}`}
+                             title="クリックで音声を再生">
+                          <Volume2 className="w-3 h-3 text-emerald-400 absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="font-bold">{day.hanzi}</div>
+                          <div className="text-xs text-gray-500">{day.pinyin}</div>
+                          <div className="text-xs text-emerald-700 mt-1">{day.jp}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Clock time */}
+                  <div className="bg-cyan-50 rounded-xl p-6 border border-cyan-100">
+                    <h3 className="text-lg font-bold text-cyan-900 mb-4 flex items-center gap-2">
+                      <Clock className="w-5 h-5" /> 時刻
+                    </h3>
+                    <div className="space-y-3">
+                      {timeExpressions.clockWords.map((word, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(word.hanzi, e)}
+                             className={`flex justify-between items-center p-3 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-all group relative ${word.isHighlight ? 'bg-cyan-600 text-white hover:bg-cyan-700' : 'bg-white hover:ring-2 hover:ring-cyan-200'}`}
+                             title="クリックで音声を再生">
+                          <div>
+                            <div className="font-bold text-lg flex items-center gap-2">
+                              {word.hanzi}
+                              <Volume2 className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity ${word.isHighlight ? 'text-cyan-200' : 'text-cyan-400'}`} />
+                            </div>
+                            <div className={`text-xs ${word.isHighlight ? 'text-cyan-100' : 'text-gray-500'}`}>{word.pinyin}</div>
+                          </div>
+                          <span className={`text-sm font-medium ${word.isHighlight ? 'text-cyan-50' : 'text-cyan-700'}`}>{word.jp}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================================================================================= */}
+          {/* TAB: DIRECTION (方向・交通) */}
+          {/* ================================================================================= */}
+          {activeTab === 'direction' && (
+            <div className="space-y-8 animate-in fade-in duration-300">
+              <h2 className="text-2xl font-bold text-indigo-800 border-l-4 border-indigo-500 pl-3">方向・位置・交通手段</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                
+                {/* Left Column: Direction & Nav */}
+                <div className="space-y-8">
+                  {/* Position Grid */}
+                  <div className="bg-indigo-50 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-indigo-900 mb-4">位置関係</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      {directions.map((dir, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(dir.hanzi, e)}
+                             className="bg-white p-2 rounded-lg shadow-sm flex items-center gap-2 border border-indigo-50 cursor-pointer hover:border-indigo-300 hover:shadow-md transition-all group relative"
+                             title="クリックで音声を再生">
+                          {dir.icon && <div className="text-indigo-400 group-hover:text-indigo-600 transition-colors">{dir.icon}</div>}
+                          <div className="flex-1 text-center md:text-left">
+                            <div className="font-bold text-gray-800">{dir.hanzi}</div>
+                            <div className="text-[10px] text-gray-500">{dir.pinyin}</div>
+                            <div className="text-xs text-indigo-600">{dir.jp}</div>
+                          </div>
+                          <Volume2 className="w-4 h-4 text-indigo-200 absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                      <Navigation className="w-5 h-5" /> 道案内アクション
+                    </h3>
+                    <div className="space-y-2">
+                      {navigation.map((nav, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(nav.hanzi, e)}
+                             className="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm cursor-pointer hover:shadow-md hover:ring-2 hover:ring-slate-200 transition-all group"
+                             title="クリックで音声を再生">
+                          <div className="flex flex-col">
+                            <span className="font-bold text-slate-800 flex items-center gap-2">
+                              {nav.hanzi}
+                              <Volume2 className="w-4 h-4 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </span>
+                            <span className="text-xs text-slate-500">{nav.pinyin}</span>
+                          </div>
+                          <span className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                            {nav.jp}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Transportation */}
+                <div className="bg-blue-50 rounded-xl p-6 h-fit">
+                  <h3 className="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                    <Car className="w-5 h-5" /> 交通手段・乗り物
+                  </h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {transportation.map((item, idx) => (
+                      <div key={idx} 
+                           onClick={(e) => playAudio(item.hanzi, e)}
+                           className="bg-white p-3 rounded-xl shadow-sm border border-blue-100 text-center hover:border-blue-300 hover:shadow-md cursor-pointer transition-all group relative"
+                           title="クリックで音声を再生">
+                        <Volume2 className="w-4 h-4 text-blue-200 absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="font-bold text-lg text-blue-900">{item.hanzi}</div>
+                        <div className="text-xs text-gray-500 mb-1">{item.pinyin}</div>
+                        <div className="text-sm font-medium text-blue-600 bg-blue-50 rounded py-0.5">{item.jp}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          {/* ================================================================================= */}
+          {/* TAB: GRAMMAR (文法・基本) */}
+          {/* ================================================================================= */}
+          {activeTab === 'grammar' && (
+            <div className="space-y-8 animate-in fade-in duration-300">
+              <h2 className="text-2xl font-bold text-rose-800 border-l-4 border-rose-500 pl-3">文法・基本フレーズ</h2>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                
+                {/* Left Column */}
+                <div className="space-y-8">
+                  {/* Question Words */}
+                  <div className="bg-rose-50 rounded-xl p-6 border border-rose-100">
+                    <h3 className="text-lg font-bold text-rose-900 mb-4 flex items-center gap-2">
+                      <HelpCircle className="w-5 h-5" /> 疑問詞
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {grammarData.questionWords.map((word, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(word.hanzi, e)}
+                             className="bg-white p-3 rounded-lg shadow-sm border-l-2 border-rose-400 cursor-pointer hover:shadow-md hover:border-l-4 hover:bg-rose-50/30 transition-all group relative"
+                             title="クリックで音声を再生">
+                          <Volume2 className="w-4 h-4 text-rose-200 absolute right-2 bottom-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="flex justify-between items-end mb-1">
+                            <span className="font-bold text-lg text-gray-800">{word.hanzi}</span>
+                            <span className="text-sm font-bold text-rose-600">{word.jp}</span>
+                          </div>
+                          <div className="text-xs text-gray-500">{word.pinyin}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Money & Numbers */}
+                  <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
+                    <h3 className="text-lg font-bold text-amber-900 mb-4 flex items-center gap-2">
+                      <DollarSign className="w-5 h-5" /> お金と数字の単位
+                    </h3>
+                    <div className="space-y-2">
+                      {grammarData.money.map((item, idx) => (
+                        <div key={idx} 
+                             onClick={(e) => playAudio(item.hanzi, e)}
+                             className="flex justify-between items-center p-2 bg-white rounded shadow-sm cursor-pointer hover:shadow-md hover:ring-1 hover:ring-amber-300 transition-all group"
+                             title="クリックで音声を再生">
+                          <div>
+                            <div className="font-bold text-amber-900 flex items-center gap-2">
+                              {item.hanzi}
+                              <Volume2 className="w-3 h-3 text-amber-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <div className="text-[10px] text-gray-500">{item.pinyin}</div>
+                          </div>
+                          <div className="text-sm text-amber-700">{item.jp}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-8">
+                  {/* Aux Verbs (想, 要, 喜歡) */}
+                  <div className="bg-fuchsia-50 rounded-xl p-6 border border-fuchsia-100">
+                    <h3 className="text-lg font-bold text-fuchsia-900 mb-4 flex items-center gap-2">
+                      <MessageCircle className="w-5 h-5" /> 願望・欲求（想 / 要 / 喜歡）
+                    </h3>
+                    <div className="space-y-4">
+                      {grammarData.auxVerbs.map((verb, idx) => (
+                        <div key={idx} className="bg-white p-4 rounded-xl shadow-sm border border-fuchsia-100">
+                          {/* 単語本体のクリック */}
+                          <div className="flex items-center gap-3 mb-3 p-2 rounded-lg cursor-pointer hover:bg-fuchsia-50 transition-colors group"
+                               onClick={(e) => playAudio(verb.hanzi, e)}
+                               title={`「${verb.hanzi}」の音声を再生`}>
+                            <div className="w-12 h-12 bg-fuchsia-100 text-fuchsia-700 rounded-full flex items-center justify-center font-bold text-xl shrink-0 group-hover:bg-fuchsia-200 transition-colors">
+                              {verb.hanzi}
+                            </div>
+                            <div className="flex-1">
+                              <div className="font-bold text-gray-800 flex items-center gap-2">
+                                {verb.jp}
+                                <Volume2 className="w-4 h-4 text-fuchsia-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </div>
+                              <div className="text-xs text-gray-500">{verb.pinyin}</div>
+                            </div>
+                          </div>
+                          {/* 例文のクリック */}
+                          <div className="p-2 bg-slate-50 rounded text-sm text-slate-700 border-l-2 border-slate-300 cursor-pointer hover:bg-slate-100 hover:border-slate-400 transition-all group flex justify-between items-center"
+                               onClick={(e) => playAudio(verb.example, e)}
+                               title="例文の音声を再生">
+                            <div>
+                              例：<span className="font-bold">{verb.example}</span> ({verb.exJp})
+                            </div>
+                            <Volume2 className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          {/* ================================================================================= */}
+          {/* TAB: VOCABULARY (単語帳) */}
+          {/* ================================================================================= */}
+          {activeTab === 'vocab' && (
+            <div className="space-y-8 animate-in fade-in duration-300">
+              <h2 className="text-2xl font-bold text-orange-800 border-l-4 border-orange-500 pl-3">ジャンル別 単語帳</h2>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Object.entries(vocabCategories).map(([key, category]) => (
+                  <div key={key} className="flex flex-col">
+                    <div className="flex items-center gap-2 mb-3 text-orange-700 bg-orange-50 p-2 rounded-lg">
+                      {category.icon}
+                      <h3 className="font-bold">{category.title}</h3>
+                    </div>
+                    <div className="bg-white rounded-xl flex-1 border border-orange-100 shadow-sm overflow-hidden">
+                      <ul className="divide-y divide-orange-50">
+                        {category.words.map((word, idx) => (
+                          <li key={idx} 
+                              onClick={(e) => playAudio(word.hanzi, e)}
+                              className="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative"
+                              title="クリックで音声を再生">
+                            <div className="flex justify-between items-start mb-1">
+                              <span className="font-bold text-gray-800 text-lg flex items-center gap-2">
+                                {word.hanzi}
+                                <Volume2 className="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </span>
+                              <span className="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">{word.jp}</span>
+                            </div>
+                            <div className="text-xs text-gray-500">{word.pinyin}</div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ================================================================================= */}
+          {/* TAB: TOCFL (TOCFL攻略 追加分) */}
+          {/* ================================================================================= */}
+          {activeTab === 'tocfl' && (
+            <div className="space-y-10 animate-in fade-in duration-300">
+              <h2 className="text-2xl font-bold text-purple-800 border-l-4 border-purple-500 pl-3">
+                TOCFL Band A メタ攻略 <span className="text-sm font-normal text-purple-600 ml-2">意味の海で迷わない！</span>
+              </h2>
+
+              {/* 1. 空所補充編 */}
+              <section className="space-y-6">
+                <div className="bg-gradient-to-r from-sky-500 to-sky-700 text-white inline-flex px-6 py-2 rounded-r-full font-bold text-lg shadow-md items-center gap-2 -ml-4 md:-ml-8">
+                  <Puzzle className="w-5 h-5" /> １．空所補充編（文法パズルと品詞の支配）
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* ① 次のワード予測 */}
+                  <div className="bg-white rounded-2xl p-5 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-blue-800">
+                      <Search className="w-5 h-5" /> 次のワードを予測せよ！
+                    </h3>
+                    <p className="text-xs text-slate-500 mb-3">空欄の前のキーワードを見れば、選択肢の「グループ」が確定する。</p>
+                    <ul className="space-y-3 text-sm">
+                      <li className="p-3 bg-blue-50 rounded-lg">
+                        <div className="mb-1 text-blue-700 font-bold">
+                          <AudioWord text="要" className="hover:bg-blue-200 px-1 rounded transition-colors">要</AudioWord> / 
+                          <AudioWord text="想" className="hover:bg-blue-200 px-1 rounded transition-colors ml-1">想</AudioWord> / 
+                          <AudioWord text="打算" className="hover:bg-blue-200 px-1 rounded transition-colors ml-1">打算</AudioWord>
+                        </div>
+                        ➡ <span className="font-bold text-rose-600">動詞（アクション）</span>
+                      </li>
+                      <li className="p-3 bg-blue-50 rounded-lg">
+                        <div className="mb-1 text-blue-700 font-bold">
+                          <AudioWord text="很" className="hover:bg-blue-200 px-1 rounded transition-colors">很</AudioWord> / 
+                          <AudioWord text="非常" className="hover:bg-blue-200 px-1 rounded transition-colors ml-1">非常</AudioWord> / 
+                          <AudioWord text="真" className="hover:bg-blue-200 px-1 rounded transition-colors ml-1">真</AudioWord>
+                        </div>
+                        ➡ <span className="font-bold text-amber-600">形容詞（状態/感情）</span>
+                      </li>
+                      <li className="p-3 bg-blue-50 rounded-lg">
+                        <div className="mb-1 text-blue-700 font-bold">
+                          <AudioWord text="被" className="hover:bg-blue-200 px-1 rounded transition-colors">被</AudioWord>
+                        </div>
+                        ➡ <span className="font-bold text-slate-700">犯人（名詞）</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* ② 構造助詞「三兄弟」 */}
+                  <div className="bg-white rounded-2xl p-5 border-t-4 border-teal-500 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-teal-800">
+                      <Users className="w-5 h-5" /> 構造助詞「三兄弟」
+                    </h3>
+                    <p className="text-xs text-slate-500 mb-3">パズルの凹凸を決定づける最強の接着剤。</p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="p-2 border border-slate-100 rounded hover:bg-slate-50 transition-colors">
+                        <div className="font-bold text-slate-700 flex items-center gap-2">
+                          ① <AudioWord text="的">的 (de)</AudioWord> 
+                          <span className="text-xs font-normal text-slate-500 ml-1">名詞化・所有</span>
+                        </div>
+                        <div className="text-teal-700 mt-1 pl-5">
+                          例：<AudioWord text="玩 的 東西" className="font-bold">玩<span className="text-teal-500">的</span><b className="text-rose-500">東西</b></AudioWord>
+                          <div className="text-xs text-slate-500 mt-0.5">（遊ぶ<b className="text-rose-500">物</b>）</div>
+                        </div>
+                      </li>
+                      <li className="p-2 border border-slate-100 rounded hover:bg-slate-50 transition-colors">
+                        <div className="font-bold text-slate-700 flex items-center gap-2">
+                          ② <AudioWord text="得">得 (de)</AudioWord> 
+                          <span className="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ 結果</span>
+                        </div>
+                        <div className="text-teal-700 mt-1 pl-5">
+                          例：<AudioWord text="跑 得 快" className="font-bold"><b className="text-blue-500">跑</b><span className="text-teal-500">得</span><b className="text-amber-500">快</b></AudioWord>
+                          <div className="text-xs text-slate-500 mt-0.5">（<b className="text-blue-500">走った</b>結果、<b className="text-amber-500">速い</b>）</div>
+                        </div>
+                      </li>
+                      <li className="p-2 border border-slate-100 rounded hover:bg-slate-50 transition-colors">
+                        <div className="font-bold text-slate-700 flex items-center gap-2">
+                          ③ <AudioWord text="地">地 (de)</AudioWord> 
+                          <span className="text-xs font-normal text-slate-500 ml-1">動詞継続 ➡ アクション</span>
+                        </div>
+                        <div className="text-teal-700 mt-1 pl-5">
+                          例：<AudioWord text="高興 地 笑" className="font-bold">高興<span className="text-teal-500">地</span><b className="text-blue-500">笑</b></AudioWord>
+                          <div className="text-xs text-slate-500 mt-0.5">（嬉しそうに<b className="text-blue-500">笑う</b>）</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* ③ 並列と主語の支配力 */}
+                  <div className="bg-white rounded-2xl p-5 border-t-4 border-indigo-500 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-800">
+                      <Magnet className="w-5 h-5" /> 並列と主語の支配力
+                    </h3>
+                    <ul className="space-y-3 text-sm">
+                      <li className="bg-indigo-50 p-3 rounded">
+                        <b className="text-indigo-800 block mb-1">「、」の磁力（並列）</b>
+                        <span className="text-slate-700">前後は<span className="bg-yellow-200 px-1 rounded font-bold">同じ種類（品詞や方向性）</span>が並ぶ。</span><br/>
+                        <div className="mt-2 text-xs">
+                          <span className="text-rose-600 font-bold">✕</span> 遊ぶ物(名詞) 、 愉快だ(形容詞)<br/>
+                          <span className="text-emerald-600 font-bold">◯</span> 楽しく遊ぶ(状態) 、 愉快だ(状態)
+                        </div>
+                      </li>
+                      <li className="bg-indigo-50 p-3 rounded">
+                        <b className="text-indigo-800 block mb-1">主語文のルール</b>
+                        <span className="text-slate-700">「誰・何が主語か」を見極める。</span><br/>
+                        <span className="text-rose-600 font-bold mt-1 inline-block border-b border-rose-300">主語文の中に別の主語文は入らない！</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* ④ 前置詞マーカー */}
+                  <div className="bg-white rounded-2xl p-5 border-t-4 border-cyan-500 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-cyan-800">
+                      <MapPin className="w-5 h-5" /> 場所と人のマーカー
+                    </h3>
+                    <ul className="space-y-3 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="bg-cyan-100 text-cyan-800 font-bold px-2 rounded mt-0.5">
+                          <AudioWord text="在">在</AudioWord>
+                        </span>
+                        <div className="text-slate-700">100%<b className="text-rose-500">「場所」</b>が来る。（在...裡）</div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="bg-cyan-100 text-cyan-800 font-bold px-2 rounded mt-0.5">
+                          <AudioWord text="跟">跟</AudioWord>
+                        </span>
+                        <div className="text-slate-700">
+                          <b className="text-blue-600">「人」</b>とセットになる。<br/>
+                          <div className="text-xs text-slate-500 mt-1 bg-slate-50 p-1.5 rounded">
+                            ・<AudioWord text="跟 人 說話" className="hover:text-blue-600">跟 + 人 + 說話</AudioWord>（〜と話す）<br/>
+                            ・<AudioWord text="跟 人 學" className="hover:text-blue-600 mt-1">跟 + 人 + 學</AudioWord>（〜から学ぶ）
+                          </div>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="bg-cyan-100 text-cyan-800 font-bold px-2 rounded mt-0.5">
+                          <AudioWord text="對">對</AudioWord>
+                        </span>
+                        <div className="text-slate-700 mt-0.5">〜に対して（対象・態度）</div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* ⑤ 構文・接続詞 */}
+                  <div className="bg-white rounded-2xl p-5 border-t-4 border-violet-500 shadow-sm hover:shadow-md transition-shadow lg:col-span-2">
+                    <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-violet-800">
+                      <Link className="w-5 h-5" /> 鉄板の接続詞・比較構文
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div className="bg-violet-50 p-3 rounded-lg border border-violet-100">
+                        <b className="text-violet-800 text-base mb-1 block">条件クリア：只要 A，就 B</b>
+                        <span className="text-slate-600 text-xs block mb-2">「Aになると必ずBする」</span>
+                        <div className="text-slate-800 bg-white p-2 rounded border border-slate-100 shadow-sm">
+                          例：<AudioWord text="只要有空，就找工作做。" className="font-medium hover:text-violet-700 transition-colors">只要有空，就找工作做。</AudioWord>
+                        </div>
+                      </div>
+                      <div className="bg-violet-50 p-3 rounded-lg border border-violet-100">
+                        <b className="text-violet-800 text-base mb-1 block">比較・強調：A 比 B 更...</b>
+                        <span className="text-slate-600 text-xs block mb-2">「BよりもAの方がさらに〜だ」</span>
+                        <div className="text-slate-800 bg-white p-2 rounded border border-slate-100 shadow-sm">
+                          例：<AudioWord text="照顧身體 比 認真工作 更重要。" className="font-medium hover:text-violet-700 transition-colors">照顧身體 比 認真工作 <b className="text-rose-500">更</b>重要。</AudioWord>
+                        </div>
+                      </div>
+                      <div className="bg-violet-50 p-3 rounded-lg border border-violet-100 flex items-center justify-between">
+                        <div>
+                          <b className="text-violet-800 text-base block">呼応：每...都...</b>
+                          <span className="text-slate-600 text-xs">「どの〜もすべて」</span>
+                        </div>
+                        <AudioWord text="每個都" className="bg-white px-2 py-1 rounded shadow-sm text-xs border border-slate-100 hover:text-violet-700">Audio</AudioWord>
+                      </div>
+                      <div className="bg-violet-50 p-3 rounded-lg border border-violet-100 flex items-center justify-between">
+                        <div>
+                          <b className="text-violet-800 text-base block">強調：不但...更是...</b>
+                          <span className="text-slate-600 text-xs">「〜だけでなく、さらに〜だ」</span>
+                        </div>
+                        <AudioWord text="不但...更是" className="bg-white px-2 py-1 rounded shadow-sm text-xs border border-slate-100 hover:text-violet-700">Audio</AudioWord>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* 2. 意味の総括編 */}
+              <section className="space-y-6 pt-4 border-t border-slate-200">
+                <div className="bg-gradient-to-r from-amber-500 to-amber-700 text-white inline-flex px-6 py-2 rounded-r-full font-bold text-lg shadow-md items-center gap-2 -ml-4 md:-ml-8">
+                  <Search className="w-5 h-5" /> ２．意味の総括編（引っかけ回避ルール）
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  
+                  {/* ① 数字と数量の罠 */}
+                  <div className="bg-white rounded-2xl p-6 border-l-4 border-amber-500 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-amber-100 p-2 rounded-lg text-amber-600"><Calculator className="w-6 h-6" /></div>
+                      <h3 className="font-bold text-lg text-slate-800">数字・数量の絶妙な罠</h3>
+                    </div>
+                    <p className="text-sm text-slate-500 mb-4">わずかな副詞の違いで、数字の意味が逆転する！</p>
+                    <table className="w-full text-sm text-left border-collapse">
+                      <tbody>
+                        <tr className="border-b border-slate-100 hover:bg-slate-50 group transition-colors">
+                          <td className="py-3 font-bold text-slate-700 w-1/2">
+                            <AudioWord text="快兩點才來">快兩點<b className="text-rose-500">才</b>來</AudioWord>
+                          </td>
+                          <td className="py-3 text-slate-600">2時になる直前（1:50頃）</td>
+                        </tr>
+                        <tr className="border-b border-slate-100 bg-amber-50/50 hover:bg-amber-100 group transition-colors">
+                          <td className="py-3 font-bold text-slate-700 px-2 w-1/2">
+                            <AudioWord text="兩百多塊">兩百<b className="text-rose-500">多</b>塊</AudioWord>
+                          </td>
+                          <td className="py-3 text-slate-600">200元と<b className="text-rose-600">いくらか</b>（例:245元）</td>
+                        </tr>
+                        <tr className="border-b border-slate-100 bg-amber-50/50 hover:bg-amber-100 group transition-colors">
+                          <td className="py-3 font-bold text-slate-700 px-2 w-1/2">
+                            <AudioWord text="快要兩百塊了"><b className="text-rose-500">快要</b>兩百塊了</AudioWord>
+                          </td>
+                          <td className="py-3 text-slate-600">もうすぐ200元（例:180元）</td>
+                        </tr>
+                        <tr className="border-b border-slate-100 hover:bg-slate-50 group transition-colors">
+                          <td className="py-3 font-bold text-slate-700 w-1/2">
+                            <AudioWord text="一個也沒有">一個<b className="text-rose-500">也</b>沒有</AudioWord>
+                          </td>
+                          <td className="py-3 text-slate-600"><b className="text-rose-600 bg-rose-100 px-1 rounded">全否定：一人もいない</b></td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 group transition-colors">
+                          <td className="py-3 font-bold text-slate-700 w-1/2">
+                            <AudioWord text="只有一個客人"><b className="text-rose-500">只有</b>一個客人</AudioWord>
+                          </td>
+                          <td className="py-3 text-slate-600">限定：一人<b className="text-rose-600">しかいない</b></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* ② 似た単語の解像度 */}
+                  <div className="bg-white rounded-2xl p-6 border-l-4 border-emerald-500 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-emerald-100 p-2 rounded-lg text-emerald-600"><Languages className="w-6 h-6" /></div>
+                      <h3 className="font-bold text-lg text-slate-800">似た単語の解像度</h3>
+                    </div>
+                    <ul className="space-y-4 text-sm">
+                      <li className="flex items-center gap-3">
+                        <div className="w-1/2 bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-center hover:bg-emerald-100 transition-colors">
+                          <AudioWord text="房子" className="text-emerald-800 font-bold block text-base mb-1">房子 (一棟)</AudioWord>
+                          <span className="text-xs text-slate-500">独立した「家・建物」</span>
+                        </div>
+                        <div className="text-slate-300 font-bold px-1">VS</div>
+                        <div className="w-1/2 bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-center hover:bg-emerald-100 transition-colors">
+                          <AudioWord text="房間" className="text-emerald-800 font-bold block text-base mb-1">房間 (一個)</AudioWord>
+                          <span className="text-xs text-slate-500">仕切られた「部屋」</span>
+                        </div>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <div className="w-1/2 bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-center hover:bg-emerald-100 transition-colors">
+                          <AudioWord text="上學" className="text-emerald-800 font-bold block text-base mb-1">上學</AudioWord>
+                          <span className="text-xs text-slate-500">学校へ行く（登校）</span>
+                        </div>
+                        <div className="text-slate-300 font-bold px-1">VS</div>
+                        <div className="w-1/2 bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-center hover:bg-emerald-100 transition-colors">
+                          <AudioWord text="上課" className="text-emerald-800 font-bold block text-base mb-1">上課</AudioWord>
+                          <span className="text-xs text-slate-500">授業に出る・受ける</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* ③ 抽象化・言い換えの法則 & 時制の罠 */}
+                  <div className="bg-white rounded-2xl p-6 border-l-4 border-rose-500 shadow-sm hover:shadow-md transition-shadow lg:col-span-2">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="bg-rose-100 p-2 rounded-lg text-rose-600"><ArrowLeftRight className="w-6 h-6" /></div>
+                          <h3 className="font-bold text-lg text-slate-800">パラフレーズ（言い換え）の法則</h3>
+                        </div>
+                        <p className="text-sm text-slate-600 mb-4">正解の選択肢は、本文の「具体的な状況」を「フワッとした言葉」にまとめていることが多い。</p>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                            <div className="text-xs text-slate-600 mb-2 font-medium">読めない + 忙しい</div>
+                            <ArrowDown className="w-4 h-4 mx-auto text-rose-400 mb-2" />
+                            <div className="font-bold text-rose-700 bg-rose-100 py-1.5 rounded text-sm">準備不足</div>
+                          </div>
+                          <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                            <div className="text-xs text-slate-600 mb-2 font-medium">週末も会社で残業</div>
+                            <ArrowDown className="w-4 h-4 mx-auto text-rose-400 mb-2" />
+                            <div className="font-bold text-rose-700 bg-rose-100 py-1.5 rounded text-sm">
+                              <AudioWord text="事情很多" className="hover:text-rose-900">事情很多</AudioWord>
+                            </div>
+                          </div>
+                          <div className="bg-slate-50 p-4 rounded-xl text-center border border-slate-200">
+                            <div className="text-xs text-slate-600 mb-2 font-medium">病気治った＋バイト＋勉強</div>
+                            <ArrowDown className="w-4 h-4 mx-auto text-rose-400 mb-2" />
+                            <div className="font-bold text-rose-700 bg-rose-100 py-1.5 rounded text-sm">休息が必要</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="md:w-1/3 mt-6 md:mt-0 p-5 bg-rose-50 rounded-xl border border-rose-100 h-fit">
+                        <b className="text-rose-800 flex items-center gap-2 mb-3">
+                          <AlertCircle className="w-5 h-5 text-rose-500" /> 時制（テンス）の罠
+                        </b>
+                        <p className="text-slate-700 text-sm leading-relaxed">
+                          <AudioWord text="剛好" className="font-bold bg-white px-1 rounded shadow-sm mr-1">剛好</AudioWord>
+                          （治ったばかり）＝<b className="text-rose-600">今は元気。</b><br/><br/>
+                          選択肢の「因為他生病了（今も病気だから）」は時制ズレの引っかけです！
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+          )}
+
+        </div>
+      </div>
     </div>
+  );
+};
 
-</body>
-</html>
+export default ChineseStudyNotes;

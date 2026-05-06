@@ -55,6 +55,14 @@
                 </div>
             </div>
             
+            <!-- 退職届提出 カウントダウン -->
+            <div class="mt-6 bg-red-50 border border-red-200 rounded-xl p-4 flex flex-col md:flex-row items-center justify-center shadow-sm">
+                <i class="fa-solid fa-envelope-open-text text-red-500 text-2xl mb-2 md:mb-0 md:mr-3"></i>
+                <div class="text-gray-700 font-bold text-center md:text-left">
+                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-3xl font-black text-red-600 mx-1">--</span> 日
+                </div>
+            </div>
+
             <!-- プログレスバー -->
             <div class="mt-8">
                 <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
@@ -78,8 +86,39 @@
                     <div id="scale-pyramid" class="font-bold text-gray-700 text-sm leading-tight">--</div>
                 </div>
                 <div class="bg-red-50/50 p-4 rounded-xl border border-red-100 shadow-sm">
-                    <div class="text-xs text-red-400 font-bold mb-2">🏛️ ローマ帝国 で言うと...</div>
+                    <div class="text-xs text-red-400 font-bold mb-2">🏛️ ローマの歴史 で言うと...</div>
                     <div id="scale-rome" class="font-bold text-gray-700 text-sm leading-tight">--</div>
+                </div>
+            </div>
+
+            <!-- カレンダー セクション -->
+            <div class="mt-12 text-left">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-4 border-t border-gray-100 pt-8">
+                    <h3 class="text-xl font-bold text-gray-700 mb-3 md:mb-0">
+                        <i class="fa-regular fa-calendar-days text-indigo-500 mr-2"></i> 2026年12月 スケジュール
+                    </h3>
+                    <div class="flex items-center space-x-4 text-xs font-bold text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
+                        <span class="flex items-center"><span class="w-3 h-3 bg-sky-500 rounded-sm mr-1.5 shadow-sm"></span>有給・代休等</span>
+                        <span class="flex items-center"><span class="w-3 h-3 bg-emerald-600 rounded-sm mr-1.5 shadow-sm"></span>祝日・イベント</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden text-sm">
+                    <!-- 曜日ヘッダー -->
+                    <div class="grid grid-cols-7 border-b border-gray-200 bg-gray-50 text-center text-xs font-bold text-gray-500">
+                        <div class="py-2 text-red-400">日</div>
+                        <div class="py-2">月</div>
+                        <div class="py-2">火</div>
+                        <div class="py-2">水</div>
+                        <div class="py-2">木</div>
+                        <div class="py-2">金</div>
+                        <div class="py-2 text-blue-400">土</div>
+                    </div>
+                    
+                    <!-- カレンダーグリッド -->
+                    <div id="calendar-grid" class="grid grid-cols-7 auto-rows-[minmax(80px,auto)] md:auto-rows-[minmax(100px,auto)] bg-gray-200 gap-px">
+                        <!-- JSで生成されます -->
+                    </div>
                 </div>
             </div>
 
@@ -90,6 +129,8 @@
         // 目標日時: 2026年12月8日 00:00:00
         const targetDate = new Date('2026-12-08T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
+        // 退職届提出日: 2026年9月18日 00:00:00
+        const noticeDate = new Date('2026-09-18T00:00:00').getTime();
         
         // 2026年の日本の祝日（5月〜12月）
         const holidays2026 = [
@@ -206,12 +247,30 @@
             // 総残り秒数の計算
             const totalSeconds = Math.floor(distance / 1000);
 
+            // 退職届提出までの日数計算 (暦上の日数)
+            const noticeDistance = noticeDate - now;
+            let noticeDays = 0;
+            if (noticeDistance > 0) {
+                noticeDays = Math.floor(noticeDistance / (1000 * 60 * 60 * 24));
+            } else if (noticeDistance <= 0 && distance > 0) {
+                noticeDays = "提出済！"; 
+            }
+
             // DOMへ反映
             document.getElementById('cd-days').innerText = workingDaysLeft;
             document.getElementById('cd-hours').innerText = hours;
             document.getElementById('cd-mins').innerText = minutes;
             document.getElementById('cd-secs').innerText = seconds;
             document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
+            
+            const noticeDaysElement = document.getElementById('notice-days');
+            if (typeof noticeDays === "number") {
+                noticeDaysElement.innerText = noticeDays;
+            } else {
+                noticeDaysElement.innerText = noticeDays;
+                noticeDaysElement.classList.remove('text-3xl');
+                noticeDaysElement.classList.add('text-xl');
+            }
 
             // プログレスバーの計算 (業務時間ベース: 5/1 8:00 〜 12/8 17:00)
             const targetWorkEnd = new Date('2026-12-08T17:00:00').getTime();
@@ -268,16 +327,19 @@
             else if (pyramidSteps < 150) pyramidText += "<br><span class='text-xs text-gray-500'>(高所作業で足がすくむ)</span>";
             else pyramidText += "<br><span class='text-xs text-gray-500'>(頂上はもうすぐそこ！)</span>";
 
-            // 3. ローマ帝国スケール
+            // 3. ローマの歴史スケール (約1200年の歴史)
             let romeText = "";
-            if (progressPercentage === 0) romeText = "王政ローマ・建国神話<br><span class='text-xs text-gray-500'>(まだ国すらできてない)</span>";
-            else if (progressPercentage >= 100) romeText = "帝国滅亡・中世の幕開け<br><span class='text-xs text-gray-500'>(全ての軛から解き放たれた！)</span>";
-            else if (progressPercentage < 10) romeText = "アウグストゥス時代<br><span class='text-xs text-gray-500'>(初代皇帝・希望の始まり)</span>";
-            else if (progressPercentage < 30) romeText = "五賢帝時代<br><span class='text-xs text-gray-500'>(パクス・ロマーナ・一番安定して平和)</span>";
-            else if (progressPercentage < 50) romeText = "カラカラ帝時代<br><span class='text-xs text-gray-500'>(アントニヌス勅令・ちょっと迷走気味)</span>";
-            else if (progressPercentage < 70) romeText = "軍人皇帝時代<br><span class='text-xs text-gray-500'>(大混乱期・毎日がサバイバル)</span>";
-            else if (progressPercentage < 90) romeText = "コンスタンティヌス大帝時代<br><span class='text-xs text-gray-500'>(新体制構築・終わりへの準備)</span>";
-            else romeText = "末期・テオドシウス帝<br><span class='text-xs text-gray-500'>(東西分裂直前・ラストスパート)</span>";
+            if (progressPercentage === 0) romeText = "ロムルスによるローマ建国<br><span class='text-xs text-gray-500'>(伝説の始まり・まだ小さな集落)</span>";
+            else if (progressPercentage >= 100) romeText = "西ローマ帝国滅亡<br><span class='text-xs text-gray-500'>(古代の終わり・全ての軛から解き放たれた！)</span>";
+            else if (progressPercentage < 10) romeText = "王政ローマ時代<br><span class='text-xs text-gray-500'>(7人の王の時代・基礎固め)</span>";
+            else if (progressPercentage < 20) romeText = "共和政初期・十二表法制定<br><span class='text-xs text-gray-500'>(法律ができて社会が整い始める)</span>";
+            else if (progressPercentage < 30) romeText = "ポエニ戦争・ハンニバル戦<br><span class='text-xs text-gray-500'>(最大の危機・カルタゴとの死闘)</span>";
+            else if (progressPercentage < 45) romeText = "内乱の一世紀・カエサル暗殺<br><span class='text-xs text-gray-500'>(ブルータスお前もか・大激動期)</span>";
+            else if (progressPercentage < 60) romeText = "アウグストゥス・帝政移行<br><span class='text-xs text-gray-500'>(初代皇帝・平和の始まり)</span>";
+            else if (progressPercentage < 75) romeText = "五賢帝時代<br><span class='text-xs text-gray-500'>(パクス・ロマーナ・一番安定して平和)</span>";
+            else if (progressPercentage < 85) romeText = "軍人皇帝時代<br><span class='text-xs text-gray-500'>(大混乱期・毎日がサバイバル)</span>";
+            else if (progressPercentage < 95) romeText = "コンスタンティヌス・キリスト教公認<br><span class='text-xs text-gray-500'>(新体制構築・時代の転換点)</span>";
+            else romeText = "東西ローマ分裂<br><span class='text-xs text-gray-500'>(帝国は真っ二つ・ラストスパート)</span>";
 
             // DOMへ反映
             document.getElementById('scale-life').innerHTML = lifeText;
@@ -285,9 +347,87 @@
             document.getElementById('scale-rome').innerHTML = romeText;
         }
 
+        // --- 12月カレンダーの描画関数 ---
+        function renderCalendar() {
+            // カレンダーのデータ定義
+            const calendarDays = [
+                // 1週目
+                { date: 29, currentMonth: false, events: [] },
+                { date: 30, currentMonth: false, events: [] },
+                { date: 1, currentMonth: true, events: [] },
+                { date: 2, currentMonth: true, events: [] },
+                { date: 3, currentMonth: true, events: [] },
+                { date: 4, currentMonth: true, events: [ { text: 'LAST DAY', type: 'blue', start: true, end: true } ] },
+                { date: 5, currentMonth: true, events: [] },
+                // 2週目
+                { date: 6, currentMonth: true, events: [] },
+                { date: 7, currentMonth: true, events: [ { text: '10 CO 11th Nov.', type: 'blue', start: true, end: true } ] },
+                { date: 8, currentMonth: true, events: [ { text: 'AL 1st Dec. + 4.5', type: 'blue', start: true, end: false }, { text: '9', type: 'blue', start: true, end: false } ] },
+                { date: 9, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '8', type: 'blue', start: false, end: false } ] },
+                { date: 10, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '7', type: 'blue', start: false, end: false } ] },
+                { date: 11, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: true }, { text: '6', type: 'blue', start: false, end: true } ] },
+                { date: 12, currentMonth: true, events: [] },
+                // 3週目
+                { date: 13, currentMonth: true, events: [] },
+                { date: 14, currentMonth: true, events: [ { text: 'AL 1st Oct. 4.5+1st Dec.0.5', type: 'blue', start: true, end: false }, { text: '5', type: 'blue', start: true, end: false } ] },
+                { date: 15, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '4', type: 'blue', start: false, end: false } ] },
+                { date: 16, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '3', type: 'blue', start: false, end: false } ] },
+                { date: 17, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '2', type: 'blue', start: false, end: false } ] },
+                { date: 18, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: true }, { text: '1', type: 'blue', start: false, end: true } ] },
+                { date: 19, currentMonth: true, events: [] },
+                // 4週目
+                { date: 20, currentMonth: true, events: [] },
+                { date: 21, currentMonth: true, events: [] },
+                { date: 22, currentMonth: true, events: [] },
+                { date: 23, currentMonth: true, events: [] },
+                { date: 24, currentMonth: true, events: [ { text: 'Christmas Eve', type: 'green', start: true, end: true } ] },
+                { date: 25, currentMonth: true, events: [ { text: 'COが貰える日', type: 'blue', start: true, end: true }, { text: 'Christmas Day', type: 'green', start: true, end: true } ] },
+                { date: 26, currentMonth: true, events: [] },
+                // 5週目
+                { date: 27, currentMonth: true, events: [] },
+                { date: 28, currentMonth: true, events: [] },
+                { date: 29, currentMonth: true, events: [] },
+                { date: 30, currentMonth: true, events: [] },
+                { date: 31, currentMonth: true, events: [ { text: "New Year's Eve", type: 'green', start: true, end: true } ] },
+                { date: 1, currentMonth: false, monthText: '1月', events: [ { text: "New Year's Day (regional holiday)", type: 'green', start: true, end: true } ] },
+                { date: 2, currentMonth: false, events: [] }
+            ];
+
+            const grid = document.getElementById('calendar-grid');
+            if (!grid) return;
+
+            let html = '';
+            calendarDays.forEach(day => {
+                const bgClass = day.currentMonth ? 'bg-white' : 'bg-gray-50';
+                const textClass = day.currentMonth ? 'text-gray-700' : 'text-gray-400';
+                const dateText = day.monthText ? `${day.monthText} ${day.date}日` : day.date;
+
+                html += `<div class="${bgClass} py-1 flex flex-col min-h-[80px] md:min-h-[100px] hover:bg-gray-100 transition-colors">`;
+                html += `<div class="text-xs text-center font-medium ${textClass} mb-1">${dateText}</div>`;
+                
+                day.events.forEach(ev => {
+                    const colorClass = ev.type === 'blue' ? 'bg-sky-500' : 'bg-emerald-600';
+                    
+                    // 連続するイベントの角丸・マージン処理
+                    let shapeClass = '';
+                    if (ev.start && ev.end) { shapeClass = 'rounded mx-1'; }
+                    else if (ev.start) { shapeClass = 'rounded-l ml-1 mr-0'; }
+                    else if (ev.end) { shapeClass = 'rounded-r ml-0 mr-1'; }
+                    else { shapeClass = 'rounded-none mx-0'; }
+                    
+                    html += `<div class="${colorClass} text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 mb-0.5 whitespace-nowrap overflow-hidden ${shapeClass} shadow-sm">${ev.text}</div>`;
+                });
+                
+                html += `</div>`;
+            });
+
+            grid.innerHTML = html;
+        }
+
         // 初期実行と1秒ごとのループ
         updateCountdown();
         setInterval(updateCountdown, 1000);
+        renderCalendar(); // カレンダー描画
 
     </script>
 </body>
