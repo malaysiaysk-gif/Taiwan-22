@@ -712,6 +712,102 @@
                 </ul>
               </div>
             </div>
+            
+            <!-- 天気・気候 (新規追加) -->
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 mb-3 text-orange-700 bg-orange-50 p-2 rounded-lg"><i data-lucide="cloud-sun" class="w-6 h-6"></i><h3 class="font-bold">天気・気候</h3></div>
+              <div class="bg-white rounded-xl flex-1 border border-orange-100 shadow-sm overflow-hidden">
+                <ul class="divide-y divide-orange-50">
+                  <li class="p-3 hover:bg-orange-50/80 transition-colors group relative">
+                    <div onclick="playAudio('熱', event)" class="cursor-pointer flex justify-between items-start mb-1" title="クリックで音声を再生">
+                      <span class="font-bold text-gray-800 text-lg flex items-center gap-2">熱 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">暑い</span>
+                    </div>
+                    <div class="text-xs text-gray-500 mb-2">rè</div>
+                    <div onclick="playAudio('今天很熱。', event)" class="bg-orange-50/50 p-2 rounded text-xs cursor-pointer hover:bg-orange-100 transition-colors flex justify-between items-center" title="例文の音声を再生">
+                      <span>例: <b class="text-gray-700">今天很熱。</b><br><span class="text-gray-500 mt-0.5 inline-block">今日はとても暑い。</span></span>
+                      <i data-lucide="volume-2" class="w-3 h-3 text-orange-400"></i>
+                    </div>
+                  </li>
+                  <li class="p-3 hover:bg-orange-50/80 transition-colors group relative">
+                    <div onclick="playAudio('冷', event)" class="cursor-pointer flex justify-between items-start mb-1" title="クリックで音声を再生">
+                      <span class="font-bold text-gray-800 text-lg flex items-center gap-2">冷 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">寒い</span>
+                    </div>
+                    <div class="text-xs text-gray-500 mb-2">lěng</div>
+                    <div onclick="playAudio('昨天很冷。', event)" class="bg-orange-50/50 p-2 rounded text-xs cursor-pointer hover:bg-orange-100 transition-colors flex justify-between items-center" title="例文の音声を再生">
+                      <span>例: <b class="text-gray-700">昨天很冷。</b><br><span class="text-gray-500 mt-0.5 inline-block">昨日はとても寒かった。</span></span>
+                      <i data-lucide="volume-2" class="w-3 h-3 text-orange-400"></i>
+                    </div>
+                  </li>
+                  <li onclick="playAudio('天氣', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">天氣 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">天気</span></div>
+                    <div class="text-xs text-gray-500">tiānqì</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 楽器 (新規追加) -->
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 mb-3 text-orange-700 bg-orange-50 p-2 rounded-lg"><i data-lucide="music" class="w-6 h-6"></i><h3 class="font-bold">楽器</h3></div>
+              <div class="bg-white rounded-xl flex-1 border border-orange-100 shadow-sm overflow-hidden">
+                <ul class="divide-y divide-orange-50">
+                  <li onclick="playAudio('鋼琴', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">鋼琴 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">ピアノ</span></div>
+                    <div class="text-xs text-gray-500">gāngqín</div>
+                  </li>
+                  <li onclick="playAudio('吉他', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">吉他 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">ギター</span></div>
+                    <div class="text-xs text-gray-500">jítā</div>
+                  </li>
+                  <li onclick="playAudio('小提琴', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">小提琴 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">バイオリン</span></div>
+                    <div class="text-xs text-gray-500">xiǎotíqín</div>
+                  </li>
+                  <li onclick="playAudio('打鼓', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">打鼓 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">ドラムを叩く</span></div>
+                    <div class="text-xs text-gray-500">dǎ gǔ</div>
+                  </li>
+                  <li onclick="playAudio('彈', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">彈 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">弾く(ピアノ/ギター等)</span></div>
+                    <div class="text-xs text-gray-500">tán</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 体の部位 (新規追加) -->
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2 mb-3 text-orange-700 bg-orange-50 p-2 rounded-lg"><i data-lucide="user" class="w-6 h-6"></i><h3 class="font-bold">体の部位</h3></div>
+              <div class="bg-white rounded-xl flex-1 border border-orange-100 shadow-sm overflow-hidden">
+                <ul class="divide-y divide-orange-50">
+                  <li onclick="playAudio('頭', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">頭 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">頭</span></div>
+                    <div class="text-xs text-gray-500">tóu</div>
+                  </li>
+                  <li onclick="playAudio('肚子', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">肚子 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">おなか</span></div>
+                    <div class="text-xs text-gray-500">dùzi</div>
+                  </li>
+                  <li onclick="playAudio('手', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">手 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">手</span></div>
+                    <div class="text-xs text-gray-500">shǒu</div>
+                  </li>
+                  <li onclick="playAudio('腳', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">腳 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">足</span></div>
+                    <div class="text-xs text-gray-500">jiǎo</div>
+                  </li>
+                  <li onclick="playAudio('眼睛', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">眼睛 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">目</span></div>
+                    <div class="text-xs text-gray-500">yǎnjing</div>
+                  </li>
+                  <li onclick="playAudio('嘴巴', event)" class="p-3 hover:bg-orange-50/80 transition-colors cursor-pointer group relative" title="クリックで音声を再生">
+                    <div class="flex justify-between items-start mb-1"><span class="font-bold text-gray-800 text-lg flex items-center gap-2">嘴巴 <i data-lucide="volume-2" class="w-4 h-4 text-orange-300 opacity-0 group-hover:opacity-100 transition-opacity"></i></span><span class="text-xs text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full font-medium">口</span></div>
+                    <div class="text-xs text-gray-500">zuǐba</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
