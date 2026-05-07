@@ -35,6 +35,14 @@
             text-decoration-thickness: 2px;
             text-underline-offset: 4px;
         }
+        /* タイムライン用スクロールバー非表示 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen pb-12 relative">
@@ -1212,7 +1220,7 @@
                 </svg>
                 迷いやすいセット：どっちが主役？
             </h4>
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid lg:grid-cols-3 gap-6">
                 <div class="bg-white p-5 rounded-xl border shadow-sm relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-2 h-full bg-indigo-400"></div>
                     <p class="font-bold text-lg text-slate-800 mb-4 pl-4 border-b pb-2">貸す vs 借りる</p>
@@ -1251,6 +1259,179 @@
                                 <p class="font-bold tc text-slate-800 text-lg">跟...學 <span class="font-normal text-xs text-slate-400">A 跟 B 學</span></p>
                                 <p class="text-xs text-slate-500">相手から私へ（獲得）</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-rose-400"></div>
+                    <p class="font-bold text-lg text-slate-800 mb-4 pl-4 border-b pb-2">恩恵の「幫」 vs 使役の「讓」</p>
+                    <div class="space-y-3 pl-4">
+                        <p class="text-xs text-slate-600 mb-2">「幫」は「（人の）ために〜してあげる」という恩恵・代理の用法で頻出します。</p>
+                        <div class="flex items-start gap-3">
+                            <span class="bg-teal-100 text-teal-800 font-bold px-2 py-1 rounded text-[10px] min-w-[3.5rem] text-center mt-0.5">正解例</span>
+                            <div>
+                                <p class="font-bold tc text-slate-800 text-sm speakable speakable-text">大家幫她慶祝。</p>
+                                <p class="text-[11px] text-slate-500">みんなは彼女のために（手伝って）お祝いをします。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 pt-2 border-t border-slate-100">
+                            <span class="bg-red-100 text-red-800 font-bold px-2 py-1 rounded text-[10px] min-w-[3.5rem] text-center mt-0.5">❌ 讓</span>
+                            <div>
+                                <p class="text-[11px] text-slate-600">「讓」は「〜させる（使役）」。「大家讓她慶祝」だと「彼女に（無理やり）お祝いさせる」という不自然な意味になります。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 跟 / 和 / 對 の使い分けと鉄則 -->
+        <div class="bg-indigo-50 p-6 md:p-8 rounded-2xl border-2 border-indigo-200 mb-16 shadow-sm">
+            <h4 class="text-indigo-800 text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-2xl">🔗</span> 「と」を表す言葉 ＆ 接続の鉄則 (跟 / 和 / 對)
+            </h4>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <!-- 台湾での使われ方の違い -->
+                <div class="bg-white p-5 rounded-xl border shadow-sm">
+                    <h5 class="font-bold text-slate-700 mb-4 border-b pb-2">1. 台湾での使われ方の違い</h5>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-baseline gap-2 mb-1">
+                                <span class="text-xl font-bold tc text-indigo-600 speakable">跟</span>
+                                <span class="text-xs text-slate-500 font-mono">gēn</span>
+                                <span class="bg-indigo-50 text-indigo-700 text-[10px] px-2 py-0.5 rounded border border-indigo-100">口語で主流</span>
+                            </div>
+                            <p class="text-xs text-slate-600">台湾の日常会話では「跟」が圧倒的によく使われます。友達や家族と話す時は「我跟小王（私と王さん）」と言うのが自然です。</p>
+                        </div>
+                        <div>
+                            <div class="flex items-baseline gap-2 mb-1">
+                                <span class="text-xl font-bold tc text-slate-700 speakable">和</span>
+                                <span class="text-xs text-slate-500 font-mono">hé / hàn</span>
+                                <span class="bg-slate-100 text-slate-700 text-[10px] px-2 py-0.5 rounded border border-slate-200">文語・丁寧</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mb-3">教科書やニュース、スピーチなどでよく使われます。少しフォーマルで整った印象を与えます。</p>
+                            <div class="bg-amber-50 border border-amber-200 rounded p-3">
+                                <span class="text-amber-800 font-bold text-xs flex items-center gap-1 mb-1">💡 台湾独特のポイント</span>
+                                <p class="text-[11px] text-slate-700">台湾では「和」を <b>hàn（ハン）</b> と発音する人が非常に多いです。テストのリスニングで「hàn」と聞こえたら、それは「和（〜と）」のことだと判断して間違いありません。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文法的な役割の違い -->
+                <div class="bg-white p-5 rounded-xl border shadow-sm">
+                    <h5 class="font-bold text-slate-700 mb-4 border-b pb-2">2. 文法的な役割の違い (跟)</h5>
+                    <p class="text-xs text-slate-600 mb-3">意味は同じでも、「跟」にしかできない役割があります。ここがTOCFLの文法問題で狙われるポイントです。</p>
+                    <ul class="space-y-3">
+                        <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <div class="font-bold text-sm text-indigo-800 mb-1">①「A 跟 B 一起 + 動詞」</div>
+                            <p class="text-[11px] text-slate-600 mb-1">「和」を使っても間違いではありませんが、「跟」の方が「Bに付いていく（随伴）」というニュアンスが強く、相性が良いです。</p>
+                            <span class="tc font-bold text-slate-800 text-sm speakable speakable-text">我跟他一起去。</span>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <div class="font-bold text-sm text-indigo-800 mb-1">②「B に対して〜する」という方向</div>
+                            <p class="text-[11px] text-slate-600 mb-1">「跟」は英語の "with" だけでなく "to" の意味も持ちます。「和你說」は少し不自然です。</p>
+                            <span class="tc font-bold text-slate-800 text-sm speakable speakable-text">我跟你說。</span> <span class="text-[11px] text-slate-500">（あなたに話します）</span>
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <div class="font-bold text-sm text-indigo-800 mb-1">③ 比較の基準</div>
+                            <p class="text-[11px] text-slate-600 mb-1">「AはBと同じだ」と言う時、通常「跟」を使います。「和」も使えますが口語では「跟」が一般的です。</p>
+                            <span class="tc font-bold text-slate-800 text-sm speakable speakable-text">這件跟那件一樣。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TOCFL対策 鉄則 -->
+            <div class="bg-rose-50 border border-rose-100 p-5 rounded-xl shadow-sm">
+                <h5 class="font-bold text-rose-800 mb-4 flex items-center gap-2">🎓 3. TOCFL対策としての使い分け</h5>
+                <p class="text-xs text-slate-700 mb-4">TOCFL Band-Aの読解問題では、以下のメタ視点を持ってください。</p>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg border border-rose-100 relative">
+                        <span class="absolute top-0 right-0 bg-rose-100 text-rose-800 text-[10px] px-2 py-1 rounded-bl-lg font-bold">パターン 1</span>
+                        <p class="font-bold text-slate-800 mb-3 text-lg leading-tight">空欄の後ろに<br>「一起」がある場合</p>
+                        <p class="text-sm text-slate-700 mb-4 flex items-center gap-2">
+                            <span class="text-rose-500 font-bold">➔</span> 選択肢に <span class="bg-indigo-100 text-indigo-800 font-bold px-2 py-0.5 rounded tc">跟</span> があれば、それが正解になる確率が高いです。
+                        </p>
+                        <div class="bg-amber-50 p-2.5 rounded text-[11px] text-slate-600 border border-amber-100">
+                            <span class="text-amber-700 font-bold mb-1 block">⚠️ ひっかけ注意：</span>
+                            「AとB」という意味で空欄に「一起（一緒に）」を選びたくなりますが、「一起」は<span class="font-bold">副詞なので後ろに動詞が来ます</span>。名詞を繋ぐ場合は「跟」を選びましょう。
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-rose-100 relative">
+                        <span class="absolute top-0 right-0 bg-rose-100 text-rose-800 text-[10px] px-2 py-1 rounded-bl-lg font-bold">パターン 2</span>
+                        <p class="font-bold text-slate-800 mb-3 text-lg leading-tight">「A __ B 有興趣」<br>の場合</p>
+                        <p class="text-sm text-slate-700 flex items-start gap-2">
+                            <span class="text-rose-500 font-bold mt-0.5">➔</span> 
+                            <span>「跟」でも「和」でもなく、対象を表す <span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded tc text-lg">對 (duì)</span> を選ぶのが試験の鉄則です。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 時間表現のスポットライト -->
+        <div class="bg-slate-50 p-6 md:p-8 rounded-2xl border-2 border-slate-200 mb-16 shadow-sm overflow-hidden">
+            <h4 class="text-slate-800 text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-2xl">⏳</span> 時間表現のスポットライト
+            </h4>
+            <p class="text-sm text-slate-600 mb-8">時間の流れ（過去から未来へ）に沿って、頻出の時制表現を整理しましょう。</p>
+            
+            <!-- タイムライン・コンテナ -->
+            <div class="relative w-full overflow-x-auto pb-4 hide-scrollbar cursor-grab active:cursor-grabbing px-2" id="timeline-container">
+                <!-- connecting line -->
+                <div class="absolute top-[38px] left-8 right-8 h-1.5 bg-slate-200 z-0 min-w-[800px]"></div>
+                
+                <div class="flex justify-between gap-6 relative z-10 min-w-[900px]">
+                    <!-- 1. 剛才 -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-14 h-14 rounded-full bg-slate-100 border-4 border-white shadow-md flex items-center justify-center text-slate-500 mb-4 text-2xl z-10 relative">🕒</div>
+                        <div class="bg-white rounded-xl shadow-sm border-t-4 border-slate-300 p-4 w-full text-center hover:shadow-md transition-shadow">
+                            <div class="font-bold tc text-slate-800 text-xl mb-1 speakable">剛才 / 剛</div>
+                            <div class="bg-slate-100 text-slate-600 text-xs py-1.5 px-2 rounded-full mb-3 font-bold">たった今終わった</div>
+                            <div class="tc text-sm font-bold text-slate-700 speakable speakable-text">我剛才下班了。</div>
+                            <div class="text-[10px] text-slate-400 mt-1">wǒ gāng cái xià bān le.</div>
+                        </div>
+                    </div>
+                    <!-- 2. 正在 -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-14 h-14 rounded-full bg-amber-400 border-4 border-white shadow-md flex items-center justify-center text-white mb-4 text-2xl z-10 relative">▶️</div>
+                        <div class="bg-amber-50/50 rounded-xl shadow-sm border-t-4 border-amber-300 p-4 w-full text-center hover:shadow-md transition-shadow">
+                            <div class="font-bold tc text-amber-700 text-xl mb-1 speakable">正在 / 在</div>
+                            <div class="bg-amber-100 text-amber-800 text-xs py-1.5 px-2 rounded-full mb-3 font-bold">今まさに進行中</div>
+                            <div class="tc text-sm font-bold text-slate-700 speakable speakable-text">我正在學華語。</div>
+                            <div class="text-[10px] text-slate-400 mt-1">wǒ zhèng zài xué huá yǔ.</div>
+                        </div>
+                    </div>
+                    <!-- 3. 正要 -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-14 h-14 rounded-full bg-rose-400 border-4 border-white shadow-md flex items-center justify-center text-white mb-4 text-2xl font-bold z-10 relative">1</div>
+                        <div class="bg-rose-50/50 rounded-xl shadow-sm border-t-4 border-rose-300 p-4 w-full text-center hover:shadow-md transition-shadow">
+                            <div class="font-bold tc text-rose-700 text-xl mb-1 speakable">正要</div>
+                            <div class="bg-rose-100 text-rose-800 text-xs py-1.5 px-2 rounded-full mb-3 font-bold">まさに〜する直前</div>
+                            <div class="tc text-sm font-bold text-slate-700 speakable speakable-text">我正要出門。</div>
+                            <div class="text-[10px] text-slate-400 mt-1">wǒ zhèng yào chū mén.</div>
+                        </div>
+                    </div>
+                    <!-- 4. 快要...了 -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-14 h-14 rounded-full bg-emerald-400 border-4 border-white shadow-md flex items-center justify-center text-white mb-4 text-2xl z-10 relative">⏩</div>
+                        <div class="bg-emerald-50/50 rounded-xl shadow-sm border-t-4 border-emerald-300 p-4 w-full text-center hover:shadow-md transition-shadow">
+                            <div class="font-bold tc text-emerald-700 text-xl mb-1 speakable">快要...了</div>
+                            <div class="bg-emerald-100 text-emerald-800 text-xs py-1.5 px-2 rounded-full mb-3 font-bold">もうすぐ〜になる</div>
+                            <div class="tc text-sm font-bold text-slate-700 speakable speakable-text">我快要回國了。</div>
+                            <div class="text-[10px] text-slate-400 mt-1">wǒ kuài yào huí guó le.</div>
+                        </div>
+                    </div>
+                    <!-- 5. 要 -->
+                    <div class="flex flex-col items-center flex-1">
+                        <div class="w-14 h-14 rounded-full bg-blue-500 border-4 border-white shadow-md flex items-center justify-center text-white mb-4 text-xl z-10 relative">📅</div>
+                        <div class="bg-blue-50/50 rounded-xl shadow-sm border-t-4 border-blue-400 p-4 w-full text-center hover:shadow-md transition-shadow">
+                            <div class="font-bold tc text-blue-700 text-xl mb-1 speakable">要</div>
+                            <div class="bg-blue-100 text-blue-800 text-xs py-1.5 px-2 rounded-full mb-3 font-bold">〜する予定・意思</div>
+                            <div class="tc text-sm font-bold text-slate-700 speakable speakable-text">明年我要去台灣。</div>
+                            <div class="text-[10px] text-slate-400 mt-1">míng nián wǒ yào qù tái wān.</div>
                         </div>
                     </div>
                 </div>
@@ -1358,6 +1539,36 @@
 
             function hideNotification() {
                 notification.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+            }
+
+            // タイムラインのドラッグスクロール機能
+            const slider = document.getElementById('timeline-container');
+            if (slider) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('active');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // スクロール速度
+                    slider.scrollLeft = scrollLeft - walk;
+                });
             }
         });
     </script>
