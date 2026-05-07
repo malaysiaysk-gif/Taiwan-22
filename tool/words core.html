@@ -656,7 +656,7 @@
                                 </div>
                                 <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(手伝う)</div>
                             </div>
-                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('幫我買')">
+                            <div class="cursor-pointer hover:bg-emerald-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate mb-2" onclick="speak('幫我買')">
                                 <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
                                     ・<strong class="text-slate-900 text-xl md:text-2xl">幫我買</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">bāng wǒ mǎi</span> <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
                                 </div>
@@ -763,6 +763,82 @@
                             </div>
                         </li>
                     </ul>
+                </div>
+
+                <!-- Card: 帶 vs 拿 -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-indigo-200 hover:border-indigo-400 hover:shadow-xl transition-all">
+                    <div class="flex items-center justify-between mb-5 md:mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-indigo-100 text-indigo-600 p-3 md:p-4 rounded-2xl cursor-pointer hover:opacity-80 transition-opacity click-animate" onclick="speak('帶和拿')">
+                                <i data-lucide="briefcase" class="w-8 h-8 md:w-10 md:h-10"></i>
+                            </div>
+                            <h3 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800">
+                                <span class="cursor-pointer hover:text-indigo-600 transition-colors click-animate" onclick="speak('帶')">帶</span>
+                                <span class="text-2xl md:text-4xl text-slate-300 mx-2 md:mx-4 font-medium">vs</span> 
+                                <span class="cursor-pointer hover:text-indigo-600 transition-colors click-animate" onclick="speak('拿')">拿</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="space-y-4 md:space-y-6">
+                        <div class="bg-indigo-50 p-4 md:p-6 rounded-2xl border border-indigo-100">
+                            <div class="text-base md:text-lg font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">【帶】身につける・伴って移動する</div>
+                            <div class="cursor-pointer hover:bg-indigo-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate mb-2" onclick="speak('帶傘')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">帶傘</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">dài sǎn</span> <i data-lucide="volume-2" class="w-4 h-4 text-indigo-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(傘を携帯する / 持っていく)</div>
+                            </div>
+                            <div class="cursor-pointer hover:bg-indigo-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('帶來')">
+                                <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                    ・<strong class="text-slate-900 text-xl md:text-2xl">帶來</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">dài lái</span> <i data-lucide="volume-2" class="w-4 h-4 text-indigo-400"></i>
+                                </div>
+                                <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(持ってくる / 人を連れてくる)</div>
+                            </div>
+                        </div>
+                        <div class="bg-indigo-50 p-4 md:p-6 rounded-2xl border border-indigo-100">
+                            <div class="text-base md:text-lg font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">【拿】手でつかむ・手で持つ</div>
+                            <div class="space-y-4">
+                                <div class="cursor-pointer hover:bg-indigo-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('拿著')">
+                                    <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                        ・<strong class="text-slate-900 text-xl md:text-2xl">拿著</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">ná zhe</span> <i data-lucide="volume-2" class="w-4 h-4 text-indigo-400"></i>
+                                    </div>
+                                    <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(手に持っている)</div>
+                                </div>
+                                <div class="cursor-pointer hover:bg-indigo-100/50 p-2 -mx-2 rounded-xl transition-colors click-animate" onclick="speak('拿去')">
+                                    <div class="text-lg md:text-xl text-slate-700 flex items-center gap-2">
+                                        ・<strong class="text-slate-900 text-xl md:text-2xl">拿去</strong> <span class="text-sm md:text-base text-slate-500 font-mono ml-2">ná qù</span> <i data-lucide="volume-2" class="w-4 h-4 text-indigo-400"></i>
+                                    </div>
+                                    <div class="text-base md:text-lg ml-6 text-slate-600 mt-1">(手に持って行く)</div>
+                                </div>
+                                <!-- 補足：形式判定（メタ視点） -->
+                                <div class="bg-white/60 border border-indigo-100 rounded-xl p-4 mt-2">
+                                    <div class="text-sm font-bold text-indigo-900 mb-3 flex items-center gap-1">
+                                        <i data-lucide="info" class="w-4 h-4"></i> 形式判定（メタ視点）
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-red-50 text-red-600 text-xs font-bold px-1.5 py-0.5 rounded shrink-0">拿</span>
+                                            <div class="text-sm">
+                                                <span class="font-bold text-red-700">NG 裸の状態。</span>アクションが始まったのか終わったのか不明。宙ぶらりん。
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-emerald-50 text-emerald-600 text-xs font-bold px-1.5 py-0.5 rounded shrink-0">拿著</span>
+                                            <div class="text-sm">
+                                                <span class="font-bold text-emerald-700">OK「状態キープ」</span>のピースを装着。静止画のように安定。ずっと持っている。
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-blue-50 text-blue-600 text-xs font-bold px-1.5 py-0.5 rounded shrink-0">拿著的</span>
+                                            <div class="text-sm">
+                                                <span class="font-bold text-blue-700">OK「名詞化」</span>のピースを装着。後ろの名詞を飾れる。持っている「やつ」。
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
