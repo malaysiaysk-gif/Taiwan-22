@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #f3f4f6;
@@ -19,80 +19,90 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; }
         }
+        /* ANAアプリ風グラデーション背景 */
+        .ana-bg {
+            background: linear-gradient(180deg, #d8f0fe 0%, #e8f5ff 45%, #f6fbff 100%);
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased min-h-screen flex flex-col items-center justify-center p-4">
 
     <main class="w-full max-w-4xl">
         
-        <!-- カウントダウン セクション -->
-        <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10 text-center border-t-4 border-indigo-500">
-            <h2 class="text-xl md:text-2xl font-bold text-gray-700 mb-6">12月8日まで、あと...</h2>
+        <!-- カウントダウン セクション (一体化レイアウト) -->
+        <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
+            <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">12月4日まで、あと...</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
-                    <div id="cd-days" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
-                    <div class="text-sm font-bold text-indigo-400 mt-1">出勤日</div>
+            <!-- 4つのブロック -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                    <div id="cd-days" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">出勤日</div>
                 </div>
-                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
-                    <div id="cd-hours" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
-                    <div class="text-sm font-bold text-indigo-400 mt-1">時間</div>
+                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                    <div id="cd-hours" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">時間</div>
                 </div>
-                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
-                    <div id="cd-mins" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
-                    <div class="text-sm font-bold text-indigo-400 mt-1">分</div>
+                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                    <div id="cd-mins" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">分</div>
                 </div>
-                <div class="bg-indigo-50 py-4 rounded-xl shadow-sm">
-                    <div id="cd-secs" class="text-4xl md:text-5xl font-black text-indigo-600">--</div>
-                    <div class="text-sm font-bold text-indigo-400 mt-1">秒</div>
+                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                    <div id="cd-secs" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">秒</div>
                 </div>
             </div>
 
-            <div class="bg-gray-900 rounded-xl p-6 shadow-inner">
-                <p class="text-gray-400 text-sm font-bold mb-2 tracking-widest">総残り秒数 (リアルタイム更新)</p>
-                <div id="cd-total-secs" class="text-5xl md:text-7xl font-mono font-black text-red-500 pulse-text tracking-tighter">
+            <!-- 総残り秒数 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-10 shadow-sm flex flex-col justify-center items-center">
+                <p class="text-gray-500 text-sm md:text-base font-bold mb-3 tracking-[0.2em]">総残り秒数 (リアルタイム更新)</p>
+                <div id="cd-total-secs" class="text-6xl md:text-[5rem] leading-none font-mono font-black text-indigo-500 pulse-text tracking-tighter drop-shadow-sm">
                     --
                 </div>
             </div>
             
+            <!-- プログレス＆スケール グループ -->
+            <div class="flex flex-col gap-6">
+                <!-- プログレスバー -->
+                <div>
+                    <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
+                        <span>5月1日 8:00</span>
+                        <span id="progress-text" class="text-center">--% | 状態確認中</span>
+                        <span>12月4日 17:00</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4 md:h-5 shadow-inner">
+                        <div id="progress-bar" class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-500 h-4 md:h-5 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- おもしろスケール表示 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
+                    <div class="bg-indigo-50/60 p-5 rounded-2xl border border-indigo-100/50 shadow-sm transition-all hover:shadow-md">
+                        <div class="text-[13px] text-indigo-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">👶</span> 人生 (80年) で例えると...</div>
+                        <div id="scale-life" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                    </div>
+                    <div class="bg-yellow-50/60 p-5 rounded-2xl border border-yellow-100/50 shadow-sm transition-all hover:shadow-md">
+                        <div class="text-[13px] text-yellow-600 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🛕</span> ピラミッド (全210段) なら...</div>
+                        <div id="scale-pyramid" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                    </div>
+                    <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-100/50 shadow-sm transition-all hover:shadow-md">
+                        <div class="text-[13px] text-rose-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🏛️</span> ローマの歴史 で言うと...</div>
+                        <div id="scale-rome" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- 退職届提出 カウントダウン -->
-            <div class="mt-6 bg-red-50 border border-red-200 rounded-xl p-4 flex flex-col md:flex-row items-center justify-center shadow-sm">
-                <i class="fa-solid fa-envelope-open-text text-red-500 text-2xl mb-2 md:mb-0 md:mr-3"></i>
-                <div class="text-gray-700 font-bold text-center md:text-left">
-                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-3xl font-black text-red-600 mx-1">--</span> 日
+            <div class="bg-[#fff1f2] border border-[#fecdd3] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-center shadow-sm">
+                <i class="fa-solid fa-envelope-open-text text-[#f43f5e] text-3xl mb-3 md:mb-0 md:mr-4 drop-shadow-sm"></i>
+                <div class="text-gray-800 font-bold text-center md:text-left text-lg md:text-xl">
+                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 日
                 </div>
             </div>
+        </section>
 
-            <!-- プログレスバー -->
-            <div class="mt-8">
-                <div class="flex justify-between text-xs font-bold text-gray-500 mb-1">
-                    <span>5月1日 8:00</span>
-                    <span id="progress-text">--% | 状態確認中</span>
-                    <span>12月8日 17:00</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-4 shadow-inner">
-                    <div id="progress-bar" class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <!-- おもしろスケール表示 -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-                <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 shadow-sm">
-                    <div class="text-xs text-indigo-400 font-bold mb-2">👶 人生 (80年) で例えると...</div>
-                    <div id="scale-life" class="font-bold text-gray-700 text-sm leading-tight">--</div>
-                </div>
-                <div class="bg-yellow-50/50 p-4 rounded-xl border border-yellow-100 shadow-sm">
-                    <div class="text-xs text-yellow-500 font-bold mb-2">🛕 ピラミッド (全210段) なら...</div>
-                    <div id="scale-pyramid" class="font-bold text-gray-700 text-sm leading-tight">--</div>
-                </div>
-                <div class="bg-red-50/50 p-4 rounded-xl border border-red-100 shadow-sm">
-                    <div class="text-xs text-red-400 font-bold mb-2">🏛️ ローマの歴史 で言うと...</div>
-                    <div id="scale-rome" class="font-bold text-gray-700 text-sm leading-tight">--</div>
-                </div>
-            </div>
-
-            <!-- カレンダー セクション -->
-            <div class="mt-12 text-left">
+        <!-- カレンダー セクション -->
+        <div class="mt-12 text-left">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-4 border-t border-gray-100 pt-8">
                     <h3 class="text-xl font-bold text-gray-700 mb-3 md:mb-0">
                         <i class="fa-regular fa-calendar-days text-indigo-500 mr-2"></i> 2026年12月 スケジュール
@@ -122,15 +132,159 @@
                 </div>
             </div>
 
+            <!-- 台湾移住フライト カウントダウン & チケット情報 (ANAアプリ風) -->
+            <div class="mt-16 ana-bg rounded-[32px] pt-6 pb-12 px-4 md:px-8 shadow-md relative overflow-hidden border border-white">
+                
+                <!-- ANAアプリ風 ヘッダー＆ユーザー情報 -->
+                <div class="flex justify-between items-center mb-6 text-[#002b5c] px-2 md:px-0">
+                    <i class="fa-solid fa-bars text-[26px]"></i>
+                    <div class="text-center transform translate-x-2">
+                        <div class="font-black text-[26px] tracking-tighter italic flex items-center justify-center">
+                            ANA <span class="text-[#0055b8] text-2xl ml-1 font-sans italic transform -skew-x-12">/</span><span class="text-[#5ca3f8] text-2xl ml-[-4px] font-sans italic transform -skew-x-12">/</span>
+                        </div>
+                        <div class="text-[8px] font-bold tracking-widest mt-[-2px]">Inspiration of JAPAN</div>
+                    </div>
+                    <i class="fa-regular fa-bell text-[24px]"></i>
+                </div>
+
+                <div class="flex items-center mb-8 text-[#002b5c] px-2 md:px-0">
+                    <div class="bg-[#0055b8] text-white rounded-full w-[56px] h-[56px] flex items-center justify-center text-[8px] font-bold leading-[1.1] text-center mr-4 shadow-sm flex-shrink-0">
+                        ANA<br>MILEAGE<br>CLUB
+                    </div>
+                    <div>
+                        <div class="text-[20px] font-bold tracking-widest mb-1">近藤　芳樹 <span class="text-[17px] font-normal tracking-normal ml-1">様</span></div>
+                        <div class="text-[12px] font-bold text-gray-600 tracking-wide flex items-center">
+                            186,232 <span class="font-normal ml-1 mr-2 text-[#002b5c]">MILES</span> 0 <span class="font-normal ml-1 mr-1 text-[#002b5c]">SKY COINS</span> <i class="fa-solid fa-chevron-right text-[10px] ml-1 text-[#002b5c]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カルーセル風 チケットエリア -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 mb-10">
+                    
+                    <!-- フライト1: 岡山 -> 羽田 -->
+                    <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
+                        <!-- 左右の切り欠き (背景色に馴染ませる) -->
+                        <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
+                        <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
+                        
+                        <div class="p-6 pb-10 relative z-0">
+                            <!-- 上部：日付と便名 -->
+                            <div class="flex justify-between items-center mb-5">
+                                <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
+                                    2027.2.4 <span class="mx-1 text-[13px]">木</span> <i class="fa-solid fa-wifi text-[11px] ml-1 text-[#002b5c]"></i>
+                                </span>
+                                <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">NH 652</span>
+                            </div>
+                            
+                            <!-- 中央：空港コードと時間 -->
+                            <div class="flex justify-between items-end relative">
+                                <div class="text-left w-[40%]">
+                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">OKJ</div>
+                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">岡山</div>
+                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">7:05</div>
+                                </div>
+                                
+                                <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
+                                    <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
+                                </div>
+                                
+                                <div class="text-right w-[40%]">
+                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
+                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
+                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">8:20</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 右下の詳しく見るタブ -->
+                        <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
+                            詳しく見る
+                        </div>
+                    </div>
+
+                    <!-- フライト2: 羽田 -> 台北(松山) -->
+                    <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
+                        <!-- 左右の切り欠き -->
+                        <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
+                        <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
+                        
+                        <div class="p-6 pb-10 relative z-0">
+                            <!-- 上部：日付と便名 -->
+                            <div class="flex justify-between items-center mb-5">
+                                <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
+                                    2027.2.4 <span class="mx-1 text-[13px]">木</span>
+                                </span>
+                                <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">BR 189</span>
+                            </div>
+                            
+                            <!-- 中央：空港コードと時間 -->
+                            <div class="flex justify-between items-end relative">
+                                <div class="text-left w-[40%]">
+                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
+                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
+                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">10:25</div>
+                                </div>
+                                
+                                <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
+                                    <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
+                                </div>
+                                
+                                <div class="text-right w-[40%]">
+                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">TSA</div>
+                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">台北(松山)</div>
+                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">13:25</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 右下の詳しく見るタブ -->
+                        <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
+                            詳しく見る
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 座席指定アイコンとカウントダウン -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 relative z-10 mt-2">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#d8eefd] text-[#0055b8] border-2 border-white shadow-sm rounded-full w-[68px] h-[68px] flex items-center justify-center mb-2">
+                            <!-- 座席アイコンの代用 (左右反転して左向きに) -->
+                            <i class="fa-solid fa-chair text-[28px]" style="transform: scaleX(-1);"></i>
+                        </div>
+                        <span class="text-[12px] font-bold text-[#002b5c] tracking-wide">座席指定</span>
+                    </div>
+                    
+                    <div class="text-[#002b5c] font-bold text-center flex items-baseline">
+                        <span id="flight-title" class="text-lg md:text-[22px] mr-4 tracking-widest">ご搭乗まで</span> 
+                        <span id="flight-days" class="text-[48px] md:text-[56px] font-black mx-1 drop-shadow-sm leading-none font-sans">--</span> 
+                        <span id="flight-unit" class="text-sm md:text-[15px] ml-3 font-black tracking-widest uppercase">DAYS</span>
+                    </div>
+                </div>
+                
+                <!-- オンラインチェックイン案内 -->
+                <div class="mt-8 flex justify-center relative z-10">
+                    <div class="bg-white rounded-[30px] py-4 px-8 shadow-sm border border-gray-100 text-center w-full max-w-md">
+                        <div class="text-[#002b5c] text-[13px] md:text-[14px] font-bold tracking-wide leading-relaxed">
+                            オンラインチェックインは<br>出発の24時間前から可能です
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
     </main>
 
     <script>
-        // 目標日時: 2026年12月8日 00:00:00
-        const targetDate = new Date('2026-12-08T00:00:00').getTime();
+        // 目標日時: 2026年12月4日 00:00:00
+        const targetDate = new Date('2026-12-04T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
         // 退職届提出日: 2026年9月18日 00:00:00
         const noticeDate = new Date('2026-09-18T00:00:00').getTime();
+        // 台湾移住フライト日: 2027年2月4日 07:05:00
+        const flightDate = new Date('2027-02-04T07:05:00').getTime();
         
         // 2026年の日本の祝日（5月〜12月）
         const holidays2026 = [
@@ -190,7 +344,7 @@
 
         // 現在日時からの残り出勤日数を計算する関数
         function getRemainingWorkingDays() {
-            const end = new Date('2026-12-08T00:00:00'); 
+            const end = new Date('2026-12-04T00:00:00'); 
             let workingDays = 0;
             let current = new Date();
             current.setHours(0,0,0,0);
@@ -268,12 +422,33 @@
                 noticeDaysElement.innerText = noticeDays;
             } else {
                 noticeDaysElement.innerText = noticeDays;
-                noticeDaysElement.classList.remove('text-3xl');
-                noticeDaysElement.classList.add('text-xl');
+                noticeDaysElement.classList.remove('text-3xl', 'text-4xl');
+                noticeDaysElement.classList.add('text-xl', 'md:text-2xl');
             }
 
-            // プログレスバーの計算 (業務時間ベース: 5/1 8:00 〜 12/8 17:00)
-            const targetWorkEnd = new Date('2026-12-08T17:00:00').getTime();
+            // フライト日までの日数計算
+            const flightDistance = flightDate - now;
+            let flightDays = 0;
+            if (flightDistance > 0) {
+                flightDays = Math.floor(flightDistance / (1000 * 60 * 60 * 24));
+            }
+
+            const flightDaysElement = document.getElementById('flight-days');
+            const flightTitle = document.getElementById('flight-title');
+            const flightUnit = document.getElementById('flight-unit');
+            
+            if (flightDistance > 0) {
+                flightDaysElement.innerText = flightDays;
+            } else {
+                flightTitle.innerText = "ついに";
+                flightDaysElement.innerText = "出発";
+                flightUnit.innerText = "！";
+                flightDaysElement.classList.remove('text-[48px]', 'md:text-[56px]');
+                flightDaysElement.classList.add('text-4xl', 'md:text-5xl');
+            }
+
+            // プログレスバーの計算 (業務時間ベース: 5/1 8:00 〜 12/4 17:00)
+            const targetWorkEnd = new Date('2026-12-04T17:00:00').getTime();
             const startWorkBegin = new Date('2026-05-01T08:00:00').getTime();
             
             const totalWorkMs = calculateWorkingTimeMs(startWorkBegin, targetWorkEnd);
@@ -286,7 +461,8 @@
             // 0%〜100%の間に収める
             progressPercentage = Math.max(0, Math.min(100, progressPercentage));
             
-            document.getElementById('progress-bar').style.width = progressPercentage + "%";
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) progressBar.style.width = progressPercentage + "%";
             
             // 現在が業務時間内かどうか判定してステータス表示
             const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}-${String(new Date().getDate()).padStart(2,'0')}`;
@@ -295,10 +471,13 @@
             const hourNow = new Date().getHours();
             const isWorkingHoursNow = (!isWeekendNow && !isHolidayNow && hourNow >= 8 && hourNow < 17);
 
-            if (isWorkingHoursNow) {
-                document.getElementById('progress-text').innerHTML = `<span class="text-green-600 font-black">▶ 業務中 (現在: ${progressPercentage.toFixed(5)}%)</span>`;
-            } else {
-                document.getElementById('progress-text').innerHTML = `<span class="text-orange-500 font-bold">⏸ 業務外 (現在の進捗 ${progressPercentage.toFixed(5)}% を保持中)</span>`;
+            const progressText = document.getElementById('progress-text');
+            if (progressText) {
+                if (isWorkingHoursNow) {
+                    progressText.innerHTML = `<span class="text-green-600 font-black">▶ 業務中 (現在: ${progressPercentage.toFixed(5)}%)</span>`;
+                } else {
+                    progressText.innerHTML = `<span class="text-orange-500 font-bold">⏸ 業務外 (現在の進捗 ${progressPercentage.toFixed(5)}% を保持中)</span>`;
+                }
             }
 
             // --- おもしろスケール表示の計算 ---
@@ -342,9 +521,9 @@
             else romeText = "東西ローマ分裂<br><span class='text-xs text-gray-500'>(帝国は真っ二つ・ラストスパート)</span>";
 
             // DOMへ反映
-            document.getElementById('scale-life').innerHTML = lifeText;
-            document.getElementById('scale-pyramid').innerHTML = pyramidText;
-            document.getElementById('scale-rome').innerHTML = romeText;
+            if (document.getElementById('scale-life')) document.getElementById('scale-life').innerHTML = lifeText;
+            if (document.getElementById('scale-pyramid')) document.getElementById('scale-pyramid').innerHTML = pyramidText;
+            if (document.getElementById('scale-rome')) document.getElementById('scale-rome').innerHTML = romeText;
         }
 
         // --- 12月カレンダーの描画関数 ---
@@ -361,15 +540,15 @@
                 { date: 5, currentMonth: true, events: [] },
                 // 2週目
                 { date: 6, currentMonth: true, events: [] },
-                { date: 7, currentMonth: true, events: [ { text: '10 CO 11th Nov.', type: 'blue', start: true, end: true } ] },
-                { date: 8, currentMonth: true, events: [ { text: 'AL 1st Dec. + 4.5', type: 'blue', start: true, end: false }, { text: '9', type: 'blue', start: true, end: false } ] },
+                { date: 7, currentMonth: true, events: [ { text: '10 CO 9th Nov.', type: 'blue', start: true, end: true } ] },
+                { date: 8, currentMonth: true, events: [ { text: 'July+ 4.5', type: 'blue', start: true, end: false }, { text: '9', type: 'blue', start: true, end: false } ] },
                 { date: 9, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '8', type: 'blue', start: false, end: false } ] },
                 { date: 10, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '7', type: 'blue', start: false, end: false } ] },
                 { date: 11, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: true }, { text: '6', type: 'blue', start: false, end: true } ] },
                 { date: 12, currentMonth: true, events: [] },
                 // 3週目
                 { date: 13, currentMonth: true, events: [] },
-                { date: 14, currentMonth: true, events: [ { text: 'AL 1st Oct. 4.5+1st Dec.0.5', type: 'blue', start: true, end: false }, { text: '5', type: 'blue', start: true, end: false } ] },
+                { date: 14, currentMonth: true, events: [ { text: 'Oct.4.5+July0.5', type: 'blue', start: true, end: false }, { text: '5', type: 'blue', start: true, end: false } ] },
                 { date: 15, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '4', type: 'blue', start: false, end: false } ] },
                 { date: 16, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '3', type: 'blue', start: false, end: false } ] },
                 { date: 17, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '2', type: 'blue', start: false, end: false } ] },
