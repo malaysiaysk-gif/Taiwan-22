@@ -61,71 +61,247 @@
     <!-- 1. Master Formula (Horizontal Timeline) -->
     <section class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
       <div class="bg-slate-800 text-white text-center py-4">
-        <h2 class="text-xl font-bold tracking-wider">🌟 1. 語順の絶対ルール（全体像）</h2>
+        <h2 class="text-xl font-bold tracking-wider">🌟 1. 語順の絶対ルール（もりもり３パターン）</h2>
       </div>
-      <div class="p-4 md:p-6 overflow-x-auto hide-scrollbar">
-        <div class="flex flex-nowrap items-center min-w-[800px] justify-between text-center pb-2">
-          
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">主語</div>
-            <div class="font-bold text-lg tc bg-slate-100 rounded-lg py-2 border border-slate-200">我</div>
-            <button onclick="speak('我')" class="mt-2 text-xs font-normal text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded transition-colors w-full">wǒ 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">私は</div>
-          </div>
-          <div class="text-slate-300 font-bold text-xl px-2">＋</div>
-          
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">時間</div>
-            <div class="font-bold text-lg tc bg-blue-50 text-blue-700 rounded-lg py-2 border border-blue-100">昨天</div>
-            <button onclick="speak('昨天')" class="mt-2 text-xs font-normal text-blue-700 bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded transition-colors w-full">zuótiān 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">昨日</div>
-          </div>
-          <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+      
+      <!-- Pattern A -->
+      <div class="p-4 md:p-6 border-b border-slate-100 bg-slate-50/50">
+        <h3 class="text-sm font-bold text-indigo-800 mb-4 flex items-center gap-2">
+          <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded shadow-sm">パターンA</span> 過去の否定と結果（基本ベース）
+        </h3>
+        <div class="overflow-x-auto hide-scrollbar pb-2">
+          <div class="flex flex-nowrap items-center min-w-[850px] justify-between text-center gap-1">
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">主語</div>
+              <div class="font-bold text-base tc bg-slate-100 rounded-lg py-2 border border-slate-200 text-slate-800">我</div>
+              <button onclick="speak('我')" class="mt-1 text-[10px] font-mono text-slate-600 bg-slate-100 hover:bg-slate-200 px-1 py-1 rounded transition-colors w-full">wǒ 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">私は</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">時間</div>
+              <div class="font-bold text-base tc bg-blue-50 text-blue-700 rounded-lg py-2 border border-blue-100">昨天</div>
+              <button onclick="speak('昨天')" class="mt-1 text-[10px] font-mono text-blue-700 bg-blue-50 hover:bg-blue-100 px-1 py-1 rounded transition-colors w-full">zuótiān 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">昨日</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
 
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">否定</div>
-            <div class="font-bold text-lg tc bg-red-50 text-red-700 rounded-lg py-2 border border-red-100">沒</div>
-            <button onclick="speak('沒')" class="mt-2 text-xs font-normal text-red-700 bg-red-50 hover:bg-red-100 px-2 py-1 rounded transition-colors w-full">méi 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">〜しなかった</div>
-          </div>
-          <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-indigo-500 font-bold mb-1">副詞</div>
+              <div class="font-bold text-base tc bg-indigo-50 text-indigo-700 rounded-lg py-2 border border-indigo-100">也</div>
+              <button onclick="speak('也')" class="mt-1 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">yě 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜も</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
 
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">助動詞</div>
-            <div class="font-bold text-lg tc bg-yellow-50 text-yellow-700 rounded-lg py-2 border border-yellow-100">想</div>
-            <button onclick="speak('想')" class="mt-2 text-xs font-normal text-yellow-700 bg-yellow-50 hover:bg-yellow-100 px-2 py-1 rounded transition-colors w-full">xiǎng 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">〜したい</div>
-          </div>
-          <div class="text-slate-300 font-bold text-xl px-2">＋</div>
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">否定</div>
+              <div class="font-bold text-base tc bg-red-50 text-red-700 rounded-lg py-2 border border-red-100">沒</div>
+              <button onclick="speak('沒')" class="mt-1 text-[10px] font-mono text-red-700 bg-red-50 hover:bg-red-100 px-1 py-1 rounded transition-colors w-full">méi 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜しなかった</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
 
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">場所/相手</div>
-            <div class="font-bold text-lg tc bg-blue-50 text-blue-700 rounded-lg py-2 border border-blue-100">在家</div>
-            <button onclick="speak('在家')" class="mt-2 text-xs font-normal text-blue-700 bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded transition-colors w-full">zài jiā 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">家で</div>
-          </div>
-          <div class="text-slate-300 text-2xl font-bold px-2">➡</div>
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">助動詞</div>
+              <div class="font-bold text-base tc bg-yellow-50 text-yellow-700 rounded-lg py-2 border border-yellow-100">能</div>
+              <button onclick="speak('能')" class="mt-1 text-[10px] font-mono text-yellow-700 bg-yellow-50 hover:bg-yellow-100 px-1 py-1 rounded transition-colors w-full">néng 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜できる</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
 
-          <div class="flex-1 px-2 relative">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">CORE</div>
-            <div class="text-sm text-indigo-600 font-bold mb-1">動詞</div>
-            <div class="font-bold text-2xl tc bg-indigo-600 text-white rounded-lg py-3 shadow-lg transform scale-105 border-2 border-indigo-400">吃</div>
-            <button onclick="speak('吃')" class="mt-3 text-xs font-normal text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2 py-1 rounded transition-colors w-full">chī 🔊</button>
-            <div class="text-xs mt-2 font-bold text-indigo-900">食べる</div>
-          </div>
-          <div class="text-slate-300 text-2xl font-bold px-2">➡</div>
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">場所</div>
+              <div class="font-bold text-base tc bg-sky-50 text-sky-700 rounded-lg py-2 border border-sky-100">在家</div>
+              <button onclick="speak('在家')" class="mt-1 text-[10px] font-mono text-sky-700 bg-sky-50 hover:bg-sky-100 px-1 py-1 rounded transition-colors w-full">zài jiā 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">家で</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
 
-          <div class="flex-1 px-2 group">
-            <div class="text-sm text-slate-500 mb-1">結果/経験</div>
-            <div class="font-bold text-lg tc bg-green-50 text-green-700 rounded-lg py-2 border border-green-100">過</div>
-            <button onclick="speak('過')" class="mt-2 text-xs font-normal text-green-700 bg-green-50 hover:bg-green-100 px-2 py-1 rounded transition-colors w-full">guò 🔊</button>
-            <div class="text-xs mt-2 text-slate-500">〜したこと(が)</div>
+            <div class="flex-1 px-1 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10">CORE</div>
+              <div class="text-[11px] text-indigo-600 font-bold mb-1">動詞</div>
+              <div class="font-bold text-xl tc bg-indigo-600 text-white rounded-lg py-2 shadow-md transform scale-105 border-2 border-indigo-400">找</div>
+              <button onclick="speak('找')" class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">zhǎo 🔊</button>
+              <div class="text-[10px] mt-1 font-bold text-indigo-900">探す</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">結果補語</div>
+              <div class="font-bold text-base tc bg-green-50 text-green-700 rounded-lg py-2 border border-green-100">到</div>
+              <button onclick="speak('到')" class="mt-1 text-[10px] font-mono text-green-700 bg-green-50 hover:bg-green-100 px-1 py-1 rounded transition-colors w-full">dào 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">見つかる</div>
+            </div>
+
           </div>
-          
+        </div>
+        <div class="mt-3 flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-slate-700 text-sm font-medium">日本語訳：「私は昨日<strong class="text-indigo-600">も</strong>、家で見つけることが<strong class="text-red-600">できなかった</strong>」</p>
+          <button onclick="speak('我昨天也沒能在家找到。')" class="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-3 py-1.5 rounded-lg shadow-sm border border-indigo-100 font-bold flex items-center gap-1">🔊 全文再生</button>
         </div>
       </div>
-      <div class="bg-slate-50 border-t border-slate-100 py-4">
-        <p class="text-center text-slate-600 text-sm font-medium">日本語訳：「私は昨日、家で食べたいと思ったことはなかった」</p>
+
+      <!-- Pattern B -->
+      <div class="p-4 md:p-6 border-b border-slate-100 bg-white">
+        <h3 class="text-sm font-bold text-indigo-800 mb-4 flex items-center gap-2">
+          <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded shadow-sm">パターンB</span> 意志と相手・方向（要素MAX）
+        </h3>
+        <div class="overflow-x-auto hide-scrollbar pb-2">
+          <div class="flex flex-nowrap items-center min-w-[950px] justify-between text-center gap-1">
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">主語</div>
+              <div class="font-bold text-base tc bg-slate-100 rounded-lg py-2 border border-slate-200 text-slate-800">他</div>
+              <button onclick="speak('他')" class="mt-1 text-[10px] font-mono text-slate-600 bg-slate-100 hover:bg-slate-200 px-1 py-1 rounded transition-colors w-full">tā 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">彼は</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">時間</div>
+              <div class="font-bold text-base tc bg-blue-50 text-blue-700 rounded-lg py-2 border border-blue-100">今天</div>
+              <button onclick="speak('今天')" class="mt-1 text-[10px] font-mono text-blue-700 bg-blue-50 hover:bg-blue-100 px-1 py-1 rounded transition-colors w-full">jīntiān 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">今日</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-indigo-500 font-bold mb-1">副詞</div>
+              <div class="font-bold text-base tc bg-indigo-50 text-indigo-700 rounded-lg py-2 border border-indigo-100">都</div>
+              <button onclick="speak('都')" class="mt-1 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">dōu 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">どれも/全部</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">否定</div>
+              <div class="font-bold text-base tc bg-red-50 text-red-700 rounded-lg py-2 border border-red-100">不</div>
+              <button onclick="speak('不')" class="mt-1 text-[10px] font-mono text-red-700 bg-red-50 hover:bg-red-100 px-1 py-1 rounded transition-colors w-full">bù 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜ない</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">助動詞</div>
+              <div class="font-bold text-base tc bg-yellow-50 text-yellow-700 rounded-lg py-2 border border-yellow-100">想</div>
+              <button onclick="speak('想')" class="mt-1 text-[10px] font-mono text-yellow-700 bg-yellow-50 hover:bg-yellow-100 px-1 py-1 rounded transition-colors w-full">xiǎng 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜したい</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">相手</div>
+              <div class="font-bold text-base tc bg-sky-50 text-sky-700 rounded-lg py-2 border border-sky-100">跟朋友</div>
+              <button onclick="speak('跟朋友')" class="mt-1 text-[10px] font-mono text-sky-700 bg-sky-50 hover:bg-sky-100 px-1 py-1 rounded transition-colors w-full">gēn... 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">友達と</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-emerald-500 font-bold mb-1">様子(副詞)</div>
+              <div class="font-bold text-base tc bg-emerald-50 text-emerald-700 rounded-lg py-2 border border-emerald-100">一起</div>
+              <button onclick="speak('一起')" class="mt-1 text-[10px] font-mono text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-1 py-1 rounded transition-colors w-full">yìqǐ 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">一緒に</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
+
+            <div class="flex-1 px-1 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10">CORE</div>
+              <div class="text-[11px] text-indigo-600 font-bold mb-1">動詞</div>
+              <div class="font-bold text-xl tc bg-indigo-600 text-white rounded-lg py-2 shadow-md transform scale-105 border-2 border-indigo-400">走</div>
+              <button onclick="speak('走')" class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">zǒu 🔊</button>
+              <div class="text-[10px] mt-1 font-bold text-indigo-900">歩く</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">方向補語</div>
+              <div class="font-bold text-base tc bg-green-50 text-green-700 rounded-lg py-2 border border-green-100">回去</div>
+              <button onclick="speak('回去')" class="mt-1 text-[10px] font-mono text-green-700 bg-green-50 hover:bg-green-100 px-1 py-1 rounded transition-colors w-full">huíqù 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">帰っていく</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-slate-700 text-sm font-medium">日本語訳：「彼は今日、友達と一緒に歩いて帰り<strong class="text-red-600">たくない</strong>（全部イヤだ）」</p>
+          <button onclick="speak('他今天都不想跟朋友一起走回去。')" class="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-3 py-1.5 rounded-lg shadow-sm border border-indigo-100 font-bold flex items-center gap-1">🔊 全文再生</button>
+        </div>
+      </div>
+
+      <!-- Pattern C -->
+      <div class="p-4 md:p-6 bg-slate-50/50">
+        <h3 class="text-sm font-bold text-indigo-800 mb-4 flex items-center gap-2">
+          <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded shadow-sm">パターンC</span> 進行・状態（空間と様態）
+        </h3>
+        <div class="overflow-x-auto hide-scrollbar pb-2">
+          <div class="flex flex-nowrap items-center min-w-[800px] justify-between text-center gap-1">
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">主語</div>
+              <div class="font-bold text-base tc bg-slate-100 rounded-lg py-2 border border-slate-200 text-slate-800">我們</div>
+              <button onclick="speak('我們')" class="mt-1 text-[10px] font-mono text-slate-600 bg-slate-100 hover:bg-slate-200 px-1 py-1 rounded transition-colors w-full">wǒmen 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">私たちは</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+            
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">時間</div>
+              <div class="font-bold text-base tc bg-blue-50 text-blue-700 rounded-lg py-2 border border-blue-100">現在</div>
+              <button onclick="speak('現在')" class="mt-1 text-[10px] font-mono text-blue-700 bg-blue-50 hover:bg-blue-100 px-1 py-1 rounded transition-colors w-full">xiànzài 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">今</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-indigo-500 font-bold mb-1">進行の副詞</div>
+              <div class="font-bold text-base tc bg-indigo-50 text-indigo-700 rounded-lg py-2 border border-indigo-100">正在</div>
+              <button onclick="speak('正在')" class="mt-1 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">zhèngzài 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">まさに〜中</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">場所(空間)</div>
+              <div class="font-bold text-base tc bg-sky-50 text-sky-700 rounded-lg py-2 border border-sky-100">房間裡</div>
+              <button onclick="speak('房間裡')" class="mt-1 text-[10px] font-mono text-sky-700 bg-sky-50 hover:bg-sky-100 px-1 py-1 rounded transition-colors w-full">fángjiān lǐ🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">部屋の中で</div>
+            </div>
+            <div class="text-slate-300 font-bold text-lg px-1">＋</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-emerald-500 font-bold mb-1">状態の副詞</div>
+              <div class="font-bold text-base tc bg-emerald-50 text-emerald-700 rounded-lg py-2 border border-emerald-100">認真地</div>
+              <button onclick="speak('認真地')" class="mt-1 text-[10px] font-mono text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-1 py-1 rounded transition-colors w-full">rènzhēn de🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">真剣に</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
+
+            <div class="flex-1 px-1 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10">CORE</div>
+              <div class="text-[11px] text-indigo-600 font-bold mb-1">動詞</div>
+              <div class="font-bold text-xl tc bg-indigo-600 text-white rounded-lg py-2 shadow-md transform scale-105 border-2 border-indigo-400">寫</div>
+              <button onclick="speak('寫')" class="mt-2 text-[10px] font-mono text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-1 py-1 rounded transition-colors w-full">xiě 🔊</button>
+              <div class="text-[10px] mt-1 font-bold text-indigo-900">書く</div>
+            </div>
+            <div class="text-slate-300 text-xl font-bold px-1 text-indigo-400">➡</div>
+
+            <div class="flex-1 px-1 group">
+              <div class="text-[11px] text-slate-500 mb-1">状態補語</div>
+              <div class="font-bold text-base tc bg-green-50 text-green-700 rounded-lg py-2 border border-green-100">著</div>
+              <button onclick="speak('著')" class="mt-1 text-[10px] font-mono text-green-700 bg-green-50 hover:bg-green-100 px-1 py-1 rounded transition-colors w-full">zhe 🔊</button>
+              <div class="text-[10px] mt-1 text-slate-500">〜ている</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-3 flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+          <p class="text-slate-700 text-sm font-medium">日本語訳：「私たちは今、部屋の中で真剣に書いているところだ」</p>
+          <button onclick="speak('我們現在正在房間裡認真地寫著。')" class="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-3 py-1.5 rounded-lg shadow-sm border border-indigo-100 font-bold flex items-center gap-1">🔊 全文再生</button>
+        </div>
       </div>
     </section>
 
@@ -138,52 +314,175 @@
           <span>⬅️</span> 2. 前に置く（渋滞しやすい！）
         </div>
         
-        <div class="relative pl-6 mt-6 z-10 space-y-5">
+        <div class="relative pl-0 md:pl-6 mt-6 z-10 space-y-5">
           <div class="timeline-line hidden md:block"></div>
 
           <!-- Time & Negation -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
-              <h3 class="font-bold text-blue-700 mb-2 flex items-center gap-1"><span class="text-xl">🕒</span> 時間（いつ）</h3>
-              <p class="tc text-slate-700 text-lg"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">今天</span> 我很忙。</p>
-              <div class="mt-3 flex items-center justify-between border-t border-slate-50 pt-2">
-                <span class="text-xs text-slate-500">（今日、私はとても忙しい）</span>
-                <button onclick="speak('今天我很忙。')" class="text-xs font-mono text-blue-600 bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded transition-colors flex items-center gap-1">Jīntiān wǒ hěn máng. 🔊</button>
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="font-bold text-blue-700 flex items-center gap-1"><span class="text-xl">🕒</span> 時間（いつ）</h3>
+                <button onclick="speak('今天我很忙。')" class="text-xs bg-slate-50 text-blue-600 hover:bg-blue-100 px-2 py-1 rounded shadow-sm border border-blue-100">🔊</button>
               </div>
+              <div class="flex flex-wrap gap-x-2 items-end mb-3">
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">jīntiān</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 rounded shadow-sm">今天</span>
+                  <span class="text-[9px] bg-blue-200 text-blue-800 px-1.5 rounded mt-0.5 font-bold">時間</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">wǒ</span>
+                  <span class="tc font-bold text-lg text-slate-800">我</span>
+                  <span class="text-[9px] bg-slate-200 text-slate-700 px-1.5 rounded mt-0.5 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">hěn</span>
+                  <span class="tc font-bold text-lg text-slate-800">很</span>
+                  <span class="text-[9px] bg-slate-200 text-slate-700 px-1.5 rounded mt-0.5 font-bold">副詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">máng</span>
+                  <span class="tc font-bold text-lg text-indigo-700">忙</span>
+                  <span class="text-[9px] bg-indigo-200 text-indigo-800 px-1.5 rounded mt-0.5 font-bold">Adj:形容詞</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-500 border-t border-slate-50 pt-2">（今日、私はとても忙しい）</p>
             </div>
+
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
-              <h3 class="font-bold text-red-600 mb-2 flex items-center gap-1"><span class="text-xl">🚫</span> 否定（しない・しなかった）</h3>
-              <p class="tc text-slate-700 text-lg">我 <span class="bg-red-100 text-red-800 px-2 py-0.5 rounded font-bold">不/沒</span> 喜歡。</p>
-              <div class="mt-3 flex items-center justify-between border-t border-slate-50 pt-2">
-                <span class="text-xs text-slate-500">（私は好きではない／〜しなかった）</span>
-                <button onclick="speak('我不喜歡。我沒喜歡。')" class="text-xs font-mono text-red-600 bg-red-50 hover:bg-red-100 px-2 py-1 rounded transition-colors flex items-center gap-1">Wǒ bù/méi xǐhuān. 🔊</button>
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="font-bold text-red-600 flex items-center gap-1"><span class="text-xl">🚫</span> 否定（不/沒）</h3>
+              </div>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <p class="text-[10px] text-slate-500">（私は好きではない）</p>
+                    <button onclick="speak('我不喜歡。')" class="text-[10px] bg-slate-50 text-red-600 hover:bg-red-100 px-2 py-1 rounded border border-red-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">wǒ</span>
+                      <span class="tc font-bold text-base text-slate-800">我</span>
+                      <span class="text-[8px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">bù</span>
+                      <span class="tc font-bold text-base text-red-800 bg-red-100 px-1 rounded">不</span>
+                      <span class="text-[8px] bg-red-200 text-red-800 px-1 rounded mt-0.5 font-bold">否定</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">xǐhuān</span>
+                      <span class="tc font-bold text-base text-indigo-700">喜歡</span>
+                      <span class="text-[8px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-t border-slate-50 pt-3">
+                  <div class="flex justify-between items-center mb-1">
+                    <p class="text-[10px] text-slate-500">（私は食べなかった）</p>
+                    <button onclick="speak('我沒吃。')" class="text-[10px] bg-slate-50 text-red-600 hover:bg-red-100 px-2 py-1 rounded border border-red-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">wǒ</span>
+                      <span class="tc font-bold text-base text-slate-800">我</span>
+                      <span class="text-[8px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">méi</span>
+                      <span class="tc font-bold text-base text-red-800 bg-red-100 px-1 rounded">沒</span>
+                      <span class="text-[8px] bg-red-200 text-red-800 px-1 rounded mt-0.5 font-bold">否定(過)</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">chī</span>
+                      <span class="tc font-bold text-base text-indigo-700">吃</span>
+                      <span class="text-[8px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Aux & Prep -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
-              <h3 class="font-bold text-yellow-600 mb-2 flex items-center gap-1"><span class="text-xl">💭</span> 助動詞（気持ち・義務）</h3>
-              <p class="tc text-slate-700 text-lg">你 <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-bold">想 / 得</span> 去。</p>
-              <div class="mt-3 flex flex-col gap-2 border-t border-slate-50 pt-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-[11px] text-slate-500">（〜したい）</span>
-                  <button onclick="speak('你想去。')" class="text-[11px] font-mono text-yellow-600 bg-yellow-50 hover:bg-yellow-100 px-2 py-1 rounded transition-colors">xiǎng 🔊</button>
+              <h3 class="font-bold text-yellow-600 mb-3 flex items-center gap-1"><span class="text-xl">💭</span> 助動詞（気持ち・義務）</h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <p class="text-[10px] text-slate-500">（あなた行きたい？）</p>
+                    <button onclick="speak('你想去嗎？')" class="text-[10px] bg-slate-50 text-yellow-600 hover:bg-yellow-100 px-2 py-1 rounded border border-yellow-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">nǐ</span>
+                      <span class="tc font-bold text-base text-slate-800">你</span>
+                      <span class="text-[8px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">xiǎng</span>
+                      <span class="tc font-bold text-base text-yellow-800 bg-yellow-100 px-1 rounded">想</span>
+                      <span class="text-[8px] bg-yellow-200 text-yellow-800 px-1 rounded mt-0.5 font-bold">助動詞</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">qù</span>
+                      <span class="tc font-bold text-base text-indigo-700">去</span>
+                      <span class="text-[8px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="flex items-center justify-between bg-red-50 px-1.5 py-1 rounded border border-red-100">
-                  <span class="text-[11px] text-red-600 font-bold">（〜しなきゃ！）</span>
-                  <button onclick="speak('你得去。')" class="text-[11px] font-mono text-red-600 bg-red-100 hover:bg-red-200 px-2 py-1 rounded transition-colors">děi (デイ) 🔊</button>
+                <div class="border-t border-slate-50 pt-3">
+                  <div class="flex justify-between items-center mb-1">
+                    <p class="text-[10px] text-red-600 font-bold">（行かなきゃ！）</p>
+                    <button onclick="speak('你得去。')" class="text-[10px] bg-slate-50 text-red-600 hover:bg-red-100 px-2 py-1 rounded border border-red-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">nǐ</span>
+                      <span class="tc font-bold text-base text-slate-800">你</span>
+                      <span class="text-[8px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-red-600 font-bold font-mono">děi (デイ)</span>
+                      <span class="tc font-bold text-base text-red-800 bg-red-100 px-1 rounded border border-red-200 shadow-sm">得</span>
+                      <span class="text-[8px] bg-red-200 text-red-800 px-1 rounded mt-0.5 font-bold">助動(義務)</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">qù</span>
+                      <span class="tc font-bold text-base text-indigo-700">去</span>
+                      <span class="text-[8px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-blue-100 timeline-dot hover:shadow-md transition-shadow">
-              <h3 class="font-bold text-blue-700 mb-2 flex items-center gap-1"><span class="text-xl">📍</span> 場所・相手（在, 跟, 給）</h3>
-              <p class="tc text-slate-700 text-lg">我 <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">跟朋友</span> 吃飯。</p>
-              <div class="mt-3 flex items-center justify-between border-t border-slate-50 pt-2">
-                <span class="text-xs text-slate-500">（友達とご飯を食べる）</span>
-                <button onclick="speak('我跟朋友吃飯。')" class="text-xs font-mono text-blue-600 bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded transition-colors flex items-center gap-1">Wǒ gēn péngyǒu... 🔊</button>
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="font-bold text-blue-700 flex items-center gap-1"><span class="text-xl">📍</span> 場所・相手</h3>
+                <button onclick="speak('我跟朋友吃飯。')" class="text-xs bg-slate-50 text-blue-600 hover:bg-blue-100 px-2 py-1 rounded shadow-sm border border-blue-100">🔊</button>
               </div>
+              <div class="flex flex-wrap gap-x-2 items-end mb-3">
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">wǒ</span>
+                  <span class="tc font-bold text-lg text-slate-800">我</span>
+                  <span class="text-[9px] bg-slate-200 text-slate-700 px-1.5 rounded mt-0.5 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">gēn péngyǒu</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 rounded shadow-sm">跟朋友</span>
+                  <span class="text-[9px] bg-blue-200 text-blue-800 px-1.5 rounded mt-0.5 font-bold">相手</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">chīfàn</span>
+                  <span class="tc font-bold text-lg text-indigo-700">吃飯</span>
+                  <span class="text-[9px] bg-indigo-200 text-indigo-800 px-1.5 rounded mt-0.5 font-bold">V+O:動詞</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-500 border-t border-slate-50 pt-2">（友達とご飯を食べる）</p>
             </div>
           </div>
 
@@ -194,118 +493,302 @@
               <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-1 rounded font-bold border border-indigo-200">時間より必ず「後」！</span>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">也 <span class="text-sm font-normal text-slate-500">(yě) 〜も</span></span>
+              
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="tc font-bold text-indigo-700 text-base">也 <span class="text-[10px] font-normal text-slate-500">(yě) 〜も</span></span>
+                  <button onclick="speak('我也去。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
                 </div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">也</strong> 去。</span>
-                  <button onclick="speak('我也去。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
-                </div>
-              </div>
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">都 <span class="text-sm font-normal text-slate-500">(dōu) 全部/みんな</span></span>
-                </div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">我們 <strong class="text-indigo-600">都</strong> 喜歡。</span>
-                  <button onclick="speak('我們都喜歡。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
-                </div>
-              </div>
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">一起 <span class="text-sm font-normal text-slate-500">(yìqǐ) 一緒に</span></span>
-                </div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">明天 <strong class="text-indigo-600">一起</strong> 吃。</span>
-                  <button onclick="speak('明天一起吃。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
-                </div>
-              </div>
-              <div class="bg-indigo-50/50 p-3 rounded-lg">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">有一點 <span class="text-sm font-normal text-slate-500">(yǒuyìdiǎn) 少々</span></span>
-                </div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700"><strong class="text-indigo-600">有一點</strong> 冷。</span>
-                  <button onclick="speak('有一點冷。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm">🔊</button>
+                <div class="flex flex-wrap gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">wǒ</span>
+                    <span class="tc font-bold text-sm text-slate-800">我</span>
+                    <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">yě</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">也</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">qù</span>
+                    <span class="tc font-bold text-sm text-indigo-700">去</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
                 </div>
               </div>
               
-              <!-- NEW: 正在 / 正要 -->
               <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">正在 <span class="text-[11px] font-normal text-slate-500">(zhèngzài) 〜している</span></span>
+                <div class="flex justify-between items-start mb-2">
+                  <span class="tc font-bold text-indigo-700 text-base">都 <span class="text-[10px] font-normal text-slate-500">(dōu) みんな</span></span>
+                  <button onclick="speak('我們都喜歡。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
                 </div>
-                <div class="flex flex-col gap-1 mt-1">
-                  <div class="flex items-center justify-between">
-                    <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">正在</strong> 吃飯。</span>
-                    <button onclick="speak('我正在吃飯。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                <div class="flex flex-wrap gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">wǒmen</span>
+                    <span class="tc font-bold text-sm text-slate-800">我們</span>
+                    <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
                   </div>
-                  <span class="text-[10px] text-slate-500">（今まさに食べている所）</span>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">dōu</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">都</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">xǐhuān</span>
+                    <span class="tc font-bold text-sm text-indigo-700">喜歡</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
                 </div>
               </div>
+              
               <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="tc font-bold text-indigo-700 text-lg">正要 <span class="text-[11px] font-normal text-slate-500">(zhèngyào) 〜する所</span></span>
+                <div class="flex justify-between items-start mb-2">
+                  <span class="tc font-bold text-indigo-700 text-base">一起 <span class="text-[10px] font-normal text-slate-500">(yìqǐ) 一緒に</span></span>
+                  <button onclick="speak('明天一起吃。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
                 </div>
-                <div class="flex flex-col gap-1 mt-1">
-                  <div class="flex items-center justify-between">
-                    <span class="tc text-sm text-slate-700">我 <strong class="text-indigo-600">正要</strong> 出門。</span>
-                    <button onclick="speak('我正要出門。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                <div class="flex flex-wrap gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">míngtiān</span>
+                    <span class="tc font-bold text-sm text-blue-800 bg-blue-50 px-1 rounded">明天</span>
+                    <span class="text-[7px] bg-blue-200 text-blue-800 px-1 rounded mt-0.5 font-bold">時間</span>
                   </div>
-                  <span class="text-[10px] text-slate-500">（今ちょうど出かける所）</span>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">yìqǐ</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">一起</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">chī</span>
+                    <span class="tc font-bold text-sm text-indigo-700">吃</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
                 </div>
               </div>
+              
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="tc font-bold text-indigo-700 text-base">有一點 <span class="text-[10px] font-normal text-slate-500">(少々)</span></span>
+                  <button onclick="speak('有一點冷。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                </div>
+                <div class="flex flex-wrap gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">yǒuyìdiǎn</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">有一點</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">lěng</span>
+                    <span class="tc font-bold text-sm text-indigo-700">冷</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-base">正在 <span class="text-[10px] font-normal text-slate-500">(zhèngzài)</span></span>
+                  <button onclick="speak('我正在吃飯。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                </div>
+                <div class="flex flex-wrap gap-x-1.5 items-end mt-2 mb-1">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">wǒ</span>
+                    <span class="tc font-bold text-sm text-slate-800">我</span>
+                    <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">zhèngzài</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">正在</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞(進行)</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">chīfàn</span>
+                    <span class="tc font-bold text-sm text-indigo-700">吃飯</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V+O</span>
+                  </div>
+                </div>
+                <span class="text-[10px] text-slate-500">（今まさに食べている所）</span>
+              </div>
+              
+              <div class="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="tc font-bold text-indigo-700 text-base">正要 <span class="text-[10px] font-normal text-slate-500">(zhèngyào)</span></span>
+                  <button onclick="speak('我正要出門。')" class="text-xs bg-white text-indigo-600 hover:bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-100">🔊</button>
+                </div>
+                <div class="flex flex-wrap gap-x-1.5 items-end mt-2 mb-1">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">wǒ</span>
+                    <span class="tc font-bold text-sm text-slate-800">我</span>
+                    <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">zhèngyào</span>
+                    <span class="tc font-bold text-sm text-indigo-800 bg-indigo-100 px-1 rounded">正要</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">副詞(直前)</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">chūmén</span>
+                    <span class="tc font-bold text-sm text-indigo-700">出門</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V+O</span>
+                  </div>
+                </div>
+                <span class="text-[10px] text-slate-500">（今ちょうど出かける所）</span>
+              </div>
+              
             </div>
             <p class="text-[11px] text-slate-500 mt-3 pt-2 border-t border-slate-100">※「他們<strong class="text-indigo-600">星期六也</strong>有課」のように、副詞は時間詞（いつ）より後ろに置きます。</p>
           </div>
 
-          <!-- Degree Adverbs (NEW from Image) -->
+          <!-- Degree Adverbs -->
           <div class="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-l-pink-500 border-y border-r border-slate-100 timeline-dot md:ml-0 ml-2 mt-4">
             <div class="flex justify-between items-start mb-4">
               <h3 class="font-bold text-pink-800 flex items-center gap-1"><span class="text-xl">📈</span> 程度の副詞（形容詞をパワーアップ）</h3>
               <span class="text-[10px] bg-pink-100 text-pink-800 px-2 py-1 rounded font-bold border border-pink-200">形容詞の直前！</span>
             </div>
             <p class="text-sm text-slate-600 mb-3 leading-relaxed">形容詞には「是（です）」を使わない代わりに、これらの言葉を<strong class="bg-pink-50 px-1 rounded text-pink-700">形容詞の直前</strong>に置いて程度を表します。</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
-                <div class="tc font-bold text-pink-700 text-lg mb-1">非常 <span class="text-[11px] font-normal text-slate-500">(fēicháng) とても</span></div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">這個 <strong class="text-pink-600">非常</strong> 好喝。</span>
-                  <button onclick="speak('這個非常好喝。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="tc font-bold text-pink-700 text-base">很 <span class="text-[10px] font-normal text-slate-500">(hěn) ※飾り</span></span>
+                    <button onclick="speak('這個很好喝。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">zhège</span>
+                      <span class="tc font-bold text-sm text-slate-800">這個</span>
+                      <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">hěn</span>
+                      <span class="tc font-bold text-sm text-pink-800 bg-pink-100 px-1 rounded">很</span>
+                      <span class="text-[7px] bg-pink-200 text-pink-800 px-1 rounded mt-0.5 font-bold">程度</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">hǎohē</span>
+                      <span class="tc font-bold text-sm text-indigo-700">好喝</span>
+                      <span class="text-[7px] bg-indigo-100 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-[10px] text-slate-500 mt-2 leading-relaxed">「とても」という意味は薄く、文を安定させるための<strong class="text-pink-600">肯定の記号</strong>として一番よく使われます。</p>
+              </div>
+              
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="tc font-bold text-pink-700 text-base">非常 <span class="text-[10px] font-normal text-slate-500">(fēicháng)</span></span>
+                    <button onclick="speak('這個非常好喝。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">zhège</span>
+                      <span class="tc font-bold text-sm text-slate-800">這個</span>
+                      <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">fēicháng</span>
+                      <span class="tc font-bold text-sm text-pink-800 bg-pink-100 px-1 rounded">非常</span>
+                      <span class="text-[7px] bg-pink-200 text-pink-800 px-1 rounded mt-0.5 font-bold">程度</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">hǎohē</span>
+                      <span class="tc font-bold text-sm text-indigo-700">好喝</span>
+                      <span class="text-[7px] bg-indigo-100 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-[10px] text-slate-500 mt-2 leading-relaxed">本当に「とても！」と強調したい場合は、「很」ではなくこちらを使います。</p>
+              </div>
+              
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="tc font-bold text-pink-700 text-base">最 <span class="text-[10px] font-normal text-slate-500">(zuì) 一番</span></span>
+                    <button onclick="speak('台北最好。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">Táiběi</span>
+                      <span class="tc font-bold text-sm text-slate-800">台北</span>
+                      <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">zuì</span>
+                      <span class="tc font-bold text-sm text-pink-800 bg-pink-100 px-1 rounded">最</span>
+                      <span class="text-[7px] bg-pink-200 text-pink-800 px-1 rounded mt-0.5 font-bold">程度</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">hǎo</span>
+                      <span class="tc font-bold text-sm text-indigo-700">好</span>
+                      <span class="text-[7px] bg-indigo-100 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
-                <div class="tc font-bold text-pink-700 text-lg mb-1">最 <span class="text-[11px] font-normal text-slate-500">(zuì) 一番</span></div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">台北 <strong class="text-pink-600">最</strong> 好。</span>
-                  <button onclick="speak('台北最好。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+              
+              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="tc font-bold text-pink-700 text-base">比較 <span class="text-[10px] font-normal text-slate-500">(bǐjiào) わりと</span></span>
+                    <button onclick="speak('我的比較可愛。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
+                  </div>
+                  <div class="flex flex-wrap gap-x-1.5 items-end">
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">wǒ de</span>
+                      <span class="tc font-bold text-sm text-slate-800">我的</span>
+                      <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">bǐjiào</span>
+                      <span class="tc font-bold text-sm text-pink-800 bg-pink-100 px-1 rounded">比較</span>
+                      <span class="text-[7px] bg-pink-200 text-pink-800 px-1 rounded mt-0.5 font-bold">程度</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <span class="text-[8px] text-slate-500 font-mono">kě'ài</span>
+                      <span class="tc font-bold text-sm text-indigo-700">可愛</span>
+                      <span class="text-[7px] bg-indigo-100 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="bg-pink-50/50 p-3 rounded-lg border border-pink-100">
-                <div class="tc font-bold text-pink-700 text-lg mb-1">比較 <span class="text-[11px] font-normal text-slate-500">(bǐjiào) わりと</span></div>
-                <div class="flex items-center justify-between mt-1">
-                  <span class="tc text-sm text-slate-700">我的 <strong class="text-pink-600">比較</strong> 可愛。</span>
-                  <button onclick="speak('我的比較可愛。')" class="text-xs bg-white text-pink-600 hover:bg-pink-100 px-2 py-1 rounded shadow-sm border border-pink-100">🔊</button>
-                </div>
-              </div>
+              
             </div>
           </div>
 
-          <!-- Adverbial Modifier "地" (NEW) -->
+          <!-- Adverbial Modifier "地" -->
           <div class="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-l-emerald-500 border-y border-r border-slate-100 timeline-dot md:ml-0 ml-2 mt-4">
             <div class="flex justify-between items-start mb-4">
               <h3 class="font-bold text-emerald-800 flex items-center gap-1"><span class="text-xl">🎀</span> 状態の副詞化「地 (de)」</h3>
               <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-bold border border-emerald-200">動詞の直前！</span>
             </div>
             <p class="text-sm text-slate-600 mb-3 leading-relaxed">形容詞の後ろに「地」をつけると、「〜に / 〜く」という副詞（様子）に変身！<strong class="bg-emerald-50 px-1 rounded text-emerald-700">動詞のすぐ前</strong>から動作を修飾する接着剤になります。</p>
-            <div class="bg-emerald-50/50 p-3 rounded-lg border border-emerald-100">
-              <div class="flex items-center justify-between mt-1">
-                <span class="tc text-sm text-slate-700">請 <strong class="text-emerald-600 font-bold text-lg bg-white px-1 rounded shadow-sm">慢慢地</strong> 說。</span>
+            
+            <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
+              <div class="flex justify-between items-start mb-3">
+                <p class="text-xs text-slate-500 font-bold">（ゆっくりと話してください）</p>
                 <button onclick="speak('請慢慢地說。')" class="text-xs bg-white text-emerald-600 hover:bg-emerald-100 px-2 py-1 rounded shadow-sm border border-emerald-100">🔊</button>
               </div>
-              <p class="text-xs text-slate-500 mt-2">（<strong class="text-emerald-600 font-bold">ゆっくりと</strong> 話してください）</p>
+              <div class="flex flex-wrap gap-x-2 items-end">
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">qǐng</span>
+                  <span class="tc font-bold text-lg text-slate-800">請</span>
+                  <span class="text-[8px] bg-slate-200 text-slate-700 px-1.5 rounded mt-0.5 font-bold">お願い</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-emerald-600 font-mono">mànmàn de</span>
+                  <span class="tc font-bold text-lg text-emerald-800 bg-emerald-100 px-1.5 rounded border border-emerald-200 shadow-sm">慢慢地</span>
+                  <span class="text-[8px] bg-emerald-200 text-emerald-800 px-1.5 rounded mt-0.5 font-bold">状態副詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[9px] text-slate-500 font-mono">shuō</span>
+                  <span class="tc font-bold text-lg text-indigo-700">說</span>
+                  <span class="text-[8px] bg-indigo-200 text-indigo-800 px-1.5 rounded mt-0.5 font-bold">V:動詞</span>
+                </div>
+              </div>
             </div>
+            
             <div class="text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-100 leading-relaxed bg-slate-50 p-2 rounded">
               <strong class="text-indigo-600 font-bold">💡 メタ視点：ライバルの「得」との使い分け</strong><br>
               右側に置く「得」とは発音が同じですが、矢印の向きが逆です！<br>
@@ -336,49 +819,132 @@
           
           <div class="bg-white rounded-2xl p-5 shadow-sm border border-green-100 hover:shadow-md transition-shadow">
             <h3 class="font-bold text-green-700 mb-2 flex items-center gap-1"><span class="text-xl">🎵</span> 様態補語（結果の状態）</h3>
-            <p class="tc text-slate-700 font-bold mb-1 text-lg">得 <span class="text-sm font-normal text-slate-500">(de)</span></p>
-            <div class="flex items-center justify-between bg-green-50/50 p-2 rounded">
-              <p class="tc text-slate-700 text-sm">他唱 <strong class="text-green-700 bg-green-100 px-1.5 py-0.5 rounded">得</strong> 很好聽。</p>
-              <button onclick="speak('他唱得很好聽。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
+            <p class="tc text-slate-700 font-bold mb-2 text-lg">得 <span class="text-sm font-normal text-slate-500">(de)</span></p>
+            
+            <div class="bg-green-50/50 p-3 rounded-xl border border-green-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="text-xs text-slate-500 font-bold">（彼は歌うのが上手だ）</p>
+                <button onclick="speak('他唱得很好聽。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
+              </div>
+              <div class="flex flex-wrap gap-x-1.5 items-end">
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-slate-500 font-mono">tā</span>
+                  <span class="tc font-bold text-sm text-slate-800">他</span>
+                  <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">S</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-slate-500 font-mono">chàng</span>
+                  <span class="tc font-bold text-sm text-indigo-700">唱</span>
+                  <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-green-600 font-mono font-bold">de</span>
+                  <span class="tc font-bold text-sm text-green-800 bg-green-100 px-1 rounded border border-green-200 shadow-sm">得</span>
+                  <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">接着剤</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-slate-500 font-mono">hěn hǎotīng</span>
+                  <span class="tc font-bold text-sm text-slate-800">很好聽</span>
+                  <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">C:様態補語</span>
+                </div>
+              </div>
             </div>
-            <p class="text-xs text-slate-500 mt-2">（彼は歌うのが上手だ）</p>
           </div>
 
           <div class="bg-white rounded-2xl p-5 shadow-sm border border-green-100 hover:shadow-md transition-shadow">
             <h3 class="font-bold text-green-700 mb-2 flex items-center gap-1"><span class="text-xl">⚖️</span> 程度（要望・比較）</h3>
-            <p class="tc text-slate-700 font-bold mb-1 text-lg">一點 <span class="text-sm font-normal text-slate-500">(yìdiǎn)</span></p>
-            <div class="flex items-center justify-between bg-green-50/50 p-2 rounded">
-              <p class="tc text-slate-700 text-sm">請便宜 <strong class="text-green-700 bg-green-100 px-1.5 py-0.5 rounded">一點</strong>。</p>
-              <button onclick="speak('請便宜一點。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
+            <p class="tc text-slate-700 font-bold mb-2 text-lg">一點 <span class="text-sm font-normal text-slate-500">(yìdiǎn)</span></p>
+            
+            <div class="bg-green-50/50 p-3 rounded-xl border border-green-100">
+              <div class="flex justify-between items-start mb-2">
+                <p class="text-xs text-slate-500 font-bold">（もう少し安くして）</p>
+                <button onclick="speak('請便宜一點。')" class="text-xs bg-white text-green-700 hover:bg-green-100 px-2 py-1 rounded shadow-sm border border-green-100">🔊</button>
+              </div>
+              <div class="flex flex-wrap gap-x-1.5 items-end">
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-slate-500 font-mono">qǐng</span>
+                  <span class="tc font-bold text-sm text-slate-800">請</span>
+                  <span class="text-[7px] bg-slate-200 text-slate-700 px-1 rounded mt-0.5 font-bold">お願い</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-slate-500 font-mono">piányí</span>
+                  <span class="tc font-bold text-sm text-indigo-700">便宜</span>
+                  <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">Adj</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[8px] text-green-600 font-mono font-bold">yìdiǎn</span>
+                  <span class="tc font-bold text-sm text-green-800 bg-green-100 px-1 rounded border border-green-200 shadow-sm">一點</span>
+                  <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">C:程度補語</span>
+                </div>
+              </div>
             </div>
-            <p class="text-xs text-slate-500 mt-2">（もう少し安くして）</p>
           </div>
 
           <div class="bg-white rounded-2xl p-5 shadow-sm border border-green-100 hover:shadow-md transition-shadow">
             <h3 class="font-bold text-green-700 mb-3 flex items-center gap-1"><span class="text-xl">🕰️</span> 経験・完了・短時間</h3>
-            <ul class="space-y-3">
-              <li class="flex items-center justify-between bg-green-50/30 p-2 rounded border border-transparent hover:border-green-100">
-                <div>
-                  <div class="tc text-slate-800">吃 <strong class="text-green-700 bg-green-100 px-1.5 py-0.5 rounded text-sm">過</strong></div>
-                  <div class="text-[11px] text-slate-500 mt-0.5">食べた事がある</div>
+            <div class="space-y-3">
+              
+              <!-- 吃過 -->
+              <div class="bg-green-50/30 p-3 rounded-xl border border-transparent hover:border-green-100 transition-colors">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-[10px] text-slate-500 font-bold">（食べた事がある）</p>
+                  <button onclick="speak('吃過')" class="text-xs bg-white text-green-600 hover:bg-green-100 px-2 py-0.5 rounded border border-green-100 shadow-sm">🔊</button>
                 </div>
-                <button onclick="speak('吃過')" class="text-xs font-mono text-green-700 bg-green-50 hover:bg-green-100 px-2 py-1 rounded transition-colors">chī guò 🔊</button>
-              </li>
-              <li class="flex items-center justify-between bg-green-50/30 p-2 rounded border border-transparent hover:border-green-100">
-                <div>
-                  <div class="tc text-slate-800">買 <strong class="text-green-700 bg-green-100 px-1.5 py-0.5 rounded text-sm">了</strong></div>
-                  <div class="text-[11px] text-slate-500 mt-0.5">買った</div>
+                <div class="flex gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">chī</span>
+                    <span class="tc font-bold text-sm text-indigo-700">吃</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-green-600 font-mono font-bold">guò</span>
+                    <span class="tc font-bold text-sm text-green-800 bg-green-100 px-1 rounded border border-green-200 shadow-sm">過</span>
+                    <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">C:経験</span>
+                  </div>
                 </div>
-                <button onclick="speak('買了')" class="text-xs font-mono text-green-700 bg-green-50 hover:bg-green-100 px-2 py-1 rounded transition-colors">mǎi le 🔊</button>
-              </li>
-              <li class="flex items-center justify-between bg-green-50/30 p-2 rounded border border-transparent hover:border-green-100">
-                <div>
-                  <div class="tc text-slate-800">等 <strong class="text-green-700 bg-green-100 px-1.5 py-0.5 rounded text-sm">一下</strong></div>
-                  <div class="text-[11px] text-slate-500 mt-0.5">ちょっと待って</div>
+              </div>
+
+              <!-- 買了 -->
+              <div class="bg-green-50/30 p-3 rounded-xl border border-transparent hover:border-green-100 transition-colors border-t border-slate-50">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-[10px] text-slate-500 font-bold">（買った）</p>
+                  <button onclick="speak('買了')" class="text-xs bg-white text-green-600 hover:bg-green-100 px-2 py-0.5 rounded border border-green-100 shadow-sm">🔊</button>
                 </div>
-                <button onclick="speak('等一下')" class="text-xs font-mono text-green-700 bg-green-50 hover:bg-green-100 px-2 py-1 rounded transition-colors">děng yíxià 🔊</button>
-              </li>
-            </ul>
+                <div class="flex gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">mǎi</span>
+                    <span class="tc font-bold text-sm text-indigo-700">買</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-green-600 font-mono font-bold">le</span>
+                    <span class="tc font-bold text-sm text-green-800 bg-green-100 px-1 rounded border border-green-200 shadow-sm">了</span>
+                    <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">C:完了</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 等一下 -->
+              <div class="bg-green-50/30 p-3 rounded-xl border border-transparent hover:border-green-100 transition-colors border-t border-slate-50">
+                <div class="flex justify-between items-start mb-2">
+                  <p class="text-[10px] text-slate-500 font-bold">（ちょっと待って）</p>
+                  <button onclick="speak('等一下')" class="text-xs bg-white text-green-600 hover:bg-green-100 px-2 py-0.5 rounded border border-green-100 shadow-sm">🔊</button>
+                </div>
+                <div class="flex gap-x-1.5 items-end">
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-slate-500 font-mono">děng</span>
+                    <span class="tc font-bold text-sm text-indigo-700">等</span>
+                    <span class="text-[7px] bg-indigo-200 text-indigo-800 px-1 rounded mt-0.5 font-bold">V</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <span class="text-[8px] text-green-600 font-mono font-bold">yíxià</span>
+                    <span class="tc font-bold text-sm text-green-800 bg-green-100 px-1 rounded border border-green-200 shadow-sm">一下</span>
+                    <span class="text-[7px] bg-green-200 text-green-800 px-1 rounded mt-0.5 font-bold">C:短時間</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -459,15 +1025,44 @@
         <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-6 text-center flex items-center justify-center gap-2">
           <span class="text-3xl">🎓</span> 応用編：ルールを組み合わせた完璧な長文
         </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
           
           <!-- Example 1 -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
             <p class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【場所 ＋ 動作 ＋ 名詞のフルデコ】</p>
-            <div class="flex justify-between items-start mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
-              <p class="tc font-bold text-lg text-slate-800 leading-relaxed">他 <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded shadow-sm">在KTV</span> 唱了 <span class="bg-pink-100 text-pink-800 px-1.5 py-0.5 rounded shadow-sm">十首好聽的歌</span>。</p>
-              <button onclick="speak('他在KTV唱了十首好聽的歌。')" class="text-sm bg-white text-slate-600 hover:bg-slate-100 px-3 py-2 rounded shadow-sm border border-slate-200 ml-3 transition-colors">🔊</button>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 relative">
+              <button onclick="speak('他在KTV唱了十首好聽的歌。')" class="absolute top-3 right-3 text-xs bg-white text-slate-600 hover:bg-slate-100 px-2 py-1 rounded shadow-sm border border-slate-200 transition-colors flex items-center gap-1">🔊 再生</button>
+              
+              <div class="flex flex-wrap gap-x-2 gap-y-4 items-end pt-5">
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">tā</span>
+                  <span class="tc font-bold text-lg text-slate-800">他</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-blue-500 font-mono mb-0.5">zài KTV</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm">在KTV</span>
+                  <span class="text-[9px] md:text-[10px] bg-blue-200 text-blue-800 px-1.5 py-0.5 rounded mt-1 font-bold">場所</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-indigo-500 font-mono mb-0.5">chàng le</span>
+                  <span class="tc font-bold text-lg text-indigo-800 bg-indigo-50 px-1.5 py-0.5 rounded shadow-sm">唱了</span>
+                  <span class="text-[9px] md:text-[10px] bg-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded mt-1 font-bold">V:動詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-pink-500 font-mono mb-0.5">shí shǒu hǎotīng de</span>
+                  <span class="tc font-bold text-lg text-pink-800 bg-pink-100 px-1.5 py-0.5 rounded shadow-sm">十首好聽的</span>
+                  <span class="text-[9px] md:text-[10px] bg-pink-200 text-pink-800 px-1.5 py-0.5 rounded mt-1 font-bold">修飾(数+量+形)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">gē</span>
+                  <span class="tc font-bold text-lg text-slate-800">歌</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">O:目的語</span>
+                </div>
+              </div>
             </div>
+
             <p class="text-sm text-slate-700 font-bold mb-2">彼はカラオケで10曲のいい歌を歌った。</p>
             <p class="text-xs text-slate-600 leading-relaxed">
               <strong class="text-blue-600">場所（在KTV）</strong>が動詞の前にあり、その後ろに<strong class="text-pink-600">名詞のデコレーション（10首のいい歌）</strong>が続く、トラップをすべて回避した完璧な語順です！
@@ -475,12 +1070,41 @@
           </div>
 
           <!-- Example 2 -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
             <p class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【場所 ＋ 動作 ＋ 数字・量詞】</p>
-            <div class="flex justify-between items-start mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
-              <p class="tc font-bold text-lg text-slate-800 leading-relaxed">我 <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded shadow-sm">在這條路上</span> 發現了 <span class="bg-pink-100 text-pink-800 px-1.5 py-0.5 rounded shadow-sm">十一家便利商店</span>。</p>
-              <button onclick="speak('我在這條路上發現了十一家便利商店。')" class="text-sm bg-white text-slate-600 hover:bg-slate-100 px-3 py-2 rounded shadow-sm border border-slate-200 ml-3 transition-colors">🔊</button>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 relative">
+              <button onclick="speak('我在這條路上發現了十一家便利商店。')" class="absolute top-3 right-3 text-xs bg-white text-slate-600 hover:bg-slate-100 px-2 py-1 rounded shadow-sm border border-slate-200 transition-colors flex items-center gap-1">🔊 再生</button>
+              
+              <div class="flex flex-wrap gap-x-2 gap-y-4 items-end pt-5">
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">wǒ</span>
+                  <span class="tc font-bold text-lg text-slate-800">我</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-blue-500 font-mono mb-0.5">zài zhè tiáo lù shàng</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm">在這條路上</span>
+                  <span class="text-[9px] md:text-[10px] bg-blue-200 text-blue-800 px-1.5 py-0.5 rounded mt-1 font-bold">場所</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-indigo-500 font-mono mb-0.5">fāxiàn le</span>
+                  <span class="tc font-bold text-lg text-indigo-800 bg-indigo-50 px-1.5 py-0.5 rounded shadow-sm">發現了</span>
+                  <span class="text-[9px] md:text-[10px] bg-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded mt-1 font-bold">V:動詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-pink-500 font-mono mb-0.5">shíyī jiā</span>
+                  <span class="tc font-bold text-lg text-pink-800 bg-pink-100 px-1.5 py-0.5 rounded shadow-sm">十一家</span>
+                  <span class="text-[9px] md:text-[10px] bg-pink-200 text-pink-800 px-1.5 py-0.5 rounded mt-1 font-bold">修飾(数+量)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">biànlì shāngdiàn</span>
+                  <span class="tc font-bold text-lg text-slate-800">便利商店</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">O:目的語</span>
+                </div>
+              </div>
             </div>
+
             <p class="text-sm text-slate-700 font-bold mb-2">私はこの道で11軒のコンビニを見つけた。</p>
             <p class="text-xs text-slate-600 leading-relaxed">
               <strong class="text-blue-600">場所（在這條路上）</strong>＋ 動詞 ＋ <strong class="text-pink-600">数字・量詞（十一家）</strong>の組み合わせ。形容詞がない場合は「的」は不要で、そのまま名詞に繋げます。
@@ -488,12 +1112,46 @@
           </div>
 
           <!-- Example 3 (NEW: 連動文) -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
             <p class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【動詞が2つ（連動文） ＋ 名詞のデコ】</p>
-            <div class="flex justify-between items-start mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
-              <p class="tc font-bold text-lg text-slate-800 leading-relaxed">媽媽 <span class="bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded shadow-sm">去藥局</span> <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded shadow-sm">買了</span> <span class="bg-pink-100 text-pink-800 px-1.5 py-0.5 rounded shadow-sm">十盒口罩</span>。</p>
-              <button onclick="speak('媽媽去藥局買了十盒口罩。')" class="text-sm bg-white text-slate-600 hover:bg-slate-100 px-3 py-2 rounded shadow-sm border border-slate-200 ml-3 transition-colors">🔊</button>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 relative">
+              <button onclick="speak('媽媽去藥局買了十盒口罩。')" class="absolute top-3 right-3 text-xs bg-white text-slate-600 hover:bg-slate-100 px-2 py-1 rounded shadow-sm border border-slate-200 transition-colors flex items-center gap-1">🔊 再生</button>
+              
+              <div class="flex flex-wrap gap-x-2 gap-y-4 items-end pt-5">
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">māma</span>
+                  <span class="tc font-bold text-lg text-slate-800">媽媽</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-indigo-500 font-mono mb-0.5">qù</span>
+                  <span class="tc font-bold text-lg text-indigo-800 bg-indigo-100 px-1.5 py-0.5 rounded shadow-sm">去</span>
+                  <span class="text-[9px] md:text-[10px] bg-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded mt-1 font-bold">V1:動詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-blue-500 font-mono mb-0.5">yàojú</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm">藥局</span>
+                  <span class="text-[9px] md:text-[10px] bg-blue-200 text-blue-800 px-1.5 py-0.5 rounded mt-1 font-bold">O1:場所</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-indigo-500 font-mono mb-0.5">mǎi le</span>
+                  <span class="tc font-bold text-lg text-indigo-800 bg-indigo-50 px-1.5 py-0.5 rounded shadow-sm">買了</span>
+                  <span class="text-[9px] md:text-[10px] bg-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded mt-1 font-bold">V2:動詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-pink-500 font-mono mb-0.5">shí hé</span>
+                  <span class="tc font-bold text-lg text-pink-800 bg-pink-100 px-1.5 py-0.5 rounded shadow-sm">十盒</span>
+                  <span class="text-[9px] md:text-[10px] bg-pink-200 text-pink-800 px-1.5 py-0.5 rounded mt-1 font-bold">修飾(数+量)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">kǒuzhào</span>
+                  <span class="tc font-bold text-lg text-slate-800">口罩</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">O2:目的語</span>
+                </div>
+              </div>
             </div>
+
             <p class="text-sm text-slate-700 font-bold mb-2">お母さんは薬局に行って、10箱のマスクを買った。</p>
             <p class="text-xs text-slate-600 leading-relaxed">
               「行く」「買う」のように動詞が2つ以上ある文（連動文）は、<strong class="text-indigo-600 border-b-2 border-indigo-200">行動が起きる順番（時間の流れ）</strong>通りに並べるだけ！
@@ -501,12 +1159,51 @@
           </div>
 
           <!-- Example 4 (NEW: 方向・時間・結果) -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
             <p class="text-[11px] font-bold text-slate-500 mb-3 tracking-wider">【方向 ＋ 動作 ＋ 長さ ＋ 結果】</p>
-            <div class="flex justify-between items-start mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
-              <p class="tc font-bold text-lg text-slate-800 leading-relaxed">你 <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded shadow-sm">往前</span> 走 <span class="bg-green-100 text-green-800 px-1.5 py-0.5 rounded shadow-sm">三分鐘</span> 會看<span class="bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded shadow-sm">見</span> 一間醫院。</p>
-              <button onclick="speak('你往前走三分鐘會看見一間醫院。')" class="text-sm bg-white text-slate-600 hover:bg-slate-100 px-3 py-2 rounded shadow-sm border border-slate-200 ml-3 transition-colors">🔊</button>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4 relative">
+              <button onclick="speak('你往前走三分鐘會看見一間醫院。')" class="absolute top-3 right-3 text-xs bg-white text-slate-600 hover:bg-slate-100 px-2 py-1 rounded shadow-sm border border-slate-200 transition-colors flex items-center gap-1">🔊 再生</button>
+              
+              <div class="flex flex-wrap gap-x-2 gap-y-4 items-end pt-5">
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">nǐ</span>
+                  <span class="tc font-bold text-lg text-slate-800">你</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">S:主語</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-blue-500 font-mono mb-0.5">wǎng qián</span>
+                  <span class="tc font-bold text-lg text-blue-800 bg-blue-100 px-1.5 py-0.5 rounded shadow-sm">往前</span>
+                  <span class="text-[9px] md:text-[10px] bg-blue-200 text-blue-800 px-1.5 py-0.5 rounded mt-1 font-bold">方向</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-indigo-500 font-mono mb-0.5">zǒu</span>
+                  <span class="tc font-bold text-lg text-indigo-800 bg-indigo-50 px-1.5 py-0.5 rounded shadow-sm">走</span>
+                  <span class="text-[9px] md:text-[10px] bg-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded mt-1 font-bold">V1:動詞</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-green-500 font-mono mb-0.5">sān fēnzhōng</span>
+                  <span class="tc font-bold text-lg text-green-800 bg-green-100 px-1.5 py-0.5 rounded shadow-sm">三分鐘</span>
+                  <span class="text-[9px] md:text-[10px] bg-green-200 text-green-800 px-1.5 py-0.5 rounded mt-1 font-bold">長さ(補)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-teal-500 font-mono mb-0.5">huì kàn jiàn</span>
+                  <span class="tc font-bold text-lg text-teal-800 bg-teal-100 px-1.5 py-0.5 rounded shadow-sm">會看見</span>
+                  <span class="text-[9px] md:text-[10px] bg-teal-200 text-teal-800 px-1.5 py-0.5 rounded mt-1 font-bold">V2(+補)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-pink-500 font-mono mb-0.5">yì jiān</span>
+                  <span class="tc font-bold text-lg text-pink-800 bg-pink-100 px-1.5 py-0.5 rounded shadow-sm">一間</span>
+                  <span class="text-[9px] md:text-[10px] bg-pink-200 text-pink-800 px-1.5 py-0.5 rounded mt-1 font-bold">修飾(数+量)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-[10px] text-slate-500 font-mono mb-0.5">yīyuàn</span>
+                  <span class="tc font-bold text-lg text-slate-800">醫院</span>
+                  <span class="text-[9px] md:text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mt-1 font-bold">O:目的語</span>
+                </div>
+              </div>
             </div>
+
             <p class="text-sm text-slate-700 font-bold mb-2">前に向かって3分歩くと、病院が1軒見えます。</p>
             <p class="text-xs text-slate-600 leading-relaxed">
               道案内の神フレーズ！「往(〜へ向かって)」は動詞の<strong class="text-blue-600">前</strong>。「三分鐘(3分間)」という長さは動詞の<strong class="text-green-600">後ろ</strong>。さらに「看(見る)」の結果として「見(目に入る)」を補う、中国語のルールが全部乗せの美しい一文です。
@@ -848,12 +1545,20 @@
       <!-- 得(děi) Special Trap -->
       <div class="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-3xl shadow-sm p-6 relative overflow-hidden">
         <div class="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-br-xl shadow-sm">番外編・超重要トラップ</div>
-        <div class="mt-6 flex flex-col md:flex-row md:items-center gap-6">
+        <div class="mt-6 flex flex-col lg:flex-row gap-6">
           <div class="flex-1">
             <h3 class="font-bold text-xl md:text-2xl mb-3 text-red-800 flex items-center gap-2">
               <span>🚨</span> 発音が変わると位置も変わる「得」
             </h3>
-            <p class="text-sm text-slate-700 leading-relaxed">「得」には <span class="font-bold text-red-600 text-lg bg-white px-2 py-0.5 rounded shadow-sm">děi (デイ)</span> という全く別の読み方があります。この場合は「〜しなければならない」という<span class="font-bold border-b-2 border-red-400">助動詞</span>になるため、置く場所が<span class="font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">動詞の前</span>に大移動します！</p>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">「得」には <span class="font-bold text-red-600 text-lg bg-white px-2 py-0.5 rounded shadow-sm">děi (デイ)</span> という全く別の読み方があります。この場合は「〜しなければならない」という<span class="font-bold border-b-2 border-red-400">助動詞</span>になるため、置く場所が<span class="font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">動詞の前</span>に大移動します！</p>
+            
+            <div class="bg-white/60 p-4 rounded-xl border border-red-200 shadow-sm">
+              <p class="text-sm font-bold text-red-800 mb-2 flex items-center gap-1"><span>⚠️</span> TOCFL頻出：否定形の罠</p>
+              <p class="text-[11px] md:text-xs text-slate-700 leading-relaxed">
+                「得」の否定（〜しなくてよい）を作る時、「不得」とは言いません！<br>
+                必ず <strong class="text-red-600 bg-white px-1.5 py-0.5 border border-red-200 rounded text-sm mx-1">不用 (bú yòng)</strong> に変身します。これは試験で非常によく狙われる引っ掛けポイントです。
+              </p>
+            </div>
           </div>
           
           <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -865,10 +1570,10 @@
               </div>
             </div>
             <div class="bg-white p-4 rounded-2xl border border-red-100 shadow-sm flex flex-col justify-between">
-              <p class="text-slate-500 text-[10px] mb-2">【例】あなたは薬を飲まなければならない。</p>
+              <p class="text-slate-500 text-[10px] mb-2">【例】行かなくていいよ（否定形）</p>
               <div class="flex justify-between items-end">
-                <p class="tc font-bold text-slate-800 text-lg">你 <span class="text-xl text-red-600 bg-red-50 px-1.5 rounded">得</span> 吃藥。</p>
-                <button onclick="speak('你得吃藥。')" class="text-xs font-mono text-red-600 bg-red-50 hover:bg-red-100 px-2 py-1 rounded transition-colors">Nǐ děi... 🔊</button>
+                <p class="tc font-bold text-slate-800 text-lg">你 <span class="text-xl text-red-500 bg-red-50 px-1.5 rounded">不用</span> 去。</p>
+                <button onclick="speak('你不用去。')" class="text-xs font-mono text-red-600 bg-red-50 hover:bg-red-100 px-2 py-1 rounded transition-colors">Nǐ bú yòng... 🔊</button>
               </div>
             </div>
           </div>
