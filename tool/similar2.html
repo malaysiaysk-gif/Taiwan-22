@@ -1166,20 +1166,77 @@
                         <span class="bg-purple-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 30</span>
                         <h2 class="text-2xl font-bold text-slate-800">必須の文法・構文パターン</h2>
                     </div>
+                    
+                    <!-- 追加：品詞で使い分けるANDの解像度 -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 mb-6">
+                        <div class="bg-purple-700 text-white py-3 px-5 font-bold flex justify-between items-center">
+                            <span>🧩 品詞で使い分ける「AND（〜と、そして）」</span>
+                        </div>
+                        <div class="p-4 bg-purple-50 text-sm text-purple-800 border-b border-purple-100">
+                            日本語ではすべて「〜と」「そして」で繋げますが、中国語は<b>繋ぐ対象（品詞）によって接着剤を変える</b>必要があります。
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 text-slate-700 text-sm">
+                                        <th class="py-3 px-4 font-bold border-b border-slate-200 whitespace-nowrap">繋ぎたいもの</th>
+                                        <th class="py-3 px-4 font-bold border-b border-slate-200 whitespace-nowrap">使うべきピース</th>
+                                        <th class="py-3 px-4 font-bold border-b border-slate-200 min-w-[180px]">イメージ</th>
+                                        <th class="py-3 px-4 font-bold border-b border-slate-200">よく出る例</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr class="hover:bg-purple-50/50 transition-colors group">
+                                        <td class="py-3 px-4 border-b border-slate-100 font-bold text-slate-700">名詞 ＋ 名詞</td>
+                                        <td class="py-3 px-4 border-b border-slate-100"><span class="font-bold tc text-lg speakable text-purple-700 cursor-pointer hover:text-teal-600">和 <span class="text-[11px] text-slate-500 font-normal">hé</span> / 跟 <span class="text-[11px] text-slate-500 font-normal">gēn</span></span></td>
+                                        <td class="py-3 px-4 border-b border-slate-100 text-slate-600 font-bold">1つのカゴに一緒に入れる</td>
+                                        <td class="py-3 px-4 border-b border-slate-100">
+                                            <span class="tc speakable font-bold text-slate-800 cursor-pointer hover:text-teal-600">蘋果和橘子</span><br>
+                                            <span class="text-xs text-slate-500">りんごとみかん</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-purple-50/50 transition-colors group">
+                                        <td class="py-3 px-4 border-b border-slate-100 font-bold text-slate-700">形容詞 ＋ 形容詞</td>
+                                        <td class="py-3 px-4 border-b border-slate-100"><span class="font-bold tc text-lg speakable text-purple-700 cursor-pointer hover:text-teal-600">又...又... <span class="text-[11px] text-slate-500 font-normal">yòu...yòu...</span></span></td>
+                                        <td class="py-3 px-4 border-b border-slate-100 text-slate-600 font-bold">2つのラベルを貼る</td>
+                                        <td class="py-3 px-4 border-b border-slate-100">
+                                            <span class="tc speakable font-bold text-slate-800 cursor-pointer hover:text-teal-600">又大又甜</span><br>
+                                            <span class="text-xs text-slate-500">大きくて甘い</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-purple-50/50 transition-colors group">
+                                        <td class="py-3 px-4 border-b border-slate-100 font-bold text-slate-700">文 ＋ 文</td>
+                                        <td class="py-3 px-4 border-b border-slate-100"><span class="font-bold tc text-lg speakable text-purple-700 cursor-pointer hover:text-teal-600">而且 <span class="text-[11px] text-slate-500 font-normal">érqiě</span> / 還有 <span class="text-[11px] text-slate-500 font-normal">háiyǒu</span></span></td>
+                                        <td class="py-3 px-4 border-b border-slate-100 text-slate-600 font-bold">データを追記（Append）する</td>
+                                        <td class="py-3 px-4 border-b border-slate-100">
+                                            <span class="tc speakable font-bold text-slate-800 cursor-pointer hover:text-teal-600">...，而且很便宜</span><br>
+                                            <span class="text-xs text-slate-500">...、その上とても安い</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-purple-50/50 transition-colors group">
+                                        <td class="py-3 px-4 border-b border-slate-100 font-bold text-slate-700">動作 ＋ 動作</td>
+                                        <td class="py-3 px-4 border-b border-slate-100"><span class="font-bold tc text-lg speakable text-purple-700 cursor-pointer hover:text-teal-600">一邊...一邊... <span class="text-[11px] text-slate-500 font-normal">yìbiān...</span></span></td>
+                                        <td class="py-3 px-4 border-b border-slate-100 text-slate-600 font-bold">マルチタスクで実行する</td>
+                                        <td class="py-3 px-4 border-b border-slate-100">
+                                            <span class="tc speakable font-bold text-slate-800 cursor-pointer hover:text-teal-600">一邊吃飯一邊看電視</span><br>
+                                            <span class="text-xs text-slate-500">ご飯を食べながらテレビを見る</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
                             <div class="bg-purple-500 text-white py-3 px-5 font-bold flex justify-between items-center">
-                                <span>⏳ 変化と進行</span>
+                                <span>⏳ 変化と直前</span>
                             </div>
                             <div class="p-5">
                                 <ul class="space-y-4">
                                     <li class="flex gap-4">
                                         <div class="w-24 shrink-0 text-center"><div class="text-xl font-bold tc text-slate-800 speakable">快要...了</div><div class="text-xs text-slate-500">kuàiyào...le</div></div>
                                         <div><span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">まもなく〜する</span><p class="text-sm">直前に迫っている状況。</p></div>
-                                    </li>
-                                    <li class="flex gap-4 border-t border-slate-100 pt-3">
-                                        <div class="w-24 shrink-0 text-center"><div class="text-xl font-bold tc text-slate-800 speakable">一邊...一邊</div><div class="text-xs text-slate-500">yìbiān...yìbiān</div></div>
-                                        <div><span class="bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded mb-1 inline-block">〜しながら〜する</span><p class="text-sm">２つの動作の同時進行。</p></div>
                                     </li>
                                 </ul>
                             </div>
