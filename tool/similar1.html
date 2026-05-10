@@ -176,12 +176,12 @@
             </div>
 
             <!-- カード：見る・聞く -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
-                <div class="bg-orange-500 text-white py-3 px-5 font-bold flex justify-between items-center">
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 flex flex-col">
+                <div class="bg-orange-500 text-white py-3 px-5 font-bold flex justify-between items-center shrink-0">
                     <span>👀 見る・聞く</span>
                     <span class="text-orange-200 text-sm">動作と結果</span>
                 </div>
-                <div class="p-5">
+                <div class="p-5 flex flex-col flex-1">
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
                             <div class="text-center font-bold text-slate-600 mb-2 border-b pb-1">見る 👁️</div>
@@ -910,7 +910,7 @@
         </div>
 
 
-        <!-- PART 2: 方向性動詞 (旧Reactコンポーネント部分) -->
+        <!-- PART 2: 方向性動詞 -->
         <div class="mb-4 flex items-center gap-3 mt-20 pt-10 border-t border-slate-200">
             <span class="bg-indigo-600 text-white py-1 px-4 rounded-full font-bold text-lg shadow-sm">PART 2</span>
             <h2 class="text-2xl md:text-3xl font-bold text-slate-800">中国語「誰が主役か」完全マップ</h2>
@@ -939,6 +939,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 給 B + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我給他生日禮物。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gěi tā shēng rì lǐ wù</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(我) + V(給) + O1(他) + O2(生日禮物)</span></div>
                                 <p class="text-[11px] text-slate-500">私は彼にプレゼントをあげる。</p>
                             </div>
                         </li>
@@ -953,6 +955,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 送 B + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">老闆送我一首歌。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">lǎo bǎn sòng wǒ yì shǒu gē</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(老闆) + V(送) + O1(我) + O2(一首歌)</span></div>
                                 <p class="text-[11px] text-slate-500">マスターが私に曲を贈ってくれた。</p>
                             </div>
                         </li>
@@ -967,6 +971,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 教 B + 内容</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">他教我寫書法。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">tā jiāo wǒ xiě shū fǎ</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(他) + V(教) + O1(我) + O2(寫書法)</span></div>
                                 <p class="text-[11px] text-slate-500">彼は私に書道を教える。</p>
                             </div>
                         </li>
@@ -981,6 +987,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 告訴 B + 事</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我告訴他這個消息。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gào sù tā zhè ge xiāo xí</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(我) + V(告訴) + O1(他) + O2(這個消息)</span></div>
                                 <p class="text-[11px] text-slate-500">私は彼にこのニュースを伝える。</p>
                             </div>
                         </li>
@@ -995,6 +1003,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 借給 B + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我借給他五十塊。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ jiè gěi tā wǔ shí kuài</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(我) + V(借給) + O1(他) + O2(五十塊)</span></div>
                                 <p class="text-[11px] text-slate-500">私は彼に50元貸す。</p>
                             </div>
                         </li>
@@ -1009,6 +1019,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 還 B + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">他還我那本書。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">tā huán wǒ nà běn shū</p>
+                                <div class="mb-1"><span class="text-[10px] bg-blue-100/50 text-blue-800 border border-blue-200 px-1 rounded font-mono tracking-tighter">S(他) + V(還) + O1(我) + O2(那本書)</span></div>
                                 <p class="text-[11px] text-slate-500">彼は私にあの本を返す。</p>
                             </div>
                         </li>
@@ -1036,6 +1048,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 跟 B 學</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我跟日本老師學日文。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gēn rì běn lǎo shī xué rì wén</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(我) + Prep(跟日本老師) + V(學) + O(日文)</span></div>
                                 <p class="text-[11px] text-slate-500">私は日本人先生に日本語を教わる。</p>
                             </div>
                         </li>
@@ -1050,6 +1064,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 跟 B 借</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我跟圖書館借書。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gēn tú shū guǎn jiè shū</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(我) + Prep(跟圖書館) + V(借) + O(書)</span></div>
                                 <p class="text-[11px] text-slate-500">私は図書館から本を借りる。</p>
                             </div>
                         </li>
@@ -1064,6 +1080,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 跟 B 買</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我跟那家店買衣服。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gēn nà jiā diàn mǎi yī fú</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(我) + Prep(跟那家店) + V(買) + O(衣服)</span></div>
                                 <p class="text-[11px] text-slate-500">私はあのお店で服を買う。</p>
                             </div>
                         </li>
@@ -1078,7 +1096,9 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 跟 B 問</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我跟警察問路。</p>
-                                <p class="text-[11px] text-slate-500">私は警察に道を尋ねる（情報を得る）。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gēn jǐng chá wèn lù</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(我) + Prep(跟警察) + V(問) + O(路)</span></div>
+                                <p class="text-[11px] text-slate-500">私は警察に道を尋ねる。</p>
                             </div>
                         </li>
                         <li class="flex gap-3 border-t border-slate-100 pt-3">
@@ -1092,6 +1112,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 跟 B 拿</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我跟爸爸拿零用錢。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ gēn bà ba ná líng yòng qián</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(我) + Prep(跟爸爸) + V(拿) + O(零用錢)</span></div>
                                 <p class="text-[11px] text-slate-500">私は父にお小遣いをもらう。</p>
                             </div>
                         </li>
@@ -1106,6 +1128,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 找 B + 錢</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">老闆找我十塊錢。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">lǎo bǎn zhǎo wǒ shí kuài qián</p>
+                                <div class="mb-1"><span class="text-[10px] bg-orange-100/50 text-orange-800 border border-orange-200 px-1 rounded font-mono tracking-tighter">S(老闆) + V(找) + O1(我) + O2(十塊錢)</span></div>
                                 <p class="text-[11px] text-slate-500">店主が私に10元お釣りを出す。</p>
                             </div>
                         </li>
@@ -1133,6 +1157,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 收到 + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我收到考試通知了。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ shōu dào kǎo shì tōng zhī le</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + V+C(收到) + O(考試通知)</span></div>
                                 <p class="text-[11px] text-slate-500">私は試験通知を受け取りました。</p>
                             </div>
                         </li>
@@ -1147,6 +1173,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 買到 + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我買到演唱會門票了。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ mǎi dào yǎn chàng huì mén piào le</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + V+C(買到) + O(演唱會門票)</span></div>
                                 <p class="text-[11px] text-slate-500">私はコンサートのチケットを買えました。</p>
                             </div>
                         </li>
@@ -1161,6 +1189,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 找到 + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我終於找到這本書了。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ zhōng yú zhǎo dào zhè běn shū le</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + Adv(終於) + V+C(找到) + O(這本書)</span></div>
                                 <p class="text-[11px] text-slate-500">私はついにこの本を見つけました。</p>
                             </div>
                         </li>
@@ -1175,6 +1205,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 借到 + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我借到那台車了。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ jiè dào nà tái chē le</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + V+C(借到) + O(那台車)</span></div>
                                 <p class="text-[11px] text-slate-500">私はあの車を借りることができました。</p>
                             </div>
                         </li>
@@ -1189,6 +1221,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 學到 + 内容</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我學到了很多東西。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ xué dào le hěn duō dōng xi</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + V+C(學到) + O(很多東西)</span></div>
                                 <p class="text-[11px] text-slate-500">私はたくさんのことを学び取った。</p>
                             </div>
                         </li>
@@ -1203,6 +1237,8 @@
                                     <span class="font-mono text-[10px] text-slate-500 bg-slate-100 px-1 rounded">A 看到 + 物</span>
                                 </div>
                                 <p class="text-sm tc font-bold text-slate-700 mb-0.5 speakable speakable-text">我看到那隻貓了。</p>
+                                <p class="text-[10px] text-slate-400 font-mono mb-1">wǒ kàn dào nà zhī māo le</p>
+                                <div class="mb-1"><span class="text-[10px] bg-green-100/50 text-green-800 border border-green-200 px-1 rounded font-mono tracking-tighter">S(我) + V+C(看到) + O(那隻貓)</span></div>
                                 <p class="text-[11px] text-slate-500">私はあの猫を見ました（目に入った）。</p>
                             </div>
                         </li>
