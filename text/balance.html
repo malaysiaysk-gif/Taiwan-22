@@ -534,13 +534,13 @@
                 { date: 29, currentMonth: false, events: [] },
                 { date: 30, currentMonth: false, events: [] },
                 { date: 1, currentMonth: true, events: [] },
-                { date: 2, currentMonth: true, events: [] },
-                { date: 3, currentMonth: true, events: [] },
-                { date: 4, currentMonth: true, events: [ { text: 'LAST DAY', type: 'blue', start: true, end: true } ] },
+                { date: 2, currentMonth: true, events: [ { text: 'Buffer', type: 'yellow', start: true, end: false }, { text: 'AL0.5', type: 'blue', start: true, end: true } ] },
+                { date: 3, currentMonth: true, events: [ { text: '&nbsp;', type: 'yellow', start: false, end: false }, { text: 'AL1', type: 'blue', start: true, end: true } ] },
+                { date: 4, currentMonth: true, events: [ { text: '&nbsp;', type: 'yellow', start: false, end: true }, { text: 'CO 16th Sept.', type: 'blue', start: true, end: true }, { text: 'LAST DAY', type: 'blue', start: true, end: true } ] },
                 { date: 5, currentMonth: true, events: [] },
                 // 2週目
                 { date: 6, currentMonth: true, events: [] },
-                { date: 7, currentMonth: true, events: [ { text: '10 CO 9th Nov.', type: 'blue', start: true, end: true } ] },
+                { date: 7, currentMonth: true, events: [ { text: 'CO 9th Nov.', type: 'blue', start: true, end: true }, { text: '10', type: 'blue', start: true, end: true } ] },
                 { date: 8, currentMonth: true, events: [ { text: 'July+ 4.5', type: 'blue', start: true, end: false }, { text: '9', type: 'blue', start: true, end: false } ] },
                 { date: 9, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '8', type: 'blue', start: false, end: false } ] },
                 { date: 10, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '7', type: 'blue', start: false, end: false } ] },
@@ -585,7 +585,9 @@
                 html += `<div class="text-xs text-center font-medium ${textClass} mb-1">${dateText}</div>`;
                 
                 day.events.forEach(ev => {
-                    const colorClass = ev.type === 'blue' ? 'bg-sky-500' : 'bg-emerald-600';
+                    let colorClass = 'bg-sky-500 text-white';
+                    if (ev.type === 'green') colorClass = 'bg-emerald-600 text-white';
+                    else if (ev.type === 'yellow') colorClass = 'bg-amber-400 text-amber-900';
                     
                     // 連続するイベントの角丸・マージン処理
                     let shapeClass = '';
@@ -594,7 +596,7 @@
                     else if (ev.end) { shapeClass = 'rounded-r ml-0 mr-1'; }
                     else { shapeClass = 'rounded-none mx-0'; }
                     
-                    html += `<div class="${colorClass} text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 mb-0.5 whitespace-nowrap overflow-hidden ${shapeClass} shadow-sm">${ev.text}</div>`;
+                    html += `<div class="${colorClass} text-[10px] md:text-xs font-bold px-1.5 py-0.5 mb-0.5 whitespace-nowrap overflow-hidden ${shapeClass} shadow-sm">${ev.text}</div>`;
                 });
                 
                 html += `</div>`;
