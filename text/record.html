@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL 学習トラッカー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration & Initialization
+        let auth, db, userId;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        const initFirebase = async () => {
+            try {
+                if (typeof __firebase_config !== 'undefined') {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            userId = user.uid;
+                            setupRealtimeListener();
+                        } else {
+                            userId = null;
+                        }
+                    });
+                } else {
+                    console.warn("Firebase config not found. Running with local memory only.");
+                    renderApp(); // Fallback to memory-only
+                }
+            } catch (error) {
+                console.error("Firebase initialization error:", error);
+                renderApp(); // Fallback
+            }
+        };
+
+        // --- Data ---
+        let records = [];
+        const targetDate = new Date(2026, 5, 28); // 6月28日
+        const startDate = new Date(2026, 4, 18);  // 5月18日
+        
+        const weekendSchedule = [
+            { start: 0, end: 6, label: '睡眠', color: '#e5e7eb' },
+            { start: 6, end: 8, label: '起床', color: '#bfdbfe' },
+            { start: 8, end: 10, label: '勉強', color: '#fca5a5' },
+            { start: 10, end: 11.5, label: 'ジム', color: '#bbf7d0' },
+            { start: 11.5, end: 15, label: '昼', color: '#fef08a' },
+            { start: 15, end: 17, label: '勉強', color: '#fca5a5' },
+            { start: 17, end: 20, label: '夜', color: '#c7d2fe' },
+            { start: 20, end: 21, label: '復習', color: '#fca5a5' },
+            { start: 21, end: 24, label: '睡眠', color: '#e5e7eb' },
+        ];
+
+        const weekdaySchedule = [
+            { start: 0, end: 6, label: '睡眠', color: '#e5e7eb' },
+            { start: 6, end: 6.75, label: '起床', color: '#bfdbfe' },
+            { start: 6.75, end: 7.25, label: '勉強', color: '#fca5a5' },
+            { start: 7.25, end: 17, label: '仕事/他', color: '#f3f4f6' },
+            { start: 17, end: 20, label: '夜', color: '#c7d2fe' },
+            { start: 20, end: 21, label: '復習', color: '#fca5a5' },
+            { start: 21, end: 24, label: '睡眠', color: '#e5e7eb' },
+        ];
+
+        // --- Firebase Operations ---
+        const setupRealtimeListener = () => {
+            if (!userId || !db) return;
+            const colRef = collection(db, 'artifacts', appId, 'users', userId, 'study_records');
+            onSnapshot(colRef, (snapshot) => {
+                records = [];
+                snapshot.forEach(doc => {
+                    records.push({ id: doc.id, ...doc.data() });
+                });
+                records.sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderApp();
+            }, (error) => {
+                console.error("Error listening to records:", error);
+                renderApp();
+            });
+        };
+
+        window.saveRecordToCloud = async (record) => {
+            if (!userId || !db) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'users', userId, 'study_records', record.id.toString());
+                await setDoc(docRef, record);
+            } catch (error) {
+                console.error("Error saving record:", error);
+            }
+        };
+
+        window.deleteRecordFromCloud = async (id) => {
+            if (!userId || !db) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'users', userId, 'study_records', id.toString());
+                await deleteDoc(docRef);
+            } catch (error) {
+                console.error("Error deleting record:", error);
+            }
+        };
+
+        // --- App State ---
+        let activeTab = 'plan';
+        let scheduleType = 'weekend';
+        let newDate = getTodayLocalString();
+        let newHours = '';
+
+        function getTodayLocalString() {
+            const dateObj = new Date();
+            const year = dateObj.getFullYear();
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // --- Logic Functions ---
+        function calculateStats() {
+            const today = new Date();
+            let expectedWeekdayHours = 0;
+            let expectedWeekendHours = 0;
+            
+            if (today >= startDate) {
+                let current = new Date(startDate);
+                const endCalcDate = new Date(today);
+                endCalcDate.setHours(23, 59, 59, 999);
+                
+                while (current <= endCalcDate && current <= targetDate) {
+                    const day = current.getDay();
+                    if (day === 0 || day === 6) {
+                        expectedWeekendHours += 5;
+                    } else {
+                        expectedWeekdayHours += 1.5;
+                    }
+                    current.setDate(current.getDate() + 1);
+                }
+            }
+
+            let totalWeekdayRecorded = 0;
+            let totalWeekendRecorded = 0;
+
+            records.forEach(r => {
+                const [year, month, day] = r.date.split('-');
+                const d = new Date(year, month - 1, day);
+                const dayOfWeek = d.getDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    totalWeekendRecorded += r.hours;
+                } else {
+                    totalWeekdayRecorded += r.hours;
+                }
+            });
+
+            const expectedHours = expectedWeekdayHours + expectedWeekendHours;
+            const totalRecorded = totalWeekdayRecorded + totalWeekendRecorded;
+            const diff = totalRecorded - expectedHours;
+            
+            return {
+                totalRecorded,
+                expectedHours,
+                totalWeekdayRecorded,
+                expectedWeekdayHours,
+                totalWeekendRecorded,
+                expectedWeekendHours,
+                diff,
+                weekdayDiff: totalWeekdayRecorded - expectedWeekdayHours,
+                weekendDiff: totalWeekendRecorded - expectedWeekendHours
+            };
+        }
+
+        function calculateDaysLeft() {
+            const today = new Date();
+            const diffTime = targetDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays > 0 ? diffDays : 0;
+        }
+
+        // --- UI Rendering ---
+        function renderTabs() {
+            document.getElementById('btn-plan').className = `flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center gap-2 transition-colors ${activeTab === 'plan' ? 'bg-teal-50 text-teal-700 shadow-sm' : 'text-gray-500 hover:bg-gray-50'}`;
+            document.getElementById('btn-record').className = `flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center gap-2 transition-colors ${activeTab === 'record' ? 'bg-teal-50 text-teal-700 shadow-sm' : 'text-gray-500 hover:bg-gray-50'}`;
+            
+            document.getElementById('view-plan').style.display = activeTab === 'plan' ? 'block' : 'none';
+            document.getElementById('view-record').style.display = activeTab === 'record' ? 'block' : 'none';
+        }
+
+        function renderPieChart() {
+            const schedule = scheduleType === 'weekend' ? weekendSchedule : weekdaySchedule;
+            const svgSize = 240;
+            const radius = 100;
+            const center = svgSize / 2;
+            let svgContent = `<circle cx="${center}" cy="${center}" r="${radius}" fill="#f9fafb" />`;
+            let legendContent = '';
+
+            schedule.forEach(item => {
+                const startAngle = (item.start / 24) * 360 + 90;
+                const endAngle = (item.end / 24) * 360 + 90;
+                const startRad = (Math.PI / 180) * startAngle;
+                const endRad = (Math.PI / 180) * endAngle;
+                const x1 = center + radius * Math.cos(startRad);
+                const y1 = center + radius * Math.sin(startRad);
+                const x2 = center + radius * Math.cos(endRad);
+                const y2 = center + radius * Math.sin(endRad);
+                const largeArcFlag = endAngle - startAngle > 180 ? 1 : 0;
+                
+                const pathData = `M ${center} ${center} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
+                svgContent += `<path d="${pathData}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
+            });
+
+            const uniqueLabels = [...new Set(schedule.map(s => s.label))];
+            uniqueLabels.forEach(label => {
+                const color = schedule.find(s => s.label === label).color;
+                legendContent += `
+                    <div class="flex items-center text-xs text-gray-600 bg-white px-2 py-1 rounded-full shadow-sm border border-gray-100">
+                        <span class="w-3 h-3 rounded-full mr-1.5" style="background-color: ${color}"></span>
+                        ${label}
+                    </div>
+                `;
+            });
+
+            document.getElementById('pie-chart-svg').innerHTML = svgContent;
+            document.getElementById('pie-chart-legend').innerHTML = legendContent;
+            
+            document.getElementById('btn-type-weekday').className = `px-3 py-1 text-xs font-medium rounded-md ${scheduleType === 'weekday' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+            document.getElementById('btn-type-weekend').className = `px-3 py-1 text-xs font-medium rounded-md ${scheduleType === 'weekend' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+            
+            document.getElementById('pie-chart-tip').textContent = scheduleType === 'weekend' ? '☆ 1日 5H × 2' : '☆ 1日 1.5H (朝0.5H + 夜1H)';
+        }
+
+        function renderProgressBars(stats) {
+            const renderBar = (idPrefix, expected, real, goal, diff) => {
+                const planPct = Math.min((expected / goal) * 100, 100);
+                const realPct = Math.min((real / goal) * 100, 100);
+                const colorClass = diff >= 0 ? 'bg-teal-500' : 'bg-orange-400';
+                const borderColorClass = diff >= 0 ? 'border-b-teal-500' : 'border-b-orange-400';
+                const textColorClass = diff >= 0 ? 'text-teal-600' : 'text-orange-500';
+
+                const html = `
+                    <div class="px-6 relative">
+                        <div class="relative h-6">
+                            <div class="absolute flex flex-col items-center transform -translate-x-1/2" style="left: ${planPct}%">
+                                <span class="text-[10px] font-bold text-gray-500 whitespace-nowrap">Plan (${expected.toFixed(1)}H)</span>
+                                <div class="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-gray-400 mt-1"></div>
+                            </div>
+                        </div>
+                        <div class="h-4 bg-gray-100 rounded-full relative w-full border border-gray-200">
+                            <div class="absolute top-0 left-0 h-full bg-gray-200 rounded-full" style="width: ${planPct}%"></div>
+                            <div class="absolute top-0 left-0 h-full rounded-full transition-all duration-500 ${colorClass}" style="width: ${realPct}%"></div>
+                        </div>
+                        <div class="relative h-8 mt-1">
+                            <div class="absolute flex flex-col items-center transform -translate-x-1/2" style="left: ${realPct}%">
+                                <div class="w-0 h-0 border-l-[6px] border-r-[6px] border-b-[6px] border-l-transparent border-r-transparent mb-1 ${borderColorClass}"></div>
+                                <span class="text-[10px] font-bold whitespace-nowrap ${textColorClass}">Real (${real.toFixed(1)}H)</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById(`${idPrefix}-bar-container`).innerHTML = html;
+            };
+
+            renderBar('weekday', stats.expectedWeekdayHours, stats.totalWeekdayRecorded, 45, stats.weekdayDiff);
+            renderBar('weekend', stats.expectedWeekendHours, stats.totalWeekendRecorded, 50, stats.weekendDiff);
+        }
+
+        function renderCalendar() {
+            const calendarContainer = document.getElementById('calendar-grid');
+            let html = '';
+            
+            let d = new Date(2026, 4, 18);
+            const endDate = new Date(2026, 5, 28);
+            const emptySlots = d.getDay();
+            
+            for (let i = 0; i < emptySlots; i++) {
+                html += `<div class="aspect-square"></div>`;
+            }
+
+            while (d <= endDate) {
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                const dateStr = `${year}-${month}-${day}`;
+                
+                const record = records.find(r => r.date === dateStr);
+                const isTarget = dateStr === '2026-06-28';
+                const isSelected = dateStr === newDate;
+                
+                let btnClass = `aspect-square rounded-lg flex flex-col items-center justify-center relative border transition-all p-1 `;
+                btnClass += isSelected ? 'ring-2 ring-teal-500 border-transparent z-10 ' : 'border-gray-100 ';
+                
+                if (isTarget) {
+                    btnClass += 'bg-red-50 border-red-200 text-red-600';
+                } else if (record) {
+                    btnClass += 'bg-teal-500 text-white border-teal-600 shadow-sm';
+                } else {
+                    btnClass += 'bg-gray-50 text-gray-500 hover:bg-gray-100';
+                }
+
+                html += `
+                    <button type="button" onclick="selectDate('${dateStr}')" class="${btnClass}">
+                        <span class="text-xs font-semibold ${record ? 'text-white' : ''}">${d.getDate()}</span>
+                        ${record ? `<span class="text-[9px] mt-0.5 font-bold opacity-90">${record.hours}h</span>` : ''}
+                        ${isTarget ? `<span class="text-[9px] font-bold mt-0.5">試験</span>` : ''}
+                    </button>
+                `;
+                d.setDate(d.getDate() + 1);
+            }
+            calendarContainer.innerHTML = html;
+        }
+
+        function renderRecordList() {
+            const list = document.getElementById('record-list');
+            if (records.length === 0) {
+                list.innerHTML = `<li class="p-4 text-center text-sm text-gray-400">まだ記録がありません</li>`;
+                return;
+            }
+
+            let html = '';
+            records.forEach(record => {
+                html += `
+                    <li class="flex justify-between items-center p-4 hover:bg-gray-50 transition border-b border-gray-100 last:border-0">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-teal-100 text-teal-700 rounded-md p-2">
+                                <i data-lucide="check-square" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-gray-700">${record.date}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="font-bold text-gray-800">${parseFloat(record.hours).toFixed(1)} <span class="text-xs text-gray-500 font-normal">H</span></span>
+                            <button onclick="handleDeleteRecord(${record.id})" class="text-xs text-red-400 hover:text-red-600">削除</button>
+                        </div>
+                    </li>
+                `;
+            });
+            list.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function renderStatsArea(stats) {
+            document.getElementById('stat-expected').textContent = `${stats.expectedHours.toFixed(1)} H`;
+            document.getElementById('stat-total').textContent = `${stats.totalRecorded.toFixed(1)} H`;
+            
+            const diffArea = document.getElementById('stat-diff-area');
+            const diffValue = document.getElementById('stat-diff-value');
+            const diffLabel = document.getElementById('stat-diff-label');
+            const diffIcon = document.getElementById('stat-diff-icon');
+
+            if (stats.diff >= 0) {
+                diffArea.className = 'p-4 rounded-xl flex items-center justify-between border bg-green-50 border-green-200';
+                diffValue.className = 'text-2xl font-black text-green-600';
+                diffLabel.className = 'text-sm font-bold text-green-700';
+                diffLabel.textContent = 'Advance (貯金)';
+                diffIcon.innerHTML = `<div class="p-2 bg-green-100 text-green-600 rounded-full"><i data-lucide="trending-up" class="w-5 h-5"></i></div>`;
+            } else {
+                diffArea.className = 'p-4 rounded-xl flex items-center justify-between border bg-orange-50 border-orange-200';
+                diffValue.className = 'text-2xl font-black text-orange-600';
+                diffLabel.className = 'text-sm font-bold text-orange-700';
+                diffLabel.textContent = 'Shortage (不足)';
+                diffIcon.innerHTML = `<div class="p-2 bg-orange-100 text-orange-600 rounded-full"><i data-lucide="trending-down" class="w-5 h-5"></i></div>`;
+            }
+            diffValue.innerHTML = `${Math.abs(stats.diff).toFixed(1)} <span class="text-sm font-normal">H</span>`;
+            lucide.createIcons();
+        }
+
+        window.renderApp = () => {
+            const stats = calculateStats();
+            document.getElementById('days-left').textContent = calculateDaysLeft();
+            
+            renderTabs();
+            renderPieChart();
+            renderProgressBars(stats);
+            renderCalendar();
+            renderRecordList();
+            renderStatsArea(stats);
+            
+            document.getElementById('input-date').value = newDate;
+            document.getElementById('input-hours').value = newHours;
+            
+            lucide.createIcons();
+        };
+
+        // --- Event Handlers ---
+        window.switchTab = (tab) => {
+            activeTab = tab;
+            renderApp();
+        };
+
+        window.setScheduleType = (type) => {
+            scheduleType = type;
+            renderApp();
+        };
+
+        window.selectDate = (dateStr) => {
+            newDate = dateStr;
+            renderApp();
+        };
+
+        window.handleAddRecord = (e) => {
+            e.preventDefault();
+            const dateInput = document.getElementById('input-date').value;
+            const hoursInput = document.getElementById('input-hours').value;
+            
+            if (!dateInput || !hoursInput) return;
+            
+            const newRecord = {
+                id: Date.now(),
+                date: dateInput,
+                hours: parseFloat(hoursInput)
+            };
+
+            const existingIndex = records.findIndex(r => r.date === dateInput);
+            if (existingIndex >= 0) {
+                newRecord.id = records[existingIndex].id; // 既存IDを保持
+                newRecord.hours += records[existingIndex].hours;
+            }
+
+            // Update local state optimistic UI
+            if (existingIndex >= 0) {
+                 records[existingIndex] = newRecord;
+            } else {
+                 records.push(newRecord);
+                 records.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            newHours = '';
+            document.getElementById('input-hours').value = '';
+            renderApp();
+            
+            // Save to Cloud
+            if(userId) saveRecordToCloud(newRecord);
+        };
+
+        window.handleDeleteRecord = (id) => {
+            records = records.filter(r => r.id !== id);
+            renderApp();
+            // Delete from cloud
+            if(userId) deleteRecordFromCloud(id);
+        };
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initFirebase(); // Starts the app and handles auth
+        });
+        
+    </script>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800 pb-20">
+
+    <!-- Header -->
+    <header class="bg-teal-600 text-white p-4 shadow-md rounded-b-xl">
+        <h1 class="text-xl font-bold flex items-center justify-center gap-2">
+            <i data-lucide="book-open"></i>
+            TOCFL 学習トラッカー
+        </h1>
+    </header>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mt-4 mx-4 bg-white rounded-lg shadow-sm p-1">
+        <button id="btn-plan" onclick="switchTab('plan')" class="flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center gap-2 transition-colors">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Plan (計画)
+        </button>
+        <button id="btn-record" onclick="switchTab('record')" class="flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center gap-2 transition-colors">
+            <i data-lucide="check-square" class="w-4 h-4"></i> Record (記録)
+        </button>
+    </div>
+
+    <main class="p-4 max-w-md mx-auto">
+        <!-- PLAN VIEW -->
+        <div id="view-plan" class="space-y-6">
+            <!-- Countdown -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-teal-500"></div>
+                <p class="text-sm text-gray-500 mb-1 font-medium">次回 TOCFL (6/28) まで</p>
+                <div class="flex items-end justify-center gap-1">
+                    <span class="text-gray-400 text-lg mb-1">あと</span>
+                    <span id="days-left" class="text-5xl font-extrabold text-teal-600">--</span>
+                    <span class="text-gray-400 text-lg mb-1">日</span>
+                </div>
+            </div>
+
+            <!-- Summary & Bars -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-teal-50 p-4 border-b border-teal-100 flex justify-between text-center">
+                    <div class="flex-1">
+                        <p class="text-xs text-teal-600 font-semibold">平日 (Weekday)</p>
+                        <p class="text-lg font-bold text-teal-800">45<span class="text-sm font-normal">H</span></p>
+                    </div>
+                    <div class="w-px bg-teal-200"></div>
+                    <div class="flex-1">
+                        <p class="text-xs text-teal-600 font-semibold">週末 (Weekend)</p>
+                        <p class="text-lg font-bold text-teal-800">50<span class="text-sm font-normal">H</span></p>
+                    </div>
+                    <div class="w-px bg-teal-200"></div>
+                    <div class="flex-1">
+                        <p class="text-xs text-teal-600 font-semibold">合計 (Total)</p>
+                        <p class="text-lg font-bold text-teal-800">95<span class="text-sm font-normal">H</span></p>
+                    </div>
+                </div>
+                
+                <div class="p-5 pt-6 space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs mb-6 font-semibold text-gray-500">
+                            <span class="flex items-center gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-teal-600"></i> 平日 (Weekday)</span>
+                            <span>Goal: 45H</span>
+                        </div>
+                        <div id="weekday-bar-container"></div>
+                    </div>
+                    <div class="border-b border-gray-100"></div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-6 font-semibold text-gray-500">
+                            <span class="flex items-center gap-1"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-teal-600"></i> 週末 (Weekend)</span>
+                            <span>Goal: 50H</span>
+                        </div>
+                        <div id="weekend-bar-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-md font-bold flex items-center gap-2">
+                        <i data-lucide="pie-chart" class="w-4 h-4 text-teal-600"></i>
+                        学習時間割
+                    </h2>
+                    <div class="flex bg-gray-100 rounded-lg p-1">
+                        <button id="btn-type-weekday" onclick="setScheduleType('weekday')" class="px-3 py-1 text-xs font-medium rounded-md">平日</button>
+                        <button id="btn-type-weekend" onclick="setScheduleType('weekend')" class="px-3 py-1 text-xs font-medium rounded-md">週末</button>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="relative w-60 h-60">
+                        <svg id="pie-chart-svg" width="240" height="240"></svg>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="absolute top-1 text-xs text-gray-500 font-medium">12:00</span>
+                            <span class="absolute bottom-1 text-xs text-gray-500 font-medium">0:00</span>
+                            <span class="absolute right-2 text-xs text-gray-500 font-medium">18:00</span>
+                            <span class="absolute left-2 text-xs text-gray-500 font-medium">6:00</span>
+                            <div class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center z-10">
+                                <i data-lucide="clock" class="w-5 h-5 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pie-chart-legend" class="mt-4 flex flex-wrap justify-center gap-2 max-w-xs"></div>
+                </div>
+                
+                <div class="mt-4 p-3 bg-red-50 rounded-lg text-center border border-red-100">
+                    <p id="pie-chart-tip" class="text-sm font-semibold text-red-600"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECORD VIEW -->
+        <div id="view-record" class="space-y-6" style="display: none;">
+            
+            <!-- Stats -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i> ペースチェック (as of today)
+                </h2>
+                
+                <div class="flex items-center justify-between mb-4 bg-gray-50 p-3 rounded-lg">
+                    <div>
+                        <p class="text-xs text-gray-500">今日までの目標</p>
+                        <p id="stat-expected" class="text-lg font-bold text-gray-700">-- H</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-500">現在の累計</p>
+                        <p id="stat-total" class="text-lg font-bold text-teal-600">-- H</p>
+                    </div>
+                </div>
+
+                <div id="stat-diff-area" class="p-4 rounded-xl flex items-center justify-between border">
+                    <div class="flex items-center gap-3">
+                        <div id="stat-diff-icon"></div>
+                        <div>
+                            <p id="stat-diff-label" class="text-sm font-bold"></p>
+                        </div>
+                    </div>
+                    <div id="stat-diff-value"></div>
+                </div>
+            </div>
+
+            <!-- Calendar -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-sm font-bold text-gray-600 mb-4 flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4 text-teal-600"></i> 学習カレンダー (5/18 - 6/28)
+                </h2>
+                <div class="grid grid-cols-7 gap-1 mb-2 text-center">
+                    <div class="text-[10px] font-bold text-gray-400">日</div>
+                    <div class="text-[10px] font-bold text-gray-400">月</div>
+                    <div class="text-[10px] font-bold text-gray-400">火</div>
+                    <div class="text-[10px] font-bold text-gray-400">水</div>
+                    <div class="text-[10px] font-bold text-gray-400">木</div>
+                    <div class="text-[10px] font-bold text-gray-400">金</div>
+                    <div class="text-[10px] font-bold text-gray-400">土</div>
+                </div>
+                <div id="calendar-grid" class="grid grid-cols-7 gap-1"></div>
+            </div>
+
+            <!-- Form -->
+            <form onsubmit="handleAddRecord(event)" class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <h2 class="text-sm font-bold text-gray-600 mb-3">学習時間を入力</h2>
+                <div class="flex gap-2">
+                    <input type="date" id="input-date" required class="flex-1 bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2.5">
+                    <div class="relative flex-1">
+                        <input type="number" step="0.1" min="0" id="input-hours" placeholder="時間 (H)" required class="w-full bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2.5 pr-8">
+                        <span class="absolute right-3 top-2.5 text-gray-400 text-sm">H</span>
+                    </div>
+                    <button type="submit" class="bg-teal-600 text-white rounded-lg px-4 py-2 hover:bg-teal-700 transition flex items-center justify-center shadow-sm">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- List -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider">履歴</h3>
+                </div>
+                <ul id="record-list" class="divide-y divide-gray-100"></ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

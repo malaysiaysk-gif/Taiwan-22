@@ -37,7 +37,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
                     <div id="cd-days" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
-                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">出勤日</div>
+                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">営業日</div>
                 </div>
                 <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
                     <div id="cd-hours" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
@@ -75,6 +75,19 @@
                     </div>
                 </div>
 
+                <!-- MC しんちょくゲージ -->
+                <div>
+                    <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-1.5 px-1">
+                        <span class="flex items-center"><i class="fa-solid fa-notes-medical text-rose-400 mr-1.5"></i> MC (病欠) 消化状況</span>
+                        <span class="text-center text-rose-500 font-black">残り 9 日</span>
+                        <span>全 14 日</span>
+                    </div>
+                    <div class="w-full bg-rose-50 rounded-full h-3 shadow-inner border border-rose-100">
+                        <!-- 5日消化 / 14日 = 約35.71% -->
+                        <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 35.71%"></div>
+                    </div>
+                </div>
+
                 <!-- おもしろスケール表示 -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
                     <div class="bg-indigo-50/60 p-5 rounded-2xl border border-indigo-100/50 shadow-sm transition-all hover:shadow-md">
@@ -96,7 +109,7 @@
             <div class="bg-[#fff1f2] border border-[#fecdd3] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-center shadow-sm">
                 <i class="fa-solid fa-envelope-open-text text-[#f43f5e] text-3xl mb-3 md:mb-0 md:mr-4 drop-shadow-sm"></i>
                 <div class="text-gray-800 font-bold text-center md:text-left text-lg md:text-xl">
-                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 日
+                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 営業日
                 </div>
             </div>
         </section>
@@ -342,9 +355,9 @@
             return totalMs;
         }
 
-        // 現在日時からの残り出勤日数を計算する関数
-        function getRemainingWorkingDays() {
-            const end = new Date('2026-12-04T00:00:00'); 
+        // 指定した終了日までの残り営業日数を計算する関数
+        function getRemainingWorkingDaysToTarget(targetDateString) {
+            const end = new Date(targetDateString); 
             let workingDays = 0;
             let current = new Date();
             current.setHours(0,0,0,0);
@@ -353,6 +366,10 @@
             const minStart = new Date('2026-05-01T00:00:00');
             if (current < minStart) {
                 current = new Date(minStart);
+            }
+
+            if (current >= end) {
+                return 0;
             }
 
             while (current < end) {
@@ -371,8 +388,13 @@
                 }
                 current.setDate(current.getDate() + 1);
             }
-            // 有給(8)と病欠(10)を引く
-            return Math.max(0, workingDays - 18);
+            
+            return workingDays;
+        }
+
+        // 現在日時からの残り出勤日数を計算する関数
+        function getRemainingWorkingDays() {
+            return getRemainingWorkingDaysToTarget('2026-12-04T00:00:00');
         }
 
         // カウントダウン更新関数
@@ -401,13 +423,15 @@
             // 総残り秒数の計算
             const totalSeconds = Math.floor(distance / 1000);
 
-            // 退職届提出までの日数計算 (暦上の日数)
+            // 退職届提出までの日数計算 (営業日ベース)
             const noticeDistance = noticeDate - now;
-            let noticeDays = 0;
-            if (noticeDistance > 0) {
-                noticeDays = Math.floor(noticeDistance / (1000 * 60 * 60 * 24));
-            } else if (noticeDistance <= 0 && distance > 0) {
-                noticeDays = "提出済！"; 
+            let noticeDays = getRemainingWorkingDaysToTarget('2026-09-18T00:00:00');
+            if (noticeDistance <= 0) {
+                if (distance > 0) {
+                    noticeDays = "提出済！"; 
+                } else {
+                    noticeDays = 0;
+                }
             }
 
             // DOMへ反映
