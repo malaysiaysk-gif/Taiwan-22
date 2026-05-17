@@ -115,9 +115,30 @@
 
         // --- App State ---
         let activeTab = 'plan';
-        let scheduleType = 'weekend';
+        let scheduleType = 'weekend1';
         let newDate = getTodayLocalString();
         let newHours = '';
+
+        const weekdayTasks = [
+            "朝: 例文100のリスニングと暗唱",
+            "夜: 朝やった例文100のリスニングと暗唱の復習とまとめ集見直し"
+        ];
+
+        const weekendTasks1 = [
+            "朝一時間目: TOCFL後半40代以降の演習（5問）",
+            "朝二時間目: 例文100のリスニングと暗唱or単語集",
+            "昼一時間目: TOCFL後半40代以降の演習続き（5問）",
+            "昼二時間目: 例文100のリスニングと暗唱or単語集もしくは演習遅れのカバー",
+            "夜: 一日の復習or例文100のリスニングと暗唱"
+        ];
+
+        const weekendTasks2 = [
+            "朝一時間目: L5（最新）",
+            "朝2時間目: L4（L5）",
+            "昼1時間目: まとめ見直しorリスニング問題復習",
+            "昼2時間目: まとめ見直しorリスニング問題復習",
+            "夜: まとめ見直し"
+        ];
 
         function getTodayLocalString() {
             const dateObj = new Date();
@@ -197,21 +218,20 @@
         }
 
         function renderPieChart() {
-            const schedule = scheduleType === 'weekend' ? weekendSchedule : weekdaySchedule;
+            const schedule = scheduleType.startsWith('weekend') ? weekendSchedule : weekdaySchedule;
             const svgSize = 160;
             const radius = 70;
             const center = svgSize / 2;
             
-            let svgContentAM = `<circle cx="${center}" cy="${center}" r="${radius}" fill="#f9fafb" />`;
-            let svgContentPM = `<circle cx="${center}" cy="${center}" r="${radius}" fill="#f9fafb" />`;
+            let svgContentDay = `<circle cx="${center}" cy="${center}" r="${radius}" fill="#f9fafb" />`;
+            let svgContentNight = `<circle cx="${center}" cy="${center}" r="${radius}" fill="#f9fafb" />`;
 
             const generatePieSlice = (start, end) => {
                 if (start >= end) return '';
                 let duration = end - start;
-                if (duration >= 12) duration = 11.999; // 完全な円の場合は少し欠けさせて描画
+                if (duration >= 12) duration = 11.999;
                 
-                const baseStart = start >= 12 ? start - 12 : start;
-                const startDeg = (baseStart / 12) * 360 - 90;
+                const startDeg = (start / 12) * 360 - 90;
                 const endDeg = startDeg + (duration / 12) * 360;
                 
                 const startRad = (Math.PI / 180) * startDeg;
@@ -226,18 +246,25 @@
             };
 
             schedule.forEach(item => {
-                // 午前の部 (0:00 - 12:00)
-                const sAM = Math.max(item.start, 0);
-                const eAM = Math.min(item.end, 12);
-                if (sAM < eAM) {
-                    svgContentAM += `<path d="${generatePieSlice(sAM, eAM)}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
+                // 昼 (6:00 - 18:00)
+                const sDay = Math.max(item.start, 6);
+                const eDay = Math.min(item.end, 18);
+                if (sDay < eDay) {
+                    svgContentDay += `<path d="${generatePieSlice(sDay, eDay)}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
                 }
 
-                // 午後の部 (12:00 - 24:00)
-                const sPM = Math.max(item.start, 12);
-                const ePM = Math.min(item.end, 24);
-                if (sPM < ePM) {
-                    svgContentPM += `<path d="${generatePieSlice(sPM, ePM)}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
+                // 夜 (18:00 - 24:00)
+                const sNight1 = Math.max(item.start, 18);
+                const eNight1 = Math.min(item.end, 24);
+                if (sNight1 < eNight1) {
+                    svgContentNight += `<path d="${generatePieSlice(sNight1, eNight1)}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
+                }
+                
+                // 夜 (0:00 - 6:00)
+                const sNight2 = Math.max(item.start, 0);
+                const eNight2 = Math.min(item.end, 6);
+                if (sNight2 < eNight2) {
+                    svgContentNight += `<path d="${generatePieSlice(sNight2, eNight2)}" fill="${item.color}" stroke="#ffffff" stroke-width="1.5" />`;
                 }
             });
 
@@ -253,14 +280,60 @@
                 `;
             });
 
-            document.getElementById('pie-chart-am-svg').innerHTML = svgContentAM;
-            document.getElementById('pie-chart-pm-svg').innerHTML = svgContentPM;
+            document.getElementById('pie-chart-day-svg').innerHTML = svgContentDay;
+            document.getElementById('pie-chart-night-svg').innerHTML = svgContentNight;
             document.getElementById('pie-chart-legend').innerHTML = legendContent;
             
-            document.getElementById('btn-type-weekday').className = `px-3 py-1 text-xs font-medium rounded-md ${scheduleType === 'weekday' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
-            document.getElementById('btn-type-weekend').className = `px-3 py-1 text-xs font-medium rounded-md ${scheduleType === 'weekend' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+            document.getElementById('btn-type-weekday').className = `px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap ${scheduleType === 'weekday' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+            document.getElementById('btn-type-weekend1').className = `px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap ${scheduleType === 'weekend1' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+            document.getElementById('btn-type-weekend2').className = `px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap ${scheduleType === 'weekend2' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500'}`;
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById('plan-checklist-container');
+            let tasks, title, subtitle;
+
+            if (scheduleType === 'weekend1') {
+                tasks = weekendTasks1;
+                title = '週末プラン（前半5回分）';
+                subtitle = '<p class="text-[11px] font-bold text-teal-600 mb-3 bg-teal-50 inline-block px-2 py-1 rounded">☆ 1日演習は10問題</p>';
+            } else if (scheduleType === 'weekend2') {
+                tasks = weekendTasks2;
+                title = '週末プラン（後半5回分）';
+                subtitle = '<p class="text-[11px] font-bold text-teal-600 mb-3 bg-teal-50 inline-block px-2 py-1 rounded">☆ L5-L1リスニング解きなおし（順次）</p>';
+            } else {
+                tasks = weekdayTasks;
+                title = '平日プラン';
+                subtitle = '';
+            }
             
-            document.getElementById('pie-chart-tip').textContent = scheduleType === 'weekend' ? '☆ 朝2H / 昼2H / 夜1H (計5H)' : '☆ 朝0.5H / 夜1H (計1.5H)';
+            const todayStr = getTodayLocalString();
+            const key = `tocfl_tasks_${todayStr}_${scheduleType}`;
+            let states = JSON.parse(localStorage.getItem(key) || '[]');
+
+            let html = `
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 w-full mt-4">
+                    <h3 class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                        <i data-lucide="check-square" class="w-4 h-4 text-teal-600"></i> ${title}
+                    </h3>
+                    ${subtitle}
+                    <div class="space-y-2">
+            `;
+
+            tasks.forEach((task, idx) => {
+                const isChecked = !!states[idx];
+                html += `
+                    <label class="flex items-start gap-3 p-2.5 bg-white rounded-lg border border-gray-200 cursor-pointer hover:border-teal-400 transition-colors shadow-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <input type="checkbox" class="w-4 h-4 text-teal-600 rounded border-gray-300 focus:ring-teal-500" ${isChecked ? 'checked' : ''} onchange="toggleTask('${scheduleType}', ${idx})">
+                        </div>
+                        <span class="text-xs ${isChecked ? 'text-gray-400 line-through' : 'text-gray-700'} leading-relaxed font-medium">${task}</span>
+                    </label>
+                `;
+            });
+
+            html += `</div></div>`;
+            container.innerHTML = html;
         }
 
         function renderProgressBars(stats) {
@@ -403,6 +476,7 @@
             
             renderTabs();
             renderPieChart();
+            renderChecklist();
             renderProgressBars(stats);
             renderCalendar();
             renderRecordList();
@@ -422,6 +496,15 @@
 
         window.setScheduleType = (type) => {
             scheduleType = type;
+            renderApp();
+        };
+
+        window.toggleTask = (type, index) => {
+            const todayStr = getTodayLocalString();
+            const key = `tocfl_tasks_${todayStr}_${type}`;
+            let states = JSON.parse(localStorage.getItem(key) || '[]');
+            states[index] = !states[index];
+            localStorage.setItem(key, JSON.stringify(states));
             renderApp();
         };
 
@@ -558,36 +641,37 @@
                         <i data-lucide="pie-chart" class="w-4 h-4 text-teal-600"></i>
                         学習時間割
                     </h2>
-                    <div class="flex bg-gray-100 rounded-lg p-1">
-                        <button id="btn-type-weekday" onclick="setScheduleType('weekday')" class="px-3 py-1 text-xs font-medium rounded-md">平日</button>
-                        <button id="btn-type-weekend" onclick="setScheduleType('weekend')" class="px-3 py-1 text-xs font-medium rounded-md">週末</button>
+                    <div class="flex bg-gray-100 rounded-lg p-1 overflow-x-auto">
+                        <button id="btn-type-weekday" onclick="setScheduleType('weekday')" class="px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap">平日</button>
+                        <button id="btn-type-weekend1" onclick="setScheduleType('weekend1')" class="px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap">週末(前半)</button>
+                        <button id="btn-type-weekend2" onclick="setScheduleType('weekend2')" class="px-3 py-1 text-xs font-medium rounded-md whitespace-nowrap">週末(後半)</button>
                     </div>
                 </div>
                 
                 <div class="flex flex-col items-center">
                     <div class="flex flex-row justify-center items-center gap-4 mb-4">
-                        <!-- AM Chart -->
+                        <!-- Day Chart -->
                         <div class="relative w-40 h-40">
-                            <svg id="pie-chart-am-svg" width="160" height="160"></svg>
+                            <svg id="pie-chart-day-svg" width="160" height="160"></svg>
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <span class="absolute top-0 text-[10px] text-gray-500 font-medium">0:00</span>
-                                <span class="absolute bottom-0 text-[10px] text-gray-500 font-medium">6:00</span>
-                                <span class="absolute right-0 text-[10px] text-gray-500 font-medium">3:00</span>
-                                <span class="absolute left-0 text-[10px] text-gray-500 font-medium">9:00</span>
+                                <span class="absolute top-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">12:00</span>
+                                <span class="absolute bottom-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">6:00</span>
+                                <span class="absolute right-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">15:00</span>
+                                <span class="absolute left-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">9:00</span>
                                 <div class="w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center z-10">
                                     <i data-lucide="sun" class="w-4 h-4 text-orange-400"></i>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- PM Chart -->
+                        <!-- Night Chart -->
                         <div class="relative w-40 h-40">
-                            <svg id="pie-chart-pm-svg" width="160" height="160"></svg>
+                            <svg id="pie-chart-night-svg" width="160" height="160"></svg>
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <span class="absolute top-0 text-[10px] text-gray-500 font-medium">12:00</span>
-                                <span class="absolute bottom-0 text-[10px] text-gray-500 font-medium">18:00</span>
-                                <span class="absolute right-0 text-[10px] text-gray-500 font-medium">15:00</span>
-                                <span class="absolute left-0 text-[10px] text-gray-500 font-medium">21:00</span>
+                                <span class="absolute top-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">0:00</span>
+                                <span class="absolute bottom-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">18:00</span>
+                                <span class="absolute right-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">3:00</span>
+                                <span class="absolute left-0 text-[10px] text-gray-500 font-medium bg-white/70 px-1 rounded">21:00</span>
                                 <div class="w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center z-10">
                                     <i data-lucide="moon" class="w-4 h-4 text-blue-500"></i>
                                 </div>
@@ -598,9 +682,8 @@
                     <div id="pie-chart-legend" class="mt-2 flex flex-wrap justify-center gap-2 max-w-xs"></div>
                 </div>
                 
-                <div class="mt-4 p-3 bg-red-50 rounded-lg text-center border border-red-100">
-                    <p id="pie-chart-tip" class="text-sm font-semibold text-red-600"></p>
-                </div>
+                <!-- タスクチェックリスト -->
+                <div id="plan-checklist-container" class="flex justify-center text-left"></div>
             </div>
         </div>
 
