@@ -23,99 +23,133 @@
         .ana-bg {
             background: linear-gradient(180deg, #d8f0fe 0%, #e8f5ff 45%, #f6fbff 100%);
         }
+        /* タブのトランジション */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center justify-center p-4">
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center justify-start pt-8 pb-12 px-4">
 
     <main class="w-full max-w-4xl">
+
+        <!-- タブ ナビゲーション -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 inline-flex">
+                <button onclick="switchTab('plan')" id="btn-tab-plan" class="px-8 py-2.5 rounded-full text-sm md:text-base font-bold transition-all duration-200 bg-indigo-600 text-white shadow-md">
+                    <i class="fa-solid fa-map-location-dot mr-2"></i>計画編
+                </button>
+                <button onclick="switchTab('record')" id="btn-tab-record" class="px-8 py-2.5 rounded-full text-sm md:text-base font-bold text-gray-500 hover:text-gray-700 transition-all duration-200">
+                    <i class="fa-solid fa-book-journal-whills mr-2"></i>記録編
+                </button>
+            </div>
+        </div>
         
-        <!-- カウントダウン セクション (一体化レイアウト) -->
-        <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
-            <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">12月4日まで、あと...</h2>
-            
-            <!-- 4つのブロック -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
-                    <div id="cd-days" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
-                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">営業日</div>
-                </div>
-                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
-                    <div id="cd-hours" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
-                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">時間</div>
-                </div>
-                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
-                    <div id="cd-mins" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
-                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">分</div>
-                </div>
-                <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
-                    <div id="cd-secs" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
-                    <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">秒</div>
-                </div>
-            </div>
-
-            <!-- 総残り秒数 -->
-            <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-10 shadow-sm flex flex-col justify-center items-center">
-                <p class="text-gray-500 text-sm md:text-base font-bold mb-3 tracking-[0.2em]">総残り秒数 (リアルタイム更新)</p>
-                <div id="cd-total-secs" class="text-6xl md:text-[5rem] leading-none font-mono font-black text-indigo-500 pulse-text tracking-tighter drop-shadow-sm">
-                    --
-                </div>
-            </div>
-            
-            <!-- プログレス＆スケール グループ -->
-            <div class="flex flex-col gap-6">
-                <!-- プログレスバー -->
-                <div>
-                    <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
-                        <span>5月1日 8:00</span>
-                        <span id="progress-text" class="text-center">--% | 状態確認中</span>
-                        <span>12月4日 17:00</span>
+        <!-- ==================== 計画編 タブ ==================== -->
+        <div id="tab-plan" class="tab-content active">
+            <!-- カウントダウン セクション (一体化レイアウト) -->
+            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
+                <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">12月4日まで、あと...</h2>
+                
+                <!-- 4つのブロック -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                        <div id="cd-days" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                        <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">営業日</div>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-4 md:h-5 shadow-inner">
-                        <div id="progress-bar" class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-500 h-4 md:h-5 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+                    <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                        <div id="cd-hours" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                        <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">時間</div>
+                    </div>
+                    <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                        <div id="cd-mins" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                        <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">分</div>
+                    </div>
+                    <div class="bg-[#eff4ff] py-5 md:py-6 rounded-2xl shadow-sm border border-indigo-50/50">
+                        <div id="cd-secs" class="text-5xl md:text-6xl font-black text-indigo-600 tracking-tighter">--</div>
+                        <div class="text-sm md:text-base font-bold text-indigo-400 mt-2">秒</div>
                     </div>
                 </div>
 
-                <!-- MC しんちょくゲージ -->
-                <div>
-                    <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-1.5 px-1">
-                        <span class="flex items-center"><i class="fa-solid fa-notes-medical text-rose-400 mr-1.5"></i> MC (病欠) 消化状況</span>
-                        <span class="text-center text-rose-500 font-black">残り 9 日</span>
-                        <span>全 14 日</span>
+                <!-- 総残り秒数 -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-10 shadow-sm flex flex-col justify-center items-center">
+                    <p class="text-gray-500 text-sm md:text-base font-bold mb-3 tracking-[0.2em]">総残り秒数 (リアルタイム更新)</p>
+                    <div id="cd-total-secs" class="text-6xl md:text-[5rem] leading-none font-mono font-black text-indigo-500 pulse-text tracking-tighter drop-shadow-sm">
+                        --
                     </div>
-                    <div class="w-full bg-rose-50 rounded-full h-3 shadow-inner border border-rose-100">
-                        <!-- 5日消化 / 14日 = 約35.71% -->
-                        <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 35.71%"></div>
+                </div>
+                
+                <!-- プログレス＆スケール グループ -->
+                <div class="flex flex-col gap-6">
+                    <!-- プログレスバー -->
+                    <div>
+                        <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
+                            <span>5月1日 8:00</span>
+                            <span id="progress-text" class="text-center">--% | 状態確認中</span>
+                            <span>12月4日 17:00</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4 md:h-5 shadow-inner">
+                            <div id="progress-bar" class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-500 h-4 md:h-5 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- MC しんちょくゲージ ＆ 練習ボタン -->
+                    <div class="bg-rose-50/40 p-4 rounded-2xl border border-rose-100">
+                        <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
+                            <span class="flex items-center"><i class="fa-solid fa-notes-medical text-rose-400 mr-1.5"></i> MC (病欠) 消化状況</span>
+                            <span class="text-center text-rose-500 font-black">残り 9 日</span>
+                            <span>全 14 日</span>
+                        </div>
+                        <div class="w-full bg-rose-100 rounded-full h-3 shadow-inner border border-rose-200 mb-4">
+                            <!-- 5日消化 / 14日 = 約35.71% -->
+                            <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 35.71%"></div>
+                        </div>
+                        
+                        <!-- MC ボイス練習ボタン -->
+                        <button onclick="playMCText()" class="w-full md:w-3/4 mx-auto bg-white hover:bg-rose-50 border border-rose-200 text-rose-600 font-bold py-2.5 px-4 rounded-xl shadow-sm transition-all flex items-center justify-center text-sm group">
+                            <div class="bg-rose-100 p-1.5 rounded-full mr-2 md:mr-3 group-hover:bg-rose-200 transition-colors">
+                                <i class="fa-solid fa-volume-high text-rose-500"></i>
+                            </div>
+                            <span>"I will take MC today" <span class="hidden md:inline"></span></span>
+                        </button>
+                    </div>
+
+                    <!-- おもしろスケール表示 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
+                        <div class="bg-indigo-50/60 p-5 rounded-2xl border border-indigo-100/50 shadow-sm transition-all hover:shadow-md">
+                            <div class="text-[13px] text-indigo-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">👶</span> 人生 (80年) で例えると...</div>
+                            <div id="scale-life" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                        </div>
+                        <div class="bg-yellow-50/60 p-5 rounded-2xl border border-yellow-100/50 shadow-sm transition-all hover:shadow-md">
+                            <div class="text-[13px] text-yellow-600 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🛕</span> ピラミッド (全210段) なら...</div>
+                            <div id="scale-pyramid" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                        </div>
+                        <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-100/50 shadow-sm transition-all hover:shadow-md">
+                            <div class="text-[13px] text-rose-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🏛️</span> ローマの歴史 で言うと...</div>
+                            <div id="scale-rome" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- おもしろスケール表示 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
-                    <div class="bg-indigo-50/60 p-5 rounded-2xl border border-indigo-100/50 shadow-sm transition-all hover:shadow-md">
-                        <div class="text-[13px] text-indigo-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">👶</span> 人生 (80年) で例えると...</div>
-                        <div id="scale-life" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
-                    </div>
-                    <div class="bg-yellow-50/60 p-5 rounded-2xl border border-yellow-100/50 shadow-sm transition-all hover:shadow-md">
-                        <div class="text-[13px] text-yellow-600 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🛕</span> ピラミッド (全210段) なら...</div>
-                        <div id="scale-pyramid" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
-                    </div>
-                    <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-100/50 shadow-sm transition-all hover:shadow-md">
-                        <div class="text-[13px] text-rose-500 font-bold mb-2 flex items-center"><span class="text-base mr-1.5">🏛️</span> ローマの歴史 で言うと...</div>
-                        <div id="scale-rome" class="font-bold text-gray-800 text-sm leading-relaxed">--</div>
+                <!-- 退職届提出 カウントダウン -->
+                <div class="bg-[#fff1f2] border border-[#fecdd3] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-envelope-open-text text-[#f43f5e] text-3xl mb-3 md:mb-0 md:mr-4 drop-shadow-sm"></i>
+                    <div class="text-gray-800 font-bold text-center md:text-left text-lg md:text-xl">
+                        退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 営業日
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- 退職届提出 カウントダウン -->
-            <div class="bg-[#fff1f2] border border-[#fecdd3] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-center shadow-sm">
-                <i class="fa-solid fa-envelope-open-text text-[#f43f5e] text-3xl mb-3 md:mb-0 md:mr-4 drop-shadow-sm"></i>
-                <div class="text-gray-800 font-bold text-center md:text-left text-lg md:text-xl">
-                    退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 営業日
-                </div>
-            </div>
-        </section>
-
-        <!-- カレンダー セクション -->
-        <div class="mt-12 text-left">
+            <!-- カレンダー セクション -->
+            <div class="mt-12 text-left">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-4 border-t border-gray-100 pt-8">
                     <h3 class="text-xl font-bold text-gray-700 mb-3 md:mb-0">
                         <i class="fa-regular fa-calendar-days text-indigo-500 mr-2"></i> 2026年12月 スケジュール
@@ -286,11 +320,81 @@
                 </div>
 
             </div>
+        </div>
 
-        </section>
+        <!-- ==================== 記録編 タブ ==================== -->
+        <div id="tab-record" class="tab-content">
+            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-emerald-500 min-h-[50vh] flex flex-col items-center justify-center">
+                <div class="text-emerald-100 text-6xl mb-4">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h2 class="text-2xl font-black text-gray-700 mb-2">記録編へようこそ</h2>
+                <p class="text-gray-500 font-medium">ここには、退職に向けた日々の記録や、タスクの進捗などを追加していくことができます。</p>
+            </section>
+        </div>
+
     </main>
 
     <script>
+        // --- タブ切り替えロジック ---
+        function switchTab(tabId) {
+            // コンテンツの切り替え
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            // ボタンのスタイル切り替え
+            const btnPlan = document.getElementById('btn-tab-plan');
+            const btnRecord = document.getElementById('btn-tab-record');
+
+            if (tabId === 'plan') {
+                btnPlan.className = "px-8 py-2.5 rounded-full text-sm md:text-base font-bold transition-all duration-200 bg-indigo-600 text-white shadow-md";
+                btnRecord.className = "px-8 py-2.5 rounded-full text-sm md:text-base font-bold text-gray-500 hover:text-gray-700 transition-all duration-200";
+            } else {
+                btnRecord.className = "px-8 py-2.5 rounded-full text-sm md:text-base font-bold transition-all duration-200 bg-emerald-600 text-white shadow-md";
+                btnPlan.className = "px-8 py-2.5 rounded-full text-sm md:text-base font-bold text-gray-500 hover:text-gray-700 transition-all duration-200";
+            }
+        }
+
+        // --- MC 音声再生ロジック ---
+        function playMCText() {
+            if (!window.speechSynthesis) {
+                alert("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            
+            // 再生用の関数
+            const speak = () => {
+                // 日本人訛り（カタカナ英語）を再現するため、日本語エンジンでカタカナを読ませる
+                const utterance = new SpeechSynthesisUtterance("アイ、ウィル、テイｯク、エムスィー、トゥデェイ。");
+                utterance.lang = 'ja-JP';
+                utterance.pitch = 0.8; // 男性の声っぽく少し低め
+                utterance.rate = 2.8; // さらに早口に設定 (1.3 -> 1.8)
+                
+                // 日本語の男性の声を優先的に探す（OSやブラウザによっては女性声しか無い場合もあります）
+                const voices = window.speechSynthesis.getVoices();
+                const maleVoice = voices.find(v => 
+                    v.lang === 'ja-JP' && 
+                    (v.name.toLowerCase().includes('male') || v.name.includes('Keita') || v.name.includes('Ichiro'))
+                );
+                
+                if (maleVoice) {
+                    utterance.voice = maleVoice;
+                }
+                
+                window.speechSynthesis.speak(utterance);
+            };
+
+            // 1回だけ再生する
+            speak();
+        }
+
+        // 初回ロード時に音声リストを取得しておく（一部ブラウザへの対応）
+        if (window.speechSynthesis) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+
         // 目標日時: 2026年12月4日 00:00:00
         const targetDate = new Date('2026-12-04T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
