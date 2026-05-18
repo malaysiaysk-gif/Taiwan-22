@@ -1578,12 +1578,12 @@
         let playingType = null;
         let isGlobalReveal = false;
         let currentSpeechRate = 0.85;
+        let globalUtterances = []; // TTSの途切れ(GC)バグ対策用の保持配列
 
         // タブ切り替え
         function switchTab(tabId) {
             window.speechSynthesis.cancel();
-            resetActiveUI();
-
+            window.speechSynthesis.resume(); // エンジンの詰まり解消
             const views = ['list', 'flashcard'];
             views.forEach(v => {
                 document.getElementById(`${v}-view`).classList.add('hidden');
@@ -1647,9 +1647,11 @@
                 return;
             }
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume(); // バグ対策
             resetActiveUI();
+            globalUtterances = []; // クリア
 
-            // 音声が途切れるのを防ぐため、キャンセル後に少し待機してから再生を開始
+            // 音声が途切れるのを防ぐため、少し待機してから再生を開始
             setTimeout(() => {
                 playingId = btnId;
                 playingType = 'conversation';
@@ -1710,9 +1712,13 @@
                     }
 
                     const currentItem = utterances[currentIndex];
-                    const utterance = new SpeechSynthesisUtterance(currentItem.text);
+                    // 頭切れ対策: 先頭に全角スペースを入れて発音エンジンに「タメ」を作らせる
+                    const safeText = "　" + currentItem.text;
+                    const utterance = new SpeechSynthesisUtterance(safeText);
                     utterance.lang = 'zh-TW';
                     utterance.rate = currentSpeechRate;
+
+                    globalUtterances.push(utterance); // GCバグ対策として配列に保持
 
                     utterance.onend = () => {
                         const delay = currentItem.delayAfter;
@@ -1726,7 +1732,7 @@
                     window.speechSynthesis.speak(utterance);
                 }
                 speakNext();
-            }, 150); // 150ミリ秒待機
+            }, 250); // 待機時間を少し長めに調整
         }
 
         function speakText(text, btnId, isVocab, speakerType) {
@@ -1735,16 +1741,22 @@
                 return;
             }
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume(); // バグ対策
             resetActiveUI();
+            globalUtterances = []; // クリア
 
-            // 音声が途切れるのを防ぐため、キャンセル後に少し待機してから再生を開始
+            // 音声が途切れるのを防ぐため、少し待機してから再生を開始
             setTimeout(() => {
                 playingId = btnId;
                 playingType = isVocab ? 'vocab' : 'single';
 
-                const utterance = new SpeechSynthesisUtterance(text);
+                // 頭切れ対策: 先頭に全角スペースを入れて発音エンジンに「タメ」を作らせる
+                const safeText = "　" + text; 
+                const utterance = new SpeechSynthesisUtterance(safeText);
                 utterance.lang = 'zh-TW'; 
                 utterance.rate = currentSpeechRate;  
+
+                globalUtterances.push(utterance); // GCバグ対策として配列に保持
 
                 utterance.onstart = () => {
                     const btn = document.getElementById(btnId);
@@ -1768,7 +1780,7 @@
                 utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
 
                 window.speechSynthesis.speak(utterance);
-            }, 150); // 150ミリ秒待機
+            }, 250); // 待機時間を少し長めに調整
         }
 
         // カスタム通知 (alertの代わり)
@@ -2034,6 +2046,7 @@
 
         function nextCard() {
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume();
             const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
             if (currentCardIndex < maxLen - 1) {
                 currentCardIndex++;
@@ -2046,6 +2059,7 @@
 
         function prevCard() {
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume();
             if (currentCardIndex > 0) {
                 currentCardIndex--;
                 isVocabAnswered = false;
@@ -2057,6 +2071,7 @@
 
         function reshuffleCards() {
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume();
             setFlashcardMode(fcMode);
         }
 
