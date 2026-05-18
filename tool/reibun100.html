@@ -1579,6 +1579,20 @@
         let isGlobalReveal = false;
         let currentSpeechRate = 0.85;
         let globalUtterances = []; // TTSの途切れ(GC)バグ対策用の保持配列
+        let preferredVoice = null; // 音声エンジンのキャッシュ
+
+        // 音声エンジン（Voice）を事前に取得してロード遅延を防ぐ
+        function initVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                // 台湾華語を優先、なければ中国語系を取得
+                preferredVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-HK' || v.lang === 'zh-CN') || voices[0];
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initVoices;
+            initVoices();
+        }
 
         // タブ切り替え
         function switchTab(tabId) {
@@ -1641,6 +1655,51 @@
             }
         }
 
+        // --- 連続再生用のキューシステム ---
+        // 長文をそのまま読み上げると最初のロードが間に合わず頭切れするため、
+        // 全てのテキストを短く分割してキューに入れ、順番に再生させます。
+        let playQueue = [];
+        let isPlayingQueue = false;
+
+        function playUtteranceQueue(btnId, callback) {
+            if (playQueue.length === 0 || playingId !== btnId) {
+                resetActiveUI();
+                playingId = null;
+                playingType = null;
+                isPlayingQueue = false;
+                if (callback) callback();
+                return;
+            }
+
+            isPlayingQueue = true;
+            const currentItem = playQueue.shift();
+            
+            // 頭切れ対策: 先頭に読まれない記号(カンマ)を入れて「タメ」を作らせる
+            const safeText = "，" + currentItem.text;
+            const utterance = new SpeechSynthesisUtterance(safeText);
+            
+            utterance.lang = 'zh-TW';
+            utterance.rate = currentSpeechRate;
+            
+            // 明示的にVoiceを設定してエンジンの検索遅延を防ぐ
+            if (preferredVoice) utterance.voice = preferredVoice;
+            
+            // 音量設定（ダミー用の無音再生対応）
+            utterance.volume = currentItem.isDummy ? 0.01 : 1.0; 
+
+            globalUtterances.push(utterance); // GCバグ対策
+
+            utterance.onend = () => {
+                const delay = currentItem.delayAfter || 50;
+                setTimeout(() => { if (playingId === btnId) playUtteranceQueue(btnId, callback); }, delay);
+            };
+            utterance.onerror = () => {
+                setTimeout(() => { if (playingId === btnId) playUtteranceQueue(btnId, callback); }, 50);
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
         function playConversation(qId, btnId, callback = null) {
             if (!('speechSynthesis' in window)) {
                 showToast("お使いのブラウザは音声再生に対応していません。");
@@ -1651,88 +1710,63 @@
             resetActiveUI();
             globalUtterances = []; // クリア
 
-            // 音声が途切れるのを防ぐため、少し待機してから再生を開始
-            setTimeout(() => {
-                playingId = btnId;
-                playingType = 'conversation';
-
-                const btn = document.getElementById(btnId);
-                if(btn) {
-                    btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
-                    if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
-                         btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
-                    } else {
-                         btn.innerHTML = `<i data-lucide="loader-2" class="w-8 h-8 animate-spin"></i> 再生中...`;
-                    }
-                    lucide.createIcons({root: btn});
+            // UIの更新を先に行う
+            playingId = btnId;
+            playingType = 'conversation';
+            const btn = document.getElementById(btnId);
+            if(btn) {
+                btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
+                } else {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-8 h-8 animate-spin"></i> 再生中...`;
                 }
+                lucide.createIcons({root: btn});
+            }
 
-                const q = questionsData.find(x => x.id === qId);
-                if (!q) return;
+            const q = questionsData.find(x => x.id === qId);
+            if (!q) { resetActiveUI(); return; }
 
-                const utterances = [];
-                // リスト学習時は2回、フラッシュカードテスト時は1回再生とする
-                const loopCount = btnId.includes('btn-list-conv') ? 2 : 1;
+            // キューの構築
+            playQueue = [];
+            
+            // エンジンをウォームアップさせるためのダミー音声
+            playQueue.push({ text: "，", delayAfter: 50, isDummy: true });
 
-                for(let i=0; i<loopCount; i++) {
-                    // 会話・質問の読み上げ
-                    q.script.forEach((line, index) => {
-                        let delay = 600;
-                        if (index === q.script.length - 2) delay = 1200; // 問の前のポーズ
-                        
-                        // 選択肢がない場合、1回目終了後に長めのポーズ
-                        if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
-                        utterances.push({ text: line.text, delayAfter: delay });
-                    });
+            const loopCount = btnId.includes('btn-list-conv') ? 2 : 1;
 
-                    // 選択肢の読み上げを追加
-                    if (q.choices && q.choices.length > 0) {
-                        q.choices.forEach((choice, index) => {
-                            let delay = 1000; // 選択肢間のポーズ
-                            // TTSが綺麗に「A因為...」と読めるように整形
-                            const cleanChoice = choice.replace(/^[（(]([A-D])[）)]\s*/, '$1 '); 
-                            
-                            // 1回目終了後に長めのポーズ
-                            if (i === 0 && index === q.choices.length - 1) delay = 2000;
-                            utterances.push({ text: cleanChoice, delayAfter: delay });
-                        });
-                    }
-                }
-
-                let currentIndex = 0;
-                function speakNext() {
-                    if (playingId !== btnId) return; 
+            for(let i=0; i<loopCount; i++) {
+                // 会話・質問の読み上げ
+                q.script.forEach((line, index) => {
+                    // 長文による頭切れを防ぐため、文章を句読点ごとに細かく分割してキューに入れる
+                    const phrases = line.text.match(/([^，。？！、]+[，。？！、]?)/g) || [line.text];
                     
-                    if (currentIndex >= utterances.length) {
-                        resetActiveUI();
-                        playingId = null;
-                        playingType = null;
-                        if (callback) callback(); // 終了時のコールバック
-                        return;
-                    }
+                    phrases.forEach((phrase, pIdx) => {
+                        let delay = 100; // フレーズ間の短いポーズ
+                        if (pIdx === phrases.length - 1) {
+                            delay = 600; // 行の終わりのポーズ
+                            if (index === q.script.length - 2) delay = 1200; // 質問の前の長めのポーズ
+                            
+                            // 選択肢がない場合、1回目終了後に長めのポーズ
+                            if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
+                        }
+                        playQueue.push({ text: phrase, delayAfter: delay, isDummy: false });
+                    });
+                });
 
-                    const currentItem = utterances[currentIndex];
-                    // 頭切れ対策: 先頭に全角スペースを入れて発音エンジンに「タメ」を作らせる
-                    const safeText = "　" + currentItem.text;
-                    const utterance = new SpeechSynthesisUtterance(safeText);
-                    utterance.lang = 'zh-TW';
-                    utterance.rate = currentSpeechRate;
-
-                    globalUtterances.push(utterance); // GCバグ対策として配列に保持
-
-                    utterance.onend = () => {
-                        const delay = currentItem.delayAfter;
-                        currentIndex++;
-                        setTimeout(() => { if (playingId === btnId) speakNext(); }, delay);
-                    };
-                    utterance.onerror = () => {
-                        currentIndex++;
-                        if (playingId === btnId) speakNext();
-                    };
-                    window.speechSynthesis.speak(utterance);
+                // 選択肢の読み上げ
+                if (q.choices && q.choices.length > 0) {
+                    q.choices.forEach((choice, index) => {
+                        let delay = 1000;
+                        const cleanChoice = choice.replace(/^[（(]([A-D])[）)]\s*/, '$1 '); 
+                        if (i === 0 && index === q.choices.length - 1) delay = 2000;
+                        playQueue.push({ text: cleanChoice, delayAfter: delay, isDummy: false });
+                    });
                 }
-                speakNext();
-            }, 250); // 待機時間を少し長めに調整
+            }
+
+            // キューの再生開始
+            setTimeout(() => { playUtteranceQueue(btnId, callback); }, 100);
         }
 
         function speakText(text, btnId, isVocab, speakerType) {
@@ -1745,42 +1779,40 @@
             resetActiveUI();
             globalUtterances = []; // クリア
 
-            // 音声が途切れるのを防ぐため、少し待機してから再生を開始
-            setTimeout(() => {
-                playingId = btnId;
-                playingType = isVocab ? 'vocab' : 'single';
-
-                // 頭切れ対策: 先頭に全角スペースを入れて発音エンジンに「タメ」を作らせる
-                const safeText = "　" + text; 
-                const utterance = new SpeechSynthesisUtterance(safeText);
-                utterance.lang = 'zh-TW'; 
-                utterance.rate = currentSpeechRate;  
-
-                globalUtterances.push(utterance); // GCバグ対策として配列に保持
-
-                utterance.onstart = () => {
-                    const btn = document.getElementById(btnId);
-                    if (!btn) return;
-                    if (isVocab) {
-                        const icon = btn.querySelector('.lucide-volume-2');
-                        if (icon) {
-                            icon.classList.remove('text-blue-400');
-                            icon.classList.add('animate-pulse', 'text-blue-600');
-                        }
-                    } else {
-                        btn.classList.remove('text-slate-400');
-                        if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
-                        else btn.classList.add('text-indigo-600', 'bg-indigo-100');
-                        const icon = btn.querySelector('.lucide-play');
-                        if (icon) icon.setAttribute('fill', 'currentColor');
+            // UIの更新を先に行う
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+            const btn = document.getElementById(btnId);
+            if (btn) {
+                if (isVocab) {
+                    const icon = btn.querySelector('.lucide-volume-2');
+                    if (icon) {
+                        icon.classList.remove('text-blue-400');
+                        icon.classList.add('animate-pulse', 'text-blue-600');
                     }
-                };
+                } else {
+                    btn.classList.remove('text-slate-400');
+                    if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
+                    else btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                    const icon = btn.querySelector('.lucide-play');
+                    if (icon) icon.setAttribute('fill', 'currentColor');
+                }
+            }
 
-                utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
-                utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
+            // キューの構築
+            playQueue = [];
+            
+            // エンジンをウォームアップさせるためのダミー音声
+            playQueue.push({ text: "，", delayAfter: 50, isDummy: true });
 
-                window.speechSynthesis.speak(utterance);
-            }, 250); // 待機時間を少し長めに調整
+            // 長文が来る可能性があるのでこちらも分割して登録
+            const phrases = isVocab ? [text] : (text.match(/([^，。？！、]+[，。？！、]?)/g) || [text]);
+            phrases.forEach(phrase => {
+                playQueue.push({ text: phrase, delayAfter: 100, isDummy: false });
+            });
+
+            // キューの再生開始
+            setTimeout(() => { playUtteranceQueue(btnId, null); }, 100);
         }
 
         // カスタム通知 (alertの代わり)
