@@ -48,9 +48,10 @@
         };
 
         // --- Data ---
-        // 初期データ（5/18と5/19の記録を保持）
+        // 初期データ（5/18、5/19、5/20の記録を保持）
         let records = [
-            { id: 1716123840000, date: '2026-05-19', hours: 0.5 },
+            { id: 1716210240000, date: '2026-05-20', hours: 2.0 },
+            { id: 1716123840000, date: '2026-05-19', hours: 1.0 },
             { id: 1716037440000, date: '2026-05-18', hours: 1.5 }
         ];
         
@@ -94,7 +95,7 @@
             if (!userId || !db) return;
             const colRef = collection(db, 'artifacts', appId, 'users', userId, 'study_records');
             onSnapshot(colRef, (snapshot) => {
-                // Cloudのデータがあれば初期データを上書き、なければ初期データ（5/18の記録）をCloudに保存
+                // Cloudのデータがあれば初期データを上書き、なければ初期データ（5/18~5/20の記録）をCloudに保存
                 if (!snapshot.empty) {
                     records = [];
                     snapshot.forEach(doc => {
@@ -467,7 +468,7 @@
                 
                 const record = records.find(r => r.date === dateStr);
                 const isTarget = dateStr === '2026-06-28';
-                const isMC = dateStr === '2026-06-26';
+                const isMC = dateStr === '2026-06-26' || dateStr === '2026-06-05';
                 const isRest = dateStr === '2026-06-27';
                 const isSelected = dateStr === newDate;
                 
