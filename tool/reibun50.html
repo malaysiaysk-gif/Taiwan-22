@@ -966,7 +966,9 @@
                 };
                 window.speechSynthesis.speak(utterance);
             }
-            speakNext();
+            
+            // Chrome等のブラウザで最初の音声が途切れるのを防ぐため、0.2秒遅らせて再生を開始する
+            setTimeout(speakNext, 200);
         }
 
         function speakText(text, btnId, isVocab, speakerType) {
@@ -1005,7 +1007,12 @@
             utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
             utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
 
-            window.speechSynthesis.speak(utterance);
+            // Chrome等のブラウザで最初の音声が途切れるのを防ぐため、0.2秒遅らせて再生
+            setTimeout(() => {
+                if (playingId === btnId) {
+                    window.speechSynthesis.speak(utterance);
+                }
+            }, 200);
         }
 
         // カスタム通知 (alertの代わり)
@@ -1429,6 +1436,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderListView();
             lucide.createIcons();
+
+            // Chrome向け：あらかじめ音声リストをロードさせておく（初回読み上げをスムーズにするため）
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+            }
 
             // 音声スピードスライダーのイベントリスナー設定
             const speedSlider = document.getElementById('speed-slider');
