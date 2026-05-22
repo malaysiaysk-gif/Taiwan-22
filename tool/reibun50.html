@@ -856,6 +856,23 @@
         // ==========================================
         // 音声再生ロジック
         // ==========================================
+        // GC(ガベージコレクション)対策：音声が途中で消去されるのを防ぐ
+        window.globalUtterances = [];
+
+        // 音声エンジン（Voice）をあらかじめ取得して固定する
+        let twVoice = null;
+        function loadVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            // 台湾華語（zh-TW）、あるいは中国語を優先して探す
+            twVoice = voices.find(v => v.lang === 'zh-TW') || 
+                      voices.find(v => v.lang.includes('zh-')) || 
+                      voices.find(v => v.lang.includes('zh'));
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+            loadVoices(); // 初回実行
+        }
+
         function resetActiveUI() {
             if (!playingId) return;
             const btn = document.getElementById(playingId);
@@ -885,11 +902,10 @@
         }
 
         function playConversation(qId, btnId, callback = null) {
-            if (!('speechSynthesis' in window)) {
-                showToast("お使いのブラウザは音声再生に対応していません。");
-                return;
-            }
+            if (!('speechSynthesis' in window)) return;
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume(); // バグ対策：キャンセル状態をリセット
+
             resetActiveUI();
 
             playingId = btnId;
@@ -952,39 +968,58 @@
 
                 const currentItem = utterances[currentIndex];
                 const utterance = new SpeechSynthesisUtterance(currentItem.text);
+                
+                // 明示的にVoiceをセットして言語判別のラグをなくす
+                if (twVoice) utterance.voice = twVoice;
                 utterance.lang = 'zh-TW';
                 utterance.rate = currentSpeechRate;
 
+                // GC対策で配列に保持
+                window.globalUtterances.push(utterance);
+
                 utterance.onend = () => {
+                    // 使い終わった音声を配列から削除
+                    const idx = window.globalUtterances.indexOf(utterance);
+                    if (idx > -1) window.globalUtterances.splice(idx, 1);
+
                     const delay = currentItem.delayAfter;
                     currentIndex++;
                     setTimeout(() => { if (playingId === btnId) speakNext(); }, delay);
                 };
                 utterance.onerror = () => {
+                    const idx = window.globalUtterances.indexOf(utterance);
+                    if (idx > -1) window.globalUtterances.splice(idx, 1);
+
                     currentIndex++;
                     if (playingId === btnId) speakNext();
                 };
+                
                 window.speechSynthesis.speak(utterance);
             }
             
-            // Chrome等のブラウザで最初の音声が途切れるのを防ぐため、0.2秒遅らせて再生を開始する
-            setTimeout(speakNext, 200);
+            // キャンセル処理が完全に終わるのを待ってから開始
+            setTimeout(speakNext, 100);
         }
 
         function speakText(text, btnId, isVocab, speakerType) {
-            if (!('speechSynthesis' in window)) {
-                showToast("お使いのブラウザは音声再生に対応していません。");
-                return;
-            }
+            if (!('speechSynthesis' in window)) return;
             window.speechSynthesis.cancel();
+            window.speechSynthesis.resume(); // バグ対策
+
             resetActiveUI();
 
             playingId = btnId;
             playingType = isVocab ? 'vocab' : 'single';
 
             const utterance = new SpeechSynthesisUtterance(text);
+            
+            // 明示的にVoiceをセット
+            if (twVoice) utterance.voice = twVoice;
             utterance.lang = 'zh-TW'; 
             utterance.rate = currentSpeechRate;  
+
+            // GC対策で配列に保持
+            window.globalUtterances.push(utterance);
 
             utterance.onstart = () => {
                 const btn = document.getElementById(btnId);
@@ -1004,27 +1039,22 @@
                 }
             };
 
-            utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
-            utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
+            const cleanup = () => {
+                const idx = window.globalUtterances.indexOf(utterance);
+                if (idx > -1) window.globalUtterances.splice(idx, 1);
+                resetActiveUI(); 
+                playingId = null; 
+                playingType = null;
+            };
 
-            // Chrome等のブラウザで最初の音声が途切れるのを防ぐため、0.2秒遅らせて再生
+            utterance.onend = cleanup;
+            utterance.onerror = cleanup;
+
             setTimeout(() => {
                 if (playingId === btnId) {
                     window.speechSynthesis.speak(utterance);
                 }
-            }, 200);
-        }
-
-        // カスタム通知 (alertの代わり)
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-rose-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 font-bold transition-opacity duration-300";
-            toast.innerText = message;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, 100);
         }
 
         function getRubyText(text) {
