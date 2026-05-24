@@ -50,7 +50,10 @@
         // --- Data ---
         // 手入力で管理しやすいように、日付形式（YYYYMMDD）のIDに変更しています
         let records = [
-            { id: 20260521, date: '2026-05-21', hours: 0.5 },
+                        { id: 20260524, date: '2026-05-24', hours: 5.0 },
+              { id: 20260523, date: '2026-05-23', hours: 5.0 },
+                        { id: 20260522, date: '2026-05-22', hours: 1.5 },
+            { id: 20260521, date: '2026-05-21', hours: 1.0 },
             { id: 20260520, date: '2026-05-20', hours: 2.0 },
             { id: 20260519, date: '2026-05-19', hours: 1.0 },
             { id: 20260518, date: '2026-05-18', hours: 1.5 }
@@ -447,6 +450,60 @@
             renderBar('weekend', stats.expectedWeekendHours, stats.totalWeekendRecorded, goals.totalWeekend, stats.weekendDiff);
         }
 
+        function renderOverallGauge(stats) {
+            const baseHours = 180;
+            const grandTotal = baseHours + stats.totalRecorded;
+            const targetHours = 720;
+            const percentage = Math.min((grandTotal / targetHours) * 100, 100);
+
+            // 各レベルの開始ライン (中国語圏外の目安)
+            const prepEndPct = (240 / targetHours) * 100; 
+            const a1EndPct = (480 / targetHours) * 100; 
+
+            const container = document.getElementById('overall-gauge-container');
+            if (!container) return;
+
+            container.innerHTML = `
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 mb-6">
+                    <h2 class="text-sm font-bold text-gray-700 mb-4 flex items-center gap-2">
+                        <i data-lucide="award" class="w-5 h-5 text-pink-500"></i> TOCFL レベル到達度 (非中国語圏外)
+                    </h2>
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <p class="text-[11px] text-gray-500 mb-1">これまでの学習 (<span class="font-semibold">180H</span>) + アプリ記録 (<span class="font-semibold">${stats.totalRecorded.toFixed(1)}H</span>)</p>
+                            <p class="text-3xl font-black text-teal-700 leading-none">${grandTotal.toFixed(1)} <span class="text-sm font-bold text-gray-400">/ 720 H</span></p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] font-bold bg-pink-50 text-pink-600 px-2 py-1 rounded-full border border-pink-100">Target: Band A [A2]</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pt-8 pb-2">
+                        <!-- Marker Labels (改行して重なりを防止) -->
+                        <div class="absolute top-0 w-full text-[9px] sm:text-[10px] font-bold text-gray-400">
+                            <div class="absolute text-center -translate-x-1/2 leading-tight" style="left: ${prepEndPct}%;">準備級<br>(240h)</div>
+                            <div class="absolute text-center -translate-x-1/2 leading-tight" style="left: ${a1EndPct}%;">入門級[A1]<br>(480h)</div>
+                            <div class="absolute right-0 text-right text-pink-500 leading-tight">基礎級[A2]<br>Goal (720h)</div>
+                        </div>
+                        
+                        <!-- Marker Lines -->
+                        <div class="absolute top-6 w-full h-8 pointer-events-none z-10">
+                            <div class="absolute h-full w-px bg-gray-300" style="left: ${prepEndPct}%;"></div>
+                            <div class="absolute h-full w-px bg-gray-300" style="left: ${a1EndPct}%;"></div>
+                            <div class="absolute h-full w-px bg-pink-300" style="right: 0;"></div>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="h-5 mt-5 bg-gray-100 rounded-full w-full relative overflow-hidden border border-gray-200 shadow-inner">
+                            <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full transition-all duration-1000 ease-out flex items-center justify-end px-2" style="width: ${percentage}%">
+                                ${percentage > 10 ? `<span class="text-[10px] text-white font-bold opacity-90">${percentage.toFixed(1)}%</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         function renderCalendar() {
             const calendarContainer = document.getElementById('calendar-grid');
             let html = '';
@@ -573,6 +630,7 @@
             renderCalendar();
             renderRecordList();
             renderStatsArea(stats);
+            renderOverallGauge(stats);
             
             document.getElementById('input-date').value = newDate;
             document.getElementById('input-hours').value = newHours;
@@ -761,6 +819,9 @@
 
         <div id="view-record" class="space-y-6" style="display: none;">
             
+            <!-- Overall TOCFL Level Gauge Container -->
+            <div id="overall-gauge-container"></div>
+
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
                 <h2 class="text-sm font-bold text-gray-600 mb-3 flex items-center gap-2">
                     <i data-lucide="trending-up" class="w-4 h-4"></i> ペースチェック (as of today)
