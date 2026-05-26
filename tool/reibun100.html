@@ -978,7 +978,7 @@
             }, 3000);
         }
 
-        function getRubyText(text) {
+        function getRubyText(text, makePinyinMain = false) {
             if (typeof pinyinPro === 'undefined') return text;
             try {
                 const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
@@ -988,9 +988,20 @@
                     const char = charArr[i];
                     const py = pinyinArr[i];
                     if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
-                        html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                        if (makePinyinMain) {
+                            // ピンインをメイン（大きく赤く）、漢字をルビ（上に小さく）
+                            // 画面サイズに応じて文字の大きさを段階的(xl -> 2xl -> 3xl)に調整
+                            html += `<ruby style="ruby-position: over;" class="mx-1 text-xl sm:text-2xl md:text-3xl text-red-600 font-bold tracking-wider">${py}<rt class="text-xs sm:text-sm text-slate-600 font-sans tracking-normal font-bold">${char}</rt></ruby>`;
+                        } else {
+                            // 通常の表示（漢字メイン、ピンイン下ルビ）
+                            html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                        }
                     } else {
-                        html += `<span class="mx-[1px]">${char}</span>`;
+                        if (makePinyinMain) {
+                            html += `<span class="mx-0.5 text-xl sm:text-2xl md:text-3xl text-slate-400">${char}</span>`;
+                        } else {
+                            html += `<span class="mx-[1px]">${char}</span>`;
+                        }
                     }
                 }
                 return html;
@@ -1007,16 +1018,40 @@
                                 line.speaker === '女' ? 'bg-pink-100 text-pink-700' : 
                                 line.speaker === '問' ? 'bg-emerald-100 text-emerald-700' : 
                                 line.speaker === '例句' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700';
+                                
+                // フレーズに分割（カンマやピリオド等の句読点で区切る）
+                const phrases = line.text.match(/[^，。！？、,.\!\?]+[，。！？、,.\!\?]*/g) || [line.text];
+
+                // 縦積み(flex-col)に変更し、テキストに幅を最大化
                 return `
-                    <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
-                        <div class="flex items-center gap-2 sm:w-1/6">
-                            <span class="font-bold px-2 py-1 rounded text-sm ${speakerBg} shrink-0">${line.speaker}</span>
-                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400">
-                                <i data-lucide="play" class="w-4 h-4"></i>
+                    <div class="flex flex-col gap-3 bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm w-full">
+                        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 w-full">
+                            <span class="font-bold px-3 py-1.5 rounded-md text-sm ${speakerBg} shrink-0 shadow-sm">${line.speaker}</span>
+                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-500 bg-white border border-slate-200 shadow-sm shrink-0 text-sm font-bold" title="全文を再生">
+                                <i data-lucide="play" class="w-4 h-4 fill-current text-slate-400"></i> 全文再生
                             </button>
                         </div>
-                        <div class="sm:w-5/6">
-                            <p class="text-xl font-medium text-slate-800 mb-4 leading-relaxed">${getRubyText(line.text)}</p>
+                        <div class="w-full text-left pt-2">
+                            <p class="break-all whitespace-normal">
+                                ${phrases.map((phrase, pIdx) => {
+                                    const phraseBtnId = `${btnId}-p${pIdx}`;
+                                    // 途中から最後まで再生するためのテキストを生成
+                                    const textToSpeak = phrases.slice(pIdx).join('').replace(/'/g, "\\'");
+                                    
+                                    // 2つ目以降のフレーズの先頭に「ここから再生」ボタンを配置
+                                    const playBtn = pIdx > 0 ? `
+                                        <button id="${phraseBtnId}" onclick="speakText('${textToSpeak}', '${phraseBtnId}', false, '${line.speaker}')" class="inline-flex items-center justify-center align-middle mx-1.5 p-1.5 rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition-colors text-slate-400 border border-slate-200 bg-white shadow-sm shrink-0" title="ここから再生">
+                                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                                        </button>
+                                    ` : '';
+                                    
+                                    return `
+                                        <span class="leading-[3.5rem] sm:leading-[4.5rem] align-middle inline">
+                                            ${playBtn}${getRubyText(phrase, true)}
+                                        </span>
+                                    `;
+                                }).join('')}
+                            </p>
                         </div>
                     </div>
                 `;
