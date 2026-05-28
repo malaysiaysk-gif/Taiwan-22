@@ -35,7 +35,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 p-4 md:p-8">
     <header class="max-w-4xl mx-auto mb-6 text-center">
-        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL リスニング対策アプリ100-2</h1>
+        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL リスニング対策アプリ</h1>
         <p class="text-slate-600">一覧学習・フラッシュカードテスト</p>
         <p class="text-sm text-slate-500 mt-2">入門基礎級模擬試題聽力測驗</p>
     </header>
@@ -50,9 +50,9 @@
     <div class="max-w-4xl mx-auto mb-6 flex justify-center items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
         <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
             <i data-lucide="gauge" class="w-4 h-4"></i>
-            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.85x</span>
+            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
         </label>
-        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.85" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
+        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
     </div>
 
     <!-- 1. 一覧学習ビュー -->
@@ -100,674 +100,655 @@
         // データ定義
         // ==========================================
         const questionsData = [
-            // 1. 職場與請假
             {
                 id: 1,
-                sectionName: "1. 職場與請假（職場と休暇：理由や言い訳が問われやすい）",
-                script: [{ speaker: "例句", text: "他昨天運動了一整天，今天累得沒辦法上班。" }],
+                sectionName: "【状況説明・提案・不満のアレンジ編】",
+                script: [{ speaker: "例句", text: "雖然這台電腦看起來很新，但系統常常出問題。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Tā zuó tiān yùn dòng le yì zhěng tiān, jīn tiān lèi de méi bàn fǎ shàng bān。<br><strong>日文：</strong>彼は昨日一日中運動をしたので、今日は疲れて仕事に行けません。",
-                vocab: [{ word: "他昨天運動了一整天，今天累得沒辦法上班。", pinyin: "Tā zuó tiān yùn dòng le yì zhěng tiān, jīn tiān lèi de méi bàn fǎ shàng bān.", jp: "彼は昨日一日中運動をしたので、今日は疲れて仕事に行けません。", speak: "他昨天運動了一整天，今天累得沒辦法上班。" }],
+                meta: "<strong>日文：</strong>新品に見えるが、システムに問題が多い＝商品不良の指摘",
+                vocab: [{ word: "雖然這台電腦看起來很新，但系統常常出問題。", pinyin: "Suī rán zhè tái diàn nǎo kàn qǐ lái hěn xīn, dàn xì tǒng cháng cháng chū wèn tí.", jp: "新品に見えるが、システムに問題が多い＝商品不良の指摘", speak: "雖然這台電腦看起來很新，但系統常常出問題。" }],
                 explanations: [
-                    { word: "一整天", pinyin: "yì zhěng tiān", meaning: "「一日中」。" },
-                    { word: "累得...", pinyin: "lèi de...", meaning: "「〜なほど疲れる」（程度補語）。" },
-                    { word: "沒辦法", pinyin: "méi bàn fǎ", meaning: "「〜する方法がない、〜できない」。" }
+                    { word: "雖然...但...", pinyin: "suī rán... dàn...", meaning: "「〜だけれど、しかし〜」（逆接の表現）。" },
+                    { word: "看起來", pinyin: "kàn qǐ lái", meaning: "「見たところ〜だ、〜のように見える」。" },
+                    { word: "出問題", pinyin: "chū wèn tí", meaning: "「問題が起きる、故障する」。" }
                 ]
             },
             {
                 id: 2,
-                script: [{ speaker: "例句", text: "因為早上五點就起床了，所以我現在很想睡覺。" }],
+                script: [{ speaker: "例句", text: "為了準時出席會議，他今天不得不早點出門。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Yīn wèi zǎo shàng wǔ diǎn jiù qǐ chuáng le, suǒ yǐ wǒ xiàn zài hěn xiǎng shuì jiào。<br><strong>日文：</strong>朝5時に起きたので、私は今とても眠いです。",
-                vocab: [{ word: "因為早上五點就起床了，所以我現在很想睡覺。", pinyin: "Yīn wèi zǎo shàng wǔ diǎn jiù qǐ chuáng le, suǒ yǐ wǒ xiàn zài hěn xiǎng shuì jiào.", jp: "朝5時に起きたので、私は今とても眠いです。", speak: "因為早上五點就起床了，所以我現在很想睡覺。" }],
+                meta: "<strong>日文：</strong>会議に間に合うために、早く出発しなければならない",
+                vocab: [{ word: "為了準時出席會議，他今天不得不早點出門。", pinyin: "Wèi le zhǔn shí chū xí huì yì, tā jīn tiān bù dé bù zǎo diǎn chū mén.", jp: "会議に間に合うために、早く出発しなければならない", speak: "為了準時出席會議，他今天不得不早點出門。" }],
                 explanations: [
-                    { word: "因為...所以...", pinyin: "yīn wèi... suǒ yǐ...", meaning: "「〜なので、だから〜だ」（原因と結果）。" },
-                    { word: "就", pinyin: "jiù", meaning: "「（予想より）早くも〜だ」というニュアンス。" },
-                    { word: "想", pinyin: "xiǎng", meaning: "「〜したい」。" }
+                    { word: "為了", pinyin: "wèi le", meaning: "「〜のために」（目的を表す）。" },
+                    { word: "準時", pinyin: "zhǔn shí", meaning: "「時間通りに、定刻に」。" },
+                    { word: "不得不", pinyin: "bù dé bù", meaning: "「〜せざるを得ない」。" }
                 ]
             },
             {
                 id: 3,
-                script: [{ speaker: "例句", text: "經理給的工作太多了，我們幾個人不可能做完。" }],
+                script: [{ speaker: "例句", text: "就算你是為了他好，也不應該對他這麼大聲說話。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Jīng lǐ gěi de gōng zuò tài duō le, wǒ men jǐ ge rén bù kě néng zuò wán。<br><strong>日文：</strong>マネージャーが出した仕事が多すぎて、私たち数人では終わらせられません。",
-                vocab: [{ word: "經理給的工作太多了，我們幾個人不可能做完。", pinyin: "Jīng lǐ gěi de gōng zuò tài duō le, wǒ men jǐ ge rén bù kě néng zuò wán.", jp: "マネージャーが出した仕事が多すぎて、私たち数人では終わらせられません。", speak: "經理給的工作太多了，我們幾個人不可能做完。" }],
+                meta: "<strong>日文：</strong>彼のためだとしても、大声で話すべきではない＝礼儀の注意",
+                vocab: [{ word: "就算你是為了他好，也不應該對他這麼大聲說話。", pinyin: "Jiù suàn nǐ shì wèi le tā hǎo, yě bù yīng gāi duì tā zhè me dà shēng shuō huà.", jp: "彼のためだとしても、大声で話すべきではない＝礼儀の注意", speak: "就算你是為了他好，也不應該對他這麼大聲說話。" }],
                 explanations: [
-                    { word: "經理", pinyin: "jīng lǐ", meaning: "「マネージャー、支配人、社長」。" },
-                    { word: "不可能", pinyin: "bù kě néng", meaning: "「不可能である、あり得ない」。" },
-                    { word: "做完", pinyin: "zuò wán", meaning: "動詞「做（する）」＋結果補語「完（終わる）」。" }
+                    { word: "就算...也...", pinyin: "jiù suàn... yě...", meaning: "「たとえ〜だとしても」。" },
+                    { word: "為了...好", pinyin: "wèi le... hǎo", meaning: "「〜のためを思って」。" },
+                    { word: "應該", pinyin: "yīng gāi", meaning: "「〜すべきである、〜するはずだ」。" }
                 ]
             },
             {
                 id: 4,
-                script: [{ speaker: "例句", text: "我最近總是覺得很不舒服，想跟老闆請假一個月。" }],
+                script: [{ speaker: "例句", text: "這份文件明天早上就要交，你還剩下一半沒寫完嗎？" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ zuì jìn zǒng shì jué de hěn bù shū fú, xiǎng gēn lǎo bǎn qǐng jià yí ge yuè。<br><strong>日文：</strong>最近ずっと気分が悪いので、社長に1ヶ月お休みをもらいたいです。",
-                vocab: [{ word: "我最近總是覺得很不舒服，想跟老闆請假一個月。", pinyin: "Wǒ zuì jìn zǒng shì jué de hěn bù shū fú, xiǎng gēn lǎo bǎn qǐng jià yí ge yuè.", jp: "最近ずっと気分が悪いので、社長に1ヶ月お休みをもらいたいです。", speak: "我最近總是覺得很不舒服，想跟老闆請假一個月。" }],
+                meta: "<strong>日文：</strong>締め切り直前の確認",
+                vocab: [{ word: "這份文件明天早上就要交，你還剩下一半沒寫完嗎？", pinyin: "Zhè fèn wén jiàn míng tiān zǎo shàng jiù yào jiāo, nǐ hái shèng xià yí bàn méi xiě wán ma?", jp: "締め切り直前の確認", speak: "這份文件明天早上就要交，你還剩下一半沒寫完嗎？" }],
                 explanations: [
-                    { word: "總是", pinyin: "zǒng shì", meaning: "「いつも、常に」。" },
-                    { word: "覺得", pinyin: "jué de", meaning: "「〜と感じる、〜と思う」。" },
-                    { word: "請假", pinyin: "qǐng jià", meaning: "「休みを取る」。離合詞（請+假）なので、期間は間に挟むか後ろに置く。" }
+                    { word: "份", pinyin: "fèn", meaning: "「書類や新聞、セットになったものなどを数える量詞」。" },
+                    { word: "就要", pinyin: "jiù yào", meaning: "「もうすぐ〜する、〜しなければならない」。" },
+                    { word: "剩下", pinyin: "shèng xià", meaning: "「残る、残す」。" }
                 ]
             },
             {
                 id: 5,
-                script: [{ speaker: "例句", text: "為了畢業後能找到好工作，我現在必須非常努力。" }],
+                script: [{ speaker: "例句", text: "不管天氣怎麼變，我們明天都要去參加那個活動。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wèi le bì yè hòu néng zhǎo dào hǎo gōng zuò, wǒ xiàn zài bì xū fēi cháng nǔ lì。<br><strong>日文：</strong>卒業後に良い仕事を見つけるために、私は今とても努力しなければなりません。",
-                vocab: [{ word: "為了畢業後能找到好工作，我現在必須非常努力。", pinyin: "Wèi le bì yè hòu néng zhǎo dào hǎo gōng zuò, wǒ xiàn zài bì xū fēi cháng nǔ lì.", jp: "卒業後に良い仕事を見つけるために、私は今とても努力しなければなりません。", speak: "為了畢業後能找到好工作，我現在必須非常努力。" }],
+                meta: "<strong>日文：</strong>どんなことがあっても行くという決意",
+                vocab: [{ word: "不管天氣怎麼變，我們明天都要去參加那個活動。", pinyin: "Bù guǎn tiān qì zěn me biàn, wǒ men míng tiān dōu yào qù cān jiā nà ge huó dòng.", jp: "どんなことがあっても行くという決意", speak: "不管天氣怎麼變，我們明天都要去參加那個活動。" }],
                 explanations: [
-                    { word: "為了...", pinyin: "wèi le...", meaning: "「〜のために（目的）」。" },
-                    { word: "找到", pinyin: "zhǎo dào", meaning: "動詞「找（探す）」＋結果補語「到（到達する＝見つかる）」。" },
-                    { word: "必須", pinyin: "bì xū", meaning: "「必ず〜しなければならない」。" }
+                    { word: "不管...都...", pinyin: "bù guǎn... dōu...", meaning: "「〜に関わらず、どんなに〜でも」。" },
+                    { word: "怎麼", pinyin: "zěn me", meaning: "「どのように、どんなに」。" },
+                    { word: "參加", pinyin: "cān jiā", meaning: "「参加する」。" }
                 ]
             },
-
-            // 2. 消費與購物
             {
                 id: 6,
-                sectionName: "2. 消費與購物（買い物と消費：条件やクレームが問われやすい）",
-                script: [{ speaker: "例句", text: "這家百貨公司有活動，很多商品不但便宜還送東西。" }],
+                script: [{ speaker: "例句", text: "只要你多練習聽力，考試時一定不會覺得題目很難。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zhè jiā bǎi huò gōng sī yǒu huó dòng, hěn duō shāng pǐn bú dàn pián yí hái sòng dōng xi。<br><strong>日文：</strong>このデパートはイベント中で、多くの商品が安いだけでなくおまけもくれます。",
-                vocab: [{ word: "這家百貨公司有活動，很多商品不但便宜還送東西。", pinyin: "Zhè jiā bǎi huò gōng sī yǒu huó dòng, hěn duō shāng pǐn bú dàn pián yí hái sòng dōng xi.", jp: "このデパートはイベント中で、多くの商品が安いだけでなくおまけもくれます。", speak: "這家百貨公司有活動，很多商品不但便宜還送東西。" }],
+                meta: "<strong>日文：</strong>練習すれば難しくなくなる＝学習のアドバイス",
+                vocab: [{ word: "只要你多練習聽力，考試時一定不會覺得題目很難。", pinyin: "Zhǐ yào nǐ duō liàn xí tīng lì, kǎo shì shí yí dìng bú huì jué de tí mù hěn nán.", jp: "練習すれば難しくなくなる＝学習のアドバイス", speak: "只要你多練習聽力，考試時一定不會覺得題目很難。" }],
                 explanations: [
-                    { word: "活動", pinyin: "huó dòng", meaning: "「イベント、キャンペーン」。" },
-                    { word: "不但...還...", pinyin: "bú dàn... hái...", meaning: "「〜だけでなく〜も（累加）」。" },
-                    { word: "送東西", pinyin: "sòng dōng xi", meaning: "「物をあげる（ここではオマケの意）」。" }
+                    { word: "只要...一定...", pinyin: "zhǐ yào... yí dìng...", meaning: "「〜さえすれば、必ず〜」。" },
+                    { word: "覺得", pinyin: "jué de", meaning: "「〜だと感じる、思う」。" },
+                    { word: "題目", pinyin: "tí mù", meaning: "「問題、テーマ」。" }
                 ]
             },
             {
                 id: 7,
-                script: [{ speaker: "例句", text: "昨天買的牛奶味道有點奇怪，我想換一瓶新的。" }],
+                script: [{ speaker: "例句", text: "你與其在家看電視，不如陪我去逛逛那家新開的書店。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zuó tiān mǎi de niú nǎi wèi dào yǒu diǎn qí guài, wǒ xiǎng huàn yì píng xīn de。<br><strong>日文：</strong>昨日買った牛乳の味が少し変なので、新しいものと交換したいです。",
-                vocab: [{ word: "昨天買的牛奶味道有點奇怪，我想換一瓶新的。", pinyin: "Zuó tiān mǎi de niú nǎi wèi dào yǒu diǎn qí guài, wǒ xiǎng huàn yì píng xīn de.", jp: "昨日買った牛乳の味が少し変なので、新しいものと交換したいです。", speak: "昨天買的牛奶味道有點奇怪，我想換一瓶新的。" }],
+                meta: "<strong>日文：</strong>提案：テレビより書店に行こう",
+                vocab: [{ word: "你與其在家看電視，不如陪我去逛逛那家新開的書店。", pinyin: "Nǐ yǔ qí zài jiā kàn diàn shì, bù rú péi wǒ qù guàng guàng nà jiā xīn kāi de shū diàn.", jp: "提案：テレビより書店に行こう", speak: "你與其在家看電視，不如陪我去逛逛那家新開的書店。" }],
                 explanations: [
-                    { word: "味道", pinyin: "wèi dào", meaning: "「味、におい」。" },
-                    { word: "奇怪", pinyin: "qí guài", meaning: "「変だ、おかしい」。" },
-                    { word: "換", pinyin: "huàn", meaning: "「交換する、変える」。" }
+                    { word: "與其...不如...", pinyin: "yǔ qí... bù rú...", meaning: "「〜するくらいなら、いっそ〜した方がいい」。" },
+                    { word: "陪", pinyin: "péi", meaning: "「付き合う、同伴する」。" },
+                    { word: "逛", pinyin: "guàng", meaning: "「ぶらぶら歩く、見て回る」。" }
                 ]
             },
             {
                 id: 8,
-                script: [{ speaker: "例句", text: "對不起，我們要看到發票，才能讓客人換東西。" }],
+                script: [{ speaker: "例句", text: "聽說這家飯店的服務很好，連早餐都準備得非常豐富。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Duì bù qǐ, wǒ men yào kàn dào fā piào, cái néng ràng kè rén huàn dōng xi。<br><strong>日文：</strong>申し訳ありませんが、レシートを確認できないと商品の交換はできません。",
-                vocab: [{ word: "對不起，我們要看到發票，才能讓客人換東西。", pinyin: "Duì bù qǐ, wǒ men yào kàn dào fā piào, cái néng ràng kè rén huàn dōng xi.", jp: "申し訳ありませんが、レシートを確認できないと商品の交換はできません。", speak: "對不起，我們要看到發票，才能讓客人換東西。" }],
+                meta: "<strong>日文：</strong>サービスへの評価",
+                vocab: [{ word: "聽說這家飯店的服務很好，連早餐都準備得非常豐富。", pinyin: "Tīng shuō zhè jiā fàn diàn de fú wù hěn hǎo, lián zǎo cān dōu zhǔn bèi de fēi cháng fēng fù.", jp: "サービスへの評価", speak: "聽說這家飯店的服務很好，連早餐都準備得非常豐富。" }],
                 explanations: [
-                    { word: "發票", pinyin: "fā piào", meaning: "「レシート、領収書」。" },
-                    { word: "才", pinyin: "cái", meaning: "「〜してはじめて（条件）」。" },
-                    { word: "讓", pinyin: "ràng", meaning: "「（人）に〜させる（使役）」。" }
+                    { word: "聽說", pinyin: "tīng shuō", meaning: "「〜だそうだ、〜と聞いている」。" },
+                    { word: "連...都...", pinyin: "lián... dōu...", meaning: "「〜でさえも」。" },
+                    { word: "豐富", pinyin: "fēng fù", meaning: "「豊富である、品数が多い」。" }
                 ]
             },
             {
                 id: 9,
-                script: [{ speaker: "例句", text: "那個黑色的手機比較便宜，可是白色的比較好看。" }],
+                script: [{ speaker: "例句", text: "你把房間整理得這麼乾淨，媽媽一定會很高興的。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Nà ge hēi sè de shǒu jī bǐ jiào pián yí, kě shì bái sè de bǐ jiào hǎo kàn。<br><strong>日文：</strong>あの黒いスマートフォンの方が安いですが、白い方が見た目が良いです。",
-                vocab: [{ word: "那個黑色的手機比較便宜，可是白色的比較好看。", pinyin: "Nà ge hēi sè de shǒu jī bǐ jiào pián yí, kě shì bái sè de bǐ jiào hǎo kàn.", jp: "あの黒いスマートフォンの方が安いですが、白い方が見た目が良いです。", speak: "那個黑色的手機比較便宜，可是白色的比較好看。" }],
+                meta: "<strong>日文：</strong>行動に対する結果の推測",
+                vocab: [{ word: "你把房間整理得這麼乾淨，媽媽一定會很高興的。", pinyin: "Nǐ bǎ fáng jiān zhěng lǐ de zhè me gān jìng, mā ma yí dìng huì hěn gāo xìng de.", jp: "行動に対する結果の推測", speak: "你把房間整理得這麼乾淨，媽媽一定會很高興的。" }],
                 explanations: [
-                    { word: "比較", pinyin: "bǐ jiào", meaning: "「比較的、〜のほうが」。" },
-                    { word: "可是", pinyin: "kě shì", meaning: "「しかし、でも」。" },
-                    { word: "好看", pinyin: "hǎo kàn", meaning: "「見た目が良い、美しい、（映画などが）面白い」。" }
+                    { word: "把", pinyin: "bǎ", meaning: "「〜を（目的語を動詞の前に置くための前置詞）」。" },
+                    { word: "整理得", pinyin: "zhěng lǐ de", meaning: "「整理した結果が〜である（様態補語）」。" },
+                    { word: "乾淨", pinyin: "gān jìng", meaning: "「清潔である、きれいだ」。" }
                 ]
             },
             {
                 id: 10,
-                script: [{ speaker: "例句", text: "媽媽請我寄一些錢給她，因為她想買新衣服。" }],
+                script: [{ speaker: "例句", text: "他不僅學過中文，連日文也會說一點，真的很厲害。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Māma qǐng wǒ jì yì xiē qián gěi tā, yīn wèi tā xiǎng mǎi xīn yī fú。<br><strong>日文：</strong>母は新しい服を買いたいので、私にお金を少し送るよう頼みました。",
-                vocab: [{ word: "媽媽請我寄一些錢給她，因為她想買新衣服。", pinyin: "Māma qǐng wǒ jì yì xiē qián gěi tā, yīn wèi tā xiǎng mǎi xīn yī fú.", jp: "母は新しい服を買いたいので、私にお金を少し送るよう頼みました。", speak: "媽媽請我寄一些錢給她，因為她想買新衣服。" }],
+                meta: "<strong>日文：</strong>複数の能力を評価",
+                vocab: [{ word: "他不僅學過中文，連日文也會說一點，真的很厲害。", pinyin: "Tā bù jǐn xué guò zhōng wén, lián rì wén yě huì shuō yì diǎn, zhēn de hěn lì hài.", jp: "複数の能力を評価", speak: "他不僅學過中文，連日文也會說一點，真的很厲害。" }],
                 explanations: [
-                    { word: "請", pinyin: "qǐng", meaning: "「（人）に〜するように頼む」。" },
-                    { word: "寄...給...", pinyin: "jì... gěi...", meaning: "「〜を〜に送る、郵送する」。" },
-                    { word: "一些", pinyin: "yì xiē", meaning: "「いくつかの、少しの」。" }
+                    { word: "不僅", pinyin: "bù jǐn", meaning: "「〜だけでなく」。" },
+                    { word: "過", pinyin: "guò", meaning: "「〜したことがある（経験を表す助詞）」。" },
+                    { word: "厲害", pinyin: "lì hài", meaning: "「すごい、優れている」。" }
                 ]
             },
             {
                 id: 11,
-                script: [{ speaker: "例句", text: "你的舊褲子已經很髒了，需要放進洗衣機洗一洗。" }],
+                script: [{ speaker: "例句", text: "我們到車站的時候，最後一班公車已經開走了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Nǐ de jiù kù zi yǐ jīng hěn zāng le, xū yào fàng jìn xǐ yī jī xǐ yi xǐ。<br><strong>日文：</strong>あなたの古いズボンはもうとても汚いので、洗濯機に入れて洗う必要があります。",
-                vocab: [{ word: "你的舊褲子已經很髒了，需要放進洗衣機洗一洗。", pinyin: "Nǐ de jiù kù zi yǐ jīng hěn zāng le, xū yào fàng jìn xǐ yī jī xǐ yi xǐ.", jp: "あなたの古いズボンはもうとても汚いので、洗濯機に入れて洗う必要があります。", speak: "你的舊褲子已經很髒了，需要放進洗衣機洗一洗。" }],
+                meta: "<strong>日文：</strong>予定外の状況",
+                vocab: [{ word: "我們到車站的時候，最後一班公車已經開走了。", pinyin: "Wǒ men dào chē zhàn de shí hòu, zuì hòu yì bān gōng chē yǐ jīng kāi zǒu le.", jp: "予定外の状況", speak: "我們到車站的時候，最後一班公車已經開走了。" }],
                 explanations: [
-                    { word: "舊", pinyin: "jiù", meaning: "「古い（モノに対して使う）」。" },
-                    { word: "髒", pinyin: "zāng", meaning: "「汚い」。" },
-                    { word: "洗一洗", pinyin: "xǐ yi xǐ", meaning: "「ちょっと洗う」。動詞の重ね型（V一V）は動作を軽く行うニュアンス。" }
+                    { word: "...的時候", pinyin: "...de shí hòu", meaning: "「〜する時、〜の頃」。" },
+                    { word: "班", pinyin: "bān", meaning: "「定期便（バス、電車、飛行機など）を数える量詞」。" },
+                    { word: "開走", pinyin: "kāi zǒu", meaning: "「（乗り物が）出発して去る」。" }
                 ]
             },
             {
                 id: 12,
-                script: [{ speaker: "例句", text: "聽說現在學游泳比較便宜，我可以白天去上課。" }],
+                script: [{ speaker: "例句", text: "你如果不舒服，就別勉強自己去參加今天的派對。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Tīng shuō xiàn zài xué yóu yǒng bǐ jiào pián yí, wǒ kě yǐ bái tiān qù shàng kè。<br><strong>日文：</strong>今は水泳を習うのが安いそうなので、私は昼間に授業に行けます。",
-                vocab: [{ word: "聽說現在學游泳比較便宜，我可以白天去上課。", pinyin: "Tīng shuō xiàn zài xué yóu yǒng bǐ jiào pián yí, wǒ kě yǐ bái tiān qù shàng kè.", jp: "今は水泳を習うのが安いそうなので、私は昼間に授業に行けます。", speak: "聽說現在學游泳比較便宜，我可以白天去上課。" }],
+                meta: "<strong>日文：</strong>体調への気遣い",
+                vocab: [{ word: "你如果不舒服，就別勉強自己去參加今天的派對。", pinyin: "Nǐ rú guǒ bù shū fú, jiù bié miǎn qiǎng zì jǐ qù cān jiā jīn tiān de pài duì.", jp: "体調への気遣い", speak: "你如果不舒服，就別勉強自己去參加今天的派對。" }],
                 explanations: [
-                    { word: "聽說", pinyin: "tīng shuō", meaning: "「〜だそうだ、〜と聞いている（伝聞）」。" },
-                    { word: "游泳", pinyin: "yóu yǒng", meaning: "「水泳（をする）」。離合詞。" },
-                    { word: "白天", pinyin: "bái tiān", meaning: "「昼間、日中」。" }
+                    { word: "如果...就...", pinyin: "rú guǒ... jiù...", meaning: "「もし〜なら、その時は〜」。" },
+                    { word: "不舒服", pinyin: "bù shū fú", meaning: "「体調が悪い、気分が優れない」。" },
+                    { word: "勉強", pinyin: "miǎn qiǎng", meaning: "「無理をする、強いる」。" }
                 ]
             },
-
-            // 3. 生活抱怨與溝通
             {
                 id: 13,
-                sectionName: "3. 生活抱怨與溝通（不満とコミュニケーション：問題の所在が問われやすい）",
-                script: [{ speaker: "例句", text: "我總是聽到樓上的腳步聲，有時還聽到大聲講話。" }],
+                script: [{ speaker: "例句", text: "這件襯衫的顏色雖然好看，但穿起來有點太小了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ zǒng shì tīng dào lóu shàng de jiǎo bù shēng, yǒu shí hái tīng dào dà shēng jiǎng huà。<br><strong>日文：</strong>上の階の足音がいつも聞こえ、時々大きな話し声も聞こえます。",
-                vocab: [{ word: "我總是聽到樓上的腳步聲，有時還聽到大聲講話。", pinyin: "Wǒ zǒng shì tīng dào lóu shàng de jiǎo bù shēng, yǒu shí hái tīng dào dà shēng jiǎng huà.", jp: "上の階の足音がいつも聞こえ、時々大きな話し声も聞こえます。", speak: "我總是聽到樓上的腳步聲，有時還聽到大聲講話。" }],
+                meta: "<strong>日文：</strong>購入判断の悩み",
+                vocab: [{ word: "這件襯衫的顏色雖然好看，但穿起來有點太小了。", pinyin: "Zhè jiàn chèn shān de yán sè suī rán hǎo kàn, dàn chuān qǐ lái yǒu diǎn tài xiǎo le.", jp: "購入判断の悩み", speak: "這件襯衫的顏色雖然好看，但穿起來有點太小了。" }],
                 explanations: [
-                    { word: "聽到", pinyin: "tīng dào", meaning: "動詞「聽（聞く）」＋結果補語「到（知覚の到達＝聞こえる）」。" },
-                    { word: "腳步聲", pinyin: "jiǎo bù shēng", meaning: "「足音」。" },
-                    { word: "有時", pinyin: "yǒu shí", meaning: "「時々」。" }
+                    { word: "件", pinyin: "jiàn", meaning: "「服や事柄を数える量詞」。" },
+                    { word: "穿起來", pinyin: "chuān qǐ lái", meaning: "「着てみると（〜のようだ）」。" },
+                    { word: "有點", pinyin: "yǒu diǎn", meaning: "「少し（好ましくないことに使うことが多い）」。" }
                 ]
             },
             {
                 id: 14,
-                script: [{ speaker: "例句", text: "鄰居半夜經常玩樂器，吵得不得了，警察也沒辦法。" }],
+                script: [{ speaker: "例句", text: "因為我們對這裡不熟悉，所以迷路了半個小時。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Lín jū bàn yè jīng cháng wán yuè qì, chǎo de bù dé liǎo, jǐng chá yě méi bàn fǎ。<br><strong>日文：</strong>隣人が夜中によく楽器を弾いてうるさくてたまらず、警察もお手上げです。",
-                vocab: [{ word: "鄰居半夜經常玩樂器，吵得不得了，警察也沒辦法。", pinyin: "Lín jū bàn yè jīng cháng wán yuè qì, chǎo de bù dé liǎo, jǐng chá yě méi bàn fǎ.", jp: "隣人が夜中によく楽器を弾いてうるさくてたまらず、警察もお手上げです。", speak: "鄰居半夜經常玩樂器，吵得不得了，警察也沒辦法。" }],
+                meta: "<strong>日文：</strong>状況の結果",
+                vocab: [{ word: "因為我們對這裡不熟悉，所以迷路了半個小時。", pinyin: "Yīn wèi wǒ men duì zhè lǐ bù shú xī, suǒ yǐ mí lù le bàn ge xiǎo shí.", jp: "状況の結果", speak: "因為我們對這裡不熟悉，所以迷路了半個小時。" }],
                 explanations: [
-                    { word: "鄰居", pinyin: "lín jū", meaning: "「隣人、近所の人」。" },
-                    { word: "半夜", pinyin: "bàn yè", meaning: "「夜中」。" },
-                    { word: "...得不得了", pinyin: "de bù dé liǎo", meaning: "「たまらなく〜だ（程度補語）」。" }
+                    { word: "因為...所以...", pinyin: "yīn wèi... suǒ yǐ...", meaning: "「〜なので、だから〜」。" },
+                    { word: "對...不熟悉", pinyin: "duì... bù shú xī", meaning: "「〜についてよく知らない、不慣れだ」。" },
+                    { word: "迷路", pinyin: "mí lù", meaning: "「道に迷う」。" }
                 ]
             },
             {
                 id: 15,
-                script: [{ speaker: "例句", text: "我們約會你哪一次準時了？每次都說路上車子多。" }],
+                script: [{ speaker: "例句", text: "他一進辦公室就開始工作，連水都沒時間喝。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ men yuē huì nǐ nǎ yí cì zhǔn shí le? Měi cì dōu shuō lù shàng chē zi duō。<br><strong>日文：</strong>私たちのデートであなたはいつ時間通りに来ましたか？毎回道が混んでいたと言いますね。",
-                vocab: [{ word: "我們約會你哪一次準時了？每次都說路上車子多。", pinyin: "Wǒ men yuē huì nǐ nǎ yí cì zhǔn shí le? Měi cì dōu shuō lù shàng chē zi duō.", jp: "私たちのデートであなたはいつ時間通りに来ましたか？毎回道が混んでいたと言いますね。", speak: "我們約會你哪一次準時了？每次都說路上車子多。" }],
+                meta: "<strong>日文：</strong>忙しさの描写",
+                vocab: [{ word: "他一進辦公室就開始工作，連水都沒時間喝。", pinyin: "Tā yì jìn bàn gōng shì jiù kāi shǐ gōng zuò, lián shuǐ dōu méi shí jiān hē.", jp: "忙しさの描写", speak: "他一進辦公室就開始工作，連水都沒時間喝。" }],
                 explanations: [
-                    { word: "約會", pinyin: "yuē huì", meaning: "「デート、待ち合わせ」。" },
-                    { word: "準時", pinyin: "zhǔn shí", meaning: "「時間通りである、定刻に」。" },
-                    { word: "每次", pinyin: "měi cì", meaning: "「毎回、いつも」。" }
+                    { word: "一...就...", pinyin: "yì... jiù...", meaning: "「〜するとすぐに〜」。" },
+                    { word: "辦公室", pinyin: "bàn gōng shì", meaning: "「オフィス、事務所」。" },
+                    { word: "連...都沒...", pinyin: "lián... dōu méi...", meaning: "「〜すらしていない」。" }
                 ]
             },
             {
                 id: 16,
-                script: [{ speaker: "例句", text: "對不起，這一次是我記錯時間了，請你喝杯飲料吧！" }],
+                script: [{ speaker: "例句", text: "你與其買這麼多零食，不如把錢存起來買書。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Duì bù qǐ, zhè yí cì shì wǒ jì cuò shí jiān le, qǐng nǐ hē bēi yǐn liào ba!<br><strong>日文：</strong>ごめんなさい、今回は私が時間を間違えました。飲み物を奢らせてください！",
-                vocab: [{ word: "對不起，這一次是我記錯時間了，請你喝杯飲料吧！", pinyin: "Duì bù qǐ, zhè yí cì shì wǒ jì cuò shí jiān le, qǐng nǐ hē bēi yǐn liào ba!", jp: "ごめんなさい、今回は私が時間を間違えました。飲み物を奢らせてください！", speak: "對不起，這一次是我記錯時間了，請你喝杯飲料吧！" }],
+                meta: "<strong>日文：</strong>無駄遣いへのアドバイス",
+                vocab: [{ word: "你與其買這麼多零食，不如把錢存起來買書。", pinyin: "Nǐ yǔ qí mǎi zhè me duō líng shí, bù rú bǎ qián cún qǐ lái mǎi shū.", jp: "無駄遣いへのアドバイス", speak: "你與其買這麼多零食，不如把錢存起來買書。" }],
                 explanations: [
-                    { word: "這一次", pinyin: "zhè yī cì", meaning: "「今回」。" },
-                    { word: "是...了", pinyin: "shì...le", meaning: "強調構文。" },
-                    { word: "記錯", pinyin: "jì cuò", meaning: "動詞「記（記憶する）」＋結果補語「錯（間違える）」。" }
+                    { word: "與其...不如...", pinyin: "yǔ qí... bù rú...", meaning: "「〜するくらいなら、いっそ〜した方がいい」。" },
+                    { word: "零食", pinyin: "líng shí", meaning: "「おやつ、スナック菓子」。" },
+                    { word: "存起來", pinyin: "cún qǐ lái", meaning: "「（お金や物を）貯めておく、保存する」。" }
                 ]
             },
             {
                 id: 17,
-                script: [{ speaker: "例句", text: "房間太髒了，麻煩你把這些盒子搬到浴室門口。" }],
+                script: [{ speaker: "例句", text: "這間餐廳雖然位置不太好找，但東西確實很好吃。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Fáng jiān tài zāng le, má fán nǐ bǎ zhè xiē hé zi bān dào yù shì mén kǒu。<br><strong>日文：</strong>部屋が汚すぎます、これらの箱をバスルームの入り口まで運んでください。",
-                vocab: [{ word: "房間太髒了，麻煩你把這些盒子搬到浴室門口。", pinyin: "Fáng jiān tài zāng le, má fán nǐ bǎ zhè xiē hé zi bān dào yù shì mén kǒu.", jp: "部屋が汚すぎます、これらの箱をバスルームの入り口まで運んでください。", speak: "房間太髒了，麻煩你把這些盒子搬到浴室門口。" }],
+                meta: "<strong>日文：</strong>場所の欠点と料理の長所",
+                vocab: [{ word: "這間餐廳雖然位置不太好找，但東西確實很好吃。", pinyin: "Zhè jiān cān tíng suī rán wèi zhì bú tài hǎo zhǎo, dàn dōng xi què shí hěn hǎo chī.", jp: "場所の欠点と料理の長所", speak: "這間餐廳雖然位置不太好找，但東西確實很好吃。" }],
                 explanations: [
-                    { word: "麻煩", pinyin: "má fán", meaning: "「面倒をかける、〜をお願いする」。" },
-                    { word: "把...搬到...", pinyin: "bǎ... bān dào...", meaning: "「〜を〜へ運ぶ（把構文）」。" },
-                    { word: "盒子", pinyin: "hé zi", meaning: "「箱」。" }
+                    { word: "間", pinyin: "jiān", meaning: "「部屋や店舗などを数える量詞」。" },
+                    { word: "不好找", pinyin: "bù hǎo zhǎo", meaning: "「見つけにくい」。" },
+                    { word: "確實", pinyin: "què shí", meaning: "「確かに、本当に」。" }
                 ]
             },
-
-            // 4. 醫療與健康
             {
                 id: 18,
-                sectionName: "4. 醫療與健康（医療と健康：アドバイスや原因が問われやすい）",
-                script: [{ speaker: "例句", text: "這麼晚才睡覺對身體很不好，很容易生病。" }],
+                script: [{ speaker: "例句", text: "如果不是因為你提醒我，我真的會忘記今天是你的生日。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zhè me wǎn cái shuì jiào duì shēn tǐ hěn bù hǎo, hěn róng yì shēng bìng。<br><strong>日文：</strong>こんなに遅く寝るのは体によくありませんし、病気になりやすいです。",
-                vocab: [{ word: "這麼晚才睡覺對身體很不好，很容易生病。", pinyin: "Zhè me wǎn cái shuì jiào duì shēn tǐ hěn bù hǎo, hěn róng yì shēng bìng.", jp: "こんなに遅く寝るのは体によくありませんし、病気になりやすいです。", speak: "這麼晚才睡覺對身體很不好，很容易生病。" }],
+                meta: "<strong>日文：</strong>感謝の言葉",
+                vocab: [{ word: "如果不是因為你提醒我，我真的會忘記今天是你的生日。", pinyin: "Rú guǒ bú shì yīn wèi nǐ tí xǐng wǒ, wǒ zhēn de huì wàng jì jīn tiān shì nǐ de shēng rì.", jp: "感謝の言葉", speak: "如果不是因為你提醒我，我真的會忘記今天是你的生日。" }],
                 explanations: [
-                    { word: "這麼", pinyin: "zhè me", meaning: "「こんなに」。" },
-                    { word: "才", pinyin: "cái", meaning: "「（遅いと感じて）〜してやっと、〜してはじめて」。" },
-                    { word: "生病", pinyin: "shēng bìng", meaning: "「病気になる」。" }
+                    { word: "如果不是", pinyin: "rú guǒ bú shì", meaning: "「もし〜でなかったら」。" },
+                    { word: "提醒", pinyin: "tí xǐng", meaning: "「注意を促す、思い出させる」。" },
+                    { word: "忘記", pinyin: "wàng jì", meaning: "「忘れる」。" }
                 ]
             },
             {
                 id: 19,
-                script: [{ speaker: "例句", text: "醫生叫我要常常出去走走、多運動，就會睡得好。" }],
+                script: [{ speaker: "例句", text: "他每次只要一緊張，就會習慣摸自己的鼻子。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Yī shēng jiào wǒ yào cháng cháng chū qù zǒu zǒu, duō yùn dòng, jiù huì shuì de hǎo。<br><strong>日文：</strong>医者は、よく外を歩いて運動すれば、よく眠れるようになると言いました。",
-                vocab: [{ word: "醫生叫我要常常出去走走、多運動，就會睡得好。", pinyin: "Yī shēng jiào wǒ yào cháng cháng chū qù zǒu zǒu, duō yùn dòng, jiù huì shuì de hǎo.", jp: "医者は、よく外を歩いて運動すれば、よく眠れるようになると言いました。", speak: "醫生叫我要常常出去走走、多運動，就會睡得好。" }],
+                meta: "<strong>日文：</strong>癖の指摘",
+                vocab: [{ word: "他每次只要一緊張，就會習慣摸自己的鼻子。", pinyin: "Tā měi cì zhǐ yào yì jǐn zhāng, jiù huì xí guàn mō zì jǐ de bí zi.", jp: "癖の指摘", speak: "他每次只要一緊張，就會習慣摸自己的鼻子。" }],
                 explanations: [
-                    { word: "叫", pinyin: "jiào", meaning: "「（人）に〜させる、〜するように言う（使役）」。" },
-                    { word: "走走", pinyin: "zǒu zou", meaning: "「ちょっと歩く、散歩する（動詞の重ね型）」。" },
-                    { word: "睡得好", pinyin: "shuì de hǎo", meaning: "「よく眠れる（可能補語または様態補語）」。" }
+                    { word: "只要一...就會...", pinyin: "zhǐ yào yì... jiù huì...", meaning: "「〜しさえすれば、すぐに〜する」。" },
+                    { word: "緊張", pinyin: "jǐn zhāng", meaning: "「緊張する」。" },
+                    { word: "習慣", pinyin: "xí guàn", meaning: "「習慣的に〜する、癖で〜する」。" }
                 ]
             },
             {
                 id: 20,
-                script: [{ speaker: "例句", text: "最近天氣變冷了，出門要多穿一件衣服才不會感冒。" }],
+                script: [{ speaker: "例句", text: "就算工作再忙，也要記得每天補充水分。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zuì jìn tiān qì biàn lěng le, chū mén yào duō chuān yí jiàn yī fú cái bú huì gǎn mào。<br><strong>日文：</strong>最近寒くなってきたので、風邪をひかないように出かける時は服を一枚多く着てください。",
-                vocab: [{ word: "最近天氣變冷了，出門要多穿一件衣服才不會感冒。", pinyin: "Zuì jìn tiān qì biàn lěng le, chū mén yào duō chuān yí jiàn yī fú cái bú huì gǎn mào.", jp: "最近寒くなってきたので、風邪をひかないように出かける時は服を一枚多く着てください。", speak: "最近天氣變冷了，出門要多穿一件衣服才不會感冒。" }],
+                meta: "<strong>日文：</strong>健康維持のアドバイス",
+                vocab: [{ word: "就算工作再忙，也要記得每天補充水分。", pinyin: "Jiù suàn gōng zuò zài máng, yě yào jì de měi tiān bǔ chōng shuǐ fèn.", jp: "健康維持のアドバイス", speak: "就算工作再忙，也要記得每天補充水分。" }],
                 explanations: [
-                    { word: "變冷", pinyin: "biàn lěng", meaning: "「寒くなる」。" },
-                    { word: "出門", pinyin: "chū mén", meaning: "「外出する、家を出る」。" },
-                    { word: "感冒", pinyin: "gǎn mào", meaning: "「風邪を引く」。" }
+                    { word: "就算...也...", pinyin: "jiù suàn... yě...", meaning: "「たとえ〜でも」。" },
+                    { word: "再忙", pinyin: "zài máng", meaning: "「どんなに忙しくても（再＋形容詞）」。" },
+                    { word: "記得", pinyin: "jì de", meaning: "「覚えている、忘れずに〜する」。" }
                 ]
             },
             {
                 id: 21,
-                script: [{ speaker: "例句", text: "你如果不喜歡排隊，可以先在家裡使用網路掛號。" }],
+                script: [{ speaker: "例句", text: "這份禮物是我花了很多時間才挑到的，希望你喜歡。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Nǐ rú guǒ bù xǐ huān pái duì, kě yǐ xiān zài jiā lǐ shǐ yòng wǎng lù guà hào。<br><strong>日文：</strong>もし並ぶのが好きではないなら、先に家でネット予約（診察受付）ができます。",
-                vocab: [{ word: "你如果不喜歡排隊，可以先在家裡使用網路掛號。", pinyin: "Nǐ rú guǒ bù xǐ huān pái duì, kě yǐ xiān zài jiā lǐ shǐ yòng wǎng lù guà hào.", jp: "もし並ぶのが好きではないなら、先に家でネット予約（診察受付）ができます。", speak: "你如果不喜歡排隊，可以先在家裡使用網路掛號。" }],
+                meta: "<strong>日文：</strong>真心のアピール",
+                vocab: [{ word: "這份禮物是我花了很多時間才挑到的，希望你喜歡。", pinyin: "Zhè fèn lǐ wù shì wǒ huā le hěn duō shí jiān cái tiāo dào de, xī wàng nǐ xǐ huān.", jp: "真心のアピール", speak: "這份禮物是我花了很多時間才挑到的，希望你喜歡。" }],
                 explanations: [
-                    { word: "如果", pinyin: "rú guǒ", meaning: "「もし〜なら」。" },
-                    { word: "排隊", pinyin: "pái duì", meaning: "「列に並ぶ」。" },
-                    { word: "網路掛號", pinyin: "wǎng lù guà hào", meaning: "「インターネットでの病院予約（受付）」。" }
+                    { word: "是...的", pinyin: "shì... de", meaning: "「（過去の事柄の手段や時間を）強調する表現」。" },
+                    { word: "才", pinyin: "cái", meaning: "「やっと、ようやく」。" },
+                    { word: "挑到", pinyin: "tiāo dào", meaning: "「選び出す（『到』は目的達成の結果補語）」。" }
                 ]
             },
             {
                 id: 22,
-                script: [{ speaker: "例句", text: "春天來的時候，很多人的鼻子都會覺得不太舒服。" }],
+                script: [{ speaker: "例句", text: "你剛才說的那個問題，我覺得我們還是再討論一下。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Chūn tiān lái de shí hòu, hěn duō rén de bí zi dōu huì jué de bú tài shū fú。<br><strong>日文：</strong>春が来ると、多くの人の鼻が少し調子悪く感じます。",
-                vocab: [{ word: "春天來的時候，很多人的鼻子都會覺得不太舒服。", pinyin: "Chūn tiān lái de shí hòu, hěn duō rén de bí zi dōu huì jué de bú tài shū fú.", jp: "春が来ると、多くの人の鼻が少し調子悪く感じます。", speak: "春天來的時候，很多人的鼻子都會覺得不太舒服。" }],
+                meta: "<strong>日文：</strong>再検討の提案",
+                vocab: [{ word: "你剛才說的那個問題，我覺得我們還是再討論一下。", pinyin: "Nǐ gāng cái shuō de nà ge wèn tí, wǒ jué de wǒ men hái shì zài tǎo lùn yí xià.", jp: "再検討の提案", speak: "你剛才說的那個問題，我覺得我們還是再討論一下。" }],
                 explanations: [
-                    { word: "...的時候", pinyin: "...de shí hòu", meaning: "「〜の時」。" },
-                    { word: "鼻子", pinyin: "bí zi", meaning: "「鼻」。" },
-                    { word: "舒服", pinyin: "shū fú", meaning: "「気分がよい、快適だ（否定で体調不良を表す）」。" }
+                    { word: "剛才", pinyin: "gāng cái", meaning: "「たった今、さっき」。" },
+                    { word: "還是", pinyin: "hái shì", meaning: "「やはり〜したほうがよい（提案）」。" },
+                    { word: "一下", pinyin: "yí xià", meaning: "「ちょっと〜する（動作の短さや気軽さ）」。" }
                 ]
             },
-
-            // 5. 休閒與旅行
             {
                 id: 23,
-                sectionName: "5. 休閒與旅行（レジャーと旅行：スケジュールや場所の特定が問われやすい）",
-                script: [{ speaker: "例句", text: "上個禮拜的旅行還不錯，交通方便，風景也很漂亮。" }],
+                script: [{ speaker: "例句", text: "小朋友在圖書館裡跑來跑去，真是太危險了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Shàng ge lǐ bái de lǚ xíng hái bú cuò, jiāo tōng fāng biàn, fēng jǐng yě hěn piào liàng。<br><strong>日文：</strong>先週の旅行はなかなか良かったです。交通も便利で、風景もとても綺麗でした。",
-                vocab: [{ word: "上個禮拜的旅行還不錯，交通方便，風景也很漂亮。", pinyin: "Shàng ge lǐ bái de lǚ xíng hái bú cuò, jiāo tōng fāng biàn, fēng jǐng yě hěn piào liàng.", jp: "先週の旅行はなかなか良かったです。交通も便利で、風景もとても綺麗でした。", speak: "上個禮拜的旅行還不錯，交通方便，風景也很漂亮。" }],
+                meta: "<strong>日文：</strong>公共マナーへの注意",
+                vocab: [{ word: "小朋友在圖書館裡跑來跑去，真是太危險了。", pinyin: "Xiǎo péng yǒu zài tú shū guǎn lǐ pǎo lái pǎo qù, zhēn shì tài wéi xiǎn le.", jp: "公共マナーへの注意", speak: "小朋友在圖書館裡跑來跑去，真是太危險了。" }],
                 explanations: [
-                    { word: "上個禮拜", pinyin: "shàng ge lǐ bái", meaning: "「先週」。" },
-                    { word: "還不錯", pinyin: "hái bú cuò", meaning: "「まあまあ良い、悪くない」。" },
-                    { word: "方便", pinyin: "fāng biàn", meaning: "「便利だ」。" }
+                    { word: "...來...去", pinyin: "...lái... qù", meaning: "「〜したり〜したりする（反復・往復）」。" },
+                    { word: "跑來跑去", pinyin: "pǎo lái pǎo qù", meaning: "「走り回る」。" },
+                    { word: "真是太...了", pinyin: "zhēn shì tài... le", meaning: "「本当に〜すぎる」。" }
                 ]
             },
             {
                 id: 24,
-                script: [{ speaker: "例句", text: "我回國的時候，不小心把錢包掉在旅館裡了。" }],
+                script: [{ speaker: "例句", text: "你與其擔心未來，不如先做好今天該做的事。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ huí guó de shí hòu, bù xiǎo xīn bǎ qián bāo diào zài lǚ guǎn lǐ le。<br><strong>日文：</strong>帰国する時、うっかり財布を旅館に落としてしまいました。",
-                vocab: [{ word: "我回國的時候，不小心把錢包掉在旅館裡了。", pinyin: "Wǒ huí guó de shí hòu, bù xiǎo xīn bǎ qián bāo diào zài lǚ guǎn lǐ le.", jp: "帰国する時、うっかり財布を旅館に落としてしまいました。", speak: "我回國的時候，不小心把錢包掉在旅館裡了。" }],
+                meta: "<strong>日文：</strong>心構えのアドバイス",
+                vocab: [{ word: "你與其擔心未來，不如先做好今天該做的事。", pinyin: "Nǐ yǔ qí dān xīn wèi lái, bù rú xiān zuò hǎo jīn tiān gāi zuò de shì.", jp: "心構えのアドバイス", speak: "你與其擔心未來，不如先做好今天該做的事。" }],
                 explanations: [
-                    { word: "不小心", pinyin: "bù xiǎo xīn", meaning: "「うっかり、不注意で」。" },
-                    { word: "把...掉在...", pinyin: "bǎ... diào zài...", meaning: "「〜を〜に落とす（把構文）」。" },
-                    { word: "錢包", pinyin: "qián bāo", meaning: "「財布」。" }
+                    { word: "與其...不如...", pinyin: "yǔ qí... bù rú...", meaning: "「〜するよりは〜した方がいい」。" },
+                    { word: "擔心", pinyin: "dān xīn", meaning: "「心配する」。" },
+                    { word: "該", pinyin: "gāi", meaning: "「（当然）〜すべきだ」。" }
                 ]
             },
             {
                 id: 25,
-                script: [{ speaker: "例句", text: "夏天到了，我們明天穿短褲去海邊的沙灘打球吧！" }],
+                script: [{ speaker: "例句", text: "這個計畫雖然看起來不錯，但實行起來可能很難。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Xià tiān dào le, wǒ men míng tiān chuān duǎn kù qù hǎi biān de shā tān dǎ qiú ba!<br><strong>日文：</strong>夏が来ました、明日は半ズボンを履いて海辺の砂浜へ球技をしに行きましょう！",
-                vocab: [{ word: "夏天到了，我們明天穿短褲去海邊的沙灘打球吧！", pinyin: "Xià tiān dào le, wǒ men míng tiān chuān duǎn kù qù hǎi biān de shā tān dǎ qiú ba!", jp: "夏が来ました、明日は半ズボンを履いて海辺の砂浜へ球技をしに行きましょう！", speak: "夏天到了，我們明天穿短褲去海邊的沙灘打球吧！" }],
+                meta: "<strong>日文：</strong>実現可能性への懸念",
+                vocab: [{ word: "這個計畫雖然看起來不錯，但實行起來可能很難。", pinyin: "Zhè ge jì huà suī rán kàn qǐ lái bú cuò, dàn shí xíng qǐ lái kě néng hěn nán.", jp: "実現可能性への懸念", speak: "這個計畫雖然看起來不錯，但實行起來可能很難。" }],
                 explanations: [
-                    { word: "夏天", pinyin: "xià tiān", meaning: "「夏」。" },
-                    { word: "短褲", pinyin: "duǎn kù", meaning: "「半ズボン、ショートパンツ」。" },
-                    { word: "沙灘", pinyin: "shā tān", meaning: "「砂浜、ビーチ」。" }
+                    { word: "計畫", pinyin: "jì huà", meaning: "「計画」。" },
+                    { word: "看起來", pinyin: "kàn qǐ lái", meaning: "「見たところ〜だ」。" },
+                    { word: "實行起來", pinyin: "shí xíng qǐ lái", meaning: "「実行してみると」。" }
                 ]
             },
             {
                 id: 26,
-                script: [{ speaker: "例句", text: "晚上這附近有一個市場，有很多好吃的，非常熱鬧。" }],
+                script: [{ speaker: "例句", text: "如果下大雨的話，我們就把野餐改到室內進行。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǎn shàng zhè fù jìn yǒu yí ge shì chǎng, yǒu hěn duō hǎo chī de, fēi cháng rè nào。<br><strong>日文：</strong>夜はこの近くに市場があり、美味しいものがたくさんあってとても賑やかです。",
-                vocab: [{ word: "晚上這附近有一個市場，有很多好吃的，非常熱鬧。", pinyin: "Wǎn shàng zhè fù jìn yǒu yí ge shì chǎng, yǒu hěn duō hǎo chī de, fēi cháng rè nào.", jp: "夜はこの近くに市場があり、美味しいものがたくさんあってとても賑やかです。", speak: "晚上這附近有一個市場，有很多好吃的，非常熱鬧。" }],
+                meta: "<strong>日文：</strong>代替案の提示",
+                vocab: [{ word: "如果下大雨的話，我們就把野餐改到室內進行。", pinyin: "Rú guǒ xià dà yǔ de huà, wǒ men jiù bǎ yě cān gǎi dào shì nèi jìn xíng.", jp: "代替案の提示", speak: "如果下大雨的話，我們就把野餐改到室內進行。" }],
                 explanations: [
-                    { word: "附近", pinyin: "fù jìn", meaning: "「近く、近所」。" },
-                    { word: "市場", pinyin: "shì chǎng", meaning: "「市場（夜市など）」。" },
-                    { word: "熱鬧", pinyin: "rè nào", meaning: "「賑やかだ、活気がある」。" }
+                    { word: "...的話", pinyin: "...de huà", meaning: "「〜ならば」。" },
+                    { word: "把", pinyin: "bǎ", meaning: "「〜を（処置を表す）」。" },
+                    { word: "改到", pinyin: "gǎi dào", meaning: "「〜へ変更する」。" }
                 ]
             },
             {
                 id: 27,
-                script: [{ speaker: "例句", text: "你可以坐車去參觀世界最高的大樓，看晚上的風景。" }],
+                script: [{ speaker: "例句", text: "他不但沒有道歉，還說這件事跟他一點關係都沒有。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Nǐ kě yǐ zuò chē qù cān guān shì jiè zuì gāo de dà lóu, kàn wǎn shàng de fēng jǐng。<br><strong>日文：</strong>車に乗って世界で最も高いビルを見学しに行き、夜の景色を見ることができます。",
-                vocab: [{ word: "你可以坐車去參觀世界最高的大樓，看晚上的風景。", pinyin: "Nǐ kě yǐ zuò chē qù cān guān shì jiè zuì gāo de dà lóu, kàn wǎn shàng de fēng jǐng.", jp: "車に乗って世界で最も高いビルを見学しに行き、夜の景色を見ることができます。", speak: "你可以坐車去參觀世界最高的大樓，看晚上的風景。" }],
+                meta: "<strong>日文：</strong>相手の態度への不満",
+                vocab: [{ word: "他不但沒有道歉，還說這件事跟他一點關係都沒有。", pinyin: "Tā bú dàn méi yǒu dào qiān, hái shuō zhè jiàn shì gēn tā yì diǎn guān xì dōu méi yǒu.", jp: "相手の態度への不満", speak: "他不但沒有道歉，還說這件事跟他一點關係都沒有。" }],
                 explanations: [
-                    { word: "參觀", pinyin: "cān guān", meaning: "「見学する、観光する」。" },
-                    { word: "大樓", pinyin: "dà lóu", meaning: "「ビル、高い建物」。" },
-                    { word: "風景", pinyin: "fēng jǐng", meaning: "「風景、景色」。" }
+                    { word: "不但沒有...還...", pinyin: "bú dàn méi yǒu... hái...", meaning: "「〜しないだけでなく、さらに〜」。" },
+                    { word: "道歉", pinyin: "dào qiān", meaning: "「謝る」。" },
+                    { word: "一點...也沒有", pinyin: "yì diǎn... yě méi yǒu", meaning: "「少しも〜ない」。" }
                 ]
             },
             {
                 id: 28,
-                script: [{ speaker: "例句", text: "星期六我打算去爬山，大概下午一點出發。" }],
+                script: [{ speaker: "例句", text: "這條路平常沒什麼車，沒想到今天竟然塞車了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Xīng qí liù wǒ dǎ suàn qù pá shān, dà gài xià wǔ yì diǎn chū fā。<br><strong>日文：</strong>土曜日は山登りに行くつもりで、だいたい午後1時に出発します。",
-                vocab: [{ word: "星期六我打算去爬山，大概下午一點出發。", pinyin: "Xīng qí liù wǒ dǎ suàn qù pá shān, dà gài xià wǔ yì diǎn chū fā.", jp: "土曜日は山登りに行くつもりで、だいたい午後1時に出発します。", speak: "星期六我打算去爬山，大概下午一點出發。" }],
+                meta: "<strong>日文：</strong>予期せぬ混雑",
+                vocab: [{ word: "這條路平常沒什麼車，沒想到今天竟然塞車了。", pinyin: "Zhè tiáo lù píng cháng méi shén me chē, méi xiǎng dào jīn tiān jìng rán sāi chē le.", jp: "予期せぬ混雑", speak: "這條路平常沒什麼車，沒想到今天竟然塞車了。" }],
                 explanations: [
-                    { word: "打算", pinyin: "dǎ suàn", meaning: "「〜するつもりだ、予定だ」。" },
-                    { word: "爬山", pinyin: "pá shān", meaning: "「山登りをする」。" },
-                    { word: "大概", pinyin: "dà gài", meaning: "「だいたい、およそ」。" }
+                    { word: "平常", pinyin: "píng cháng", meaning: "「普段、いつもは」。" },
+                    { word: "沒想到", pinyin: "méi xiǎng dào", meaning: "「思いがけず、予想外にも」。" },
+                    { word: "竟然", pinyin: "jìng rán", meaning: "「なんと、意外にも」。" }
                 ]
             },
             {
                 id: 29,
-                script: [{ speaker: "例句", text: "以前這裡是漂亮的風景，現在到處都是人，有點吵。" }],
+                script: [{ speaker: "例句", text: "你若是有不懂的地方，隨時都可以過來問我。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Yǐ qián zhè lǐ shì piào liàng de fēng jǐng, xiàn zài dào chù dōu shì rén, yǒu diǎn chǎo。<br><strong>日文：</strong>以前ここは綺麗な風景でしたが、今は至る所に人がいて少しうるさいです。",
-                vocab: [{ word: "以前這裡是漂亮的風景，現在到處都是人，有點吵。", pinyin: "Yǐ qián zhè lǐ shì piào liàng de fēng jǐng, xiàn zài dào chù dōu shì rén, yǒu diǎn chǎo.", jp: "以前ここは綺麗な風景でしたが、今は至る所に人がいて少しうるさいです。", speak: "以前這裡是漂亮的風景，現在到處都是人，有點吵。" }],
+                meta: "<strong>日文：</strong>サポートの申し出",
+                vocab: [{ word: "你若是有不懂的地方，隨時都可以過來問我。", pinyin: "Nǐ ruò shì yǒu bù dǒng de dì fāng, suí shí dōu kě yǐ guò lái wèn wǒ.", jp: "サポートの申し出", speak: "你若是有不懂的地方，隨時都可以過來問我。" }],
                 explanations: [
-                    { word: "以前", pinyin: "yǐ qián", meaning: "「以前、昔」。" },
-                    { word: "到處", pinyin: "dào chù", meaning: "「至る所、どこもかしこも」。" },
-                    { word: "吵", pinyin: "chǎo", meaning: "「うるさい、やかましい」。" }
+                    { word: "若是", pinyin: "ruò shì", meaning: "「もし〜ならば（如果と同じ）」。" },
+                    { word: "隨時", pinyin: "suí shí", meaning: "「いつでも」。" },
+                    { word: "過來", pinyin: "guò lái", meaning: "「（こちらへ）やって来る」。" }
                 ]
             },
             {
                 id: 30,
-                script: [{ speaker: "例句", text: "十點二十分的火車早就開了，下一班還要等二十分鐘。" }],
+                script: [{ speaker: "例句", text: "我已經把報告交給老師了，現在總算可以休息一下。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Shí diǎn èr shí fēn de huǒ chē zǎo jiù kāi le, xià yì bān hái yào děng èr shí fēn zhōng。<br><strong>日文：</strong>10時20分の電車はとっくに出発しました。次の便はまだ20分待たなければなりません。",
-                vocab: [{ word: "十點二十分的火車早就開了，下一班還要等二十分鐘。", pinyin: "Shí diǎn èr shí fēn de huǒ chē zǎo jiù kāi le, xià yì bān hái yào děng èr shí fēn zhōng.", jp: "10時20分の電車はとっくに出発しました。次の便はまだ20分待たなければなりません。", speak: "十點二十分的火車早就開了，下一班還要等二十分鐘。" }],
+                meta: "<strong>日文：</strong>作業完了の安堵",
+                vocab: [{ word: "我已經把報告交給老師了，現在總算可以休息一下。", pinyin: "Wǒ yǐ jīng bǎ bào gào jiāo gěi lǎo shī le, xiàn zài zǒng suàn kě yǐ xiū xí yí xià.", jp: "作業完了の安堵", speak: "我已經把報告交給老師了，現在總算可以休息一下。" }],
                 explanations: [
-                    { word: "早就...了", pinyin: "zǎo jiù...le", meaning: "「とっくに〜した」。" },
-                    { word: "開", pinyin: "kāi", meaning: "「（乗り物が）出発する、発車する」。" },
-                    { word: "下一班", pinyin: "xià yì bān", meaning: "「次の便（バスや電車など）」。" }
+                    { word: "交給", pinyin: "jiāo gěi", meaning: "「〜に提出する、渡す」。" },
+                    { word: "總算", pinyin: "zǒng suàn", meaning: "「ようやく、どうにか」。" },
+                    { word: "休息", pinyin: "xiū xí", meaning: "「休む」。" }
                 ]
             },
-
-            // 6. 學習與校園
             {
                 id: 31,
-                sectionName: "6. 學習與校園（学習と学校：心配事や手段が問われやすい）",
-                script: [{ speaker: "例句", text: "我每次考完試就會這樣，總是很擔心自己沒考好。" }],
+                script: [{ speaker: "例句", text: "雖然這雙鞋子打折了，但對我來說還是太貴了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ měi cì kǎo wán shì jiù huì zhè yàng, zǒng shì hěn dān xīn zì jǐ méi kǎo hǎo。<br><strong>日文：</strong>私は毎回テストが終わるとこうなります、いつも自分がうまくできなかったと心配するのです。",
-                vocab: [{ word: "我每次考完試就會這樣，總是很擔心自己沒考好。", pinyin: "Wǒ měi cì kǎo wán shì jiù huì zhè yàng, zǒng shì hěn dān xīn zì jǐ méi kǎo hǎo.", jp: "私は毎回テストが終わるとこうなります、いつも自分がうまくできなかったと心配するのです。", speak: "我每次考完試就會這樣，總是很擔心自己沒考好。" }],
+                meta: "<strong>日文：</strong>価格に対する感覚",
+                vocab: [{ word: "雖然這雙鞋子打折了，但對我來說還是太貴了。", pinyin: "Suī rán zhè shuāng xié zi dǎ zhé le, dàn duì wǒ lái shuō hái shì tài guì le.", jp: "価格に対する感覚", speak: "雖然這雙鞋子打折了，但對我來說還是太貴了。" }],
                 explanations: [
-                    { word: "考完", pinyin: "kǎo wán", meaning: "「試験を受け終わる」。動詞＋結果補語。" },
-                    { word: "擔心", pinyin: "dān xīn", meaning: "「心配する」。" },
-                    { word: "沒考好", pinyin: "méi kǎo hǎo", meaning: "「うまく試験ができなかった」。動詞＋結果補語の否定形。" }
+                    { word: "雙", pinyin: "shuāng", meaning: "「ペアのもの（靴や箸など）を数える量詞」。" },
+                    { word: "打折", pinyin: "dǎ zhé", meaning: "「割引する」。" },
+                    { word: "對...來說", pinyin: "duì... lái shuō", meaning: "「〜にとって」。" }
                 ]
             },
             {
                 id: 32,
-                script: [{ speaker: "例句", text: "明年我想讀管理學院，所以媽媽在幫我了解學費。" }],
+                script: [{ speaker: "例句", text: "既然大家都同意這個方案，那我們明天就開始進行。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Míng nián wǒ xiǎng dú guǎn lǐ xué yuàn, suǒ yǐ māma zài bāng wǒ liǎo jiě xué fèi。<br><strong>日文：</strong>来年は管理学部で学びたいので、母が学費について調べるのを手伝ってくれています。",
-                vocab: [{ word: "明年我想讀管理學院，所以媽媽在幫我了解學費。", pinyin: "Míng nián wǒ xiǎng dú guǎn lǐ xué yuàn, suǒ yǐ māma zài bāng wǒ liǎo jiě xué fèi.", jp: "来年は管理学部で学びたいので、母が学費について調べるのを手伝ってくれています。", speak: "明年我想讀管理學院，所以媽媽在幫我了解學費。" }],
+                meta: "<strong>日文：</strong>合意に基づく開始",
+                vocab: [{ word: "既然大家都同意這個方案，那我們明天就開始進行。", pinyin: "Jì rán dà jiā dōu tóng yì zhè ge fāng àn, nà wǒ men míng tiān jiù kāi shǐ jìn xíng.", jp: "合意に基づく開始", speak: "既然大家都同意這個方案，那我們明天就開始進行。" }],
                 explanations: [
-                    { word: "讀", pinyin: "dú", meaning: "「（学校などで）学ぶ、専攻する」。" },
-                    { word: "學院", pinyin: "xué yuàn", meaning: "「学部、カレッジ」。" },
-                    { word: "學費", pinyin: "xué fèi", meaning: "「学費」。" }
+                    { word: "既然...那...", pinyin: "jì rán... nà...", meaning: "「〜である以上、それなら〜」。" },
+                    { word: "同意", pinyin: "tóng yì", meaning: "「賛成する、同意する」。" },
+                    { word: "方案", pinyin: "fāng àn", meaning: "「案、プラン」。" }
                 ]
             },
             {
                 id: 33,
-                script: [{ speaker: "例句", text: "老師的課很無聊，害我不及格，下學期還得重修。" }],
+                script: [{ speaker: "例句", text: "你連這麼簡單的數學題都不會，怎麼去應付考試？" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Lǎo shī de kè hěn wú liáo, hài wǒ bù jí gé, xià xué qí hái děi chóng xiū。<br><strong>日文：</strong>先生の授業はとても退屈で、そのせいで不合格になり、来学期また再履修しなければなりません。",
-                vocab: [{ word: "老師的課很無聊，害我不及格，下學期還得重修。", pinyin: "Lǎo shī de kè hěn wú liáo, hài wǒ bù jí gé, xià xué qí hái děi chóng xiū.", jp: "先生の授業はとても退屈で、そのせいで不合格になり、来学期また再履修しなければなりません。", speak: "老師的課很無聊，害我不及格，下學期還得重修。" }],
+                meta: "<strong>日文：</strong>準備不足の指摘",
+                vocab: [{ word: "你連這麼簡單的數學題都不會，怎麼去應付考試？", pinyin: "Nǐ lián zhè me jiǎn dān de shù xué tí dōu bú huì, zěn me qù yìng fù kǎo shì?", jp: "準備不足の指摘", speak: "你連這麼簡單的數學題都不會，怎麼去應付考試？" }],
                 explanations: [
-                    { word: "無聊", pinyin: "wú liáo", meaning: "「つまらない、退屈だ」。" },
-                    { word: "害", pinyin: "hài", meaning: "「〜のせいで（悪い結果に）なる」。" },
-                    { word: "不及格 / 重修", pinyin: "bù jí gé / chóng xiū", meaning: "「不合格になる / 再履修する」。" }
+                    { word: "連...都...", pinyin: "lián... dōu...", meaning: "「〜でさえも〜」。" },
+                    { word: "怎麼", pinyin: "zěn me", meaning: "「どうやって（反語的に難しさを表す）」。" },
+                    { word: "應付", pinyin: "yìng fù", meaning: "「対処する、対応する」。" }
                 ]
             },
             {
                 id: 34,
-                script: [{ speaker: "例句", text: "這門課的學期報告真的不容易，你可以先找老師討論。" }],
+                script: [{ speaker: "例句", text: "他為了能早點回家，今天連午飯都沒吃就開始趕工。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zhè mén kè de xué qí bào gào zhēn de bù róng yì, nǐ kě yǐ xiān zhǎo lǎo shī tǎo lùn。<br><strong>日文：</strong>この授業の期末レポートは本当に簡単ではないので、先に先生に相談するといいですよ。",
-                vocab: [{ word: "這門課的學期報告真的不容易，你可以先找老師討論。", pinyin: "Zhè mén kè de xué qí bào gào zhēn de bù róng yì, nǐ kě yǐ xiān zhǎo lǎo shī tǎo lùn.", jp: "この授業の期末レポートは本当に簡単ではないので、先に先生に相談するといいですよ。", speak: "這門課的學期報告真的不容易，你可以先找老師討論。" }],
+                meta: "<strong>日文：</strong>行動の目的",
+                vocab: [{ word: "他為了能早點回家，今天連午飯都沒吃就開始趕工。", pinyin: "Tā wèi le néng zǎo diǎn huí jiā, jīn tiān lián wǔ fàn dōu méi chī jiù kāi shǐ gǎn gōng.", jp: "行動の目的", speak: "他為了能早點回家，今天連午飯都沒吃就開始趕工。" }],
                 explanations: [
-                    { word: "報告", pinyin: "bào gào", meaning: "「レポート、発表」。" },
-                    { word: "不容易", pinyin: "bù róng yì", meaning: "「簡単ではない、難しい」。" },
-                    { word: "討論", pinyin: "tǎo lùn", meaning: "「話し合う、相談する」。" }
+                    { word: "為了", pinyin: "wèi le", meaning: "「〜のために」。" },
+                    { word: "趕工", pinyin: "gǎn gōng", meaning: "「急いで仕事（作業）をする」。" },
+                    { word: "就", pinyin: "jiù", meaning: "「（〜すると）すぐに」。" }
                 ]
             },
             {
                 id: 35,
-                script: [{ speaker: "例句", text: "王老師上課用的那本書，兩個禮拜前已經被借走了。" }],
+                script: [{ speaker: "例句", text: "雖然這部電影評價不高，但我覺得劇情其實很感人。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wáng lǎo shī shàng kè yòng de nà běn shū, liǎng ge lǐ bái qián yǐ jīng bèi jiè zǒu le。<br><strong>日文：</strong>王先生が授業で使うあの本は、2週間前にすでに借りられてしまいました。",
-                vocab: [{ word: "王老師上課用的那本書，兩個禮拜前已經被借走了。", pinyin: "Wáng lǎo shī shàng kè yòng de nà běn shū, liǎng ge lǐ bái qián yǐ jīng bèi jiè zǒu le.", jp: "王先生が授業で使うあの本は、2週間前にすでに借りられてしまいました。", speak: "王老師上課用的那本書，兩個禮拜前已經被借走了。" }],
+                meta: "<strong>日文：</strong>個人的感想",
+                vocab: [{ word: "雖然這部電影評價不高，但我覺得劇情其實很感人。", pinyin: "Suī rán zhè bù diàn yǐng píng jià bù gāo, dàn wǒ jué de jù qíng qí shí hěn gǎn rén.", jp: "個人的感想", speak: "雖然這部電影評價不高，但我覺得劇情其實很感人。" }],
                 explanations: [
-                    { word: "已經", pinyin: "yǐ jīng", meaning: "「すでに、もう」。" },
-                    { word: "被", pinyin: "bèi", meaning: "「〜される（受身構文）」。" },
-                    { word: "借走", pinyin: "jiè zǒu", meaning: "「借りていかれる」。動詞＋方向補語。" }
+                    { word: "部", pinyin: "bù", meaning: "「映画や本などを数える量詞」。" },
+                    { word: "其實", pinyin: "qí shí", meaning: "「実は、本当は」。" },
+                    { word: "感人", pinyin: "gǎn rén", meaning: "「人を感動させる、感動的である」。" }
                 ]
             },
             {
                 id: 36,
-                script: [{ speaker: "例句", text: "如果圖書館沒有這本書，你只能去學校的書店買了。" }],
+                script: [{ speaker: "例句", text: "我們得趕在五點以前把信寄出去，不然會來不及。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Rú guǒ tú shū guǎn méi yǒu zhè běn shū, nǐ zhǐ néng qù xué xiào de shū diàn mǎi le。<br><strong>日文：</strong>もし図書館にこの本がなければ、学校の書店へ買いに行くしかありません。",
-                vocab: [{ word: "如果圖書館沒有這本書，你只能去學校的書店買了。", pinyin: "Rú guǒ tú shū guǎn méi yǒu zhè běn shū, nǐ zhǐ néng qù xué xiào de shū diàn mǎi le.", jp: "もし図書館にこの本がなければ、学校の書店へ買いに行くしかありません。", speak: "如果圖書館沒有這本書，你只能去學校的書店買了。" }],
+                meta: "<strong>日文：</strong>期限と焦り",
+                vocab: [{ word: "我們得趕在五點以前把信寄出去，不然會來不及。", pinyin: "Wǒ men děi gǎn zài wǔ diǎn yǐ qián bǎ xìn jì chū qù, bù rán huì lái bù jí.", jp: "期限と焦り", speak: "我們得趕在五點以前把信寄出去，不然會來不及。" }],
                 explanations: [
-                    { word: "圖書館", pinyin: "tú shū guǎn", meaning: "「図書館」。" },
-                    { word: "只能", pinyin: "zhǐ néng", meaning: "「〜するしかない」。" },
-                    { word: "書店", pinyin: "shū diàn", meaning: "「書店、本屋」。" }
+                    { word: "得", pinyin: "děi", meaning: "「〜しなければならない」。" },
+                    { word: "不然", pinyin: "bù rán", meaning: "「そうでないと」。" },
+                    { word: "來不及", pinyin: "lái bù jí", meaning: "「間に合わない」。" }
                 ]
             },
             {
                 id: 37,
-                script: [{ speaker: "例句", text: "明天我們要上網查資料，所以要去圖書館樓上的電腦教室。" }],
+                script: [{ speaker: "例句", text: "他雖然長得很年輕，但說話方式卻很老練。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Míng tiān wǒ men yào shàng wǎng chá zī liào, suǒ yǐ yào qù tú shū guǎn lóu shàng de diàn nǎo jiào shì。<br><strong>日文：</strong>明日はネットで資料を調べるので、図書館の上の階のパソコン教室に行かなければなりません。",
-                vocab: [{ word: "明天我們要上網查資料，所以要去圖書館樓上的電腦教室。", pinyin: "Míng tiān wǒ men yào shàng wǎng chá zī liào, suǒ yǐ yào qù tú shū guǎn lóu shàng de diàn nǎo jiào shì.", jp: "明日はネットで資料を調べるので、図書館の上の階のパソコン教室に行かなければなりません。", speak: "明天我們要上網查資料，所以要去圖書館樓上的電腦教室。" }],
+                meta: "<strong>日文：</strong>見た目と中身のギャップ",
+                vocab: [{ word: "他雖然長得很年輕，但說話方式卻很老練。", pinyin: "Tā suī rán zhǎng de hěn nián qīng, dàn shuō huà fāng shì què hěn lǎo liàn.", jp: "見た目と中身のギャップ", speak: "他雖然長得很年輕，但說話方式卻很老練。" }],
                 explanations: [
-                    { word: "上網", pinyin: "shàng wǎng", meaning: "「インターネットに繋ぐ」。" },
-                    { word: "查", pinyin: "chá", meaning: "「調べる」。" },
-                    { word: "資料", pinyin: "zī liào", meaning: "「資料、データ」。" }
+                    { word: "長得", pinyin: "zhǎng de", meaning: "「（見た目が）〜である」。" },
+                    { word: "卻", pinyin: "què", meaning: "「しかし、かえって（逆接を強調）」。" },
+                    { word: "老練", pinyin: "lǎo liàn", meaning: "「ベテランである、手慣れている」。" }
                 ]
             },
             {
                 id: 38,
-                script: [{ speaker: "例句", text: "剛才那位小姐比我大十歲，她不是我的同學，是老師。" }],
+                script: [{ speaker: "例句", text: "你如果不想吃太辣，可以請服務生幫你調整口味。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Gāng cái nà wèi xiǎo jiě bǐ wǒ dà shí suì, tā bú shì wǒ de tóng xué, shì lǎo shī。<br><strong>日文：</strong>さっきの女性は私より10歳年上です。彼女は同級生ではなく、先生です。",
-                vocab: [{ word: "剛才那位小姐比我大十歲，她不是我的同學，是老師。", pinyin: "Gāng cái nà wèi xiǎo jiě bǐ wǒ dà shí suì, tā bú shì wǒ de tóng xué, shì lǎo shī.", jp: "さっきの女性は私より10歳年上です。彼女は同級生ではなく、先生です。", speak: "剛才那位小姐比我大十歲，她不是我的同學，是老師。" }],
+                meta: "<strong>日文：</strong>リクエストの方法",
+                vocab: [{ word: "你如果不想吃太辣，可以請服務生幫你調整口味。", pinyin: "Nǐ rú guǒ bù xiǎng chī tài là, kě yǐ qǐng fú wù shēng bāng nǐ tiáo zhěng kǒu wèi.", jp: "リクエストの方法", speak: "你如果不想吃太辣，可以請服務生幫你調整口味。" }],
                 explanations: [
-                    { word: "剛才", pinyin: "gāng cái", meaning: "「さっき、たった今」。" },
-                    { word: "比我大...", pinyin: "bǐ wǒ dà...", meaning: "「私より（歳が）〜上だ（比較構文）」。" },
-                    { word: "同學", pinyin: "tóng xué", meaning: "「同級生、クラスメイト」。" }
+                    { word: "請", pinyin: "qǐng", meaning: "「〜してもらう、頼む」。" },
+                    { word: "幫", pinyin: "bāng", meaning: "「（人の）代わりに〜する、手伝う」。" },
+                    { word: "調整", pinyin: "tiáo zhěng", meaning: "「調整する」。" }
                 ]
             },
             {
                 id: 39,
-                script: [{ speaker: "例句", text: "我的課本不見了，不是放在書桌上，就是跟字典在一起。" }],
+                script: [{ speaker: "例句", text: "这幾天因為一直在下雨，連曬衣服都不方便。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wǒ de kè běn bú jiàn le, bú shì fàng zài shū zhuō shàng, jiù shì gēn zì diǎn zài yì qǐ。<br><strong>日文：</strong>私の教科書がなくなりました。机の上に置いていなければ、辞書と一緒にあるはずです。",
-                vocab: [{ word: "我的課本不見了，不是放在書桌上，就是跟字典在一起。", pinyin: "Wǒ de kè běn bú jiàn le, bú shì fàng zài shū zhuō shàng, jiù shì gēn zì diǎn zài yì qǐ.", jp: "私の教科書がなくなりました。机の上に置いていなければ、辞書と一緒にあるはずです。", speak: "我的課本不見了，不是放在書桌上，就是跟字典在一起。" }],
+                meta: "<strong>日文：</strong>天気による生活への影響",
+                vocab: [{ word: "这幾天因為一直在下雨，連曬衣服都不方便。", pinyin: "Zhè jǐ tiān yīn wèi yì zhí zài xià yǔ, lián shài yī fú dōu bù fāng biàn.", jp: "天気による生活への影響", speak: "这幾天因為一直在下雨，連曬衣服都不方便。" }],
                 explanations: [
-                    { word: "不見了", pinyin: "bú jiàn le", meaning: "「なくなった、見当たらない」。" },
-                    { word: "不是...就是...", pinyin: "bú shì... jiù shì...", meaning: "「〜でなければ〜だ（二者択一）」。" },
-                    { word: "字典", pinyin: "zì diǎn", meaning: "「辞書」。" }
+                    { word: "一直", pinyin: "yì zhí", meaning: "「ずっと」。" },
+                    { word: "連...都...", pinyin: "lián... dōu...", meaning: "「〜でさえも〜」。" },
+                    { word: "曬", pinyin: "shài", meaning: "「干す、日に当てる」。" }
                 ]
             },
-
-            // 7. 社交與日常
             {
                 id: 40,
-                sectionName: "7. 社交與日常（人間関係と日常：行動の意図が問われやすい）",
-                script: [{ speaker: "例句", text: "為了感謝你請我參加生日舞會，我想請你吃蛋糕。" }],
+                script: [{ speaker: "例句", text: "要是我們當初買了那間房子，現在就不用租房子了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Wèi le gǎn xiè nǐ qǐng wǒ cān jiā shēng rì wǔ huì, wǒ xiǎng qǐng nǐ chī dàn gāo。<br><strong>日文：</strong>誕生日のダンスパーティーに招待してくれたお礼に、ケーキをご馳走したいです。",
-                vocab: [{ word: "為了感謝你請我參加生日舞會，我想請你吃蛋糕。", pinyin: "Wèi le gǎn xiè nǐ qǐng wǒ cān jiā shēng rì wǔ huì, wǒ xiǎng qǐng nǐ chī dàn gāo.", jp: "誕生日のダンスパーティーに招待してくれたお礼に、ケーキをご馳走したいです。", speak: "為了感謝你請我參加生日舞會，我想請你吃蛋糕。" }],
+                meta: "<strong>日文：</strong>過去への後悔",
+                vocab: [{ word: "要是我們當初買了那間房子，現在就不用租房子了。", pinyin: "Yào shì wǒ men dāng chū mǎi le nà jiān fáng zi, xiàn zài jiù bú yòng zū fáng zi le.", jp: "過去への後悔", speak: "要是我們當初買了那間房子，現在就不用租房子了。" }],
                 explanations: [
-                    { word: "感謝", pinyin: "gǎn xiè", meaning: "「感謝する」。" },
-                    { word: "參加", pinyin: "cān jiā", meaning: "「参加する」。" },
-                    { word: "舞會", pinyin: "wǔ huì", meaning: "「ダンスパーティー、舞踏会」。" }
+                    { word: "要是", pinyin: "yào shì", meaning: "「もし〜ならば（如果と同じ）」。" },
+                    { word: "當初", pinyin: "dāng chū", meaning: "「あの時、当初」。" },
+                    { word: "不用", pinyin: "bú yòng", meaning: "「〜する必要がない」。" }
                 ]
             },
             {
                 id: 41,
-                script: [{ speaker: "例句", text: "今天的舞會我玩得很愉快，特別是跟那位紅頭髮的女孩。" }],
+                script: [{ speaker: "例句", text: "你與其一直抱怨，不如想辦法解決這個問題。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Jīn tiān de wǔ huì wǒ wán de hěn yú kuài, tè bié shì gēn nà wèi hóng tóu fǎ de nǚ hái。<br><strong>日文：</strong>今日のパーティーはとても楽しかったです。特にあの赤い髪の女の子と一緒にいて。",
-                vocab: [{ word: "今天的舞會我玩得很愉快，特別是跟那位紅頭髮的女孩。", pinyin: "Jīn tiān de wǔ huì wǒ wán de hěn yú kuài, tè bié shì gēn nà wèi hóng tóu fǎ de nǚ hái.", jp: "今日のパーティーはとても楽しかったです。特にあの赤い髪の女の子と一緒にいて。", speak: "今天的舞會我玩得很愉快，特別是跟那位紅頭髮的女孩。" }],
+                meta: "<strong>日文：</strong>建設的な提案",
+                vocab: [{ word: "你與其一直抱怨，不如想辦法解決這個問題。", pinyin: "Nǐ yǔ qí yì zhí bào yuàn, bù rú xiǎng bàn fǎ jiě jué zhè ge wèn tí.", jp: "建設的な提案", speak: "你與其一直抱怨，不如想辦法解決這個問題。" }],
                 explanations: [
-                    { word: "愉快", pinyin: "yú kuài", meaning: "「楽しい、愉快だ」。" },
-                    { word: "特別是", pinyin: "tè bié shì", meaning: "「特に、とりわけ」。" },
-                    { word: "頭髮", pinyin: "tóu fǎ", meaning: "「髪の毛」。" }
+                    { word: "抱怨", pinyin: "bào yuàn", meaning: "「文句を言う、不平を言う」。" },
+                    { word: "想辦法", pinyin: "xiǎng bàn fǎ", meaning: "「方法を考える、何とかする」。" },
+                    { word: "解決", pinyin: "jiě jué", meaning: "「解決する」。" }
                 ]
             },
             {
                 id: 42,
-                script: [{ speaker: "例句", text: "林太太剛搬到離這兒不遠的郊區，我想買幾個碗盤送她。" }],
+                script: [{ speaker: "例句", text: "那家店的老闆很有名，聽說連外國人都喜歡去。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Lín tài tai gāng bān dào lí zhè er bù yuǎn de jiāo qū, wǒ xiǎng mǎi jǐ ge wǎn pán sòng tā。<br><strong>日文：</strong>林さんの奥さんはここから遠くない郊外に引っ越したので、お皿をいくつか買って贈りたいです。",
-                vocab: [{ word: "林太太剛搬到離這兒不遠的郊區，我想買幾個碗盤送她。", pinyin: "Lín tài tai gāng bān dào lí zhè er bù yuǎn de jiāo qū, wǒ xiǎng mǎi jǐ ge wǎn pán sòng tā.", jp: "林さんの奥さんはここから遠くない郊外に引っ越したので、お皿をいくつか買って贈りたいです。", speak: "林太太剛搬到離這兒不遠的郊區，我想買幾個碗盤送她。" }],
+                meta: "<strong>日文：</strong>評判の伝聞",
+                vocab: [{ word: "那家店的老闆很有名，聽說連外國人都喜歡去。", pinyin: "Nà jiā diàn de lǎo bǎn hěn yǒu míng, tīng shuō lián wài guó rén dōu xǐ huān qù.", jp: "評判の伝聞", speak: "那家店的老闆很有名，聽說連外國人都喜歡去。" }],
                 explanations: [
-                    { word: "剛", pinyin: "gāng", meaning: "「〜したばかり、たった今」。" },
-                    { word: "搬到", pinyin: "bān dào", meaning: "「〜へ引っ越す」。" },
-                    { word: "郊區 / 碗盤", pinyin: "jiāo qū / wǎn pán", meaning: "「郊外 / お皿、食器」。" }
+                    { word: "老闆", pinyin: "lǎo bǎn", meaning: "「社長、店の主人」。" },
+                    { word: "聽說", pinyin: "tīng shuō", meaning: "「〜だそうだ」。" },
+                    { word: "連...都...", pinyin: "lián... dōu...", meaning: "「〜でさえも〜」。" }
                 ]
             },
             {
                 id: 43,
-                script: [{ speaker: "例句", text: "如果你有機會來美國玩，記得來找我，換我帶你到處走走。" }],
+                script: [{ speaker: "例句", text: "如果你想把中文學好，每天聽廣播是個好辦法。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Rú guǒ nǐ yǒu jī huì lái Měi guó wán, jì de lái zhǎo wǒ, huàn wǒ dài nǐ dào chù zǒu zǒu。<br><strong>日文：</strong>もしアメリカへ遊びに来る機会があれば、私を訪ねてください。今度は私が色々案内します。",
-                vocab: [{ word: "如果你有機會來美國玩，記得來找我，換我帶你到處走走。", pinyin: "Rú guǒ nǐ yǒu jī huì lái Měi guó wán, jì de lái zhǎo wǒ, huàn wǒ dài nǐ dào chù zǒu zǒu.", jp: "もしアメリカへ遊びに来る機会があれば、私を訪ねてください。今度は私が色々案内します。", speak: "如果你有機會來美國玩，記得來找我，換我帶你到處走走。" }],
+                meta: "<strong>日文：</strong>学習法の提案",
+                vocab: [{ word: "如果你想把中文學好，每天聽廣播是個好辦法。", pinyin: "Rú guǒ nǐ xiǎng bǎ zhōng wén xué hǎo, měi tiān tīng guǎng bō shì ge hǎo bàn fǎ.", jp: "学習法の提案", speak: "如果你想把中文學好，每天聽廣播是個好辦法。" }],
                 explanations: [
-                    { word: "機會", pinyin: "jī huì", meaning: "「機会、チャンス」。" },
-                    { word: "記得", pinyin: "jì de", meaning: "「覚えている、忘れずに〜する」。" },
-                    { word: "換我...", pinyin: "huàn wǒ...", meaning: "「（交代して）今度は私が〜する」。" }
+                    { word: "把...學好", pinyin: "bǎ... xué hǎo", meaning: "「〜をしっかり学ぶ（好は結果補語）」。" },
+                    { word: "廣播", pinyin: "guǎng bō", meaning: "「ラジオ、放送」。" },
+                    { word: "辦法", pinyin: "bàn fǎ", meaning: "「方法、やり方」。" }
                 ]
             },
             {
                 id: 44,
-                script: [{ speaker: "例句", text: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？" }],
+                script: [{ speaker: "例句", text: "這個遊戲雖然規則複雜，但玩起來非常有意思。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Xià xīng qí nǐ yào qù Rì běn, qǐng wèn fāng biàn bāng wǒ dài yí ge dōng xi gěi péng yǒu ma?<br><strong>日文：</strong>来週あなたは日本へ行きますが、友達に物を一つ届けてもらうことは可能ですか？",
-                vocab: [{ word: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？", pinyin: "Xià xīng qí nǐ yào qù Rì běn, qǐng wèn fāng biàn bāng wǒ dài yí ge dōng xi gěi péng yǒu ma?", jp: "来週あなたは日本へ行きますが、友達に物を一つ届けてもらうことは可能ですか？", speak: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？" }],
+                meta: "<strong>日文：</strong>面白さの強調",
+                vocab: [{ word: "這個遊戲雖然規則複雜，但玩起來非常有意思。", pinyin: "Zhè ge yóu xì suī rán guī zé fù zá, dàn wán qǐ lái fēi cháng yǒu yì si.", jp: "面白さの強調", speak: "這個遊戲雖然規則複雜，但玩起來非常有意思。" }],
                 explanations: [
-                    { word: "方便", pinyin: "fāng biàn", meaning: "「都合がいい、可能である」。" },
-                    { word: "幫我...", pinyin: "bāng wǒ...", meaning: "「私の代わりに〜する、〜してくれる」。" },
-                    { word: "帶...給...", pinyin: "dài... gěi...", meaning: "「〜に〜を持っていく、届ける」。" }
+                    { word: "規則", pinyin: "guī zé", meaning: "「ルール、規則」。" },
+                    { word: "玩起來", pinyin: "wán qǐ lái", meaning: "「遊んでみると」。" },
+                    { word: "有意思", pinyin: "yǒu yì si", meaning: "「面白い、興味深い」。" }
                 ]
             },
             {
                 id: 45,
-                script: [{ speaker: "例句", text: "只要能夠了解自己的太太，生活就會過得很幸福。" }],
+                script: [{ speaker: "例句", text: "我們在機場等了兩個小時，飛機才終於飛了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zhǐ yào néng gòu liǎo jiě zì jǐ de tài tai, shēng huó jiù huì guò de hěn xìng fú。<br><strong>日文：</strong>自分の妻を理解できさえすれば、生活はとても幸せに過ごせます。",
-                vocab: [{ word: "只要能夠了解自己的太太，生活就會過得很幸福。", pinyin: "Zhǐ yào néng gòu liǎo jiě zì jǐ de tài tai, shēng huó jiù huì guò de hěn xìng fú.", jp: "自分の妻を理解できさえすれば、生活はとても幸せに過ごせます。", speak: "只要能夠了解自己的太太，生活就會過得很幸福。" }],
+                meta: "<strong>日文：</strong>遅延による疲労",
+                vocab: [{ word: "我們在機場等了兩個小時，飛機才終於飛了。", pinyin: "Wǒ men zài jī chǎng děng le liǎng ge xiǎo shí, fēi jī cái zhōng yú fēi le.", jp: "遅延による疲労", speak: "我們在機場等了兩個小時，飛機才終於飛了。" }],
                 explanations: [
-                    { word: "只要...就...", pinyin: "zhǐ yào... jiù...", meaning: "「〜しさえすれば〜だ（条件）」。" },
-                    { word: "能夠", pinyin: "néng gòu", meaning: "「〜できる」。" },
-                    { word: "幸福", pinyin: "xìng fú", meaning: "「幸せだ、幸福だ」。" }
+                    { word: "等了", pinyin: "děng le", meaning: "「〜（時間）待った」。" },
+                    { word: "才", pinyin: "cái", meaning: "「やっと、ようやく（遅さを強調）」。" },
+                    { word: "終於", pinyin: "zhōng yú", meaning: "「ついに」。" }
                 ]
             },
             {
                 id: 46,
-                script: [{ speaker: "例句", text: "小麗的孩子從小在國外長大，可能不習慣用筷子吃飯。" }],
+                script: [{ speaker: "例句", text: "雖然他已經八十歲了，但還是堅持每天走路運動。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Xiǎo lì de hái zi cóng xiǎo zài guó wài zhǎng dà, kě néng bù xí guàn yòng kuài zi chī fàn。<br><strong>日文：</strong>小麗の子供は小さい頃から海外で育ったので、お箸を使ってご飯を食べるのに慣れていないかもしれません。",
-                vocab: [{ word: "小麗的孩子從小在國外長大，可能不習慣用筷子吃飯。", pinyin: "Xiǎo lì de hái zi cóng xiǎo zài guó wài zhǎng dà, kě néng bù xí guàn yòng kuài zi chī fàn.", jp: "小麗の子供は小さい頃から海外で育ったので、お箸を使ってご飯を食べるのに慣れていないかもしれません。", speak: "小麗的孩子從小在國外長大，可能不習慣用筷子吃飯。" }],
+                meta: "<strong>日文：</strong>驚きの事実",
+                vocab: [{ word: "雖然他已經八十歲了，但還是堅持每天走路運動。", pinyin: "Suī rán tā yǐ jīng bā shí suì le, dàn hái shì jiān chí měi tiān zǒu lù yùn dòng.", jp: "驚きの事実", speak: "雖然他已經八十歲了，但還是堅持每天走路運動。" }],
                 explanations: [
-                    { word: "從小", pinyin: "cóng xiǎo", meaning: "「小さい頃から」。" },
-                    { word: "長大", pinyin: "zhǎng dà", meaning: "「成長する、育つ」。" },
-                    { word: "習慣 / 筷子", pinyin: "xí guàn / kuài zi", meaning: "「慣れる、習慣 / 箸」。" }
+                    { word: "還是", pinyin: "hái shì", meaning: "「それでもやはり」。" },
+                    { word: "堅持", pinyin: "jiān chí", meaning: "「やり通す、続ける」。" },
+                    { word: "走路", pinyin: "zǒu lù", meaning: "「歩く」。" }
                 ]
             },
             {
                 id: 47,
-                script: [{ speaker: "例句", text: "怎麼可以一邊開車一邊喝酒？警察叫你馬上下車。" }],
+                script: [{ speaker: "例句", text: "你連這點小事都記不住，真是讓我太失望了。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zěn me kě yǐ yì biān kāi chē yì biān hē jiǔ? Jǐng chá jiào nǐ mǎ shàng xià chē。<br><strong>日文：</strong>どうして運転しながらお酒を飲めるのですか？警察はあなたにすぐ車を降りるように言っています。",
-                vocab: [{ word: "怎麼可以一邊開車一邊喝酒？警察叫你馬上下車。", pinyin: "Zěn me kě yǐ yì biān kāi chē yì biān hē jiǔ? Jǐng chá jiào nǐ mǎ shàng xià chē.", jp: "どうして運転しながらお酒を飲めるのですか？警察はあなたにすぐ車を降りるように言っています。", speak: "怎麼可以一邊開車一邊喝酒？警察叫你馬上下車。" }],
+                meta: "<strong>日文：</strong>期待との乖離",
+                vocab: [{ word: "你連這點小事都記不住，真是讓我太失望了。", pinyin: "Nǐ lián zhè diǎn xiǎo shì dōu jì bú zhù, zhēn shì ràng wǒ tài shī wàng le.", jp: "期待との乖離", speak: "你連這點小事都記不住，真是讓我太失望了。" }],
                 explanations: [
-                    { word: "一邊...一邊...", pinyin: "yì biān... yì biān...", meaning: "「〜しながら〜する（同時進行）」。" },
-                    { word: "怎麼可以", pinyin: "zěn me kě yǐ", meaning: "「どうして〜できようか（〜してはいけない）」。" },
-                    { word: "馬上", pinyin: "mǎ shàng", meaning: "「すぐに」。" }
+                    { word: "點", pinyin: "diǎn", meaning: "「少しの〜、わずかな〜（量詞）」。" },
+                    { word: "記不住", pinyin: "jì bú zhù", meaning: "「覚えられない（可能補語）」。" },
+                    { word: "讓", pinyin: "ràng", meaning: "「〜させる（使役）」。" }
                 ]
             },
             {
                 id: 48,
-                script: [{ speaker: "例句", text: "這裡很危險，大家不要搭電梯，快往樓梯旁邊的安全門走。" }],
+                script: [{ speaker: "例句", text: "只要你能堅持到底，這件事一定會成功的。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Zhè lǐ hěn wēi xiǎn, dà jiā bú yào dā diàn tī, kuài wǎng lóu tī páng biān de ān quán mén zǒu。<br><strong>日文：</strong>ここはとても危険です。皆さんはエレベーターに乗らず、早く階段横の非常口へ向かってください。",
-                vocab: [{ word: "這裡很危險，大家不要搭電梯，快往樓梯旁邊的安全門走。", pinyin: "Zhè lǐ hěn wēi xiǎn, dà jiā bú yào dā diàn tī, kuài wǎng lóu tī páng biān de ān quán mén zǒu.", jp: "ここはとても危険です。皆さんはエレベーターに乗らず、早く階段横の非常口へ向かってください。", speak: "這裡很危險，大家不要搭電梯，快往樓梯旁邊的安全門走。" }],
+                meta: "<strong>日文：</strong>励まし",
+                vocab: [{ word: "只要你能堅持到底，這件事一定會成功的。", pinyin: "Zhǐ yào nǐ néng jiān chí dào dǐ, zhè jiàn shì yí dìng huì chéng gōng de.", jp: "励まし", speak: "只要你能堅持到底，這件事一定會成功的。" }],
                 explanations: [
-                    { word: "危險", pinyin: "wēi xiǎn", meaning: "「危険だ」。" },
-                    { word: "搭", pinyin: "dā", meaning: "「（乗り物に）乗る」。" },
-                    { word: "往...走", pinyin: "wǎng... zǒu", meaning: "「〜に向かって行く」。" }
+                    { word: "只要...一定...", pinyin: "zhǐ yào... yí dìng...", meaning: "「〜しさえすれば、必ず〜」。" },
+                    { word: "到底", pinyin: "dào dǐ", meaning: "「最後まで」。" },
+                    { word: "成功", pinyin: "chéng gōng", meaning: "「成功する」。" }
                 ]
             },
             {
                 id: 49,
-                script: [{ speaker: "例句", text: "冰箱裡有冰淇淋，可是我現在比較想吃鹹的餅乾和點心。" }],
+                script: [{ speaker: "例句", text: "這座城市的夜景非常迷人，吸引了許多觀光客。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Bīng xiāng lǐ yǒu bīng qí lín, kě shì wǒ xiàn zài bǐ jiào xiǎng chī xián de bǐng gān hé diǎn xīn。<br><strong>日文：</strong>冷蔵庫にアイスクリームがありますが、私は今しょっぱいクッキーや軽食が食べたいです。",
-                vocab: [{ word: "冰箱裡有冰淇淋，可是我現在比較想吃鹹的餅乾和點心。", pinyin: "Bīng xiāng lǐ yǒu bīng qí lín, kě shì wǒ xiàn zài bǐ jiào xiǎng chī xián de bǐng gān hé diǎn xīn.", jp: "冷蔵庫にアイスクリームがありますが、私は今しょっぱいクッキーや軽食が食べたいです。", speak: "冰箱裡有冰淇淋，可是我現在比較想吃鹹的餅乾和點心。" }],
+                meta: "<strong>日文：</strong>観光地の特徴",
+                vocab: [{ word: "這座城市的夜景非常迷人，吸引了許多觀光客。", pinyin: "Zhè zuò chéng shì de yè jǐng fēi cháng mí rén, xī yǐn le xǔ duō guān guāng kè.", jp: "観光地の特徴", speak: "這座城市的夜景非常迷人，吸引了許多觀光客。" }],
                 explanations: [
-                    { word: "冰箱", pinyin: "bīng xiāng", meaning: "「冷蔵庫」。" },
-                    { word: "鹹的", pinyin: "xián de", meaning: "「しょっぱいもの」。" },
-                    { word: "餅乾 / 點心", pinyin: "bǐng gān / diǎn xīn", meaning: "「クッキー、ビスケット / 軽食、おやつ」。" }
+                    { word: "座", pinyin: "zuò", meaning: "「山や建物、都市などを数える量詞」。" },
+                    { word: "迷人", pinyin: "mí rén", meaning: "「魅力的である」。" },
+                    { word: "吸引", pinyin: "xī yǐn", meaning: "「惹きつける」。" }
                 ]
             },
             {
                 id: 50,
-                script: [{ speaker: "例句", text: "穿褲子比較方便照顧小孩，所以我現在都不穿裙子了。" }],
+                script: [{ speaker: "例句", text: "與其在家無聊，不如跟我一起去報名那個瑜珈課。" }],
                 ans: "句子理解",
                 choices: [],
-                meta: "<strong>拼音：</strong>Chuān kù zi bǐ jiào fāng biàn zhào gù xiǎo hái, suǒ yǐ wǒ xiàn zài dōu bù chuān qún zi le。<br><strong>日文：</strong>ズボンを履く方が子供の世話をするのに便利なので、私は今はもうスカートを履きません。",
-                vocab: [{ word: "穿褲子比較方便照顧小孩，所以我現在都不穿裙子了。", pinyin: "Chuān kù zi bǐ jiào fāng biàn zhào gù xiǎo hái, suǒ yǐ wǒ xiàn zài dōu bù chuān qún zi le.", jp: "ズボンを履く方が子供の世話をするのに便利なので、私は今はもうスカートを履きません。", speak: "穿褲子比較方便照顧小孩，所以我現在都不穿裙子了。" }],
+                meta: "<strong>日文：</strong>誘いの表現",
+                vocab: [{ word: "與其在家無聊，不如跟我一起去報名那個瑜珈課。", pinyin: "Yǔ qí zài jiā wú liáo, bù rú gēn wǒ yì qǐ qù bào míng nà ge yú jiā kè.", jp: "誘いの表現", speak: "與其在家無聊，不如跟我一起去報名那個瑜珈課。" }],
                 explanations: [
-                    { word: "照顧", pinyin: "zhào gù", meaning: "「面倒をみる、世話をする」。" },
-                    { word: "現在都...了", pinyin: "xiàn zài dōu...le", meaning: "「今はもう〜だ（状況の変化）」。" },
-                    { word: "裙子", pinyin: "qún zi", meaning: "「スカート」。" }
+                    { word: "無聊", pinyin: "wú liáo", meaning: "「退屈である」。" },
+                    { word: "不如", pinyin: "bù rú", meaning: "「〜したほうがよい」。" },
+                    { word: "報名", pinyin: "bào míng", meaning: "「申し込む」。" }
                 ]
             }
         ];
@@ -778,7 +759,7 @@
         let playingId = null;
         let playingType = null;
         let isGlobalReveal = false;
-        let currentSpeechRate = 0.85;
+        let currentSpeechRate = 0.95;
 
         // タブ切り替え
         function switchTab(tabId) {
@@ -832,17 +813,21 @@
                 if (icon) icon.setAttribute('fill', 'none');
             } else if (playingType === 'conversation') {
                 btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
-                btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
                 if(btn.id.includes('fc-sent-play-after')) {
-                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i>`;
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i>`;
                 } else if(btn.id.includes('btn-list-conv')) {
                     btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                } else if (btn.id.includes('fc-sent-play-')) {
+                    const count = btn.id.replace('fc-sent-play-', '');
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i> ${count}回再生`;
+                } else {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
                 }
                 lucide.createIcons({root: btn});
             }
         }
 
-        function playConversation(qId, btnId, callback = null) {
+        function playConversation(qId, btnId, loopCount = 1, callback = null) {
             if (!('speechSynthesis' in window)) {
                 showToast("お使いのブラウザは音声再生に対応していません。");
                 return;
@@ -859,7 +844,7 @@
                 if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
                      btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
                 } else {
-                     btn.innerHTML = `<i data-lucide="loader-2" class="w-8 h-8 animate-spin"></i> 再生中...`;
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> 再生中...`;
                 }
                 lucide.createIcons({root: btn});
             }
@@ -868,8 +853,6 @@
             if (!q) return;
 
             const utterances = [];
-            // リスト学習時は2回、フラッシュカードテスト時は1回再生とする
-            const loopCount = btnId.includes('btn-list-conv') ? 2 : 1;
 
             for(let i=0; i<loopCount; i++) {
                 // 会話・質問の読み上げ
@@ -1149,7 +1132,7 @@
                         <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
                             <div class="flex items-center gap-4">
                                 <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
-                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
                                     <i data-lucide="play-circle" class="w-5 h-5"></i>
                                     2回再生して表示
                                 </button>
@@ -1359,9 +1342,20 @@
                         <div class="text-center mb-10 mt-8">
                             <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-widest">${item.sectionName || '聽力測驗'}</div>
                             <h3 class="text-3xl font-bold text-slate-800 mb-8">第 ${item.id} 題</h3>
-                            <button id="fc-sent-play" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play')" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-5 px-10 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-3 text-xl mb-12">
-                                <i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生
-                            </button>
+                            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+                                <button id="fc-sent-play-1" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-1', 1)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 1回再生
+                                </button>
+                                <button id="fc-sent-play-2" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-2', 2)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 2回再生
+                                </button>
+                                <button id="fc-sent-play-3" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-3', 3)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 3回再生
+                                </button>
+                                <button id="fc-sent-play-4" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-4', 4)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 4回再生
+                                </button>
+                            </div>
                             <p class="text-slate-500 font-medium bg-slate-100 inline-block px-6 py-3 rounded-lg"><i data-lucide="mouse-pointer-click" class="w-5 h-5 inline-block align-text-bottom mr-1 text-slate-400"></i> カードをクリック、またはSpaceキーで解答・解説を表示</p>
                         </div>
                     `;
@@ -1373,7 +1367,7 @@
                                     <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">${item.sectionName || '聽力測驗'}</span>
                                     <h3 class="text-2xl font-bold text-slate-800">第 ${item.id} 題 解答・解析</h3>
                                 </div>
-                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after')" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
+                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after', 1)" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
                                     <i data-lucide="play-circle" class="w-6 h-6"></i>
                                 </button>
                             </div>

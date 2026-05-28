@@ -685,7 +685,7 @@
                 ans: "句子理解",
                 choices: [],
                 meta: "<strong>拼音：</strong>Xià xīng qí nǐ yào qù Rì běn, qǐng wèn fāng biàn bāng wǒ dài yí ge dōng xi gěi péng yǒu ma?<br><strong>日文：</strong>来週あなたは日本へ行きますが、友達に物を一つ届けてもらうことは可能ですか？",
-                vocab: [{ word: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？", pinyin: "Xià xīng qí nǐ yào qù Rì běn, qǐng wèn fāng biàn bāng wǒ dài yí ge dōng xi gěi péng yǒu ma?", jp: "来週あなたは日本へ行きますが、友達に物を一つ届けてもらうことは可能ですか？", speak: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？" }],
+                vocab: [{ word: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎？", pinyin: "Xià xīng qí nǐ yào qù Rì běn, qǐng wèn fāng biàn bāng wǒ dài yí ge dōng xi gěi péng yǒu ma?", jp: "来週あなたは日本へ行きますが、友達に物を一つ届けてもらうことは可能ですか？", speak: "下星期你要去日本，請問方便幫我帶一個東西給朋友嗎。" }],
                 explanations: [
                     { word: "方便", pinyin: "fāng biàn", meaning: "「都合がいい、可能である」。" },
                     { word: "幫我...", pinyin: "bāng wǒ...", meaning: "「私の代わりに〜する、〜してくれる」。" },
@@ -831,18 +831,21 @@
                 const icon = btn.querySelector('.lucide-play');
                 if (icon) icon.setAttribute('fill', 'none');
             } else if (playingType === 'conversation') {
-                btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
-                btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
-                if(btn.id.includes('fc-sent-play-after')) {
-                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i>`;
-                } else if(btn.id.includes('btn-list-conv')) {
-                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                // UIリセット：元のクラスとHTMLを復元する
+                if (btn.hasAttribute('data-original-class')) {
+                    btn.className = btn.getAttribute('data-original-class');
+                }
+                if (btn.hasAttribute('data-original-html')) {
+                    btn.innerHTML = btn.getAttribute('data-original-html');
+                } else {
+                    // フォールバック
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
                 }
                 lucide.createIcons({root: btn});
             }
         }
 
-        function playConversation(qId, btnId, callback = null) {
+        function playConversation(qId, btnId, loopCount = 1, callback = null) {
             if (!('speechSynthesis' in window)) {
                 showToast("お使いのブラウザは音声再生に対応していません。");
                 return;
@@ -855,11 +858,23 @@
 
             const btn = document.getElementById(btnId);
             if(btn) {
+                // 現在の状態を保存
+                if (!btn.hasAttribute('data-original-html')) {
+                    btn.setAttribute('data-original-html', btn.innerHTML);
+                    btn.setAttribute('data-original-class', btn.className);
+                }
+                
+                // クラスを一旦リセットしてから再生中のスタイルを追加
+                btn.className = btn.getAttribute('data-original-class');
                 btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                btn.classList.remove('bg-white', 'text-slate-500', 'border-slate-200', 'border-indigo-200', 'hover:bg-indigo-50', 'hover:bg-slate-200');
+                
+                // 再生中のアイコンに変更
                 if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
                      btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
                 } else {
-                     btn.innerHTML = `<i data-lucide="loader-2" class="w-8 h-8 animate-spin"></i> 再生中...`;
+                     // 1~4回再生ボタンなどのレイアウト用
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-8 h-8 sm:w-10 sm:h-10 animate-spin mx-auto"></i><span>再生中...</span>`;
                 }
                 lucide.createIcons({root: btn});
             }
@@ -868,8 +883,6 @@
             if (!q) return;
 
             const utterances = [];
-            // リスト学習時は2回、フラッシュカードテスト時は1回再生とする
-            const loopCount = btnId.includes('btn-list-conv') ? 2 : 1;
 
             for(let i=0; i<loopCount; i++) {
                 // 会話・質問の読み上げ
@@ -1149,7 +1162,7 @@
                         <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
                             <div class="flex items-center gap-4">
                                 <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
-                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
                                     <i data-lucide="play-circle" class="w-5 h-5"></i>
                                     2回再生して表示
                                 </button>
@@ -1356,12 +1369,19 @@
                 
                 if (!isSentenceRevealed) {
                     contentHtml = `
-                        <div class="text-center mb-10 mt-8">
+                        <div class="text-center mb-10 mt-8 w-full">
                             <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-widest">${item.sectionName || '聽力測驗'}</div>
-                            <h3 class="text-3xl font-bold text-slate-800 mb-8">第 ${item.id} 題</h3>
-                            <button id="fc-sent-play" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play')" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-5 px-10 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-3 text-xl mb-12">
-                                <i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生
-                            </button>
+                            <h3 class="text-3xl font-bold text-slate-800 mb-10">第 ${item.id} 題</h3>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-12 w-full max-w-2xl mx-auto">
+                                ${[1, 2, 3, 4].map(num => `
+                                    <button id="fc-sent-play-${num}" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-${num}', ${num})" class="bg-white text-indigo-600 border-2 border-indigo-200 font-bold py-4 px-2 rounded-2xl shadow-sm hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 transition-all flex flex-col items-center justify-center gap-2 text-base sm:text-lg min-h-[100px]">
+                                        <i data-lucide="play-circle" class="w-8 h-8 sm:w-10 sm:h-10 text-indigo-500"></i>
+                                        <span>${num}回再生</span>
+                                    </button>
+                                `).join('')}
+                            </div>
+                            
                             <p class="text-slate-500 font-medium bg-slate-100 inline-block px-6 py-3 rounded-lg"><i data-lucide="mouse-pointer-click" class="w-5 h-5 inline-block align-text-bottom mr-1 text-slate-400"></i> カードをクリック、またはSpaceキーで解答・解説を表示</p>
                         </div>
                     `;
@@ -1373,7 +1393,7 @@
                                     <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">${item.sectionName || '聽力測驗'}</span>
                                     <h3 class="text-2xl font-bold text-slate-800">第 ${item.id} 題 解答・解析</h3>
                                 </div>
-                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after')" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
+                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after', 1)" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
                                     <i data-lucide="play-circle" class="w-6 h-6"></i>
                                 </button>
                             </div>
