@@ -1330,15 +1330,17 @@
                                 line.speaker === '女' ? 'bg-pink-100 text-pink-700' : 
                                 line.speaker === '問' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-700';
                 return `
-                    <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
-                        <div class="flex items-center gap-2 sm:w-1/6 sm:mt-3">
-                            <span class="font-bold px-2 py-1 rounded text-sm ${speakerBg}">${line.speaker}</span>
-                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400">
+                    <div class="relative bg-slate-50 p-4 pt-6 rounded-lg mt-5 border border-slate-100 shadow-sm">
+                        <div class="absolute -top-3 left-4 font-bold px-3 py-1 rounded-md text-sm shadow-sm border border-white ${speakerBg}">
+                            ${line.speaker}
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="mt-2 flex-shrink-0 p-2 rounded-full bg-white border border-slate-200 hover:bg-slate-100 transition-colors text-slate-500 shadow-sm">
                                 <i data-lucide="play" class="w-4 h-4"></i>
                             </button>
-                        </div>
-                        <div class="sm:w-5/6">
-                            <p class="text-xl font-medium text-slate-800 mb-2 leading-[3.5rem]">${getRubyText(line.text, true)}</p>
+                            <div class="flex-grow w-full overflow-hidden">
+                                <p class="text-xl font-medium text-slate-800 leading-[3.5rem]">${getRubyText(line.text, true)}</p>
+                            </div>
                         </div>
                     </div>
                 `;
