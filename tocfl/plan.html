@@ -50,7 +50,8 @@
         // --- Data ---
         // 手入力で管理しやすいように、日付形式（YYYYMMDD）のIDに変更しています
         let records = [
-             { id: 20260604, date: '2026-06-04', hours: 0.5 },
+                       { id: 20260605, date: '2026-06-05', hours: 2.0 },
+             { id: 20260604, date: '2026-06-04', hours: 1.0 },
              { id: 20260603, date: '2026-06-03', hours: 2.0 },
            { id: 20260602, date: '2026-06-02', hours: 2.0 },
                  { id: 20260601, date: '2026-06-01', hours: 1.5 },
@@ -542,27 +543,51 @@
                 let btnClass = `aspect-square rounded-lg flex flex-col items-center justify-center relative border transition-all p-1 `;
                 btnClass += isSelected ? 'ring-2 ring-teal-500 border-transparent z-10 ' : 'border-gray-100 ';
                 
-                if (isTarget) {
+                // --- 優先度を考慮したスタイル適用 ---
+                // 学習記録があるかどうかのフラグ
+                const hasRecord = !!record;
+                // 何かしらの特別な日（MC, 休息, 試験）であるかどうかのフラグ
+                const isSpecialDay = isTarget || isRest || isMC;
+
+                if (hasRecord && !isSpecialDay) {
+                    // 通常の学習記録がある日（緑背景、白文字）
+                    btnClass += 'bg-teal-500 text-white border-teal-600 shadow-sm';
+                } else if (isTarget) {
                     btnClass += 'bg-red-50 border-red-200 text-red-600';
                 } else if (isRest) {
                     btnClass += 'bg-green-50 border-green-200 text-green-700';
                 } else if (isMC) {
                     btnClass += 'bg-blue-50 border-blue-200 text-blue-700';
-                } else if (record) {
-                    btnClass += 'bg-teal-500 text-white border-teal-600 shadow-sm';
                 } else {
+                    // 記録がない通常の日
                     btnClass += 'bg-gray-50 text-gray-500 hover:bg-gray-100';
                 }
 
+                // --- ラベルの作成 ---
                 let extraLabel = '';
                 if (isTarget) extraLabel = `<span class="text-[9px] font-bold mt-0.5 text-red-600">試験</span>`;
                 else if (isRest) extraLabel = `<span class="text-[9px] font-bold mt-0.5 text-green-600">休息</span>`;
                 else if (isMC) extraLabel = `<span class="text-[9px] font-bold mt-0.5 text-blue-600">MC</span>`;
 
+                // --- テキストカラーの決定 ---
+                // 特別な日（MC, 休息, 試験）の場合は、背景色に関わらず常に視認性の高い色（各テーマカラーか黒/濃いグレー）にする
+                let textClassDate = 'text-xs font-semibold ';
+                let textClassHours = 'text-[9px] mt-0.5 font-bold opacity-90 ';
+                
+                if (hasRecord && !isSpecialDay) {
+                    // 通常記録日
+                    textClassDate += 'text-white';
+                    textClassHours += 'text-white';
+                } else if (isSpecialDay) {
+                    // 特別な日は黒色（ここでは tailwind の text-gray-800 を使用して統一感を出します）を強制
+                     textClassDate += 'text-gray-800';
+                     textClassHours += 'text-gray-800';
+                }
+
                 html += `
                     <button type="button" onclick="selectDate('${dateStr}')" class="${btnClass}">
-                        <span class="text-xs font-semibold ${record ? 'text-white' : ''}">${d.getDate()}</span>
-                        ${record ? `<span class="text-[9px] mt-0.5 font-bold opacity-90 ${record ? 'text-white' : ''}">${record.hours}h</span>` : ''}
+                        <span class="${textClassDate}">${d.getDate()}</span>
+                        ${record ? `<span class="${textClassHours}">${record.hours}h</span>` : ''}
                         ${extraLabel}
                     </button>
                 `;
