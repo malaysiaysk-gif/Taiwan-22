@@ -47,12 +47,29 @@
     </div>
 
     <!-- 音声スピード設定 -->
-    <div class="max-w-4xl mx-auto mb-6 flex justify-center items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
-        <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
-            <i data-lucide="gauge" class="w-4 h-4"></i>
-            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
-        </label>
-        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
+    <div class="max-w-4xl mx-auto mb-6 flex flex-col sm:flex-row justify-center items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+        <div class="flex items-center gap-2">
+            <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
+                <i data-lucide="gauge" class="w-4 h-4"></i>
+                音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
+            </label>
+            <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-24 md:w-32 accent-indigo-600 cursor-pointer">
+        </div>
+        
+        <div class="hidden sm:block w-px h-6 bg-slate-200 mx-2"></div>
+        
+        <div id="fc-loop-container" class="hidden flex items-center gap-2">
+            <label for="loop-select" class="text-sm font-bold text-slate-600 flex items-center gap-2">
+                <i data-lucide="repeat" class="w-4 h-4"></i>
+                再生回数:
+            </label>
+            <select id="loop-select" class="bg-slate-50 border border-slate-300 text-indigo-700 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-1 font-bold">
+                <option value="1" selected>1 回</option>
+                <option value="2">2 回</option>
+                <option value="3">3 回</option>
+                <option value="4">4 回</option>
+            </select>
+        </div>
     </div>
 
     <!-- 1. 一覧学習ビュー -->
@@ -1103,6 +1120,7 @@
         let playingType = null;
         let isGlobalReveal = false;
         let currentSpeechRate = 0.95;
+        let fcLoopCount = 1;
 
         // タブ切り替え
         function switchTab(tabId) {
@@ -1118,8 +1136,15 @@
             document.getElementById(`${tabId}-view`).classList.remove('hidden');
             document.getElementById(`tab-${tabId}`).className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
 
+            // フラッシュカードタブの時だけ再生回数選択を表示
+            const loopContainer = document.getElementById('fc-loop-container');
             if (tabId === 'flashcard') {
+                loopContainer.classList.remove('hidden');
+                loopContainer.classList.add('flex');
                 setFlashcardMode(fcMode); // タブを開くたびに毎回シャッフルして初期化
+            } else {
+                loopContainer.classList.add('hidden');
+                loopContainer.classList.remove('flex');
             }
         }
 
@@ -1192,8 +1217,8 @@
             if (!q) return;
 
             const utterances = [];
-            // リスト学習時は2回、フラッシュカードテスト時は1回再生とする
-            const loopCount = btnId.includes('btn-list-conv') ? 2 : 1;
+            // リスト学習時は2回、フラッシュカードテスト時は選択された回数再生とする
+            const loopCount = btnId.includes('btn-list-conv') ? 2 : (btnId.includes('fc-sent-play-after') ? 1 : fcLoopCount);
 
             for(let i=0; i<loopCount; i++) {
                 // 会話・質問の読み上げ
@@ -1774,6 +1799,12 @@
             speedSlider.addEventListener('input', (e) => {
                 currentSpeechRate = parseFloat(e.target.value);
                 speedDisplay.innerText = currentSpeechRate.toFixed(2) + 'x';
+            });
+
+            // 再生回数セレクトボックスのイベントリスナー設定
+            const loopSelect = document.getElementById('loop-select');
+            loopSelect.addEventListener('change', (e) => {
+                fcLoopCount = parseInt(e.target.value, 10);
             });
         });
     </script>
