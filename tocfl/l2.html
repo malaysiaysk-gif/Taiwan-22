@@ -34,6 +34,26 @@
         .animate-fade-in {
             animation: fadeIn 0.4s ease-out forwards;
         }
+        /* スライダーのカスタムスタイル (Tailwindのaccent-colorを使用) */
+        input[type="range"] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #4f46e5;
+            margin-top: -5px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 p-4 md:p-8">
@@ -44,9 +64,20 @@
         <p class="text-sm text-slate-500 mt-2">※まずは「2回再生して表示」で音声を聴き取り、テキストを確認しましょう。</p>
     </header>
 
-    <div class="max-w-4xl mx-auto mb-6 flex justify-center gap-4">
+    <div class="max-w-4xl mx-auto mb-4 flex justify-center gap-4">
         <button onclick="switchTab('listening')" id="tab-listening" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">リスニング学習</button>
         <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカード</button>
+    </div>
+
+    <!-- 音声スピードコントローラー -->
+    <div class="max-w-4xl mx-auto mb-8 flex justify-center">
+        <div class="bg-white border border-slate-200 rounded-xl px-6 py-3 flex items-center justify-center gap-3 sm:gap-4 shadow-sm w-full md:w-auto">
+            <i data-lucide="gauge" class="w-5 h-5 text-slate-500 hidden sm:block"></i>
+            <span class="text-slate-700 font-medium text-sm sm:text-base whitespace-nowrap">音声スピード:</span>
+            <span id="speed-display" class="text-indigo-600 font-mono font-bold w-12 text-center text-sm sm:text-base">0.95x</span>
+            <!-- 速度をリアルタイムで反映するために oninput イベントを追加 -->
+            <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 sm:w-48 md:w-64 cursor-pointer">
+        </div>
     </div>
 
     <div id="listening-view">
@@ -81,6 +112,9 @@
     </div>
 
     <script>
+        // 音声スピード設定（デフォルト 0.95）
+        let currentSpeechRate = 0.95;
+
         const questionsData = [
             // --- 第一部分 ---
             {
@@ -835,7 +869,7 @@
                 const currentItem = utterances[currentIndex];
                 const utterance = new SpeechSynthesisUtterance(currentItem.text);
                 utterance.lang = 'zh-TW';
-                utterance.rate = 0.85;
+                utterance.rate = currentSpeechRate; // 音声スピードを適用
 
                 utterance.onend = () => {
                     const delay = currentItem.delayAfter;
@@ -861,7 +895,7 @@
 
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'zh-TW'; 
-            utterance.rate = 0.85;    
+            utterance.rate = currentSpeechRate; // 音声スピードを適用
 
             utterance.onstart = () => {
                 const btn = document.getElementById(btnId);
@@ -919,7 +953,7 @@
                 }
                 const utterance = new SpeechSynthesisUtterance(card.utterances[currentIndex].text);
                 utterance.lang = 'zh-TW'; 
-                utterance.rate = 0.85;
+                utterance.rate = currentSpeechRate; // 音声スピードを適用
 
                 utterance.onend = () => {
                     currentIndex++;
@@ -1298,6 +1332,19 @@
             currentCardIndex = 0; isCardFlipped = false; isFcTextRevealed = false; isAnswered = false; selectedOptionIndex = -1; renderFlashcard();
         }
 
+        // スピードスライダーのイベントリスナー設定
+        function initSpeedSlider() {
+            const speedSlider = document.getElementById('speed-slider');
+            const speedDisplay = document.getElementById('speed-display');
+
+            if (speedSlider && speedDisplay) {
+                speedSlider.addEventListener('input', (e) => {
+                    currentSpeechRate = parseFloat(e.target.value);
+                    speedDisplay.textContent = `${currentSpeechRate.toFixed(2)}x`;
+                });
+            }
+        }
+
         document.addEventListener('keydown', (e) => {
             if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
                 if (e.code === 'Space') {
@@ -1316,7 +1363,11 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', () => { renderApp(); lucide.createIcons(); });
+        document.addEventListener('DOMContentLoaded', () => { 
+            renderApp(); 
+            lucide.createIcons();
+            initSpeedSlider(); // スライダーの初期化
+        });
     </script>
 </body>
 </html>

@@ -47,6 +47,16 @@
         <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカードテスト</button>
     </div>
 
+    <!-- 音声スピードコントローラー -->
+    <div class="max-w-4xl mx-auto mb-6 bg-white rounded-2xl shadow-sm border border-slate-200 p-3 sm:p-4 flex flex-wrap justify-center items-center gap-3 sm:gap-4">
+        <div class="flex items-center gap-2">
+            <i data-lucide="gauge" class="w-5 h-5 text-slate-500"></i>
+            <span class="text-slate-700 font-medium text-sm sm:text-base">音声スピード:</span>
+            <span id="speed-display" class="text-indigo-600 font-mono font-bold w-12 text-right text-sm sm:text-base">0.95x</span>
+        </div>
+        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 sm:w-48 accent-indigo-600 cursor-pointer">
+    </div>
+
     <!-- 1. 一覧学習ビュー -->
     <div id="list-view" class="max-w-4xl mx-auto">
         <div class="mb-6 flex justify-end">
@@ -982,6 +992,7 @@
         let playingId = null;
         let playingType = null;
         let isGlobalReveal = false;
+        let currentPlaybackRate = 0.95;
 
         // タブ切り替え
         function switchTab(tabId) {
@@ -1098,7 +1109,7 @@
                 const currentItem = utterances[currentIndex];
                 const utterance = new SpeechSynthesisUtterance(currentItem.text);
                 utterance.lang = 'zh-TW';
-                utterance.rate = 0.85;
+                utterance.rate = currentPlaybackRate;
 
                 utterance.onend = () => {
                     const delay = currentItem.delayAfter;
@@ -1124,7 +1135,7 @@
 
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'zh-TW'; 
-            utterance.rate = 0.85;  
+            utterance.rate = currentPlaybackRate;  
 
             utterance.onstart = () => {
                 const btn = document.getElementById(btnId);
@@ -1548,6 +1559,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderListView();
             lucide.createIcons();
+
+            // 音声スピードスライダーの初期化
+            const speedSlider = document.getElementById('speed-slider');
+            const speedDisplay = document.getElementById('speed-display');
+            if (speedSlider && speedDisplay) {
+                speedSlider.addEventListener('input', (e) => {
+                    currentPlaybackRate = parseFloat(e.target.value);
+                    speedDisplay.innerText = currentPlaybackRate.toFixed(2) + 'x';
+                });
+            }
         });
     </script>
 </body>
