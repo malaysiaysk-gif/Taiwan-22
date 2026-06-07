@@ -56,6 +56,25 @@
         <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカード</button>
     </div>
 
+    <!-- 音声スピードコントローラー (共通) -->
+    <div class="max-w-4xl mx-auto mb-8">
+        <div class="bg-white border border-slate-200 rounded-xl px-6 py-4 flex items-center justify-center gap-4 shadow-sm">
+            <i data-lucide="gauge" class="w-5 h-5 text-slate-500"></i>
+            <span class="font-bold text-slate-700 text-sm">音声スピード:</span>
+            <span id="speed-display" class="font-mono font-bold text-indigo-600 text-sm w-12 text-center">0.95x</span>
+            <input 
+                type="range" 
+                id="speed-slider" 
+                min="0.5" 
+                max="1.5" 
+                step="0.05" 
+                value="0.95" 
+                class="w-48 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                oninput="updateSpeedDisplay(this.value)"
+            >
+        </div>
+    </div>
+
     <!-- リスニングビュー -->
     <div id="listening-view">
         <!-- グローバル表示切り替えボタン -->
@@ -95,7 +114,7 @@
                 <button onclick="nextCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="次のカード (右矢印キー)"><i data-lucide="chevron-right" class="w-8 h-8"></i></button>
             </div>
             
-            <p class="mt-4 text-xs text-slate-400 text-center">※キーボードの「スペースキー」でカードを裏返し、「左右の矢印キー」で移動できます。</p>
+            <p class="mt-4 text-xs text-slate-400 text-center">※キーボードの「スペースキー」や「左右の矢印キー」、「数字キー（単語クイズ）」で操作できます。</p>
         </div>
     </div>
 
@@ -107,17 +126,11 @@
     <script>
         // 問題データ (第一部分: 1-10, 第二部分: 11-28, 第三部分: 29-40, 第四部分: 41-50)
         const questionsData = [
-            // ここから 第一部分 看圖回答
+            // 第一部分 看圖回答
             {
                 id: 1,
-                script: [
-                { speaker: "問", text: "圖片裡有幾個學生？", jp: "写真には何人の学生がいますか？" }
-                ],
-                choices: [
-                "（A）三個",
-                "（B）四個",
-                "（C）七個"
-                ],
+                script: [ { speaker: "問", text: "圖片裡有幾個學生？", jp: "写真には何人の学生がいますか？" } ],
+                choices: [ "（A）三個", "（B）四個", "（C）七個" ],
                 vocab: [
                 { word: "圖片", pinyin: "tú piàn", jp: "写真、画像", speak: "圖片" },
                 { word: "幾個", pinyin: "jǐ ge", jp: "何人、いくつ", speak: "幾個" },
@@ -128,14 +141,8 @@
             },
             {
                 id: 2,
-                script: [
-                { speaker: "問", text: "這個人在做什麼運動？", jp: "この人は何のスポーツをしていますか？" }
-                ],
-                choices: [
-                "（A）他在打籃球",
-                "（B）他在打網球",
-                "（C）他在打棒球"
-                ],
+                script: [ { speaker: "問", text: "這個人在做什麼運動？", jp: "この人は何のスポーツをしていますか？" } ],
+                choices: [ "（A）他在打籃球", "（B）他在打網球", "（C）他在打棒球" ],
                 vocab: [
                 { word: "做什麼", pinyin: "zuò shén me", jp: "何をしている", speak: "做什麼" },
                 { word: "運動", pinyin: "yùn dòng", jp: "スポーツ、運動", speak: "運動" },
@@ -148,14 +155,8 @@
             },
             {
                 id: 3,
-                script: [
-                { speaker: "問", text: "請問小美喜歡做什麼？", jp: "小美は何をするのが好きですか？" }
-                ],
-                choices: [
-                "（A）她喜歡打掃",
-                "（B）她喜歡做菜",
-                "（C）她喜歡洗衣服"
-                ],
+                script: [ { speaker: "問", text: "請問小美喜歡做什麼？", jp: "小美は何をするのが好きですか？" } ],
+                choices: [ "（A）她喜歡打掃", "（B）她喜歡做菜", "（C）她喜歡洗衣服" ],
                 vocab: [
                 { word: "喜歡", pinyin: "xǐ huān", jp: "好きだ", speak: "喜歡" },
                 { word: "打掃", pinyin: "dǎ sǎo", jp: "掃除する", speak: "打掃" },
@@ -167,14 +168,8 @@
             },
             {
                 id: 4,
-                script: [
-                { speaker: "問", text: "弟弟今天怎麼沒去上課？", jp: "弟は今日どうして授業に行かなかったのですか？" }
-                ],
-                choices: [
-                "（A）他腳痛",
-                "（B）他頭痛",
-                "（C）他肚子痛"
-                ],
+                script: [ { speaker: "問", text: "弟弟今天怎麼沒去上課？", jp: "弟は今日どうして授業に行かなかったのですか？" } ],
+                choices: [ "（A）他腳痛", "（B）他頭痛", "（C）他肚子痛" ],
                 vocab: [
                 { word: "怎麼", pinyin: "zěn me", jp: "どうして、なぜ", speak: "怎麼" },
                 { word: "沒去上課", pinyin: "méi qù shàng kè", jp: "授業に行かなかった", speak: "沒去上課" },
@@ -187,14 +182,8 @@
             },
             {
                 id: 5,
-                script: [
-                { speaker: "問", text: "小明給美美什麼？", jp: "小明は美美に何をあげましたか？" }
-                ],
-                choices: [
-                "（A）水果",
-                "（B）蛋糕",
-                "（C）餃子"
-                ],
+                script: [ { speaker: "問", text: "小明給美美什麼？", jp: "小明は美美に何をあげましたか？" } ],
+                choices: [ "（A）水果", "（B）蛋糕", "（C）餃子" ],
                 vocab: [
                 { word: "給", pinyin: "gěi", jp: "あげる、与える", speak: "給" },
                 { word: "水果", pinyin: "shuǐ guǒ", jp: "果物、フルーツ", speak: "水果" },
@@ -206,14 +195,8 @@
             },
             {
                 id: 6,
-                script: [
-                { speaker: "問", text: "這位先生現在在做什麼？", jp: "この男性は今何をしていますか？" }
-                ],
-                choices: [
-                "（A）他在教室上網",
-                "（B）他在辦公室工作",
-                "（C）他在辦公室上網"
-                ],
+                script: [ { speaker: "問", text: "這位先生現在在做什麼？", jp: "この男性は今何をしていますか？" } ],
+                choices: [ "（A）他在教室上網", "（B）他在辦公室工作", "（C）他在辦公室上網" ],
                 vocab: [
                 { word: "現在", pinyin: "xiàn zài", jp: "今、現在", speak: "現在" },
                 { word: "教室", pinyin: "jiào shì", jp: "教室", speak: "教室" },
@@ -226,14 +209,8 @@
             },
             {
                 id: 7,
-                script: [
-                { speaker: "問", text: "小女孩在做什麼？", jp: "女の子は何をしていますか？" }
-                ],
-                choices: [
-                "（A）她在寄信",
-                "（B）她在寫信",
-                "（C）她在打電話"
-                ],
+                script: [ { speaker: "問", text: "小女孩在做什麼？", jp: "女の子は何をしていますか？" } ],
+                choices: [ "（A）她在寄信", "（B）她在寫信", "（C）她在打電話" ],
                 vocab: [
                 { word: "小女孩", pinyin: "xiǎo nǚ hái", jp: "女の子", speak: "小女孩" },
                 { word: "寄信", pinyin: "jì xìn", jp: "手紙を出す、郵送する", speak: "寄信" },
@@ -245,14 +222,8 @@
             },
             {
                 id: 8,
-                script: [
-                { speaker: "問", text: "圖片裡有什麼？", jp: "写真には何がありますか？" }
-                ],
-                choices: [
-                "（A）一枝鉛筆和兩本字典",
-                "（B）一本字典和兩支毛筆",
-                "（C）一本雜誌和兩本課本"
-                ],
+                script: [ { speaker: "問", text: "圖片裡有什麼？", jp: "写真には何がありますか？" } ],
+                choices: [ "（A）一枝鉛筆和兩本字典", "（B）一本字典和兩支毛筆", "（C）一本雜誌和兩本課本" ],
                 vocab: [
                 { word: "枝 / 支", pinyin: "zhī", jp: "〜本（細長いものを数える量詞）", speak: "枝" },
                 { word: "鉛筆", pinyin: "qiān bǐ", jp: "鉛筆", speak: "鉛筆" },
@@ -267,14 +238,8 @@
             },
             {
                 id: 9,
-                script: [
-                { speaker: "問", text: "他們在做什麼？", jp: "彼らは何をしていますか？" }
-                ],
-                choices: [
-                "（A）他們一邊看電視，一邊吃東西",
-                "（B）他們一邊吃東西，一邊和狗玩",
-                "（C）他們一邊和狗玩，一邊看電視"
-                ],
+                script: [ { speaker: "問", text: "他們在做什麼？", jp: "彼らは何をしていますか？" } ],
+                choices: [ "（A）他們一邊看電視，一邊吃東西", "（B）他們一邊吃東西，一邊和狗玩", "（C）他們一邊和狗玩，一邊看電視" ],
                 vocab: [
                 { word: "一邊～一邊...", pinyin: "yì biān ~ yì biān ...", jp: "〜しながら…する", speak: "一邊" },
                 { word: "看電視", pinyin: "kàn diàn shì", jp: "テレビを見る", speak: "看電視" },
@@ -286,14 +251,8 @@
             },
             {
                 id: 10,
-                script: [
-                { speaker: "問", text: "這裡有哪些動物？", jp: "ここにはどんな動物がいますか？" }
-                ],
-                choices: [
-                "（A）這裡都是馬",
-                "（B）這裡有馬也有牛",
-                "（C）這裡只有牛沒有馬"
-                ],
+                script: [ { speaker: "問", text: "這裡有哪些動物？", jp: "ここにはどんな動物がいますか？" } ],
+                choices: [ "（A）這裡都是馬", "（B）這裡有馬也有牛", "（C）這裡只有牛沒有馬" ],
                 vocab: [
                 { word: "哪些", pinyin: "nǎ xiē", jp: "どの（複数のものを指す）", speak: "哪些" },
                 { word: "動物", pinyin: "dòng wù", jp: "動物", speak: "動物" },
@@ -304,7 +263,7 @@
                 meta: "「都是（すべて〜だ）」「有〜也有…（〜も…もいる）」「只有〜沒有…（〜しかなく…はいない）」といった存在の有無と全称・部分の文法を聞き分ける問題です。",
                 ans: "B"
             },
-            // ここから 第二部分 問答理解
+            // 第二部分 問答理解
             {
                 id: 11,
                 script: [
@@ -613,7 +572,7 @@
                 meta: "「誰が」「どこから」「どこへ」動作をしているかを絵と一致させます。「樓上的小孩（上の階の子供）」が「往下丟（下に向かって投げる）」。この条件を満たしているのは(C)の絵だけです。",
                 ans: "C"
             },
-            // ここから 第三部分 對話理解
+            // 第三部分 對話理解
             {
                 id: 29,
                 script: [
@@ -846,11 +805,7 @@
                 { speaker: "女", text: "謝謝你！但是我今天晚上打算睡在公司裡。", jp: "ありがとう！でも今晩は会社で寝るつもりなの。" },
                 { speaker: "問", text: "請問這位小姐今天晚上打算做什麼？", jp: "質問：この女性は今晩何をするつもりですか？" }
                 ],
-                choices: [
-                "（A）在公司睡覺",
-                "（B）和經理討論",
-                "（C）坐男生的車回家"
-                ],
+                choices: [ "（A）在公司睡覺", "（B）和經理討論", "（C）坐男生的車回家" ],
                 vocab: [
                 { word: "放心", pinyin: "fàng xīn", jp: "安心する", speak: "放心" },
                 { word: "等會兒", pinyin: "děng huǐ r", jp: "後で、少し待って", speak: "等會兒" },
@@ -861,7 +816,7 @@
                 meta: "女性の最後のセリフ「但是我今天晚上打算睡在公司裡（でも今晩は会社で寝るつもりです）」が決定打となります。男性の「開車送妳回去（車で送る）」という提案を断っている点に注意しましょう。",
                 ans: "A"
             },
-            // ここから 第四部分 對話
+            // 第四部分 對話
             {
                 id: 41,
                 script: [
@@ -871,12 +826,7 @@
                 { speaker: "女", text: "你這樣沒辦法上班，我幫你請假，你快回去睡吧！", jp: "そんなんじゃ仕事に行けないわよ、代わりに休みを取ってあげるから、早く帰って寝なさい！" },
                 { speaker: "問", text: "請問這位小姐為什麼要幫這位先生請假？", jp: "質問：この女性はどうしてこの男性の代わりに休みを取ろうとしているのですか？" }
                 ],
-                choices: [
-                "（A）因為他想睡覺",
-                "（B）因為他想運動",
-                "（C）因為他不想上班",
-                "（D）因為他起不了床"
-                ],
+                choices: [ "（A）因為他想睡覺", "（B）因為他想運動", "（C）因為他不想上班", "（D）因為他起不了床" ],
                 vocab: [
                 { word: "一整天", pinyin: "yì zhěng tiān", jp: "丸一日、一日中", speak: "一整天" },
                 { word: "累", pinyin: "lèi", jp: "疲れる", speak: "累" },
@@ -897,12 +847,7 @@
                 { speaker: "女", text: "嗯，雖然每件事都不錯，但是我回國的時候，把錢包掉在旅館了。", jp: "うん、すべての事が良かったんだけど、帰国する時に財布をホテルに落としちゃったの。" },
                 { speaker: "問", text: "關於這位小姐，下面哪一個是對的？", jp: "質問：この女性について、次のうちどれが正しいですか？" }
                 ],
-                choices: [
-                "（A）她旅行時不小心掉了東西",
-                "（B）她旅行時有些想去的地方沒去",
-                "（C）她覺得旅行時最麻煩的是交通",
-                "（D）她覺得旅行最重要的是風景漂亮"
-                ],
+                choices: [ "（A）她旅行時不小心掉了東西", "（B）她旅行時有些想去的地方沒去", "（C）她覺得旅行時最麻煩的是交通", "（D）她覺得旅行最重要的是風景漂亮" ],
                 vocab: [
                 { word: "禮拜", pinyin: "lǐ bài", jp: "週、〜曜日", speak: "禮拜" },
                 { word: "交通", pinyin: "jiāo tōng", jp: "交通", speak: "交通" },
@@ -925,12 +870,7 @@
                 { speaker: "女", text: "是啊，可是我很擔心沒考好。", jp: "そうよ、でもうまくできなかったんじゃないかって心配なの。" },
                 { speaker: "問", text: "這位小姐為什麼不開心？", jp: "質問：この女性はどうして嬉しくないのですか？" }
                 ],
-                choices: [
-                "（A）她怕考得不好",
-                "（B）她的成績不好",
-                "（C）她沒參加考試",
-                "（D）她怕題目寫不完"
-                ],
+                choices: [ "（A）她怕考得不好", "（B）她的成績不好", "（C）她沒參加考試", "（D）她怕題目寫不完" ],
                 vocab: [
                 { word: "怎麼了", pinyin: "zěn me le", jp: "どうしたの？", speak: "怎麼了" },
                 { word: "好像", pinyin: "hǎo xiàng", jp: "まるで〜のようだ、〜みたいだ", speak: "好像" },
@@ -952,12 +892,7 @@
                 { speaker: "男", text: "啊！不好意思，不好意思，我會注意的。", jp: "あっ！すみません、すみません、気をつけます。" },
                 { speaker: "問", text: "陳太太為什麼找王先生？", jp: "質問：陳奥さんはなぜ王さんを訪ねたのですか？" }
                 ],
-                choices: [
-                "（A）想請他搬家",
-                "（B）想請他吃飯",
-                "（C）介紹女朋友給他",
-                "（D）請他注意聲音的大小"
-                ],
+                choices: [ "（A）想請他搬家", "（B）想請他吃飯", "（C）介紹女朋友給他", "（D）請他注意聲音的大小" ],
                 vocab: [
                 { word: "樓下", pinyin: "lóu xià", jp: "下の階", speak: "樓下" },
                 { word: "總是", pinyin: "zǒng shì", jp: "いつも", speak: "總是" },
@@ -979,12 +914,7 @@
                 { speaker: "女", text: "還好吧？我一直都是這個時間睡覺，也沒生什麼病。", jp: "そうかな？ずっとこの時間に寝ているけど、病気なんてしてないわ。" },
                 { speaker: "問", text: "請問這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
                 ],
-                choices: [
-                "（A）她習慣在不同的時間睡覺",
-                "（B）她每天都是這個時間起床",
-                "（C）她認為睡覺對健康有影響",
-                "（D）她不覺得自己很晚才睡覺"
-                ],
+                choices: [ "（A）她習慣在不同的時間睡覺", "（B）她每天都是這個時間起床", "（C）她認為睡覺對健康有影響", "（D）她不覺得自己很晚才睡覺" ],
                 vocab: [
                 { word: "那麼", pinyin: "nà me", jp: "あんなに、そんなに", speak: "那麼" },
                 { word: "才", pinyin: "cái", jp: "やっと、〜して初めて（遅さを強調）", speak: "才" },
@@ -1005,12 +935,7 @@
                 { speaker: "女", text: "好啊，明天見。", jp: "わかった、また明日。" },
                 { speaker: "問", text: "請問這位先生說了什麼？", jp: "質問：この男性は何と言いましたか？" }
                 ],
-                choices: [
-                "（A）他剛從海邊回來",
-                "（B）他喜歡夏天去海邊玩",
-                "（C）他給這位小姐買了褲子",
-                "（D）他約了這位小姐明天去運動"
-                ],
+                choices: [ "（A）他剛從海邊回來", "（B）他喜歡夏天去海邊玩", "（C）他給這位小姐買了褲子", "（D）他約了這位小姐明天去運動" ],
                 vocab: [
                 { word: "夏天", pinyin: "xià tiān", jp: "夏", speak: "夏天" },
                 { word: "海邊", pinyin: "hǎi biān", jp: "海辺", speak: "海邊" },
@@ -1031,12 +956,7 @@
                 { speaker: "女", text: "你太客氣了。吃蛋糕和收禮物都不是最重要的事。", jp: "気を使いすぎよ。ケーキを食べることやプレゼントをもらうことは一番大事なことじゃないわ。" },
                 { speaker: "問", text: "請問這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
                 ],
-                choices: [
-                "（A）她不想請這位先生吃蛋糕",
-                "（B）她想幫這位先生慶祝生日",
-                "（C）她要朋友來參加舞會就好",
-                "（D）她想要大家一起唱生日歌"
-                ],
+                choices: [ "（A）她不想請這位先生吃蛋糕", "（B）她想幫這位先生慶祝生日", "（C）她要朋友來參加舞會就好", "（D）她想要大家一起唱生日歌" ],
                 vocab: [
                 { word: "為了", pinyin: "wèi le", jp: "〜のために", speak: "為了" },
                 { word: "請", pinyin: "qǐng", jp: "おごる、ごちそうする", speak: "請吃" },
@@ -1059,12 +979,7 @@
                 { speaker: "女", text: "喔，有不用花錢的啊！那我們快走吧！", jp: "へえ、お金を使わなくていいのがあるのね！じゃあ早く行きましょう！" },
                 { speaker: "問", text: "為什麼這位小姐想去百貨公司？", jp: "質問：どうしてこの女性はデパートに行きたくなったのですか？" }
                 ],
-                choices: [
-                "（A）她想拿商店送的東西",
-                "（B）她最近很想花錢買東西",
-                "（C）她想要這位先生送她禮物",
-                "（D）她想和這位先生一起去逛街"
-                ],
+                choices: [ "（A）她想拿商店送的東西", "（B）她最近很想花錢買東西", "（C）她想要這位先生送她禮物", "（D）她想和這位先生一起去逛街" ],
                 vocab: [
                 { word: "逛", pinyin: "guàng", jp: "ぶらぶら歩く、見て回る", speak: "逛" },
                 { word: "百貨公司", pinyin: "bǎi huò gōng sī", jp: "デパート、百貨店", speak: "百貨公司" },
@@ -1086,12 +1001,7 @@
                 { speaker: "女", text: "我覺得，你只是怕太晚回家，沒辦法看棒球比賽！", jp: "ただ帰りが遅くなって、野球の試合が見られなくなるのが怖いだけでしょ！" },
                 { speaker: "問", text: "請問下面哪一個是對的？", jp: "質問：次のうち正しいのはどれですか？" }
                 ],
-                choices: [
-                "（A）這位先生今天想留在家裡",
-                "（B）這位小姐怕自己太晚回家",
-                "（C）他們兩人今天都想看棒球比賽",
-                "（D）他們已經買完衣服回家休息了"
-                ],
+                choices: [ "（A）這位先生今天想留在家裡", "（B）這位小姐怕自己太晚回家", "（C）他們兩人今天都想看棒球比賽", "（D）他們已經買完衣服回家休息了" ],
                 vocab: [
                 { word: "吹冷氣", pinyin: "chuī lěng qì", jp: "クーラー（冷房）にあたる", speak: "吹冷氣" },
                 { word: "答應", pinyin: "dā yìng", jp: "約束する、承諾する", speak: "答應" },
@@ -1113,12 +1023,7 @@
                 { speaker: "女", text: "我們要看到發票，才能換東西，不好意思。", jp: "レシートを確認しないと交換できません、申し訳ありません。" },
                 { speaker: "問", text: "這位小姐的意思是什麼？", jp: "質問：この女性が言いたいことは何ですか？" }
                 ],
-                choices: [
-                "（A）她要把錢還給客人",
-                "（B）東西賣出去就不能換了",
-                "（C）她沒有東西可以換給客人",
-                "（D）沒有發票，就不能換東西"
-                ],
+                choices: [ "（A）她要把錢還給客人", "（B）東西賣出去就不能換了", "（C）她沒有東西可以換給客人", "（D）沒有發票，就不能換東西" ],
                 vocab: [
                 { word: "奇怪", pinyin: "qí guài", jp: "変だ、おかしい", speak: "奇怪" },
                 { word: "換", pinyin: "huàn", jp: "交換する", speak: "換" },
@@ -1134,8 +1039,46 @@
 
         // 状態管理
         let playingId = null;
-        let playingType = null; // 'single' | 'vocab' | 'conversation'
+        let playingType = null; // 'single' | 'vocab' | 'conversation' | 'fc-conv'
         let isGlobalReveal = false;
+
+        let allVocabs = [];
+        let allSentences = [];
+        let flashcards = [];
+        let fcMode = 'vocab';
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let isFcTextRevealed = false; // 文字が公開されているか (sentence用)
+        let isAnswered = false; // vocabクイズ用
+        let selectedOptionIndex = -1; // vocabクイズ用
+        let autoPlayTimeout = null;
+
+        // スピード表示の更新
+        function updateSpeedDisplay(val) {
+            document.getElementById('speed-display').innerText = parseFloat(val).toFixed(2) + 'x';
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+        }
+
+        // タブ切り替え
+        function switchTab(tabId) {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            if (tabId === 'listening') {
+                document.getElementById('listening-view').classList.remove('hidden');
+                document.getElementById('flashcard-view').classList.add('hidden');
+                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+            } else {
+                document.getElementById('listening-view').classList.add('hidden');
+                document.getElementById('flashcard-view').classList.remove('hidden');
+                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+                
+                initFlashcards();
+            }
+        }
 
         // すべて表示/隠す トグル処理
         function toggleGlobalReveal() {
@@ -1167,27 +1110,21 @@
                         const icon = btn.querySelector('.lucide-volume-2');
                         if (icon) icon.classList.remove('animate-pulse');
                     } else if (playingType === 'vocab') {
-                        // 単語ボタンのリセット
                         const icon = btn.querySelector('.lucide-volume-2');
                         if (icon) {
                             icon.classList.remove('animate-pulse', 'text-blue-600');
                             icon.classList.add('text-blue-400');
                         }
                     } else if (playingType === 'single') {
-                        // スクリプトボタンのリセット
                         btn.classList.remove('text-indigo-600', 'bg-indigo-100', 'text-emerald-600', 'bg-emerald-100');
                         btn.classList.add('text-slate-400');
                         const icon = btn.querySelector('.lucide-play');
-                        if (icon) {
-                            icon.setAttribute('fill', 'none');
-                        }
+                        if (icon) icon.setAttribute('fill', 'none');
                     } else if (playingType === 'conversation') {
-                        // 会話再生ボタンのリセット
                         btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
                         btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
                         lucide.createIcons({root: btn});
                     } else if (playingType === 'fc-conv') {
-                        // フラッシュカードの連続再生ボタンのリセット
                         btn.classList.remove('animate-pulse', 'text-blue-600', 'bg-indigo-200');
                     }
                 }
@@ -1201,7 +1138,6 @@
                 return;
             }
 
-            // 既存の音声をキャンセルしてUIをリセット
             window.speechSynthesis.cancel();
             resetActiveUI();
 
@@ -1218,23 +1154,19 @@
             const q = questionsData.find(x => x.id === qId);
             if (!q) return;
 
-            // 2回分のテキストリストを作成（ポーズ時間を含むオブジェクトにする）
+            const currentSpeed = parseFloat(document.getElementById('speed-slider').value) || 0.95;
             const utterances = [];
+            
             for(let i=0; i<2; i++) {
                 q.script.forEach((line, index) => {
-                    let delay = 600; // 基本のポーズ時間
-                    
-                    // 第3部,第4部(id>=29)で「問」の前のセリフの後は少し長めにする
+                    let delay = 600; 
                     if (q.id >= 29 && index === q.script.length - 2) {
                         delay = 1200;
                     }
-                    
-                    // 1回目の最後（＝2回目に入る前）は長めのポーズにする
-                    // ※第1部（id < 11）はセリフが1つしかないので、そのセリフの後に長めのポーズを入れる
                     if (i === 0 && index === q.script.length - 1) {
                         delay = 2000;
                     }
-
+                    delay = delay / currentSpeed;
                     utterances.push({
                         text: line.text,
                         delayAfter: delay
@@ -1245,10 +1177,9 @@
             let currentIndex = 0;
 
             function speakNext() {
-                if (playingId !== btnId) return; // 途中でキャンセルされた場合
+                if (playingId !== btnId) return; 
                 
                 if (currentIndex >= utterances.length) {
-                    // 全ての再生が完了したら、UIを戻してテキストを表示
                     resetActiveUI();
                     playingId = null;
                     playingType = null;
@@ -1258,8 +1189,8 @@
 
                 const currentItem = utterances[currentIndex];
                 const utterance = new SpeechSynthesisUtterance(currentItem.text);
-                utterance.lang = 'zh-TW'; // 台湾華語
-                utterance.rate = 0.85;
+                utterance.lang = 'zh-TW'; 
+                utterance.rate = currentSpeed; 
 
                 utterance.onend = () => {
                     const delay = currentItem.delayAfter;
@@ -1268,7 +1199,7 @@
                         if (playingId === btnId) {
                             speakNext();
                         }
-                    }, delay); // 設定した空白時間を入れる
+                    }, delay); 
                 };
                 utterance.onerror = () => {
                     currentIndex++;
@@ -1293,10 +1224,11 @@
 
             playingId = btnId;
             playingType = isVocab ? 'vocab' : 'single';
-
+            
+            const currentSpeed = parseFloat(document.getElementById('speed-slider').value) || 0.95;
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'zh-TW'; 
-            utterance.rate = 0.85;    
+            utterance.rate = currentSpeed; 
 
             utterance.onstart = () => {
                 const btn = document.getElementById(btnId);
@@ -1318,9 +1250,7 @@
                             btn.classList.add('text-indigo-600', 'bg-indigo-100');
                         }
                         const icon = btn.querySelector('.lucide-play');
-                        if (icon) {
-                            icon.setAttribute('fill', 'currentColor');
-                        }
+                        if (icon) icon.setAttribute('fill', 'currentColor');
                     }
                 }
             };
@@ -1359,11 +1289,12 @@
 
             const card = flashcards[cardIndex];
             if (!card || !card.utterances) return;
-
+            
+            const currentSpeed = parseFloat(document.getElementById('speed-slider').value) || 0.95;
             let currentIndex = 0;
 
             function speakNext() {
-                if (playingId !== btnId) return; // キャンセルされた場合
+                if (playingId !== btnId) return; 
                 
                 if (currentIndex >= card.utterances.length) {
                     resetActiveUI();
@@ -1374,15 +1305,16 @@
 
                 const utterance = new SpeechSynthesisUtterance(card.utterances[currentIndex].text);
                 utterance.lang = 'zh-TW'; 
-                utterance.rate = 0.85;
+                utterance.rate = currentSpeed; 
 
                 utterance.onend = () => {
                     currentIndex++;
+                    const delay = 600 / currentSpeed;
                     setTimeout(() => {
                         if (playingId === btnId) {
                             speakNext();
                         }
-                    }, 600); // 会話の間のポーズ
+                    }, delay); 
                 };
                 utterance.onerror = () => {
                     currentIndex++;
@@ -1395,11 +1327,10 @@
             speakNext();
         }
 
-        // テキストをルビ（下付きピンイン）付きのHTMLに変換する関数
+        // テキストをルビ付きのHTMLに変換する関数
         function getRubyText(text) {
             if (typeof pinyinPro === 'undefined') return text;
             try {
-                // pinyin-proで文字ごとのピンイン配列を取得
                 const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
                 const charArr = Array.from(text);
                 
@@ -1408,7 +1339,6 @@
                     const char = charArr[i];
                     const py = pinyinArr[i];
                     
-                    // 漢字の場合のみルビを振る
                     if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
                         html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
                     } else {
@@ -1422,255 +1352,14 @@
             }
         }
 
-        // DOMの生成
-        function renderApp() {
-            const container = document.getElementById('app-content');
-            let html = '';
-
-            let isPart1Inserted = false;
-            let isPart2Inserted = false;
-            let isPart3Inserted = false;
-            let isPart4Inserted = false;
-
-            questionsData.forEach(q => {
-                // セクション見出しの挿入
-                if (q.id >= 1 && q.id < 11 && !isPart1Inserted) {
-                    html += `
-                        <div class="py-4 mb-2">
-                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
-                                <i data-lucide="image" class="w-6 h-6"></i>
-                                第一部分 看圖回答
-                            </h2>
-                            <p class="text-slate-500 mt-2 text-center text-sm">質問を聞いて、画像（本アプリでは省略）に合致する選択肢を選びます。</p>
-                        </div>
-                    `;
-                    isPart1Inserted = true;
-                }
-                if (q.id >= 11 && q.id < 29 && !isPart2Inserted) {
-                    html += `
-                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
-                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
-                                <i data-lucide="headphones" class="w-6 h-6"></i>
-                                第二部分 問答理解
-                            </h2>
-                            <p class="text-slate-500 mt-2 text-center text-sm">1往復の会話を聞いて、正解の絵を選びます。</p>
-                        </div>
-                    `;
-                    isPart2Inserted = true;
-                }
-                if (q.id >= 29 && q.id < 41 && !isPart3Inserted) {
-                    html += `
-                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
-                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                                第三部分 對話理解
-                            </h2>
-                            <p class="text-slate-500 mt-2 text-center text-sm">複数回のやり取りの対話を聞いて、最後の質問に対する正解の絵を選びます。</p>
-                        </div>
-                    `;
-                    isPart3Inserted = true;
-                }
-                if (q.id >= 41 && !isPart4Inserted) {
-                    html += `
-                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
-                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
-                                <i data-lucide="message-circle" class="w-6 h-6"></i>
-                                第四部分 對話
-                            </h2>
-                            <p class="text-slate-500 mt-2 text-center text-sm">やや長めの対話を聞き、状況や話し手の意図を把握して、最後の質問に答えます。</p>
-                        </div>
-                    `;
-                    isPart4Inserted = true;
-                }
-
-                let scriptHtml = q.script.map((line, idx) => {
-                    const btnId = `btn-line-${q.id}-${idx}`;
-                    
-                    let speakerBg = 'bg-slate-100 text-slate-700'; // デフォルト
-                    if (line.speaker === '男') speakerBg = 'bg-blue-100 text-blue-700';
-                    else if (line.speaker === '女') speakerBg = 'bg-pink-100 text-pink-700';
-                    else if (line.speaker === '問') speakerBg = 'bg-emerald-100 text-emerald-700';
-
-                    // ピンイン付きHTMLを取得
-                    const rubyText = getRubyText(line.text);
-
-                    return `
-                        <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
-                            <div class="flex items-center gap-2 sm:w-1/6">
-                                <span class="font-bold px-2 py-1 rounded text-sm ${speakerBg}">
-                                    ${line.speaker}
-                                </span>
-                                <button 
-                                    id="${btnId}"
-                                    onclick="speakText('${line.text}', '${btnId}', false, '${line.speaker}')"
-                                    class="secret-target p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400"
-                                    title="音声を再生"
-                                >
-                                    <i data-lucide="play" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-                            <div class="sm:w-5/6 secret-target transition-all duration-500 delay-100">
-                                <p class="text-xl font-medium text-slate-800 mb-4 leading-relaxed">${rubyText}</p>
-                                <p class="text-slate-600 text-sm">${line.jp}</p>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-
-                let vocabHtml = q.vocab.map((v, idx) => {
-                    const btnId = `btn-vocab-${q.id}-${idx}`;
-                    return `
-                        <div class="flex items-center gap-3 border border-slate-100 bg-white p-2.5 rounded-lg hover:border-indigo-200 transition-colors shadow-sm secret-target transition-all duration-500 delay-200">
-                            <button
-                                id="${btnId}"
-                                onclick="speakText('${v.speak}', '${btnId}', true)"
-                                class="flex-shrink-0 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-md font-mono text-sm transition-colors group"
-                                title="発音を聞く"
-                            >
-                                <i data-lucide="volume-2" class="w-4 h-4 text-blue-400 group-hover:text-blue-600"></i>
-                                ${v.pinyin}
-                            </button>
-                            <div class="flex flex-col justify-center">
-                                <span class="font-bold text-slate-800">${v.word}</span>
-                                <span class="text-xs text-slate-500">${v.jp}</span>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-
-                let choicesHtml = '';
-                if (q.choices) {
-                    choicesHtml = `
-                        <section>
-                            <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選択肢</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                ${q.choices.map((choice, cIdx) => {
-                                    const optionMatch = choice.match(/[A-D]/);
-                                    const optionLetter = optionMatch ? optionMatch[0] : '';
-                                    const isCorrect = optionLetter === q.ans;
-                                    const rubyChoice = getRubyText(choice);
-                                    
-                                    const btnId = `btn-choice-${q.id}-${optionLetter || cIdx}`;
-                                    // （A）などの記号を削除して読ませる
-                                    const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, '').replace(/'/g, "\\'");
-                                    
-                                    return `
-                                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
-                                        <div class="flex items-start gap-2">
-                                            <button 
-                                                id="${btnId}"
-                                                onclick="speakText('${speakTextStr}', '${btnId}', false)"
-                                                class="secret-target flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5"
-                                                title="音声を再生"
-                                            >
-                                                <i data-lucide="play" class="w-4 h-4"></i>
-                                            </button>
-                                            <span class="text-slate-800 leading-relaxed">${rubyChoice}</span>
-                                        </div>
-                                        ${isCorrect ? `<span class="secret-target flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : ''}
-                                    </div>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </section>
-                    `;
-                }
-
-                html += `
-                    <article id="question-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                        <!-- Header -->
-                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-                            <div class="flex items-center gap-4">
-                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
-                                <button onclick="playConversation(${q.id}, 'btn-conv-${q.id}')" id="btn-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                    2回再生して表示
-                                </button>
-                            </div>
-                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500">
-                                <i data-lucide="check-circle" class="w-4 h-4"></i>
-                                <span>正解: ${q.ans}</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 space-y-6">
-                            ${choicesHtml}
-                            
-                            <!-- Script Section -->
-                            <section>
-                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">スクリプトと和訳</h3>
-                                <div class="space-y-3">
-                                    ${scriptHtml}
-                                </div>
-                            </section>
-
-                            <!-- Vocabulary Section -->
-                            <section>
-                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">重要単語</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    ${vocabHtml}
-                                </div>
-                            </section>
-
-                            <!-- Meta Strategy Section -->
-                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
-                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
-                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i>
-                                    <h4>メタ解法ポイント</h4>
-                                </div>
-                                <p class="text-amber-900 text-sm leading-relaxed">
-                                    ${q.meta}
-                                </p>
-                            </section>
-                        </div>
-                    </article>
-                `;
-            });
-
-            container.innerHTML = html;
-        }
-
-        // --- フラッシュカード機能 ---
-        let allVocabs = [];
-        let allSentences = [];
-        let flashcards = [];
-        let fcMode = 'vocab';
-        let currentCardIndex = 0;
-        let isCardFlipped = false;
-        let isFcTextRevealed = false; // 文字が公開されているか (sentence用)
-        let isAnswered = false; // vocabクイズ用
-        let selectedOptionIndex = -1; // vocabクイズ用
-        let autoPlayTimeout = null;
-
-        // タブ切り替え
-        function switchTab(tabId) {
-            window.speechSynthesis.cancel();
-            resetActiveUI();
-
-            if (tabId === 'listening') {
-                document.getElementById('listening-view').classList.remove('hidden');
-                document.getElementById('flashcard-view').classList.add('hidden');
-                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
-                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
-            } else {
-                document.getElementById('listening-view').classList.add('hidden');
-                document.getElementById('flashcard-view').classList.remove('hidden');
-                document.getElementById('tab-flashcard').className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
-                document.getElementById('tab-listening').className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
-                
-                initFlashcards();
-            }
-        }
-
         // データを抽出してシャッフル
         function initFlashcardsData() {
             const vocabMap = new Map();
             allSentences = [];
             questionsData.forEach(q => {
-                // 第4部 (id 41-50) は除外する
+                // 第4部 (id 41-50) はフラッシュカードから除外
                 if (q.id >= 41) return;
 
-                // 単語
                 if (q.vocab) {
                     q.vocab.forEach(v => {
                         if (!vocabMap.has(v.word) && !v.jp.includes('不正解')) {
@@ -1679,14 +1368,12 @@
                     });
                 }
                 
-                // センテンス（問題を丸ごと1つのカードにする）
                 if (q.script && q.script.length > 0) {
                     let combinedText = '';
                     let combinedJp = '';
                     let utterances = [];
                     
                     q.script.forEach(s => {
-                        // 質問文(問)は除外
                         if (s.speaker !== '問' && s.text) {
                             combinedText += `${s.speaker}: ${s.text}\n`;
                             combinedJp += `${s.speaker}: ${s.jp}\n`;
@@ -1725,7 +1412,7 @@
                 document.getElementById('fc-mode-vocab').className = "px-4 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
                 document.getElementById('fc-mode-sentence').className = "px-4 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
                 flashcards = shuffle([...allVocabs]);
-                flashcards.forEach(c => delete c.quizOptions); // リセット時に選択肢を消去
+                flashcards.forEach(c => delete c.quizOptions); 
             } else {
                 document.getElementById('fc-mode-sentence').className = "px-4 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
                 document.getElementById('fc-mode-vocab').className = "px-4 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
@@ -1774,7 +1461,6 @@
             let btnId = `fc-btn-${currentCardIndex}`;
 
             if (fcMode === 'vocab') {
-                // 選択肢が未生成の場合は生成する
                 if (!card.quizOptions) {
                     const options = [card];
                     const others = allVocabs.filter(v => v.word !== card.word);
@@ -1790,11 +1476,9 @@
                     
                     if (isAnswered) {
                         if (opt.word === card.word) {
-                            // 正解
                             btnClass = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 font-bold flex items-center justify-between shadow-md";
                             iconHtml = '<i data-lucide="check-circle" class="w-6 h-6 text-emerald-500 ml-auto"></i>';
                         } else if (idx === selectedOptionIndex) {
-                            // 不正解を選んだ場合
                             btnClass = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-800 font-medium flex items-center justify-between";
                             iconHtml = '<i data-lucide="x-circle" class="w-6 h-6 text-rose-500 ml-auto"></i>';
                         } else {
@@ -1876,7 +1560,6 @@
                 `;
                 lucide.createIcons({root: container});
                 
-                // 初回自動再生
                 if (!isAnswered && !window.speechSynthesis.speaking) {
                     autoPlayTimeout = setTimeout(() => {
                         const btn = document.getElementById('fc-center-play-btn');
@@ -1884,55 +1567,53 @@
                     }, 500);
                 }
                 
-                return; // vocabモードはここで終了
+                return;
             }
 
-            // --- sentence モードの処理 ---
+            // --- sentence モード ---
             const blurClass = !isFcTextRevealed ? 'filter blur-md select-none opacity-40' : '';
 
-            // センテンス（問題丸ごと）の表示
-                const frontTextHtml = card.text.split('\n').map(line => {
-                    if (!line) return '';
-                    const parts = line.split(': ');
-                    const speaker = parts[0];
-                    const text = parts.slice(1).join(': ');
-                    return `<div class="mb-3 text-left"><span class="font-bold text-sm text-indigo-400 mr-2">${speaker}</span>${getRubyText(text)}</div>`;
-                }).join('');
+            const frontTextHtml = card.text.split('\n').map(line => {
+                if (!line) return '';
+                const parts = line.split(': ');
+                const speaker = parts[0];
+                const text = parts.slice(1).join(': ');
+                return `<div class="mb-3 text-left"><span class="font-bold text-sm text-indigo-400 mr-2">${speaker}</span>${getRubyText(text)}</div>`;
+            }).join('');
 
-                frontHtml = `
-                    <div class="${blurClass} transition-all duration-500 w-full max-w-lg mx-auto">
-                        <div class="text-xl font-medium text-slate-800 leading-relaxed">${frontTextHtml}</div>
-                    </div>
-                `;
-                
-                const backTextHtml = card.jp.split('\n').map(line => {
-                    if (!line) return '';
-                    const parts = line.split(': ');
-                    const speaker = parts[0];
-                    const text = parts.slice(1).join(': ');
-                    return `<div class="mb-3 text-left"><span class="font-bold text-sm text-emerald-600 mr-2">${speaker}</span>${text}</div>`;
-                }).join('');
+            frontHtml = `
+                <div class="${blurClass} transition-all duration-500 w-full max-w-lg mx-auto">
+                    <div class="text-xl font-medium text-slate-800 leading-relaxed">${frontTextHtml}</div>
+                </div>
+            `;
+            
+            const backTextHtml = card.jp.split('\n').map(line => {
+                if (!line) return '';
+                const parts = line.split(': ');
+                const speaker = parts[0];
+                const text = parts.slice(1).join(': ');
+                return `<div class="mb-3 text-left"><span class="font-bold text-sm text-emerald-600 mr-2">${speaker}</span>${text}</div>`;
+            }).join('');
 
-                backHtml = `
-                    <div class="text-center w-full max-w-lg mx-auto">
-                        <div class="text-lg font-bold text-emerald-800 leading-relaxed">${backTextHtml}</div>
-                        ${card.meta ? `
-                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-left mt-6 shadow-sm">
-                            <div class="flex items-center gap-2 text-amber-800 font-bold mb-2 text-sm">
-                                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
-                                <span>問題 (第${card.qId}題) のメタ解法ポイント</span>
-                            </div>
-                            <p class="text-amber-900 text-sm leading-relaxed">
-                                ${card.meta}
-                            </p>
+            backHtml = `
+                <div class="text-center w-full max-w-lg mx-auto">
+                    <div class="text-lg font-bold text-emerald-800 leading-relaxed">${backTextHtml}</div>
+                    ${card.meta ? `
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-left mt-6 shadow-sm">
+                        <div class="flex items-center gap-2 text-amber-800 font-bold mb-2 text-sm">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+                            <span>問題 (第${card.qId}題) のメタ解法ポイント</span>
                         </div>
-                        ` : ''}
+                        <p class="text-amber-900 text-sm leading-relaxed">
+                            ${card.meta}
+                        </p>
                     </div>
-                `;
+                    ` : ''}
+                </div>
+            `;
 
             const isVocab = fcMode === 'vocab';
             
-            // 未表示時のオーバーレイ
             let overlayHtml = '';
             if (!isCardFlipped && !isFcTextRevealed) {
                 const playCall = isVocab 
@@ -2006,7 +1687,6 @@
             selectedOptionIndex = idx;
             renderFlashcard();
             
-            // 答え合わせ後に単語を再度読み上げる
             setTimeout(() => {
                 const btn = document.getElementById('fc-center-play-btn');
                 if (btn) btn.click();
@@ -2060,6 +1740,207 @@
             renderFlashcard();
         }
 
+        // DOMの生成
+        function renderApp() {
+            const container = document.getElementById('app-content');
+            let html = '';
+
+            let isPart1Inserted = false;
+            let isPart2Inserted = false;
+            let isPart3Inserted = false;
+            let isPart4Inserted = false;
+
+            questionsData.forEach(q => {
+                if (q.id >= 1 && q.id < 11 && !isPart1Inserted) {
+                    html += `
+                        <div class="py-4 mb-2">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="image" class="w-6 h-6"></i>
+                                第一部分 看圖回答
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">質問を聞いて、画像（本アプリでは省略）に合致する選択肢を選びます。</p>
+                        </div>
+                    `;
+                    isPart1Inserted = true;
+                }
+                if (q.id >= 11 && q.id < 29 && !isPart2Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="headphones" class="w-6 h-6"></i>
+                                第二部分 問答理解
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">1往復の会話を聞いて、正解の絵を選びます。</p>
+                        </div>
+                    `;
+                    isPart2Inserted = true;
+                }
+                if (q.id >= 29 && q.id < 41 && !isPart3Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                                第三部分 對話理解
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">複数回のやり取りの対話を聞いて、最後の質問に対する正解の絵を選びます。</p>
+                        </div>
+                    `;
+                    isPart3Inserted = true;
+                }
+                if (q.id >= 41 && !isPart4Inserted) {
+                    html += `
+                        <div class="py-6 mt-12 mb-4 border-t-2 border-indigo-100 pt-10">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                第四部分 對話
+                            </h2>
+                            <p class="text-slate-500 mt-2 text-center text-sm">やや長めの対話を聞き、状況や話し手の意図を把握して、最後の質問に答えます。</p>
+                        </div>
+                    `;
+                    isPart4Inserted = true;
+                }
+
+                let scriptHtml = q.script.map((line, idx) => {
+                    const btnId = `btn-line-${q.id}-${idx}`;
+                    
+                    let speakerBg = 'bg-slate-100 text-slate-700'; 
+                    if (line.speaker === '男') speakerBg = 'bg-blue-100 text-blue-700';
+                    else if (line.speaker === '女') speakerBg = 'bg-pink-100 text-pink-700';
+                    else if (line.speaker === '問') speakerBg = 'bg-emerald-100 text-emerald-700';
+
+                    const rubyText = getRubyText(line.text);
+
+                    return `
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-2 bg-slate-50 p-3 rounded-lg">
+                            <div class="flex items-center gap-2 sm:w-1/6">
+                                <span class="font-bold px-2 py-1 rounded text-sm ${speakerBg}">
+                                    ${line.speaker}
+                                </span>
+                                <button 
+                                    id="${btnId}"
+                                    onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')"
+                                    class="secret-target p-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-400"
+                                    title="音声を再生"
+                                >
+                                    <i data-lucide="play" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="sm:w-5/6 secret-target transition-all duration-500 delay-100">
+                                <p class="text-xl font-medium text-slate-800 mb-4 leading-relaxed">${rubyText}</p>
+                                <p class="text-slate-600 text-sm">${line.jp}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                let vocabHtml = q.vocab.map((v, idx) => {
+                    const btnId = `btn-vocab-${q.id}-${idx}`;
+                    return `
+                        <div class="flex items-center gap-3 border border-slate-100 bg-white p-2.5 rounded-lg hover:border-indigo-200 transition-colors shadow-sm secret-target transition-all duration-500 delay-200">
+                            <button
+                                id="${btnId}"
+                                onclick="speakText('${v.speak.replace(/'/g, "\\'")}', '${btnId}', true)"
+                                class="flex-shrink-0 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-md font-mono text-sm transition-colors group"
+                                title="発音を聞く"
+                            >
+                                <i data-lucide="volume-2" class="w-4 h-4 text-blue-400 group-hover:text-blue-600"></i>
+                                ${v.pinyin}
+                            </button>
+                            <div class="flex flex-col justify-center">
+                                <span class="font-bold text-slate-800">${v.word}</span>
+                                <span class="text-xs text-slate-500">${v.jp}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                let choicesHtml = '';
+                if (q.choices) {
+                    choicesHtml = `
+                        <section>
+                            <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選択肢</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                ${q.choices.map((choice, cIdx) => {
+                                    const optionMatch = choice.match(/[A-D]/);
+                                    const optionLetter = optionMatch ? optionMatch[0] : '';
+                                    const isCorrect = optionLetter === q.ans;
+                                    const rubyChoice = getRubyText(choice);
+                                    
+                                    const btnId = `btn-choice-${q.id}-${optionLetter || cIdx}`;
+                                    const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, '').replace(/'/g, "\\'");
+                                    
+                                    return `
+                                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
+                                        <div class="flex items-start gap-2">
+                                            <button 
+                                                id="${btnId}"
+                                                onclick="speakText('${speakTextStr}', '${btnId}', false)"
+                                                class="secret-target flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5"
+                                                title="音声を再生"
+                                            >
+                                                <i data-lucide="play" class="w-4 h-4"></i>
+                                            </button>
+                                            <span class="text-slate-800 leading-relaxed">${rubyChoice}</span>
+                                        </div>
+                                        ${isCorrect ? `<span class="secret-target flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : ''}
+                                    </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </section>
+                    `;
+                }
+
+                html += `
+                    <article id="question-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
+                                <button onclick="playConversation(${q.id}, 'btn-conv-${q.id}')" id="btn-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    2回再生して表示
+                                </button>
+                            </div>
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>正解: ${q.ans}</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            ${choicesHtml}
+                            
+                            <section>
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">スクリプトと和訳</h3>
+                                <div class="space-y-3">
+                                    ${scriptHtml}
+                                </div>
+                            </section>
+
+                            <section>
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">重要単語</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    ${vocabHtml}
+                                </div>
+                            </section>
+
+                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
+                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i>
+                                    <h4>メタ解法ポイント</h4>
+                                </div>
+                                <p class="text-amber-900 text-sm leading-relaxed">
+                                    ${q.meta}
+                                </p>
+                            </section>
+                        </div>
+                    </article>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
         // キーボードショートカット
         document.addEventListener('keydown', (e) => {
             if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
@@ -2080,7 +1961,6 @@
                 } else if (e.code === 'ArrowLeft') {
                     prevCard();
                 } else if (fcMode === 'vocab' && !isAnswered) {
-                    // 数字キーで選択 (1, 2, 3, 4)
                     if (['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Numpad1', 'Numpad2', 'Numpad3', 'Numpad4'].includes(e.code)) {
                         const idx = parseInt(e.code.replace(/\D/g, '')) - 1;
                         if (idx >= 0 && idx < 4) {
@@ -2094,7 +1974,6 @@
         // 初期化処理
         document.addEventListener('DOMContentLoaded', () => {
             renderApp();
-            // Lucideアイコンの初期化 (描画後に実行)
             lucide.createIcons();
         });
     </script>
