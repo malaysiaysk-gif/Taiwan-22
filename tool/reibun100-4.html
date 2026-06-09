@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL リスニング対策 - テンプレート</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Pinyin Pro (自動ピンイン付与ライブラリ) -->
+    <script src="https://unpkg.com/pinyin-pro"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        
+        /* 隠す（ぼかし）設定 */
+        .content-hidden .secret-target {
+            filter: blur(8px);
+            opacity: 0.3;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* 表示時（ぼかし解除）の設定 */
+        body.global-reveal .content-hidden .secret-target,
+        .question-container:not(.content-hidden) .secret-target {
+            filter: blur(0px);
+            opacity: 1;
+            pointer-events: auto;
+            user-select: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+    <header class="max-w-4xl mx-auto mb-6 text-center">
+        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL リスニング対策アプリ</h1>
+        <p class="text-slate-600">一覧学習・フラッシュカードテスト</p>
+        <p class="text-sm text-slate-500 mt-2">入門基礎級模擬試題聽力測驗</p>
+    </header>
+
+    <!-- タブナビゲーション -->
+    <div class="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-3">
+        <button onclick="switchTab('list')" id="tab-list" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">一覧学習</button>
+        <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカードテスト</button>
+    </div>
+
+    <!-- 音声スピード設定 -->
+    <div class="max-w-4xl mx-auto mb-6 flex justify-center items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
+        <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
+            <i data-lucide="gauge" class="w-4 h-4"></i>
+            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
+        </label>
+        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
+    </div>
+
+    <!-- 1. 一覧学習ビュー -->
+    <div id="list-view" class="max-w-4xl mx-auto">
+        <div class="mb-6 flex justify-end">
+            <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>すべての解答・スクリプトを表示</span>
+            </button>
+        </div>
+        <main id="list-content" class="space-y-8">
+            <!-- JSでここにコンテンツが生成されます -->
+        </main>
+    </div>
+
+    <!-- 2. フラッシュカードビュー -->
+    <div id="flashcard-view" class="hidden max-w-3xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-10 flex flex-col items-center">
+            
+            <div class="text-center mb-6 w-full">
+                <h2 class="text-lg font-bold text-slate-700 mb-2">測試範圍: 聽力測驗</h2>
+                <div class="flex justify-center gap-2 bg-slate-100 p-1 rounded-lg inline-flex flex-wrap">
+                    <button onclick="setFlashcardMode('vocab')" id="fc-mode-vocab" class="px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all">聽力選意 (4選1)</button>
+                    <button onclick="setFlashcardMode('sentence')" id="fc-mode-sentence" class="px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all">聽力測驗 (全出題)</button>
+                </div>
+            </div>
+
+            <div id="flashcard-container" class="w-full cursor-pointer transition-all" onclick="handleCardClick()">
+                <!-- JSでカードを描画 -->
+            </div>
+
+            <div class="mt-8 flex justify-between items-center w-full">
+                <button onclick="prevCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="前のカード"><i data-lucide="chevron-left" class="w-8 h-8"></i></button>
+                <div class="flex items-center gap-4">
+                    <button onclick="reshuffleCards()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors rounded-full hover:bg-indigo-50" title="シャッフル"><i data-lucide="shuffle" class="w-5 h-5"></i></button>
+                    <span id="fc-counter" class="text-slate-500 font-mono font-medium"></span>
+                </div>
+                <button onclick="nextCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="次のカード"><i data-lucide="chevron-right" class="w-8 h-8"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // データ定義 (全50問 + 解説データ追加)
+        // ==========================================
+        const questionsData = [
+            // --- 雜誌 ---
+            {
+                id: 1, sectionName: "雜誌 (zá zhì) / 雑誌",
+                script: [{ speaker: "例句", text: "哥哥每天早上都會一邊喝熱咖啡，一邊看雜誌。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Gē ge měi tiān zǎo shàng dōu huì yì biān hē rè kā fēi, yì biān kàn zá zhì。<br><strong>日文：</strong>兄は毎朝、ホットコーヒーを飲みながら雑誌を読みます。",
+                vocab: [{ word: "哥哥每天早上都會一邊喝熱咖啡，一邊看雜誌。", pinyin: "Gē ge měi tiān zǎo shàng dōu huì yì biān hē rè kā fēi, yì biān kàn zá zhì.", jp: "兄は毎朝、ホットコーヒーを飲みながら雑誌を読みます。", speak: "哥哥每天早上都會一邊喝熱咖啡，一邊看雜誌。" }],
+                explanations: [
+                    { word: "一邊...一邊...", pinyin: "yì biān... yì biān...", meaning: "「〜しながら〜する」。同時の動作を表す。" },
+                    { word: "雜誌", pinyin: "zá zhì", meaning: "「雑誌」。" }
+                ]
+            },
+            {
+                id: 2, script: [{ speaker: "例句", text: "桌上那本介紹日本風景的新雜誌是誰買的？" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhuō shàng nà běn jiè shào Rì běn fēng jǐng de xīn zá zhì shì shéi mǎi de?<br><strong>日文：</strong>机の上にある、日本の風景を紹介している新しい雑誌は誰が買ったのですか？",
+                vocab: [{ word: "桌上那本介紹日本風景的新雜誌是誰買的？", pinyin: "Zhuō shàng nà běn jiè shào Rì běn fēng jǐng de xīn zá zhì shì shéi mǎi de?", jp: "机の上にある、日本の風景を紹介している新しい雑誌は誰が買ったのですか？", speak: "桌上那本介紹日本風景的新雜誌是誰買的？" }],
+                explanations: [
+                    { word: "介紹", pinyin: "jiè shào", meaning: "「紹介する」。" },
+                    { word: "風景", pinyin: "fēng jǐng", meaning: "「風景、景色」。" }
+                ]
+            },
+            {
+                id: 3, script: [{ speaker: "例句", text: "請你幫我把這幾本舊雜誌放到書房的書架上。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Qǐng nǐ bāng wǒ bǎ zhè jǐ běn jiù zá zhì fàng dào shū fáng de shū jià shàng.<br><strong>日文：</strong>これらの古い雑誌を、書斎の本棚に置くのを手伝ってください。",
+                vocab: [{ word: "請你幫我把這幾本舊雜誌放到書房的書架上。", pinyin: "Qǐng nǐ bāng wǒ bǎ zhè jǐ běn jiù zá zhì fàng dào shū fáng de shū jià shàng.", jp: "これらの古い雑誌を、書斎の本棚に置くのを手伝ってください。", speak: "請你幫我把這幾本舊雜誌放到書房的書架上。" }],
+                explanations: [
+                    { word: "幫", pinyin: "bāng", meaning: "「手伝う、〜のために〜する」。" },
+                    { word: "書房", pinyin: "shū fáng", meaning: "「書斎」。" },
+                    { word: "書架", pinyin: "shū jià", meaning: "「本棚」。" }
+                ]
+            },
+            // --- 請假 ---
+            {
+                id: 4, sectionName: "請假 (qǐng jià) / 休みをとる",
+                script: [{ speaker: "例句", text: "弟弟今天頭痛得不舒服，所以打電話跟老師請假了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Dì di jīn tiān tóu tòng de bù shū fú, suǒ yǐ dǎ diàn huà gēn lǎo shī qǐng jià le.<br><strong>日文：</strong>弟は今日頭痛で具合が悪いので、電話で先生に休みをとりました。",
+                vocab: [{ word: "弟弟今天頭痛得不舒服，所以打電話跟老師請假了。", pinyin: "Dì di jīn tiān tóu tòng de bù shū fú, suǒ yǐ dǎ diàn huà gēn lǎo shī qǐng jià le.", jp: "弟は今日頭痛で具合が悪いので、電話で先生に休みをとりました。", speak: "弟弟今天頭痛得不舒服，所以打電話跟老師請假了。" }],
+                explanations: [
+                    { word: "頭痛", pinyin: "tóu tòng", meaning: "「頭が痛い、頭痛」。" },
+                    { word: "不舒服", pinyin: "bù shū fú", meaning: "「具合が悪い、不快である」。" },
+                    { word: "請假", pinyin: "qǐng jià", meaning: "「休みをとる」。" }
+                ]
+            },
+            {
+                id: 5, script: [{ speaker: "例句", text: "我下星期三要請假，因為我要帶小狗去醫院檢查。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wǒ xià xīng qī sān yào qǐng jià, yīn wèi wǒ yào dài xiǎo gǒu qù yī yuàn jiǎn chá.<br><strong>日文：</strong>来週の水曜日は休みをとります。子犬を病院へ検査に連れて行くからです。",
+                vocab: [{ word: "我下星期三要請假，因為我要帶小狗去醫院檢查。", pinyin: "Wǒ xià xīng qī sān yào qǐng jià, yīn wèi wǒ yào dài xiǎo gǒu qù yī yuàn jiǎn chá.", jp: "来週の水曜日は休みをとります。子犬を病院へ検査に連れて行くからです。", speak: "我下星期三要請假，因為我要帶小狗去醫院檢查。" }],
+                explanations: [
+                    { word: "因為...所以...", pinyin: "yīn wèi... suǒ yǐ...", meaning: "「〜だから〜だ」。原因と結果。" },
+                    { word: "檢查", pinyin: "jiǎn chá", meaning: "「検査する、調べる」。" }
+                ]
+            },
+            {
+                id: 6, script: [{ speaker: "例句", text: "聽說王經理今天請假了，他明天才會來辦公室。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tīng shuō Wáng jīng lǐ jīn tiān qǐng jià le, tā míng tiān cái huì lái bàn gōng shì.<br><strong>日文：</strong>王マネージャーは今日休みをとったそうで、彼は明日にならないとオフィスに来ません。",
+                vocab: [{ word: "聽說王經理今天請假了，他明天才會來辦公室。", pinyin: "Tīng shuō Wáng jīng lǐ jīn tiān qǐng jià le, tā míng tiān cái huì lái bàn gōng shì.", jp: "王マネージャーは今日休みをとったそうで、彼は明日にならないとオフィスに来ません。", speak: "聽說王經理今天請假了，他明天才會來辦公室。" }],
+                explanations: [
+                    { word: "聽說", pinyin: "tīng shuō", meaning: "「〜だそうだ、〜と聞いている」。" },
+                    { word: "經理", pinyin: "jīng lǐ", meaning: "「マネージャー、支配人」。" },
+                    { word: "才", pinyin: "cái", meaning: "「やっと、〜して初めて」。遅いことや条件の強調。" }
+                ]
+            },
+            // --- 掉 ---
+            {
+                id: 7, sectionName: "掉 (diào) / 落とす",
+                script: [{ speaker: "例句", text: "我昨天在公車上，不小心把新買的錢包掉在座位上了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wǒ zuó tiān zài gōng chē shàng, bù xiǎo xīn bǎ xīn mǎi de qián bāo diào zài zuò wèi shàng le.<br><strong>日文：</strong>私は昨日バスの中で、うっかり新しく買った財布を座席に落としてしまいました。",
+                vocab: [{ word: "我昨天在公車上，不小心把新買的錢包掉在座位上了。", pinyin: "Wǒ zuó tiān zài gōng chē shàng, bù xiǎo xīn bǎ xīn mǎi de qián bāo diào zài zuò wèi shàng le.", jp: "私は昨日バスの中で、うっかり新しく買った財布を座席に落としてしまいました。", speak: "我昨天在公車上，不小心把新買的錢包掉在座位上了。" }],
+                explanations: [
+                    { word: "不小心", pinyin: "bù xiǎo xīn", meaning: "「うっかりして、不注意で」。" },
+                    { word: "掉", pinyin: "diào", meaning: "「落ちる、落とす」。" },
+                    { word: "座位", pinyin: "zuò wèi", meaning: "「座席」。" }
+                ]
+            },
+            {
+                id: 8, script: [{ speaker: "例句", text: "小心一點，別把手上的玻璃杯掉在地上，會破的。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Xiǎo xīn yì diǎn, bié bǎ shǒu shàng de bō lí bēi diào zài dì shàng, huì pò de.<br><strong>日文：</strong>気をつけて、手に持っているグラスを床に落とさないでください、割れますよ。",
+                vocab: [{ word: "小心一點，別把手上的玻璃杯掉在地上，會破的。", pinyin: "Xiǎo xīn yì diǎn, bié bǎ shǒu shàng de bō lí bēi diào zài dì shàng, huì pò de.", jp: "気をつけて、手に持っているグラスを床に落とさないでください、割れますよ。", speak: "小心一點，別把手上的玻璃杯掉在地上，會破的。" }],
+                explanations: [
+                    { word: "小心", pinyin: "xiǎo xīn", meaning: "「気をつける、注意する」。" },
+                    { word: "玻璃杯", pinyin: "bō lí bēi", meaning: "「ガラスのコップ」。" },
+                    { word: "破", pinyin: "pò", meaning: "「割れる、破れる」。" }
+                ]
+            },
+            {
+                id: 9, script: [{ speaker: "例句", text: "他的鑰匙掉在門口，結果找了一個下午才找到。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tā de yào shi diào zài mén kǒu, jié guǒ zhǎo le yí ge xià wǔ cái zhǎo dào.<br><strong>日文：</strong>彼の鍵は玄関に落ちていて、結局午後ずっと探してやっと見つかりました。",
+                vocab: [{ word: "他的鑰匙掉在門口，結果找了一個下午才找到。", pinyin: "Tā de yào shi diào zài mén kǒu, jié guǒ zhǎo le yí ge xià wǔ cái zhǎo dào.", jp: "彼の鍵は玄関に落ちていて、結局午後ずっと探してやっと見つかりました。", speak: "他的鑰匙掉在門口，結果找了一個下午才找到。" }],
+                explanations: [
+                    { word: "鑰匙", pinyin: "yào shi", meaning: "「鍵」。" },
+                    { word: "結果", pinyin: "jié guǒ", meaning: "「結果、結局」。" }
+                ]
+            },
+            // --- 音樂・演奏 ---
+            {
+                id: 10, sectionName: "音樂 (yīn yuè)・演奏 (yǎn zòu) / 音楽・演奏",
+                script: [{ speaker: "例句", text: "妹妹從小就學習鋼琴，明天晚上有她的音樂演奏。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Mèi mei cóng xiǎo jiù xué xí gāng qín, míng tiān wǎn shàng yǒu tā de yīn yuè yǎn zòu.<br><strong>日文：</strong>妹は小さい頃からピアノを習っていて、明日の夜彼女の音楽の演奏（発表）があります。",
+                vocab: [{ word: "妹妹從小就學習鋼琴，明天晚上有她的音樂演奏。", pinyin: "Mèi mei cóng xiǎo jiù xué xí gāng qín, míng tiān wǎn shàng yǒu tā de yīn yuè yǎn zòu.", jp: "妹は小さい頃からピアノを習っていて、明日の夜彼女の音楽の演奏（発表）があります。", speak: "妹妹從小就學習鋼琴，明天晚上有她的音樂演奏。" }],
+                explanations: [
+                    { word: "從小", pinyin: "cóng xiǎo", meaning: "「小さい頃から」。" },
+                    { word: "鋼琴", pinyin: "gāng qín", meaning: "「ピアノ」。" },
+                    { word: "演奏", pinyin: "yǎn zòu", meaning: "「演奏する」。" }
+                ]
+            },
+            {
+                id: 11, script: [{ speaker: "例句", text: "聽輕快的音樂可以讓我放鬆，忘記工作上的麻煩。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tīng qīng kuài de yīn yuè kě yǐ ràng wǒ fàng sōng, wàng jì gōng zuò shàng de má fán.<br><strong>日文：</strong>軽快な音楽を聴くとリラックスでき、仕事の面倒なことを忘れられます。",
+                vocab: [{ word: "聽輕快的音樂可以讓我放鬆，忘記工作上的麻煩。", pinyin: "Tīng qīng kuài de yīn yuè kě yǐ ràng wǒ fàng sōng, wàng jì gōng zuò shàng de má fán.", jp: "軽快な音楽を聴くとリラックスでき、仕事の面倒なことを忘れられます。", speak: "聽輕快的音樂可以讓我放鬆，忘記工作上的麻煩。" }],
+                explanations: [
+                    { word: "輕快", pinyin: "qīng kuài", meaning: "「軽快な、リズミカルな」。" },
+                    { word: "放鬆", pinyin: "fàng sōng", meaning: "「リラックスする」。" },
+                    { word: "麻煩", pinyin: "má fán", meaning: "「面倒、トラブル」。" }
+                ]
+            },
+            {
+                id: 12, script: [{ speaker: "例句", text: "他們在公園裡演奏吉他，很多人停下來聽他們表演。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tā men zài gōng yuán lǐ yǎn zòu jí tā, hěn duō rén tíng xià lái tīng tā men biǎo yǎn.<br><strong>日文：</strong>彼らが公園でギターを演奏していて、多くの人が立ち止まって彼らのパフォーマンスを聴いています。",
+                vocab: [{ word: "他們在公園裡演奏吉他，很多人停下來聽他們表演。", pinyin: "Tā men zài gōng yuán lǐ yǎn zòu jí tā, hěn duō rén tíng xià lái tīng tā men biǎo yǎn.", jp: "彼らが公園でギターを演奏していて、多くの人が立ち止まって彼らのパフォーマンスを聴いています。", speak: "他們在公園裡演奏吉他，很多人停下來聽他們表演。" }],
+                explanations: [
+                    { word: "吉他", pinyin: "jí tā", meaning: "「ギター」。" },
+                    { word: "停下來", pinyin: "tíng xià lái", meaning: "「立ち止まる、止まる」。" },
+                    { word: "表演", pinyin: "biǎo yǎn", meaning: "「パフォーマンス、演技」。" }
+                ]
+            },
+            // --- 叉子 ---
+            {
+                id: 13, sectionName: "叉子 (chā zi) / フォーク",
+                script: [{ speaker: "例句", text: "服務生，請給我一個叉子和一把湯匙，謝謝。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Fú wù shēng, qǐng gěi wǒ yí ge chā zi hé yì bǎ tāng chí, xiè xie.<br><strong>日文：</strong>店員さん、フォークを1つとスプーンを1本ください、ありがとうございます。",
+                vocab: [{ word: "服務生，請給我一個叉子和一把湯匙，謝謝。", pinyin: "Fú wù shēng, qǐng gěi wǒ yí ge chā zi hé yì bǎ tāng chí, xiè xie.", jp: "店員さん、フォークを1つとスプーンを1本ください、ありがとうございます。", speak: "服務生，請給我一個叉子和一把湯匙，謝謝。" }],
+                explanations: [
+                    { word: "服務生", pinyin: "fú wù shēng", meaning: "「店員、ウェイター/ウェイトレス」。" },
+                    { word: "叉子", pinyin: "chā zi", meaning: "「フォーク」。" },
+                    { word: "湯匙", pinyin: "tāng chí", meaning: "「スプーン」。" }
+                ]
+            },
+            {
+                id: 14, script: [{ speaker: "例句", text: "弟弟還不太會拿筷子，所以他都用叉子吃飯。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Dì di hái bú tài huì ná kuài zi, suǒ yǐ tā dōu yòng chā zi chī fàn.<br><strong>日文：</strong>弟はまだあまり箸を持てないので、いつもフォークを使ってご飯を食べます。",
+                vocab: [{ word: "弟弟還不太會拿筷子，所以他都用叉子吃飯。", pinyin: "Dì di hái bú tài huì ná kuài zi, suǒ yǐ tā dōu yòng chā zi chī fàn.", jp: "弟はまだあまり箸を持てないので、いつもフォークを使ってご飯を食べます。", speak: "弟弟還不太會拿筷子，所以他都用叉子吃飯。" }],
+                explanations: [
+                    { word: "不太會", pinyin: "bú tài huì", meaning: "「あまりできない、あまり得意ではない」。" },
+                    { word: "筷子", pinyin: "kuài zi", meaning: "「箸」。" }
+                ]
+            },
+            {
+                id: 15, script: [{ speaker: "例句", text: "吃這塊巧克力蛋糕需要用叉子，你拿錯了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Chī zhè kuài qiǎo kè lì dàn gāo xū yào yòng chā zi, nǐ ná cuò le.<br><strong>日文：</strong>このチョコレートケーキを食べるにはフォークを使う必要がありますよ、間違って持っています。",
+                vocab: [{ word: "吃這塊巧克力蛋糕需要用叉子，你拿錯了。", pinyin: "Chī zhè kuài qiǎo kè lì dàn gāo xū yào yòng chā zi, nǐ ná cuò le.", jp: "このチョコレートケーキを食べるにはフォークを使う必要がありますよ、間違って持っています。", speak: "吃這塊巧克力蛋糕需要用叉子，你拿錯了。" }],
+                explanations: [
+                    { word: "塊", pinyin: "kuài", meaning: "「〜個、〜切れ」。ケーキなどの塊の量詞。" },
+                    { word: "需要", pinyin: "xū yào", meaning: "「必要とする」。" },
+                    { word: "拿錯", pinyin: "ná cuò", meaning: "「間違って持つ、取り違える」。" }
+                ]
+            },
+            // --- 冰淇淋 ---
+            {
+                id: 16, sectionName: "冰淇淋 (bīng qí lín) / アイスクリーム",
+                script: [{ speaker: "例句", text: "這家新開的店有賣草莓口味的冰淇淋，非常好吃。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhè jiā xīn kāi de diàn yǒu mài cǎo méi kǒu wèi de bīng qí lín, fēi cháng hǎo chī.<br><strong>日文：</strong>この新しくオープンしたお店にはイチゴ味のアイスクリームが売っていて、とても美味しいです。",
+                vocab: [{ word: "這家新開的店有賣草莓口味的冰淇淋，非常好吃。", pinyin: "Zhè jiā xīn kāi de diàn yǒu mài cǎo méi kǒu wèi de bīng qí lín, fēi cháng hǎo chī.", jp: "この新しくオープンしたお店にはイチゴ味のアイスクリームが売っていて、とても美味しいです。", speak: "這家新開的店有賣草莓口味的冰淇淋，非常好吃。" }],
+                explanations: [
+                    { word: "新開的", pinyin: "xīn kāi de", meaning: "「新しくオープンした」。" },
+                    { word: "口味", pinyin: "kǒu wèi", meaning: "「味、風味」。" },
+                    { word: "冰淇淋", pinyin: "bīng qí lín", meaning: "「アイスクリーム」。" }
+                ]
+            },
+            {
+                id: 17, script: [{ speaker: "例句", text: "這麼熱的天氣，吃一支冰淇淋真的太舒服了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhè me rè de tiān qì, chī yì zhī bīng qí lín zhēn de tài shū fú le.<br><strong>日文：</strong>こんなに暑い天気にアイスクリームを1本食べるのは、本当にとても快適です。",
+                vocab: [{ word: "這麼熱的天氣，吃一支冰淇淋真的太舒服了。", pinyin: "Zhè me rè de tiān qì, chī yì zhī bīng qí lín zhēn de tài shū fú le.", jp: "こんなに暑い天気にアイスクリームを1本食べるのは、本当にとても快適です。", speak: "這麼熱的天氣，吃一支冰淇淋真的太舒服了。" }],
+                explanations: [
+                    { word: "這麼", pinyin: "zhè me", meaning: "「こんなに、このように」。" },
+                    { word: "支", pinyin: "zhī", meaning: "棒状のものの量詞（アイスやペンなど）。" },
+                    { word: "舒服", pinyin: "shū fú", meaning: "「気持ちいい、快適だ」。" }
+                ]
+            },
+            {
+                id: 18, script: [{ speaker: "例句", text: "媽媽說飯後才能吃冰淇淋，現在還不可以吃。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Mā ma shuō fàn hòu cái néng chī bīng qí lín, xiàn zài hái bù kě yǐ chī.<br><strong>日文：</strong>母は食後じゃないとアイスクリームを食べてはいけないと言ったので、今はまだ食べられません。",
+                vocab: [{ word: "媽媽說飯後才能吃冰淇淋，現在還不可以吃。", pinyin: "Mā ma shuō fàn hòu cái néng chī bīng qí lín, xiàn zài hái bù kě yǐ chī.", jp: "母は食後じゃないとアイスクリームを食べてはいけないと言ったので、今はまだ食べられません。", speak: "媽媽說飯後才能吃冰淇淋，現在還不可以吃。" }],
+                explanations: [
+                    { word: "飯後", pinyin: "fàn hòu", meaning: "「食後」。" },
+                    { word: "才", pinyin: "cái", meaning: "「〜してやっと、〜して初めて」。条件を満たしたことを強調。" }
+                ]
+            },
+            // --- 冷 と 熱 ---
+            {
+                id: 19, sectionName: "冷 (lěng) と 熱 (rè) / 寒い（冷たい）と暑い（熱い）",
+                script: [{ speaker: "例句", text: "這裡的春天常常早上下雨很冷，下午出太陽又變得很熱。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhè lǐ de chūn tiān cháng cháng zǎo shàng xià yǔ hěn lěng, xià wǔ chū tài yáng yòu biàn de hěn rè.<br><strong>日文：</strong>ここの春は、朝は雨が降ってとても寒く、午後は太陽が出てまたとても暑くなることがよくあります。",
+                vocab: [{ word: "這裡的春天常常早上下雨很冷，下午出太陽又變得很熱。", pinyin: "Zhè lǐ de chūn tiān cháng cháng zǎo shàng xià yǔ hěn lěng, xià wǔ chū tài yáng yòu biàn de hěn rè.", jp: "ここの春は、朝は雨が降ってとても寒く、午後は太陽が出てまたとても暑くなることがよくあります。", speak: "這裡的春天常常早上下雨很冷，下午出太陽又變得很熱。" }],
+                explanations: [
+                    { word: "常常", pinyin: "cháng cháng", meaning: "「よく、しばしば」。" },
+                    { word: "變", pinyin: "biàn", meaning: "「変わる、〜になる」。" }
+                ]
+            },
+            {
+                id: 20, script: [{ speaker: "例句", text: "這杯茶剛剛還很熱，現在已經變冷了，我不想喝了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhè bēi chá gāng gāng hái hěn rè, xiàn zài yǐ jīng biàn lěng le, wǒ bù xiǎng hē le.<br><strong>日文：</strong>このお茶はさっきまでとても熱かったのに、今はもう冷たくなってしまったので、私は飲みたくありません。",
+                vocab: [{ word: "這杯茶剛剛還很熱，現在已經變冷了，我不想喝了。", pinyin: "Zhè bēi chá gāng gāng hái hěn rè, xiàn zài yǐ jīng biàn lěng le, wǒ bù xiǎng hē le.", jp: "このお茶はさっきまでとても熱かったのに、今はもう冷たくなってしまったので、私は飲みたくありません。", speak: "這杯茶剛剛還很熱，現在已經變冷了，我不想喝了。" }],
+                explanations: [
+                    { word: "剛剛", pinyin: "gāng gāng", meaning: "「さっき、つい先ほど」。" },
+                    { word: "已經...了", pinyin: "yǐ jīng... le", meaning: "「すでに〜した、もう〜してしまった」。" }
+                ]
+            },
+            {
+                id: 21, script: [{ speaker: "例句", text: "房間裡開冷氣覺得太冷，可是出去外面又覺得太熱，真不舒服。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Fáng jiān lǐ kāi lěng qì jué de tài lěng, kě shì chū qù wài miàn yòu jué de tài rè, zhēn bù shū fú.<br><strong>日文：</strong>部屋の中は冷房をつけていて寒すぎると感じるのに、外に出るとまた暑すぎると感じて、本当に不快です。",
+                vocab: [{ word: "房間裡開冷氣覺得太冷，可是出去外面又覺得太熱，真不舒服。", pinyin: "Fáng jiān lǐ kāi lěng qì jué de tài lěng, kě shì chū qù wài miàn yòu jué de tài rè, zhēn bù shū fú.", jp: "部屋の中は冷房をつけていて寒すぎると感じるのに、外に出るとまた暑すぎると感じて、本当に不快です。", speak: "房間裡開冷氣覺得太冷，可是出去外面又覺得太熱，真不舒服。" }],
+                explanations: [
+                    { word: "冷氣", pinyin: "lěng qì", meaning: "「冷房、クーラー」。" },
+                    { word: "可是", pinyin: "kě shì", meaning: "「しかし、でも」。" }
+                ]
+            },
+            {
+                id: 22, script: [{ speaker: "例句", text: "冬天的時候，我很喜歡喝熱湯，不喜歡喝冷水。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Dōng tiān de shí hòu, wǒ hěn xǐ huān hē rè tāng, bù xǐ huān hē lěng shuǐ.<br><strong>日文：</strong>冬の時、私は温かいスープを飲むのがとても好きで、冷たい水を飲むのは好きではありません。",
+                vocab: [{ word: "冬天的時候，我很喜歡喝熱湯，不喜歡喝冷水。", pinyin: "Dōng tiān de shí hòu, wǒ hěn xǐ huān hē rè tāng, bù xǐ huān hē lěng shuǐ.", jp: "冬の時、私は温かいスープを飲むのがとても好きで、冷たい水を飲むのは好きではありません。", speak: "冬天的時候，我很喜歡喝熱湯，不喜歡喝冷水。" }],
+                explanations: [
+                    { word: "冬天", pinyin: "dōng tiān", meaning: "「冬」。" },
+                    { word: "湯", pinyin: "tāng", meaning: "「スープ」。" }
+                ]
+            },
+            {
+                id: 23, script: [{ speaker: "例句", text: "外面雖然很冷，但是教室裡人很多，所以我反而覺得很熱。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wài miàn suī rán hěn lěng, dàn shì jiào shì lǐ rén hěn duō, suǒ yǐ wǒ fǎn ér jué de hěn rè.<br><strong>日文：</strong>外はとても寒いですが、教室の中は人が多いので、私はかえってとても暑く感じます。",
+                vocab: [{ word: "外面雖然很冷，但是教室裡人很多，所以我反而覺得很熱。", pinyin: "Wài miàn suī rán hěn lěng, dàn shì jiào shì lǐ rén hěn duō, suǒ yǐ wǒ fǎn ér jué de hěn rè.", jp: "外はとても寒いですが、教室の中は人が多いので、私はかえってとても暑く感じます。", speak: "外面雖然很冷，但是教室裡人很多，所以我反而覺得很熱。" }],
+                explanations: [
+                    { word: "雖然...但是...", pinyin: "suī rán... dàn shì...", meaning: "「〜だけれども、しかし〜」。" },
+                    { word: "反而", pinyin: "fǎn ér", meaning: "「かえって、逆に」。" }
+                ]
+            },
+            // --- 浴室 ---
+            {
+                id: 24, sectionName: "浴室 (yù shì) / バスルーム",
+                script: [{ speaker: "例句", text: "我剛剛把昨天穿的髒衣服都放在浴室裡了。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wǒ gāng gāng bǎ zuó tiān chuān de zāng yī fú dōu fàng zài yù shì lǐ le.<br><strong>日文：</strong>私はさきほど、昨日着た汚れた服をすべてバスルームに置きました。",
+                vocab: [{ word: "我剛剛把昨天穿的髒衣服都放在浴室裡了。", pinyin: "Wǒ gāng gāng bǎ zuó tiān chuān de zāng yī fú dōu fàng zài yù shì lǐ le.", jp: "私はさきほど、昨日着た汚れた服をすべてバスルームに置きました。", speak: "我剛剛把昨天穿的髒衣服都放在浴室裡了。" }],
+                explanations: [
+                    { word: "剛剛", pinyin: "gāng gāng", meaning: "「さっき」。" },
+                    { word: "髒", pinyin: "zāng", meaning: "「汚い、汚れた」。" },
+                    { word: "浴室", pinyin: "yù shì", meaning: "「バスルーム、浴室」。" }
+                ]
+            },
+            {
+                id: 25, script: [{ speaker: "例句", text: "浴室的燈好像壞了，你可以幫我換一個新的嗎？" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Yù shì de dēng hǎo xiàng huài le, nǐ kě yǐ bāng wǒ huàn yí ge xīn de ma?<br><strong>日文：</strong>バスルームの電気が壊れたみたいなんだけど、新しいのに替えるのを手伝ってくれる？",
+                vocab: [{ word: "浴室的燈好像壞了，你可以幫我換一個新的嗎？", pinyin: "Yù shì de dēng hǎo xiàng huài le, nǐ kě yǐ bāng wǒ huàn yí ge xīn de ma?", jp: "バスルームの電気が壊れたみたいなんだけど、新しいのに替えるのを手伝ってくれる？", speak: "浴室的燈好像壞了，你可以幫我換一個新的嗎？" }],
+                explanations: [
+                    { word: "好像", pinyin: "hǎo xiàng", meaning: "「〜のようだ、みたいだ」。" },
+                    { word: "壞", pinyin: "huài", meaning: "「壊れる」。" },
+                    { word: "換", pinyin: "huàn", meaning: "「替える、交換する」。" }
+                ]
+            },
+            {
+                id: 26, script: [{ speaker: "例句", text: "弟弟在浴室裡一邊洗澡，一邊大聲地唱歌。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Dì di zài yù shì lǐ yì biān xǐ zǎo, yì biān dà shēng de chàng gē.<br><strong>日文：</strong>弟はバスルームでシャワーを浴びながら、大きな声で歌を歌っています。",
+                vocab: [{ word: "弟弟在浴室裡一邊洗澡，一邊大聲地唱歌。", pinyin: "Dì di zài yù shì lǐ yì biān xǐ zǎo, yì biān dà shēng de chàng gē.", jp: "弟はバスルームでシャワーを浴びながら、大きな声で歌を歌っています。", speak: "弟弟在浴室裡一邊洗澡，一邊大聲地唱歌。" }],
+                explanations: [
+                    { word: "洗澡", pinyin: "xǐ zǎo", meaning: "「シャワーを浴びる、入浴する」。" },
+                    { word: "大聲地", pinyin: "dà shēng de", meaning: "「大きな声で」。" }
+                ]
+            },
+            // --- 圍巾 ---
+            {
+                id: 27, sectionName: "圍巾 (wéi jīn) / マフラー",
+                script: [{ speaker: "例句", text: "外面風很大，出門前別忘了帶你的紅圍巾。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wài miàn fēng hěn dà, chū mén qián bié wàng le dài nǐ de hóng wéi jīn.<br><strong>日文：</strong>外は風が強いので、出かける前に赤いマフラーを持っていくのを忘れないで。",
+                vocab: [{ word: "外面風很大，出門前別忘了帶你的紅圍巾。", pinyin: "Wài miàn fēng hěn dà, chū mén qián bié wàng le dài nǐ de hóng wéi jīn.", jp: "外は風が強いので、出かける前に赤いマフラーを持っていくのを忘れないで。", speak: "外面風很大，出門前別忘了帶你的紅圍巾。" }],
+                explanations: [
+                    { word: "出門", pinyin: "chū mén", meaning: "「出かける」。" },
+                    { word: "別忘了", pinyin: "bié wàng le", meaning: "「〜するのを忘れないで」。" },
+                    { word: "圍巾", pinyin: "wéi jīn", meaning: "「マフラー、スカーフ」。" }
+                ]
+            },
+            {
+                id: 28, script: [{ speaker: "例句", text: "這條漂亮的藍色圍巾，是我奶奶去年親手做的。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhè tiáo piào liàng de lán sè wéi jīn, shì wǒ nǎi nai qù nián qīn shǒu zuò de.<br><strong>日文：</strong>この綺麗な青いマフラーは、祖母が去年手作りしたものです。",
+                vocab: [{ word: "這條漂亮的藍色圍巾，是我奶奶去年親手做的。", pinyin: "Zhè tiáo piào liàng de lán sè wéi jīn, shì wǒ nǎi nai qù nián qīn shǒu zuò de.", jp: "この綺麗な青いマフラーは、祖母が去年手作りしたものです。", speak: "這條漂亮的藍色圍巾，是我奶奶去年親手做的。" }],
+                explanations: [
+                    { word: "條", pinyin: "tiáo", meaning: "細長いものの量詞（マフラー、ズボンなど）。" },
+                    { word: "親手", pinyin: "qīn shǒu", meaning: "「自分の手で、手作りで」。" }
+                ]
+            },
+            {
+                id: 29, script: [{ speaker: "例句", text: "他脖子上戴著一條保暖的厚圍巾，看起來很怕冷。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tā bó zi shàng dài zhe yì tiáo bǎo nuǎn de hòu wéi jīn, kàn qǐ lái hěn pà lěng.<br><strong>日文：</strong>彼は首に保温性の高い厚手のマフラーを巻いていて、とても寒がりなように見えます。",
+                vocab: [{ word: "他脖子上戴著一條保暖的厚圍巾，看起來很怕冷。", pinyin: "Tā bó zi shàng dài zhe yì tiáo bǎo nuǎn de hòu wéi jīn, kàn qǐ lái hěn pà lěng.", jp: "彼は首に保温性の高い厚手のマフラーを巻いていて、とても寒がりなように見えます。", speak: "他脖子上戴著一條保暖的厚圍巾，看起來很怕冷。" }],
+                explanations: [
+                    { word: "脖子", pinyin: "bó zi", meaning: "「首」。" },
+                    { word: "戴", pinyin: "dài", meaning: "「（アクセサリーなどを）身につける、巻く」。" },
+                    { word: "保暖", pinyin: "bǎo nuǎn", meaning: "「保温する、暖かい」。" },
+                    { word: "怕冷", pinyin: "pà lěng", meaning: "「寒がりである」。" }
+                ]
+            },
+            // --- 教堂 ---
+            {
+                id: 30, sectionName: "教堂 (jiào táng) / 教会",
+                script: [{ speaker: "例句", text: "每個星期天早上，我們全家人都會去附近的教堂。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Měi ge xīng qī tiān zǎo shàng, wǒ men quán jiā rén dōu huì qù fù jìn de jiào táng.<br><strong>日文：</strong>毎週日曜日の朝、私たち家族は全員で近くの教会へ行きます。",
+                vocab: [{ word: "每個星期天早上，我們全家人都會去附近的教堂。", pinyin: "Měi ge xīng qī tiān zǎo shàng, wǒ men quán jiā rén dōu huì qù fù jìn de jiào táng.", jp: "毎週日曜日の朝、私たち家族は全員で近くの教会へ行きます。", speak: "每個星期天早上，我們全家人都會去附近的教堂。" }],
+                explanations: [
+                    { word: "全家人", pinyin: "quán jiā rén", meaning: "「家族全員」。" },
+                    { word: "附近", pinyin: "fù jìn", meaning: "「近く、近所」。" },
+                    { word: "教堂", pinyin: "jiào táng", meaning: "「教会」。" }
+                ]
+            },
+            {
+                id: 31, script: [{ speaker: "例句", text: "那座古老的教堂前面，種了很多美麗的花。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Nà zuò gǔ lǎo de jiào táng qián miàn, zhòng le hěn duō měi lì de huā.<br><strong>日文：</strong>あの古い教会の前には、たくさんの美しい花が植えられています。",
+                vocab: [{ word: "那座古老的教堂前面，種了很多美麗的花。", pinyin: "Nà zuò gǔ lǎo de jiào táng qián miàn, zhòng le hěn duō měi lì de huā.", jp: "あの古い教会の前には、たくさんの美しい花が植えられています。", speak: "那座古老的教堂前面，種了很多美麗的花。" }],
+                explanations: [
+                    { word: "座", pinyin: "zuò", meaning: "建物や山などの量詞。" },
+                    { word: "古老", pinyin: "gǔ lǎo", meaning: "「古い、歴史がある」。" },
+                    { word: "種", pinyin: "zhòng", meaning: "「植える」。" }
+                ]
+            },
+            {
+                id: 32, script: [{ speaker: "例句", text: "請問這附近有一家白色的教堂嗎？我要去那裡找朋友。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Qǐng wèn zhè fù jìn yǒu yì jiā bái sè de jiào táng ma? Wǒ yào qù nà lǐ zhǎo péng yǒu.<br><strong>日文：</strong>すみません、この近くに白い教会はありますか？そこへ友達を探しに行きたいのです。",
+                vocab: [{ word: "請問這附近有一家白色的教堂嗎？我要去那裡找朋友。", pinyin: "Qǐng wèn zhè fù jìn yǒu yì jiā bái sè de jiào táng ma? Wǒ yào qù nà lǐ zhǎo péng yǒu.", jp: "すみません、この近くに白い教会はありますか？そこへ友達を探しに行きたいのです。", speak: "請問這附近有一家白色的教堂嗎？我要去那裡找朋友。" }],
+                explanations: [
+                    { word: "請問", pinyin: "qǐng wèn", meaning: "「お尋ねします、すみません」。" },
+                    { word: "找", pinyin: "zhǎo", meaning: "「探す、尋ねる」。" }
+                ]
+            },
+            // --- 放假 ---
+            {
+                id: 33, sectionName: "放假 (fàng jià) / 休み・休暇",
+                script: [{ speaker: "例句", text: "學校下個禮拜開始放假，我打算回老家看爺爺。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Xué xiào xià ge lǐ bài kāi shǐ fàng jià, wǒ dǎ suàn huí lǎo jiā kàn yé ye.<br><strong>日文：</strong>学校は来週から休みに入るので、実家へ帰っておじいちゃんに会うつもりです。",
+                vocab: [{ word: "學校下個禮拜開始放假，我打算回老家看爺爺。", pinyin: "Xué xiào xià ge lǐ bài kāi shǐ fàng jià, wǒ dǎ suàn huí lǎo jiā kàn yé ye.", jp: "学校は来週から休みに入るので、実家へ帰っておじいちゃんに会うつもりです。", speak: "學校下個禮拜開始放假，我打算回老家看爺爺。" }],
+                explanations: [
+                    { word: "下個禮拜", pinyin: "xià ge lǐ bài", meaning: "「来週」。" },
+                    { word: "打算", pinyin: "dǎ suàn", meaning: "「〜するつもりだ、計画する」。" },
+                    { word: "老家", pinyin: "lǎo jiā", meaning: "「実家、故郷」。" }
+                ]
+            },
+            {
+                id: 34, script: [{ speaker: "例句", text: "只要一放假，哥哥就會跟朋友去山上騎腳踏車。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhǐ yào yí fàng jià, gē ge jiù huì gēn péng yǒu qù shān shàng qí jiǎo tà chē.<br><strong>日文：</strong>休みになると必ず、兄は友達と一緒に山へ自転車に乗りに行きます。",
+                vocab: [{ word: "只要一放假，哥哥就會跟朋友去山上騎腳踏車。", pinyin: "Zhǐ yào yí fàng jià, gē ge jiù huì gēn péng yǒu qù shān shàng qí jiǎo tà chē.", jp: "休みになると必ず、兄は友達と一緒に山へ自転車に乗りに行きます。", speak: "只要一放假，哥哥就會跟朋友去山上騎腳踏車。" }],
+                explanations: [
+                    { word: "只要一...就...", pinyin: "zhǐ yào yì... jiù...", meaning: "「〜するとすぐに〜する、〜しさえすれば〜する」。" },
+                    { word: "腳踏車", pinyin: "jiǎo tà chē", meaning: "「自転車」。" }
+                ]
+            },
+            {
+                id: 35, script: [{ speaker: "例句", text: "明天是國家的重要節日，所以公司放假一天。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Míng tiān shì guó jiā de zhòng yào jié rì, suǒ yǐ gōng sī fàng jià yì tiān.<br><strong>日文：</strong>明日は国の重要な祝日なので、会社は1日休みです。",
+                vocab: [{ word: "明天是國家的重要節日，所以公司放假一天。", pinyin: "Míng tiān shì guó jiā de zhòng yào jié rì, suǒ yǐ gōng sī fàng jià yì tiān.", jp: "明日は国の重要な祝日なので、会社は1日休みです。", speak: "明天是國家的重要節日，所以公司放假一天。" }],
+                explanations: [
+                    { word: "重要", pinyin: "zhòng yào", meaning: "「重要な、大切な」。" },
+                    { word: "節日", pinyin: "jié rì", meaning: "「祝日、祭日」。" }
+                ]
+            },
+            // --- 顧客 ---
+            {
+                id: 36, sectionName: "顧客 / 客 (gù kè / kè rén)",
+                script: [{ speaker: "例句", text: "為了讓顧客滿意，這家店的服務總是做得很好。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wèi le ràng gù kè mǎn yì, zhè jiā diàn de fú wù zǒng shì zuò de hěn hǎo.<br><strong>日文：</strong>顧客を満足させるために、この店のサービスはいつもとても良くできています。",
+                vocab: [{ word: "為了讓顧客滿意，這家店的服務總是做得很好。", pinyin: "Wèi le ràng gù kè mǎn yì, zhè jiā diàn de fú wù zǒng shì zuò de hěn hǎo.", jp: "顧客を満足させるために、この店のサービスはいつもとても良くできています。", speak: "為了讓顧客滿意，這家店的服務總是做得很好。" }],
+                explanations: [
+                    { word: "為了", pinyin: "wèi le", meaning: "「〜のために」。" },
+                    { word: "滿意", pinyin: "mǎn yì", meaning: "「満足する」。" },
+                    { word: "總是", pinyin: "zǒng shì", meaning: "「いつも、常に」。" }
+                ]
+            },
+            {
+                id: 37, script: [{ speaker: "例句", text: "餐廳裡現在有很多客人，老闆忙得連喝水的時間都沒有。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Cān tīng lǐ xiàn zài yǒu hěn duō kè rén, lǎo bǎn máng de lián hē shuǐ de shí jiān dōu méi yǒu.<br><strong>日文：</strong>レストランの中は今たくさんのお客さんがいて、店長は水を飲む時間もないほど忙しいです。",
+                vocab: [{ word: "餐廳裡現在有很多客人，老闆忙得連喝水的時間都沒有。", pinyin: "Cān tīng lǐ xiàn zài yǒu hěn duō kè rén, lǎo bǎn máng de lián hē shuǐ de shí jiān dōu méi yǒu.", jp: "レストランの中は今たくさんのお客さんがいて、店長は水を飲む時間もないほど忙しいです。", speak: "餐廳裡現在有很多客人，老闆忙得連喝水的時間都沒有。" }],
+                explanations: [
+                    { word: "老闆", pinyin: "lǎo bǎn", meaning: "「店長、ボス」。" },
+                    { word: "連...都...", pinyin: "lián... dōu...", meaning: "「〜でさえ〜だ」。" }
+                ]
+            },
+            {
+                id: 38, script: [{ speaker: "例句", text: "「顧客永遠是對的」，這是我們經理常常說的一句話。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>\"Gù kè yǒng yuǎn shì duì de\", zhè shì wǒ men jīng lǐ cháng cháng shuō de yí jù huà.<br><strong>日文：</strong>「お客様は常に正しい」、これは私たちのマネージャーがよく言う言葉です。",
+                vocab: [{ word: "「顧客永遠是對的」，這是我們經理常常說的一句話。", pinyin: "\"Gù kè yǒng yuǎn shì duì de\", zhè shì wǒ men jīng lǐ cháng cháng shuō de yí jù huà.", jp: "「お客様は常に正しい」、これは私たちのマネージャーがよく言う言葉です。", speak: "「顧客永遠是對的」，這是我們經理常常說的一句話。" }],
+                explanations: [
+                    { word: "永遠", pinyin: "yǒng yuǎn", meaning: "「永遠に、常に」。" },
+                    { word: "句", pinyin: "jù", meaning: "言葉や文の量詞。" }
+                ]
+            },
+            // --- 怎麼可能 ---
+            {
+                id: 39, sectionName: "怎麼可能 (zěn me kě néng) / まさか・ありえない",
+                script: [{ speaker: "例句", text: "他每天都在家睡覺沒看書，怎麼可能考一百分？" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tā měi tiān dōu zài jiā shuì jiào méi kàn shū, zěn me kě néng kǎo yì bǎi fēn?<br><strong>日文：</strong>彼は毎日家で寝てばかりで本を読んでいないのに、まさか100点を取れるわけがありません。",
+                vocab: [{ word: "他每天都在家睡覺沒看書，怎麼可能考一百分？", pinyin: "Tā měi tiān dōu zài jiā shuì jiào méi kàn shū, zěn me kě néng kǎo yì bǎi fēn?", jp: "彼は毎日家で寝てばかりで本を読んでいないのに、まさか100点を取れるわけがありません。", speak: "他每天都在家睡覺沒看書，怎麼可能考一百分？" }],
+                explanations: [
+                    { word: "睡覺", pinyin: "shuì jiào", meaning: "「寝る」。" },
+                    { word: "怎麼可能", pinyin: "zěn me kě néng", meaning: "「どうして〜がありえようか、まさか〜のはずがない」。" }
+                ]
+            },
+            {
+                id: 40, script: [{ speaker: "例句", text: "怎麼可能！那雙看起來很普通的鞋子居然要一萬塊？" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zěn me kě néng! Nà shuāng kàn qǐ lái hěn pǔ tōng de xié zi jū rán yào yí wàn kuài?<br><strong>日文：</strong>ありえない！あの見た目がとても普通の靴が、まさか1万元もするなんて？",
+                vocab: [{ word: "怎麼可能！那雙看起來很普通的鞋子居然要一萬塊？", pinyin: "Zěn me kě néng! Nà shuāng kàn qǐ lái hěn pǔ tōng de xié zi jū rán yào yí wàn kuài?", jp: "ありえない！あの見た目がとても普通の靴が、まさか1万元もするなんて？", speak: "怎麼可能！那雙看起來很普通的鞋子居然要一萬塊？" }],
+                explanations: [
+                    { word: "雙", pinyin: "shuāng", meaning: "ペアになっているものの量詞（靴、靴下など）。" },
+                    { word: "普通", pinyin: "pǔ tōng", meaning: "「普通の、ありふれた」。" },
+                    { word: "居然", pinyin: "jū rán", meaning: "「なんと、意外にも」。" }
+                ]
+            },
+            {
+                id: 41, script: [{ speaker: "例句", text: "冰箱裡的蛋糕怎麼可能不見了？今天只有你在家啊。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Bīng xiāng lǐ de dàn gāo zěn me kě néng bú jiàn le? Jīn tiān zhǐ yǒu nǐ zài jiā a.<br><strong>日文：</strong>冷蔵庫の中のケーキがなくなるなんてどうしてありえるの？今日はあなたしか家にいなかったのに。",
+                vocab: [{ word: "冰箱裡的蛋糕怎麼可能不見了？今天只有你在家啊。", pinyin: "Bīng xiāng lǐ de dàn gāo zěn me kě néng bú jiàn le? Jīn tiān zhǐ yǒu nǐ zài jiā a.", jp: "冷蔵庫の中のケーキがなくなるなんてどうしてありえるの？今日はあなたしか家にいなかったのに。", speak: "冰箱裡的蛋糕怎麼可能不見了？今天只有你在家啊。" }],
+                explanations: [
+                    { word: "冰箱", pinyin: "bīng xiāng", meaning: "「冷蔵庫」。" },
+                    { word: "不見了", pinyin: "bú jiàn le", meaning: "「なくなった、見当たらない」。" }
+                ]
+            },
+            // --- 跟 ---
+            {
+                id: 42, sectionName: "跟 (gēn) / 一緒に～",
+                script: [{ speaker: "例句", text: "週末的時候，我常常跟好朋友一起去看電影。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Zhōu mò de shí hòu, wǒ cháng cháng gēn hǎo péng yǒu yì qǐ qù kàn diàn yǐng.<br><strong>日文：</strong>週末の時、私はよく親友と一緒に映画を見に行きます。",
+                vocab: [{ word: "週末的時候，我常常跟好朋友一起去看電影。", pinyin: "Zhōu mò de shí hòu, wǒ cháng cháng gēn hǎo péng yǒu yì qǐ qù kàn diàn yǐng.", jp: "週末の時、私はよく親友と一緒に映画を見に行きます。", speak: "週末的時候，我常常跟好朋友一起去看電影。" }],
+                explanations: [
+                    { word: "週末", pinyin: "zhōu mò", meaning: "「週末」。" },
+                    { word: "跟", pinyin: "gēn", meaning: "「〜と（一緒に）」。" },
+                    { word: "電影", pinyin: "diàn yǐng", meaning: "「映画」。" }
+                ]
+            },
+            {
+                id: 43, script: [{ speaker: "例句", text: "請你明天跟我去一趟圖書館，我要借幾本書。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Qǐng nǐ míng tiān gēn wǒ qù yí tàng tú shū guǎn, wǒ yào jiè jǐ běn shū.<br><strong>日文：</strong>明日私と一緒に図書館へ行ってください、本を何冊か借りたいのです。",
+                vocab: [{ word: "請你明天跟我去一趟圖書館，我要借幾本書。", pinyin: "Qǐng nǐ míng tiān gēn wǒ qù yí tàng tú shū guǎn, wǒ yào jiè jǐ běn shū.", jp: "明日私と一緒に図書館へ行ってください、本を何冊か借りたいのです。", speak: "請你明天跟我去一趟圖書館，我要借幾本書。" }],
+                explanations: [
+                    { word: "一趟", pinyin: "yí tàng", meaning: "「（往復する動作の回数）1回、1度」。" },
+                    { word: "借", pinyin: "jiè", meaning: "「借りる」。" }
+                ]
+            },
+            {
+                id: 44, script: [{ speaker: "例句", text: "弟弟跟妹妹在客廳看電視，兩個人笑得非常開心。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Dì di gēn mèi mei zài kè tīng kàn diàn shì, liǎng ge rén xiào de fēi cháng kāi xīn.<br><strong>日文：</strong>弟と妹がリビングでテレビを見ていて、2人はとても楽しそうに笑っています。",
+                vocab: [{ word: "弟弟跟妹妹在客廳看電視，兩個人笑得非常開心。", pinyin: "Dì di gēn mèi mei zài kè tīng kàn diàn shì, liǎng ge rén xiào de fēi cháng kāi xīn.", jp: "弟と妹がリビングでテレビを見ていて、2人はとても楽しそうに笑っています。", speak: "弟弟跟妹妹在客廳看電視，兩個人笑得非常開心。" }],
+                explanations: [
+                    { word: "客廳", pinyin: "kè tīng", meaning: "「リビング」。" },
+                    { word: "開心", pinyin: "kāi xīn", meaning: "「楽しい、うれしい」。" }
+                ]
+            },
+            // --- 眼鏡 ---
+            {
+                id: 45, sectionName: "眼鏡 (yǎn jìng) / 眼鏡",
+                script: [{ speaker: "例句", text: "我找不到我的眼鏡，你可以幫我看一下桌子上有沒有嗎？" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wǒ zhǎo bú dào wǒ de yǎn jìng, nǐ kě yǐ bāng wǒ kàn yí xià zhuō zi shàng yǒu méi yǒu ma?<br><strong>日文：</strong>私の眼鏡が見つかりません、机の上にあるかどうか少し見てくれませんか？",
+                vocab: [{ word: "我找不到我的眼鏡，你可以幫我看一下桌子上有沒有嗎？", pinyin: "Wǒ zhǎo bú dào wǒ de yǎn jìng, nǐ kě yǐ bāng wǒ kàn yí xià zhuō zi shàng yǒu méi yǒu ma?", jp: "私の眼鏡が見つかりません、机の上にあるかどうか少し見てくれませんか？", speak: "我找不到我的眼鏡，你可以幫我看一下桌子上有沒有嗎？" }],
+                explanations: [
+                    { word: "找不到", pinyin: "zhǎo bú dào", meaning: "「見つからない」。" },
+                    { word: "眼鏡", pinyin: "yǎn jìng", meaning: "「眼鏡」。" },
+                    { word: "看一下", pinyin: "kàn yí xià", meaning: "「ちょっと見る」。" }
+                ]
+            },
+            {
+                id: 46, script: [{ speaker: "例句", text: "那個戴著黑框眼鏡的男生，就是我以前的大學同學。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Nà ge dài zhe hēi kuàng yǎn jìng de nán shēng, jiù shì wǒ yǐ qián de dà xué tóng xué.<br><strong>日文：</strong>あの黒縁眼鏡をかけている男性が、私の以前の大学の同級生です。",
+                vocab: [{ word: "那個戴著黑框眼鏡的男生，就是我以前的大學同學。", pinyin: "Nà ge dài zhe hēi kuàng yǎn jìng de nán shēng, jiù shì wǒ yǐ qián de dà xué tóng xué.", jp: "あの黒縁眼鏡をかけている男性が、私の以前の大学の同級生です。", speak: "那個戴著黑框眼鏡的男生，就是我以前的大學同學。" }],
+                explanations: [
+                    { word: "戴著", pinyin: "dài zhe", meaning: "「（眼鏡などを）かけている、身につけている」。" },
+                    { word: "黑框", pinyin: "hēi kuàng", meaning: "「黒縁（くろぶち）」。" },
+                    { word: "同學", pinyin: "tóng xué", meaning: "「同級生、クラスメイト」。" }
+                ]
+            },
+            {
+                id: 47, script: [{ speaker: "例句", text: "他最近看電腦看太久，所以昨天去配了一副新眼鏡。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Tā zuì jìn kàn diàn nǎo kàn tài jiǔ, suǒ yǐ zuó tiān qù pèi le yí fù xīn yǎn jìng.<br><strong>日文：</strong>彼は最近パソコンを見すぎたので、昨日新しい眼鏡を作りに行きました。",
+                vocab: [{ word: "他最近看電腦看太久，所以昨天去配了一副新眼鏡。", pinyin: "Tā zuì jìn kàn diàn nǎo kàn tài jiǔ, suǒ yǐ zuó tiān qù pèi le yí fù xīn yǎn jìng.", jp: "彼は最近パソコンを見すぎたので、昨日新しい眼鏡を作りに行きました。", speak: "他最近看電腦看太久，所以昨天去配了一副新眼鏡。" }],
+                explanations: [
+                    { word: "最近", pinyin: "zuì jìn", meaning: "「最近」。" },
+                    { word: "太久", pinyin: "tài jiǔ", meaning: "「長すぎる」。" },
+                    { word: "配", pinyin: "pèi", meaning: "「（眼鏡を）作る、合わせる」。" },
+                    { word: "副", pinyin: "fù", meaning: "揃いのもの（眼鏡や手袋など）の量詞。" }
+                ]
+            },
+            // --- 起飛 ---
+            {
+                id: 48, sectionName: "起飛 (qǐ fēi) / 離陸する",
+                script: [{ speaker: "例句", text: "飛機快要起飛了，請大家回到座位上，並把手機關機。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Fēi jī kuài yào qǐ fēi le, qǐng dà jiā huí dào zuò wèi shàng, bìng bǎ shǒu jī guān jī.<br><strong>日文：</strong>飛行機がまもなく離陸します、皆様席にお戻りになり、携帯電話の電源をお切りください。",
+                vocab: [{ word: "飛機快要起飛了，請大家回到座位上，並把手機關機。", pinyin: "Fēi jī kuài yào qǐ fēi le, qǐng dà jiā huí dào zuò wèi shàng, bìng bǎ shǒu jī guān jī.", jp: "飛行機がまもなく離陸します、皆様席にお戻りになり、携帯電話の電源をお切りください。", speak: "飛機快要起飛了，請大家回到座位上，並把手機關機。" }],
+                explanations: [
+                    { word: "快要...了", pinyin: "kuài yào... le", meaning: "「もうすぐ〜する、まもなく〜だ」。" },
+                    { word: "起飛", pinyin: "qǐ fēi", meaning: "「離陸する」。" },
+                    { word: "關機", pinyin: "guān jī", meaning: "「電源を切る」。" }
+                ]
+            },
+            {
+                id: 49, script: [{ speaker: "例句", text: "我們搭的飛機下午兩點起飛，所以一點以前要到機場。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Wǒ men dā de fēi jī xià wǔ liǎng diǎn qǐ fēi, suǒ yǐ yì diǎn yǐ qián yào dào jī chǎng.<br><strong>日文：</strong>私たちの乗る飛行機は午後2時に離陸するので、1時前には空港に着かなければなりません。",
+                vocab: [{ word: "我們搭的飛機下午兩點起飛，所以一點以前要到機場。", pinyin: "Wǒ men dā de fēi jī xià wǔ liǎng diǎn qǐ fēi, suǒ yǐ yì diǎn yǐ qián yào dào jī chǎng.", jp: "私たちの乗る飛行機は午後2時に離陸するので、1時前には空港に着かなければなりません。", speak: "我們搭的飛機下午兩點起飛，所以一點以前要到機場。" }],
+                explanations: [
+                    { word: "搭", pinyin: "dā", meaning: "「乗る、搭乗する」。" },
+                    { word: "以前", pinyin: "yǐ qián", meaning: "「〜より前に」。" },
+                    { word: "機場", pinyin: "jī chǎng", meaning: "「空港」。" }
+                ]
+            },
+            {
+                id: 50, script: [{ speaker: "例句", text: "因為天氣不好的關係，飛機延後了一個小時才起飛。" }],
+                ans: "短文理解", choices: [],
+                meta: "<strong>拼音：</strong>Yīn wèi tiān qì bù hǎo de guān xì, fēi jī yán hòu le yí ge xiǎo shí cái qǐ fēi.<br><strong>日文：</strong>天気が悪かったため、飛行機は1時間遅れてやっと離陸しました。",
+                vocab: [{ word: "因為天氣不好的關係，飛機延後了一個小時才起飛。", pinyin: "Yīn wèi tiān qì bù hǎo de guān xì, fēi jī yán hòu le yí ge xiǎo shí cái qǐ fēi.", jp: "天気が悪かったため、飛行機は1時間遅れてやっと離陸しました。", speak: "因為天氣不好的關係，飛機延後了一個小時才起飛。" }],
+                explanations: [
+                    { word: "因為...的關係", pinyin: "yīn wèi... de guān xì", meaning: "「〜の関係で、〜のせいで」。" },
+                    { word: "延後", pinyin: "yán hòu", meaning: "「遅らせる、延期する」。" }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 共通・状態管理
+        // ==========================================
+        let playingId = null;
+        let playingType = null;
+        let isGlobalReveal = false;
+        let currentSpeechRate = 0.95;
+
+        // タブ切り替え
+        function switchTab(tabId) {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            const views = ['list', 'flashcard'];
+            views.forEach(v => {
+                document.getElementById(`${v}-view`).classList.add('hidden');
+                document.getElementById(`tab-${v}`).className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+            });
+
+            document.getElementById(`${tabId}-view`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+
+            if (tabId === 'flashcard') {
+                setFlashcardMode(fcMode); // タブを開くたびに毎回シャッフルして初期化
+            }
+        }
+
+        function toggleGlobalReveal() {
+            isGlobalReveal = !isGlobalReveal;
+            if (isGlobalReveal) {
+                document.body.classList.add('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i><span>すべて隠す</span>`;
+            } else {
+                document.body.classList.remove('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i><span>すべての解答・スクリプトを表示</span>`;
+            }
+            lucide.createIcons({root: document.getElementById('global-reveal-btn')});
+        }
+
+        // ==========================================
+        // 音声再生ロジック
+        // ==========================================
+        function resetActiveUI() {
+            if (!playingId) return;
+            const btn = document.getElementById(playingId);
+            if (!btn) return;
+
+            if (playingType === 'vocab') {
+                const icon = btn.querySelector('.lucide-volume-2');
+                if (icon) {
+                    icon.classList.remove('animate-pulse', 'text-blue-600');
+                    // 語彙解説のボタンとそうでないものの色を切り替え
+                    if (btn.id.includes('btn-exp')) {
+                        icon.classList.remove('text-blue-600');
+                        icon.classList.add('text-blue-500'); // デフォルト色に戻す
+                    } else {
+                        icon.classList.add('text-blue-400');
+                    }
+                }
+            } else if (playingType === 'single') {
+                btn.classList.remove('text-indigo-600', 'bg-indigo-100', 'text-emerald-600', 'bg-emerald-100');
+                btn.classList.add('text-slate-400');
+                const icon = btn.querySelector('.lucide-play');
+                if (icon) icon.setAttribute('fill', 'none');
+            } else if (playingType === 'conversation') {
+                btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btn.id.includes('fc-sent-play-after')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i>`;
+                } else if(btn.id.includes('btn-list-conv')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                } else if (btn.id.includes('fc-sent-play-')) {
+                    const count = btn.id.replace('fc-sent-play-', '');
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i> ${count}回再生`;
+                } else {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
+                }
+                lucide.createIcons({root: btn});
+            }
+        }
+
+        function playConversation(qId, btnId, loopCount = 1, callback = null) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = 'conversation';
+
+            const btn = document.getElementById(btnId);
+            if(btn) {
+                btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
+                } else {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> 再生中...`;
+                }
+                lucide.createIcons({root: btn});
+            }
+
+            const q = questionsData.find(x => x.id === qId);
+            if (!q) return;
+
+            const utterances = [];
+
+            for(let i=0; i<loopCount; i++) {
+                // 会話・質問の読み上げ
+                q.script.forEach((line, index) => {
+                    let delay = 600;
+                    if (index === q.script.length - 2) delay = 1200; // 問の前のポーズ
+                    
+                    // 選択肢がない場合、1回目終了後に長めのポーズ
+                    if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
+                    utterances.push({ text: line.text, delayAfter: delay });
+                });
+
+                // 選択肢の読み上げを追加
+                if (q.choices && q.choices.length > 0) {
+                    q.choices.forEach((choice, index) => {
+                        let delay = 1000; // 選択肢間のポーズ
+                        // TTSが綺麗に「A因為...」と読めるように整形
+                        const cleanChoice = choice.replace(/^[（(]([A-D])[）)]\s*/, '$1 '); 
+                        
+                        // 1回目終了後に長めのポーズ
+                        if (i === 0 && index === q.choices.length - 1) delay = 2000;
+                        utterances.push({ text: cleanChoice, delayAfter: delay });
+                    });
+                }
+            }
+
+            let currentIndex = 0;
+            function speakNext() {
+                if (playingId !== btnId) return; 
+                
+                if (currentIndex >= utterances.length) {
+                    resetActiveUI();
+                    playingId = null;
+                    playingType = null;
+                    if (callback) callback(); // 終了時のコールバック
+                    return;
+                }
+
+                const currentItem = utterances[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(currentItem.text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = currentSpeechRate;
+
+                utterance.onend = () => {
+                    const delay = currentItem.delayAfter;
+                    currentIndex++;
+                    setTimeout(() => { if (playingId === btnId) speakNext(); }, delay);
+                };
+                utterance.onerror = () => {
+                    currentIndex++;
+                    if (playingId === btnId) speakNext();
+                };
+                window.speechSynthesis.speak(utterance);
+            }
+            speakNext();
+        }
+
+        function speakText(text, btnId, isVocab, speakerType) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW'; 
+            utterance.rate = currentSpeechRate;  
+
+            utterance.onstart = () => {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                if (isVocab) {
+                    const icon = btn.querySelector('.lucide-volume-2');
+                    if (icon) {
+                        icon.classList.remove('text-blue-400', 'text-blue-500');
+                        icon.classList.add('animate-pulse', 'text-blue-600');
+                    }
+                } else {
+                    btn.classList.remove('text-slate-400');
+                    if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
+                    else btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                    const icon = btn.querySelector('.lucide-play');
+                    if (icon) icon.setAttribute('fill', 'currentColor');
+                }
+            };
+
+            utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
+            utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // カスタム通知 (alertの代わり)
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-rose-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 font-bold transition-opacity duration-300";
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function getRubyText(text, makePinyinMain = false) {
+            if (typeof pinyinPro === 'undefined') return text;
+            try {
+                const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
+                const charArr = Array.from(text);
+                let html = '';
+                for (let i = 0; i < charArr.length; i++) {
+                    const char = charArr[i];
+                    const py = pinyinArr[i];
+                    if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
+                        if (makePinyinMain) {
+                            // ピンインをメイン（大きく赤く）、漢字をルビ（上に小さく）
+                            html += `<ruby style="ruby-position: over;" class="mx-1 text-xl sm:text-2xl md:text-3xl text-red-600 font-bold tracking-wider">${py}<rt class="text-xs sm:text-sm text-slate-600 font-sans tracking-normal font-bold">${char}</rt></ruby>`;
+                        } else {
+                            // 通常の表示（漢字メイン、ピンイン下ルビ）
+                            html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                        }
+                    } else {
+                        if (makePinyinMain) {
+                            html += `<span class="mx-0.5 text-xl sm:text-2xl md:text-3xl text-slate-400">${char}</span>`;
+                        } else {
+                            html += `<span class="mx-[1px]">${char}</span>`;
+                        }
+                    }
+                }
+                return html;
+            } catch (e) {
+                return text;
+            }
+        }
+
+        // HTMLジェネレーター（共通コンポーネント化）
+        function generateScriptHtml(script, qId, prefix = "list") {
+            return script.map((line, idx) => {
+                const btnId = `btn-${prefix}-line-${qId}-${idx}`;
+                let speakerBg = line.speaker === '男' ? 'bg-blue-100 text-blue-700' : 
+                                line.speaker === '女' ? 'bg-pink-100 text-pink-700' : 
+                                line.speaker === '問' ? 'bg-emerald-100 text-emerald-700' : 
+                                line.speaker === '例句' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700';
+                                
+                // フレーズに分割（カンマやピリオド等の句読点で区切る）
+                const phrases = line.text.match(/[^，。！？、,.\!\?]+[，。！？、,.\!\?]*/g) || [line.text];
+
+                return `
+                    <div class="flex flex-col gap-3 bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm w-full">
+                        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 w-full">
+                            <span class="font-bold px-3 py-1.5 rounded-md text-sm ${speakerBg} shrink-0 shadow-sm">${line.speaker}</span>
+                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-500 bg-white border border-slate-200 shadow-sm shrink-0 text-sm font-bold" title="全文を再生">
+                                <i data-lucide="play" class="w-4 h-4 fill-current text-slate-400"></i> 全文再生
+                            </button>
+                        </div>
+                        <div class="w-full text-left pt-2">
+                            <p class="break-all whitespace-normal">
+                                ${phrases.map((phrase, pIdx) => {
+                                    const phraseBtnId = `${btnId}-p${pIdx}`;
+                                    const textToSpeak = phrases.slice(pIdx).join('').replace(/'/g, "\\'");
+                                    
+                                    const playBtn = pIdx > 0 ? `
+                                        <button id="${phraseBtnId}" onclick="speakText('${textToSpeak}', '${phraseBtnId}', false, '${line.speaker}')" class="inline-flex items-center justify-center align-middle mx-1.5 p-1.5 rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition-colors text-slate-400 border border-slate-200 bg-white shadow-sm shrink-0" title="ここから再生">
+                                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                                        </button>
+                                    ` : '';
+                                    
+                                    return `
+                                        <span class="leading-[3.5rem] sm:leading-[4.5rem] align-middle inline">
+                                            ${playBtn}${getRubyText(phrase, true)}
+                                        </span>
+                                    `;
+                                }).join('')}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 新しい語彙・文法解説のレイアウト (音声再生ボタン＋ハイライト付き)
+        function generateExplanationsHtml(explanations, qId) {
+            if (!explanations || explanations.length === 0) return '';
+            return `
+                <div class="mt-4 pt-4 border-t border-amber-200/60">
+                    <strong class="block mb-3 text-amber-800 flex items-center gap-1.5 text-base">
+                        <i data-lucide="book-open" class="w-5 h-5"></i>語彙・文法解説
+                    </strong>
+                    <ul class="space-y-3 text-sm">
+                        ${explanations.map((ex, idx) => {
+                            const btnId = `btn-exp-${qId}-${idx}`;
+                            return `
+                                <li class="flex items-start gap-2 leading-relaxed">
+                                    <span class="text-amber-500 mt-1 font-bold">•</span>
+                                    <div class="flex-1 flex flex-wrap items-center gap-1.5">
+                                        <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded text-base shadow-sm">
+                                            ${ex.word}
+                                            <button id="${btnId}" onclick="event.stopPropagation(); speakText('${ex.word.replace(/'/g, "\\'")}', '${btnId}', true, '')" class="text-blue-500 hover:text-blue-700 hover:bg-blue-50 p-0.5 rounded-md transition-colors focus:outline-none flex items-center justify-center" title="音声を再生">
+                                                <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                            </button>
+                                        </span>
+                                        ${ex.pinyin ? `<span class="text-slate-500 font-mono text-sm">(${ex.pinyin})</span>` : ''}
+                                        <span class="text-slate-700 text-base">：${ex.meaning}</span>
+                                    </div>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        function generateChoicesHtml(choices, qId, ans, isSecret = false, prefix = "list") {
+            if (!choices || choices.length === 0) return '';
+            return choices.map((choice, cIdx) => {
+                const optionLetter = (choice.match(/[A-D]/) || [])[0] || '';
+                const isCorrect = optionLetter === ans;
+                const btnId = `btn-${prefix}-choice-${qId}-${optionLetter || cIdx}`;
+                
+                // TTSできれいに「A 因為...」と読ませるための処理
+                const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, optionLetter ? `${optionLetter} ` : '').replace(/'/g, "\\'");
+                
+                const secretClass = isSecret ? 'secret-target' : '';
+                const ansHtml = isCorrect ? `<span class="${secretClass} flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : '';
+                
+                return `
+                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
+                        <div class="flex items-start gap-2">
+                            <button id="${btnId}" onclick="event.stopPropagation(); speakText('${speakTextStr}', '${btnId}', false)" class="${secretClass} flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5">
+                                <i data-lucide="play" class="w-4 h-4"></i>
+                            </button>
+                            <span class="text-slate-800 leading-relaxed">${getRubyText(choice)}</span>
+                        </div>
+                        ${ansHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==========================================
+        // 1. 一覧学習の描画
+        // ==========================================
+        function renderListView() {
+            const container = document.getElementById('list-content');
+            let html = '';
+
+            questionsData.forEach(q => {
+                if (q.sectionName) {
+                    html += `
+                        <div class="py-4 mt-8 mb-2 border-t-2 border-indigo-100 pt-8 first:mt-0 first:border-0 first:pt-0">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                                ${q.sectionName}
+                            </h2>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <article id="list-q-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
+                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    2回再生して表示
+                                </button>
+                            </div>
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500 text-sm">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>測驗重點: <br class="sm:hidden" />${q.ans || "未輸入"}</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            ${q.choices && q.choices.length > 0 ? `<section><h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選擇題</h3><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${generateChoicesHtml(q.choices, q.id, q.ans, true, 'list')}</div></section>` : ''}
+                            
+                            <section class="secret-target transition-all duration-500 delay-100">
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">聽力內容</h3>
+                                <div class="space-y-3">${generateScriptHtml(q.script, q.id, 'list')}</div>
+                            </section>
+
+                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
+                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i><h4>解析</h4>
+                                </div>
+                                <div class="text-amber-900 text-sm leading-relaxed">
+                                    ${q.meta}
+                                    ${generateExplanationsHtml(q.explanations, q.id)}
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                `;
+            });
+            container.innerHTML = html;
+            // 描画後にアイコンを初期化
+            lucide.createIcons({ root: container });
+        }
+
+        // ==========================================
+        // 2. フラッシュカードのロジック
+        // ==========================================
+        let fcTargetQuestions = [];
+        let allVocabs = [];
+        
+        let vocabTestQueue = [];
+        let sentenceTestQueue = [];
+        
+        let fcMode = 'vocab';
+        let currentCardIndex = 0;
+        
+        let isVocabAnswered = false;
+        let lastVocabAnswer = null;
+        
+        let isSentenceRevealed = false;
+
+        function initFlashcardsData() {
+            fcTargetQuestions = questionsData; 
+            
+            const vocabMap = new Map();
+            fcTargetQuestions.forEach(q => {
+                if (q.vocab) {
+                    q.vocab.forEach(v => {
+                        // 不正解の選択肢を作るため、日本語訳が存在するものだけを抽出
+                        if (!vocabMap.has(v.word) && v.jp && !v.jp.includes('不正解')) {
+                            vocabMap.set(v.word, v);
+                        }
+                    });
+                }
+            });
+            allVocabs = Array.from(vocabMap.values());
+        }
+
+        function generateVocabChoices(correctVocab) {
+            const allJps = allVocabs.map(v => v.jp).filter(jp => jp !== correctVocab.jp);
+            const shuffledJps = allJps.sort(() => Math.random() - 0.5);
+            const choices = [correctVocab.jp];
+            for (let i = 0; i < 3 && i < shuffledJps.length; i++) {
+                choices.push(shuffledJps[i]);
+            }
+            return choices.sort(() => Math.random() - 0.5);
+        }
+
+        function setFlashcardMode(mode) {
+            if (fcTargetQuestions.length === 0) initFlashcardsData();
+            fcMode = mode;
+            currentCardIndex = 0;
+
+            if (mode === 'vocab') {
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                // 4択問題用のキューを作成
+                vocabTestQueue = [...allVocabs].sort(() => Math.random() - 0.5).map(v => ({
+                    ...v,
+                    choices: generateVocabChoices(v)
+                }));
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+            } else {
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                // 問題まるっと出題(会話)用のキューを作成
+                sentenceTestQueue = [...fcTargetQuestions].sort(() => Math.random() - 0.5);
+                isSentenceRevealed = false;
+            }
+            renderFlashcard();
+        }
+
+        function handleCardClick() {
+            if (fcMode === 'sentence' && !isSentenceRevealed) {
+                isSentenceRevealed = true;
+                renderFlashcard();
+            }
+        }
+
+        function answerVocab(choice) {
+            if (isVocabAnswered) return;
+            lastVocabAnswer = choice;
+            isVocabAnswered = true;
+            renderFlashcard();
+        }
+
+        function nextCard() {
+            window.speechSynthesis.cancel();
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            if (currentCardIndex < maxLen - 1) {
+                currentCardIndex++;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            window.speechSynthesis.cancel();
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function reshuffleCards() {
+            window.speechSynthesis.cancel();
+            setFlashcardMode(fcMode);
+        }
+
+        function renderFlashcard() {
+            const container = document.getElementById('flashcard-container');
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            
+            if (maxLen === 0) {
+                 container.innerHTML = '<div class="text-center p-8 text-slate-500">沒有資料。</div>';
+                 return;
+            }
+
+            document.getElementById('fc-counter').innerText = `${currentCardIndex + 1} / ${maxLen}`;
+            
+            let contentHtml = '';
+
+            if (fcMode === 'vocab') {
+                const item = vocabTestQueue[currentCardIndex];
+                
+                if (!isVocabAnswered) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-4">
+                            <p class="text-slate-500 mb-6 font-bold tracking-wide">音声を聽いて、正しい意味を選んでください</p>
+                            <button id="fc-vocab-play" onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play', true)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-5 px-10 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-3 text-xl">
+                                <i data-lucide="volume-2" class="w-8 h-8"></i> 音声を聽く
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl mx-auto">
+                            ${item.choices.map((choice, idx) => `
+                                <button onclick="event.stopPropagation(); answerVocab('${choice.replace(/'/g, "\\'")}')" class="p-4 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 transition-all text-slate-700 font-bold text-center h-full flex items-center justify-center min-h-[6rem] leading-relaxed text-sm sm:text-base">
+                                    ${choice}
+                                </button>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    const isCorrect = lastVocabAnswer === item.jp;
+                    contentHtml = `
+                        <div class="text-center mb-8 mt-4 animate-fade-in">
+                            <div class="inline-flex items-center justify-center p-4 rounded-full ${isCorrect ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'} mb-6 shadow-inner">
+                                <i data-lucide="${isCorrect ? 'check-circle' : 'x-circle'}" class="w-12 h-12"></i>
+                            </div>
+                            <div class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4 tracking-wide leading-snug">${item.word}</div>
+                            <div class="text-lg sm:text-xl text-slate-500 font-mono mb-6 bg-slate-100 inline-block px-4 py-2 rounded-md leading-relaxed break-all max-w-full">${item.pinyin}</div>
+                            <div class="text-xl font-bold text-indigo-700 leading-relaxed">${item.jp}</div>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-10">
+                            <button onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play-after', true)" id="fc-vocab-play-after" class="p-4 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors border border-slate-200">
+                                <i data-lucide="volume-2" class="w-6 h-6"></i>
+                            </button>
+                            <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow hover:bg-indigo-700 transition-colors flex items-center gap-2 text-lg">
+                                次の問題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                // 問題まるっと出題 (会話)
+                const item = sentenceTestQueue[currentCardIndex];
+                
+                if (!isSentenceRevealed) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-8">
+                            <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-widest">${item.sectionName || '聽力測驗'}</div>
+                            <h3 class="text-3xl font-bold text-slate-800 mb-8">第 ${item.id} 題</h3>
+                            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+                                <button id="fc-sent-play-1" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-1', 1)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 1回再生
+                                </button>
+                                <button id="fc-sent-play-2" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-2', 2)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 2回再生
+                                </button>
+                                <button id="fc-sent-play-3" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-3', 3)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 3回再生
+                                </button>
+                                <button id="fc-sent-play-4" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-4', 4)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 4回再生
+                                </button>
+                            </div>
+                            <p class="text-slate-500 font-medium bg-slate-100 inline-block px-6 py-3 rounded-lg"><i data-lucide="mouse-pointer-click" class="w-5 h-5 inline-block align-text-bottom mr-1 text-slate-400"></i> カードをクリック、またはSpaceキーで解答・解説を表示</p>
+                        </div>
+                    `;
+                } else {
+                    contentHtml = `
+                        <div class="w-full text-left animate-fade-in">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">${item.sectionName || '聽力測驗'}</span>
+                                    <h3 class="text-2xl font-bold text-slate-800">第 ${item.id} 題 解答・解析</h3>
+                                </div>
+                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after', 1)" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="bg-emerald-50 text-emerald-800 px-5 py-4 rounded-xl font-bold mb-8 flex items-center gap-3 text-lg border border-emerald-100 shadow-sm">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-emerald-600 shrink-0"></i> 重點: ${item.ans || "句子理解"}
+                            </div>
+
+                            ${item.choices && item.choices.length > 0 ? `
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="list" class="w-4 h-4"></i> 選擇題</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    ${generateChoicesHtml(item.choices, item.id, item.ans, false, 'fc')}
+                                </div>
+                            </div>
+                            ` : ''}
+
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> 聽力內容</h4>
+                                <div class="space-y-4 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    ${generateScriptHtml(item.script, `fc-sent-${item.id}`, 'fc')}
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4 mb-8">
+                                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-amber-900 text-sm leading-relaxed shadow-sm font-medium">
+                                    <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                        <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i><h4>文意解析</h4>
+                                    </div>
+                                    ${item.meta}
+                                    ${generateExplanationsHtml(item.explanations, `fc-${item.id}`)}
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end pt-4 border-t border-slate-100">
+                                <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                    下一題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            container.innerHTML = `
+                <div class="relative w-full min-h-[300px] bg-slate-50 rounded-2xl border-2 border-slate-200 p-6 md:p-10 flex flex-col justify-center items-center hover:border-indigo-200 transition-all shadow-sm">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded bg-slate-200 text-xs font-bold text-slate-500 uppercase tracking-widest z-20">${(fcMode === 'vocab' && isVocabAnswered) || (fcMode === 'sentence' && isSentenceRevealed) ? 'Answer / Explanation' : 'Question'}</div>
+                    <div class="w-full mt-6">${contentHtml}</div>
+                </div>
+            `;
+            lucide.createIcons({root: container});
+        }
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (fcMode === 'sentence' && !isSentenceRevealed) {
+                        isSentenceRevealed = true;
+                        renderFlashcard();
+                    }
+                } else if (e.code === 'ArrowRight') nextCard();
+                else if (e.code === 'ArrowLeft') prevCard();
+            }
+        });
+
+        // ==========================================
+        // 初期化
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListView();
+            lucide.createIcons();
+
+            // 音声スピードスライダーのイベントリスナー設定
+            const speedSlider = document.getElementById('speed-slider');
+            const speedDisplay = document.getElementById('speed-display');
+            speedSlider.addEventListener('input', (e) => {
+                currentSpeechRate = parseFloat(e.target.value);
+                speedDisplay.innerText = currentSpeechRate.toFixed(2) + 'x';
+            });
+        });
+    </script>
+</body>
+</html>
