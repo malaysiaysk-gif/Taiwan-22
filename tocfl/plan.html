@@ -50,7 +50,9 @@
         // --- Data ---
         // 手入力で管理しやすいように、日付形式（YYYYMMDD）のIDに変更しています
         let records = [
-             { id: 202606010, date: '2026-06-10', hours: 0.5 },
+             { id: 202606012, date: '2026-06-12', hours: 0.5 },
+                   { id: 202606011, date: '2026-06-11', hours: 1.0 },
+             { id: 202606010, date: '2026-06-10', hours: 2.0 },
               { id: 20260609, date: '2026-06-09', hours: 2.0 },
             { id: 20260608, date: '2026-06-08', hours: 1.0 },
             { id: 20260607, date: '2026-06-07', hours: 5.0 },
@@ -541,7 +543,7 @@
                 
                 const record = records.find(r => r.date === dateStr);
                 const isTarget = dateStr === '2026-06-28';
-                const isMC = dateStr === '2026-06-26' || dateStr === '2026-06-05';
+                const isMC = dateStr === '2026-06-24' || dateStr === '2026-06-05';
                 const isRest = dateStr === '2026-06-27';
                 const isSelected = dateStr === newDate;
                 
