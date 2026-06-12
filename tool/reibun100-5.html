@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL リスニング対策 - テンプレート</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Pinyin Pro (自動ピンイン付与ライブラリ) -->
+    <script src="https://unpkg.com/pinyin-pro"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        
+        /* 隠す（ぼかし）設定 */
+        .content-hidden .secret-target {
+            filter: blur(8px);
+            opacity: 0.3;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* 表示時（ぼかし解除）の設定 */
+        body.global-reveal .content-hidden .secret-target,
+        .question-container:not(.content-hidden) .secret-target {
+            filter: blur(0px);
+            opacity: 1;
+            pointer-events: auto;
+            user-select: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+    <header class="max-w-4xl mx-auto mb-6 text-center">
+        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL リスニング対策アプリ</h1>
+        <p class="text-slate-600">一覧学習・フラッシュカードテスト</p>
+        <p class="text-sm text-slate-500 mt-2">入門基礎級模擬試題聽力測驗</p>
+    </header>
+
+    <!-- タブナビゲーション -->
+    <div class="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-3">
+        <button onclick="switchTab('list')" id="tab-list" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">一覧学習</button>
+        <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカードテスト</button>
+    </div>
+
+    <!-- 音声スピード設定 -->
+    <div class="max-w-4xl mx-auto mb-6 flex justify-center items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
+        <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
+            <i data-lucide="gauge" class="w-4 h-4"></i>
+            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
+        </label>
+        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
+    </div>
+
+    <!-- 1. 一覧学習ビュー -->
+    <div id="list-view" class="max-w-4xl mx-auto">
+        <div class="mb-6 flex justify-end">
+            <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>すべての解答・スクリプトを表示</span>
+            </button>
+        </div>
+        <main id="list-content" class="space-y-8">
+            <!-- JSでここにコンテンツが生成されます -->
+        </main>
+    </div>
+
+    <!-- 2. フラッシュカードビュー -->
+    <div id="flashcard-view" class="hidden max-w-3xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-10 flex flex-col items-center">
+            
+            <div class="text-center mb-6 w-full">
+                <h2 class="text-lg font-bold text-slate-700 mb-2">測試範圍: 聽力測驗</h2>
+                <div class="flex justify-center gap-2 bg-slate-100 p-1 rounded-lg inline-flex flex-wrap">
+                    <button onclick="setFlashcardMode('vocab')" id="fc-mode-vocab" class="px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all">聽力選意 (4選1)</button>
+                    <button onclick="setFlashcardMode('sentence')" id="fc-mode-sentence" class="px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all">聽力測驗 (全出題)</button>
+                </div>
+            </div>
+
+            <div id="flashcard-container" class="w-full cursor-pointer transition-all" onclick="handleCardClick()">
+                <!-- JSでカードを描画 -->
+            </div>
+
+            <div class="mt-8 flex justify-between items-center w-full">
+                <button onclick="prevCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="前のカード"><i data-lucide="chevron-left" class="w-8 h-8"></i></button>
+                <div class="flex items-center gap-4">
+                    <button onclick="reshuffleCards()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors rounded-full hover:bg-indigo-50" title="シャッフル"><i data-lucide="shuffle" class="w-5 h-5"></i></button>
+                    <span id="fc-counter" class="text-slate-500 font-mono font-medium"></span>
+                </div>
+                <button onclick="nextCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors" title="次のカード"><i data-lucide="chevron-right" class="w-8 h-8"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // データ定義
+        // ==========================================
+        const questionsData = [
+            {
+                id: 1,
+                sectionName: "對話測驗 (1-10)",
+                script: [
+                    { speaker: "男", text: "五月十六號你要去吉隆坡玩嗎？" },
+                    { speaker: "女", text: "不是，我要去那裡的學校參加中文聽力考試。" },
+                    { speaker: "問", text: "這位小姐五月十六號要去吉隆坡做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Wǔ yuè shí liù hào nǐ yào qù Jí lóng pō wán ma?<br>Nǚ: Bú shì, wǒ yào qù nà lǐ de xué xiào cān jiā zhōng wén tīng lì kǎo shì.<br>Wèn: Zhè wèi xiǎo jiě wǔ yuè shí liù hào yào qù Jí lóng pō zuò shén me?<br><br><strong>日文：</strong><br>男：5月16日はクアラルンプールへ遊びに行くのですか？<br>女：いいえ、あそこの学校へ中国語のリスニング試験を受けに行きます。<br>問：この女性は5月16日にクアラルンプールで何をしますか？",
+                vocab: [
+                    { word: "五月十六號你要去吉隆坡玩嗎？", pinyin: "Wǔ yuè shí liù hào nǐ yào qù Jí lóng pō wán ma?", jp: "5月16日はクアラルンプールへ遊びに行くのですか？", speak: "五月十六號你要去吉隆坡玩嗎？" },
+                    { word: "不是，我要去那裡的學校參加中文聽力考試。", pinyin: "Bú shì, wǒ yào qù nà lǐ de xué xiào cān jiā zhōng wén tīng lì kǎo shì.", jp: "いいえ、あそこの学校へ中国語のリスニング試験を受けに行きます。", speak: "不是，我要去那裡的學校參加中文聽力考試。" }
+                ],
+                explanations: [
+                    { word: "五月十六號", pinyin: "wǔ yuè shí liù hào", meaning: "「5月16日」。日付の表現。" },
+                    { word: "吉隆坡", pinyin: "Jí lóng pō", meaning: "「クアラルンプール」（マレーシアの首都）。", color: "blue" },
+                    { word: "參加", pinyin: "cān jiā", meaning: "「参加する」。" },
+                    { word: "聽力考試", pinyin: "tīng lì kǎo shì", meaning: "「リスニング試験」。" }
+                ]
+            },
+            {
+                id: 2,
+                script: [
+                    { speaker: "女", text: "你新買的電腦怎麼了？" },
+                    { speaker: "男", text: "這顆硬碟才用了八十九個小時就壞了，我要拿去換新的。" },
+                    { speaker: "問", text: "這位先生的電腦發生什麼事了？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ xīn mǎi de diàn nǎo zěn me le?<br>Nán: Zhè kē yìng dié cái yòng le bā shí jiǔ ge xiǎo shí jiù huài le, wǒ yào ná qù huàn xīn de.<br>Wèn: Zhè wèi xiān shēng de diàn nǎo fā shēng shén me shì le?<br><br><strong>日文：</strong><br>女：新しく買ったパソコンはどうしたの？<br>男：このハードディスクはたった89時間使っただけで壊れたから、新しいのに交換しに行くんだ。<br>問：この男性のパソコンに何が起きましたか？",
+                vocab: [
+                    { word: "你新買的電腦怎麼了？", pinyin: "Nǐ xīn mǎi de diàn nǎo zěn me le?", jp: "新しく買ったパソコンはどうしたの？", speak: "你新買的電腦怎麼了？" },
+                    { word: "這顆硬碟才用了八十九個小時就壞了，我要拿去換新的。", pinyin: "Zhè kē yìng dié cái yòng le bā shí jiǔ ge xiǎo shí jiù huài le, wǒ yào ná qù huàn xīn de.", jp: "このハードディスクはたった89時間使っただけで壊れたから、新しいのに交換しに行くんだ。", speak: "這顆硬碟才用了八十九個小時就壞了，我要拿去換新的。" }
+                ],
+                explanations: [
+                    { word: "怎麼了", pinyin: "zěn me le", meaning: "「どうしたの？」。状況や理由を尋ねる表現。" },
+                    { word: "這顆硬碟", pinyin: "zhè kē yìng dié", meaning: "「このハードディスク」。「顆(kē)」は小さくて丸いものや部品などに使う量詞。" },
+                    { word: "才...就...", pinyin: "cái... jiù...", meaning: "「たった〜しただけで、もう〜だ」。時間が短いことや想定より早いことを強調する文法。", color: "blue" },
+                    { word: "換新的", pinyin: "huàn xīn de", meaning: "「新しいものと交換する」。「的(de)」は名詞化（〜のもの）。" }
+                ]
+            },
+            {
+                id: 3,
+                script: [
+                    { speaker: "男", text: "你決定什麼時候跟經理說你不想做了？" },
+                    { speaker: "女", text: "我計畫在九月十八日那天把信交給他。" },
+                    { speaker: "問", text: "這位小姐打算哪一天交辭職信？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Nǐ jué dìng shén me shí hòu gēn jīng lǐ shuō nǐ bù xiǎng zuò le?<br>Nǚ: Wǒ jì huà zài jiǔ yuè shí bā rì nà tiān bǎ xìn jiāo gěi tā.<br>Wèn: Zhè wèi xiǎo jiě dǎ suàn nǎ yì tiān jiāo cí zhí xìn?<br><br><strong>日文：</strong><br>男：いつマネージャーに辞めると伝えるか決めた？<br>女：9月18日に手紙を渡そうと計画してる。<br>問：この女性はいつ辞表を出すつもりですか？",
+                vocab: [
+                    { word: "你決定什麼時候跟經理說你不想做了？", pinyin: "Nǐ jué dìng shén me shí hòu gēn jīng lǐ shuō nǐ bù xiǎng zuò le?", jp: "いつマネージャーに辞めると伝えるか決めた？", speak: "你決定什麼時候跟經理說你不想做了？" },
+                    { word: "我計畫在九月十八日那天把信交給他。", pinyin: "Wǒ jì huà zài jiǔ yuè shí bā rì nà tiān bǎ xìn jiāo gěi tā.", jp: "9月18日に手紙を渡そうと計画してる。", speak: "我計畫在九月十八日那天把信交給他。" }
+                ]
+            },
+            {
+                id: 4,
+                script: [
+                    { speaker: "女", text: "你週末都在圖書館看什麼書？" },
+                    { speaker: "男", text: "我最近對歷史很有興趣，都在看古羅馬的故事。" },
+                    { speaker: "問", text: "這位先生最近喜歡看什麼書？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zhōu mò dōu zài tú shū guǎn kàn shén me shū?<br>Nán: Wǒ zuì jìn duì lì shǐ hěn yǒu xìng qù, dōu zài kàn gǔ luó mǎ de gù shì.<br>Wèn: Zhè wèi xiān shēng zuì jìn xǐ huān kàn shén me shū?<br><br><strong>日文：</strong><br>女：週末は図書館でどんな本を読んでるの？<br>男：最近歴史にとても興味があって、古代ローマの物語ばかり読んでるよ。<br>問：この男性は最近どんな本を読むのが好きですか？",
+                vocab: [
+                    { word: "你週末都在圖書館看什麼書？", pinyin: "Nǐ zhōu mò dōu zài tú shū guǎn kàn shén me shū?", jp: "週末は図書館でどんな本を読んでるの？", speak: "你週末都在圖書館看什麼書？" },
+                    { word: "我最近對歷史很有興趣，都在看古羅馬的故事。", pinyin: "Wǒ zuì jìn duì lì shǐ hěn yǒu xìng qù, dōu zài kàn gǔ luó mǎ de gù shì.", jp: "最近歴史にとても興味があって、古代ローマの物語ばかり読んでるよ。", speak: "我最近對歷史很有興趣，都在看古羅馬的故事。" }
+                ]
+            },
+            {
+                id: 5,
+                script: [
+                    { speaker: "男", text: "今天晚上大家要一起去唱歌，你去不去？" },
+                    { speaker: "女", text: "我不去了，十二月四號是我最後一天上班，我還有很多東西要整理。" },
+                    { speaker: "問", text: "這位小姐為什麼不去唱歌？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Jīn tiān wǎn shàng dà jiā yào yì qǐ qù chàng gē, nǐ qù bú qù?<br>Nǚ: Wǒ bú qù le, shí èr yuè sì hào shì wǒ zuì hòu yì tiān shàng bān, wǒ hái yǒu hěn duō dōng xi yào zhěng lǐ.<br>Wèn: Zhè wèi xiǎo jiě wèi shén me bú qù chàng gē?<br><br><strong>日文：</strong><br>男：今夜みんなでカラオケに行くけど、行く？<br>女：行かないわ。12月4日が最後の出勤日だから、まだ整理するものがたくさんあるの。<br>問：この女性はなぜカラオケに行きませんか？",
+                vocab: [
+                    { word: "今天晚上大家要一起去唱歌，你去不去？", pinyin: "Jīn tiān wǎn shàng dà jiā yào yì qǐ qù chàng gē, nǐ qù bú qù?", jp: "今夜みんなでカラオケに行くけど、行く？", speak: "今天晚上大家要一起去唱歌，你去不去？" },
+                    { word: "我不去了，十二月四號是我最後一天上班，我還有很多東西要整理。", pinyin: "Wǒ bú qù le, shí èr yuè sì hào shì wǒ zuì hòu yì tiān shàng bān, wǒ hái yǒu hěn duō dōng xi yào zhěng lǐ.", jp: "行かないわ。12月4日が最後の出勤日だから、まだ整理するものがたくさんあるの。", speak: "我不去了，十二月四號是我最後一天上班，我還有很多東西要整理。" }
+                ]
+            },
+            {
+                id: 6,
+                script: [
+                    { speaker: "女", text: "你什麼時候要把美金換成日幣？" },
+                    { speaker: "男", text: "我三月十三號去銀行的時候就已經換好了。" },
+                    { speaker: "問", text: "這位先生換錢了嗎？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ shén me shí hòu yào bǎ měi jīn huàn chéng rì bì?<br>Nán: Wǒ sān yuè shí sān hào qù yín háng de shí hòu jiù yǐ jīng huàn hǎo le.<br>Wèn: Zhè wèi xiān shēng huàn qián le ma?<br><br><strong>日文：</strong><br>女：いつアメリカドルを日本円に両替するの？<br>男：3月13日に銀行へ行った時にもう両替したよ。<br>問：この男性は両替をしましたか？",
+                vocab: [
+                    { word: "你什麼時候要把美金換成日幣？", pinyin: "Nǐ shén me shí hòu yào bǎ měi jīn huàn chéng rì bì?", jp: "いつアメリカドルを日本円に両替するの？", speak: "你什麼時候要把美金換成日幣？" },
+                    { word: "我三月十三號去銀行的時候就已經換好了。", pinyin: "Wǒ sān yuè shí sān hào qù yín háng de shí hòu jiù yǐ jīng huàn hǎo le.", jp: "3月13日に銀行へ行った時にもう両替したよ。", speak: "我三月十三號去銀行的時候就已經換好了。" }
+                ]
+            },
+            {
+                id: 7,
+                script: [
+                    { speaker: "男", text: "你每天都在公司待到很晚嗎？" },
+                    { speaker: "女", text: "不會，我都是早上八點上班，下午五點準時回家。" },
+                    { speaker: "問", text: "這位小姐平常幾點下班？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Nǐ měi tiān dōu zài gōng sī dāi dào hěn wǎn ma?<br>Nǚ: Bú huì, wǒ dōu shì zǎo shàng bā diǎn shàng bān, xià wǔ wǔ diǎn zhǔn shí huí jiā.<br>Wèn: Zhè wèi xiǎo jiě píng cháng jǐ diǎn xià bān?<br><br><strong>日文：</strong><br>男：毎日会社に遅くまで残っているの？<br>女：ううん、いつも朝8時に出勤して、午後5時に時間通り帰るよ。<br>問：この女性は普段何時に退勤しますか？",
+                vocab: [
+                    { word: "你每天都在公司待到很晚嗎？", pinyin: "Nǐ měi tiān dōu zài gōng sī dāi dào hěn wǎn ma?", jp: "毎日会社に遅くまで残っているの？", speak: "你每天都在公司待到很晚嗎？" },
+                    { word: "不會，我都是早上八點上班，下午五點準時回家。", pinyin: "Bú huì, wǒ dōu shì zǎo shàng bā diǎn shàng bān, xià wǔ wǔ diǎn zhǔn shí huí jiā.", jp: "ううん、いつも朝8時に出勤して、午後5時に時間通り帰るよ。", speak: "不會，我都是早上八點上班，下午五點準時回家。" }
+                ]
+            },
+            {
+                id: 8,
+                script: [
+                    { speaker: "女", text: "昨天你怎麼沒來上課？" },
+                    { speaker: "男", text: "我本來要出門的，但是突然肚子很痛，只好去醫院看醫生。" },
+                    { speaker: "問", text: "這位先生昨天為什麼沒去上課？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Zuó tiān nǐ zěn me méi lái shàng kè?<br>Nán: Wǒ běn lái yào chū mén de, dàn shì tū rán dǔ zi hěn tòng, zhǐ hǎo qù yī yuàn kàn yī shēng.<br>Wèn: Zhè wèi xiān shēng zuó tiān wèi shén me méi qù shàng kè?<br><br><strong>日文：</strong><br>女：昨日はどうして授業に来なかったの？<br>男：本来は出かけるつもりだったんだけど、急にお腹がすごく痛くなって、仕方なく病院へ医者に診てもらいに行ったんだ。<br>問：この男性は昨日なぜ授業に行きませんでしたか？",
+                vocab: [
+                    { word: "昨天你怎麼沒來上課？", pinyin: "Zuó tiān nǐ zěn me méi lái shàng kè?", jp: "昨日はどうして授業に来なかったの？", speak: "昨天你怎麼沒來上課？" },
+                    { word: "我本來要出門的，但是突然肚子很痛，只好去醫院看醫生。", pinyin: "Wǒ běn lái yào chū mén de, dàn shì tū rán dǔ zi hěn tòng, zhǐ hǎo qù yī yuàn kàn yī shēng.", jp: "本来は出かけるつもりだったんだけど、急にお腹がすごく痛くなって、仕方なく病院へ医者に診てもらいに行ったんだ。", speak: "我本來要出門的，但是突然肚子很痛，只好去醫院看醫生。" }
+                ]
+            },
+            {
+                id: 9,
+                script: [
+                    { speaker: "男", text: "聽說那家新開的餐廳很不錯，我們去吃牛肉麵吧。" },
+                    { speaker: "女", text: "可是我不吃肉，我們去別家吃青菜和餃子好嗎？" },
+                    { speaker: "問", text: "這位小姐為什麼不想去那家餐廳？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Tīng shuō nà jiā xīn kāi de cān tīng hěn bú cuò, wǒ men qù chī niú ròu miàn ba.<br>Nǚ: Kě shì wǒ bù chī ròu, wǒ men qù bié jiā chī qīng cài hé jiǎo zi hǎo ma?<br>Wèn: Zhè wèi xiǎo jiě wèi shén me bù xiǎng qù nà jiā cān tīng?<br><br><strong>日文：</strong><br>男：新しくオープンしたレストランはなかなか良いらしいよ、牛肉麺を食べに行こう。<br>女：でも私は肉を食べないから、別のお店に野菜と餃子を食べに行かない？<br>問：この女性はなぜそのレストランに行きたくないのですか？",
+                vocab: [
+                    { word: "聽說那家新開的餐廳很不錯，我們去吃牛肉麵吧。", pinyin: "Tīng shuō nà jiā xīn kāi de cān tīng hěn bú cuò, wǒ men qù chī niú ròu miàn ba.", jp: "新しくオープンしたレストランはなかなか良いらしいよ、牛肉麺を食べに行こう。", speak: "聽說那家新開的餐廳很不錯，我們去吃牛肉麵吧。" },
+                    { word: "可是我不吃肉，我們去別家吃青菜和餃子好嗎？", pinyin: "Kě shì wǒ bù chī ròu, wǒ men qù bié jiā chī qīng cài hé jiǎo zi hǎo ma?", jp: "でも私は肉を食べないから、別のお店に野菜と餃子を食べに行かない？", speak: "可是我不吃肉，我們去別家吃青菜和餃子好嗎？" }
+                ]
+            },
+            {
+                id: 10,
+                script: [
+                    { speaker: "女", text: "老闆，這件紅色的裙子有大一點的嗎？" },
+                    { speaker: "男", text: "對不起，大號的昨天剛賣完，黑色的可以嗎？" },
+                    { speaker: "問", text: "這位小姐想買什麼顏色的裙子？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Lǎo bǎn, zhè jiàn hóng sè de qún zi yǒu dà yì diǎn de ma?<br>Nán: Duì bù qǐ, dà hào de zuó tiān gāng mài wán, hēi sè de kě yǐ ma?<br>Wèn: Zhè wèi xiǎo jiě xiǎng mǎi shén me yán sè de qún zi?<br><br><strong>日文：</strong><br>女：店長、この赤いスカートのもう少し大きいサイズはありますか？<br>男：すみません、Lサイズは昨日売り切れたばかりでして、黒色でもよろしいですか？<br>問：この女性は何色のスカートを買いたいですか？",
+                vocab: [
+                    { word: "老闆，這件紅色的裙子有大一點的嗎？", pinyin: "Lǎo bǎn, zhè jiàn hóng sè de qún zi yǒu dà yì diǎn de ma?", jp: "店長、この赤いスカートのもう少し大きいサイズはありますか？", speak: "老闆，這件紅色的裙子有大一點的嗎？" },
+                    { word: "對不起，大號的昨天剛賣完，黑色的可以嗎？", pinyin: "Duì bù qǐ, dà hào de zuó tiān gāng mài wán, hēi sè de kě yǐ ma?", jp: "すみません、Lサイズは昨日売り切れたばかりでして、黒色でもよろしいですか？", speak: "對不起，大號的昨天剛賣完，黑色的可以嗎？" }
+                ]
+            },
+            {
+                id: 11,
+                sectionName: "對話測驗 (11-20)",
+                script: [
+                    { speaker: "男", text: "請問去博物館要怎麼走？" },
+                    { speaker: "女", text: "你往前走，過了前面的紅綠燈以後，向右轉就到了。" },
+                    { speaker: "問", text: "博物館在哪裡？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn qù bó wù guǎn yào zěn me zǒu?<br>Nǚ: Nǐ wǎng qián zǒu, guò le qián miàn de hóng lǜ dēng yǐ hòu, xiàng yòu zhuǎn jiù dào le.<br>Wèn: Bó wù guǎn zài nǎ lǐ?<br><br><strong>日文：</strong><br>男：すみません、博物館へはどう行けばいいですか？<br>女：まっすぐ進んで、前の信号を過ぎた後、右に曲がれば着きますよ。<br>問：博物館はどこにありますか？",
+                vocab: [
+                    { word: "請問去博物館要怎麼走？", pinyin: "Qǐng wèn qù bó wù guǎn yào zěn me zǒu?", jp: "すみません、博物館へはどう行けばいいですか？", speak: "請問去博物館要怎麼走？" },
+                    { word: "你往前走，過了前面的紅綠燈以後，向右轉就到了。", pinyin: "Nǐ wǎng qián zǒu, guò le qián miàn de hóng lǜ dēng yǐ hòu, xiàng yòu zhuǎn jiù dào le.", jp: "まっすぐ進んで、前の信号を過ぎた後、右に曲がれば着きますよ。", speak: "你往前走，過了前面的紅綠燈以後，向右轉就到了。" }
+                ]
+            },
+            {
+                id: 12,
+                script: [
+                    { speaker: "女", text: "這是我去日本玩的時候買的點心，請大家吃。" },
+                    { speaker: "男", text: "謝謝！聽說那裡的風景很漂亮，我也好想去。" },
+                    { speaker: "問", text: "這點心是從哪裡來的？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Zhè shì wǒ qù Rì běn wán de shí hòu mǎi de diǎn xīn, qǐng dà jiā chī.<br>Nán: Xiè xie! Tīng shuō nà lǐ de fēng jǐng hěn piào liàng, wǒ yě hǎo xiǎng qù.<br>Wèn: Zhè diǎn xīn shì cóng nǎ lǐ lái de?<br><br><strong>日文：</strong><br>女：これは日本へ遊びに行った時に買ったお菓子です、皆さん食べてください。<br>男：ありがとう！あそかの景色はとても綺麗らしいね、僕もすごく行きたいな。<br>問：このお菓子はどこから来たものですか？",
+                vocab: [
+                    { word: "這是我去日本玩的時候買的點心，請大家吃。", pinyin: "Zhè shì wǒ qù Rì běn wán de shí hòu mǎi de diǎn xīn, qǐng dà jiā chī.", jp: "これは日本へ遊びに行った時に買ったお菓子です、皆さん食べてください。", speak: "這是我去日本玩的時候買的點心，請大家吃。" },
+                    { word: "謝謝！聽說那裡的風景很漂亮，我也好想去。", pinyin: "Xiè xie! Tīng shuō nà lǐ de fēng jǐng hěn piào liàng, wǒ yě hǎo xiǎng qù.", jp: "ありがとう！あそこの景色はとても綺麗らしいね、僕もすごく行きたいな。", speak: "謝謝！聽說那裡的風景很漂亮，我也好想去。" }
+                ]
+            },
+            {
+                id: 13,
+                script: [
+                    { speaker: "男", text: "經理，這份計畫書明天早上開會要用，我放在您的桌上了。" },
+                    { speaker: "女", text: "好，我等一下會看，你先下班吧，辛苦了。" },
+                    { speaker: "問", text: "經理要這位先生做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Jīng lǐ, zhè fèn jì huà shū míng tiān zǎo shàng kāi huì yào yòng, wǒ fàng zài nín de zhuō shàng le.<br>Nǚ: Hǎo, wǒ děng yí xià huì kàn, nǐ xiān xià bān ba, xīn kǔ le.<br>Wèn: Jīng lǐ yào zhè wèi xiān shēng zuò shén me?<br><br><strong>日文：</strong><br>男：マネージャー、この企画書は明日の朝の会議で使うので、あなたの机の上に置いておきました。<br>女：わかった、後で見ておくわ。あなたは先に退勤して、お疲れ様。<br>問：マネージャーはこの男性に何をさせようとしていますか？",
+                vocab: [
+                    { word: "經理，這份計畫書明天早上開會要用，我放在您的桌上了。", pinyin: "Jīng lǐ, zhè fèn jì huà shū míng tiān zǎo shàng kāi huì yào yòng, wǒ fàng zài nín de zhuō shàng le.", jp: "マネージャー、この企画書は明日の朝の会議で使うので、あなたの机の上に置いておきました。", speak: "經理，這份計畫書明天早上開會要用，我放在您的桌上了。" },
+                    { word: "好，我等一下會看，你先下班吧，辛苦了。", pinyin: "Hǎo, wǒ děng yí xià huì kàn, nǐ xiān xià bān ba, xīn kǔ le.", jp: "わかった、後で見ておくわ。あなたは先に退勤して、お疲れ様。", speak: "好，我等一下會看，你先下班吧，辛苦了。" }
+                ]
+            },
+            {
+                id: 14,
+                script: [
+                    { speaker: "女", text: "你怎麼還在看電視？明天不是有考試嗎？" },
+                    { speaker: "男", text: "我昨天晚上已經讀了四個小時，準備好了。" },
+                    { speaker: "問", text: "這位先生現在在做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zěn me hái zài kàn diàn shì? Míng tiān bú shì yǒu kǎo shì ma?<br>Nán: Wǒ zuó tiān wǎn shàng yǐ jīng dú le sì ge xiǎo shí, zhǔn bèi hǎo le.<br>Wèn: Zhè wèi xiān shēng xiàn zài zài zuò shén me?<br><br><strong>日文：</strong><br>女：どうしてまだテレビを見てるの？明日は試験じゃないの？<br>男：昨日の夜にもう4時間勉強して、準備できてるんだ。<br>問：この男性は今何をしていますか？",
+                vocab: [
+                    { word: "你怎麼還在看電視？明天不是有考試嗎？", pinyin: "Nǐ zěn me hái zài kàn diàn shì? Míng tiān bú shì yǒu kǎo shì ma?", jp: "どうしてまだテレビを見てるの？明日は試験じゃないの？", speak: "你怎麼還在看電視？明天不是有考試嗎？" },
+                    { word: "我昨天晚上已經讀了四個小時，準備好了。", pinyin: "Wǒ zuó tiān wǎn shàng yǐ jīng dú le sì ge xiǎo shí, zhǔn bèi hǎo le.", jp: "昨日の夜にもう4時間勉強して、準備できてるんだ。", speak: "我昨天晚上已經讀了四個小時，準備好了。" }
+                ]
+            },
+            {
+                id: 15,
+                script: [
+                    { speaker: "男", text: "小姐，我昨天買的這瓶果汁好像壞了，可以換嗎？" },
+                    { speaker: "女", text: "不好意思，請問您有帶發票來嗎？" },
+                    { speaker: "問", text: "這位先生去店裡做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Xiǎo jiě, wǒ zuó tiān mǎi de zhè píng guǒ zhī hǎo xiàng huài le, kě yǐ huàn ma?<br>Nǚ: Bù hǎo yì si, qǐng wèn nín yǒu dài fā piào lái ma?<br>Wèn: Zhè wèi xiān shēng qù diàn lǐ zuò shén me?<br><br><strong>日文：</strong><br>男：すみません、昨日買ったこのジュース腐ってるみたいなんですが、交換できますか？<br>女：申し訳ありません、レシートはお持ちでしょうか？<br>問：この男性は店へ何をしに行きましたか？",
+                vocab: [
+                    { word: "小姐，我昨天買的這瓶果汁好像壞了，可以換嗎？", pinyin: "Xiǎo jiě, wǒ zuó tiān mǎi de zhè píng guǒ zhī hǎo xiàng huài le, kě yǐ huàn ma?", jp: "すみません、昨日買ったこのジュース腐ってるみたいなんですが、交換できますか？", speak: "小姐，我昨天買的這瓶果汁好像壞了，可以換嗎？" },
+                    { word: "不好意思，請問您有帶發票來嗎？", pinyin: "Bù hǎo yì si, qǐng wèn nín yǒu dài fā piào lái ma?", jp: "申し訳ありません、レシートはお持ちでしょうか？", speak: "不好意思，請問您有帶發票來嗎？" }
+                ]
+            },
+            {
+                id: 16,
+                script: [
+                    { speaker: "女", text: "外面下雨了，我們還要去公園打球嗎？" },
+                    { speaker: "男", text: "雨下得這麼大，我們還是留在家裡看電影吧。" },
+                    { speaker: "問", text: "他們兩個人最後決定做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Wài miàn xià yǔ le, wǒ men hái yào qù gōng yuán dǎ qiú ma?<br>Nán: Yǔ xià de zhè me dà, wǒ men hái shì liú zài jiā lǐ kàn diàn yǐng ba.<br>Wèn: Tā men liǎng ge rén zuì hòu jué dìng zuò shén me?<br><br><strong>日文：</strong><br>女：外は雨が降ってきたけど、それでも公園にボール遊びに行く？<br>男：こんなに大雨だから、やっぱり家に残って映画を見よう。<br>問：彼ら2人は最後に何をすることに決めましたか？",
+                vocab: [
+                    { word: "外面下雨了，我們還要去公園打球嗎？", pinyin: "Wài miàn xià yǔ le, wǒ men hái yào qù gōng yuán dǎ qiú ma?", jp: "外は雨が降ってきたけど、それでも公園にボール遊びに行く？", speak: "外面下雨了，我們還要去公園打球嗎？" },
+                    { word: "雨下得這麼大，我們還是留在家裡看電影吧。", pinyin: "Yǔ xià de zhè me dà, wǒ men hái shì liú zài jiā lǐ kàn diàn yǐng ba.", jp: "こんなに大雨だから、やっぱり家に残って映画を見よう。", speak: "雨下得這麼大，我們還是留在家裡看電影吧。" }
+                ]
+            },
+            {
+                id: 17,
+                script: [
+                    { speaker: "男", text: "請問這班火車幾點開？" },
+                    { speaker: "女", text: "本來是十點半，但是因為下雪，會晚二十分鐘。" },
+                    { speaker: "問", text: "這班火車幾點會開？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn zhè bān huǒ chē jǐ diǎn kāi?<br>Nǚ: Běn lái shì shí diǎn bàn, dàn shì yīn wèi xià xuě, huì wǎn èr shí fēn zhōng.<br>Wèn: Zhè bān huǒ chē jǐ diǎn huì kāi?<br><br><strong>日文：</strong><br>男：すみません、この電車は何時に出発しますか？<br>女：本来は10時半ですが、雪の影響で20分遅れます。<br>問：この電車は何時に出発しますか？",
+                vocab: [
+                    { word: "請問這班火車幾點開？", pinyin: "Qǐng wèn zhè bān huǒ chē jǐ diǎn kāi?", jp: "すみません、この電車は何時に出発しますか？", speak: "請問這班火車幾點開？" },
+                    { word: "本來是十點半，但是因為下雪，會晚二十分鐘。", pinyin: "Běn lái shì shí diǎn bàn, dàn shì yīn wèi xià xuě, huì wǎn èr shí fēn zhōng.", jp: "本来は10時半ですが、雪の影響で20分遅れます。", speak: "本來是十點半，但是因為下雪，會晚二十分鐘。" }
+                ]
+            },
+            {
+                id: 18,
+                script: [
+                    { speaker: "女", text: "你的感冒還沒好，不要喝冰水。" },
+                    { speaker: "男", text: "可是天氣好熱，我喝一點點就好。" },
+                    { speaker: "問", text: "這位小姐要這位先生注意什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ de gǎn mào hái méi hǎo, bú yào hē bīng shuǐ.<br>Nán: Kě shì tiān qì hǎo rè, wǒ hē yì diǎn diǎn jiù hǎo.<br>Wèn: Zhè wèi xiǎo jiě yào zhè wèi xiān shēng zhù yì shén me?<br><br><strong>日文：</strong><br>女：風邪がまだ治ってないんだから、冷たい水は飲まないで。<br>男：でもすごく暑いから、少しだけならいいでしょ。<br>問：この女性はこの男性に何に注意するよう求めていますか？",
+                vocab: [
+                    { word: "你的感冒還沒好，不要喝冰水。", pinyin: "Nǐ de gǎn mào hái méi hǎo, bú yào hē bīng shuǐ.", jp: "風邪がまだ治ってないんだから、冷たい水は飲まないで。", speak: "你的感冒還沒好，不要喝冰水。" },
+                    { word: "可是天氣好熱，我喝一點點就好。", pinyin: "Kě shì tiān qì hǎo rè, wǒ hē yì diǎn diǎn jiù hǎo.", jp: "でもすごく暑いから、少しだけならいいでしょ。", speak: "可是天氣好熱，我喝一點點就好。" }
+                ]
+            },
+            {
+                id: 19,
+                script: [
+                    { speaker: "男", text: "小月，你是不是忘了帶手錶？" },
+                    { speaker: "女", text: "沒忘，我昨天洗手的時候不小心弄壞了，所以放在家裡。" },
+                    { speaker: "問", text: "小月的手錶怎麼了？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Xiǎo yuè, nǐ shì bú shì wàng le dài shǒu biǎo?<br>Nǚ: Méi wàng, wǒ zuó tiān xǐ shǒu de shí hòu bù xiǎo xīn nòng huài le, suǒ yǐ fàng zài jiā lǐ.<br>Wèn: Xiǎo yuè de shǒu biǎo zěn me le?<br><br><strong>日文：</strong><br>男：小月、腕時計を持ってくるの忘れたの？<br>女：忘れてないよ。昨日手を洗った時にうっかり壊しちゃって、だから家に置いてあるの。<br>問：小月の腕時計はどうなりましたか？",
+                vocab: [
+                    { word: "小月，你是不是忘了帶手錶？", pinyin: "Xiǎo yuè, nǐ shì bú shì wàng le dài shǒu biǎo?", jp: "小月、腕時計を持ってくるの忘れたの？", speak: "小月，你是不是忘了帶手錶？" },
+                    { word: "沒忘，我昨天洗手的時候不小心弄壞了，所以放在家裡。", pinyin: "Méi wàng, wǒ zuó tiān xǐ shǒu de shí hòu bù xiǎo xīn nòng huài le, suǒ yǐ fàng zài jiā lǐ.", jp: "忘れてないよ。昨日手を洗った時にうっかり壊しちゃって、だから家に置いてあるの。", speak: "沒忘，我昨天洗手的時候不小心弄壞了，所以放在家裡。" }
+                ]
+            },
+            {
+                id: 20,
+                script: [
+                    { speaker: "女", text: "你覺得我穿這雙黑色的鞋子好看，還是白色的？" },
+                    { speaker: "男", text: "白色的不錯，但是黑色的比較便宜，也比較容易清理。" },
+                    { speaker: "問", text: "這位先生覺得黑色的鞋子怎麼樣？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ jué de wǒ chuān zhè shuāng hēi sè de xié zi hǎo kàn, hái shì bái sè de?<br>Nán: Bái sè de bú cuò, dàn shì hēi sè de bǐ jiào pián yi, yě bǐ jiào róng yì qīng lǐ.<br>Wèn: Zhè wèi xiān shēng jué de hēi sè de xié zi zěn me yàng?<br><br><strong>日文：</strong><br>女：私がこの黒い靴を履くのと、白い靴とどっちが似合うと思う？<br>男：白いのもいいけど、黒いほうが安くて、汚れを落とすのも簡単だよ。<br>問：この男性は黒い靴についてどう思っていますか？",
+                vocab: [
+                    { word: "你覺得我穿這雙黑色的鞋子好看，還是白色的？", pinyin: "Nǐ jué de wǒ chuān zhè shuāng hēi sè de xié zi hǎo kàn, hái shì bái sè de?", jp: "私がこの黒い靴を履くのと、白い靴とどっちが似合うと思う？", speak: "你覺得我穿這雙黑色的鞋子好看，還是白色的？" },
+                    { word: "白色的不錯，但是黑色的比較便宜，也比較容易清理。", pinyin: "Bái sè de bú cuò, dàn shì hēi sè de bǐ jiào pián yi, yě bǐ jiào róng yì qīng lǐ.", jp: "白いのもいいけど、黒いほうが安くて、汚れを落とすのも簡単だよ。", speak: "白色的不錯，但是黑色的比較便宜，也比較容易清理。" }
+                ]
+            },
+            {
+                id: 21,
+                sectionName: "對話測驗 (21-30)",
+                script: [
+                    { speaker: "男", text: "我想買兩張電影票，請問一共多少錢？" },
+                    { speaker: "女", text: "一張三百，兩張一共六百塊。" },
+                    { speaker: "問", text: "他們一共要付多少錢？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Wǒ xiǎng mǎi liǎng zhāng diàn yǐng piào, qǐng wèn yí gòng duō shǎo qián?<br>Nǚ: Yì zhāng sān bǎi, liǎng zhāng yí gòng liù bǎi kuài.<br>Wèn: Tā men yí gòng yào fù duō shǎo qián?<br><br><strong>日文：</strong><br>男：映画のチケットを2枚買いたいのですが、全部でいくらですか？<br>女：1枚300元なので、2枚で合計600元です。<br>問：彼らは合計でいくら払わなければなりませんか？",
+                vocab: [
+                    { word: "我想買兩張電影票，請問一共多少錢？", pinyin: "Wǒ xiǎng mǎi liǎng zhāng diàn yǐng piào, qǐng wèn yí gòng duō shǎo qián?", jp: "映画のチケットを2枚買いたいのですが、全部でいくらですか？", speak: "我想買兩張電影票，請問一共多少錢？" },
+                    { word: "一張三百，兩張一共六百塊。", pinyin: "Yì zhāng sān bǎi, liǎng zhāng yí gòng liù bǎi kuài.", jp: "1枚300元なので、2枚で合計600元です。", speak: "一張三百，兩張一共六百塊。" }
+                ]
+            },
+            {
+                id: 22,
+                script: [
+                    { speaker: "女", text: "你的房間太亂了，快點打掃吧。" },
+                    { speaker: "男", text: "好啦，我把這本書看完就馬上整理。" },
+                    { speaker: "問", text: "這位先生打算什麼時候打掃房間？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ de fáng jiān tài luàn le, kuài diǎn dǎ sǎo ba.<br>Nán: Hǎo la, wǒ bǎ zhè běn shū kàn wán jiù mǎ shàng zhěng lǐ.<br>Wèn: Zhè wèi xiān shēng dǎ suàn shén me shí hòu dǎ sǎo fáng jiān?<br><br><strong>日文：</strong><br>女：あなたの部屋散らかりすぎだよ、早く掃除しなさい。<br>男：わかったよ、この本を読み終わったらすぐに片付けるよ。<br>問：この男性はいつ部屋を掃除するつもりですか？",
+                vocab: [
+                    { word: "你的房間太亂了，快點打掃吧。", pinyin: "Nǐ de fáng jiān tài luàn le, kuài diǎn dǎ sǎo ba.", jp: "あなたの部屋散らかりすぎだよ、早く掃除しなさい。", speak: "你的房間太亂了，快點打掃吧。" },
+                    { word: "好啦，我把這本書看完就馬上整理。", pinyin: "Hǎo la, wǒ bǎ zhè běn shū kàn wán jiù mǎ shàng zhěng lǐ.", jp: "わかったよ、この本を読み終わったらすぐに片付けるよ。", speak: "好啦，我把這本書看完就馬上整理。" }
+                ]
+            },
+            {
+                id: 23,
+                script: [
+                    { speaker: "男", text: "請問張經理的辦公室在哪裡？" },
+                    { speaker: "女", text: "您坐電梯到五樓，出電梯右邊第一間就是了。" },
+                    { speaker: "問", text: "張經理的辦公室在幾樓？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn Zhāng jīng lǐ de bàn gōng shì zài nǎ lǐ?<br>Nǚ: Nín zuò diàn tī dào wǔ lóu, chū diàn tī yòu biān dì yì jiān jiù shì le.<br>Wèn: Zhāng jīng lǐ de bàn gōng shì zài jǐ lóu?<br><br><strong>日文：</strong><br>男：すみません、張マネージャーのオフィスはどこですか？<br>女：エレベーターで5階まで上がり、エレベーターを出て右側の最初の部屋です。<br>問：張マネージャーのオフィスは何階にありますか？",
+                vocab: [
+                    { word: "請問張經理的辦公室在哪裡？", pinyin: "Qǐng wèn Zhāng jīng lǐ de bàn gōng shì zài nǎ lǐ?", jp: "すみません、張マネージャーのオフィスはどこですか？", speak: "請問張經理的辦公室在哪裡？" },
+                    { word: "您坐電梯到五樓，出電梯右邊第一間就是了。", pinyin: "Nín zuò diàn tī dào wǔ lóu, chū diàn tī yòu biān dì yì jiān jiù shì le.", jp: "エレベーターで5階まで上がり、エレベーターを出て右側の最初の部屋です。", speak: "您坐電梯到五樓，出電梯右邊第一間就是了。" }
+                ]
+            },
+            {
+                id: 24,
+                script: [
+                    { speaker: "女", text: "你怎麼一直咳嗽，是不是生病了？" },
+                    { speaker: "男", text: "沒有啦，剛剛吃麵的時候不小心太快了。" },
+                    { speaker: "問", text: "這位先生為什麼咳嗽？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zěn me yì zhí ké sòu, shì bú shì shēng bìng le?<br>Nán: Méi yǒu la, gāng gāng chī miàn de shí hòu bù xiǎo xīn tài kuài le.<br>Wèn: Zhè wèi xiān shēng wèi shén me ké sòu?<br><br><strong>日文：</strong><br>女：どうしてずっと咳をしてるの、病気になった？<br>男：違うよ、さっき麺を食べた時にうっかり早すぎただけだよ。<br>問：この男性はなぜ咳をしていますか？",
+                vocab: [
+                    { word: "你怎麼一直咳嗽，是不是生病了？", pinyin: "Nǐ zěn me yì zhí ké sòu, shì bú shì shēng bìng le?", jp: "どうしてずっと咳をしてるの、病気になった？", speak: "你怎麼一直咳嗽，是不是生病了？" },
+                    { word: "沒有啦，剛剛吃麵的時候不小心太快了。", pinyin: "Méi yǒu la, gāng gāng chī miàn de shí hòu bù xiǎo xīn tài kuài le.", jp: "違うよ、さっき麺を食べた時にうっかり早すぎただけだよ。", speak: "沒有啦，剛剛吃麵的時候不小心太快了。" }
+                ]
+            },
+            {
+                id: 25,
+                script: [
+                    { speaker: "男", text: "下雨了，你有帶雨傘嗎？" },
+                    { speaker: "女", text: "我沒帶，不過我包包裡有一件雨衣。" },
+                    { speaker: "問", text: "這位小姐帶了什麼出門？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Xià yǔ le, nǐ yǒu dài yǔ sǎn ma?<br>Nǚ: Wǒ méi dài, bú guò wǒ bāo bāo lǐ yǒu yí jiàn yǔ yī.<br>Wèn: Zhè wèi xiǎo jiě dài le shén me chū mén?<br><br><strong>日文：</strong><br>男：雨が降ってきたけど、傘持ってきた？<br>女：持ってきてないけど、カバンの中にレインコートが1着あるよ。<br>問：この女性は何を持って出かけましたか？",
+                vocab: [
+                    { word: "下雨了，你有帶雨傘嗎？", pinyin: "Xià yǔ le, nǐ yǒu dài yǔ sǎn ma?", jp: "雨が降ってきたけど、傘持ってきた？", speak: "下雨了，你有帶雨傘嗎？" },
+                    { word: "我沒帶，不過我包包裡有一件雨衣。", pinyin: "Wǒ méi dài, bú guò wǒ bāo bāo lǐ yǒu yí jiàn yǔ yī.", jp: "持ってきてないけど、カバンの中にレインコートが1着あるよ。", speak: "我沒帶，不過我包包裡有一件雨衣。" }
+                ]
+            },
+            {
+                id: 26,
+                script: [
+                    { speaker: "女", text: "這是我們新買的房子，雖然不大，但是很安靜。" },
+                    { speaker: "男", text: "真不錯，而且外面還有一個小花園呢。" },
+                    { speaker: "問", text: "這位先生覺得這間房子怎麼樣？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Zhè shì wǒ men xīn mǎi de fáng zi, suī rán bù dà, dàn shì hěn ān jìng.<br>Nán: Zhēn bú cuò, ér qiě wài miàn hái yǒu yí ge xiǎo huā yuán ne.<br>Wèn: Zhè wèi xiān shēng jué de zhè jiān fáng zi zěn me yàng?<br><br><strong>日文：</strong><br>女：これが私たちの新しく買った家よ。広くはないけど、とても静かなの。<br>男：本当にいいね。それに外には小さな庭もあるね。<br>問：この男性はこの家についてどう思っていますか？",
+                vocab: [
+                    { word: "這是我們新買的房子，雖然不大，但是很安靜。", pinyin: "Zhè shì wǒ men xīn mǎi de fáng zi, suī rán bù dà, dàn shì hěn ān jìng.", jp: "これが私たちの新しく買った家よ。広くはないけど、とても静かなの。", speak: "這是我們新買的房子，雖然不大，但是很安靜。" },
+                    { word: "真不錯，而且外面還有一個小花園呢。", pinyin: "Zhēn bú cuò, ér qiě wài miàn hái yǒu yí ge xiǎo huā yuán ne.", jp: "本当にいいね。それに外には小さな庭もあるね。", speak: "真不錯，而且外面還有一個小花園呢。" }
+                ]
+            },
+            {
+                id: 27,
+                script: [
+                    { speaker: "男", text: "妳最近每個週末都去山上，不累嗎？" },
+                    { speaker: "女", text: "雖然有一點累，但是山上的空氣很好，讓我覺得很放鬆。" },
+                    { speaker: "問", text: "這位小姐為什麼週末喜歡去山上？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Nǐ zuì jìn měi ge zhōu mò dōu qù shān shàng, bù lèi ma?<br>Nǚ: Suī rán yǒu yì diǎn lèi, dàn shì shān shàng de kōng qì hěn hǎo, ràng wǒ jué de hěn fàng sōng.<br>Wèn: Zhè wèi xiǎo jiě wèi shén me zhōu mò xǐ huān qù shān shàng?<br><br><strong>日文：</strong><br>男：最近毎週末山に行ってるけど、疲れないの？<br>女：少し疲れるけど、山の空気はとても良くて、すごくリラックスできるの。<br>問：この女性はなぜ週末に山へ行くのが好きなのですか？",
+                vocab: [
+                    { word: "妳最近每個週末都去山上，不累嗎？", pinyin: "Nǐ zuì jìn měi ge zhōu mò dōu qù shān shàng, bù lèi ma?", jp: "最近毎週末山に行ってるけど、疲れないの？", speak: "妳最近每個週末都去山上，不累嗎？" },
+                    { word: "雖然有一點累，但是山上的空氣很好，讓我覺得很放鬆。", pinyin: "Suī rán yǒu yì diǎn lèi, dàn shì shān shàng de kōng qì hěn hǎo, ràng wǒ jué de hěn fàng sōng.", jp: "少し疲れるけど、山の空気はとても良くて、すごくリラックスできるの。", speak: "雖然有一點累，但是山上的空氣很好，讓我覺得很放鬆。" }
+                ]
+            },
+            {
+                id: 28,
+                script: [
+                    { speaker: "女", text: "小明，你昨天怎麼沒來參加我的生日晚會？" },
+                    { speaker: "男", text: "對不起，老闆要我留在公司加班，我真的沒辦法去。" },
+                    { speaker: "問", text: "小明昨天為什麼沒去晚會？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Xiǎo míng, nǐ zuó tiān zěn me méi lái cān jiā wǒ de shēng rì wǎn huì?<br>Nán: Duì bù qǐ, lǎo bǎn yào wǒ liú zài gōng sī jiā bān, wǒ zhēn de méi bàn fǎ qù.<br>Wèn: Xiǎo míng zuó tiān wèi shén me méi qù wǎn huì?<br><br><strong>日文：</strong><br>女：小明、昨日はどうして私の誕生日パーティーに来なかったの？<br>男：ごめん、社長に会社に残って残業するように言われて、本当に行けなかったんだ。<br>問：小明は昨日なぜパーティーに行きませんでしたか？",
+                vocab: [
+                    { word: "小明，你昨天怎麼沒來參加我的生日晚會？", pinyin: "Xiǎo míng, nǐ zuó tiān zěn me méi lái cān jiā wǒ de shēng rì wǎn huì?", jp: "小明、昨日はどうして私の誕生日パーティーに来なかったの？", speak: "小明，你昨天怎麼沒來參加我的生日晚會？" },
+                    { word: "對不起，老闆要我留在公司加班，我真的沒辦法去。", pinyin: "Duì bù qǐ, lǎo bǎn yào wǒ liú zài gōng sī jiā bān, wǒ zhēn de méi bàn fǎ qù.", jp: "ごめん、社長に会社に残って残業するように言われて、本当に行けなかったんだ。", speak: "對不起，老闆要我留在公司加班，我真的沒辦法去。" }
+                ]
+            },
+            {
+                id: 29,
+                script: [
+                    { speaker: "男", text: "小姐，請問可以試穿這件褲子嗎？" },
+                    { speaker: "女", text: "可以，試衣間在後面，如果您覺得太長，我們還可以幫您改短。" },
+                    { speaker: "問", text: "這位小姐的工作可能是什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Xiǎo jiě, qǐng wèn kě yǐ shì chuān zhè jiàn kù zi ma?<br>Nǚ: Kě yǐ, shì yī jiān zài hòu miàn, rú guǒ nín jué de tài cháng, wǒ men hái kě yǐ bāng nín gǎi duǎn.<br>Wèn: Zhè wèi xiǎo jiě de gōng zuò kě néng shì shén me?<br><br><strong>日文：</strong><br>男：すみません、このズボンを試着してもいいですか？<br>女：はい、試着室は後ろにございます。もし長すぎると感じられたら、短く直すこともできますよ。<br>問：この女性の仕事は多分何ですか？",
+                vocab: [
+                    { word: "小姐，請問可以試穿這件褲子嗎？", pinyin: "Xiǎo jiě, qǐng wèn kě yǐ shì chuān zhè jiàn kù zi ma?", jp: "すみません、このズボンを試着してもいいですか？", speak: "小姐，請問可以試穿這件褲子嗎？" },
+                    { word: "可以，試衣間在後面，如果您覺得太長，我們還可以幫您改短。", pinyin: "Kě yǐ, shì yī jiān zài hòu miàn, rú guǒ nín jué de tài cháng, wǒ men hái kě yǐ bāng nín gǎi duǎn.", jp: "はい、試着室は後ろにございます。もし長すぎると感じられたら、短く直すこともできますよ。", speak: "可以，試衣間在後面，如果您覺得太長，我們還可以幫您改短。" }
+                ]
+            },
+            {
+                id: 30,
+                script: [
+                    { speaker: "女", text: "你怎麼買了這麼多蘋果和香蕉？" },
+                    { speaker: "男", text: "因為超級市場今天打折，買兩袋水果送一袋。" },
+                    { speaker: "問", text: "這位先生為什麼買這麼多水果？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zěn me mǎi le zhè me duō píng guǒ hé xiāng jiāo?<br>Nán: Yīn wèi chāo jí shì chǎng jīn tiān dǎ zhé, mǎi liǎng dài shuǐ guǒ sòng yí dài.<br>Wèn: Zhè wèi xiān shēng wèi shén me mǎi zhè me duō shuǐ guǒ?<br><br><strong>日文：</strong><br>女：どうしてこんなにたくさんのリンゴとバナナを買ったの？<br>男：スーパーが今日割引をしていて、果物を2袋買うと1袋おまけでくれるからだよ。<br>問：この男性はなぜこんなにたくさんの果物を買いましたか？",
+                vocab: [
+                    { word: "你怎麼買了這麼多蘋果和香蕉？", pinyin: "Nǐ zěn me mǎi le zhè me duō píng guǒ hé xiāng jiāo?", jp: "どうしてこんなにたくさんのリンゴとバナナを買ったの？", speak: "你怎麼買了這麼多蘋果和香蕉？" },
+                    { word: "因為超級市場今天打折，買兩袋水果送一袋。", pinyin: "Yīn wèi chāo jí shì chǎng jīn tiān dǎ zhé, mǎi liǎng dài shuǐ guǒ sòng yí dài.", jp: "スーパーが今日割引をしていて、果物を2袋買うと1袋おまけでくれるからだよ。", speak: "因為超級市場今天打折，買兩袋水果送一袋。" }
+                ]
+            },
+            {
+                id: 31,
+                sectionName: "對話測驗 (31-40)",
+                script: [
+                    { speaker: "男", text: "我的車子壞了，明天沒辦法送妳去機場。" },
+                    { speaker: "女", text: "沒關係，我可以自己搭計程車去。" },
+                    { speaker: "問", text: "這位小姐明天打算怎麼去機場？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Wǒ de chē zi huài le, míng tiān méi bàn fǎ sòng nǐ qù jī chǎng.<br>Nǚ: Méi guān xì, wǒ kě yǐ zì jǐ dā jì chéng chē qù.<br>Wèn: Zhè wèi xiǎo jiě míng tiān dǎ suàn zěn me qù jī chǎng?<br><br><strong>日文：</strong><br>男：僕の車が壊れちゃって、明日は空港まで送って行けないんだ。<br>女：大丈夫、自分でタクシーに乗って行くから。<br>問：この女性は明日どうやって空港へ行くつもりですか？",
+                vocab: [
+                    { word: "我的車子壞了，明天沒辦法送妳去機場。", pinyin: "Wǒ de chē zi huài le, míng tiān méi bàn fǎ sòng nǐ qù jī chǎng.", jp: "僕の車が壊れちゃって、明日は空港まで送って行けないんだ。", speak: "我的車子壞了，明天沒辦法送妳去機場。" },
+                    { word: "沒關係，我可以自己搭計程車去。", pinyin: "Méi guān xì, wǒ kě yǐ zì jǐ dā jì chéng chē qù.", jp: "大丈夫、自分でタクシーに乗って行くから。", speak: "沒關係，我可以自己搭計程車去。" }
+                ]
+            },
+            {
+                id: 32,
+                script: [
+                    { speaker: "女", text: "你不是說要少喝一點咖啡嗎？" },
+                    { speaker: "男", text: "可是我今天實在太睏了，不喝一杯沒辦法工作。" },
+                    { speaker: "問", text: "這位先生為什麼要喝咖啡？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ bú shì shuō yào shǎo hē yì diǎn kā fēi ma?<br>Nán: Kě shì wǒ jīn tiān shí zài tài kùn le, bù hē yì bēi méi bàn fǎ gōng zuò.<br>Wèn: Zhè wèi xiān shēng wèi shén me yào hē kā fēi?<br><br><strong>日文：</strong><br>女：コーヒーを少し控えるって言ってなかった？<br>男：でも今日は本当に眠すぎて、1杯飲まないと仕事ができないんだ。<br>問：この男性はなぜコーヒーを飲みますか？",
+                vocab: [
+                    { word: "你不是說要少喝一點咖啡嗎？", pinyin: "Nǐ bú shì shuō yào shǎo hē yì diǎn kā fēi ma?", jp: "コーヒーを少し控えるって言ってなかった？", speak: "你不是說要少喝一點咖啡嗎？" },
+                    { word: "可是我今天實在太睏了，不喝一杯沒辦法工作。", pinyin: "Kě shì wǒ jīn tiān shí zài tài kùn le, bù hē yì bēi méi bàn fǎ gōng zuò.", jp: "でも今日は本当に眠すぎて、1杯飲まないと仕事ができないんだ。", speak: "可是我今天實在太睏了，不喝一杯沒辦法工作。" }
+                ]
+            },
+            {
+                id: 33,
+                script: [
+                    { speaker: "男", text: "請問陳太太在家嗎？我想把這封信交給她。" },
+                    { speaker: "女", text: "她去超市買菜了，你可以放在桌上，我等一下拿給她。" },
+                    { speaker: "問", text: "陳太太去哪裡了？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn Chén tài tai zài jiā ma? Wǒ xiǎng bǎ zhè fēng xìn jiāo gěi tā.<br>Nǚ: Tā qù chāo shì mǎi cài le, nǐ kě yǐ fàng zài zhuō shàng, wǒ děng yí xià ná gěi tā.<br>Wèn: Chén tài tai qù nǎ lǐ le?<br><br><strong>日文：</strong><br>男：すみません、陳さんの奥さんは家にいますか？この手紙を彼女に渡したいのですが。<br>女：彼女はスーパーへ買い物に行きました。机の上に置いておいてくれれば、後で私が渡しますよ。<br>問：陳さんの奥さんはどこへ行きましたか？",
+                vocab: [
+                    { word: "請問陳太太在家嗎？我想把這封信交給她。", pinyin: "Qǐng wèn Chén tài tai zài jiā ma? Wǒ xiǎng bǎ zhè fēng xìn jiāo gěi tā.", jp: "すみません、陳さんの奥さんは家にいますか？この手紙を彼女に渡したいのですが。", speak: "請問陳太太在家嗎？我想把這封信交給她。" },
+                    { word: "她去超市買菜了，你可以放在桌上，我等一下拿給她。", pinyin: "Tā qù chāo shì mǎi cài le, nǐ kě yǐ fàng zài zhuō shàng, wǒ děng yí xià ná gěi tā.", jp: "彼女はスーパーへ買い物に行きました。机の上に置いておいてくれれば、後で私が渡しますよ。", speak: "她去超市買菜了，你可以放在桌上，我等一下拿給她。" }
+                ]
+            },
+            {
+                id: 34,
+                script: [
+                    { speaker: "女", text: "這家店的蛋糕很有名，你想試試看嗎？" },
+                    { speaker: "男", text: "好啊，不過我昨天吃太多甜的，今天只能吃一小塊。" },
+                    { speaker: "問", text: "這位先生的意思是什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Zhè jiā diàn de dàn gāo hěn yǒu míng, nǐ xiǎng shì shi kàn ma?<br>Nán: Hǎo a, bú guò wǒ zuó tiān chī tài duō tián de, jīn tiān zhǐ néng chī yì xiǎo kuài.<br>Wèn: Zhè wèi xiān shēng de yì si shì shén me?<br><br><strong>日文：</strong><br>女：このお店のケーキはとても有名だけど、食べてみたい？<br>男：いいよ。でも昨日は甘いものを食べすぎたから、今日は小さいのを1切れだけしか食べられないや。<br>問：この男性はどういう意味ですか？",
+                vocab: [
+                    { word: "這家店的蛋糕很有名，你想試試看嗎？", pinyin: "Zhè jiā diàn de dàn gāo hěn yǒu míng, nǐ xiǎng shì shi kàn ma?", jp: "このお店のケーキはとても有名だけど、食べてみたい？", speak: "這家店的蛋糕很有名，你想試試看嗎？" },
+                    { word: "好啊，不過我昨天吃太多甜的，今天只能吃一小塊。", pinyin: "Hǎo a, bú guò wǒ zuó tiān chī tài duō tián de, jīn tiān zhǐ néng chī yì xiǎo kuài.", jp: "いいよ。でも昨日は甘いものを食べすぎたから、今日は小さいのを1切れだけしか食べられないや。", speak: "好啊，不過我昨天吃太多甜的，今天只能吃一小塊。" }
+                ]
+            },
+            {
+                id: 35,
+                script: [
+                    { speaker: "男", text: "明天的會議是在上午十點嗎？" },
+                    { speaker: "女", text: "本來是十點，但是老闆有事，改到下午兩點了。" },
+                    { speaker: "問", text: "明天的會議幾點開始？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Míng tiān de huì yì shì zài shàng wǔ shí diǎn ma?<br>Nǚ: Běn lái shì shí diǎn, dàn shì lǎo bǎn yǒu shì, gǎi dào xià wǔ liǎng diǎn le.<br>Wèn: Míng tiān de huì yì jǐ diǎn kāi shǐ?<br><br><strong>日文：</strong><br>男：明日の会議は午前10時ですか？<br>女：本来は10時でしたが、社長に用事ができて午後2時に変更になりました。<br>問：明日の会議は何時に始まりますか？",
+                vocab: [
+                    { word: "明天的會議是在上午十點嗎？", pinyin: "Míng tiān de huì yì shì zài shàng wǔ shí diǎn ma?", jp: "明日の会議は午前10時ですか？", speak: "明天的會議是在上午十點嗎？" },
+                    { word: "本來是十點，但是老闆有事，改到下午兩點了。", pinyin: "Běn lái shì shí diǎn, dàn shì lǎo bǎn yǒu shì, gǎi dào xià wǔ liǎng diǎn le.", jp: "本来は10時でしたが、社長に用事ができて午後2時に変更になりました。", speak: "本來是十點，但是老闆有事，改到下午兩點了。" }
+                ]
+            },
+            {
+                id: 36,
+                script: [
+                    { speaker: "女", text: "你找了半天，是在找什麼東西嗎？" },
+                    { speaker: "男", text: "我明明把鑰匙放在桌子上的，現在卻找不到了。" },
+                    { speaker: "問", text: "這位先生在做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zhǎo le bàn tiān, shì zài zhǎo shén me dōng xi ma?<br>Nán: Wǒ míng míng bǎ yào shi fàng zài zhuō zi shàng de, xiàn zài què zhǎo bú dào le.<br>Wèn: Zhè wèi xiān shēng zài zuò shén me?<br><br><strong>日文：</strong><br>女：さっきからずっと探してるけど、何か探し物？<br>男：間違いなく机の上に鍵を置いたはずなのに、今は見つからないんだ。<br>問：この男性は何をしていますか？",
+                vocab: [
+                    { word: "你找了半天，是在找什麼東西嗎？", pinyin: "Nǐ zhǎo le bàn tiān, shì zài zhǎo shén me dōng xi ma?", jp: "さっきからずっと探してるけど、何か探し物？", speak: "你找了半天，是在找什麼東西嗎？" },
+                    { word: "我明明把鑰匙放在桌子上的，現在卻找不到了。", pinyin: "Wǒ míng míng bǎ yào shi fàng zài zhuō zi shàng de, xiàn zài què zhǎo bú dào le.", jp: "間違いなく机の上に鍵を置いたはずなのに、今は見つからないんだ。", speak: "我明明把鑰匙放在桌子上的，現在卻找不到了。" }
+                ]
+            },
+            {
+                id: 37,
+                script: [
+                    { speaker: "男", text: "請問現在去動物園，來得及嗎？" },
+                    { speaker: "女", text: "動物園下午五點就關門了，現在已經四點半，明天再去吧。" },
+                    { speaker: "問", text: "這位小姐的意思是什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn xiàn zài qù dòng wù yuán, lái de jí ma?<br>Nǚ: Dòng wù yuán xià wǔ wǔ diǎn jiù guān mén le, xiàn zài yǐ jīng sì diǎn bàn, míng tiān zài qù ba.<br>Wèn: Zhè wèi xiǎo jiě de yì si shì shén me?<br><br><strong>日文：</strong><br>男：すみません、今から動物園へ行っても間に合いますか？<br>女：動物園は午後5時に閉まります。今はもう4時半なので、明日また行きましょう。<br>問：この女性はどういう意味ですか？",
+                vocab: [
+                    { word: "請問現在去動物園，來得及嗎？", pinyin: "Qǐng wèn xiàn zài qù dòng wù yuán, lái de jí ma?", jp: "すみません、今から動物園へ行っても間に合いますか？", speak: "請問現在去動物園，來得及嗎？" },
+                    { word: "動物園下午五點就關門了，現在已經四點半，明天再去吧。", pinyin: "Dòng wù yuán xià wǔ wǔ diǎn jiù guān mén le, xiàn zài yǐ jīng sì diǎn bàn, míng tiān zài qù ba.", jp: "動物園は午後5時に閉まります。今はもう4時半なので、明日また行きましょう。", speak: "動物園下午五點就關門了，現在已經四點半，明天再去吧。" }
+                ]
+            },
+            {
+                id: 38,
+                script: [
+                    { speaker: "女", text: "那個人是你們的新同學嗎？" },
+                    { speaker: "男", text: "不是，那是我們的體育老師，他只是看起來很年輕。" },
+                    { speaker: "問", text: "那個人是誰？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nà ge rén shì nǐ men de xīn tóng xué ma?<br>Nán: Bú shì, nà shì wǒ men de tǐ yù lǎo shī, tā zhǐ shì kàn qǐ lái hěn nián qīng.<br>Wèn: Nà ge rén shì shéi?<br><br><strong>日文：</strong><br>女：あの人はあなた達の新しいクラスメイト？<br>男：違うよ、あれは僕たちの体育の先生だよ。若く見えるだけさ。<br>問：あの人は誰ですか？",
+                vocab: [
+                    { word: "那個人是你們的新同學嗎？", pinyin: "Nà ge rén shì nǐ men de xīn tóng xué ma?", jp: "あの人はあなた達の新しいクラスメイト？", speak: "那個人是你們的新同學嗎？" },
+                    { word: "不是，那是我們的體育老師，他只是看起來很年輕。", pinyin: "Bú shì, nà shì wǒ men de tǐ yù lǎo shī, tā zhǐ shì kàn qǐ lái hěn nián qīng.", jp: "違うよ、あれは僕たちの体育の先生だよ。若く見えるだけさ。", speak: "不是，那是我們的體育老師，他只是看起來很年輕。" }
+                ]
+            },
+            {
+                id: 39,
+                script: [
+                    { speaker: "男", text: "這裡的風景好美，幫我拍張照片吧！" },
+                    { speaker: "女", text: "好啊，你要站在樹的前面，還是花的旁邊？" },
+                    { speaker: "問", text: "這兩個人現在可能在哪裡？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Zhè lǐ de fēng jǐng hǎo měi, bāng wǒ pāi zhāng zhào piàn ba!<br>Nǚ: Hǎo a, nǐ yào zhàn zài shù de qián miàn, hái shì huā de páng biān?<br>Wèn: Zhè liǎng ge rén xiàn zài kě néng zài nǎ lǐ?<br><br><strong>日文：</strong><br>男：ここの景色はとても美しいね、写真を1枚撮ってよ！<br>女：いいよ、木の前に立つ？それとも花の横にする？<br>問：この2人は今どこにいると考えられますか？",
+                vocab: [
+                    { word: "這裡的風景好美，幫我拍張照片吧！", pinyin: "Zhè lǐ de fēng jǐng hǎo měi, bāng wǒ pāi zhāng zhào piàn ba!", jp: "ここの景色はとても美しいね、写真を1枚撮ってよ！", speak: "這裡的風景好美，幫我拍張照片吧！" },
+                    { word: "好啊，你要站在樹的前面，還是花的旁邊？", pinyin: "Hǎo a, nǐ yào zhàn zài shù de qián miàn, hái shì huā de páng biān?", jp: "いいよ、木の前に立つ？それとも花の横にする？", speak: "好啊，你要站在樹的前面，還是花的旁邊？" }
+                ]
+            },
+            {
+                id: 40,
+                script: [
+                    { speaker: "女", text: "你怎麼看起來這麼累？昨天沒睡好嗎？" },
+                    { speaker: "男", text: "因為鄰居家的狗一直叫，吵得我根本沒辦法睡覺。" },
+                    { speaker: "問", text: "這位先生為什麼很累？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ zěn me kàn qǐ lái zhè me lèi? Zuó tiān méi shuì hǎo ma?<br>Nán: Yīn wèi lín jū jiā de gǒu yì zhí jiào, chǎo de wǒ gēn běn méi bàn fǎ shuì jiào.<br>Wèn: Zhè wèi xiān shēng wèi shén me hěn lèi?<br><br><strong>日文：</strong><br>女：どうしてそんなに疲れた顔をしてるの？昨日よく眠れなかったの？<br>男：近所の家の犬がずっと吠えていて、うるさくて全然眠れなかったんだ。<br>問：この男性はなぜ疲れていますか？",
+                vocab: [
+                    { word: "你怎麼看起來這麼累？昨天沒睡好嗎？", pinyin: "Nǐ zěn me kàn qǐ lái zhè me lèi? Zuó tiān méi shuì hǎo ma?", jp: "どうしてそんなに疲れた顔をしてるの？昨日よく眠れなかったの？", speak: "你怎麼看起來這麼累？昨天沒睡好嗎？" },
+                    { word: "因為鄰居家的狗一直叫，吵得我根本沒辦法睡覺。", pinyin: "Yīn wèi lín jū jiā de gǒu yì zhí jiào, chǎo de wǒ gēn běn méi bàn fǎ shuì jiào.", jp: "近所の家の犬がずっと吠えていて、うるさくて全然眠れなかったんだ。", speak: "因為鄰居家的狗一直叫，吵得我根本沒辦法睡覺。" }
+                ]
+            },
+            {
+                id: 41,
+                sectionName: "對話測驗 (41-50)",
+                script: [
+                    { speaker: "男", text: "請問，這附近有郵局嗎？我想寄幾本書回家。" },
+                    { speaker: "女", text: "你從這裡直走，看到銀行以後左轉，郵局就在對面。" },
+                    { speaker: "問", text: "這位先生想找什麼地方？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Qǐng wèn, zhè fù jìn yǒu yóu jú ma? Wǒ xiǎng jì jǐ běn shū huí jiā.<br>Nǚ: Nǐ cóng zhè lǐ zhí zǒu, kàn dào yín háng yǐ hòu zuǒ zhuǎn, yóu jú jiù zài duì miàn.<br>Wèn: Zhè wèi xiān shēng xiǎng zhǎo shén me dì fāng?<br><br><strong>日文：</strong><br>男：すみません、この近くに郵便局はありますか？本を何冊か家へ送りたいのです。<br>女：ここからまっすぐ歩いて、銀行が見えたら左に曲がってください。郵便局はその向かいにあります。<br>問：この男性はどこを探していますか？",
+                vocab: [
+                    { word: "請問，這附近有郵局嗎？我想寄幾本書回家。", pinyin: "Qǐng wèn, zhè fù jìn yǒu yóu jú ma? Wǒ xiǎng jì jǐ běn shū huí jiā.", jp: "すみません、この近くに郵便局はありますか？本を何冊か家へ送りたいのです。", speak: "請問，這附近有郵局嗎？我想寄幾本書回家。" },
+                    { word: "你從這裡直走，看到銀行以後左轉，郵局就在對面。", pinyin: "Nǐ cóng zhè lǐ zhí zǒu, kàn dào yín háng yǐ hòu zuǒ zhuǎn, yóu jú jiù zài duì miàn.", jp: "ここからまっすぐ歩いて、銀行が見えたら左に曲がってください。郵便局はその向かいにあります。", speak: "你從這裡直走，看到銀行以後左轉，郵局就在對面。" }
+                ]
+            },
+            {
+                id: 42,
+                script: [
+                    { speaker: "女", text: "你不是說要教我怎麼用這個新的電腦軟體嗎？" },
+                    { speaker: "男", text: "我現在有點忙，等我把這封電子郵件寫完再教妳，好嗎？" },
+                    { speaker: "問", text: "這位先生現在正在做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ bú shì shuō yào jiāo wǒ zěn me yòng zhè ge xīn de diàn nǎo ruǎn tǐ ma?<br>Nán: Wǒ xiàn zài yǒu diǎn máng, děng wǒ bǎ zhè fēng diàn zǐ yóu jiàn xiě wán zài jiāo nǐ, hǎo ma?<br>Wèn: Zhè wèi xiān shēng xiàn zài zhèng zài zuò shén me?<br><br><strong>日文：</strong><br>女：この新しいパソコンソフトの使い方を教えてくれるって言ってなかった？<br>男：今少し忙しいから、このメールを書き終わるのを待ってから教えてもいい？<br>問：この男性は今何をしていますか？",
+                vocab: [
+                    { word: "你不是說要教我怎麼用這個新的電腦軟體嗎？", pinyin: "Nǐ bú shì shuō yào jiāo wǒ zěn me yòng zhè ge xīn de diàn nǎo ruǎn tǐ ma?", jp: "この新しいパソコンソフトの使い方を教えてくれるって言ってなかった？", speak: "你不是說要教我怎麼用這個新的電腦軟體嗎？" },
+                    { word: "我現在有點忙，等我把這封電子郵件寫完再教妳，好嗎？", pinyin: "Wǒ xiàn zài yǒu diǎn máng, děng wǒ bǎ zhè fēng diàn zǐ yóu jiàn xiě wán zài jiāo nǐ, hǎo ma?", jp: "今少し忙しいから、このメールを書き終わるのを待ってから教えてもいい？", speak: "我現在有點忙，等我把這封電子郵件寫完再教妳，好嗎？" }
+                ]
+            },
+            {
+                id: 43,
+                script: [
+                    { speaker: "男", text: "明天的中文課，我們是在二樓的教室上嗎？" },
+                    { speaker: "女", text: "不是，老師說明天要在四樓的語言中心練習聽力。" },
+                    { speaker: "問", text: "明天的中文課在哪裡上？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Míng tiān de zhōng wén kè, wǒ men shì zài èr lóu de jiào shì shàng ma?<br>Nǚ: Bú shì, lǎo shī shuō míng tiān yào zài sì lóu de yǔ yán zhōng xīn liàn xí tīng lì.<br>Wèn: Míng tiān de zhōng wén kè zài nǎ lǐ shàng?<br><br><strong>日文：</strong><br>男：明日の中国語の授業は、2階の教室でやるの？<br>女：ううん、先生が明日は4階のランゲージセンターでリスニングの練習をするって言ってたよ。<br>問：明日の中国語の授業はどこでやりますか？",
+                vocab: [
+                    { word: "明天的中文課，我們是在二樓的教室上嗎？", pinyin: "Míng tiān de zhōng wén kè, wǒ men shì zài èr lóu de jiào shì shàng ma?", jp: "明日の中国語の授業は、2階の教室でやるの？", speak: "明天的中文課，我們是在二樓的教室上嗎？" },
+                    { word: "不是，老師說明天要在四樓的語言中心練習聽力。", pinyin: "Bú shì, lǎo shī shuō míng tiān yào zài sì lóu de yǔ yán zhōng xīn liàn xí tīng lì.", jp: "ううん、先生が明日は4階のランゲージセンターでリスニングの練習をするって言ってたよ。", speak: "不是，老師說明天要在四樓的語言中心練習聽力。" }
+                ]
+            },
+            {
+                id: 44,
+                script: [
+                    { speaker: "女", text: "你的感冒看起來越來越嚴重了，真的不去看醫生嗎？" },
+                    { speaker: "男", text: "我已經吃過藥了，多喝水、休息一下應該就會好。" },
+                    { speaker: "問", text: "這位先生不想做什麼事？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ de gǎn mào kàn qǐ lái yuè lái yuè yán zhòng le, zhēn de bú qù kàn yī shēng ma?<br>Nán: Wǒ yǐ jīng chī guò yào le, duō hē shuǐ, xiū xí yí xià yīng gāi jiù huì hǎo.<br>Wèn: Zhè wèi xiān shēng bù xiǎng zuò shén me shì?<br><br><strong>日文：</strong><br>女：あなたの風邪、ますますひどくなっているみたいだけど、本当に医者に診てもらわないの？<br>男：もう薬は飲んだから、たくさん水を飲んで少し休めば良くなるはずだよ。<br>問：この男性は何をしたくないですか？",
+                vocab: [
+                    { word: "你的感冒看起來越來越嚴重了，真的不去看醫生嗎？", pinyin: "Nǐ de gǎn mào kàn qǐ lái yuè lái yuè yán zhòng le, zhēn de bú qù kàn yī shēng ma?", jp: "あなたの風邪、ますますひどくなっているみたいだけど、本当に医者に診てもらわないの？", speak: "你的感冒看起來越來越嚴重了，真的不去看醫生嗎？" },
+                    { word: "我已經吃過藥了，多喝水、休息一下應該就會好。", pinyin: "Wǒ yǐ jīng chī guò yào le, duō hē shuǐ, xiū xí yí xià yīng gāi jiù huì hǎo.", jp: "もう薬は飲んだから、たくさん水を飲んで少し休めば良くなるはずだよ。", speak: "我已經吃過藥了，多喝水、休息一下應該就會好。" }
+                ]
+            },
+            {
+                id: 45,
+                script: [
+                    { speaker: "男", text: "妳覺得這件藍色的襯衫適合我嗎？" },
+                    { speaker: "女", text: "顏色很好看，但是好像有點太短了，你要不要試試大一點的？" },
+                    { speaker: "問", text: "這位小姐覺得襯衫怎麼樣？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Nǐ jué de zhè jiàn lán sè de chèn shān shì hé wǒ ma?<br>Nǚ: Yán sè hěn hǎo kàn, dàn shì hǎo xiàng yǒu diǎn tài duǎn le, nǐ yào bù yào shì shi dà yì diǎn de?<br>Wèn: Zhè wèi xiǎo jiě jué de chèn shān zěn me yàng?<br><br><strong>日文：</strong><br>男：この青いシャツ、僕に似合うと思う？<br>女：色はとても素敵だけど、ちょっと短すぎるみたい。もう少し大きいのを試してみたら？<br>問：この女性はシャツについてどう思っていますか？",
+                vocab: [
+                    { word: "妳覺得這件藍色的襯衫適合我嗎？", pinyin: "Nǐ jué de zhè jiàn lán sè de chèn shān shì hé wǒ ma?", jp: "この青いシャツ、僕に似合うと思う？", speak: "妳覺得這件藍色的襯衫適合我嗎？" },
+                    { word: "顏色很好看，但是好像有點太短了，你要不要試試大一點的？", pinyin: "Yán sè hěn hǎo kàn, dàn shì hǎo xiàng yǒu diǎn tài duǎn le, nǐ yào bù yào shì shi dà yì diǎn de?", jp: "色はとても素敵だけど、ちょっと短すぎるみたい。もう少し大きいのを試してみたら？", speak: "顏色很好看，但是好像有點太短了，你要不要試試大一點的？" }
+                ]
+            },
+            {
+                id: 46,
+                script: [
+                    { speaker: "女", text: "你的手機怎麼一直在響？為什麼不接電話？" },
+                    { speaker: "男", text: "那是我哥哥打來的，他一定是要叫我幫他搬家，我才不想接呢。" },
+                    { speaker: "問", text: "這位先生為什麼不接電話？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ de shǒu jī zěn me yì zhí zài xiǎng? Wèi shén me bù jiē diàn huà?<br>Nán: Nà shì wǒ gē ge dǎ lái de, tā yí dìng shì yào jiào wǒ bāng tā bān jiā, wǒ cái bù xiǎng jiē ne.<br>Wèn: Zhè wèi xiān shēng wèi shén me bù jiē diàn huà?<br><br><strong>日文：</strong><br>女：あなたのスマホどうしてずっと鳴ってるの？なぜ電話に出ないの？<br>男：あれは兄さんからかかってきてるんだ。絶対に引越しの手伝いをしろっていう用事だから、出たくないんだよ。<br>問：この男性はなぜ電話に出ませんか？",
+                vocab: [
+                    { word: "你的手機怎麼一直在響？為什麼不接電話？", pinyin: "Nǐ de shǒu jī zěn me yì zhí zài xiǎng? Wèi shén me bù jiē diàn huà?", jp: "あなたのスマホどうしてずっと鳴ってるの？なぜ電話に出ないの？", speak: "你的手機怎麼一直在響？為什麼不接電話？" },
+                    { word: "那是我哥哥打來的，他一定是要叫我幫他搬家，我才不想接呢。", pinyin: "Nà shì wǒ gē ge dǎ lái de, tā yí dìng shì yào jiào wǒ bāng tā bān jiā, wǒ cái bù xiǎng jiē ne.", jp: "あれは兄さんからかかってきてるんだ。絶対に引越しの手伝いをしろっていう用事だから、出たくないんだよ。", speak: "那是我哥哥打來的，他一定是要叫我幫他搬家，我才不想接呢。" }
+                ]
+            },
+            {
+                id: 47,
+                script: [
+                    { speaker: "男", text: "你暑假有打算去哪裡旅行嗎？" },
+                    { speaker: "女", text: "我哪裡也不去，我要留在學校的餐廳打工，賺一點學費。" },
+                    { speaker: "問", text: "這位小姐暑假打算做什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Nǐ shǔ jià yǒu dǎ suàn qù nǎ lǐ lǚ xíng ma?<br>Nǚ: Wǒ nǎ lǐ yě bú qù, wǒ yào liú zài xué xiào de cān tīng dǎ gōng, zhuàn yì diǎn xué fèi.<br>Wèn: Zhè wèi xiǎo jiě shǔ jià dǎ suàn zuò shén me?<br><br><strong>日文：</strong><br>男：夏休みはどこかへ旅行に行くつもり？<br>女：どこにも行かないわ。学校の食堂に残ってアルバイトをして、学費を少し稼ぐの。<br>問：この女性は夏休みに何をするつもりですか？",
+                vocab: [
+                    { word: "你暑假有打算去哪裡旅行嗎？", pinyin: "Nǐ shǔ jià yǒu dǎ suàn qù nǎ lǐ lǚ xíng ma?", jp: "夏休みはどこかへ旅行に行くつもり？", speak: "你暑假有打算去哪裡旅行嗎？" },
+                    { word: "我哪裡也不去，我要留在學校的餐廳打工，賺一點學費。", pinyin: "Wǒ nǎ lǐ yě bú qù, wǒ yào liú zài xué xiào de cān tīng dǎ gōng, zhuàn yì diǎn xué fèi.", jp: "どこにも行かないわ。学校の食堂に残ってアルバイトをして、学費を少し稼ぐの。", speak: "我哪裡也不去，我要留在學校的餐廳打工，賺一點學費。" }
+                ]
+            },
+            {
+                id: 48,
+                script: [
+                    { speaker: "女", text: "你每天早上都喝牛奶，不膩嗎？" },
+                    { speaker: "男", text: "習慣了，而且喝牛奶對身体好，我還會配一塊麵包。" },
+                    { speaker: "問", text: "這位先生的早餐通常吃什麼？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Nǐ měi tiān zǎo shàng dōu hē niú nǎi, bú nì ma?<br>Nán: Xí guàn le, ér qiě hē niú nǎi duì shēn tǐ hǎo, wǒ hái huì pèi yí kuài miàn bāo.<br>Wèn: Zhè wèi xiān shēng de zǎo cān tōng cháng chī shén me?<br><br><strong>日文：</strong><br>女：毎朝牛乳を飲んでるけど、飽きないの？<br>男：慣れてるし、それに牛乳は体にもいいからね。パンも1切れ一緒に食べるよ。<br>問：この男性の朝食は通常何ですか？",
+                vocab: [
+                    { word: "你每天早上都喝牛奶，不膩嗎？", pinyin: "Nǐ měi tiān zǎo shàng dōu hē niú nǎi, bú nì ma?", jp: "毎朝牛乳を飲んでるけど、飽きないの？", speak: "你每天早上都喝牛奶，不膩嗎？" },
+                    { word: "習慣了，而且喝牛奶對身体好，我還會配一塊麵包。", pinyin: "Xí guàn le, ér qiě hē niú nǎi duì shēn tǐ hǎo, wǒ hái huì pèi yí kuài miàn bāo.", jp: "慣れてるし、それに牛乳は体にもいいからね。パンも1切れ一緒に食べるよ。", speak: "習慣了，而且喝牛奶對身体好，我還會配一塊麵包。" }
+                ]
+            },
+            {
+                id: 49,
+                script: [
+                    { speaker: "男", text: "小姐，兩杯熱咖啡和兩個三明治，這樣一共多少錢？" },
+                    { speaker: "女", text: "咖啡一杯六十，三明治一個四十，總共是兩百元。" },
+                    { speaker: "問", text: "買這些東西要花多少錢？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nán: Xiǎo jiě, liǎng bēi rè kā fēi hé liǎng ge sān míng zhì, zhè yàng yí gòng duō shǎo qián?<br>Nǚ: Kā fēi yì bēi liù shí, sān míng zhì yí ge sì shí, zǒng gòng shì liǎng bǎi yuán.<br>Wèn: Mǎi zhè xiē dōng xi yào huā duō shǎo qián?<br><br><strong>日文：</strong><br>男：すみません、ホットコーヒー2杯とサンドイッチ2つで、全部でいくらになりますか？<br>女：コーヒーが1杯60元、サンドイッチが1つ40元ですので、合計で200元です。<br>問：これらの物を買うにはいくらかかりますか？",
+                vocab: [
+                    { word: "小姐，兩杯熱咖啡和兩個三明治，這樣一共多少錢？", pinyin: "Xiǎo jiě, liǎng bēi rè kā fēi hé liǎng ge sān míng zhì, zhè yàng yí gòng duō shǎo qián?", jp: "すみません、ホットコーヒー2杯とサンドイッチ2つで、全部でいくらになりますか？", speak: "小姐，兩杯熱咖啡和兩個三明治，這樣一共多少錢？" },
+                    { word: "咖啡一杯六十，三明治一個四十，總共是兩百元。", pinyin: "Kā fēi yì bēi liù shí, sān míng zhì yí ge sì shí, zǒng gòng shì liǎng bǎi yuán.", jp: "コーヒーが1杯60元、サンドイッチが1つ40元ですので、合計で200元です。", speak: "咖啡一杯六十，三明治一個四十，總共是兩百元。" }
+                ]
+            },
+            {
+                id: 50,
+                script: [
+                    { speaker: "女", text: "下個禮拜的聽力考試，你準備得怎麼樣了？" },
+                    { speaker: "男", text: "我把老師給的錄音聽了好幾次，但還是有點擔心聽不懂。" },
+                    { speaker: "問", text: "這位先生覺得考試準備得怎麼樣？" }
+                ],
+                ans: "對話理解",
+                choices: [],
+                meta: "<strong>拼音：</strong><br>Nǚ: Xià ge lǐ bài de tīng lì kǎo shì, nǐ zhǔn bèi de zěn me yàng le?<br>Nán: Wǒ bǎ lǎo shī gěi de lù yīn tīng le hǎo jǐ cì, dàn hái shì yǒu diǎn dān xīn tīng bù dǒng.<br>Wèn: Zhè wèi xiān shēng jué de kǎo shì zhǔn bèi de zěn me yàng?<br><br><strong>日文：</strong><br>女：来週のリスニング試験、準備はどう？<br>男：先生がくれた録音を何度も聴いたけど、やっぱり聞き取れないんじゃないかと少し心配だよ。<br>問：この男性は試験の準備についてどう思っていますか？",
+                vocab: [
+                    { word: "下個禮拜的聽力考試，你準備得怎麼樣了？", pinyin: "Xià ge lǐ bài de tīng lì kǎo shì, nǐ zhǔn bèi de zěn me yàng le?", jp: "来週のリスニング試験、準備はどう？", speak: "下個禮拜的聽力考試，你準備得怎麼樣了？" },
+                    { word: "我把老師給的錄音聽了好幾次，但還是有點擔心聽不懂。", pinyin: "Wǒ bǎ lǎo shī gěi de lù yīn tīng le hǎo jǐ cì, dàn hái shì yǒu diǎn dān xīn tīng bù dǒng.", jp: "先生がくれた録音を何度も聴いたけど、やっぱり聞き取れないんじゃないかと少し心配だよ。", speak: "我把老師給的錄音聽了好幾次，但還是有點擔心聽不懂。" }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 共通・状態管理
+        // ==========================================
+        let playingId = null;
+        let playingType = null;
+        let isGlobalReveal = false;
+        let currentSpeechRate = 0.95;
+
+        // タブ切り替え
+        function switchTab(tabId) {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            const views = ['list', 'flashcard'];
+            views.forEach(v => {
+                document.getElementById(`${v}-view`).classList.add('hidden');
+                document.getElementById(`tab-${v}`).className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+            });
+
+            document.getElementById(`${tabId}-view`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+
+            if (tabId === 'flashcard') {
+                setFlashcardMode(fcMode); // タブを開くたびに毎回シャッフルして初期化
+            }
+        }
+
+        function toggleGlobalReveal() {
+            isGlobalReveal = !isGlobalReveal;
+            if (isGlobalReveal) {
+                document.body.classList.add('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i><span>すべて隠す</span>`;
+            } else {
+                document.body.classList.remove('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i><span>すべての解答・スクリプトを表示</span>`;
+            }
+            lucide.createIcons({root: document.getElementById('global-reveal-btn')});
+        }
+
+        // ==========================================
+        // 音声再生ロジック
+        // ==========================================
+        function resetActiveUI() {
+            if (!playingId) return;
+            const btn = document.getElementById(playingId);
+            if (!btn) return;
+
+            if (playingType === 'vocab') {
+                const icon = btn.querySelector('.lucide-volume-2');
+                if (icon) {
+                    icon.classList.remove('animate-pulse', 'text-blue-600');
+                    icon.classList.add('text-blue-400');
+                }
+            } else if (playingType === 'single') {
+                btn.classList.remove('text-indigo-600', 'bg-indigo-100', 'text-emerald-600', 'bg-emerald-100');
+                btn.classList.add('text-slate-400');
+                const icon = btn.querySelector('.lucide-play');
+                if (icon) icon.setAttribute('fill', 'none');
+            } else if (playingType === 'conversation') {
+                btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btn.id.includes('fc-sent-play-after')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i>`;
+                } else if(btn.id.includes('btn-list-conv')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                } else if (btn.id.includes('fc-sent-play-')) {
+                    const count = btn.id.replace('fc-sent-play-', '');
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i> ${count}回再生`;
+                } else {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
+                }
+                lucide.createIcons({root: btn});
+            }
+        }
+
+        function playConversation(qId, btnId, loopCount = 1, callback = null) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = 'conversation';
+
+            const btn = document.getElementById(btnId);
+            if(btn) {
+                btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
+                } else {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> 再生中...`;
+                }
+                lucide.createIcons({root: btn});
+            }
+
+            const q = questionsData.find(x => x.id === qId);
+            if (!q) return;
+
+            const utterances = [];
+
+            for(let i=0; i<loopCount; i++) {
+                // 会話・質問の読み上げ
+                q.script.forEach((line, index) => {
+                    let delay = 600;
+                    if (index === q.script.length - 2) delay = 1200; // 問の前のポーズ
+                    
+                    // 選択肢がない場合、1回目終了後に長めのポーズ
+                    if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
+                    utterances.push({ text: line.text, delayAfter: delay });
+                });
+
+                // 選択肢の読み上げを追加
+                if (q.choices && q.choices.length > 0) {
+                    q.choices.forEach((choice, index) => {
+                        let delay = 1000; // 選択肢間のポーズ
+                        // TTSが綺麗に「A因為...」と読めるように整形
+                        const cleanChoice = choice.replace(/^[（(]([A-D])[）)]\s*/, '$1 '); 
+                        
+                        // 1回目終了後に長めのポーズ
+                        if (i === 0 && index === q.choices.length - 1) delay = 2000;
+                        utterances.push({ text: cleanChoice, delayAfter: delay });
+                    });
+                }
+            }
+
+            let currentIndex = 0;
+            function speakNext() {
+                if (playingId !== btnId) return; 
+                
+                if (currentIndex >= utterances.length) {
+                    resetActiveUI();
+                    playingId = null;
+                    playingType = null;
+                    if (callback) callback(); // 終了時のコールバック
+                    return;
+                }
+
+                const currentItem = utterances[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(currentItem.text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = currentSpeechRate;
+
+                utterance.onend = () => {
+                    const delay = currentItem.delayAfter;
+                    currentIndex++;
+                    setTimeout(() => { if (playingId === btnId) speakNext(); }, delay);
+                };
+                utterance.onerror = () => {
+                    currentIndex++;
+                    if (playingId === btnId) speakNext();
+                };
+                window.speechSynthesis.speak(utterance);
+            }
+            speakNext();
+        }
+
+        function speakText(text, btnId, isVocab, speakerType) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW'; 
+            utterance.rate = currentSpeechRate;  
+
+            utterance.onstart = () => {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                if (isVocab) {
+                    const icon = btn.querySelector('.lucide-volume-2');
+                    if (icon) {
+                        icon.classList.remove('text-blue-400');
+                        icon.classList.add('animate-pulse', 'text-blue-600');
+                    }
+                } else {
+                    btn.classList.remove('text-slate-400');
+                    if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
+                    else btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                    const icon = btn.querySelector('.lucide-play');
+                    if (icon) icon.setAttribute('fill', 'currentColor');
+                }
+            };
+
+            utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
+            utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // カスタム通知 (alertの代わり)
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-rose-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 font-bold transition-opacity duration-300";
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function getRubyText(text, makePinyinMain = false) {
+            if (typeof pinyinPro === 'undefined') return text;
+            try {
+                const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
+                const charArr = Array.from(text);
+                let html = '';
+                for (let i = 0; i < charArr.length; i++) {
+                    const char = charArr[i];
+                    const py = pinyinArr[i];
+                    if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
+                        if (makePinyinMain) {
+                            // ピンインをメイン（大きく赤く）、漢字をルビ（上に小さく）
+                            // 画面サイズに応じて文字の大きさを段階的(xl -> 2xl -> 3xl)に調整
+                            html += `<ruby style="ruby-position: over;" class="mx-1 text-xl sm:text-2xl md:text-3xl text-red-600 font-bold tracking-wider">${py}<rt class="text-xs sm:text-sm text-slate-600 font-sans tracking-normal font-bold">${char}</rt></ruby>`;
+                        } else {
+                            // 通常の表示（漢字メイン、ピンイン下ルビ）
+                            html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                        }
+                    } else {
+                        if (makePinyinMain) {
+                            html += `<span class="mx-0.5 text-xl sm:text-2xl md:text-3xl text-slate-400">${char}</span>`;
+                        } else {
+                            html += `<span class="mx-[1px]">${char}</span>`;
+                        }
+                    }
+                }
+                return html;
+            } catch (e) {
+                return text;
+            }
+        }
+
+        // HTMLジェネレーター（共通コンポーネント化）
+        function generateScriptHtml(script, qId, prefix = "list") {
+            return script.map((line, idx) => {
+                const btnId = `btn-${prefix}-line-${qId}-${idx}`;
+                let speakerBg = line.speaker === '男' ? 'bg-blue-100 text-blue-700' : 
+                                line.speaker === '女' ? 'bg-pink-100 text-pink-700' : 
+                                line.speaker === '問' ? 'bg-emerald-100 text-emerald-700' : 
+                                line.speaker === '例句' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700';
+                                
+                // フレーズに分割（カンマやピリオド等の句読点で区切る）
+                const phrases = line.text.match(/[^，。！？、,.\!\?]+[，。！？、,.\!\?]*/g) || [line.text];
+
+                // 縦積み(flex-col)に変更し、テキストに幅を最大化
+                return `
+                    <div class="flex flex-col gap-3 bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm w-full">
+                        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 w-full">
+                            <span class="font-bold px-3 py-1.5 rounded-md text-sm ${speakerBg} shrink-0 shadow-sm">${line.speaker}</span>
+                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-500 bg-white border border-slate-200 shadow-sm shrink-0 text-sm font-bold" title="全文を再生">
+                                <i data-lucide="play" class="w-4 h-4 fill-current text-slate-400"></i> 全文再生
+                            </button>
+                        </div>
+                        <div class="w-full text-left pt-2">
+                            <p class="break-all whitespace-normal">
+                                ${phrases.map((phrase, pIdx) => {
+                                    const phraseBtnId = `${btnId}-p${pIdx}`;
+                                    // 途中から最後まで再生するためのテキストを生成
+                                    const textToSpeak = phrases.slice(pIdx).join('').replace(/'/g, "\\'");
+                                    
+                                    // 2つ目以降のフレーズの先頭に「ここから再生」ボタンを配置
+                                    const playBtn = pIdx > 0 ? `
+                                        <button id="${phraseBtnId}" onclick="speakText('${textToSpeak}', '${phraseBtnId}', false, '${line.speaker}')" class="inline-flex items-center justify-center align-middle mx-1.5 p-1.5 rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition-colors text-slate-400 border border-slate-200 bg-white shadow-sm shrink-0" title="ここから再生">
+                                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                                        </button>
+                                    ` : '';
+                                    
+                                    return `
+                                        <span class="leading-[3.5rem] sm:leading-[4.5rem] align-middle inline">
+                                            ${playBtn}${getRubyText(phrase, true)}
+                                        </span>
+                                    `;
+                                }).join('')}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateVocabHtml(vocab, qId, prefix = "list") {
+            if (!vocab || vocab.length === 0) return '';
+            return vocab.map((v, idx) => {
+                const btnId = `btn-${prefix}-vocab-${qId}-${idx}`;
+                return `
+                    <div class="flex items-center gap-3 border border-slate-100 bg-white p-2.5 rounded-lg hover:border-indigo-200 transition-colors shadow-sm col-span-1 md:col-span-2">
+                        <button id="${btnId}" onclick="speakText('${v.speak.replace(/'/g, "\\'")}', '${btnId}', true)" class="flex-shrink-0 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-md font-mono text-sm transition-colors group">
+                            <i data-lucide="volume-2" class="w-4 h-4 text-blue-400 group-hover:text-blue-600"></i>
+                            朗讀
+                        </button>
+                        <div class="flex flex-col justify-center overflow-hidden">
+                            <span class="font-bold text-slate-800 truncate" title="${v.word}">${v.word}</span>
+                            <span class="text-xs text-slate-500 truncate" title="${v.jp}">${v.jp}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateChoicesHtml(choices, qId, ans, isSecret = false, prefix = "list") {
+            if (!choices || choices.length === 0) return '';
+            return choices.map((choice, cIdx) => {
+                const optionLetter = (choice.match(/[A-D]/) || [])[0] || '';
+                const isCorrect = optionLetter === ans;
+                const btnId = `btn-${prefix}-choice-${qId}-${optionLetter || cIdx}`;
+                
+                // TTSできれいに「A 因為...」と読ませるための処理
+                const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, optionLetter ? `${optionLetter} ` : '').replace(/'/g, "\\'");
+                
+                const secretClass = isSecret ? 'secret-target' : '';
+                const ansHtml = isCorrect ? `<span class="${secretClass} flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : '';
+                
+                return `
+                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
+                        <div class="flex items-start gap-2">
+                            <button id="${btnId}" onclick="event.stopPropagation(); speakText('${speakTextStr}', '${btnId}', false)" class="${secretClass} flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5">
+                                <i data-lucide="play" class="w-4 h-4"></i>
+                            </button>
+                            <span class="text-slate-800 leading-relaxed">${getRubyText(choice)}</span>
+                        </div>
+                        ${ansHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateExplanationsHtml(explanations, qId, prefix = "list") {
+            if (!explanations || explanations.length === 0) return '';
+            return `
+                <div class="mt-4 pt-4 border-t border-amber-200/60">
+                    <strong class="flex items-center gap-2 mb-3 text-amber-900 font-bold">
+                        <i data-lucide="book-open" class="w-5 h-5 text-amber-800"></i>
+                        語彙・文法解説
+                    </strong>
+                    <ul class="space-y-4 text-sm">
+                        ${explanations.map((ex, idx) => {
+                            const btnId = `btn-${prefix}-expl-${qId}-${idx}`;
+                            // 発音時の不要な記号を除去
+                            const speakStr = ex.word.replace(/\.+/g, '').replace(/'/g, "\\'");
+                            
+                            // jsonデータ側で color: "blue" と指定すれば青紫系のラベルになる
+                            const colorClass = ex.color === 'blue' 
+                                ? 'bg-indigo-50/80 text-indigo-800 border-indigo-200' 
+                                : 'bg-[#fcf8ec] text-[#8c6b22] border-[#f0e6ca]';
+
+                            return `
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-500 mt-1 font-bold text-lg leading-none shrink-0">•</span>
+                                <div class="flex-1">
+                                    <div class="flex flex-wrap items-baseline gap-2">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-bold border shadow-sm ${colorClass}">
+                                            ${ex.word}
+                                            <button id="${btnId}" onclick="event.stopPropagation(); speakText('${speakStr}', '${btnId}', true)" class="text-blue-500 hover:text-blue-700 transition-colors focus:outline-none" title="音声を再生">
+                                                <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                            </button>
+                                        </span>
+                                        ${ex.pinyin ? `<span class="text-amber-700/80 font-mono text-[0.85rem] tracking-wide">(${ex.pinyin})</span>` : ''}
+                                    </div>
+                                    <div class="mt-1.5 text-amber-900/90 leading-relaxed pl-1">
+                                        ：${ex.meaning}
+                                    </div>
+                                </div>
+                            </li>
+                        `}).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // 1. 一覧学習の描画
+        // ==========================================
+        function renderListView() {
+            const container = document.getElementById('list-content');
+            let html = '';
+
+            questionsData.forEach(q => {
+                if (q.sectionName) {
+                    html += `
+                        <div class="py-4 mt-8 mb-2 border-t-2 border-indigo-100 pt-8 first:mt-0 first:border-0 first:pt-0">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                                ${q.sectionName}
+                            </h2>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <article id="list-q-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
+                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    2回再生して表示
+                                </button>
+                            </div>
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500 text-sm">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>測驗重點: <br class="sm:hidden" />${q.ans || "未輸入"}</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            ${q.choices && q.choices.length > 0 ? `<section><h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選擇題</h3><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${generateChoicesHtml(q.choices, q.id, q.ans, true, 'list')}</div></section>` : ''}
+                            
+                            <section class="secret-target transition-all duration-500 delay-100">
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">聽力內容</h3>
+                                <div class="space-y-3">${generateScriptHtml(q.script, q.id, 'list')}</div>
+                            </section>
+
+                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
+                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i><h4>解析</h4>
+                                </div>
+                                <div class="text-amber-900 text-sm leading-relaxed">
+                                    ${q.meta}
+                                    ${generateExplanationsHtml(q.explanations, q.id, 'list')}
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ==========================================
+        // 2. フラッシュカードのロジック (アップデート版)
+        // ==========================================
+        let fcTargetQuestions = [];
+        let allVocabs = [];
+        
+        let vocabTestQueue = [];
+        let sentenceTestQueue = [];
+        
+        let fcMode = 'vocab';
+        let currentCardIndex = 0;
+        
+        let isVocabAnswered = false;
+        let lastVocabAnswer = null;
+        
+        let isSentenceRevealed = false;
+
+        function initFlashcardsData() {
+            fcTargetQuestions = questionsData; 
+            
+            const vocabMap = new Map();
+            fcTargetQuestions.forEach(q => {
+                if (q.vocab) {
+                    q.vocab.forEach(v => {
+                        // 不正解の選択肢を作るため、日本語訳が存在するものだけを抽出
+                        if (!vocabMap.has(v.word) && v.jp && !v.jp.includes('不正解')) {
+                            vocabMap.set(v.word, v);
+                        }
+                    });
+                }
+            });
+            allVocabs = Array.from(vocabMap.values());
+        }
+
+        function generateVocabChoices(correctVocab) {
+            const allJps = allVocabs.map(v => v.jp).filter(jp => jp !== correctVocab.jp);
+            const shuffledJps = allJps.sort(() => Math.random() - 0.5);
+            const choices = [correctVocab.jp];
+            for (let i = 0; i < 3 && i < shuffledJps.length; i++) {
+                choices.push(shuffledJps[i]);
+            }
+            return choices.sort(() => Math.random() - 0.5);
+        }
+
+        function setFlashcardMode(mode) {
+            if (fcTargetQuestions.length === 0) initFlashcardsData();
+            fcMode = mode;
+            currentCardIndex = 0;
+
+            if (mode === 'vocab') {
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                // 4択問題用のキューを作成
+                vocabTestQueue = [...allVocabs].sort(() => Math.random() - 0.5).map(v => ({
+                    ...v,
+                    choices: generateVocabChoices(v)
+                }));
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+            } else {
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                // 問題まるっと出題(会話)用のキューを作成
+                sentenceTestQueue = [...fcTargetQuestions].sort(() => Math.random() - 0.5);
+                isSentenceRevealed = false;
+            }
+            renderFlashcard();
+        }
+
+        function handleCardClick() {
+            if (fcMode === 'sentence' && !isSentenceRevealed) {
+                isSentenceRevealed = true;
+                renderFlashcard();
+            }
+        }
+
+        function answerVocab(choice) {
+            if (isVocabAnswered) return;
+            lastVocabAnswer = choice;
+            isVocabAnswered = true;
+            renderFlashcard();
+        }
+
+        function nextCard() {
+            window.speechSynthesis.cancel();
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            if (currentCardIndex < maxLen - 1) {
+                currentCardIndex++;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            window.speechSynthesis.cancel();
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function reshuffleCards() {
+            window.speechSynthesis.cancel();
+            setFlashcardMode(fcMode);
+        }
+
+        function renderFlashcard() {
+            const container = document.getElementById('flashcard-container');
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            
+            if (maxLen === 0) {
+                 container.innerHTML = '<div class="text-center p-8 text-slate-500">沒有資料。</div>';
+                 return;
+            }
+
+            document.getElementById('fc-counter').innerText = `${currentCardIndex + 1} / ${maxLen}`;
+            
+            let contentHtml = '';
+
+            if (fcMode === 'vocab') {
+                const item = vocabTestQueue[currentCardIndex];
+                
+                if (!isVocabAnswered) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-4">
+                            <p class="text-slate-500 mb-6 font-bold tracking-wide">音声を聽いて、正しい意味を選んでください</p>
+                            <button id="fc-vocab-play" onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play', true)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-5 px-10 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-3 text-xl">
+                                <i data-lucide="volume-2" class="w-8 h-8"></i> 音声を聽く
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl mx-auto">
+                            ${item.choices.map((choice, idx) => `
+                                <button onclick="event.stopPropagation(); answerVocab('${choice.replace(/'/g, "\\'")}')" class="p-4 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 transition-all text-slate-700 font-bold text-center h-full flex items-center justify-center min-h-[6rem] leading-relaxed text-sm sm:text-base">
+                                    ${choice}
+                                </button>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    const isCorrect = lastVocabAnswer === item.jp;
+                    contentHtml = `
+                        <div class="text-center mb-8 mt-4 animate-fade-in">
+                            <div class="inline-flex items-center justify-center p-4 rounded-full ${isCorrect ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'} mb-6 shadow-inner">
+                                <i data-lucide="${isCorrect ? 'check-circle' : 'x-circle'}" class="w-12 h-12"></i>
+                            </div>
+                            <div class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4 tracking-wide leading-snug">${item.word}</div>
+                            <div class="text-lg sm:text-xl text-slate-500 font-mono mb-6 bg-slate-100 inline-block px-4 py-2 rounded-md leading-relaxed break-all max-w-full">${item.pinyin}</div>
+                            <div class="text-xl font-bold text-indigo-700 leading-relaxed">${item.jp}</div>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-10">
+                            <button onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play-after', true)" id="fc-vocab-play-after" class="p-4 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors border border-slate-200">
+                                <i data-lucide="volume-2" class="w-6 h-6"></i>
+                            </button>
+                            <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow hover:bg-indigo-700 transition-colors flex items-center gap-2 text-lg">
+                                次の問題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                // 問題まるっと出題 (会話)
+                const item = sentenceTestQueue[currentCardIndex];
+                
+                if (!isSentenceRevealed) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-8">
+                            <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-widest">${item.sectionName || '聽力測驗'}</div>
+                            <h3 class="text-3xl font-bold text-slate-800 mb-8">第 ${item.id} 題</h3>
+                            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+                                <button id="fc-sent-play-1" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-1', 1)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 1回再生
+                                </button>
+                                <button id="fc-sent-play-2" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-2', 2)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 2回再生
+                                </button>
+                                <button id="fc-sent-play-3" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-3', 3)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 3回再生
+                                </button>
+                                <button id="fc-sent-play-4" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-4', 4)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 4回再生
+                                </button>
+                            </div>
+                            <p class="text-slate-500 font-medium bg-slate-100 inline-block px-6 py-3 rounded-lg"><i data-lucide="mouse-pointer-click" class="w-5 h-5 inline-block align-text-bottom mr-1 text-slate-400"></i> カードをクリック、またはSpaceキーで解答・解説を表示</p>
+                        </div>
+                    `;
+                } else {
+                    contentHtml = `
+                        <div class="w-full text-left animate-fade-in">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">${item.sectionName || '聽力測驗'}</span>
+                                    <h3 class="text-2xl font-bold text-slate-800">第 ${item.id} 題 解答・解析</h3>
+                                </div>
+                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after', 1)" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="bg-emerald-50 text-emerald-800 px-5 py-4 rounded-xl font-bold mb-8 flex items-center gap-3 text-lg border border-emerald-100 shadow-sm">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-emerald-600 shrink-0"></i> 重點: ${item.ans || "句子理解"}
+                            </div>
+
+                            ${item.choices && item.choices.length > 0 ? `
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="list" class="w-4 h-4"></i> 選擇題</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    ${generateChoicesHtml(item.choices, item.id, item.ans, false, 'fc')}
+                                </div>
+                            </div>
+                            ` : ''}
+
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> 聽力內容</h4>
+                                <div class="space-y-4 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    ${generateScriptHtml(item.script, `fc-sent-${item.id}`, 'fc')}
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> 解析</h4>
+                                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-amber-900 text-sm leading-relaxed shadow-sm font-medium">
+                                    ${item.meta}
+                                    ${generateExplanationsHtml(item.explanations, item.id, 'fc')}
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end pt-4 border-t border-slate-100">
+                                <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                    下一題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            container.innerHTML = `
+                <div class="relative w-full min-h-[300px] bg-slate-50 rounded-2xl border-2 border-slate-200 p-6 md:p-10 flex flex-col justify-center items-center hover:border-indigo-200 transition-all shadow-sm">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded bg-slate-200 text-xs font-bold text-slate-500 uppercase tracking-widest z-20">${(fcMode === 'vocab' && isVocabAnswered) || (fcMode === 'sentence' && isSentenceRevealed) ? 'Answer / Explanation' : 'Question'}</div>
+                    <div class="w-full mt-6">${contentHtml}</div>
+                </div>
+            `;
+            lucide.createIcons({root: container});
+        }
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (fcMode === 'sentence' && !isSentenceRevealed) {
+                        isSentenceRevealed = true;
+                        renderFlashcard();
+                    }
+                } else if (e.code === 'ArrowRight') nextCard();
+                else if (e.code === 'ArrowLeft') prevCard();
+            }
+        });
+
+        // ==========================================
+        // 初期化
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListView();
+            lucide.createIcons();
+
+            // 音声スピードスライダーのイベントリスナー設定
+            const speedSlider = document.getElementById('speed-slider');
+            const speedDisplay = document.getElementById('speed-display');
+            speedSlider.addEventListener('input', (e) => {
+                currentSpeechRate = parseFloat(e.target.value);
+                speedDisplay.innerText = currentSpeechRate.toFixed(2) + 'x';
+            });
+        });
+    </script>
+</body>
+</html>
