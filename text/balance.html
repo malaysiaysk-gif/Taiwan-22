@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>退職カウントダウン - 12月8日へ向けて</title>
+    <title>退職カウントダウン - 9月15日へ向けて</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -48,7 +48,7 @@
                     <i class="fa-solid fa-map-location-dot mr-2"></i>計画編
                 </button>
                 <button onclick="switchTab('record')" id="btn-tab-record" class="px-8 py-2.5 rounded-full text-sm md:text-base font-bold text-gray-500 hover:text-gray-700 transition-all duration-200">
-                    <i class="fa-solid fa-book-journal-whills mr-2"></i>記録編
+                    <i class="fa-solid fa-clipboard-check mr-2"></i>記録編 (留学準備)
                 </button>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div id="tab-plan" class="tab-content active">
             <!-- カウントダウン セクション (一体化レイアウト) -->
             <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
-                <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">12月4日まで、あと...</h2>
+                <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">9月15日まで、あと...</h2>
                 
                 <!-- 4つのブロック -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -94,7 +94,7 @@
                         <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
                             <span>5月1日 8:00</span>
                             <span id="progress-text" class="text-center">--% | 状態確認中</span>
-                            <span>12月4日 17:00</span>
+                            <span>9月15日 17:00</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-4 md:h-5 shadow-inner">
                             <div id="progress-bar" class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-500 h-4 md:h-5 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
@@ -109,8 +109,8 @@
                             <span>全 14 日</span>
                         </div>
                         <div class="w-full bg-rose-100 rounded-full h-3 shadow-inner border border-rose-200 mb-4">
-                            <!-- 6日消化 / 14日 = 約40% -->
-                            <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 35.71%"></div>
+                            <!-- 6日消化 / 14日 = 約42.85% -->
+                            <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 42.85%"></div>
                         </div>
                         
                         <!-- MC ボイス練習ボタン -->
@@ -118,7 +118,7 @@
                             <div class="bg-rose-100 p-1.5 rounded-full mr-2 md:mr-3 group-hover:bg-rose-200 transition-colors">
                                 <i class="fa-solid fa-volume-high text-rose-500"></i>
                             </div>
-                            <span>"I will take MC today" <span class="hidden md:inline"></span></span>
+                            <span>"I will take MC today" <span class="hidden md:inline">声出し練習</span></span>
                         </button>
                     </div>
 
@@ -139,13 +139,8 @@
                     </div>
                 </div>
 
-                <!-- 退職届提出 カウントダウン -->
-                <div class="bg-[#fff1f2] border border-[#fecdd3] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-center shadow-sm">
-                    <i class="fa-solid fa-envelope-open-text text-[#f43f5e] text-3xl mb-3 md:mb-0 md:mr-4 drop-shadow-sm"></i>
-                    <div class="text-gray-800 font-bold text-center md:text-left text-lg md:text-xl">
-                        退職届の提出期限 (9月18日) まで、あと <span id="notice-days" class="text-4xl font-black text-[#e11d48] mx-2 drop-shadow-sm">--</span> 営業日
-                    </div>
-                </div>
+                <!-- ※「退職届の提出期限」は削除されました -->
+
             </section>
 
             <!-- カレンダー セクション -->
@@ -322,14 +317,34 @@
             </div>
         </div>
 
-        <!-- ==================== 記録編 タブ ==================== -->
+        <!-- ==================== 記録編 タブ (留学準備ダッシュボード) ==================== -->
         <div id="tab-record" class="tab-content">
-            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-emerald-500 min-h-[50vh] flex flex-col items-center justify-center">
-                <div class="text-emerald-100 text-6xl mb-4">
-                    <i class="fa-solid fa-book-open"></i>
+            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 border-t-[6px] border-emerald-500">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-gray-100 pb-6">
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-700 flex items-center">
+                            <i class="fa-solid fa-plane-departure text-emerald-500 mr-3"></i> 台湾留学 準備ダッシュボード
+                        </h2>
+                        <p class="text-gray-500 text-sm mt-2 font-medium">退職後のスムーズな渡航に向けて、計画的にタスクを進めましょう。</p>
+                    </div>
+                    
+                    <!-- 全体進捗プログレスバー -->
+                    <div class="mt-4 md:mt-0 w-full md:w-1/3 bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="text-xs font-bold text-gray-500">達成度</span>
+                            <span class="text-xl font-black text-emerald-600" id="task-progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div id="task-progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                        </div>
+                    </div>
                 </div>
-                <h2 class="text-2xl font-black text-gray-700 mb-2">記録編へようこそ</h2>
-                <p class="text-gray-500 font-medium">ここには、退職に向けた日々の記録や、タスクの進捗などを追加していくことができます。</p>
+
+                <!-- タスクリスト コンテナ -->
+                <div class="space-y-8" id="task-container">
+                    <!-- Javascriptでタスクがここに生成されます -->
+                </div>
+
             </section>
         </div>
 
@@ -355,6 +370,149 @@
             }
         }
 
+        // --- 台湾留学タスクのデータと描画ロジック ---
+        const studyTasks = [
+            {
+                category: "事前調査",
+                icon: "fa-magnifying-glass",
+                color: "text-blue-500",
+                bg: "bg-blue-50",
+                tasks: [
+                    { id: "t1", title: "公式サイト確認", desc: "募集開始日・締切日・学費の確認", deadline: "9月上旬", completed: false },
+                    { id: "t2", title: "ビザ種類確認", desc: "90日以上滞在の場合は停留ビザが必要", deadline: "9月中旬", completed: false }
+                ]
+            },
+            {
+                category: "書類準備",
+                icon: "fa-file-lines",
+                color: "text-purple-500",
+                bg: "bg-purple-50",
+                tasks: [
+                    { id: "t3", title: "最終学歴卒業証明書", desc: "英語または中国語（PDF準備）", deadline: "9月中旬", completed: false },
+                    { id: "t4", title: "成績証明書", desc: "大学等の成績（必要な場合）", deadline: "9月中旬", completed: false },
+                    { id: "t5", title: "残高証明書", desc: "英文（銀行で発行・金額目安は要確認）", deadline: "10月上旬", completed: false },
+                    { id: "t6", title: "パスポート", desc: "有効期限を確認（6ヶ月以上推奨）", deadline: "即時", completed: false }
+                ]
+            },
+            {
+                category: "申請手続",
+                icon: "fa-laptop-file",
+                color: "text-orange-500",
+                bg: "bg-orange-50",
+                tasks: [
+                    { id: "t7", title: "オンライン申請", desc: "公式サイトより必要事項入力", deadline: "10月中旬", completed: false },
+                    { id: "t8", title: "学費納入", desc: "クレジットカード等で決済", deadline: "10月下旬", completed: false },
+                    { id: "t9", title: "入学許可証受領", desc: "メールでの受領を確認し印刷", deadline: "11月上旬", completed: false }
+                ]
+            },
+            {
+                category: "渡航準備",
+                icon: "fa-suitcase-rolling",
+                color: "text-teal-500",
+                bg: "bg-teal-50",
+                tasks: [
+                    { id: "t10", title: "航空券手配", desc: "旧正月前後を避けるか早めの予約", deadline: "11月中旬", completed: false },
+                    { id: "t11", title: "滞在先手配", desc: "寮・シェアハウス・ホテル等の確保", deadline: "11月中旬", completed: false },
+                    { id: "t12", title: "海外旅行保険", desc: "クレジットカード付帯または長期保険加入", deadline: "11月下旬", completed: false },
+                    { id: "t13", title: "現地通信環境", desc: "SIMカードまたはWi-Fiルーターの検討", deadline: "12月上旬", completed: false },
+                    { id: "t14", title: "持ち物整理", desc: "防寒具・筆記用具・常備薬・アダプター", deadline: "12月上旬", completed: false }
+                ]
+            },
+            {
+                category: "学習準備",
+                icon: "fa-book-atlas",
+                color: "text-indigo-500",
+                bg: "bg-indigo-50",
+                tasks: [
+                    { id: "t15", title: "TOCFL対策", desc: "語彙・文法の復習（クラス分けのため）", deadline: "継続中", completed: false }
+                ]
+            },
+            {
+                category: "到着後",
+                icon: "fa-location-dot",
+                color: "text-rose-500",
+                bg: "bg-rose-50",
+                tasks: [
+                    { id: "t16", title: "クラス分けテスト", desc: "指定日時に現地で受験", deadline: "12月上旬", completed: false },
+                    { id: "t17", title: "居留証手続き", desc: "90日以上滞在の場合、入国後速やかに", deadline: "12月中旬", completed: false }
+                ]
+            }
+        ];
+
+        // タスクの描画関数
+        function renderTasks() {
+            const container = document.getElementById('task-container');
+            container.innerHTML = '';
+            
+            let totalTasks = 0;
+            let completedTasks = 0;
+
+            studyTasks.forEach(category => {
+                let html = `
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-gray-700 mb-3 flex items-center border-b border-gray-100 pb-2">
+                            <span class="${category.bg} ${category.color} w-8 h-8 rounded-lg flex items-center justify-center mr-2 shadow-sm">
+                                <i class="fa-solid ${category.icon}"></i>
+                            </span>
+                            ${category.category}
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                `;
+
+                category.tasks.forEach(task => {
+                    totalTasks++;
+                    if (task.completed) completedTasks++;
+
+                    // 期限のバッジ色分け (簡易的)
+                    let badgeClass = "bg-gray-100 text-gray-600";
+                    if (task.deadline.includes("即時") || task.deadline.includes("9月")) badgeClass = "bg-red-100 text-red-700";
+                    else if (task.deadline.includes("10月")) badgeClass = "bg-orange-100 text-orange-700";
+                    else if (task.deadline.includes("11月")) badgeClass = "bg-yellow-100 text-yellow-700";
+                    else if (task.deadline.includes("継続中")) badgeClass = "bg-blue-100 text-blue-700";
+
+                    html += `
+                        <div class="border ${task.completed ? 'border-emerald-200 bg-emerald-50/30' : 'border-gray-200 bg-white'} rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex items-start" onclick="toggleTask('${task.id}')">
+                            
+                            <!-- カスタムチェックボックス -->
+                            <div class="mt-0.5 flex-shrink-0 mr-3">
+                                <div class="w-6 h-6 rounded-md border-2 ${task.completed ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-gray-300 bg-gray-50'} flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-check text-xs ${task.completed ? 'opacity-100' : 'opacity-0'}"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-sm ${task.completed ? 'text-gray-400 line-through' : 'text-gray-800'}">${task.title}</h4>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded ${badgeClass}">${task.deadline}</span>
+                                </div>
+                                <p class="text-xs ${task.completed ? 'text-gray-400' : 'text-gray-500'} leading-relaxed">${task.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+                container.innerHTML += html;
+            });
+
+            // 進捗バーの更新
+            const progress = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+            document.getElementById('task-progress-bar').style.width = `${progress}%`;
+            document.getElementById('task-progress-text').innerText = `${progress}%`;
+        }
+
+        // タスクのトグル処理
+        function toggleTask(taskId) {
+            studyTasks.forEach(cat => {
+                cat.tasks.forEach(t => {
+                    if (t.id === taskId) {
+                        t.completed = !t.completed;
+                    }
+                });
+            });
+            renderTasks();
+        }
+
         // --- MC 音声再生ロジック ---
         function playMCText() {
             if (!window.speechSynthesis) {
@@ -362,15 +520,12 @@
                 return;
             }
             
-            // 再生用の関数
             const speak = () => {
-                // 日本人訛り（カタカナ英語）を再現するため、日本語エンジンでカタカナを読ませる
-                const utterance = new SpeechSynthesisUtterance("アイ、ウィル、テイｯク、エムスィー、トゥデェイ。");
+                const utterance = new SpeechSynthesisUtterance("アイ、ウィル、テイク、エムスィー、トゥデイ。");
                 utterance.lang = 'ja-JP';
-                utterance.pitch = 0.8; // 男性の声っぽく少し低め
-                utterance.rate = 2.8; // さらに早口に設定 (1.3 -> 1.8)
+                utterance.pitch = 0.6;
+                utterance.rate = 1.8;
                 
-                // 日本語の男性の声を優先的に探す（OSやブラウザによっては女性声しか無い場合もあります）
                 const voices = window.speechSynthesis.getVoices();
                 const maleVoice = voices.find(v => 
                     v.lang === 'ja-JP' && 
@@ -384,22 +539,19 @@
                 window.speechSynthesis.speak(utterance);
             };
 
-            // 1回だけ再生する
             speak();
         }
 
-        // 初回ロード時に音声リストを取得しておく（一部ブラウザへの対応）
         if (window.speechSynthesis) {
             window.speechSynthesis.onvoiceschanged = () => {
                 window.speechSynthesis.getVoices();
             };
         }
 
-        // 目標日時: 2026年12月4日 00:00:00
-        const targetDate = new Date('2026-12-04T00:00:00').getTime();
+        // --- STREAMING_CHUNK: Date Logic & Planners ---
+        // 目標日時: 2026年9月15日 00:00:00
+        const targetDate = new Date('2026-09-15T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
-        // 退職届提出日: 2026年9月18日 00:00:00
-        const noticeDate = new Date('2026-09-18T00:00:00').getTime();
         // 台湾移住フライト日: 2027年2月4日 07:05:00
         const flightDate = new Date('2027-02-04T07:05:00').getTime();
         
@@ -412,14 +564,13 @@
             '2026-07-20', // 海の日
             '2026-08-11', // 山の日
             '2026-09-21', // 敬老の日
-            '2026-09-22', // 国民の休日 (シルバーウィーク連休)
+            '2026-09-22', // 国民の休日
             '2026-09-23', // 秋分の日
             '2026-10-12', // スポーツの日
             '2026-11-03', // 文化の日
             '2026-11-23', // 勤労感謝の日
         ];
 
-        // 業務時間（平日 8:00〜17:00、祝日除く）のミリ秒を計算する関数
         function calculateWorkingTimeMs(startTimestamp, endTimestamp) {
             if (startTimestamp >= endTimestamp) return 0;
             
@@ -436,7 +587,6 @@
                 const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
                 const isHoliday = holidays2026.includes(dateString);
                 
-                // 営業日の場合
                 if (!isWeekend && !isHoliday) {
                     const workStart = new Date(current);
                     workStart.setHours(8, 0, 0, 0);
@@ -451,7 +601,6 @@
                     }
                 }
                 
-                // 翌日の 00:00:00 に進める
                 current.setDate(current.getDate() + 1);
                 current.setHours(0, 0, 0, 0);
             }
@@ -459,14 +608,12 @@
             return totalMs;
         }
 
-        // 指定した終了日までの残り営業日数を計算する関数
         function getRemainingWorkingDaysToTarget(targetDateString) {
             const end = new Date(targetDateString); 
             let workingDays = 0;
             let current = new Date();
             current.setHours(0,0,0,0);
 
-            // 5月1日より前なら、5月1日を起点とする
             const minStart = new Date('2026-05-01T00:00:00');
             if (current < minStart) {
                 current = new Date(minStart);
@@ -496,18 +643,12 @@
             return workingDays;
         }
 
-        // 現在日時からの残り出勤日数を計算する関数
-        function getRemainingWorkingDays() {
-            return getRemainingWorkingDaysToTarget('2026-12-04T00:00:00');
-        }
-
         // カウントダウン更新関数
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance <= 0) {
-                // 退職日を過ぎた場合
                 document.getElementById('cd-days').innerText = "0";
                 document.getElementById('cd-hours').innerText = "0";
                 document.getElementById('cd-mins').innerText = "0";
@@ -518,25 +659,11 @@
                 return;
             }
 
-            // 出勤日、時間、分、秒の計算
-            const workingDaysLeft = getRemainingWorkingDays();
+            const workingDaysLeft = getRemainingWorkingDaysToTarget('2026-09-15T00:00:00');
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // 総残り秒数の計算
             const totalSeconds = Math.floor(distance / 1000);
-
-            // 退職届提出までの日数計算 (営業日ベース)
-            const noticeDistance = noticeDate - now;
-            let noticeDays = getRemainingWorkingDaysToTarget('2026-09-18T00:00:00');
-            if (noticeDistance <= 0) {
-                if (distance > 0) {
-                    noticeDays = "提出済！"; 
-                } else {
-                    noticeDays = 0;
-                }
-            }
 
             // DOMへ反映
             document.getElementById('cd-days').innerText = workingDaysLeft;
@@ -544,17 +671,8 @@
             document.getElementById('cd-mins').innerText = minutes;
             document.getElementById('cd-secs').innerText = seconds;
             document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
-            
-            const noticeDaysElement = document.getElementById('notice-days');
-            if (typeof noticeDays === "number") {
-                noticeDaysElement.innerText = noticeDays;
-            } else {
-                noticeDaysElement.innerText = noticeDays;
-                noticeDaysElement.classList.remove('text-3xl', 'text-4xl');
-                noticeDaysElement.classList.add('text-xl', 'md:text-2xl');
-            }
 
-            // フライト日までの日数計算
+            // フライト日計算
             const flightDistance = flightDate - now;
             let flightDays = 0;
             if (flightDistance > 0) {
@@ -575,8 +693,8 @@
                 flightDaysElement.classList.add('text-4xl', 'md:text-5xl');
             }
 
-            // プログレスバーの計算 (業務時間ベース: 5/1 8:00 〜 12/4 17:00)
-            const targetWorkEnd = new Date('2026-12-04T17:00:00').getTime();
+            // プログレスバーの計算 (5/1 8:00 〜 9/15 17:00)
+            const targetWorkEnd = new Date('2026-09-15T17:00:00').getTime();
             const startWorkBegin = new Date('2026-05-01T08:00:00').getTime();
             
             const totalWorkMs = calculateWorkingTimeMs(startWorkBegin, targetWorkEnd);
@@ -586,13 +704,11 @@
             if (totalWorkMs > 0) {
                 progressPercentage = (passedWorkMs / totalWorkMs) * 100;
             }
-            // 0%〜100%の間に収める
             progressPercentage = Math.max(0, Math.min(100, progressPercentage));
             
             const progressBar = document.getElementById('progress-bar');
             if (progressBar) progressBar.style.width = progressPercentage + "%";
             
-            // 現在が業務時間内かどうか判定してステータス表示
             const todayStr = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}-${String(new Date().getDate()).padStart(2,'0')}`;
             const isWeekendNow = (new Date().getDay() === 0 || new Date().getDay() === 6);
             const isHolidayNow = holidays2026.includes(todayStr);
@@ -609,8 +725,6 @@
             }
 
             // --- おもしろスケール表示の計算 ---
-            
-            // 1. 人生スケール (80歳換算)
             const lifeAge = Math.floor((progressPercentage / 100) * 80);
             let lifeText = `${lifeAge}歳 `;
             if (progressPercentage === 0) lifeText = "0歳<br><span class='text-xs text-gray-500'>(オギャー！産まれたて)</span>";
@@ -624,7 +738,6 @@
             else if (lifeAge < 70) lifeText += "<br><span class='text-xs text-gray-500'>(悠々自適の準備中)</span>";
             else lifeText += "<br><span class='text-xs text-gray-500'>(悟りの境地・もうすぐゴール！)</span>";
 
-            // 2. ピラミッドスケール (約210段換算)
             const pyramidSteps = Math.floor((progressPercentage / 100) * 210);
             let pyramidText = `第${pyramidSteps}段目 `;
             if (progressPercentage === 0) pyramidText = "0段目<br><span class='text-xs text-gray-500'>(更地の測量中・先は長い)</span>";
@@ -634,7 +747,6 @@
             else if (pyramidSteps < 150) pyramidText += "<br><span class='text-xs text-gray-500'>(高所作業で足がすくむ)</span>";
             else pyramidText += "<br><span class='text-xs text-gray-500'>(頂上はもうすぐそこ！)</span>";
 
-            // 3. ローマの歴史スケール (約1200年の歴史)
             let romeText = "";
             if (progressPercentage === 0) romeText = "ロムルスによるローマ建国<br><span class='text-xs text-gray-500'>(伝説の始まり・まだ小さな集落)</span>";
             else if (progressPercentage >= 100) romeText = "西ローマ帝国滅亡<br><span class='text-xs text-gray-500'>(古代の終わり・全ての軛から解き放たれた！)</span>";
@@ -648,7 +760,6 @@
             else if (progressPercentage < 95) romeText = "コンスタンティヌス・キリスト教公認<br><span class='text-xs text-gray-500'>(新体制構築・時代の転換点)</span>";
             else romeText = "東西ローマ分裂<br><span class='text-xs text-gray-500'>(帝国は真っ二つ・ラストスパート)</span>";
 
-            // DOMへ反映
             if (document.getElementById('scale-life')) document.getElementById('scale-life').innerHTML = lifeText;
             if (document.getElementById('scale-pyramid')) document.getElementById('scale-pyramid').innerHTML = pyramidText;
             if (document.getElementById('scale-rome')) document.getElementById('scale-rome').innerHTML = romeText;
@@ -656,9 +767,7 @@
 
         // --- 12月カレンダーの描画関数 ---
         function renderCalendar() {
-            // カレンダーのデータ定義
             const calendarDays = [
-                // 1週目
                 { date: 29, currentMonth: false, events: [] },
                 { date: 30, currentMonth: false, events: [] },
                 { date: 1, currentMonth: true, events: [] },
@@ -666,7 +775,6 @@
                 { date: 3, currentMonth: true, events: [ { text: '&nbsp;', type: 'yellow', start: false, end: false }, { text: 'AL1', type: 'blue', start: true, end: true } ] },
                 { date: 4, currentMonth: true, events: [ { text: '&nbsp;', type: 'yellow', start: false, end: true }, { text: 'CO 16th Sept.', type: 'blue', start: true, end: true }, { text: 'LAST DAY', type: 'blue', start: true, end: true } ] },
                 { date: 5, currentMonth: true, events: [] },
-                // 2週目
                 { date: 6, currentMonth: true, events: [] },
                 { date: 7, currentMonth: true, events: [ { text: 'CO 9th Nov.', type: 'blue', start: true, end: true }, { text: '10', type: 'blue', start: true, end: true } ] },
                 { date: 8, currentMonth: true, events: [ { text: 'July+ 4.5', type: 'blue', start: true, end: false }, { text: '9', type: 'blue', start: true, end: false } ] },
@@ -674,7 +782,6 @@
                 { date: 10, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '7', type: 'blue', start: false, end: false } ] },
                 { date: 11, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: true }, { text: '6', type: 'blue', start: false, end: true } ] },
                 { date: 12, currentMonth: true, events: [] },
-                // 3週目
                 { date: 13, currentMonth: true, events: [] },
                 { date: 14, currentMonth: true, events: [ { text: 'Oct.4.5+July0.5', type: 'blue', start: true, end: false }, { text: '5', type: 'blue', start: true, end: false } ] },
                 { date: 15, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '4', type: 'blue', start: false, end: false } ] },
@@ -682,7 +789,6 @@
                 { date: 17, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: false }, { text: '2', type: 'blue', start: false, end: false } ] },
                 { date: 18, currentMonth: true, events: [ { text: '&nbsp;', type: 'blue', start: false, end: true }, { text: '1', type: 'blue', start: false, end: true } ] },
                 { date: 19, currentMonth: true, events: [] },
-                // 4週目
                 { date: 20, currentMonth: true, events: [] },
                 { date: 21, currentMonth: true, events: [] },
                 { date: 22, currentMonth: true, events: [] },
@@ -690,7 +796,6 @@
                 { date: 24, currentMonth: true, events: [ { text: 'Christmas Eve', type: 'green', start: true, end: true } ] },
                 { date: 25, currentMonth: true, events: [ { text: 'COが貰える日', type: 'blue', start: true, end: true }, { text: 'Christmas Day', type: 'green', start: true, end: true } ] },
                 { date: 26, currentMonth: true, events: [] },
-                // 5週目
                 { date: 27, currentMonth: true, events: [] },
                 { date: 28, currentMonth: true, events: [] },
                 { date: 29, currentMonth: true, events: [] },
@@ -717,7 +822,6 @@
                     if (ev.type === 'green') colorClass = 'bg-emerald-600 text-white';
                     else if (ev.type === 'yellow') colorClass = 'bg-amber-400 text-amber-900';
                     
-                    // 連続するイベントの角丸・マージン処理
                     let shapeClass = '';
                     if (ev.start && ev.end) { shapeClass = 'rounded mx-1'; }
                     else if (ev.start) { shapeClass = 'rounded-l ml-1 mr-0'; }
@@ -733,10 +837,13 @@
             grid.innerHTML = html;
         }
 
-        // 初期実行と1秒ごとのループ
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-        renderCalendar(); // カレンダー描画
+        // 初期実行とイベントリスナー設定
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            renderCalendar();
+            renderTasks();
+        });
 
     </script>
 </body>
