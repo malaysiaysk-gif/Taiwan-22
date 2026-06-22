@@ -50,6 +50,10 @@
         // --- Data ---
         // 手入力で管理しやすいように、日付形式（YYYYMMDD）のIDに変更しています
         let records = [
+                   { id: 202606022, date: '2026-06-22', hours: 0.5 },
+             { id: 202606021, date: '2026-06-21', hours: 5.0 },
+            { id: 202606020, date: '2026-06-20', hours: 5.0 },
+                    { id: 202606019, date: '2026-06-19', hours: 1.0 },
                { id: 202606018, date: '2026-06-18', hours: 0.5 },
             { id: 202606017, date: '2026-06-17', hours: 1.0 },
             { id: 202606016, date: '2026-06-16', hours: 1.5 },
@@ -163,7 +167,7 @@
         };
 
         // --- App State ---
-        let activeTab = 'plan';
+        let activeTab = 'record';
         let scheduleType = 'weekdayMWF';
         let newDate = getTodayLocalString();
         let newHours = '';
