@@ -1506,6 +1506,8 @@
                 btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
                 if(btn.id.includes('fc-sent-play-after')) {
                     btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i>`;
+                } else if(btn.id.includes('btn-list-conv-nochoice')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 選択肢なしで再生`;
                 } else if(btn.id.includes('btn-list-conv')) {
                     btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
                 } else if (btn.id.includes('fc-sent-play-')) {
@@ -1518,7 +1520,7 @@
             }
         }
 
-        function playConversation(qId, btnId, loopCount = 1, callback = null) {
+        function playConversation(qId, btnId, loopCount = 1, callback = null, includeChoices = true) {
             if (!('speechSynthesis' in window)) {
                 showToast("お使いのブラウザは音声再生に対応していません。");
                 return;
@@ -1551,13 +1553,13 @@
                     let delay = 600;
                     if (index === q.script.length - 2) delay = 1200; // 問の前のポーズ
                     
-                    // 選択肢がない場合、1回目終了後に長めのポーズ
-                    if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
+                    // 選択肢がない場合、または選択肢を読まない場合、1回目終了後に長めのポーズ
+                    if (i === 0 && index === q.script.length - 1 && (!includeChoices || !q.choices || q.choices.length === 0)) delay = 2000; 
                     utterances.push({ text: line.text, delayAfter: delay });
                 });
 
                 // 選択肢の読み上げを追加
-                if (q.choices && q.choices.length > 0) {
+                if (includeChoices && q.choices && q.choices.length > 0) {
                     q.choices.forEach((choice, index) => {
                         let delay = 1000; // 選択肢間のポーズ
                         // TTSが綺麗に「A因為...」と読めるように整形
@@ -1843,16 +1845,22 @@
                 html += `
                     <article id="list-q-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                         <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-                            <div class="flex items-center gap-4">
+                            <div class="flex flex-col xl:flex-row xl:items-center gap-3">
                                 <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
-                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                    2回再生して表示
-                                </button>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); }, true)" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                        2回再生して表示
+                                    </button>
+                                    <button onclick="playConversation(${q.id}, 'btn-list-conv-nochoice-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); }, false)" id="btn-list-conv-nochoice-${q.id}" class="flex items-center gap-1.5 bg-white border border-slate-300 text-slate-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-slate-50 transition-colors">
+                                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                        選択肢なしで再生
+                                    </button>
+                                </div>
                             </div>
-                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500 text-sm">
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500 text-sm w-fit mt-1 sm:mt-0">
                                 <i data-lucide="check-circle" class="w-4 h-4"></i>
-                                <span>測驗重點: <br class="sm:hidden" />${q.focus || q.ans || "未輸入"}</span>
+                                <span>測驗重點: <br class="sm:hidden" />${q.ans || "未輸入"}</span>
                             </div>
                         </div>
 
