@@ -1,0 +1,400 @@
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 1〜5 総合復習</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 40px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #b83356; 
+            margin-top: 25px;
+            font-size: 1.1em;
+            border-bottom: 1px dashed #f0a6b6;
+            padding-bottom: 5px;
+        }
+        .highlight-box {
+            background-color: #fffaf0;
+            border: 2px solid #f6d887;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #fff0b3 60%);
+            font-weight: bold;
+        }
+        .grammar-pattern {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pattern-title {
+            color: #d85a7a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tip-box {
+            background-color: #fdf0f3;
+            border-left: 4px solid #d85a7a;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tip-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .exercise-item {
+            margin-bottom: 25px;
+            background-color: #fdfbf7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d85a7a;
+            border: 1px solid #eee;
+        }
+        .exercise-q { 
+            font-weight: bold; 
+            color: #444;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.2em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        .jp {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+        .badge {
+            background-color: #c44769;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 1〜5: 総合復習＆小テスト<br><span style="font-size: 0.6em; color: #666;">（TOCFL Band-A 必須文法 網羅版）</span></h1>
+
+        <!-- 要点まとめセクション -->
+        <section id="grammar-summary">
+            <h2>1. Lesson 1〜5 必須文法 要点まとめ</h2>
+            
+            <div class="highlight-box">
+                <p>ここまでの5課で学んだ内容は、TOCFLなどの基礎試験において<strong>最も頻出する重要文法</strong>です。各課のコアとなるルールを一覧で振り返りましょう。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <h3>Lesson 1: 近い未来（変化の「了」）</h3>
+                <p>・<strong>快(要)……了</strong>：「もうすぐ〜する」※間に時間詞（十點など）を入れることができる。<br>
+                   ・<strong>要……了</strong>：「もう〜する、〜しそうだ」<br>
+                   ・<strong>就要……了</strong>：「いよいよ〜だ」※文頭に特定の時間詞（下個月など）を伴うことが多い。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <h3>Lesson 2: 概数・分数・パーセント</h3>
+                <p>・<strong>幾 vs 多</strong>：端数が1桁（1〜9）なら「幾」（例：十幾個）、端数が2桁以上なら「多」（例：兩百多塊）。<br>
+                   ・<strong>分數</strong>：分母 ＋ 分之 ＋ 分子（例：三分之一）<br>
+                   ・<strong>百分比</strong>：百分之 ＋ 数字（例：百分之百）、または 〇〇趴 (pā)。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <h3>Lesson 3: 疑問詞の派生用法</h3>
+                <p>・<strong>不定用法</strong>：「何か(什麼)」「どこか(哪裡)」。文末に“嗎”をつけると柔らかい表現になる。<br>
+                   ・<strong>包括用法</strong>：疑問詞 ＋ 都 ＋ 肯定/否定（例：我什麼都吃 / 哪裡都沒去）。<br>
+                   ・<strong>反語用法</strong>：形は疑問文だが、強い否定を表す（例：誰會相信？＝誰も信じない）。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <h3>Lesson 4: 結果補語</h3>
+                <p>・動詞の直後に「結果（完、見、錯、好、乾淨）」を置いて、動作の結果を明確にする。<br>
+                   ・<strong>否定形</strong>：「沒(有) ＋ 動詞 ＋ 結果補語」 ※文末に“了”は置かない。<br>
+                   （例：這塊肉還<strong>沒</strong>烤<strong>好</strong>。）</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <h3>Lesson 5: 数量補語（回数・継続時間）</h3>
+                <p>・<strong>語順の3パターン（目的語がある場合）</strong>：<br>
+                    a. 動詞 ＋ 目的語 ＋ 動詞 ＋ 数量補語 （例：游泳游了一個小時）<br>
+                    b. 動詞 ＋ 数量補語 ＋ 目的語 （例：放幾天假）<br>
+                    c. 動詞 ＋ 目的語(人/地名) ＋ 數量補語 （例：回日本一趟）</p>
+            </div>
+        </section>
+
+        <!-- 総合小テストセクション -->
+        <section id="quiz">
+            <h2>2. 総合小テスト（全10問）</h2>
+            <p style="margin-bottom: 25px; color: #555;">これまでの学習事項をミックスした小テストです。「回答を表示」ボタンで答えを確認し、音声で発音もチェックしましょう。</p>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q1 (L1)</span> 私たちは来月いよいよ卒業です。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">我們下個月就要畢業了。</span>
+                        <button class="play-btn" onclick="speakText('我們下個月就要畢業了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒmen xià ge yuè jiù yào bìyè le.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「下個月」という特定の時間詞があるので「就要……了」を使います。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q2 (L1)</span> もうすぐ10時だから、もう寝なければならないよ。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">快(要)十點了，你應該睡覺了。</span>
+                        <button class="play-btn" onclick="speakText('快要十點了，你應該睡覺了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Kuài (yào) shí diǎn le, nǐ yīnggāi shuìjiào le.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「10時」という時間詞を入れることができるのは「快要……了」だけです。（※要十點了 は不可）</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q3 (L2)</span> あの部屋には椅子が十数脚（十あまり）ある。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">那間房間裡有十幾張椅子。</span>
+                        <button class="play-btn" onclick="speakText('那間房間裡有十幾張椅子。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nà jiān fángjiān lǐ yǒu shí jǐ zhāng yǐzi.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">1桁の端数なので「幾」を使います。量詞は椅子の「張（zhāng）」です。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q4 (L2)</span> 台湾人が食べるジャガイモの53%は、アメリカから買ったものだ。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">台灣人吃的馬鈴薯，百分之五十三是跟美國買的。</span>
+                        <button class="play-btn" onclick="speakText('台灣人吃的馬鈴薯，百分之五十三是跟美國買的。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Táiwān rén chī de mǎlíngshǔ, bǎi fēn zhī wǔshísān shì gēn Měiguó mǎi de.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q5 (L3)</span> 私はどこに行くのでもかまわない。ただ、うるさい場所には行きたくない。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">去哪裡都可以，就是不想去很吵的地方。</span>
+                        <button class="play-btn" onclick="speakText('去哪裡都可以，就是不想去很吵的地方。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Qù nǎlǐ dōu kěyǐ, jiùshì bù xiǎng qù hěn chǎo de dìfāng.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「哪裡都～（どこでも）」という疑問詞の包括用法です。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q6 (L3)</span> 来週の月曜日は会議ですが、私は何か資料を準備しなければなりませんか。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">下星期一要開會，我需要準備什麼資料嗎？</span>
+                        <button class="play-btn" onclick="speakText('下星期一要開會，我需要準備什麼資料嗎？')">🔊</button>
+                    </div>
+                    <div class="pinyin">Xià xīngqíyī yào kāi huì, wǒ xūyào zhǔnbèi shénme zīliào ma?</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「何か～ですか？」と柔らかく尋ねるため、文末に「嗎」をつけます。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q7 (L4)</span> ごめんなさい、あなたの名前を書き間違えてしまいました。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">對不起，我把你的名字寫錯了。</span>
+                        <button class="play-btn" onclick="speakText('對不起，我把你的名字寫錯了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Duìbùqǐ, wǒ bǎ nǐ de míngzì xiě cuò le.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「書く（寫）」＋結果補語「間違える（錯）」で「寫錯」となります。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q8 (L4)</span> あのサンドイッチは大きすぎたので、私は食べきれなかった。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">那份三明治太大了，我沒有吃完。</span>
+                        <button class="play-btn" onclick="speakText('那份三明治太大了，我沒有吃完。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nà fèn sānmíngzhì tài dà le, wǒ méi yǒu chī wán.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">結果補語の否定なので「沒有」を使います。文末に「了」は置きません。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q9 (L5)</span> 私は阿里山に3回行ったことがあるが、あそこの風景が大好きだ。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">我去過三次阿里山，我很喜歡那裡的風景。</span>
+                        <button class="play-btn" onclick="speakText('我去過三次阿里山，我很喜歡那裡的風景。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒ qù guò sān cì Ālǐshān, wǒ hěn xǐhuān nàlǐ de fēngjǐng.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「阿里山」は地名なので、動詞＋数量補語＋目的語（去過三次阿里山）、または動詞＋目的語＋数量補語（去過阿里山三次）のどちらも可能です。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q"><span class="badge">Q10 (L5)</span> 彼は家に用事があって、来週一度日本に戻る。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">他家裡有事，下禮拜要回日本一趟。</span>
+                        <button class="play-btn" onclick="speakText('他家裡有事，下禮拜要回日本一趟。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Tā jiālǐ yǒu shì, xià lǐbài yào huí Rìběn yí tàng.</div>
+                    <div class="tip-box" style="margin-top: 10px; padding: 8px;">「日本」は地名なので、動詞＋目的語＋数量補語（回日本一趟）の形になります。</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson1_to_5_review.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson1_to_5_review.html created.")
