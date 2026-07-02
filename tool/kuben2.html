@@ -3838,3 +3838,2682 @@ with open("taiwan_chinese_lesson6_full_with_highlights.html", "w", encoding="utf
     f.write(html_content)
 
 print("taiwan_chinese_lesson6_full_with_highlights.html created.")
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 7 完全網羅版</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 40px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #b83356; 
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+        .highlight-box {
+            background-color: #fffaf0;
+            border: 2px solid #f6d887;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #fff0b3 60%);
+            font-weight: bold;
+        }
+        .grammar-pattern {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pattern-title {
+            color: #d85a7a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tip-box {
+            background-color: #fdf0f3;
+            border-left: 4px solid #d85a7a;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tip-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .example-box { 
+            background: #fdfbf7; 
+            border: 1px solid #eee;
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+        }
+        .example { 
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .example:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.2em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        .jp {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #eaeaea; 
+            padding: 10px 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #fdf0f3; 
+            color: #a03c56; 
+        }
+        .exercise-item {
+            margin-bottom: 25px;
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .exercise-q { 
+            font-weight: bold; 
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .badge {
+            background-color: #f0a6b6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .warning-text {
+            color: #d9534f;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 7: 昨天我十二點才睡覺。<br><span style="font-size: 0.6em; color: #666;">（文法解説・例文・単語・練習問題 完全網羅版）</span></h1>
+
+        <!-- 文法解説・ハイライトセクション -->
+        <section id="grammar-highlights">
+            <h2>1. 文法ポイント・教科書のハイライト</h2>
+            
+            <div class="highlight-box">
+                <p>よく使われる副詞<strong>“就”と“才”</strong>のうち、今回は<span class="highlight-text">「時間詞との組み合わせ」</span>を学びます。話し手の「早い／遅い」という主観（気持ち）を表す重要な表現です。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">1. “就” と “才” は正反対の意味を表す反義語</div>
+                <p>時間詞と組み合わせて使う場合、話し手が表現したい気持ちには次のような違いがあります。</p>
+                <ul>
+                    <li>(1) <strong>〈時間詞〉＋“就”＋〈動詞(句)〉</strong>：「（想定より）早い」という気持ち<br>
+                        →「〜には（もう）〜する/した」
+                    </li>
+                    <li>(2) <strong>〈時間詞〉＋“才”＋〈動詞(句)〉</strong>：「（想定より）遅い」という気持ち<br>
+                        →「〜に（ようやく）〜する/した」「〜まで〜しない/しなかった」
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">2. 文末の “了” の有無に関する【超重要ルール】</div>
+                <div class="tip-box">
+                    <span class="tip-icon">★</span><strong>“就” を使う場合</strong><br>
+                    終わったことはもちろん、未来のことを表すときにも、節や文の最後によく「変化の了」を組み合わせます。<br>
+                    例：昨天我九點<strong>就</strong>睡覺<strong>了</strong>。 / 他明天<strong>就</strong>回台東<strong>了</strong>。
+                </div>
+                <div class="tip-box" style="background-color: #fffaf0; border-left-color: #f6d887;">
+                    <span class="tip-icon">⚠️</span><strong>“才” を使う場合</strong><br>
+                    <strong>終わったことを表すときにも、原則として “了” をつけません。</strong><br>
+                    例：昨天我十二點<strong>才</strong>睡覺。（× 睡覺了）
+                </div>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">3. 品詞と語順の注意点</div>
+                <p>“就”と“才”はいずれも副詞なので、述語の中心になる言葉（動詞、助動詞など）の前に置きます。名詞の前には置けません。</p>
+            </div>
+            
+            <div class="tip-box" style="background-color: #f3f8fd; border-left-color: #0056b3;">
+                <span class="tip-icon">💡</span><strong>日本語訳のテクニック</strong><br>
+                “才”を使った文は、日本語の否定形を使って訳すことができます。直訳では不自然な場合に便利です。<br>
+                ・(直訳) 昨日は12時にようやく寝た。<br>
+                ・(否定形訳) 昨日は12時<strong>まで</strong>寝<strong>なかった</strong>。
+            </div>
+        </section>
+
+        <!-- 例文セクション -->
+        <section id="examples">
+            <h2>2. 例文網羅（全17文 / ①〜⑰）</h2>
+            <div class="example-box">
+                <!-- 1-5 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">1</span><span class="zh">他明天就回台東了。</span><button class="play-btn" onclick="speakText('他明天就回台東了。')">🔊</button></div>
+                    <div class="pinyin">Tā míngtiān jiù huí Táidōng le.</div>
+                    <div class="jp">彼は明日には台東に帰る。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">2</span><span class="zh">他下個月才回台東。</span><button class="play-btn" onclick="speakText('他下個月才回台東。')">🔊</button></div>
+                    <div class="pinyin">Tā xià ge yuè cái huí Táidōng.</div>
+                    <div class="jp">彼は来月ようやく台東に帰る／彼は来月にならないと台東に帰らない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">3</span><span class="zh">昨天我九點就睡覺了。</span><button class="play-btn" onclick="speakText('昨天我九點就睡覺了。')">🔊</button></div>
+                    <div class="pinyin">Zuótiān wǒ jiǔ diǎn jiù shuìjiào le.</div>
+                    <div class="jp">昨日は9時には寝た。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">4</span><span class="zh">昨天我十二點才睡覺。</span><button class="play-btn" onclick="speakText('昨天我十二點才睡覺。')">🔊</button></div>
+                    <div class="pinyin">Zuótiān wǒ shí'èr diǎn cái shuìjiào.</div>
+                    <div class="jp">昨日は12時にようやく寝た／昨日は12時まで寝なかった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">5</span><span class="zh">我後天就能去買新的皮鞋了。</span><button class="play-btn" onclick="speakText('我後天就能去買新的皮鞋了。')">🔊</button></div>
+                    <div class="pinyin">Wǒ hòutiān jiù néng qù mǎi xīn de píxié le.</div>
+                    <div class="jp">私は明後日には新しい革靴を買いに行くことができる。</div>
+                </div>
+
+                <!-- 6-10 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">6</span><span class="zh">我下星期才能去買新的手套。</span><button class="play-btn" onclick="speakText('我下星期才能去買新的手套。')">🔊</button></div>
+                    <div class="pinyin">Wǒ xià xīngqí cái néng qù mǎi xīn de shǒutào.</div>
+                    <div class="jp">私は来週ようやく新しい手袋を買いに行くことができる／私は来週にならないと新しい手袋を買いに行くことができない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">7</span><span class="zh">我來這裡上班以前，就知道這個工作很辛苦了。</span><button class="play-btn" onclick="speakText('我來這裡上班以前，就知道這個工作很辛苦了。')">🔊</button></div>
+                    <div class="pinyin">Wǒ lái zhèlǐ shàngbān yǐqián, jiù zhīdào zhè ge gōngzuò hěn xīnkǔ le.</div>
+                    <div class="jp">私はここで働き始める前から、この仕事が大変だということを知っていた。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">8</span><span class="zh">我現在才知道這個工作這麼辛苦。</span><button class="play-btn" onclick="speakText('我現在才知道這個工作這麼辛苦。')">🔊</button></div>
+                    <div class="pinyin">Wǒ xiànzài cái zhīdào zhè ge gōngzuò zhème xīnkǔ.</div>
+                    <div class="jp">私は今になってようやく、この仕事がこんなに大変だということを知った／私は今まで、この仕事がこんなに大変だということを知らなかった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">9</span><span class="zh">不好意思，老闆娘兩個小時以前就走了。</span><button class="play-btn" onclick="speakText('不好意思，老闆娘兩個小時以前就走了。')">🔊</button></div>
+                    <div class="pinyin">Bù hǎoyìsi, lǎobǎnniáng liǎng ge xiǎoshí yǐqián jiù zǒu le.</div>
+                    <div class="jp">すみません。（女性の）オーナーは、2時間前に帰りました。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">10</span><span class="zh">我三天前才買一張悠遊卡。</span><button class="play-btn" onclick="speakText('我三天前才買一張悠遊卡。')">🔊</button></div>
+                    <div class="pinyin">Wǒ sān tiān qián cái mǎi yì zhāng Yōuyóukǎ.</div>
+                    <div class="jp">私は3日前にようやくEasy Cardを1枚買った。</div>
+                </div>
+
+                <!-- 11-15 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">11</span><span class="zh">公車五分鐘後就來，不需要坐計程車。</span><button class="play-btn" onclick="speakText('公車五分鐘後就來，不需要坐計程車。')">🔊</button></div>
+                    <div class="pinyin">Gōngchē wǔ fēnzhōng hòu jiù lái, bù xūyào zuò jìchéngchē.</div>
+                    <div class="jp">バスは5分後には来るから、タクシーに乗る必要はない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">12</span><span class="zh">台灣的十月還很熱，你為什麼現在就穿著這麼厚的毛衣呢？</span><button class="play-btn" onclick="speakText('台灣的十月還很熱，你為什麼現在就穿著這麼厚的毛衣呢？')">🔊</button></div>
+                    <div class="pinyin">Táiwān de shí yuè hái hěn rè, nǐ wèishénme xiànzài jiù chuān zhe zhème hòu de máoyī ne?</div>
+                    <div class="jp">台湾の10月はまだ暑いのに、あなたはなぜ今からこんなに厚いセーターを着ているの？</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">13</span><span class="zh">那位歌手是這幾年才變有名的。</span><button class="play-btn" onclick="speakText('那位歌手是這幾年才變有名的。')">🔊</button></div>
+                    <div class="pinyin">Nà wèi gēshǒu shì zhè jǐ nián cái biàn yǒumíng de.</div>
+                    <div class="jp">あの歌手はここ数年でようやく有名になったのだ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">14</span><span class="zh">我上個禮拜五才考完研究所。</span><button class="play-btn" onclick="speakText('我上個禮拜五才考完研究所。')">🔊</button></div>
+                    <div class="pinyin">Wǒ shàng ge lǐbài wǔ cái kǎo wán yánjiūsuǒ.</div>
+                    <div class="jp">私は先週の金曜日、ようやく大学院の受験が終わった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">15</span><span class="zh">那個活動八月一日以後才可以報名。</span><button class="play-btn" onclick="speakText('那個活動八月一日以後才可以報名。')">🔊</button></div>
+                    <div class="pinyin">Nà ge huódòng bā yuè yī rì yǐhòu cái kěyǐ bàomíng.</div>
+                    <div class="jp">あのイベントは8月1日以降ようやく申し込みができる／あのイベントは8月1日まで申し込みできない。</div>
+                </div>
+
+                <!-- 16-17 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">16</span><span class="zh">我現在才發現我的口袋裡還有五百塊。</span><button class="play-btn" onclick="speakText('我現在才發現我的口袋裡還有五百塊。')">🔊</button></div>
+                    <div class="pinyin">Wǒ xiànzài cái fāxiàn wǒ de kǒudài lǐ hái yǒu wǔbǎi kuài.</div>
+                    <div class="jp">今ようやくポケットの中にまだ500元あることに気づいた／今までポケットの中にまだ500元あることに気づかなかった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">17</span><span class="zh">我最近才知道那個演員的名字。</span><button class="play-btn" onclick="speakText('我最近才知道那個演員的名字。')">🔊</button></div>
+                    <div class="pinyin">Wǒ zuìjìn cái zhīdào nà ge yǎnyuán de míngzi.</div>
+                    <div class="jp">私は最近ようやくあの俳優の名前を知った／私は最近まであの俳優の名前を知らなかった。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 単語集セクション -->
+        <section id="vocabulary">
+            <h2>3. 単語集 網羅</h2>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>単語・ピンイン</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td rowspan="9">服飾</td>
+                    <td>毛衣 (máoyī)</td>
+                    <td>セーター</td>
+                </tr>
+                <tr>
+                    <td>雨衣 (yǔyī)</td>
+                    <td>雨合羽、レインコート</td>
+                </tr>
+                <tr>
+                    <td>襯衫 (chènshān)</td>
+                    <td>シャツ、ブラウス</td>
+                </tr>
+                <tr>
+                    <td>手套 (shǒutào)</td>
+                    <td>手袋</td>
+                </tr>
+                <tr>
+                    <td>皮鞋 (píxié)</td>
+                    <td>革靴</td>
+                </tr>
+                <tr>
+                    <td>拖鞋 (tuōxié)</td>
+                    <td>スリッパ、サンダル</td>
+                </tr>
+                <tr>
+                    <td>口袋 (kǒudài)</td>
+                    <td>ポケット</td>
+                </tr>
+                <tr>
+                    <td>傘 (sǎn)</td>
+                    <td>傘</td>
+                </tr>
+                <tr>
+                    <td>雨傘 (yǔsǎn)</td>
+                    <td>雨傘</td>
+                </tr>
+                <tr>
+                    <td rowspan="8">仕事</td>
+                    <td>老闆娘 (lǎobǎnniáng)</td>
+                    <td>女性の経営者／オーナー／社長、社長の奥さん</td>
+                </tr>
+                <tr>
+                    <td>司機 (sījī)</td>
+                    <td>運転手</td>
+                </tr>
+                <tr>
+                    <td>店員 (diànyuán)</td>
+                    <td>店員</td>
+                </tr>
+                <tr>
+                    <td>總經理 (zǒngjīnglǐ)</td>
+                    <td>社長、総経理</td>
+                </tr>
+                <tr>
+                    <td>經理 (jīnglǐ)</td>
+                    <td>マネージャー、課長</td>
+                </tr>
+                <tr>
+                    <td>畫家 (huàjiā)</td>
+                    <td>画家</td>
+                </tr>
+                <tr>
+                    <td>演員 (yǎnyuán)</td>
+                    <td>俳優</td>
+                </tr>
+                <tr>
+                    <td>歌手 (gēshǒu)</td>
+                    <td>歌手</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">その他</td>
+                    <td>變 (biàn)</td>
+                    <td>変える、変わる、変化する</td>
+                </tr>
+                <tr>
+                    <td>才 (cái)</td>
+                    <td>ようやく、やっと、わずか、たった、〜こそ</td>
+                </tr>
+                <tr>
+                    <td>不好意思 (bù hǎoyìsi)</td>
+                    <td>申し訳ない、心苦しい、気が引ける、（会話で）すみません</td>
+                </tr>
+                <tr>
+                    <td>報名 (bàomíng)</td>
+                    <td>申し込む</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 練習問題セクション -->
+        <section id="exercises">
+            <h2>4. 練習問題（クリックで解答表示）</h2>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-①. 明日には新しい【スリッパ】を買う。<br>我明天就會買新的【拖鞋】。</div>
+                <div class="exercise-q">午後には新しい【傘／シャツ／カッパ】を買う。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">我下午就會買新的（ (雨)傘 ／ 襯衫 ／ 雨衣 ）。</span>
+                        <button class="play-btn" onclick="speakText('我下午就會買新的雨傘。我下午就會買新的襯衫。我下午就會買新的雨衣。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒ xiàwǔ jiù huì mǎi xīn de [ (yǔ)sǎn / chènshān / yǔyī ].</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">1-②. 【社長】が1時間後にようやく答えた。<br>【總經理】一個小時後才回答。</div>
+                <div class="exercise-q">【運転手／店員／マネージャー】が30分後にようやく来た。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">（ 司機 ／ 店員 ／ 經理 ）三十分鐘後才來。</span>
+                        <button class="play-btn" onclick="speakText('司機三十分鐘後才來。店員三十分鐘後才來。經理三十分鐘後才來。')">🔊</button>
+                    </div>
+                    <div class="pinyin">[ Sījī / Diànyuán / Jīnglǐ ] sānshí fēnzhōng hòu cái lái.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2. ( )の中に “就” か “才” を入れて文を完成させ、日本語に訳してください。<br>
+                ① 我最近( )知道這張畫是很有名的畫家畫的。<br>
+                ② 籃球比賽七點開始，我們五點半( )到了。<br>
+                ③ 林老師馬上( )要下課了，你可以在教室門口等他。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">① 我最近（ 才 ）知道這張畫是很有名的畫家畫的。</span>
+                        <button class="play-btn" onclick="speakText('我最近才知道這張畫是很有名的畫家畫的。')">🔊</button>
+                    </div>
+                    <div class="jp">この絵は有名な画家が描いたものだということを、私は〈最近ようやく知った／最近まで知らなかった〉。</div>
+                    
+                    <div class="zh-container" style="margin-top: 10px;">
+                        <span class="zh">② 籃球比賽七點開始，我們五點半（ 就 ）到了。</span>
+                        <button class="play-btn" onclick="speakText('籃球比賽七點開始，我們五點半就到了。')">🔊</button>
+                    </div>
+                    <div class="jp">バスケの試合は7時に始まるのに、私たちは5時半には着いた。</div>
+                    
+                    <div class="zh-container" style="margin-top: 10px;">
+                        <span class="zh">③ 林老師馬上（ 就 ）要下課了，你可以在教室門口等他。</span>
+                        <button class="play-btn" onclick="speakText('林老師馬上就要下課了，你可以在教室門口等他。')">🔊</button>
+                    </div>
+                    <div class="jp">林先生はすぐに授業が終わるから、あなたは教室の入り口で待っていたらいいですよ。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2. ( )の中に “就” か “才” を入れて文を完成させ、日本語に訳してください。<br>
+                ④ 大學畢業以後，我( )發現認真學習很重要。<br>
+                ⑤ 我打算下個月( )搬走，所以現在不需要再買新家具。<br>
+                ⑥ 他三分鐘前( )到公司，還沒開電腦。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">④ 大學畢業以後，我（ 才 ）發現認真學習很重要。</span>
+                        <button class="play-btn" onclick="speakText('大學畢業以後，我才發現認真學習很重要。')">🔊</button>
+                    </div>
+                    <div class="jp">大学卒業後、まじめに勉強することが大切だとようやく気づいた。</div>
+                    
+                    <div class="zh-container" style="margin-top: 10px;">
+                        <span class="zh">⑤ 我打算下個月（ 就 ）搬走，所以現在不需要再買新家具。</span>
+                        <button class="play-btn" onclick="speakText('我打算下個月就搬走，所以現在不需要再買新家具。')">🔊</button>
+                    </div>
+                    <div class="jp">来月には引っ越しをするつもりなので、今はもう新しい家具を買う必要はない。</div>
+                    
+                    <div class="zh-container" style="margin-top: 10px;">
+                        <span class="zh">⑥ 他三分鐘前（ 才 ）到公司，還沒開電腦。</span>
+                        <button class="play-btn" onclick="speakText('他三分鐘前才到公司，還沒開電腦。')">🔊</button>
+                    </div>
+                    <div class="jp">彼は3分前にようやく会社に着いたので、まだコンピューターを起動していない。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-①. 彼は授業が終わる前から携帯を使い始めた。<br>[ 下課前 ／ 就 ／ 開始用手機了 ／ 他 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">他下課前就開始用手機了。</span>
+                        <button class="play-btn" onclick="speakText('他下課前就開始用手機了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Tā xiàkè qián jiù kāishǐ yòng shǒujī le.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-②. 兄は休みの時には12時にようやく起きる。<br>[ 十二點 ／ 起床 ／ 哥哥放假的時候 ／ 才會 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">哥哥放假的時候十二點才會起床。</span>
+                        <button class="play-btn" onclick="speakText('哥哥放假的時候十二點才會起床。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Gēge fàngjià de shíhòu shí'èr diǎn cái huì qǐchuáng.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-③. あなたはどうしてこんなに早く着いたの？<br>[ 這麼早 ／ 就 ／ 你怎麼 ／ 到了 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">你怎麼這麼早就到了？</span>
+                        <button class="play-btn" onclick="speakText('你怎麼這麼早就到了？')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nǐ zěnme zhème zǎo jiù dào le?</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-④. 私は今日のお昼にようやくレポートを書き終えた。<br>[ 寫完 ／ 我今天中午 ／ 報告 ／ 才 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">我今天中午才寫完報告。</span>
+                        <button class="play-btn" onclick="speakText('我今天中午才寫完報告。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒ jīntiān zhōngwǔ cái xiě wán bàogào.</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson7_full_with_highlights.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson7_full_with_highlights.html created.")
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 8 完全網羅版</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 40px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #b83356; 
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+        .highlight-box {
+            background-color: #fffaf0;
+            border: 2px solid #f6d887;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #fff0b3 60%);
+            font-weight: bold;
+        }
+        .grammar-pattern {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pattern-title {
+            color: #d85a7a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tip-box {
+            background-color: #fdf0f3;
+            border-left: 4px solid #d85a7a;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tip-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .example-box { 
+            background: #fdfbf7; 
+            border: 1px solid #eee;
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+        }
+        .example { 
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .example:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.2em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        .jp {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #eaeaea; 
+            padding: 10px 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #fdf0f3; 
+            color: #a03c56; 
+        }
+        .exercise-item {
+            margin-bottom: 25px;
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .exercise-q { 
+            font-weight: bold; 
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .badge {
+            background-color: #f0a6b6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .warning-text {
+            color: #d9534f;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 8: 我明天可以睡到中午。<br><span style="font-size: 0.6em; color: #666;">（文法解説・例文・単語・練習問題 完全網羅版）</span></h1>
+
+        <!-- 文法解説・ハイライトセクション -->
+        <section id="grammar-highlights">
+            <h2>1. 文法ポイント・教科書のハイライト</h2>
+            
+            <div class="highlight-box">
+                <p>Lesson 4に続き、動作の結果を表す結果補語の第2弾です。今回は<span class="highlight-text">「到達する」という意味を持つ “到” を使った結果補語</span>を学びます。</p>
+            </div>
+
+            <p>結果補語の “到” の後に名詞句を置くことで、<strong>「何に到達したのか（対象）」「どこまで（場所）」「いつまで（時間）」「どの範囲まで（範囲）」</strong>を表すことができます。</p>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">文型(1) 目的を達成する（対象）</div>
+                <div class="structure">動詞 ＋ 到 ＋ 動作の対象</div>
+                <p>ある動作の結果、目的を達成したり、目的のものを手に入れたりすることを表します。<br>
+                例：找到好幾家素食餐廳 (何軒ものベジタリアンのお店を見つけた)</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">文型(2) 「〜(どこ)まで/へ……する」（場所）</div>
+                <div class="structure">動詞 ＋ 到 ＋ 場所詞</div>
+                <p>その動作の結果、人やものがどこに到達するかを表します。場所詞の位置にものごとを表す名詞を置く場合は、後ろに “裡” などをつけて場所詞化します。<br>
+                例：走到那間醫院 (あの病院まで歩く) / 收到廚房裡 (台所に片付ける)</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">文型(3) 「〜(いつ)まで……する」（時間）</div>
+                <div class="structure">動詞 ＋ 到 ＋ 時間詞</div>
+                <p>その動作がいつまで続くかを表します。一定時間継続する動作（睡、開、聊など）に使います。目的語があるときは動詞を2回繰り返します（離合詞も同様）。<br>
+                例：睡到中午 (お昼まで寝る) / 加班加到八點多 (8時過ぎまで残業する)</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">文型(4) 「〜(どの範囲)まで……する」（範囲）</div>
+                <div class="structure">動詞 ＋ 到 ＋ 範囲</div>
+                <p>その動作がどの範囲まで行われるかを表します。<br>
+                例：看到這個部分 (この部分まで見る) / 做到一半 (半分までやる)</p>
+            </div>
+            
+            <div class="tip-box" style="background-color: #fffaf0; border-left-color: #f6d887;">
+                <span class="tip-icon">💡</span><strong>「沒想到」という表現</strong><br>
+                文型(1)を使った「想到（あることに思いが及ぶ）」の否定形「沒想到」を文や節の先頭に置くと、<strong>「まさか〜だなんて」「〜とは思いがけず」</strong>という意外な気持ちを表すフレーズになります。
+            </div>
+        </section>
+
+        <!-- 例文セクション -->
+        <section id="examples">
+            <h2>2. 例文網羅（全22文 / ⑤〜㉖）</h2>
+            <div class="example-box">
+                <!-- 5-9 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">5</span><span class="zh">大家都喜歡阿德，他是怎麼做到的？</span><button class="play-btn" onclick="speakText('大家都喜歡阿德，他是怎麼做到的？')">🔊</button></div>
+                    <div class="pinyin">Dàjiā dōu xǐhuān Ādé, tā shì zěnme zuò dào de?</div>
+                    <div class="jp">阿徳はみんなに好かれている。彼はどうやってそれを成し得ているのだろう。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">6</span><span class="zh">我們買的冰箱還沒送到。</span><button class="play-btn" onclick="speakText('我們買的冰箱還沒送到。')">🔊</button></div>
+                    <div class="pinyin">Wǒmen mǎi de bīngxiāng hái méi sòng dào.</div>
+                    <div class="jp">私たちが買った冷蔵庫は、まだ届いていない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">7</span><span class="zh">你可以在這附近找到好幾家素食餐廳。</span><button class="play-btn" onclick="speakText('你可以在這附近找到好幾家素食餐廳。')">🔊</button></div>
+                    <div class="pinyin">Nǐ kěyǐ zài zhè fùjīn zhǎo dào hǎo jǐ jiā sùshí cāntīng.</div>
+                    <div class="jp">この近くで何軒ものベジタリアンのお店を見つけることができるよ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">8</span><span class="zh">我剛才沒接到女朋友打給我的電話。</span><button class="play-btn" onclick="speakText('我剛才沒接到女朋友打給我的電話。')">🔊</button></div>
+                    <div class="pinyin">Wǒ gāngcái méi jiē dào nǚpéngyǒu dǎ gěi wǒ de diànhuà.</div>
+                    <div class="jp">さっき私の彼女からかかってきた電話が取れなかった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">9</span><span class="zh">那個演員的見面會，很多人都沒買到票。</span><button class="play-btn" onclick="speakText('那個演員的見面會，很多人都沒買到票。')">🔊</button></div>
+                    <div class="pinyin">Nà ge yǎnyuán de jiànmiànhuì, hěn duō rén dōu méi mǎi dào piào.</div>
+                    <div class="jp">あの俳優のファンミーティングは、チケットが買えなかった人がたくさんいた。</div>
+                </div>
+
+                <!-- 10-14 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">10</span><span class="zh">從我家走到那間醫院，只要五分鐘左右。</span><button class="play-btn" onclick="speakText('從我家走到那間醫院，只要五分鐘左右。')">🔊</button></div>
+                    <div class="pinyin">Cóng wǒ jiā zǒu dào nà jiān yīyuàn, zhǐ yào wǔ fēnzhōng zuǒyòu.</div>
+                    <div class="jp">私の家からあの病院まで、歩いて5分ぐらいしかかからない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">11</span><span class="zh">媽媽說每天回到家都應該先洗手。</span><button class="play-btn" onclick="speakText('媽媽說每天回到家都應該先洗手。')">🔊</button></div>
+                    <div class="pinyin">Māma shuō měitiān huí dào jiā dōu yīnggāi xiān xǐ shǒu.</div>
+                    <div class="jp">毎日家に帰ったらまず手を洗わなければならないと母が言う。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">12</span><span class="zh">這些盤子，可以收到廚房裡了嗎？</span><button class="play-btn" onclick="speakText('這些盤子，可以收到廚房裡了嗎？')">🔊</button></div>
+                    <div class="pinyin">Zhè xiē pánzi, kěyǐ shōu dào chúfáng lǐ le ma?</div>
+                    <div class="jp">これらのお皿は、もう台所に片付けてもいい？</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">13</span><span class="zh">巧克力吃完以後，盒子應該丟到垃圾桶裡。</span><button class="play-btn" onclick="speakText('巧克力吃完以後，盒子應該丟到垃圾桶裡。')">🔊</button></div>
+                    <div class="pinyin">Qiǎokèlì chī wán yǐhòu, hézi yīnggāi diū dào lèsètǒng lǐ.</div>
+                    <div class="jp">チョコレートを食べ終わったら、箱はゴミ箱に捨てなければだめだよ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">14</span><span class="zh">明天不用上班，我可以睡到中午。</span><button class="play-btn" onclick="speakText('明天不用上班，我可以睡到中午。')">🔊</button></div>
+                    <div class="pinyin">Míngtiān bú yòng shàngbān, wǒ kěyǐ shuì dào zhōngwǔ.</div>
+                    <div class="jp">明日は出勤しなくていいので、お昼まで寝られる。</div>
+                </div>
+
+                <!-- 15-19 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">15</span><span class="zh">這間早餐店每天都開到下午兩點半。</span><button class="play-btn" onclick="speakText('這間早餐店每天都開到下午兩點半。')">🔊</button></div>
+                    <div class="pinyin">Zhè jiān zǎocāndiàn měitiān dōu kāi dào xiàwǔ liǎng diǎn bàn.</div>
+                    <div class="jp">この朝ごはん屋さんは、毎日午後2時半まで開いている。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">16</span><span class="zh">這次暑假放到八月底就結束了。</span><button class="play-btn" onclick="speakText('這次暑假放到八月底就結束了。')">🔊</button></div>
+                    <div class="pinyin">Zhè cì shǔjià fàng dào bā yuè dǐ jiù jiéshù le.</div>
+                    <div class="jp">今回の夏休みは8月末までで終わってしまう。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">17</span><span class="zh">我跟室友上個週末聊到早上五點多才睡覺。</span><button class="play-btn" onclick="speakText('我跟室友上個週末聊到早上五點多才睡覺。')">🔊</button></div>
+                    <div class="pinyin">Wǒ gēn shìyǒu shàng ge zhōumò liáo dào zǎoshàng wǔ diǎn duō cái shuìjiào.</div>
+                    <div class="jp">私とルームメイトは、先週末朝5時過ぎまでおしゃべりしてようやく寝た／おしゃべりしていて朝5時過ぎまで寝なかった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">18</span><span class="zh">等一下就要出門了，你要看小說看到什麼時候？</span><button class="play-btn" onclick="speakText('等一下就要出門了，你要看小說看到什麼時候？')">🔊</button></div>
+                    <div class="pinyin">Děng yíxià jiù yào chū mén le, nǐ yào kàn xiǎoshuō kàn dào shénme shíhòu?</div>
+                    <div class="jp">もうちょっとしたら出かけるのに、あなたはいつまで小説を読んでいるの？</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">19</span><span class="zh">最近雪下得太大了，全校放假放到下個禮拜一。</span><button class="play-btn" onclick="speakText('最近雪下得太大了，全校放假放到下個禮拜一。')">🔊</button></div>
+                    <div class="pinyin">Zuìjìn xuě xià de tài dà le, quánxiào fàngjià fàng dào xià ge lǐbài yī.</div>
+                    <div class="jp">最近はあまりにも大雪なので、来週の月曜日まで全校休校だ。</div>
+                </div>
+
+                <!-- 20-24 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">20</span><span class="zh">我們公司最近很忙，所有人都加班加到八點多才下班。</span><button class="play-btn" onclick="speakText('我們公司最近很忙，所有人都加班加到八點多才下班。')">🔊</button></div>
+                    <div class="pinyin">Wǒmen gōngsī zuìjìn hěn máng, suǒyǒu rén dōu jiābān jiā dào bā diǎn duō cái xiàbān.</div>
+                    <div class="jp">私たちの会社は最近忙しく、全員8時過ぎまで残業をしてようやく帰る／残業で8時過ぎまで帰らない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">21</span><span class="zh">他剛才唸到第五行，我從第六行開始嗎？</span><button class="play-btn" onclick="speakText('他剛才唸到第五行，我從第六行開始嗎？')">🔊</button></div>
+                    <div class="pinyin">Tā gāngcái niàn dào dì wǔ háng, wǒ cóng dì liù háng kāishǐ ma?</div>
+                    <div class="jp">彼はさっき5行目まで読みましたが、私は6行目からですか。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">22</span><span class="zh">不好意思，我還沒看到這個部分。</span><button class="play-btn" onclick="speakText('不好意思，我還沒看到這個部分。')">🔊</button></div>
+                    <div class="pinyin">Bù hǎoyìsi, wǒ hái méi kàn dào zhè ge bùfèn.</div>
+                    <div class="jp">すみません。その部分まではまだ見ていません。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">23</span><span class="zh">這次活動花的錢我算得差不多了，但是還沒算到飯錢的部分。</span><button class="play-btn" onclick="speakText('這次活動花的錢我算得差不多了，但是還沒算到飯錢的部分。')">🔊</button></div>
+                    <div class="pinyin">Zhè cì huódòng huā de qián wǒ suàn de chàbùduō le, dànshì hái méi suàn dào fàn qián de bùfèn.</div>
+                    <div class="jp">今回のイベントで使ったお金はほとんど計算したけれど、食事代の部分はまだ計算に入れていない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">24</span><span class="zh">今天時間不夠，那份資料我只能做到一半。</span><button class="play-btn" onclick="speakText('今天時間不夠，那份資料我只能做到一半。')">🔊</button></div>
+                    <div class="pinyin">Jīntiān shíjiān búgòu, nà fèn zīliào wǒ zhǐ néng zuò dào yí bàn.</div>
+                    <div class="jp">今日は時間が足りないので、あの資料は半分／途中までしか作れない／作れなかった。</div>
+                </div>
+                
+                <!-- 25-26 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">25</span><span class="zh">想到下個月就要離開台南了，我覺得有點難過。</span><button class="play-btn" onclick="speakText('想到下個月就要離開台南了，我覺得有點難過。')">🔊</button></div>
+                    <div class="pinyin">Xiǎng dào xià ge yuè jiù yào líkāi Táinán le, wǒ juéde yǒudiǎn nánguò.</div>
+                    <div class="jp">来月いよいよ台南を離れると思うと、ちょっと悲しくなる。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">26</span><span class="zh">我以為家華還是國中生，沒想到她早就高中畢業了。</span><button class="play-btn" onclick="speakText('我以為家華還是國中生，沒想到她早就高中畢業了。')">🔊</button></div>
+                    <div class="pinyin">Wǒ yǐwéi Jiāhuá háishì guózhōng shēng, méi xiǎng dào tā zǎojiù gāozhōng bìyè le.</div>
+                    <div class="jp">家華はまだ中学生だと思っていた。まさかとっくに高校を卒業していたなんて。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 単語集セクション -->
+        <section id="vocabulary">
+            <h2>3. 単語集 網羅</h2>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>単語・ピンイン</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td rowspan="6">基本動詞</td>
+                    <td>接 (jiē)</td>
+                    <td>受け取る、(電話を)受ける、(人を)迎える</td>
+                </tr>
+                <tr>
+                    <td>收 (shōu)</td>
+                    <td>受け取る、集める、収める、片づける</td>
+                </tr>
+                <tr>
+                    <td>丟 (diū)</td>
+                    <td>なくす、落とす、投げ捨てる</td>
+                </tr>
+                <tr>
+                    <td>聊 (liáo)</td>
+                    <td>雑談する、おしゃべりする、チャットする</td>
+                </tr>
+                <tr>
+                    <td>查 (chá)</td>
+                    <td>調べる、検索する</td>
+                </tr>
+                <tr>
+                    <td>加 / 減 (jiā / jiǎn)</td>
+                    <td>加える、足す / 減る、(計算で)引く</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">範囲を表す言葉</td>
+                    <td>全 / 全部 (quán / quánbù)</td>
+                    <td>全部、すべて、すっかり / 揃っている、完全である / 〜全体、〜全員</td>
+                </tr>
+                <tr>
+                    <td>所有 (suǒyǒu)</td>
+                    <td>すべての</td>
+                </tr>
+                <tr>
+                    <td>一半 (yí bàn)</td>
+                    <td>半分、途中</td>
+                </tr>
+                <tr>
+                    <td>部分 / 部份 (bùfèn)</td>
+                    <td>部分 / 部分的な、一部分の</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">食べ物</td>
+                    <td>素食 (sùshí)</td>
+                    <td>ベジタリアン料理</td>
+                </tr>
+                <tr>
+                    <td>小菜 (xiǎocài)</td>
+                    <td>(小皿の)惣菜</td>
+                </tr>
+                <tr>
+                    <td>豆腐 (dòufǔ)</td>
+                    <td>豆腐</td>
+                </tr>
+                <tr>
+                    <td>甜點 (tiándiǎn)</td>
+                    <td>デザート</td>
+                </tr>
+                <tr>
+                    <td>泡麵 (pàomiàn)</td>
+                    <td>インスタント麺</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">その他</td>
+                    <td>校 (xiào)</td>
+                    <td>〜校 ("學校"の略)</td>
+                </tr>
+                <tr>
+                    <td>見面會 (jiànmiànhuì)</td>
+                    <td>ファンミーティング</td>
+                </tr>
+                <tr>
+                    <td>不用 (búyòng)</td>
+                    <td>〜しなくてよい</td>
+                </tr>
+                <tr>
+                    <td>加班 (jiābān)</td>
+                    <td>残業(する)、休日出勤(する)</td>
+                </tr>
+                <tr>
+                    <td>沒想到 (méi xiǎng dào)</td>
+                    <td>思いつかなかった、思いがけず、まさか〜だなんて</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 練習問題セクション -->
+        <section id="exercises">
+            <h2>4. 練習問題（クリックで解答表示）</h2>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-①. 【(小皿の)惣菜】が食べられた<br>吃到【小菜】了</div>
+                <div class="exercise-q">【デザート／豆腐／インスタント麺】が買えなかった</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">沒買到（ 甜點 ／ 豆腐 ／ 泡麵 ）。</span>
+                        <button class="play-btn" onclick="speakText('沒買到甜點。沒買到豆腐。沒買到泡麵。')">🔊</button>
+                    </div>
+                    <div class="pinyin">méi mǎi dào [ tiándiǎn / dòufǔ / pàomiàn ]</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">1-②. 【ゴミ箱のところ】まで走る<br>跑到【垃圾桶那裡】</div>
+                <div class="exercise-q">【MRTの駅／途中(半分)／文房具屋】まで歩く</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">走到（ 捷運站 ／ 一半 ／ 文具店 ）。</span>
+                        <button class="play-btn" onclick="speakText('走到捷運站。走到一半。走到文具店。')">🔊</button>
+                    </div>
+                    <div class="pinyin">zǒu dào [ jiéyùnzhàn / yí bàn / wénjùdiàn ]</div>
+                </div>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-③. 【朝5時】まで調べる<br>查到【早上五點】</div>
+                <div class="exercise-q">【20日／週末／来年】まで待つ</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">等到（ 二十(號/日) ／ 週末 ／ 明年 ）。</span>
+                        <button class="play-btn" onclick="speakText('等到二十號。等到週末。等到明年。')">🔊</button>
+                    </div>
+                    <div class="pinyin">děng dào [ èrshí (hào / rì) / zhōumò / míngnián ]</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-①. Nǐ dú dào dì jǐ kè le? (你/妳讀到第幾課了？) を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="jp">あなたは何課まで勉強したの？</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-②. Zhēn xiǎng huí dào shíbā suì. (真想回到十八歲。) を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="jp">本当に18歳の頃に戻りたい。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-③. 我是在網路上查到這家豆花店的。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('我是在網路上查到這家豆花店的。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒ shì zài wǎnglù shàng chá dào zhè jiā dòuhuādiàn de.</div>
+                    <div class="jp">私はネットで調べてこの豆花のお店を見つけたのです。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-④. 我今天收到了媽媽寄給我的生日禮物。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('我今天收到了媽媽寄給我的生日禮物。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒ jīntiān shōu dào le māma jì gěi wǒ de shēngrì lǐwù.</div>
+                    <div class="jp">私は今日母が送ってくれた誕生日のプレゼントを受け取った。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-①. これらの野菜は私の家まで届けてくれますか。<br>這些(  )可以(  )到我家嗎？</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">這些（ 蔬菜 ）可以（ 送 ）到我家嗎？</span>
+                        <button class="play-btn" onclick="speakText('這些蔬菜可以送到我家嗎？')">🔊</button>
+                    </div>
+                    <div class="pinyin">Zhè xiē ( shūcài ) kěyǐ ( sòng ) dào wǒ jiā ma?</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-②. あの映画は、途中までしか見ていない。<br>那部電影，我(  )看到(  )。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">那部電影，我（ 只 ）看到（ 一半 ）。</span>
+                        <button class="play-btn" onclick="speakText('那部電影，我只看到一半。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nà bù diànyǐng, wǒ ( zhǐ ) kàn dào ( yí bàn ).</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-③. 私たちが朝話したことは、彼は全部聞こえていました。<br>我們早上說的(  )，他全部(  )聽到了。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">我們早上說的（ 話 ），他全部（ 都 ）聽到了。</span>
+                        <button class="play-btn" onclick="speakText('我們早上說的話，他全部都聽到了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wǒmen zǎoshàng shuō de ( huà ), tā quánbù ( dōu ) tīng dào le.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-④. 彼は毎日3時頃までゲームをしてようやく寝る。<br>他每天都玩遊戲玩到三點(  )(  )睡。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">他每天都玩遊戲玩到三點（ 左右 ）（ 才 ）睡。</span>
+                        <button class="play-btn" onclick="speakText('他每天都玩遊戲玩到三點左右才睡。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Tā měitiān dōu wán yóuxì wán dào sān diǎn ( zuǒyòu ) ( cái ) shuì.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson8_full_with_highlights.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson8_full_with_highlights.html created.")
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 9 完全網羅版</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 40px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #b83356; 
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+        .highlight-box {
+            background-color: #fffaf0;
+            border: 2px solid #f6d887;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #fff0b3 60%);
+            font-weight: bold;
+        }
+        .grammar-pattern {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pattern-title {
+            color: #d85a7a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tip-box {
+            background-color: #fdf0f3;
+            border-left: 4px solid #d85a7a;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tip-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .example-box { 
+            background: #fdfbf7; 
+            border: 1px solid #eee;
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+        }
+        .example { 
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .example:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.2em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        .jp {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #eaeaea; 
+            padding: 10px 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #fdf0f3; 
+            color: #a03c56; 
+        }
+        .exercise-item {
+            margin-bottom: 25px;
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .exercise-q { 
+            font-weight: bold; 
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .badge {
+            background-color: #f0a6b6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .warning-text {
+            color: #d9534f;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 9: 巧克力現在買兩盒就送一盒。<br><span style="font-size: 0.6em; color: #666;">（文法解説・例文・単語・練習問題 完全網羅版）</span></h1>
+
+        <!-- 文法解説・ハイライトセクション -->
+        <section id="grammar-highlights">
+            <h2>1. 文法ポイント・教科書のハイライト</h2>
+            
+            <div class="highlight-box">
+                <p>Lesson 7に続き、副詞<strong>“就”と“才”</strong>の用法です。今回は<span class="highlight-text">「数量詞（名詞を修飾する数量詞や、回数・継続時間を表す動量詞）との組み合わせ」</span>を学びます。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">1. “就” と “才” の基本イメージ（数量詞との組み合わせ）</div>
+                <p>時間詞と組み合わせる場合と同様に、前段落〈A〉に対して後段落〈B〉になるのが「早い/簡単だ」と感じるか、「遅い/難しい」と感じるかを表します。</p>
+                <ul>
+                    <li>(1) <strong>〈A 就 B〉</strong>：Bについて「（数量が少なくて）早い、簡単だ」という気持ち<br>
+                        →「〜しただけで、もう〜だ」「〜しただけで（それだけで）〜になる」
+                    </li>
+                    <li>(2) <strong>〈A 才 B〉</strong>：Bについて「（数量が多くて）遅い、難しい」という気持ち<br>
+                        →「〜して、ようやく〜だ」「〜しなければ、〜にならない」
+                    </li>
+                </ul>
+                <div class="tip-box">
+                    <span class="tip-icon">★</span>「就」を使った文の最後には、原則として「了」をつけます（未来のことでもつけます）。「才」の場合は「了」をつけません。
+                </div>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">2. 条件を表す場合の「要」と「得」</div>
+                <p>〈A 才 B〉のAが、Bになるための<strong>条件</strong>を表す場合、Aの動詞の前には「要(yào)」または「得(děi)」がよく使われます（"只有"を使うこともあります）。</p>
+                <div class="tip-box" style="background-color: #fffaf0; border-left-color: #f6d887;">
+                    <span class="tip-icon">💡</span><strong>“要” と “得” の違い</strong><br>
+                    “要”に比べると、“得”のほうが「どうしても〜でなければならない」という気持ちが強く出ます。
+                </div>
+                <ul>
+                    <li>在台灣，十八歲<strong>就</strong>可以喝酒了。（台湾では、18歳になればもうお酒が飲める。）</li>
+                    <li>在日本，<strong>要</strong>二十歲<strong>才</strong>可以喝酒。（日本では、20歳にならないとお酒が飲めない。）</li>
+                </ul>
+            </div>
+            
+            <div class="grammar-pattern">
+                <div class="pattern-title">3. 「半天」の意味</div>
+                <p>例文に出てくる「半天」は、文字通り「半日」を意味することもありますが、話し手が「長い時間」と感じていれば、数時間でも「半天」を使うことができます。</p>
+            </div>
+        </section>
+
+        <!-- 例文セクション -->
+        <section id="examples">
+            <h2>2. 例文網羅（全16文 / ⑤〜⑳）</h2>
+            <div class="example-box">
+                <!-- 5-9 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">5</span><span class="zh">這次感冒，我吃了一次藥就好了。</span><button class="play-btn" onclick="speakText('這次感冒，我吃了一次藥就好了。')">🔊</button></div>
+                    <div class="pinyin">Zhè cì gǎnmào, wǒ chī le yí cì yào jiù hǎo le.</div>
+                    <div class="jp">今回の風邪は、一度薬を飲んだら治った。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">6</span><span class="zh">那本書很無聊，我看了幾行就不想看了。</span><button class="play-btn" onclick="speakText('那本書很無聊，我看了幾行就不想看了。')">🔊</button></div>
+                    <div class="pinyin">Nà běn shū hěn wúliáo, wǒ kàn le jǐ háng jiù bù xiǎng kàn le.</div>
+                    <div class="jp">あの本はつまらないので、私は数行読んだだけで読みたくなくなった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">7</span><span class="zh">姑姑這次去法國玩，怎麼三天就回國了呢？</span><button class="play-btn" onclick="speakText('姑姑這次去法國玩，怎麼三天就回國了呢？')">🔊</button></div>
+                    <div class="pinyin">Gūgu zhè cì qù Fǎguó wán, zěnme sān tiān jiù huí guó le ne?</div>
+                    <div class="jp">おばさんは今回フランスに遊びに行って、どうして3日で帰国したの？</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">8</span><span class="zh">他過了十幾天才交作業。</span><button class="play-btn" onclick="speakText('他過了十幾天才交作業。')">🔊</button></div>
+                    <div class="pinyin">Tā guò le shí jǐ tiān cái jiāo zuòyè.</div>
+                    <div class="jp">彼は十数日過ぎてからようやく宿題を出した。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">9</span><span class="zh">那所大學離這裡比較遠，我開了兩個多小時的車才到。</span><button class="play-btn" onclick="speakText('那所大學離這裡比較遠，我開了兩個多小時的車才到。')">🔊</button></div>
+                    <div class="pinyin">Nà suǒ dàxué lí zhèlǐ bǐjiào yuǎn, wǒ kāi le liǎng ge duō xiǎoshí de chē cái dào.</div>
+                    <div class="jp">あの大学はここから比較的遠い。私は2時間以上運転してようやく着いた。</div>
+                </div>
+
+                <!-- 10-14 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">10</span><span class="zh">我查了半天才查到那間公司的電子郵件地址。</span><button class="play-btn" onclick="speakText('我查了半天才查到那間公司的電子郵件地址。')">🔊</button></div>
+                    <div class="pinyin">Wǒ chá le bàn tiān cái chá dào nà jiān gōngsī de diànzǐ yóujiàn dìzhǐ.</div>
+                    <div class="jp">私は長い時間かけて調べて、ようやくあの会社のメールアドレスを見つけた。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">11</span><span class="zh">在台灣，十八歲就可以喝酒了。</span><button class="play-btn" onclick="speakText('在台灣，十八歲就可以喝酒了。')">🔊</button></div>
+                    <div class="pinyin">Zài Táiwān, shíbā suì jiù kěyǐ hē jiǔ le.</div>
+                    <div class="jp">台湾では、18歳になったらお酒が飲める。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">12</span><span class="zh">在日本，要二十歲才可以喝酒。</span><button class="play-btn" onclick="speakText('在日本，要二十歲才可以喝酒。')">🔊</button></div>
+                    <div class="pinyin">Zài Rìběn, yào èrshí suì cái kěyǐ hē jiǔ.</div>
+                    <div class="jp">日本では、20歳になってようやくお酒が飲める。／日本では、20歳にならないとお酒が飲めない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">13</span><span class="zh">他今天晚上得寫完兩份報告才能睡覺。</span><button class="play-btn" onclick="speakText('他今天晚上得寫完兩份報告才能睡覺。')">🔊</button></div>
+                    <div class="pinyin">Tā jīntiān wǎnshàng děi xiě wán liǎng fèn bàogào cái néng shuìjiào.</div>
+                    <div class="jp">彼は今晩レポートを2つ書き終えないと寝られない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">14</span><span class="zh">巧克力現在買兩盒就送一盒。</span><button class="play-btn" onclick="speakText('巧克力現在買兩盒就送一盒。')">🔊</button></div>
+                    <div class="pinyin">Qiǎokèlì xiànzài mǎi liǎng hé jiù sòng yì hé.</div>
+                    <div class="jp">チョコレートは、今2箱買ったら1箱ついてくる。</div>
+                </div>
+
+                <!-- 15-20 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">15</span><span class="zh">阿姨說每天吃一顆蘋果，就不會生病。</span><button class="play-btn" onclick="speakText('阿姨說每天吃一顆蘋果，就不會生病。')">🔊</button></div>
+                    <div class="pinyin">Āyí shuō měitiān chī yì kē píngguǒ, jiù bú huì shēngbìng.</div>
+                    <div class="jp">おばさんは、毎日リンゴを1個食べたら病気にならないと言う。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">16</span><span class="zh">這首歌，李伯伯只聽了一次就會唱了。</span><button class="play-btn" onclick="speakText('這首歌，李伯伯只聽了一次就會唱了。')">🔊</button></div>
+                    <div class="pinyin">Zhè shǒu gē, Lǐ bóbo zhǐ tīng le yí cì jiù huì chàng le.</div>
+                    <div class="jp">その歌は、李おじさんは一度聞いただけで歌えるようになった。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">17</span><span class="zh">要再等一下才會有位子。</span><button class="play-btn" onclick="speakText('要再等一下才會有位子。')">🔊</button></div>
+                    <div class="pinyin">Yào zài děng yíxià cái huì yǒu wèizi.</div>
+                    <div class="jp">もう少し待ったらようやく席が空く。／もう少し待たないと、席が空かない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">18</span><span class="zh">我想了好幾天才買這個手錶。</span><button class="play-btn" onclick="speakText('我想了好幾天才買這個手錶。')">🔊</button></div>
+                    <div class="pinyin">Wǒ xiǎng le hǎo jǐ tiān cái mǎi zhè ge shǒubiǎo.</div>
+                    <div class="jp">私は何日も考えてから、ようやくこの腕時計を買った。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">19</span><span class="zh">我們談了兩、三次，他才接受我的建議。</span><button class="play-btn" onclick="speakText('我們談了兩、三次，他才接受我的建議。')">🔊</button></div>
+                    <div class="pinyin">Wǒmen tán le liǎng, sān cì, tā cái jiēshòu wǒ de jiànyì.</div>
+                    <div class="jp">私たちが2、3回話し合って、彼はようやく私のアドバイスを受け入れた。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">20</span><span class="zh">小花跟父親討論了一年多，他才同意一起搬到台北。</span><button class="play-btn" onclick="speakText('小花跟父親討論了一年多，他才同意一起搬到台北。')">🔊</button></div>
+                    <div class="pinyin">Xiǎohuā gēn fùqīn tǎolùn le yì nián duō, tā cái tóngyì yìqǐ bān dào Táiběi.</div>
+                    <div class="jp">小花が父親と1年以上相談して、父親はようやく一緒に台北に引っ越すことに同意した。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 単語集セクション -->
+        <section id="vocabulary">
+            <h2>3. 単語集 網羅</h2>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>単語・ピンイン</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td rowspan="4">コミュニケーション</td>
+                    <td>談 (tán)</td>
+                    <td>会話する、議論する、話し合う</td>
+                </tr>
+                <tr>
+                    <td>建議 (jiànyì)</td>
+                    <td>アドバイス(する)、提案(する)</td>
+                </tr>
+                <tr>
+                    <td>討論 (tǎolùn)</td>
+                    <td>相談(する)、討論(する)、ディスカッション(する)</td>
+                </tr>
+                <tr>
+                    <td>同意 / 接受 (tóngyì / jiēshòu)</td>
+                    <td>同意(する) / 受け入れる</td>
+                </tr>
+                <tr>
+                    <td rowspan="6">親族呼称</td>
+                    <td>父親 / 母親 (fùqīn / mǔqīn)</td>
+                    <td>父親、お父さん / 母親、お母さん</td>
+                </tr>
+                <tr>
+                    <td>伯伯 (bóbo)</td>
+                    <td>おじさん(父親の兄、または父親と同世代の男性に対する呼びかけ語)</td>
+                </tr>
+                <tr>
+                    <td>叔叔 (shúshu)</td>
+                    <td>おじさん(父親の弟、または父親と同世代の男性に対する呼びかけ語)</td>
+                </tr>
+                <tr>
+                    <td>舅舅 (jiùjiu)</td>
+                    <td>おじさん(母親の兄弟)</td>
+                </tr>
+                <tr>
+                    <td>姑姑 (gūgu)</td>
+                    <td>おばさん(父親の姉妹)</td>
+                </tr>
+                <tr>
+                    <td>阿姨 (āyí)</td>
+                    <td>おばさん(母親の姉妹、または母親と同世代の女性に対する呼びかけ語)</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">その他</td>
+                    <td>位子 (wèizi)</td>
+                    <td>席、座席、位置、スペース</td>
+                </tr>
+                <tr>
+                    <td>文法 (wénfǎ)</td>
+                    <td>文法</td>
+                </tr>
+                <tr>
+                    <td>無聊 (wúliáo)</td>
+                    <td>つまらない</td>
+                </tr>
+                <tr>
+                    <td>首 (shǒu)</td>
+                    <td>〜曲、〜首 (歌、曲、詩などを数える量詞)</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 練習問題セクション -->
+        <section id="exercises">
+            <h2>4. 練習問題（クリックで解答表示）</h2>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-①. 【おじ(父親の弟)】と話す<br>跟【叔叔】說</div>
+                <div class="exercise-q">【母親／おじ(母親の兄弟)／おば(母親の姉妹)】と相談する</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">跟（ 母親(媽媽) ／ 舅舅 ／ 阿姨 ）討論</span>
+                        <button class="play-btn" onclick="speakText('跟母親討論。跟舅舅討論。跟阿姨討論。')">🔊</button>
+                    </div>
+                    <div class="pinyin">gēn [ mǔqīn(māma) / jiùjiu / āyí ] tǎolùn</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">1-②. あと1回【使っ】たらもう捨ててもいい<br>再【用】一次就可以丟了</div>
+                <div class="exercise-q">あと3分【煮／焼い／揚げ】たらもう食べてもいい</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">再（ 煮 ／ 烤 ／ 炸 ）三分鐘就可以吃了</span>
+                        <button class="play-btn" onclick="speakText('再煮三分鐘就可以吃了。再烤三分鐘就可以吃了。再炸三分鐘就可以吃了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">zài [ zhǔ / kǎo / zhá(zhà) ] sān fēnzhōng jiù kěyǐ chī le</div>
+                </div>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-③. 何日も【待た】ないと届かない<br>要【等】好幾天才會送到</div>
+                <div class="exercise-q">何度も【読ま／調べ／聞か】なければ理解できない</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">要（ 讀(看) ／ 查 ／ 聽 ）好幾次才會懂</span>
+                        <button class="play-btn" onclick="speakText('要讀好幾次才會懂。要查好幾次才會懂。要聽好幾次才會懂。')">🔊</button>
+                    </div>
+                    <div class="pinyin">yào [ dú(kàn) / chá / tīng ] hǎo jǐ cì cái huì dǒng</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-①. パンを2つ買ったら、飲み物を1杯プレゼント<br>買兩個麵包就送一杯飲料</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('買兩個麵包就送一杯飲料。')">🔊</button>
+                    </div>
+                    <div class="pinyin">mǎi liǎng ge miànbāo jiù sòng yì bēi yǐnliào</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-②. MRTに1時間半〈乗ってようやく着く／乗らないと着かない〉<br>搭一個半小時的捷運才會到</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('搭一個半小時的捷運才會到。')">🔊</button>
+                    </div>
+                    <div class="pinyin">dā yí ge bàn xiǎoshí de jiéyùn cái huì dào</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-③. 你要先付三百塊錢，才可以參加這個活動。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('你要先付三百塊錢，才可以參加這個活動。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nǐ yào xiān fù sānbǎi kuài qián, cái kěyǐ cānjiā zhè ge huódòng.</div>
+                    <div class="jp">先に300元〈払ってようやくこのイベントに参加できる／払わないとこのイベントに参加できない〉。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-④. 那個工作不難，她同事教了一次，她就會了。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('那個工作不難，她同事教了一次，她就會了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nà ge gōngzuò bù nán, tā tóngshì jiāo le yí cì, tā jiù huì le.</div>
+                    <div class="jp">あの仕事は難しくない。同僚が一度教えたら、彼女はできるようになった。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-①. ひとつの文法を何度も練習しないと忘れてしまう。<br>一個文法(  )練習好幾次，才不會(  )。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">一個文法（ 要 ）練習好幾次，才不會（ 忘 ）。</span>
+                        <button class="play-btn" onclick="speakText('一個文法要練習好幾次，才不會忘。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Yí ge wénfǎ ( yào ) liànxí hǎo jǐ cì, cái bú huì ( wàng ).</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-②. 彼は今年16歳だから、再来年になったらお酒が飲めるようになる。<br>他今年16歲，(  )就可以喝酒(  )。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">他今年16歲，（ 後年 ）就可以喝酒（ 了 ）。</span>
+                        <button class="play-btn" onclick="speakText('他今年十六歲，後年就可以喝酒了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Tā jīnnián shíliù suì, ( hòunián ) jiù kěyǐ hē jiǔ ( le ).</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-③. 彼女は2日間ドイツ語を学んだだけで、いくつかの単語が言えるようになった。<br>她只學了兩天的德文，(  )會說幾個(  )了。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">她只學了兩天的德文，（ 就 ）會說幾個（ 單字 ）了。</span>
+                        <button class="play-btn" onclick="speakText('她只學了兩天的德文，就會說幾個單字了。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Tā zhǐ xué le liǎng tiān de Déwén, ( jiù ) huì shuō jǐ ge ( dānzì ) le.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-④. 自転車のカギは、長い時間かけて探してようやく見つけた。<br>腳踏車的鑰匙，我找了(  )才(  )。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">腳踏車的鑰匙，我找了（ 半天 ）才（ 找到 ）。</span>
+                        <button class="play-btn" onclick="speakText('腳踏車的鑰匙，我找了半天才找到。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Jiǎotàchē de yàoshi, wǒ zhǎo le ( bàn tiān ) cái ( zhǎo dào ).</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson9_full_with_highlights.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson9_full_with_highlights.html created.")
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 10 完全網羅版</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 40px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #b83356; 
+            margin-top: 25px;
+            font-size: 1.1em;
+        }
+        .highlight-box {
+            background-color: #fffaf0;
+            border: 2px solid #f6d887;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        .highlight-text {
+            background: linear-gradient(transparent 60%, #fff0b3 60%);
+            font-weight: bold;
+        }
+        .grammar-pattern {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pattern-title {
+            color: #d85a7a;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .tip-box {
+            background-color: #fdf0f3;
+            border-left: 4px solid #d85a7a;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tip-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .example-box { 
+            background: #fdfbf7; 
+            border: 1px solid #eee;
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+        }
+        .example { 
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .example:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.2em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+        .jp {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #eaeaea; 
+            padding: 10px 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #fdf0f3; 
+            color: #a03c56; 
+        }
+        .exercise-item {
+            margin-bottom: 25px;
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .exercise-q { 
+            font-weight: bold; 
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .badge {
+            background-color: #f0a6b6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .dialogue-speaker {
+            font-weight: bold;
+            color: #a03c56;
+            width: 50px;
+            flex-shrink: 0;
+        }
+        .dialogue-line {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #f0a6b6;
+        }
+        .dialogue-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 10: 多喝水，多休息！<br><span style="font-size: 0.6em; color: #666;">（文法解説・例文・単語・練習問題 完全網羅版）</span></h1>
+
+        <!-- 文法解説・ハイライトセクション -->
+        <section id="grammar-highlights">
+            <h2>1. 文法ポイント・教科書のハイライト</h2>
+            
+            <div class="highlight-box">
+                <p>“多”には、形容詞の「多い」以外にもさまざまな用法があります。この課では<span class="highlight-text">「しっかり/もっと/多めに〜する」</span>という動詞を修飾する用法と、<span class="highlight-text">「どのくらいの〜」という疑問詞を作る</span>用法を重点的に学びます。</p>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">まずは、これまでの「多」の用法を整理しましょう</div>
+                <ul>
+                    <li>(1) <strong>形容詞</strong>として使う：「多い」 (例: 時間不<strong>多</strong>了)</li>
+                    <li>(2) <strong>端数を表す</strong>：「〜あまり、〜過ぎ」 (例: 花一個<strong>多</strong>月寫)</li>
+                    <li>(3) <strong>結果補語</strong>になる：「十分すぎるほど〜する」 (例: 你想<strong>多</strong>了)</li>
+                </ul>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">新用法 (4) 〈“多”/“少”＋動詞〉：「しっかり（多めに）〜する / 少なめに〜する」</div>
+                <p>「普段より/今より/予定より」その動作をたくさんする、あるいは控えることを表します。このフレーズから始まると、命令文になることもあります。</p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span><strong>比較</strong><br>
+                    ・<strong>多</strong>吃點！ (しっかり食べて！ / もっと食べて！)<br>
+                    ・<strong>少</strong>說話，多做事。(おしゃべりばかりしてないで、やるべきことをしっかりやりなさい。)
+                </div>
+            </div>
+
+            <div class="grammar-pattern">
+                <div class="pattern-title">新用法 (5) 〈“多”＋形容詞〉：疑問詞を作る / 感嘆文を作る</div>
+                <p>後ろに形容詞を伴って「どのくらいの〜」という疑問詞を作ります。</p>
+                <ul>
+                    <li><strong>多大</strong> (どのくらいの大きさ/年齢)</li>
+                    <li><strong>多高</strong> (どのくらいの高さ)</li>
+                    <li><strong>多久</strong> (どのくらいの期間・時間)</li>
+                    <li><strong>多遠</strong> (どのくらいの距離)</li>
+                </ul>
+                <div class="tip-box" style="background-color: #fffaf0; border-left-color: #f6d887;">
+                    <span class="tip-icon">★</span><strong>疑問詞の前に動詞がないときは、よく “有” を加えます。</strong><br>
+                    例：他<strong>有</strong>多高？ (彼はどのくらいの高さですか？)
+                </div>
+                <div class="tip-box" style="background-color: #f3f8fd; border-left-color: #0056b3;">
+                    <span class="tip-icon">💡</span><strong>感嘆文としての用法</strong><br>
+                    この形の疑問詞を使って「どのくらい〜か（言葉にならない）」と表現することで、<strong>「なんて〜だろう」という感嘆文</strong>にもなります。<br>
+                    例：這部電視劇<strong>多難看</strong>啊！ (このテレビドラマはなんておもしろくないのだろう！)
+                </div>
+            </div>
+        </section>
+
+        <!-- 例文セクション -->
+        <section id="examples">
+            <h2>2. 例文網羅（全22文 / ①〜㉒）</h2>
+            <div class="example-box">
+                <!-- 1-5 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">1</span><span class="zh">時間不多了。</span><button class="play-btn" onclick="speakText('時間不多了。')">🔊</button></div>
+                    <div class="pinyin">Shíjiān bù duō le.</div>
+                    <div class="jp">時間はもう多くない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">2</span><span class="zh">這份報告可能要花一個多月寫。</span><button class="play-btn" onclick="speakText('這份報告可能要花一個多月寫。')">🔊</button></div>
+                    <div class="pinyin">Zhè fèn bàogào kěnéng yào huā yí ge duō yuè xiě.</div>
+                    <div class="jp">このレポートは書くのに多分1か月以上かかる。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">3</span><span class="zh">你想多了。</span><button class="play-btn" onclick="speakText('你想多了。')">🔊</button></div>
+                    <div class="pinyin">Nǐ xiǎng duō le.</div>
+                    <div class="jp">きみは考え過ぎだ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">4</span><span class="zh">多運動。</span><button class="play-btn" onclick="speakText('多運動。')">🔊</button></div>
+                    <div class="pinyin">Duō yùndòng.</div>
+                    <div class="jp">しっかり運動しなさい。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">5</span><span class="zh">玉山(有)多高？</span><button class="play-btn" onclick="speakText('玉山有多高？')">🔊</button></div>
+                    <div class="pinyin">Yùshān (yǒu) duō gāo?</div>
+                    <div class="jp">玉山はどのくらいの高さですか？</div>
+                </div>
+
+                <!-- 6-10 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">6</span><span class="zh">多吃點！</span><button class="play-btn" onclick="speakText('多吃點！')">🔊</button></div>
+                    <div class="pinyin">Duō chī diǎn!</div>
+                    <div class="jp">しっかり食べて！／もっと食べて！</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">7</span><span class="zh">多喝水，多休息！</span><button class="play-btn" onclick="speakText('多喝水，多休息！')">🔊</button></div>
+                    <div class="pinyin">Duō hē shuǐ, duō xiūxí!</div>
+                    <div class="jp">しっかり水分をとって、しっかり休んで。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">8</span><span class="zh">可心最近考試都沒考好，我們應該多關心她。</span><button class="play-btn" onclick="speakText('可心最近考試都沒考好，我們應該多關心她。')">🔊</button></div>
+                    <div class="pinyin">Kěxīn zuìjìn kǎoshì dōu méi kǎo hǎo, wǒmen yīnggāi duō guānxīn tā.</div>
+                    <div class="jp">可心は最近テストの成績がずっとよくないから、私たちはもっと彼女のことを気にかけなければならない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">9</span><span class="zh">你別再說自己笨了，多讀書就會有自信了。</span><button class="play-btn" onclick="speakText('你別再說自己笨了，多讀書就會有自信了。')">🔊</button></div>
+                    <div class="pinyin">Nǐ bié zài shuō zìjǐ bèn le, duō dú shū jiù huì yǒu zìxìn le.</div>
+                    <div class="jp">自分がバカだなんてもう言わないで。しっかり勉強すれば自信がつくよ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">10</span><span class="zh">那間飯館的老闆每次都會多送我們一道小菜。</span><button class="play-btn" onclick="speakText('那間飯館的老闆每次都會多送我們一道小菜。')">🔊</button></div>
+                    <div class="pinyin">Nà jiān fànguǎn de lǎobǎn měi cì dōu huì duō sòng wǒmen yí dào xiǎocài.</div>
+                    <div class="jp">あの飲食店のオーナーは、毎回私たちに小皿のお惣菜を1品つけてくれる。</div>
+                </div>
+
+                <!-- 11-15 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">11</span><span class="zh">少說話，多做事。</span><button class="play-btn" onclick="speakText('少說話，多做事。')">🔊</button></div>
+                    <div class="pinyin">Shǎo shuō huá, duō zuò shì.</div>
+                    <div class="jp">［話を減らして／おしゃべりばかりしてないで］（するべきことを）しっかりやりなさい。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">12</span><span class="zh">炸的東西對身體不太好，你少吃一點吧！</span><button class="play-btn" onclick="speakText('炸的東西對身體不太好，你少吃一點吧！')">🔊</button></div>
+                    <div class="pinyin">Zhá de dōngxī duì shēntǐ bú tài hǎo, nǐ shǎo chī yìdiǎn ba!</div>
+                    <div class="jp">揚げ物はあまり身体によくないから、食べるのを少し控えなさいよ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">13</span><span class="zh">我們以為他不會來咖啡廳，所以少點了一杯飲料。</span><button class="play-btn" onclick="speakText('我們以為他不會來咖啡廳，所以少點了一杯飲料。')">🔊</button></div>
+                    <div class="pinyin">Wǒmen yǐwéi tā bú huì lái kāfēitīng, suǒyǐ shǎo diǎn le yì bēi yǐnliào.</div>
+                    <div class="jp">私たちは彼がカフェには来ないと思っていたから、飲み物を1杯少なく注文した。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">14</span><span class="zh">你的孩子們多大了？</span><button class="play-btn" onclick="speakText('你的孩子們多大了？')">🔊</button></div>
+                    <div class="pinyin">Nǐ de háizi men duō dà le?</div>
+                    <div class="jp">あなたの子どもたちはいくつになりましたか。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">15</span><span class="zh">我們快要遲到了，你還要多久？</span><button class="play-btn" onclick="speakText('我們快要遲到了，你還要多久？')">🔊</button></div>
+                    <div class="pinyin">Wǒmen kuàiyào chídào le, nǐ hái yào duō jiǔ?</div>
+                    <div class="jp">私たちはもうすぐ遅刻してしまうけど、あなたはあとどのくらいかかるの？</div>
+                </div>
+
+                <!-- 16-22 -->
+                <div class="example">
+                    <div class="zh-container"><span class="badge">16</span><span class="zh">我們還要開多遠才會到加油站？</span><button class="play-btn" onclick="speakText('我們還要開多遠才會到加油站？')">🔊</button></div>
+                    <div class="pinyin">Wǒmen hái yào kāi duō yuǎn cái huì dào jiāyóuzhàn?</div>
+                    <div class="jp">私たちは、あとどのくらいの距離を運転したらガソリンスタンドに着くの？</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">17</span><span class="zh">你哥哥比你高嗎？他有多高？</span><button class="play-btn" onclick="speakText('你哥哥比你高嗎？他有多高？')">🔊</button></div>
+                    <div class="pinyin">Nǐ gēge bǐ nǐ gāo ma? Tā yǒu duō gāo?</div>
+                    <div class="jp">あなたのお兄さんは、あなたより背が高いのですか。身長はどのくらいですか。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">18</span><span class="zh">我想看看她喜歡的歌手有多帥。</span><button class="play-btn" onclick="speakText('我想看看她喜歡的歌手有多帥。')">🔊</button></div>
+                    <div class="pinyin">Wǒ xiǎng kànkàn tā xǐhuān de gēshǒu yǒu duō shuài.</div>
+                    <div class="jp">彼女の好きな歌手がどのくらいカッコいいのか見てみたい。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">19</span><span class="zh">她的頭髮多長、多好看啊！</span><button class="play-btn" onclick="speakText('她的頭髮多長、多好看啊！')">🔊</button></div>
+                    <div class="pinyin">Tā de tóufǎ duō cháng, duō hǎokàn a!</div>
+                    <div class="jp">彼女の髪はなんて長くて、なんてきれいなんだ。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">20</span><span class="zh">這部電視劇多難看啊！我不想看了。</span><button class="play-btn" onclick="speakText('這部電視劇多難看啊！我不想看了。')">🔊</button></div>
+                    <div class="pinyin">Zhè bù diànshìjù duō nánkàn a! Wǒ bù xiǎng kàn le.</div>
+                    <div class="jp">このテレビドラマはなんておもしろくないのだろう。私はもう見たくない。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">21</span><span class="zh">小張多聰明啊！這麼難的考試也考一百分。</span><button class="play-btn" onclick="speakText('小張多聰明啊！這麼難的考試也考一百分。')">🔊</button></div>
+                    <div class="pinyin">Xiǎo Zhāng duō cōngmíng a! Zhème nán de kǎoshì yě kǎo yìbǎi fēn.</div>
+                    <div class="jp">小張はなんて賢いのだろう。こんな難しいテストでも100点を取っている。</div>
+                </div>
+                <div class="example">
+                    <div class="zh-container"><span class="badge">22</span><span class="zh">你不去美國念書了嗎？多可惜啊！</span><button class="play-btn" onclick="speakText('你不去美國念書了嗎？多可惜啊！')">🔊</button></div>
+                    <div class="pinyin">Nǐ bú qù Měiguó niàn shū le ma? Duō kěxí a!</div>
+                    <div class="jp">きみはアメリカ留学をやめたの？なんて残念なんだろう。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 単語集セクション -->
+        <section id="vocabulary">
+            <h2>3. 単語集 網羅</h2>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>単語・ピンイン</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td rowspan="9">基本形容詞</td>
+                    <td>帥 (shuài)</td>
+                    <td>カッコいい、ハンサムである</td>
+                </tr>
+                <tr>
+                    <td>聰明 (cōngmíng)</td>
+                    <td>賢い、頭がいい</td>
+                </tr>
+                <tr>
+                    <td>笨 (bèn)</td>
+                    <td>愚かである、ばかである、間抜けである、不器用である</td>
+                </tr>
+                <tr>
+                    <td>可惜 (kěxí)</td>
+                    <td>惜しい、残念である</td>
+                </tr>
+                <tr>
+                    <td>可怕 (kěpà)</td>
+                    <td>怖い、恐ろしい</td>
+                </tr>
+                <tr>
+                    <td>用功 (yònggōng)</td>
+                    <td>勉強熱心である、よく勉強する、一生懸命である</td>
+                </tr>
+                <tr>
+                    <td>熱鬧 (rènào)</td>
+                    <td>にぎやかである</td>
+                </tr>
+                <tr>
+                    <td>輕鬆 (qīngsōng)</td>
+                    <td>気楽である、負担にならない</td>
+                </tr>
+                <tr>
+                    <td>急 (jí)</td>
+                    <td>急ぎである、速い、せっかちである、あわてる、焦る、いらいらする</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">街の施設</td>
+                    <td>咖啡廳 (kāfēitīng)</td>
+                    <td>喫茶店、カフェ</td>
+                </tr>
+                <tr>
+                    <td>茶館 (cháguǎn)</td>
+                    <td>茶館 (中国茶を飲んだり軽食を食べたりする中華式の喫茶店)</td>
+                </tr>
+                <tr>
+                    <td>加油站 (jiāyóuzhàn)</td>
+                    <td>ガソリンスタンド</td>
+                </tr>
+                <tr>
+                    <td>停車場 (tíngchēchǎng)</td>
+                    <td>駐車場</td>
+                </tr>
+                <tr>
+                    <td>游泳池 (yóuyǒngchí)</td>
+                    <td>プール</td>
+                </tr>
+                <tr>
+                    <td rowspan="9">その他</td>
+                    <td>自信 (zìxìn)</td>
+                    <td>自信</td>
+                </tr>
+                <tr>
+                    <td>電視劇 (diànshìjù)</td>
+                    <td>テレビドラマ</td>
+                </tr>
+                <tr>
+                    <td>油 (yóu)</td>
+                    <td>油、ガソリン</td>
+                </tr>
+                <tr>
+                    <td>玉山 (Yùshān)</td>
+                    <td>玉山 (台湾で最も高い山)</td>
+                </tr>
+                <tr>
+                    <td>頭髮/髮 (tóufǎ / fà)</td>
+                    <td>髪の毛</td>
+                </tr>
+                <tr>
+                    <td>多 (duō)</td>
+                    <td>しっかり〜する、もっと〜する、どのくらいの、なんと〜（後ろに形容詞を組み合わせて疑問詞を作る、感嘆文に使う）</td>
+                </tr>
+                <tr>
+                    <td>少 (shǎo)</td>
+                    <td>少なめに〜する、〜するのを控える</td>
+                </tr>
+                <tr>
+                    <td>分 (fēn)</td>
+                    <td>〜点 (点数を表す)</td>
+                </tr>
+                <tr>
+                    <td>加油 (jiā yóu)</td>
+                    <td>給油する、(応援するときの)がんばって</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 30px;">★ ドリンクショップ用語 ★</h3>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>単語・ピンイン</th>
+                    <th>意味</th>
+                </tr>
+                <tr>
+                    <td rowspan="5">甘さ</td>
+                    <td>全糖 (quán táng)</td>
+                    <td>甘さ 100%</td>
+                </tr>
+                <tr>
+                    <td>少糖 (shǎo táng)</td>
+                    <td>甘さちょっと控えめ (75〜80%ぐらい)</td>
+                </tr>
+                <tr>
+                    <td>半糖 (bàn táng)</td>
+                    <td>甘さ 50%</td>
+                </tr>
+                <tr>
+                    <td>微糖 (wéi táng)</td>
+                    <td>甘さ 25〜30%ぐらい</td>
+                </tr>
+                <tr>
+                    <td>無糖 (wú táng)</td>
+                    <td>無糖</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">氷の量</td>
+                    <td>冰塊 (bīngkuài)</td>
+                    <td>氷</td>
+                </tr>
+                <tr>
+                    <td>正常冰 (zhèngcháng bīng)</td>
+                    <td>氷の量 通常</td>
+                </tr>
+                <tr>
+                    <td>少冰 (shǎo bīng)</td>
+                    <td>氷の量 ちょっと控えめ (75〜80%ぐらい)</td>
+                </tr>
+                <tr>
+                    <td>微冰 (wéi bīng)</td>
+                    <td>氷の量 25〜30%ぐらい</td>
+                </tr>
+                <tr>
+                    <td>去冰 (qù bīng)</td>
+                    <td>氷抜き</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">その他</td>
+                    <td>吸管 (xīguǎn)</td>
+                    <td>ストロー</td>
+                </tr>
+                <tr>
+                    <td>中杯 (zhōng bēi)</td>
+                    <td>ミディアムカップ (「スモールカップ」は“小杯”、「ビッグカップ」は“大杯”)</td>
+                </tr>
+                <tr>
+                    <td>找 (zhǎo)</td>
+                    <td>お釣りを渡す</td>
+                </tr>
+                <tr>
+                    <td>喔 (ō)</td>
+                    <td>〜よ、〜ね</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 会話セクション -->
+        <section id="conversation">
+            <h2>4. 華語を使って会話にチャレンジ！① ドリンクショップで</h2>
+            <div class="example-box">
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">您好！請問要點什麼呢？</span><button class="play-btn" onclick="speakText('您好！請問要點什麼呢？')">🔊</button></div>
+                        <div class="pinyin">Nín hǎo! Qǐngwèn yào diǎn shénme ne?</div>
+                        <div class="jp">こんにちは。ご注文は何になさいますか。</div>
+                    </div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">我要一杯冰淇淋紅茶，中杯。</span><button class="play-btn" onclick="speakText('我要一杯冰淇淋紅茶，中杯。')">🔊</button></div>
+                        <div class="pinyin">Wǒ yào yì bēi bīngqílín hóngchá, zhōng bēi.</div>
+                        <div class="jp">紅茶フロートを1杯、ミディアムサイズでお願いします。</div>
+                    </div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">好的，甜度、冰塊呢？</span><button class="play-btn" onclick="speakText('好的，甜度、冰塊呢？')">🔊</button></div>
+                        <div class="pinyin">Hǎo de, tiándù, bīngkuài ne?</div>
+                        <div class="jp">かしこまりました。甘さと氷の量は？</div>
+                    </div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">去冰、少糖。</span><button class="play-btn" onclick="speakText('去冰、少糖。')">🔊</button></div>
+                        <div class="pinyin">Qù bīng, shǎo táng.</div>
+                        <div class="jp">氷抜き、甘さちょっと控えめで。</div>
+                    </div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">好的，跟您收四十五元。收您一百，找您五十五元。謝謝！</span><button class="play-btn" onclick="speakText('好的，跟您收四十五元。收您一百，找您五十五元。謝謝！')">🔊</button></div>
+                        <div class="pinyin">Hǎo de, gēn nín shōu sìshíwǔ yuán. Shōu nín yìbǎi, zhǎo nín wǔshíwǔ yuán. Xièxie!</div>
+                        <div class="jp">かしこまりました。40元お願いします。100元お預かりしましたので、55元お返しいたします。ありがとうございました。</div>
+                    </div>
+                </div>
+                <div style="text-align: center; color: #999; margin: 10px 0;">……</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">冰淇淋紅茶好了喔！吸管請在這裡拿。</span><button class="play-btn" onclick="speakText('冰淇淋紅茶好了喔！吸管請在這裡拿。')">🔊</button></div>
+                        <div class="pinyin">Bīngqílín hóngchá hǎo le ō! Xīguǎn qǐng zài zhèlǐ ná.</div>
+                        <div class="jp">紅茶フロートが出来上がりましたよ。ストローはこちらでお取りください。</div>
+                    </div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客</div>
+                    <div class="dialogue-content">
+                        <div class="zh-container"><span class="zh">謝謝！</span><button class="play-btn" onclick="speakText('謝謝！')">🔊</button></div>
+                        <div class="pinyin">Xièxie!</div>
+                        <div class="jp">ありがとうございます。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 練習問題セクション -->
+        <section id="exercises">
+            <h2>5. 練習問題（クリックで解答表示）</h2>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-①. 1枚多めに【送った】<br>多【寄了】一張</div>
+                <div class="exercise-q">1つ多めに【運んだ／売った／減らした】</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">多（ 搬了 ／ 賣了 ／ 減了 ）一個</span>
+                        <button class="play-btn" onclick="speakText('多搬了一個。多賣了一個。多減了一個。')">🔊</button>
+                    </div>
+                    <div class="pinyin">duō [ bān le / mài le / jiǎn le ] yí ge</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">1-②. 【映画館】までどのくらいの距離ですか。<br>【電影院】有多遠？</div>
+                <div class="exercise-q">【郵便局／プール／駐車場】までどのくらいの距離ですか。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">（ 郵局 ／ 游泳池 ／ 停車場 ）有多遠？</span>
+                        <button class="play-btn" onclick="speakText('郵局有多遠？游泳池有多遠？停車場有多遠？')">🔊</button>
+                    </div>
+                    <div class="pinyin">[ Yóujú / Yóuyǒngchí / Tíngchēchǎng ] yǒu duō yuǎn?</div>
+                </div>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="exercise-q">1-③. なんて【勉強熱心な】のだろう。<br>多【用功】啊！</div>
+                <div class="exercise-q">なんて【にぎやかな／恐ろしい／気楽な】のだろう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">多（ 熱鬧 ／ 可怕 ／ 輕鬆 ）啊！</span>
+                        <button class="play-btn" onclick="speakText('多熱鬧啊！多可怕啊！多輕鬆啊！')">🔊</button>
+                    </div>
+                    <div class="pinyin">Duō [ rènào / kěpà / qīngsōng ] a!</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-①. Wǒ shuì duō jiǔ le? (我睡多久了？) を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="jp">私、どのくらい寝てた？</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-②. Nǐ háishì shǎo hē diǎn jiǔ ba! (你/妳還是少喝點酒吧！) を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="jp">きみはやはりお酒の量を減らしたら。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-③. 外婆常常說，多吃魚就會變聰明。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('外婆常常說，多吃魚就會變聰明。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Wàipó chángcháng shuō, duō chī yú jiù huì biàn cōngmíng.</div>
+                    <div class="jp">しっかり魚を食べたら賢くなれると祖母がよく言っていた。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">2-④. 這間茶館開到五點，我們還可以再多聊一點。 を日本語にしましょう。</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <button class="play-btn" onclick="speakText('這間茶館開到五點，我們還可以再多聊一點。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Zhè jiān cháguǎn kāi dào wǔ diǎn, wǒmen hái kěyǐ zài duō liáo yìdiǎn.</div>
+                    <div class="jp">この茶館は5時まで開いているので、私たちはもうちょっとおしゃべりできる。</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-①. この件はどのくらい急ぎなの？<br>[ 急 ／ 這件事 ／ 多 ／ 有 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">這件事有多急？</span>
+                        <button class="play-btn" onclick="speakText('這件事有多急？')">🔊</button>
+                    </div>
+                    <div class="pinyin">Zhè jiàn shì yǒu duō jí?</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-②. もう少し寝たら？<br>[ 多睡 ／ 吧 ／ 一點 ／ 你再 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">你再多睡一點吧。</span>
+                        <button class="play-btn" onclick="speakText('你再多睡一點吧。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nǐ zài duō shuì yìdiǎn ba.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-③. もっと野菜を食べなければならないと医者に言われた。<br>[ 吃蔬菜 ／ 我應該 ／ 醫生說 ／ 多 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">醫生說我應該多吃蔬菜。</span>
+                        <button class="play-btn" onclick="speakText('醫生說我應該多吃蔬菜。')">🔊</button>
+                    </div>
+                    <div class="pinyin">Yīshēng shuō wǒ yīnggāi duō chī shūcài.</div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <div class="exercise-q">3-④. あの映画はどのくらいの長さか知ってる？<br>[ 多長嗎 ／ 那部電影 ／ 有 ／ 你知道 ]</div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+                <div class="answer-area">
+                    <div class="zh-container">
+                        <span class="zh">你知道那部電影有多長嗎？</span>
+                        <button class="play-btn" onclick="speakText('你知道那部電影有多長嗎？')">🔊</button>
+                    </div>
+                    <div class="pinyin">Nǐ zhīdào nà bù diànyǐng yǒu duō cháng ma?</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson10_full_with_highlights.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson10_full_with_highlights.html created.")
