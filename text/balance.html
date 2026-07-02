@@ -12,12 +12,7 @@
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #f3f4f6;
         }
-        .pulse-text {
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+    
         }
         /* ANAアプリ風グラデーション背景 */
         .ana-bg {
@@ -82,7 +77,7 @@
                 <!-- 総残り秒数 -->
                 <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-10 shadow-sm flex flex-col justify-center items-center">
                     <p class="text-gray-500 text-sm md:text-base font-bold mb-3 tracking-[0.2em]">総残り秒数 (リアルタイム更新)</p>
-                    <div id="cd-total-secs" class="text-6xl md:text-[5rem] leading-none font-mono font-black text-indigo-500 pulse-text tracking-tighter drop-shadow-sm">
+                    <div id="cd-total-secs" class="text-6xl md:text-[5rem] leading-none font-mono font-black text-indigo-500 tracking-tighter drop-shadow-sm">
                         --
                     </div>
                 </div>
