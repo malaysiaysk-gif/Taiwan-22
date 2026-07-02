@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>退職カウントダウン - 9月10日へ向けて</title>
+    <title>退職カウントダウン - 9月3日へ向けて</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -35,22 +35,6 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* チェックボックスのカスタムスタイル */
-        .task-checkbox:checked + div {
-            background-color: #10b981;
-            border-color: #10b981;
-        }
-        .task-checkbox:checked + div svg {
-            display: block;
-        }
-        .task-row.completed {
-            background-color: #f8fafc;
-            opacity: 0.7;
-        }
-        .task-row.completed .task-title {
-            text-decoration: line-through;
-            color: #94a3b8;
-        }
     </style>
 </head>
 <body class="text-gray-800 antialiased min-h-screen flex flex-col items-center justify-start pt-8 pb-12 px-4">
@@ -64,7 +48,7 @@
                     <i class="fa-solid fa-map-location-dot mr-2"></i>計画編
                 </button>
                 <button onclick="switchTab('record')" id="btn-tab-record" class="px-8 py-2.5 rounded-full text-sm md:text-base font-bold text-gray-500 hover:text-gray-700 transition-all duration-200">
-                    <i class="fa-solid fa-plane-departure mr-2"></i>記録編
+                    <i class="fa-solid fa-plane-departure mr-2"></i>記録編 (台湾準備)
                 </button>
             </div>
         </div>
@@ -73,7 +57,7 @@
         <div id="tab-plan" class="tab-content active">
             <!-- カウントダウン セクション (一体化レイアウト) -->
             <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
-                <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">9月10日まで、あと...</h2>
+                <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">9月3日まで、あと...</h2>
                 
                 <!-- 4つのブロック -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -110,7 +94,7 @@
                         <div class="flex justify-between text-xs md:text-sm font-bold text-gray-500 mb-2 px-1">
                             <span>5月1日 8:00</span>
                             <span id="progress-text" class="text-center">--% | 状態確認中</span>
-                            <span>9月10日 17:00</span>
+                            <span>9月3日 17:00</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-4 md:h-5 shadow-inner">
                             <div id="progress-bar" class="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-500 h-4 md:h-5 rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
@@ -125,7 +109,7 @@
                             <span>全 14 日</span>
                         </div>
                         <div class="w-full bg-rose-100 rounded-full h-3 shadow-inner border border-rose-200 mb-4">
-                            <!-- 8日消化 / 14日 = 57.14% -->
+                            <!-- 8日消化 / 14日 = 約57.14% -->
                             <div class="bg-gradient-to-r from-rose-400 to-rose-500 h-3 rounded-full transition-all duration-1000 ease-out" style="width: 57.14%"></div>
                         </div>
                         
@@ -219,12 +203,10 @@
                     
                     <!-- フライト1: 岡山 -> 羽田 -->
                     <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
-                        <!-- 左右の切り欠き (背景色に馴染ませる) -->
                         <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
                         <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
                         
                         <div class="p-6 pb-10 relative z-0">
-                            <!-- 上部：日付と便名 -->
                             <div class="flex justify-between items-center mb-5">
                                 <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
                                     2027.2.4 <span class="mx-1 text-[13px]">木</span> <i class="fa-solid fa-wifi text-[11px] ml-1 text-[#002b5c]"></i>
@@ -232,18 +214,15 @@
                                 <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">NH 652</span>
                             </div>
                             
-                            <!-- 中央：空港コードと時間 -->
                             <div class="flex justify-between items-end relative">
                                 <div class="text-left w-[40%]">
                                     <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">OKJ</div>
                                     <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">岡山</div>
                                     <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">7:05</div>
                                 </div>
-                                
                                 <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
                                     <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
                                 </div>
-                                
                                 <div class="text-right w-[40%]">
                                     <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
                                     <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
@@ -251,8 +230,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- 右下の詳しく見るタブ -->
                         <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
                             詳しく見る
                         </div>
@@ -260,12 +237,10 @@
 
                     <!-- フライト2: 羽田 -> 台北(松山) -->
                     <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
-                        <!-- 左右の切り欠き -->
                         <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
                         <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
                         
                         <div class="p-6 pb-10 relative z-0">
-                            <!-- 上部：日付と便名 -->
                             <div class="flex justify-between items-center mb-5">
                                 <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
                                     2027.2.4 <span class="mx-1 text-[13px]">木</span>
@@ -273,18 +248,15 @@
                                 <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">BR 189</span>
                             </div>
                             
-                            <!-- 中央：空港コードと時間 -->
                             <div class="flex justify-between items-end relative">
                                 <div class="text-left w-[40%]">
                                     <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
                                     <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
                                     <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">10:25</div>
                                 </div>
-                                
                                 <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
                                     <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
                                 </div>
-                                
                                 <div class="text-right w-[40%]">
                                     <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">TSA</div>
                                     <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">台北(松山)</div>
@@ -292,20 +264,16 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- 右下の詳しく見るタブ -->
                         <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
                             詳しく見る
                         </div>
                     </div>
-
                 </div>
 
                 <!-- 座席指定アイコンとカウントダウン -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 relative z-10 mt-2">
                     <div class="flex flex-col items-center">
                         <div class="bg-[#d8eefd] text-[#0055b8] border-2 border-white shadow-sm rounded-full w-[68px] h-[68px] flex items-center justify-center mb-2">
-                            <!-- 座席アイコンの代用 (左右反転して左向きに) -->
                             <i class="fa-solid fa-chair text-[28px]" style="transform: scaleX(-1);"></i>
                         </div>
                         <span class="text-[12px] font-bold text-[#002b5c] tracking-wide">座席指定</span>
@@ -330,32 +298,32 @@
             </div>
         </div>
 
-        <!-- ==================== 記録編 (台湾留学ダッシュボード) ==================== -->
+        <!-- ==================== 記録編 (台湾留学準備) タブ ==================== -->
         <div id="tab-record" class="tab-content">
             <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 border-t-[6px] border-emerald-500">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-gray-100 pb-6">
-                    <div>
-                        <h2 class="text-2xl font-black text-gray-800 flex items-center">
-                            <i class="fa-solid fa-plane-departure text-emerald-500 mr-3 text-3xl"></i> 台湾留学 準備ダッシュボード
-                        </h2>
-                        <p class="text-gray-500 text-sm mt-2 font-medium">渡航に向けたタスクを一つずつクリアしていきましょう。</p>
-                    </div>
-                    
-                    <!-- 進捗バー -->
-                    <div class="w-full md:w-64 mt-6 md:mt-0 bg-gray-50 p-4 rounded-xl border border-gray-200">
-                        <div class="flex justify-between items-end mb-2">
-                            <span class="text-xs font-bold text-gray-500">全体の進捗</span>
-                            <span class="text-lg font-black text-emerald-600" id="task-progress-text">0%</span>
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-gray-100 pb-6">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="bg-emerald-100 p-3 rounded-full mr-4 text-emerald-600 shadow-sm">
+                            <i class="fa-solid fa-plane-departure text-2xl"></i>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div id="task-progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div>
+                            <h2 class="text-2xl font-black text-gray-700">台湾留学 準備タスク</h2>
+                            <p class="text-sm text-gray-500 font-bold mt-1">夢への第一歩。着実に進めていきましょう！</p>
+                        </div>
+                    </div>
+                    <div class="text-right flex flex-col items-end">
+                        <div class="text-xs font-bold text-gray-500 mb-1">全体達成度</div>
+                        <div class="flex items-center">
+                            <span id="task-progress-text" class="text-3xl font-black text-emerald-500 mr-3">0%</span>
+                            <div class="w-32 bg-gray-200 rounded-full h-3 shadow-inner">
+                                <div id="task-progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-400 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- タスクリスト コンテナ -->
-                <div class="space-y-8" id="task-list-container">
-                    <!-- JSでタスクがここに生成されます -->
+                <div id="task-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- タスクカードがJSで生成されます -->
                 </div>
             </section>
         </div>
@@ -363,13 +331,10 @@
     </main>
 
     <script>
-        // --- タブ切り替えロジック ---
         function switchTab(tabId) {
-            // コンテンツの切り替え
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById('tab-' + tabId).classList.add('active');
 
-            // ボタンのスタイル切り替え
             const btnPlan = document.getElementById('btn-tab-plan');
             const btnRecord = document.getElementById('btn-tab-record');
 
@@ -382,7 +347,6 @@
             }
         }
 
-        // --- MC 音声再生ロジック ---
         function playMCText() {
             if (!window.speechSynthesis) {
                 alert("お使いのブラウザは音声再生に対応していません。");
@@ -392,8 +356,8 @@
             const speak = () => {
                 const utterance = new SpeechSynthesisUtterance("アイ、ウィル、テイク、エムスィー、トゥデイ。");
                 utterance.lang = 'ja-JP';
-                utterance.pitch = 0.6; // 男性の声っぽく少し低め
-                utterance.rate = 1.8; // 早口に設定
+                utterance.pitch = 0.6; 
+                utterance.rate = 1.8; 
                 
                 const voices = window.speechSynthesis.getVoices();
                 const maleVoice = voices.find(v => 
@@ -408,7 +372,6 @@
                 window.speechSynthesis.speak(utterance);
             };
 
-            // 1回だけ再生する
             speak();
         }
 
@@ -418,147 +381,24 @@
             };
         }
 
-        // --- 台湾留学タスク データとロジック ---
-        const studyTasks = [
-            { category: "事前調査", tasks: [
-                { id: "t1", title: "公式サイト確認", desc: "募集開始日・締切日・学費の確認", deadline: "9月上旬", type: "urgent" },
-                { id: "t2", title: "ビザ種類確認", desc: "90日以上滞在の場合は停留ビザが必要", deadline: "9月中旬", type: "urgent" }
-            ]},
-            { category: "書類準備", tasks: [
-                { id: "t3", title: "最終学歴卒業証明書", desc: "英語または中国語（PDF準備）", deadline: "9月中旬", type: "warning" },
-                { id: "t4", title: "成績証明書", desc: "大学等の成績（必要な場合）", deadline: "9月中旬", type: "warning" },
-                { id: "t5", title: "残高証明書", desc: "英文（銀行で発行・金額目安は要確認）", deadline: "10月上旬", type: "normal" },
-                { id: "t6", title: "パスポート", desc: "有効期限を確認（6ヶ月以上推奨）", deadline: "即時", type: "urgent" }
-            ]},
-            { category: "申請手続・支払い", tasks: [
-                { id: "t7", title: "オンライン申請", desc: "公式サイトより必要事項入力", deadline: "10月中旬", type: "normal" },
-                { id: "t8", title: "学費納入", desc: "クレジットカード等で決済", deadline: "10月下旬", type: "normal" },
-                { id: "t9", title: "入学許可証受領", desc: "メールでの受領を確認し印刷", deadline: "11月上旬", type: "normal" }
-            ]},
-            { category: "渡航・生活準備", tasks: [
-                { id: "t10", title: "航空券手配", desc: "旧正月前後を避けるか早めの予約", deadline: "11月中旬", type: "normal" },
-                { id: "t11", title: "滞在先手配", desc: "寮・シェアハウス・ホテル等の確保", deadline: "11月中旬", type: "normal" },
-                { id: "t12", title: "海外旅行保険", desc: "クレジットカード付帯または長期保険加入", deadline: "11月下旬", type: "normal" },
-                { id: "t13", title: "現地通信環境", desc: "SIMカードまたはWi-Fiルーターの検討", deadline: "12月上旬", type: "normal" },
-                { id: "t14", title: "持ち物整理", desc: "防寒具・筆記用具・常備薬・アダプター", deadline: "12月上旬", type: "normal" }
-            ]},
-            { category: "学習・到着後", tasks: [
-                { id: "t15", title: "TOCFL対策", desc: "語彙・文法の復習（クラス分けのため）", deadline: "継続中", type: "info" },
-                { id: "t16", title: "クラス分けテスト", desc: "指定日時に現地で受験", deadline: "12月上旬", type: "normal" },
-                { id: "t17", title: "居留証手続き", desc: "90日以上滞在の場合、入国後速やかに", deadline: "12月中旬", type: "normal" }
-            ]}
-        ];
-
-        // 締め切りタイプに応じたバッジの色
-        const getBadgeStyle = (type) => {
-            switch(type) {
-                case 'urgent': return 'bg-red-100 text-red-700 border-red-200';
-                case 'warning': return 'bg-amber-100 text-amber-700 border-amber-200';
-                case 'info': return 'bg-blue-100 text-blue-700 border-blue-200';
-                default: return 'bg-gray-100 text-gray-600 border-gray-200';
-            }
-        };
-
-        // タスクの進捗を計算してバーを更新
-        function updateTaskProgress() {
-            const checkboxes = document.querySelectorAll('.task-checkbox');
-            const total = checkboxes.length;
-            let checked = 0;
-            checkboxes.forEach(cb => {
-                if(cb.checked) checked++;
-                
-                // 行のスタイル変更（完了状態）
-                const row = cb.closest('.task-row');
-                if(cb.checked) {
-                    row.classList.add('completed');
-                } else {
-                    row.classList.remove('completed');
-                }
-            });
-            
-            const percentage = total === 0 ? 0 : Math.round((checked / total) * 100);
-            
-            document.getElementById('task-progress-text').innerText = `${percentage}%`;
-            document.getElementById('task-progress-bar').style.width = `${percentage}%`;
-        }
-
-        // タスクリストのDOMを生成
-        function renderTasks() {
-            const container = document.getElementById('task-list-container');
-            let html = '';
-
-            studyTasks.forEach((categoryBlock, index) => {
-                html += `
-                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                        <div class="bg-gray-50 px-5 py-3 border-b border-gray-100 flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mr-3 shadow-sm">
-                                ${index + 1}
-                            </div>
-                            <h3 class="font-bold text-gray-700 text-lg tracking-wide">${categoryBlock.category}</h3>
-                        </div>
-                        <div class="divide-y divide-gray-50">
-                `;
-
-                categoryBlock.tasks.forEach(task => {
-                    const badgeClass = getBadgeStyle(task.type);
-                    html += `
-                        <label class="task-row flex items-start p-4 md:p-5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                            <div class="relative flex items-center mr-4 mt-1">
-                                <input type="checkbox" class="task-checkbox opacity-0 absolute w-6 h-6 cursor-pointer" onchange="updateTaskProgress()">
-                                <div class="w-6 h-6 border-2 border-gray-300 rounded flex items-center justify-center transition-colors group-hover:border-emerald-400">
-                                    <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-1 gap-2">
-                                    <span class="task-title font-bold text-gray-800 text-base md:text-lg transition-colors">${task.title}</span>
-                                    <span class="inline-block px-2.5 py-1 text-xs font-bold rounded-md border ${badgeClass} self-start md:self-auto shadow-sm whitespace-nowrap">
-                                        <i class="fa-regular fa-clock mr-1"></i> ${task.deadline}
-                                    </span>
-                                </div>
-                                <p class="text-sm text-gray-500 font-medium">${task.desc}</p>
-                            </div>
-                        </label>
-                    `;
-                });
-
-                html += `
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            // 初期状態の進捗を計算
-            updateTaskProgress();
-        }
-
-        // --- STREAMING_CHUNK: Date Logic & Planners ---
-        // 目標日時: 2026年9月10日 00:00:00
-        const targetDate = new Date('2026-09-10T00:00:00').getTime();
+        // 目標日時を9月3日に設定
+        const targetDate = new Date('2026-09-03T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
-        // 台湾移住フライト日: 2027年2月4日 07:05:00
         const flightDate = new Date('2027-02-04T07:05:00').getTime();
         
-        // 2026年の日本の祝日（5月〜12月）
         const holidays2026 = [
-            '2026-05-03', '2026-05-04', '2026-05-05', '2026-05-06',
+            '2026-05-03', '2026-05-04', '2026-05-05', '2026-05-06', 
             '2026-07-20', '2026-08-11', 
             '2026-09-21', // 敬老の日
-            '2026-09-22', // 国民の休日 (シルバーウィーク)
+            '2026-09-22', // 国民の休日
             '2026-09-23', // 秋分の日
             '2026-10-12', '2026-11-03', '2026-11-23'
         ];
 
-        // 業務時間（平日 8:00〜17:00、祝日除く）のミリ秒を計算する関数
         function calculateWorkingTimeMs(startTimestamp, endTimestamp) {
             if (startTimestamp >= endTimestamp) return 0;
-            
             let totalMs = 0;
             let current = new Date(startTimestamp);
-            
             while (current.getTime() < endTimestamp) {
                 const year = current.getFullYear();
                 const month = String(current.getMonth() + 1).padStart(2, '0');
@@ -582,51 +422,34 @@
                         totalMs += (calcEnd - calcStart);
                     }
                 }
-                
                 current.setDate(current.getDate() + 1);
                 current.setHours(0, 0, 0, 0);
             }
-            
             return totalMs;
         }
 
-        // 指定した終了日までの残り営業日数を計算する関数
         function getRemainingWorkingDaysToTarget(targetDateString) {
             const end = new Date(targetDateString); 
             let workingDays = 0;
             let current = new Date();
             current.setHours(0,0,0,0);
-
             const minStart = new Date('2026-05-01T00:00:00');
-            if (current < minStart) {
-                current = new Date(minStart);
-            }
-
-            if (current >= end) {
-                return 0;
-            }
-
+            if (current < minStart) { current = new Date(minStart); }
+            if (current >= end) { return 0; }
             while (current < end) {
                 const dayOfWeek = current.getDay();
                 const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
-                
                 const year = current.getFullYear();
                 const month = String(current.getMonth() + 1).padStart(2, '0');
                 const date = String(current.getDate()).padStart(2, '0');
                 const dateString = `${year}-${month}-${date}`;
-
                 const isHoliday = holidays2026.includes(dateString);
-
-                if (!isWeekend && !isHoliday) {
-                    workingDays++;
-                }
+                if (!isWeekend && !isHoliday) { workingDays++; }
                 current.setDate(current.getDate() + 1);
             }
-            
             return workingDays;
         }
 
-        // カウントダウン更新関数
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -642,7 +465,7 @@
                 return;
             }
 
-            const workingDaysLeft = getRemainingWorkingDaysToTarget('2026-09-10T00:00:00');
+            const workingDaysLeft = getRemainingWorkingDaysToTarget('2026-09-03T00:00:00');
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -654,13 +477,10 @@
             document.getElementById('cd-secs').innerText = seconds;
             document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
             
-            // フライト日までの日数計算
             const flightDistance = flightDate - now;
             let flightDays = 0;
-            if (flightDistance > 0) {
-                flightDays = Math.floor(flightDistance / (1000 * 60 * 60 * 24));
-            }
-
+            if (flightDistance > 0) { flightDays = Math.floor(flightDistance / (1000 * 60 * 60 * 24)); }
+            
             const flightDaysElement = document.getElementById('flight-days');
             const flightTitle = document.getElementById('flight-title');
             const flightUnit = document.getElementById('flight-unit');
@@ -675,17 +495,13 @@
                 flightDaysElement.classList.add('text-4xl', 'md:text-5xl');
             }
 
-            // プログレスバーの計算 (5/1 8:00 〜 9/10 17:00)
-            const targetWorkEnd = new Date('2026-09-10T17:00:00').getTime();
+            const targetWorkEnd = new Date('2026-09-03T17:00:00').getTime();
             const startWorkBegin = new Date('2026-05-01T08:00:00').getTime();
-            
             const totalWorkMs = calculateWorkingTimeMs(startWorkBegin, targetWorkEnd);
             const passedWorkMs = calculateWorkingTimeMs(startWorkBegin, now);
             
             let progressPercentage = 0;
-            if (totalWorkMs > 0) {
-                progressPercentage = (passedWorkMs / totalWorkMs) * 100;
-            }
+            if (totalWorkMs > 0) { progressPercentage = (passedWorkMs / totalWorkMs) * 100; }
             progressPercentage = Math.max(0, Math.min(100, progressPercentage));
             
             const progressBar = document.getElementById('progress-bar');
@@ -706,59 +522,48 @@
                 }
             }
 
-            // 1. 人生スケール (80歳換算)
             const lifeAge = Math.floor((progressPercentage / 100) * 80);
             let lifeText = `${lifeAge}歳 `;
             if (progressPercentage === 0) lifeText = "0歳<br><span class='text-xs text-gray-500'>(オギャー！産まれたて)</span>";
             else if (progressPercentage >= 100) lifeText = "80歳<br><span class='text-xs text-gray-500'>(大往生・新たな来世へ！)</span>";
             else if (lifeAge < 10) lifeText += "<br><span class='text-xs text-gray-500'>(まだまだこれから！)</span>";
-            else if (lifeAge < 20) lifeText += "<br><span class='text-xs text-gray-500'>(青春真っ只中！一番楽しい時期)</span>";
+            else if (lifeAge < 20) lifeText += "<br><span class='text-xs text-gray-500'>(青春真っ只中！)</span>";
             else if (lifeAge < 30) lifeText += "<br><span class='text-xs text-gray-500'>(社会の荒波に揉まれ中...)</span>";
-            else if (lifeAge < 40) lifeText += "<br><span class='text-xs text-gray-500'>(働き盛り・中間管理職の悲哀)</span>";
             else if (lifeAge < 50) lifeText += "<br><span class='text-xs text-gray-500'>(人生の折り返し地点)</span>";
-            else if (lifeAge < 60) lifeText += "<br><span class='text-xs text-gray-500'>(酸いも甘いも噛み分けた)</span>";
             else if (lifeAge < 70) lifeText += "<br><span class='text-xs text-gray-500'>(悠々自適の準備中)</span>";
             else lifeText += "<br><span class='text-xs text-gray-500'>(悟りの境地・もうすぐゴール！)</span>";
 
-            // 2. ピラミッドスケール (約210段換算)
             const pyramidSteps = Math.floor((progressPercentage / 100) * 210);
             let pyramidText = `第${pyramidSteps}段目 `;
             if (progressPercentage === 0) pyramidText = "0段目<br><span class='text-xs text-gray-500'>(更地の測量中・先は長い)</span>";
-            else if (progressPercentage >= 100) pyramidText = "210段目<br><span class='text-xs text-gray-500'>(キャップストーン設置！歴史に名を刻む)</span>";
+            else if (progressPercentage >= 100) pyramidText = "210段目<br><span class='text-xs text-gray-500'>(キャップストーン設置！)</span>";
             else if (pyramidSteps < 50) pyramidText += "<br><span class='text-xs text-gray-500'>(土台作りが一番しんどい)</span>";
-            else if (pyramidSteps < 100) pyramidText += "<br><span class='text-xs text-gray-500'>(形が見えてきて少し楽しい)</span>";
             else if (pyramidSteps < 150) pyramidText += "<br><span class='text-xs text-gray-500'>(高所作業で足がすくむ)</span>";
             else pyramidText += "<br><span class='text-xs text-gray-500'>(頂上はもうすぐそこ！)</span>";
 
-            // 3. ローマの歴史スケール (約1200年の歴史)
             let romeText = "";
-            if (progressPercentage === 0) romeText = "ロムルスによるローマ建国<br><span class='text-xs text-gray-500'>(伝説の始まり・まだ小さな集落)</span>";
-            else if (progressPercentage >= 100) romeText = "西ローマ帝国滅亡<br><span class='text-xs text-gray-500'>(古代の終わり・全ての軛から解き放たれた！)</span>";
-            else if (progressPercentage < 10) romeText = "王政ローマ時代<br><span class='text-xs text-gray-500'>(7人の王の時代・基礎固め)</span>";
-            else if (progressPercentage < 20) romeText = "共和政初期・十二表法制定<br><span class='text-xs text-gray-500'>(法律ができて社会が整い始める)</span>";
-            else if (progressPercentage < 30) romeText = "ポエニ戦争・ハンニバル戦<br><span class='text-xs text-gray-500'>(最大の危機・カルタゴとの死闘)</span>";
-            else if (progressPercentage < 45) romeText = "内乱の一世紀・カエサル暗殺<br><span class='text-xs text-gray-500'>(ブルータスお前もか・大激動期)</span>";
-            else if (progressPercentage < 60) romeText = "アウグストゥス・帝政移行<br><span class='text-xs text-gray-500'>(初代皇帝・平和の始まり)</span>";
-            else if (progressPercentage < 75) romeText = "五賢帝時代<br><span class='text-xs text-gray-500'>(パクス・ロマーナ・一番安定して平和)</span>";
-            else if (progressPercentage < 85) romeText = "軍人皇帝時代<br><span class='text-xs text-gray-500'>(大混乱期・毎日がサバイバル)</span>";
-            else if (progressPercentage < 95) romeText = "コンスタンティヌス・キリスト教公認<br><span class='text-xs text-gray-500'>(新体制構築・時代の転換点)</span>";
-            else romeText = "東西ローマ分裂<br><span class='text-xs text-gray-500'>(帝国は真っ二つ・ラストスパート)</span>";
+            if (progressPercentage === 0) romeText = "ロムルスによるローマ建国<br><span class='text-xs text-gray-500'>(伝説の始まり)</span>";
+            else if (progressPercentage >= 100) romeText = "西ローマ帝国滅亡<br><span class='text-xs text-gray-500'>(古代の終わり！)</span>";
+            else if (progressPercentage < 20) romeText = "共和政初期・十二表法制定<br><span class='text-xs text-gray-500'>(社会が整い始める)</span>";
+            else if (progressPercentage < 45) romeText = "内乱の一世紀・カエサル暗殺<br><span class='text-xs text-gray-500'>(大激動期)</span>";
+            else if (progressPercentage < 75) romeText = "五賢帝時代<br><span class='text-xs text-gray-500'>(パクス・ロマーナ・一番平和)</span>";
+            else if (progressPercentage < 95) romeText = "コンスタンティヌス公認<br><span class='text-xs text-gray-500'>(時代の転換点)</span>";
+            else romeText = "東西ローマ分裂<br><span class='text-xs text-gray-500'>(ラストスパート)</span>";
 
             if (document.getElementById('scale-life')) document.getElementById('scale-life').innerHTML = lifeText;
             if (document.getElementById('scale-pyramid')) document.getElementById('scale-pyramid').innerHTML = pyramidText;
             if (document.getElementById('scale-rome')) document.getElementById('scale-rome').innerHTML = romeText;
         }
 
-        // --- 9月カレンダーの描画関数 ---
         function renderCalendar() {
-            // 2026年9月のカレンダーデータ (9/1は火曜日)
+            // 9月3日を最終出勤日に設定
             const calendarDays = [
                 // 1週目 (8/30 - 9/5)
                 { date: 30, currentMonth: false, monthText: '8月', events: [] },
                 { date: 31, currentMonth: false, events: [] },
                 { date: 1, currentMonth: true, monthText: '9月', events: [] },
                 { date: 2, currentMonth: true, events: [] },
-                { date: 3, currentMonth: true, events: [] },
+                { date: 3, currentMonth: true, events: [ { text: '最終出勤日', type: 'blue', start: true, end: true } ] },
                 { date: 4, currentMonth: true, events: [] },
                 { date: 5, currentMonth: true, events: [] },
                 // 2週目 (9/6 - 9/12)
@@ -766,7 +571,7 @@
                 { date: 7, currentMonth: true, events: [] },
                 { date: 8, currentMonth: true, events: [] },
                 { date: 9, currentMonth: true, events: [] },
-                { date: 10, currentMonth: true, events: [ { text: '最終出勤日', type: 'blue', start: true, end: true } ] },
+                { date: 10, currentMonth: true, events: [] },
                 { date: 11, currentMonth: true, events: [] },
                 { date: 12, currentMonth: true, events: [] },
                 // 3週目 (9/13 - 9/19)
@@ -802,7 +607,7 @@
             calendarDays.forEach(day => {
                 const bgClass = day.currentMonth ? 'bg-white' : 'bg-gray-50';
                 const textClass = day.currentMonth ? 'text-gray-700' : 'text-gray-400';
-                const dateText = day.monthText ? `${day.monthText}${day.date}日` : day.date;
+                const dateText = day.monthText ? `${day.monthText} ${day.date}日` : day.date;
 
                 html += `<div class="${bgClass} py-1 flex flex-col min-h-[80px] md:min-h-[100px] hover:bg-gray-100 transition-colors">`;
                 html += `<div class="text-xs text-center font-medium ${textClass} mb-1">${dateText}</div>`;
@@ -810,7 +615,6 @@
                 day.events.forEach(ev => {
                     let colorClass = 'bg-sky-500 text-white';
                     if (ev.type === 'green') colorClass = 'bg-emerald-600 text-white';
-                    else if (ev.type === 'yellow') colorClass = 'bg-amber-400 text-amber-900';
                     
                     let shapeClass = '';
                     if (ev.start && ev.end) { shapeClass = 'rounded mx-1'; }
@@ -823,16 +627,87 @@
                 
                 html += `</div>`;
             });
-
             grid.innerHTML = html;
         }
 
-        // 初期化実行
-        renderTasks();
-        renderCalendar();
+        const taskData = [
+            { category: "事前調査", title: "公式サイト確認", desc: "募集開始日・締切日・学費の確認", deadline: "9月上旬", done: false, color: "blue" },
+            { category: "事前調査", title: "ビザ種類確認", desc: "90日以上滞在の場合は停留ビザが必要", deadline: "9月中旬", done: false, color: "blue" },
+            { category: "書類準備", title: "最終学歴卒業証明書", desc: "英語または中国語（PDF準備）", deadline: "9月中旬", done: false, color: "purple" },
+            { category: "書類準備", title: "成績証明書", desc: "大学等の成績（必要な場合）", deadline: "9月中旬", done: false, color: "purple" },
+            { category: "書類準備", title: "残高証明書", desc: "英文（銀行で発行・金額目安は要確認）", deadline: "10月上旬", done: false, color: "purple" },
+            { category: "書類準備", title: "パスポート", desc: "有効期限を確認（6ヶ月以上推奨）", deadline: "即時", done: false, color: "red" },
+            { category: "申請手続", title: "オンライン申請", desc: "公式サイトより必要事項入力", deadline: "10月中旬", done: false, color: "orange" },
+            { category: "申請手続", title: "学費納入", desc: "クレジットカード等で決済", deadline: "10月下旬", done: false, color: "orange" },
+            { category: "申請手続", title: "入学許可証受領", desc: "メールでの受領を確認し印刷", deadline: "11月上旬", done: false, color: "orange" },
+            { category: "渡航準備", title: "航空券手配", desc: "旧正月前後を避けるか早めの予約", deadline: "11月中旬", done: false, color: "teal" },
+            { category: "渡航準備", title: "滞在先手配", desc: "寮・シェアハウス・ホテル等の確保", deadline: "11月中旬", done: false, color: "teal" },
+            { category: "渡航準備", title: "海外旅行保険", desc: "クレジットカード付帯または長期保険加入", deadline: "11月下旬", done: false, color: "teal" },
+            { category: "渡航準備", title: "現地通信環境", desc: "SIMカードまたはWi-Fiルーターの検討", deadline: "12月上旬", done: false, color: "teal" },
+            { category: "学習準備", title: "TOCFL対策", desc: "語彙・文法の復習（クラス分けのため）", deadline: "継続中", done: false, color: "indigo" },
+            { category: "持ち物整理", title: "荷物パッキング", desc: "防寒具・筆記用具・常備薬・アダプター", deadline: "12月上旬", done: false, color: "gray" },
+            { category: "到着後", title: "クラス分けテスト", desc: "指定日時に現地で受験", deadline: "12月上旬", done: false, color: "pink" },
+            { category: "到着後", title: "居留証手続き", desc: "90日以上滞在の場合、入国後速やかに", deadline: "12月中旬", done: false, color: "pink" }
+        ];
+
+        function renderTasks() {
+            const container = document.getElementById('task-list-container');
+            if(!container) return;
+            
+            let html = '';
+            taskData.forEach((task, index) => {
+                const isChecked = task.done ? 'checked' : '';
+                const cardStyle = task.done ? 'bg-gray-50 border-gray-200 opacity-60' : 'bg-white border-gray-200 hover:shadow-md';
+                const titleStyle = task.done ? 'line-through text-gray-400' : 'text-gray-800';
+                
+                const colorMap = {
+                    'blue': 'bg-blue-100 text-blue-700', 'purple': 'bg-purple-100 text-purple-700',
+                    'red': 'bg-red-100 text-red-700 animate-pulse', 'orange': 'bg-orange-100 text-orange-700',
+                    'teal': 'bg-teal-100 text-teal-700', 'indigo': 'bg-indigo-100 text-indigo-700',
+                    'gray': 'bg-gray-100 text-gray-700', 'pink': 'bg-pink-100 text-pink-700'
+                };
+                const badgeClass = colorMap[task.color] || 'bg-gray-100 text-gray-700';
+
+                html += `
+                <div class="border rounded-2xl p-5 transition-all duration-300 ${cardStyle}">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 pt-1 mr-4">
+                            <input type="checkbox" id="task-${index}" ${isChecked} onchange="toggleTask(${index})" class="w-6 h-6 text-emerald-500 rounded border-gray-300 focus:ring-emerald-500 cursor-pointer">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded ${badgeClass}">${task.category}</span>
+                                <span class="text-xs font-bold text-gray-500 flex items-center"><i class="fa-regular fa-clock mr-1"></i> ${task.deadline}</span>
+                            </div>
+                            <label for="task-${index}" class="text-base font-bold mb-1 block cursor-pointer transition-all ${titleStyle}">${task.title}</label>
+                            <p class="text-xs text-gray-500 font-medium">${task.desc}</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            container.innerHTML = html;
+            updateTaskProgress();
+        }
+
+        function toggleTask(index) {
+            taskData[index].done = !taskData[index].done;
+            renderTasks();
+        }
+
+        function updateTaskProgress() {
+            const total = taskData.length;
+            const completed = taskData.filter(t => t.done).length;
+            const percentage = Math.round((completed / total) * 100) || 0;
+            
+            document.getElementById('task-progress-text').innerText = `${percentage}%`;
+            document.getElementById('task-progress-bar').style.width = `${percentage}%`;
+        }
+
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
+        renderCalendar();
+        renderTasks();
     </script>
 </body>
 </html>
