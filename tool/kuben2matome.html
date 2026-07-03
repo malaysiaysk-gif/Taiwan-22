@@ -393,8 +393,589 @@ html_content = """<!DOCTYPE html>
 </body>
 </html>
 """
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 6〜10 要点抜粋まとめ</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 { 
+            color: #c44769; 
+            margin-top: 30px; 
+            border-left: 5px solid #d85a7a; 
+            padding-left: 12px; 
+            background-color: #fdf0f3;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            font-size: 1.3em;
+        }
+        .summary-box {
+            background-color: #fff;
+            border: 1px solid #f0a6b6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .point-title {
+            color: #d85a7a;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #f0a6b6;
+            display: inline-block;
+        }
+        .structure {
+            background-color: #f8f9fa;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.05em;
+            color: #0056b3;
+            border: 1px dashed #ccc;
+            display: inline-block;
+            margin-bottom: 8px;
+            margin-top: 5px;
+        }
+        .tip-box {
+            background-color: #fffaf0;
+            border-left: 4px solid #f6d887;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 10px; 
+            margin-bottom: 15px;
+        }
+        th, td { 
+            border: 1px solid #eaeaea; 
+            padding: 8px 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #fdf0f3; 
+            color: #a03c56; 
+            width: 40%;
+        }
+        .example {
+            color: #555;
+            font-size: 0.95em;
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #eee;
+        }
+        .zh { font-weight: bold; color: #222; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 6〜10 要点抜粋まとめ<br><span style="font-size: 0.5em; color: #666;">（重要文法・構文リファレンス）</span></h1>
 
-with open("taiwan_chinese_lesson1_to_5_review.html", "w", encoding="utf-8") as f:
+        <p>Lesson 6から10にかけては、<strong>「好/多/少」の応用表現</strong>、話し手の主観を表す<strong>副詞「就/才」の使い分け</strong>、そして<strong>結果補語「到」</strong>など、表現力を豊かにする重要な文法項目が集中しています。</p>
+
+        <!-- Lesson 6 -->
+        <section>
+            <h2>Lesson 6：さまざまな「好」</h2>
+            <div class="summary-box">
+                <div class="point-title">1. 「いくつも・何〜も」（主観的な多さ）</div>
+                <div class="structure">好幾 ＋ 量詞</div>
+                <div class="example">
+                    <span class="zh">我認識好幾位書法老師。</span><br>
+                    書道の先生を「何人も」知っている。
+                </div>
+
+                <div class="point-title">2. 形容詞を作る「好＋動詞」</div>
+                <div class="structure">好 ＋ 動詞</div>
+                <p style="margin-top: 5px; margin-bottom: 5px;">動作に対するプラス評価、または「〜しやすい」を表します。反対語は「難＋動詞」です。</p>
+                <table>
+                    <tr><th>プラス評価（〜しておいしい/楽しい）</th><td>好吃、好喝、好玩、好看、好聽</td></tr>
+                    <tr><th>〜しやすい</th><td>好找、好寫、好做、好騎、好用、好走</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lesson 7 -->
+        <section>
+            <h2>Lesson 7：“就”と“才” (1) 時間詞との組み合わせ</h2>
+            <div class="summary-box">
+                <p style="margin-top: 0;">話し手の「早い／遅い」という主観（気持ち）を表す最重要項目です。</p>
+                
+                <div class="point-title">1. 「〜にはもう〜する」（早いという気持ち）</div>
+                <div class="structure">時間詞 ＋ 就 ＋ 動詞 (＋了)</div>
+                <div class="example">
+                    <span class="zh">昨天我九點就睡覺了。</span><br>
+                    昨日は9時には寝た。（想定より早い）
+                </div>
+
+                <div class="point-title">2. 「〜にようやく〜する」（遅いという気持ち）</div>
+                <div class="structure">時間詞 ＋ 才 ＋ 動詞</div>
+                <div class="example">
+                    <span class="zh">昨天我十二點才睡覺。</span><br>
+                    昨日は12時にようやく寝た／12時まで寝なかった。（想定より遅い）
+                </div>
+                
+                <div class="tip-box">
+                    <strong>⚠️ 超重要ルール：</strong>「才」を使う文では、過去の出来事であっても文末に「了」をつけません。
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 8 -->
+        <section>
+            <h2>Lesson 8：結果補語 “到”</h2>
+            <div class="summary-box">
+                <p style="margin-top: 0;">「到達する」という意味を持ち、動作の結果どこに行き着いたかを表します。</p>
+                
+                <table>
+                    <tr>
+                        <th>対象（目的達成・入手）<br><span style="font-size: 0.8em; font-weight: normal;">動詞＋到＋動作の対象</span></th>
+                        <td><span class="zh">找到好幾家素食餐廳。</span><br>(何軒ものベジタリアンのお店を見つけた)</td>
+                    </tr>
+                    <tr>
+                        <th>場所（どこまで・どこへ）<br><span style="font-size: 0.8em; font-weight: normal;">動詞＋到＋場所詞</span></th>
+                        <td><span class="zh">走到那間醫院。</span><br>(あの病院まで歩く)</td>
+                    </tr>
+                    <tr>
+                        <th>時間（いつまで）<br><span style="font-size: 0.8em; font-weight: normal;">動詞＋到＋時間詞</span></th>
+                        <td><span class="zh">睡到中午。</span><br>(お昼まで寝る)</td>
+                    </tr>
+                    <tr>
+                        <th>範囲（どの範囲まで）<br><span style="font-size: 0.8em; font-weight: normal;">動詞＋到＋範囲</span></th>
+                        <td><span class="zh">做到一半。</span><br>(半分までやる)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>💡 慣用表現「沒想到」：</strong>文頭に置いて「まさか〜だなんて」「思いがけず」という意外性を表します。<br>
+                    <span class="zh">沒想到她早就高中畢業了。</span> (まさかとっくに高校を卒業していたなんて)
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 9 -->
+        <section>
+            <h2>Lesson 9：“就”と“才” (2) 数量詞・条件との組み合わせ</h2>
+            <div class="summary-box">
+                <div class="point-title">1. 「〜しただけで、もう〜」（簡単・早い）</div>
+                <div class="structure">数量(少) ＋ 就 ＋ B (＋了)</div>
+                <div class="example">
+                    <span class="zh">我吃了一次藥就好了。</span><br>
+                    1度薬を飲んだだけで、もう治った。
+                </div>
+
+                <div class="point-title">2. 「〜して、ようやく〜」（困難・遅い）</div>
+                <div class="structure">数量(多) ＋ 才 ＋ B</div>
+                <div class="example">
+                    <span class="zh">我想了好幾天才買這個手錶。</span><br>
+                    何日も考えて、ようやくこの時計を買った。
+                </div>
+
+                <div class="point-title">3. 「〜してはじめて〜できる」（条件）</div>
+                <div class="structure">要 / 得 ＋ 条件 ＋ 才 ＋ B</div>
+                <div class="example">
+                    <span class="zh">在日本，要二十歲才可以喝酒。</span><br>
+                    日本では、20歳にならないと（20歳になってはじめて）お酒が飲めない。
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 10 -->
+        <section>
+            <h2>Lesson 10：さまざまな「多 / 少」</h2>
+            <div class="summary-box">
+                <div class="point-title">1. 「しっかり〜する / 少なめに〜する」（動作の増減）</div>
+                <div class="structure">多 / 少 ＋ 動詞</div>
+                <p style="margin-top: 5px; margin-bottom: 5px;">副詞として使い、動作の量を調整します。命令・アドバイスによく使われます。</p>
+                <div class="example">
+                    <span class="zh">多喝水，多休息！</span> (しっかり水分をとって、しっかり休んで！)<br>
+                    <span class="zh">少說話，多做事。</span> (おしゃべりは控えて、しっかり働きなさい。)
+                </div>
+
+                <div class="point-title">2. 「どのくらいの〜」（疑問詞の生成）</div>
+                <div class="structure">多 ＋ 形容詞</div>
+                <p style="margin-top: 5px; margin-bottom: 5px;">動詞がない場合は前に「有」を置くことが多いです。</p>
+                <table>
+                    <tr><th>多大</th><td>どのくらいの大きさ、いくつ（年齢）</td></tr>
+                    <tr><th>多高</th><td>どのくらいの高さ、身長</td></tr>
+                    <tr><th>多久</th><td>どのくらいの期間・時間</td></tr>
+                    <tr><th>多遠</th><td>どのくらいの距離</td></tr>
+                </table>
+                <div class="example" style="margin-top: 10px;">
+                    <span class="zh">你哥哥有多高？</span> (あなたのお兄さんは身長どのくらいですか？)
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 感嘆文への応用：</strong>「多＋形容詞」で「なんて〜だろう」という意味にもなります。<br>
+                    <span class="zh">這部電視劇多難看啊！</span> (このドラマはなんておもしろくないんだろう！)
+
+
+                </div>
+            </div>
+        </section>
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 6〜10 総合小テスト</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h2.section-title { 
+            color: #a03c56; 
+            margin-top: 20px; 
+            margin-bottom: 20px;
+            border-left: 6px solid #d85a7a; 
+            padding-left: 15px; 
+            background-color: #fdf0f3;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            font-size: 1.4em;
+        }
+        .intro-text {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+        .quiz-item {
+            background-color: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .q-badge {
+            background-color: #a03c56;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .q-text {
+            font-weight: bold;
+            font-size: 1.15em;
+            color: #333;
+        }
+        .toggle-btn {
+            background-color: #888;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .toggle-btn:hover {
+            background-color: #666;
+        }
+        .toggle-btn.active {
+            background-color: #d85a7a;
+        }
+        .answer-area {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        .answer-area.visible {
+            display: block;
+        }
+        .zh-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+        .zh { 
+            font-weight: bold; 
+            color: #222; 
+            font-size: 1.3em;
+        }
+        .pinyin {
+            color: #0066cc;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.95em;
+            margin-bottom: 4px;
+        }
+        .play-btn {
+            background-color: #f0a6b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .play-btn:hover {
+            background-color: #d85a7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2 class="section-title">2. 総合小テスト（全10問）</h2>
+        <p class="intro-text">これまでの学習事項をミックスした小テストです。「回答を表示」ボタンで答えを確認し、音声で発音もチェックしましょう。</p>
+
+        <!-- Q1 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q1 (L6)</span>
+                <span class="q-text">机の上に何本もカギがあります。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">桌子上有好幾把鑰匙。</span>
+                    <button class="play-btn" onclick="speakText('桌子上有好幾把鑰匙。')">🔊</button>
+                </div>
+                <div class="pinyin">Zhuōzi shàng yǒu hǎo jǐ bǎ yàoshi.</div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q2 (L6)</span>
+                <span class="q-text">このペンは本当に書きやすいから、もう1本買いたい。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">這枝筆真好寫，我想再買一枝。</span>
+                    <button class="play-btn" onclick="speakText('這枝筆真好寫，我想再買一枝。')">🔊</button>
+                </div>
+                <div class="pinyin">Zhè zhī bǐ zhēn hǎoxiě, wǒ xiǎng zài mǎi yì zhī.</div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q3 (L7)</span>
+                <span class="q-text">昨日は9時には寝た。（もう寝た）</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">昨天我九點就睡覺了。</span>
+                    <button class="play-btn" onclick="speakText('昨天我九點就睡覺了。')">🔊</button>
+                </div>
+                <div class="pinyin">Zuótiān wǒ jiǔ diǎn jiù shuìjiào le.</div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q4 (L7)</span>
+                <span class="q-text">昨日は12時にようやく寝た。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">昨天我十二點才睡覺。</span>
+                    <button class="play-btn" onclick="speakText('昨天我十二點才睡覺。')">🔊</button>
+                </div>
+                <div class="pinyin">Zuótiān wǒ shí'èr diǎn cái shuìjiào.</div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q5 (L8)</span>
+                <span class="q-text">私の家からあの病院まで、歩いて5分ぐらいしかかからない。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">從我家走到那間醫院，只要五分鐘左右。</span>
+                    <button class="play-btn" onclick="speakText('從我家走到那間醫院，只要五分鐘左右。')">🔊</button>
+                </div>
+                <div class="pinyin">Cóng wǒ jiā zǒu dào nà jiān yīyuàn, zhǐ yào wǔ fēnzhōng zuǒyòu.</div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q6 (L8)</span>
+                <span class="q-text">明日は出勤しなくていいので、お昼まで寝られる。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">明天不用上班，我可以睡到中午。</span>
+                    <button class="play-btn" onclick="speakText('明天不用上班，我可以睡到中午。')">🔊</button>
+                </div>
+                <div class="pinyin">Míngtiān bú yòng shàngbān, wǒ kěyǐ shuì dào zhōngwǔ.</div>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q7 (L9)</span>
+                <span class="q-text">今回の風邪は、一度薬を飲んだら治った。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">這次感冒，我吃了一次藥就好了。</span>
+                    <button class="play-btn" onclick="speakText('這次感冒，我吃了一次藥就好了。')">🔊</button>
+                </div>
+                <div class="pinyin">Zhè cì gǎnmào, wǒ chī le yí cì yào jiù hǎo le.</div>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q8 (L9)</span>
+                <span class="q-text">私は何日も考えてから、ようやくこの腕時計を買った。</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">我想了好幾天才買這個手錶。</span>
+                    <button class="play-btn" onclick="speakText('我想了好幾天才買這個手錶。')">🔊</button>
+                </div>
+                <div class="pinyin">Wǒ xiǎng le hǎo jǐ tiān cái mǎi zhè ge shǒubiǎo.</div>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q9 (L10)</span>
+                <span class="q-text">しっかり水分をとって、しっかり休んで！</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">多喝水，多休息！</span>
+                    <button class="play-btn" onclick="speakText('多喝水，多休息！')">🔊</button>
+                </div>
+                <div class="pinyin">Duō hē shuǐ, duō xiūxí!</div>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="quiz-item">
+            <div class="question-header">
+                <span class="q-badge">Q10 (L10)</span>
+                <span class="q-text">あなたのお兄さんは身長どのくらいですか？</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">回答を表示</button>
+            <div class="answer-area">
+                <div class="zh-container">
+                    <span class="zh">你哥哥有多高？</span>
+                    <button class="play-btn" onclick="speakText('你哥哥有多高？')">🔊</button>
+                </div>
+                <div class="pinyin">Nǐ gēge yǒu duō gāo?</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAnswer(btn) {
+            const answerDiv = btn.nextElementSibling;
+            if (answerDiv.classList.contains('visible')) {
+                answerDiv.classList.remove('visible');
+                btn.classList.remove('active');
+                btn.textContent = '回答を表示';
+            } else {
+                answerDiv.classList.add('visible');
+                btn.classList.add('active');
+                btn.textContent = '回答を隠す';
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85; 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
+            }
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson6_10_accordion_quiz.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("taiwan_chinese_lesson1_to_5_review.html created.")
+print("taiwan_chinese_lesson6_10_accordion_quiz.html created.")
+    </div>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_lesson6_10_summary.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_lesson6_10_summary.html created.")
