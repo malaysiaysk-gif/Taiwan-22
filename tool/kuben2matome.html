@@ -979,3 +979,246 @@ with open("taiwan_chinese_lesson6_10_summary.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("taiwan_chinese_lesson6_10_summary.html created.")
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾華語 学習ノート - Lesson 11-20 要点まとめ（チートシート）</title>
+    <style>
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+            background-color: #faf8f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        h1 { 
+            color: #d85a7a; 
+            border-bottom: 3px solid #f0a6b6; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .notice {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+            text-align: center;
+            border: 1px solid #ffeeba;
+        }
+        .lesson-card {
+            background: #fdfbf7;
+            border: 1px solid #eee;
+            border-left: 6px solid #f0a6b6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .lesson-title {
+            color: #c44769;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #f0a6b6;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .lesson-theme {
+            font-size: 0.7em;
+            color: #888;
+            font-weight: normal;
+        }
+        .grammar-point {
+            margin-bottom: 15px;
+        }
+        .point-name {
+            font-weight: bold;
+            color: #0056b3;
+            background-color: #f0f7ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .point-desc {
+            margin-left: 10px;
+            font-size: 0.95em;
+        }
+        .example {
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 4px;
+            margin-left: 20px;
+            border-left: 2px solid #ccc;
+            padding-left: 10px;
+        }
+        .missing-data {
+            text-align: center;
+            color: #aaa;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lesson 11-20 要点総まとめ表</h1>
+        <div class="notice">
+            ※現在、Lesson 15〜20のデータを収録しています。Lesson 11〜14はデータ追加後に更新予定です。
+        </div>
+
+        <!-- Missing Data Section -->
+        <div class="missing-data">
+            <h3>Lesson 11 〜 Lesson 14</h3>
+            <p>ここにLesson 11〜14の要点が追加されます。<br>（該当ページの画像がアップロードされ次第、自動的に統合されます）</p>
+        </div>
+
+        <!-- Lesson 15 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 15 <span class="lesson-theme">程度補語</span></div>
+            <div class="grammar-point">
+                <div class="point-name">A: “得” と一緒に使う</div>
+                <div class="point-desc">
+                    ・<strong>〜得不得了</strong> (すごく/めちゃくちゃ〜だ)<br>
+                    ・<strong>〜得很</strong> (すごく/めちゃくちゃ〜だ)<br>
+                    ・<strong>〜得要命 / 得要死</strong> (〜でたまらない)
+                </div>
+                <div class="example">例：好吃得不得了 (めちゃくちゃ美味しい) / 緊張得要死 (緊張してたまらない)</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">B: “得” を使わない</div>
+                <div class="point-desc">
+                    ・<strong>〜極了</strong> (すごく/めちゃくちゃ〜だ)<br>
+                    ・<strong>〜死了</strong> (〜でたまらない ※ネガティブな状況でよく使う)
+                </div>
+                <div class="example">例：喜歡極了 (すごく好きだ) / 餓死了 (お腹が空いて死にそうだ)</div>
+            </div>
+        </div>
+
+        <!-- Lesson 16 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 16 <span class="lesson-theme">副詞の呼応形</span></div>
+            <div class="grammar-point">
+                <div class="point-name">一...就...</div>
+                <div class="point-desc">「(ちょっと)AするとすぐBする／Bになる」</div>
+                <div class="example">例：他一下課就打開手機了。(授業が終わるとすぐスマホを開いた)</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">又...又...</div>
+                <div class="point-desc">「AでもあるしBでもある／AもするしBもする」※動詞句同士、形容詞句同士を合わせる</div>
+                <div class="example">例：又大又涼快 (大きく涼しい)</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">一邊...一邊...</div>
+                <div class="point-desc">「AしながらBする」</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">越...越... / 越來越...</div>
+                <div class="point-desc">「AすればするほどBになる」/「ますますBになる」</div>
+            </div>
+        </div>
+
+        <!-- Lesson 17 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 17 <span class="lesson-theme">兼語文・使役文</span></div>
+            <div class="grammar-point">
+                <div class="point-name">使役動詞のニュアンスの違い</div>
+                <div class="point-desc">
+                    ・<strong>請</strong>：丁寧にお願いする、招待する<br>
+                    ・<strong>要</strong>：要求する、指示する<br>
+                    ・<strong>叫</strong>：命令する、強く指示する<br>
+                    ・<strong>讓</strong>：許可する、(状況が人を)〜な気持ちにさせる
+                </div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">否定形（不/沒）の位置</div>
+                <div class="point-desc">必ず<strong>最初の使役動詞の前</strong>に置く。</div>
+                <div class="example">例：醫生不讓我喝冰水。(医者は私に冷たい水を飲ませてくれない)</div>
+            </div>
+        </div>
+
+        <!-- Lesson 18 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 18 <span class="lesson-theme">“把”構文1 (基本的な用法)</span></div>
+            <div class="grammar-point">
+                <div class="point-name">基本構造</div>
+                <div class="point-desc">主語 ＋ [不/沒] ＋ <strong>把</strong> ＋ 名詞句(〜を) ＋ <strong>動詞</strong> ＋ <strong>Z (位置や状態)</strong></div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">3つの重要ルール</div>
+                <div class="point-desc">
+                    1. 動詞は単独では使えず、必ず結果(Z)を伴う。<br>
+                    2. 否定詞(不/沒)は "把" の前に置く。<br>
+                    3. 目的語(把の後ろ)は特定のもの(話し手・聞き手が共通認識できるもの)に限る。
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 19 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 19 <span class="lesson-theme">介詞2 (在 / 從 / 往)</span></div>
+            <div class="grammar-point">
+                <div class="point-name">“在”＋時間詞</div>
+                <div class="point-desc">「〜した後に」等の主述フレーズが続く場合や、「只」と一緒に使う場合は "在" が必須。</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">“從”＋時間詞＋“開始/起”</div>
+                <div class="point-desc">時間詞を置く場合は必ず後ろに「開始」または「起」をつける。</div>
+                <div class="example">例：從明天開始 (明日から) ※「從哪裡(どこから)」など場所詞の場合は不要</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">“往” vs “到”</div>
+                <div class="point-desc">
+                    ・<strong>往</strong>：出発点からの「方向」に注目。 (往右轉 = 右へ曲がる)<br>
+                    ・<strong>到</strong>：到達点である「目的地」に注目。 (到台北去 = 台北へ行く)
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson 20 -->
+        <div class="lesson-card">
+            <div class="lesson-title">Lesson 20 <span class="lesson-theme">接続詞2 (複文をつなぐ)</span></div>
+            <div class="grammar-point">
+                <div class="point-name">不是A，就是B</div>
+                <div class="point-desc">「AでなければBだ / 必ずAかBかのどちらかだ」<br>※2つの可能性しかないことを断言・強調する。</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">不但A，而且B</div>
+                <div class="point-desc">「Aだけでなく(さらに)Bでもある/Bもする」</div>
+            </div>
+            <div class="grammar-point">
+                <div class="point-name">主語の位置ルール</div>
+                <div class="point-desc">
+                    ・主語が共通： 主語 ＋ 不是/不但 〜<br>
+                    ・主語が異なる： 不是/不但 ＋ 主語A 〜， 就是/而且 ＋ 主語B 〜
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+"""
+
+with open("taiwan_chinese_L11_L20_summary.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("taiwan_chinese_L11_L20_summary.html created.")
