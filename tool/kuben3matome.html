@@ -1,0 +1,843 @@
+import re
+
+html_content = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A/B (L1-L10) 試験前総まとめ＆試験対策シート</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-light: #eff6ff;
+            --accent-color: #ea580c;
+            --accent-light: #fff7ed;
+            --text-color: #1f2937;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --success-color: #16a34a;
+            --meta-color: #c026d3;
+            --meta-bg: #fdf4ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei", "微軟正黑體";
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border: 1px solid #bfdbfe;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .progress-container {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .lesson-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .lesson-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lesson-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .lesson-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .lesson-header.active {
+            border-bottom-color: var(--border-color);
+            background-color: var(--primary-light);
+        }
+
+        .checkbox-wrapper {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--success-color);
+        }
+
+        .lesson-title-info {
+            flex-grow: 1;
+        }
+
+        .lesson-num {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .lesson-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .lesson-meta {
+            font-size: 12px;
+            color: #6b7280;
+            margin-left: 10px;
+            background-color: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .arrow-icon {
+            font-size: 18px;
+            color: #9ca3af;
+            transition: transform 0.2s;
+        }
+
+        .lesson-header.active .arrow-icon {
+            transform: rotate(180deg);
+            color: var(--primary-color);
+        }
+
+        .lesson-content {
+            display: none;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .grammar-formula {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 15px;
+            border-radius: 0 6px 6px 0;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #c2410c;
+            font-size: 14px;
+        }
+
+        /* TOCFL対策メタ知識ボックス */
+        .tocfl-meta-box {
+            background-color: var(--meta-bg);
+            border: 1px solid #f0abfc;
+            border-left: 5px solid var(--meta-color);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 13.5px;
+            color: #4a044e;
+            box-shadow: 0 2px 4px rgba(192, 38, 211, 0.05);
+        }
+
+        .tocfl-meta-box h4 {
+            color: var(--meta-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        /* 図解用スタイル */
+        .diagram-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .diagram-element {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            min-width: 120px;
+        }
+
+        .diagram-arrow {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .vs-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 600px) {
+            .vs-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vs-card {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .vs-card.left {
+            border-top: 3px solid #0284c7;
+            background-color: #f0f9ff;
+        }
+
+        .vs-card.right {
+            border-top: 3px solid #b45309;
+            background-color: #fffbeb;
+        }
+
+        .vs-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 例文用スタイル */
+        .example-section {
+            margin-top: 15px;
+        }
+
+        .example-section h4 {
+            font-size: 13px;
+            color: #4b5563;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 6px;
+        }
+
+        .example-item {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 10px 0;
+        }
+
+        .example-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-zh {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0f172a;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .lang-pinyin {
+            font-size: 13px;
+            color: #2563eb;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 2px;
+        }
+
+        .lang-ja {
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        /* 秘訣・注意点 */
+        .tips-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--success-color);
+            padding: 10px 15px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #14532d;
+        }
+
+        .tips-box strong {
+            color: var(--success-color);
+        }
+
+        /* 非表示クラス */
+        .hide {
+            display: none !important;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .highlight-blue {
+            color: #2563eb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TOCFL Band-A/B (L1-L10) 試験前総まとめ＆試験対策シート</h1>
+        <p>文法事項の確認に加え、TOCFL特有の出題傾向やトラップを完全網羅</p>
+    </header>
+
+    <div class="toolbar">
+        <div>
+            <button class="btn" id="btn-toggle-all">すべて展開/折りたたみ</button>
+            <button class="btn" id="btn-hide-pinyin">ピンイン 表示/非表示</button>
+            <button class="btn" id="btn-hide-ja">日本語訳 表示/非表示</button>
+        </div>
+        <div class="progress-container">
+            チェック済みの課題: <span id="progress-count">0</span> / 10
+        </div>
+    </div>
+
+    <div class="lesson-container">
+
+        <!-- LESSON 1 -->
+        <div class="lesson-card" id="l1">
+            <div class="lesson-header" onclick="toggleLesson('l1')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 1</span>
+                    <span class="lesson-title">快要端午節了。</span>
+                    <span class="lesson-meta">近い未来の変化</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    基本形：【快要 / 就要 / 要】 ＋ 動詞フレーズ/名詞 ＋ 了 （まもなく〜になる、もうすぐ〜する）
+                </div>
+                
+                <div class="diagram-box">
+                    <div class="diagram-element">現在</div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-element" style="border-color: var(--accent-color); background-color: var(--accent-light);">
+                        <span class="highlight">快要...了</span><br><small>目前に迫る変化</small>
+                    </div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-element">事態の発生</div>
+                </div>
+
+                <div class="vs-box">
+                    <div class="vs-card left">
+                        <div class="vs-title"><span>快要……了 / 要……了</span><small>⏳ 具体的時間NG</small></div>
+                        <p style="font-size: 13px;">具体的な時間（「明天」「八點」など）と一緒に使えない。<br>✕ 我明天快要出國了。</p>
+                    </div>
+                    <div class="vs-card right">
+                        <div class="vs-title"><span>就要……了</span><small>📅 具体的時間OK</small></div>
+                        <p style="font-size: 13px;">具体的な時間詞を直前に置くことができる。<br>◯ 我<span class="highlight-blue">明天</span>就要出國了。</p>
+                    </div>
+                </div>
+
+                <div class="example-section">
+                    <h4>重要例文</h4>
+                    <div class="example-item">
+                        <div class="lang-zh">火車<span class="highlight">快要</span>開<span class="highlight">了</span>。</div>
+                        <div class="lang-pinyin">Huǒchē kuàiyào kāi le.</div>
+                        <div class="lang-ja">電車がまもなく発車します。</div>
+                    </div>
+                </div>
+                
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【聴解の時制トラップ】</strong><br>Band-Aリスニングの画像選択問題で頻出します。音声で「快要下雨了（まもなく雨が降る）」と流れた場合、<strong>「まだ雨が降っていない画像（例：黒い雲が出ているだけ等）」</strong>を選ぶ必要があります。動作が未然であることを正確に聞き取れるかが鍵です。<br>
+                    <strong>【読解の文法問題】</strong><br>Band-Bの読解では穴埋め問題として狙われます。空欄の前に「下個月」「明天」などの具体的な時間詞があれば、選択肢の中から迷わず <strong>就要</strong> を選びましょう。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 2 -->
+        <div class="lesson-card" id="l2">
+            <div class="lesson-header" onclick="toggleLesson('l2')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 2</span>
+                    <span class="lesson-title">垃圾車晚上八點左右來。</span>
+                    <span class="lesson-meta">概数・少数・分数</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    ① 左右（〜前後・〜くらい） | ② 多（〜余り） | ③ 幾（いくつかの）
+                </div>
+
+                <div class="diagram-box">
+                    <div class="diagram-element"><strong>左右</strong><br><small>数量/時間の後ろ</small><br><span class="highlight">十個左右</span></div>
+                    <div class="diagram-element"><strong>多 (端数あり)</strong><br><small>十 / 百 / 千の後ろ</small><br><span class="highlight">十多個</span></div>
+                    <div class="diagram-element"><strong>幾 (10未満の数)</strong><br><small>量詞の前</small><br><span class="highlight">幾個學生</span></div>
+                </div>
+
+                <div class="vs-box">
+                    <div class="vs-card left">
+                        <div class="vs-title"><span>「多」の位置ルールA</span><small>🔟 10, 20など(端数なし)</small></div>
+                        <p style="font-size: 13px;">数字 ＋ <span class="highlight">多</span> ＋ 量詞<br>例：二十<span class="highlight">多</span>個（20個以上のいくつか＝21〜29）</p>
+                    </div>
+                    <div class="vs-card right">
+                        <div class="vs-title"><span>「多」の位置ルールB</span><small>🍏 1桁や端数がある場合</small></div>
+                        <p style="font-size: 13px;">数字 ＋ 量詞 ＋ <span class="highlight">多</span><br>例：三個<span class="highlight">多</span>月（3ヶ月と端数の日数＝3ヶ月強）</p>
+                    </div>
+                </div>
+                
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【計算・推測問題の根拠】</strong><br>
+                    TOCFL読解・聴解の両方で「計算」や「論理的推測」を要する設問に直結します。<br>
+                    例えば、音声で「這本書十多塊（この本は十数元）」と流れた後、設問で「彼が20元を渡したらお釣りは来ましたか？」と問われます。「十多＝11〜19」という範囲を正確に把握していれば、「はい、お釣りは来る」と論理的に推測できます。正確な数値の把握（ ट्रू・フォルス問題 ）で非常に重要です。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 3 -->
+        <div class="lesson-card" id="l3">
+            <div class="lesson-header" onclick="toggleLesson('l3')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 3</span>
+                    <span class="lesson-title">您有什麼事嗎？</span>
+                    <span class="lesson-meta">疑問詞の派生用法（不定用法）</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    疑問詞（什麼/誰/哪裡）を、特定のものを指さない「何か」「誰か」「どこか」として使う用法
+                </div>
+
+                <div class="diagram-box">
+                    <div class="diagram-element">通常：<strong>什麼？</strong><br>(何ですか？)</div>
+                    <div class="diagram-arrow">➔ 派生</div>
+                    <div class="diagram-element" style="border-color: var(--success-color);">
+                        否定・疑問文中の <strong>什麼</strong><br>(「何か」「別に〜ない」)
+                    </div>
+                </div>
+
+                <div class="example-section">
+                    <h4>重要例文</h4>
+                    <div class="example-item">
+                        <div class="lang-zh">我週末不常去<span class="highlight">哪裡</span>玩。</div>
+                        <div class="lang-pinyin">Wǒ zhōumò bù cháng qù nǎlǐ wán.</div>
+                        <div class="lang-ja">私は週末、あまりどこにも遊びに行きません。</div>
+                    </div>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【読解穴埋め・対話の意図把握の要】</strong><br>
+                    Band-Aの読解第2部（穴埋め）で超頻出の文法です。文末に「嗎」があるからといって疑問詞本来の意味（What, Where）で訳すと意味が通りません。<br>
+                    また、否定形とセットになった<strong>「沒什麼（別に何もない・大したことない）」</strong>や<strong>「哪裡都不想去（どこにも行きたくない）」</strong>といった表現は、Band-Bでも対話文の意図把握（相手の提案を遠回しに断っているなど）としてよく問われます。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 4 -->
+        <div class="lesson-card" id="l4">
+            <div class="lesson-header" onclick="toggleLesson('l4')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 4</span>
+                    <span class="lesson-title">這塊肉還沒烤好。</span>
+                    <span class="lesson-meta">結果補語１：基本用法</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    基本形：動詞 ＋ 結果補語（完 / 好 / 懂 / 見 / 到 ...）
+                </div>
+
+                <div class="example-section">
+                    <h4>よく出る結果補語セット</h4>
+                    <table style="width:100%; border-collapse: collapse; font-size: 13px; margin-bottom: 15px;">
+                        <tr style="background-color: #f1f5f9;">
+                            <th style="padding: 8px; border: 1px solid var(--border-color); text-align: left;">補語</th>
+                            <th style="padding: 8px; border: 1px solid var(--border-color); text-align: left;">意味</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid var(--border-color); font-weight: bold;">完 (wán)</td>
+                            <td style="padding: 8px; border: 1px solid var(--border-color);">動作の終了（看完、吃完）</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid var(--border-color); font-weight: bold;">好 (hǎo)</td>
+                            <td style="padding: 8px; border: 1px solid var(--border-color);">準備完了・満足な仕上がり（做好、買好）</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【動作の結末を問うひっかけ問題】</strong><br>
+                    TOCFL聴解では<strong>「動作はしたけど、結果はどうなったか？」</strong>を問う問題が必ず出ます。単に「見た・聞いた」だけでなく、その結果どうなったかの補語部分が勝負です。<br>
+                    例えば、<strong>「我看了，可是沒看懂（読んだ／見たけど、理解できなかった）」</strong>のように、動詞＋結果補語の否定形（沒 ＋ 動詞 ＋ 結果補語）を聞き取る力がスコアに直結します。正解の選択肢は「彼は内容を理解していない」になります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 5 -->
+        <div class="lesson-card" id="l5">
+            <div class="lesson-header" onclick="toggleLesson('l5')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 5</span>
+                    <span class="lesson-title">請再說一遍。</span>
+                    <span class="lesson-meta">数量補語（動量補語・時量補語）</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    基本形：動詞 ＋ 数量補語（回数・時間量） 【目的語の位置に超注意！】
+                </div>
+
+                <div class="example-section">
+                    <h4>⚠️ 目的語(Object)の絶対ルール</h4>
+                    <p style="font-size: 13px; margin-bottom: 5px;"><strong>一般名詞の場合：</strong> 動詞 ＋ 数量 ＋ <span class="highlight-blue">名詞</span></p>
+                    <div class="example-item" style="background-color: #f8fafc; padding: 5px 10px;">
+                        <div class="lang-zh">他學過<span class="highlight">兩個月</span><span class="highlight-blue">華語</span>。 (◯)</div>
+                    </div>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【並び替え・正誤問題の最大の狙い目】</strong><br>
+                    読解の「語順並び替え」や「正しい文を選ぶ問題」で<strong>最も狙われるポイント</strong>です。<br>
+                    日本語の感覚（華語を2ヶ月勉強した）に引っ張られて「學華語兩個月」としてしまうミスを誘ってきます。必ず<strong>「動詞＋時間＋目的語（例：看了三個小時的電視）」</strong>の語順ルールを厳守してください。<br>
+                    Band-Bになると、「見面」「幫忙」などの離合詞（動詞＋名詞のセット）との組み合わせ（例：幫了一天的忙）が更なるトラップとして頻出します。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 6 -->
+        <div class="lesson-card" id="l6">
+            <div class="lesson-header" onclick="toggleLesson('l6')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 6</span>
+                    <span class="lesson-title">那條路比較好走。</span>
+                    <span class="lesson-meta">さまざまな “好” の用法</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    ① 好 ＋ 動詞 （〜しやすい、〜しやすい性質である） | ② 好幾 ＋ 量詞 （いくつかの、かなりの数）
+                </div>
+
+                <div class="example-section">
+                    <h4>重要例文</h4>
+                    <div class="example-item">
+                        <div class="lang-zh">他<span class="highlight">好幾</span>次沒來上課了。</div>
+                        <div class="lang-pinyin">Tā hǎojǐ cì méi lái shàngkè le.</div>
+                        <div class="lang-ja">彼はもう何度も（何回も）授業に来ていません。</div>
+                    </div>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【長文要約・言い換え表現のキー】</strong><br>
+                    「好＋動詞」で作られた形容詞（好走＝歩きやすい、好懂＝わかりやすい）は、長文読解の要約問題において、<strong>本文中の複雑な表現を選択肢で短く言い換える際</strong>によく使われます。<br>
+                    また、「好幾＋量詞（かなり多くの〜）」は数を強調する表現であるため、対話問題において話し手の<strong>「不満」や「驚き」の文脈を読み取るヒント</strong>（例：「何度も言ったのに！」等）になります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 7 -->
+        <div class="lesson-card" id="l7">
+            <div class="lesson-header" onclick="toggleLesson('l7')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 7</span>
+                    <span class="lesson-title">昨天我十二點才睡覺。</span>
+                    <span class="lesson-meta">“就” と “才” １（時間詞との組み合わせ）</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    時間詞 ＋ 就 ➔ 話し手が「早い・順調」と感じる | 時間詞 ＋ 才 ➔ 話し手が「遅い・不順」と感じる
+                </div>
+                
+                <div class="diagram-box">
+                    <div class="diagram-element" style="border-top: 3px solid #2563eb;">
+                        <strong>【 就 】 ＝ 🧠早い！</strong><br>
+                        <small>通常より前、またはスムーズ</small>
+                    </div>
+                    <div class="diagram-arrow">VS</div>
+                    <div class="diagram-element" style="border-top: 3px solid #ea580c;">
+                        <strong>【 才 】 ＝ 🧠遅い！</strong><br>
+                        <small>ようやく、〜になって初めて</small>
+                    </div>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【聴解：感情・態度読み取りの最重要語】</strong><br>
+                    TOCFLリスニングにおける<strong>感情読み取り問題の最重要キーワード</strong>です。<br>
+                    設問で「話し手はどう思っていますか？」と問われた際、音声の中に「就」が含まれていれば「順調・想定より早い」、「才」が含まれていれば「不満・遅い・苦労した」という感情が乗っています。意味だけでなく、副詞が持つ「主観的なニュアンス」が直接解答の決め手になります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 8 -->
+        <div class="lesson-card" id="l8">
+            <div class="lesson-header" onclick="toggleLesson('l8')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 8</span>
+                    <span class="lesson-title">我明天可以睡到中午。</span>
+                    <span class="lesson-meta">結果補語２：“到”の4つの意味</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    基本形：動詞 ＋ 到 ➔ 動作が特定の「ゴール」に達する
+                </div>
+
+                <div class="example-section">
+                    <h4>「到」の4大重要パターン</h4>
+                    <ol style="font-size: 13px; margin-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><strong>目的達成：</strong> 買<span class="highlight">到</span>票了 (チケットを手に入れた)</li>
+                        <li><strong>目的地に到達：</strong> 走<span class="highlight">到</span>車站 (駅まで歩く)</li>
+                        <li><strong>時間的な継続・到達：</strong> 学<span class="highlight">到</span>十二點 (12時まで勉強する)</li>
+                        <li><strong>程度や範囲の拡大：</strong> 影響<span class="highlight">到</span>很多人 (多くの人にまで影響する)</li>
+                    </ol>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【地図問題・抽象概念問題への応用】</strong><br>
+                    Band-Aの聴解第1部（画像選択）の<strong>「道案内（地図）問題」</strong>で必須の表現です。「走到十字路口（交差点まで歩く）」などの空間的到達を聞き逃さないようにしましょう。<br>
+                    Band-Bの読解では、4番目の用法（程度や範囲への波及）が多用されます。「影響到～（～にまで影響を及ぼす）」のような抽象的な到達点を把握できるかが、論説文を読み解くポイントになります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 9 -->
+        <div class="lesson-card" id="l9">
+            <div class="lesson-header" onclick="toggleLesson('l9')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 9</span>
+                    <span class="lesson-title">巧克力現在買兩盒就送一盒。</span>
+                    <span class="lesson-meta">“就” と “才” ２（条件と数量の組み合わせ）</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    条件(小) ＋ 就 ➔ 簡単にクリアできる | 条件(大) ＋ 才 ➔ ハードルが高い
+                </div>
+                
+                <div class="example-section">
+                    <h4>重要例文</h4>
+                    <div class="example-item">
+                        <div class="lang-zh">這杯飲料要三十塊，你給二十塊不<span class="highlight">才</span>夠。</div>
+                        <div class="lang-ja">この飲み物は30元です。20元出しても足りません（30元出してようやく足りる）。</div>
+                    </div>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-B 向け)</h4>
+                    <p><strong>【長文の論理展開（接続詞構文）への発展】</strong><br>
+                    Band-Aでは数量条件で使われますが、Band-Bに進むとこのロジックが接続詞と結びつき、<strong>「只要A就B（Aしさえすれば簡単にBだ）」「只有A才B（厳しい条件Aを満たしてはじめてBだ）」</strong>という重要構文として頻出します。<br>
+                    条件の厳しさが真逆になるため、長文問題で筆者の主張（絶対に必要な条件なのか、十分な条件なのか）を正確に読み分けるための必須知識です。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 10 -->
+        <div class="lesson-card" id="l10">
+            <div class="lesson-header" onclick="toggleLesson('l10')">
+                <div class="checkbox-wrapper" onclick="event.stopPropagation();">
+                    <input type="checkbox" onchange="updateProgress()">
+                </div>
+                <div class="lesson-title-info">
+                    <span class="lesson-num">Lesson 10</span>
+                    <span class="lesson-title">多喝水，多休息！</span>
+                    <span class="lesson-meta">さまざまな “多” の多機能用法</span>
+                </div>
+                <div class="arrow-icon">▼</div>
+            </div>
+            <div class="lesson-content">
+                <div class="grammar-formula">
+                    ① 多 ＋ 動詞 （もっと〜しなさい、多めに〜する） | ② 少 ＋ 動詞 （〜を控えめにしなさい）
+                </div>
+
+                <div class="example-section">
+                    <h4>💡 重要な語順ルール</h4>
+                    <p style="font-size: 13px;">日本語の「たくさん飲む」に釣られて「喝多」としないように注意！アドバイスや命令の時は <strong>「多/少」が動詞の前に来ます</strong>。</p>
+                </div>
+
+                <div class="tocfl-meta-box">
+                    <h4>🎯 TOCFL対策メタ知識 (Band-A / B 共通)</h4>
+                    <p><strong>【対話問題：発話者の関係性推測】</strong><br>
+                    聴解パートの「対話問題」に頻出するパターンです。<br>
+                    「多喝水、少說話（水を多く飲み、話すのを控えなさい）」等の形は、<strong>医者と患者、先生と生徒、先輩と後輩など、相手に助言・指示をするシーン</strong>で多用されます。設問で「この二人の関係性は何ですか？」「女性は何を提案していますか？」と問われた際、この文型を聞き取ることで即座に状況を判断できます。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleLesson(id) {
+            const card = document.getElementById(id);
+            const content = card.querySelector('.lesson-content');
+            const header = card.querySelector('.lesson-header');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                header.classList.remove('active');
+            } else {
+                content.style.display = 'block';
+                header.classList.add('active');
+            }
+        }
+
+        document.getElementById('btn-toggle-all').addEventListener('click', function() {
+            const contents = document.querySelectorAll('.lesson-content');
+            const headers = document.querySelectorAll('.lesson-header');
+            const isAnyOpen = Array.from(contents).some(c => c.style.display === 'block');
+            
+            contents.forEach((c, index) => {
+                c.style.display = isAnyOpen ? 'none' : 'block';
+                if (isAnyOpen) {
+                    headers[index].classList.remove('active');
+                } else {
+                    headers[index].classList.add('active');
+                }
+            });
+        });
+
+        document.getElementById('btn-hide-pinyin').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelectorAll('.lang-pinyin').forEach(p => p.classList.toggle('hide'));
+        });
+
+        document.getElementById('btn-hide-ja').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelectorAll('.lang-ja').forEach(j => j.classList.toggle('hide'));
+        });
+
+        function updateProgress() {
+            const checkedCount = document.querySelectorAll('.checkbox-wrapper input[type="checkbox"]:checked').length;
+            document.getElementById('progress-count').innerText = checkedCount;
+        }
+    </script>
+</body>
+</html>
+"""
+
+with open("TOCFL_BandAB_Review_Sheet_Meta_L1-10.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+print("メタ知識追加版HTMLファイルが正常に生成されました。")
