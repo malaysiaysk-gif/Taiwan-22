@@ -12,12 +12,25 @@
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #f3f4f6;
         }
-    
+        /* タイガーエア風グラデーション/背景 */
+        .tiger-bg {
+            background-color: #f8f9fa; /* 薄いグレーベース */
+            position: relative;
         }
-        /* ANAアプリ風グラデーション背景 */
-        .ana-bg {
-            background: linear-gradient(180deg, #d8f0fe 0%, #e8f5ff 45%, #f6fbff 100%);
+        /* 右下のオレンジの斜め装飾 */
+        .tiger-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, transparent 50%, #fca311 50%); /* タイガーオレンジ */
+            z-index: 0;
+            border-radius: 20px;
+            transform: rotate(-15deg);
         }
+
         /* タブのトランジション */
         .tab-content {
             display: none;
@@ -38,7 +51,7 @@
 
         <!-- タブ ナビゲーション -->
         <div class="flex justify-center mb-8">
-            <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 inline-flex">
+            <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 inline-flex relative z-10">
                 <button onclick="switchTab('plan')" id="btn-tab-plan" class="px-8 py-2.5 rounded-full text-sm md:text-base font-bold transition-all duration-200 bg-indigo-600 text-white shadow-md">
                     <i class="fa-solid fa-map-location-dot mr-2"></i>計画編
                 </button>
@@ -50,8 +63,8 @@
         
         <!-- ==================== 計画編 タブ ==================== -->
         <div id="tab-plan" class="tab-content active">
-            <!-- カウントダウン セクション (一体化レイアウト) -->
-            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10">
+            <!-- カウントダウン セクション -->
+            <section class="bg-white rounded-[2rem] shadow-xl p-6 md:p-10 text-center border-t-[6px] border-indigo-500 flex flex-col gap-8 md:gap-10 relative z-10">
                 <h2 class="text-2xl md:text-3xl font-black text-gray-700 tracking-wider">9月3日まで、あと...</h2>
                 
                 <!-- 4つのブロック -->
@@ -136,7 +149,7 @@
             </section>
 
             <!-- カレンダー セクション -->
-            <div class="mt-12 text-left">
+            <div class="mt-12 text-left relative z-10">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-4 border-t border-gray-100 pt-8">
                     <h3 class="text-xl font-bold text-gray-700 mb-3 md:mb-0">
                         <i class="fa-regular fa-calendar-days text-indigo-500 mr-2"></i> 2026年9月 スケジュール
@@ -166,128 +179,121 @@
                 </div>
             </div>
 
-            <!-- 台湾移住フライト カウントダウン & チケット情報 (ANAアプリ風) -->
-            <div class="mt-16 ana-bg rounded-[32px] pt-6 pb-12 px-4 md:px-8 shadow-md relative overflow-hidden border border-white">
+            <!-- ==================== タイガーエア台湾風 チケットセクション ==================== -->
+            <div class="mt-16 tiger-bg rounded-[24px] pt-8 pb-10 px-4 md:px-8 shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-gray-200 overflow-hidden relative">
                 
-                <!-- ANAアプリ風 ヘッダー＆ユーザー情報 -->
-                <div class="flex justify-between items-center mb-6 text-[#002b5c] px-2 md:px-0">
-                    <i class="fa-solid fa-bars text-[26px]"></i>
-                    <div class="text-center transform translate-x-2">
-                        <div class="font-black text-[26px] tracking-tighter italic flex items-center justify-center">
-                            ANA <span class="text-[#0055b8] text-2xl ml-1 font-sans italic transform -skew-x-12">/</span><span class="text-[#5ca3f8] text-2xl ml-[-4px] font-sans italic transform -skew-x-12">/</span>
-                        </div>
-                        <div class="text-[8px] font-bold tracking-widest mt-[-2px]">Inspiration of JAPAN</div>
-                    </div>
-                    <i class="fa-regular fa-bell text-[24px]"></i>
-                </div>
-
-                <div class="flex items-center mb-8 text-[#002b5c] px-2 md:px-0">
-                    <div class="bg-[#0055b8] text-white rounded-full w-[56px] h-[56px] flex items-center justify-center text-[8px] font-bold leading-[1.1] text-center mr-4 shadow-sm flex-shrink-0">
-                        ANA<br>MILEAGE<br>CLUB
-                    </div>
-                    <div>
-                        <div class="text-[20px] font-bold tracking-widest mb-1">近藤　芳樹 <span class="text-[17px] font-normal tracking-normal ml-1">様</span></div>
-                        <div class="text-[12px] font-bold text-gray-600 tracking-wide flex items-center">
-                            186,232 <span class="font-normal ml-1 mr-2 text-[#002b5c]">MILES</span> 0 <span class="font-normal ml-1 mr-1 text-[#002b5c]">SKY COINS</span> <i class="fa-solid fa-chevron-right text-[10px] ml-1 text-[#002b5c]"></i>
-                        </div>
+                <!-- ヘッダー挨拶 -->
+                <div class="flex justify-between items-center mb-6 px-2 md:px-0 relative z-10 border-b border-gray-200 pb-4">
+                    <h3 class="text-[18px] md:text-[22px] font-bold text-gray-700">こんにちは、必要なものはすべてここにあります！</h3>
+                    <div class="text-[#fca311] font-bold text-sm flex items-center cursor-pointer hover:text-orange-500 transition-colors hidden md:flex">
+                        <i class="fa-regular fa-envelope mr-1.5"></i> 旅程表を再送信
                     </div>
                 </div>
 
-                <!-- カルーセル風 チケットエリア -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 mb-10">
-                    
-                    <!-- フライト1: 岡山 -> 羽田 -->
-                    <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
-                        <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
-                        <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
-                        
-                        <div class="p-6 pb-10 relative z-0">
-                            <div class="flex justify-between items-center mb-5">
-                                <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
-                                    2027.2.4 <span class="mx-1 text-[13px]">木</span> <i class="fa-solid fa-wifi text-[11px] ml-1 text-[#002b5c]"></i>
-                                </span>
-                                <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">NH 652</span>
-                            </div>
-                            
-                            <div class="flex justify-between items-end relative">
-                                <div class="text-left w-[40%]">
-                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">OKJ</div>
-                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">岡山</div>
-                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">7:05</div>
-                                </div>
-                                <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
-                                    <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
-                                </div>
-                                <div class="text-right w-[40%]">
-                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
-                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
-                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">8:20</div>
-                                </div>
-                            </div>
+                <!-- 予約概要バー -->
+                <div class="bg-white rounded-lg shadow-sm border-l-[4px] border-l-[#fca311] p-4 flex flex-wrap md:flex-nowrap justify-between items-center mb-8 relative z-10">
+                    <div class="flex items-center mb-2 md:mb-0 w-full md:w-auto">
+                        <span class="text-gray-500 text-sm font-medium mr-4 flex items-center"><i class="fa-solid fa-arrow-right text-gray-400 mr-2 text-xs"></i> 片道</span>
+                        <div>
+                            <div class="font-bold text-gray-800">岡山 → 台北(桃園)</div>
+                            <div class="text-xs text-gray-500">IT 215 • 2026/11/03</div>
                         </div>
-                        <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
-                            詳しく見る
-                        </div>
-                    </div>
-
-                    <!-- フライト2: 羽田 -> 台北(松山) -->
-                    <div class="bg-white rounded-[24px] relative overflow-hidden shadow-[0_10px_25px_rgba(0,40,120,0.06)] border border-white">
-                        <div class="absolute top-[55%] -left-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_-2px_0_4px_rgba(0,0,0,0.03)]"></div>
-                        <div class="absolute top-[55%] -right-4 w-8 h-8 bg-[#e8f5ff] rounded-full transform -translate-y-1/2 z-10 shadow-[inset_2px_0_4px_rgba(0,0,0,0.03)]"></div>
-                        
-                        <div class="p-6 pb-10 relative z-0">
-                            <div class="flex justify-between items-center mb-5">
-                                <span class="text-[13px] font-bold text-[#002b5c] tracking-widest flex items-center">
-                                    2027.2.4 <span class="mx-1 text-[13px]">木</span>
-                                </span>
-                                <span class="text-[13px] font-bold text-[#002b5c] tracking-wider">BR 189</span>
-                            </div>
-                            
-                            <div class="flex justify-between items-end relative">
-                                <div class="text-left w-[40%]">
-                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">HND</div>
-                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">東京(羽田)</div>
-                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">10:25</div>
-                                </div>
-                                <div class="flex-1 px-1 relative flex flex-col justify-end pb-4">
-                                    <div class="w-full border-t-[1.5px] border-dotted border-gray-300"></div>
-                                </div>
-                                <div class="text-right w-[40%]">
-                                    <div class="text-[40px] font-normal text-[#002b5c] tracking-tighter leading-none mb-1">TSA</div>
-                                    <div class="text-[11px] text-[#002b5c] font-bold tracking-wide">台北(松山)</div>
-                                    <div class="text-[22px] font-bold text-[#002b5c] mt-1 tracking-wider">13:25</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-0 right-0 bg-[#5ca3f8] hover:bg-[#4a91e6] transition-colors text-white text-[13px] font-bold px-7 py-3 rounded-tl-[20px] cursor-pointer shadow-sm">
-                            詳しく見る
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 座席指定アイコンとカウントダウン -->
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 relative z-10 mt-2">
-                    <div class="flex flex-col items-center">
-                        <div class="bg-[#d8eefd] text-[#0055b8] border-2 border-white shadow-sm rounded-full w-[68px] h-[68px] flex items-center justify-center mb-2">
-                            <i class="fa-solid fa-chair text-[28px]" style="transform: scaleX(-1);"></i>
-                        </div>
-                        <span class="text-[12px] font-bold text-[#002b5c] tracking-wide">座席指定</span>
                     </div>
                     
-                    <div class="text-[#002b5c] font-bold text-center flex items-baseline">
-                        <span id="flight-title" class="text-lg md:text-[22px] mr-4 tracking-widest">ご搭乗まで</span> 
-                        <span id="flight-days" class="text-[48px] md:text-[56px] font-black mx-1 drop-shadow-sm leading-none font-sans">--</span> 
-                        <span id="flight-unit" class="text-sm md:text-[15px] ml-3 font-black tracking-widest uppercase">DAYS</span>
-                    </div>
-                </div>
-                
-                <!-- オンラインチェックイン案内 -->
-                <div class="mt-8 flex justify-center relative z-10">
-                    <div class="bg-white rounded-[30px] py-4 px-8 shadow-sm border border-gray-100 text-center w-full max-w-md">
-                        <div class="text-[#002b5c] text-[13px] md:text-[14px] font-bold tracking-wide leading-relaxed">
-                            オンラインチェックインは<br>出発の24時間前から可能です
+                    <div class="flex items-center w-full md:w-auto justify-between md:justify-end gap-6 mt-4 md:mt-0">
+                        <div class="text-center px-4 border-x border-gray-100 hidden md:block">
+                            <div class="text-[10px] text-gray-500 border border-gray-300 rounded-full px-2 py-0.5 mb-0.5">ご注文状況:</div>
+                            <div class="text-xs text-gray-600"><i class="fa-solid fa-person mr-1"></i>x1</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-gray-500 font-bold mb-0.5">予約番号 (PNR)</div>
+                            <div class="font-black text-xl text-gray-800 tracking-wider">PEPQJE</div>
+                        </div>
+                        <div class="text-right flex items-center">
+                            <div>
+                                <div class="text-[10px] text-gray-500 mb-0.5">ご注文金額</div>
+                                <div class="font-bold text-gray-800 text-lg"><span class="text-xs font-normal mr-1">JPY</span>26,800</div>
+                            </div>
+                            <i class="fa-solid fa-chevron-down ml-3 text-gray-400 text-sm"></i>
                         </div>
                     </div>
+                </div>
+
+                <!-- チケット風 カード -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-sm mx-auto md:mx-0 relative z-10">
+                    <!-- カードヘッダー -->
+                    <div class="p-4 border-b border-gray-100 flex justify-between items-start">
+                        <div>
+                            <div class="text-gray-500 text-xs font-medium mb-1 flex items-center"><i class="fa-solid fa-arrow-right text-gray-400 mr-1.5 text-[10px]"></i> 片道</div>
+                            <div class="font-black text-gray-800 text-lg tracking-wide">岡山 - 台北(桃園)</div>
+                            <div class="text-xs text-gray-400 mt-0.5">IT215 • 2026/11/03</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] text-[#935292] font-bold">予約番号 (PNR):</div>
+                            <div class="font-black text-[#935292] text-sm tracking-wider">PEPQJE</div>
+                        </div>
+                    </div>
+                    <!-- 台北101 イメージ画像 (プレースホルダー) -->
+                    <div class="w-full h-48 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=600&auto=format&fit=crop" alt="Taipei 101 Night View" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- 下部 詳細フライト情報 -->
+                <div class="mt-8 relative z-10">
+                    <h3 class="font-bold text-gray-700 text-lg mb-4">あなたのフライト</h3>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <div class="flex flex-col md:flex-row justify-between items-center w-full">
+                            
+                            <!-- 出発 -->
+                            <div class="text-center md:text-left mb-4 md:mb-0 w-full md:w-[20%]">
+                                <div class="font-black text-xl text-gray-800">15:25</div>
+                                <div class="font-black text-lg text-gray-800 mt-1">OKJ</div>
+                                <div class="text-xs text-gray-500 mt-1">岡山</div>
+                            </div>
+
+                            <!-- 路線図 (中央) -->
+                            <div class="flex-1 px-4 relative flex flex-col items-center justify-center w-full mb-4 md:mb-0">
+                                <div class="text-xs font-bold text-gray-700 mb-2 flex items-center">
+                                    IT 215 <i class="fa-regular fa-circle-question text-gray-400 ml-1 text-[10px]"></i>
+                                </div>
+                                <div class="w-full border-t-[1.5px] border-dashed border-gray-300 relative flex items-center justify-center">
+                                    <div class="absolute -mt-[2px] right-0 text-gray-400 text-[10px]">
+                                        <i class="fa-solid fa-plane"></i>
+                                    </div>
+                                </div>
+                                <div class="text-[10px] text-gray-500 mt-2 flex gap-3">
+                                    <span>3 時 5 分</span>
+                                    <span>tigerpro</span>
+                                </div>
+                            </div>
+
+                            <!-- 到着 -->
+                            <div class="text-center md:text-right mb-6 md:mb-0 w-full md:w-[20%]">
+                                <div class="font-black text-xl text-gray-800">17:30</div>
+                                <div class="font-black text-lg text-gray-800 mt-1">TPE</div>
+                                <div class="text-xs text-gray-500 mt-1">台北(桃園)</div>
+                            </div>
+
+                            <!-- チェックインボタン -->
+                            <div class="w-full md:w-auto md:ml-6 flex justify-center md:justify-end">
+                                <button class="bg-[#fca311] hover:bg-[#e8940c] text-white font-bold py-2.5 px-8 rounded shadow-sm transition-colors text-sm w-full md:w-auto">
+                                    チェックイン
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-3 border-t border-dashed border-gray-200 text-right">
+                            <span class="text-[#fca311] text-xs font-bold cursor-pointer hover:underline">管理オプションの表示 <i class="fa-solid fa-chevron-down ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ご搭乗までカウントダウン -->
+                <div class="mt-10 flex justify-center items-end relative z-10">
+                     <span class="text-gray-600 font-bold mr-4 mb-2">ご搭乗まで</span> 
+                     <span id="flight-days" class="text-5xl font-black text-[#fca311] drop-shadow-sm leading-none">--</span> 
+                     <span id="flight-unit" class="text-sm font-bold text-gray-500 ml-2 mb-1">DAYS</span>
                 </div>
 
             </div>
@@ -326,6 +332,7 @@
     </main>
 
     <script>
+        // --- STREAMING_CHUNK: Tab Logic ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById('tab-' + tabId).classList.add('active');
@@ -342,6 +349,7 @@
             }
         }
 
+        // --- STREAMING_CHUNK: Audio Logic ---
         function playMCText() {
             if (!window.speechSynthesis) {
                 alert("お使いのブラウザは音声再生に対応していません。");
@@ -376,10 +384,13 @@
             };
         }
 
+        // --- STREAMING_CHUNK: Date Logic & Planners ---
         // 目標日時を9月3日に設定
         const targetDate = new Date('2026-09-03T00:00:00').getTime();
         const startDate = new Date('2026-05-01T00:00:00').getTime();
-        const flightDate = new Date('2027-02-04T07:05:00').getTime();
+        
+        // タイガーエアフライト日時: 2026年11月3日 15:25
+        const flightDate = new Date('2026-11-03T15:25:00').getTime();
         
         const holidays2026 = [
             '2026-05-03', '2026-05-04', '2026-05-05', '2026-05-06', 
@@ -445,6 +456,7 @@
             return workingDays;
         }
 
+        // --- STREAMING_CHUNK: Update UI Logic ---
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -472,22 +484,19 @@
             document.getElementById('cd-secs').innerText = seconds;
             document.getElementById('cd-total-secs').innerText = totalSeconds.toLocaleString('en-US');
             
+            // タイガーエアフライトまでの計算
             const flightDistance = flightDate - now;
             let flightDays = 0;
             if (flightDistance > 0) { flightDays = Math.floor(flightDistance / (1000 * 60 * 60 * 24)); }
             
             const flightDaysElement = document.getElementById('flight-days');
-            const flightTitle = document.getElementById('flight-title');
             const flightUnit = document.getElementById('flight-unit');
             
             if (flightDistance > 0) {
                 flightDaysElement.innerText = flightDays;
             } else {
-                flightTitle.innerText = "ついに";
                 flightDaysElement.innerText = "出発";
                 flightUnit.innerText = "！";
-                flightDaysElement.classList.remove('text-[48px]', 'md:text-[56px]');
-                flightDaysElement.classList.add('text-4xl', 'md:text-5xl');
             }
 
             const targetWorkEnd = new Date('2026-09-03T17:00:00').getTime();
@@ -550,6 +559,7 @@
             if (document.getElementById('scale-rome')) document.getElementById('scale-rome').innerHTML = romeText;
         }
 
+        // --- STREAMING_CHUNK: Calendar Rendering ---
         function renderCalendar() {
             // 9月3日を最終出勤日に設定
             const calendarDays = [
@@ -625,6 +635,7 @@
             grid.innerHTML = html;
         }
 
+        // --- STREAMING_CHUNK: Task Data & Rendering ---
         const taskData = [
             { category: "事前調査", title: "公式サイト確認", desc: "募集開始日・締切日・学費の確認", deadline: "9月上旬", done: false, color: "blue" },
             { category: "事前調査", title: "ビザ種類確認", desc: "90日以上滞在の場合は停留ビザが必要", deadline: "9月中旬", done: false, color: "blue" },
@@ -699,6 +710,7 @@
             document.getElementById('task-progress-bar').style.width = `${percentage}%`;
         }
 
+        // --- STREAMING_CHUNK: Initialization ---
         updateCountdown();
         setInterval(updateCountdown, 1000);
         renderCalendar();
