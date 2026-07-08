@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Digest - Yoshiki Kondo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f4c81; /* Classic Blue */
+            --secondary-color: #e0f2fe; /* Light Blue */
+            --accent-color: #f97316; /* Orange */
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            color: var(--text-main);
+        }
+
+        /* A5サイズ相当（A4の半分）のコンテナ設定 */
+        .resume-container {
+            width: 100%;
+            max-width: 160mm; /* 幅を少し広げて余裕を持たせる */
+            background: var(--bg-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            /* はみ出し防止のため overflow: hidden と固定高さを削除 */
+        }
+
+        /* ヘッダーセクション */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+        }
+
+        /* 強み・サマリー（アイコン多め） */
+        .summary-box {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .summary-item {
+            flex: 1;
+        }
+        .summary-icon {
+            font-size: 28px;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        .summary-title {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--primary-color);
+        }
+        .summary-text {
+            font-size: 9px;
+            line-height: 1.3;
+        }
+
+        /* キャリアタイムライン（図解） */
+        .section-title {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* タイムラインアイテム */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: -33px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-content {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .phase-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .phase-badge.current {
+            background: var(--accent-color);
+        }
+
+        .job-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+        
+        .job-meta {
+            font-size: 10px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 9.5px; /* 文字サイズを微調整して収まりを良くする */
+            line-height: 1.4;
+        }
+        .achievement-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 4px;
+        }
+        .achievement-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 1px;
+            color: var(--accent-color);
+            font-size: 10px;
+        }
+
+        /* エージェント向け特記事項 */
+        .agent-note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 8px 10px;
+            margin-top: 10px;
+            font-size: 9.5px;
+            border-radius: 4px;
+            color: #5d4037;
+        }
+        .agent-note p {
+            margin: 0 0 5px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #e65100;
+        }
+        .agent-note ul {
+            margin: 0;
+            padding-left: 15px;
+            list-style-type: disc;
+        }
+        .agent-note li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        /* ボトムセクション（学歴・資格） */
+        .bottom-section {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            border-top: 2px dashed #eee;
+            padding-top: 12px;
+        }
+        .bottom-box {
+            flex: 1;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .bottom-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 11px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .bottom-box p {
+            margin: 0;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        /* 印刷用スタイル */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm 20mm;
+            }
+            body { background: none; padding: 0; display: block; }
+            .resume-container { box-shadow: none; width: 100%; max-width: 100%; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Yoshiki Kondo</h1>
+            <p>自動車・化学・ITをつなぐ、課題解決型プロフェッショナル</p>
+            <div class="contact-info">
+                <span><i class="fas fa-envelope"></i> kondoysk@gmail.com</span>
+            </div>
+        </div>
+
+        <!-- Visual Summary -->
+        <div class="summary-box">
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-cogs"></i></div>
+                <div class="summary-title">Tech Sales (20年)</div>
+                <div class="summary-text">自動車・化学業界の外資系企業にて<br>日系OEM向けの技術営業・KAMを歴任</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-globe-asia"></i></div>
+                <div class="summary-title">Cross-Cultural</div>
+                <div class="summary-text">文化の壁やバイアスを越え<br>グローバルな連携で品質課題を解決</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-rocket"></i></div>
+                <div class="summary-title">High Adaptability</div>
+                <div class="summary-text">新規IT・BPO領域へ即座に適応し<br>着任初月からトップ成績を達成</div>
+            </div>
+        </div>
+
+        <!-- Career Timeline -->
+        <h2 class="section-title"><i class="fas fa-route"></i> Career Highlights</h2>
+        
+        <div class="timeline">
+            
+            <!-- Phase 2: Malaysia / IT -->
+            <div class="timeline-item">
+                <div class="timeline-icon" style="background-color: var(--accent-color);"><i class="fas fa-headset"></i></div>
+                <div class="timeline-content">
+                    <span class="phase-badge current">現在: IT / BPOフェーズ (2023.10 - 現在)</span>
+                    <h3 class="job-title">テクニカルサポート / カスタマーサービス</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-building"></i> Concentrix / Teleperformance</span>
+                        <span><i class="fas fa-map-pin"></i> マレーシア (KL)</span>
+                    </div>
+                    
+                    <ul class="achievement-list">
+                        <li><strong>DELL:</strong> 1. Concentrix, Advisor I, Technical Support for IT, 9th Dec. 2024 to Present</li>
+                        <li><strong>Amazon:</strong> 2. Teleperformance / Majorel, Customer Service Representative I. October 16th 2023 to 30th Sept. 2024</li>
+                        <li><strong>超精鋭チームへの抜擢:</strong> 高いIT知識とソフトスキルが評価され、全体の10%未満の難関チャットサポートチームへ選出。</li>
+                        <li><strong>即戦力としての実績:</strong> 営業経験と学習力を活かし、着任初月で単独顧客満足度目標をクリア（実績95.1% / 目標93.3%）。</li>
+                        <li><strong>トップパフォーマー:</strong> KL拠点（組織内トップ拠点）の62名中、4ヶ月連続で最高成績貢献度を記録。</li>
+                    </ul>
+
+                    <div class="agent-note">
+                        <p><i class="fas fa-handshake"></i> 現状</p>
+                        <ul>
+                            <li><strong>担当コンサルタント:</strong> 貴社 Sharif KATO (Ms.) さんに、マレーシア就職を全面サポート頂いた過去があり、アレンジ面接合格率100%です。</li>
+                            <li><strong>今回の転職理由:</strong> 現職（Concentrix）のDELL日本プロジェクトが、9月18日付でシャットダウンとなるため。</li>
+                            <li><strong>希望勤務地:</strong> マレーシアに限らず、<strong>台湾・ベトナム・カンボジア</strong>なども視野に入れ、幅広く探したいと考えております。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 1: Japan / Automotive & Chemical -->
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-car-side"></i></div>
+                <div class="timeline-content">
+                    <span class="phase-badge">過去: セールスエンジニア / KAMフェーズ (2005.04 - 2023.09)</span>
+                    <h3 class="job-title">技術営業 / キーアカウントマネージャー (KAM)</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-industry"></i> 外資系グローバル企業群 (Ansell, AVL, Schaeffler, Mubea等)</span>
+                        <span><i class="fas fa-map-pin"></i> 日本</span>
+                    </div>
+                    <ul class="achievement-list">
+                        <li><strong>日系大手OEMの開拓:</strong> トヨタ、マツダ、日産等に対し技術営業を展開し、年間1,000万ユーロ以上の新規ビジネスを獲得。</li>
+                        <li><strong>表彰レベルの営業成績:</strong> 大手化学・電池メーカーとの大型契約を締結し、2022年にAPAC地域で第2位のセールススコアを獲得。</li>
+                        <li><strong>新規プロジェクト牽引:</strong> マツダの最新エンジン部品プロジェクトを立ち上げ、現地で顧客マネジメント層と直接技術的課題を折衝。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="bottom-section">
+            <div class="bottom-box">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <p><strong>香川大学大学院</strong><br>化学専攻 修士課程修了 (1998-2005)</p>
+            </div>
+            <div class="bottom-box">
+                <h3><i class="fas fa-certificate"></i> Licenses</h3>
+                <p>・公害防止管理者（大気・水質）<br>・初級システムアドミニストレータ</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
