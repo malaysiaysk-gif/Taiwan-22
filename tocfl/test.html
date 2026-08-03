@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL リスニング対策アプリ (BAND-A/B)</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 650px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: var(--bg-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .play-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.05rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .show-q-btn {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .play-btn:active, .show-q-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* 対話文テキスト表示エリア */
+        .dialogue-text-area {
+            background-color: #f9f9f9;
+            border-left: 4px solid #0288d1;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none; /* 最初は非表示 */
+        }
+        .dialogue-line {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .dialogue-line:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .lang-cn { font-weight: bold; font-size: 1.05rem; color: #2c3e50; margin-bottom: 2px; }
+        .lang-pinyin { color: #e67e22; font-size: 0.9rem; margin-bottom: 2px; font-family: Arial, sans-serif; }
+        .lang-en { color: #2980b9; font-size: 0.85rem; margin-bottom: 2px; font-style: italic; }
+        .lang-ja { color: #7f8c8d; font-size: 0.85rem; }
+
+        .choices {
+            display: grid;
+            gap: 12px;
+        }
+        .choice-btn {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--text-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .choice-btn:hover {
+            background-color: #e8f5e9;
+        }
+        .choice-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .choice-btn.correct {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border-color: var(--primary-color) !important;
+        }
+        .choice-btn.correct .lang-cn,
+        .choice-btn.correct .lang-pinyin,
+        .choice-btn.correct .lang-en,
+        .choice-btn.correct .lang-ja,
+        .choice-btn.incorrect .lang-cn,
+        .choice-btn.incorrect .lang-pinyin,
+        .choice-btn.incorrect .lang-en,
+        .choice-btn.incorrect .lang-ja {
+            color: white !important;
+        }
+        .choice-btn.incorrect {
+            background-color: #f44336 !important;
+            border-color: #f44336 !important;
+            color: white !important;
+        }
+        
+        .result-area {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            display: none;
+        }
+        .result-area h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .script-box {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background-color: #757575;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-btn:hover {
+            background-color: #616161;
+        }
+        .question-counter {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>TOCFL リスニング対策 (BAND-A/B)</h1>
+        <p>音声を聞いて、正しい答えを選んでください</p>
+    </header>
+
+    <div class="controls">
+        <span class="question-counter" id="question-counter">第 1 問 / 全 2 問</span>
+        <div>
+            <label for="repeat-count">再生回数: </label>
+            <select id="repeat-count">
+                <option value="1">1 回</option>
+                <option value="2" selected>2 回</option>
+                <option value="3">3 回</option>
+                <option value="4">4 回</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="play-btn" id="play-btn">🔊 音声を再生する</button>
+        <button class="show-q-btn" id="show-q-btn">📄 対話テキストを表示</button>
+    </div>
+
+    <!-- 対話文＆問題文テキスト表示エリア（4言語表記） -->
+    <div class="dialogue-text-area" id="dialogue-text-area"></div>
+
+    <div class="choices" id="choices-container">
+        <!-- 選択肢がここにJavaScriptで生成されます -->
+    </div>
+
+    <div class="result-area" id="result-area">
+        <h3 id="judgement"></h3>
+        <p><strong>【文法・単語ポイント】</strong><br><span id="grammar-point" class="script-box"></span></p>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prev-btn" style="visibility: hidden;">前の問題</button>
+        <button class="nav-btn" id="next-btn">次の問題</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            id: 1,
+            audioText: "男：前幾天，採購部門買了D牌的電腦。女：那真是太慘了，後來怎麼樣？男：一開箱就不能開機。沒辦法，只好聯絡D牌的客服中心。女：原來如此。男：結果對方說，雖然是透過代理商買的，但已經超過三十天，不能退換貨，還要求我們自己做排除故障。開箱的時候，箱子早就扔掉了。女：最好的排除故障方法，就是打開窗戶，把D牌的電腦扔出去。男：真的，你說得太對了。問題：關於男生的想法，下面哪一個是對的？",
+            
+            dialogue: [
+                { 
+                    cn: "男：前幾天，採購部門買了D牌的電腦。", 
+                    pinyin: "Nán: Qiántiān, cǎigòu bùmén mǎi le D pái de diànnǎo.", 
+                    en: "A: The purchasing department bought a Brand D PC the other day.", 
+                    ja: "A「こないだ、購買部門がDのPCを購入してしまったんだよ」" 
+                },
+                { 
+                    cn: "女：那真是太慘了，後來怎麼樣？", 
+                    pinyin: "Nǚ: Nà zhēn shì tài cǎn le, hòulái zěnmeyàng?", 
+                    en: "B: That's a total tragedy. What happened?", 
+                    ja: "B「それは取り返しのつかない悲劇だね。どうなったの？」" 
+                },
+                { 
+                    cn: "男：一開箱就不能開機。沒辦法，只好聯絡D牌的客服中心。", 
+                    pinyin: "Nán: Yì kāixiāng jiù bù néng kāijī. Méi bànfǎ, zhǐhǎo liánluò D pái de kèfú zhōngxīn.", 
+                    en: "A: It wouldn't boot up right out of the box. So I had no choice but to contact Brand D's customer support.", 
+                    ja: "A「箱開けたら、早速起動しないんだ。仕方ないのでDのサポートセンターに問い合わせしたんだよ」" 
+                },
+                { 
+                    cn: "女：原來如此。", 
+                    pinyin: "Nǚ: Yuánlái rúcǐ.", 
+                    en: "B: I see.", 
+                    ja: "B「なるなる」" 
+                },
+                { 
+                    cn: "男：結果對方說，雖然是透過代理商買的，但已經超過三十天，不能退換貨，還要求我們自己做排除故障。開箱的時候，箱子早就扔掉了。", 
+                    pinyin: "Nán: Jiéguǒ duìfāng shuō, suīrán shì tòuguò dàilǐshāng mǎi de, dàn yǐjīng chāoguò sānshí tiān, bù néng tuìhuànhuò, hái yāoqiú wǒmen zìjǐ zuò páichú gùzhàng. Kāixiāng de shíhòu, xiāngzi zǎojiù rēngdiào le.", 
+                    en: "A: Then they told me that even though it was bought through a distributor, it's past 30 days, so no exchange or return. They insisted we troubleshoot it ourselves. But we threw the box away ages ago!", 
+                    ja: "A「そしたら、商社経由で買ったのに30日を過ぎてるから、交換・返品できない。トラブルシューティングしろって言いだすんだ。箱なんてとっくの昔に捨ててるよ」" 
+                },
+                { 
+                    cn: "女：最好的排除故障方法，就是打開窗戶，把D牌的電腦扔出去。", 
+                    pinyin: "Nǚ: Zuì hǎo de páichú gùzhàng fāngfǎ, jiùshì dǎkāi chuānghù, bǎ D pái de diànnǎo rēng chūqù.", 
+                    en: "B: The best troubleshooting is to open the window and throw that Brand D PC out.", 
+                    ja: "B「ベストのトラブルシューティングは、窓を開けて、Ｄ社のＰＣを窓から捨てることだね」" 
+                },
+                { 
+                    cn: "男：真的，你說得太對了。", 
+                    pinyin: "Nán: Zhēn de, nǐ shuō de tài duì le.", 
+                    en: "A: Seriously, you're so right.", 
+                    ja: "A「ほんとだよ、それ」" 
+                },
+                { 
+                    cn: "【問題】關於男生的想法，下面哪一個是對的？", 
+                    pinyin: "【Wèntí】Guānyú nánshēng de xiǎngfǎ, xiàmiàn nǎ yí gè shì duì de?", 
+                    en: "[Question] Regarding the man's opinion, which of the following is correct?", 
+                    ja: "【質問】男性の考えについて、正しいものはどれですか？" 
+                }
+            ],
+            
+            choices: [
+                {
+                    cn: "他對D牌電腦的品質非常滿意",
+                    pinyin: "Tā duì D pái diànnǎo de pǐnzhì fēicháng mǎnyì",
+                    en: "He is very satisfied with the quality of Brand D's computers.",
+                    ja: "1．彼はD社のパソコンの品質に非常に満足している"
+                },
+                {
+                    cn: "他覺得D牌的客服人員非常親切",
+                    pinyin: "Tā juéde D pái de kèfú rényuán fēicháng qīnqiè",
+                    en: "He felt that Brand D's customer support staff was very friendly.",
+                    ja: "2．彼はD社のカスタマーサポートがとても親切だと感じた"
+                },
+                {
+                    cn: "他對新品不良卻不給退換的處理方式非常不滿",
+                    pinyin: "Tā duì xīnpǐn bùliáng què bù gěi tuìhuàn de chǔlǐ fāngshì fēicháng bùmǎn",
+                    en: "He is extremely dissatisfied with the policy of refusing returns or exchanges for defective products.",
+                    ja: "3．彼は初期不良なのに返品・交換に応じない対応に大変不満である"
+                },
+                {
+                    cn: "他打算馬上再去採購部門買一台新的D牌電腦",
+                    pinyin: "Tā dǎsuàn mǎshàng zài qù cǎigòu bùmén mǎi yì tái xīn de D pái diànnǎo",
+                    en: "He plans to go to the purchasing department immediately to buy another Brand D computer.",
+                    ja: "4．彼はすぐに購買部門で新しいD社のパソコンをもう1台買うつもりだ"
+                }
+            ],
+            correctAnswer: 2,
+            grammarPoint: "・一…就…（〜するとすぐ… / as soon as）：一開箱就不能開機\n・只好…（仕方なく〜する / have no choice but to）：只好聯絡客服\n・把…（〜を…する / disposal construction）：把電腦扔出去\n・重要單字：採購（購買 / purchasing）、開機（起動する / boot up）、客服（カスタマーサポート / customer service）、退換貨（返品交換 / return or exchange）、代理商（代理店・商社 / distributor）、排除故障（トラブルシューティング / troubleshooting）"
+        },
+        {
+            id: 2,
+            audioText: "男：只能提告了！女：你怎麼氣成這樣？發生什麼事了？男：我現在正在跟D公司的客服聯絡。因為電腦的轉軸又壞了，全部有六台。女：真的，每次都壞掉。應該要召回才對吧。男：結果客服人員一直問「什麼時候壞的？」、「有沒有什麼原因？」。根本沒有原因，而且使用者都不一樣，哪有辦法管理。女：我們是公司，這很正常吧。男：最後他竟然說「如果時間一樣，就是使用方式的問題」，還說是我們的嫌疑，真是太失禮了。女：那個是不是AI機器人啊？男：我一開始就問他是不是AI，他說是真人。可是他一直重複一樣的話，煩死人了。女：我們下次有一千到一千五百台的採購計畫，如果不把他們剔除，真的會很麻煩。男：真的，太對了！問題：關於男生的想法，下面哪一個是對的？",
+            
+            dialogue: [
+                {
+                    cn: "男：只能提告了！！！",
+                    pinyin: "Nán: Zhǐ néng tígào le!!!",
+                    en: "A: The only option left is to sue them!!!",
+                    ja: "A「もう裁判しかない！！！」"
+                },
+                {
+                    cn: "女：你怎麼氣成這樣？發生什麼事了？",
+                    pinyin: "Nǚ: Nǐ zěnme qì chéng zhèyàng? Fāshēng shénme shì le?",
+                    en: "B: Why are you so furious? What happened?",
+                    ja: "B「めっちゃ切れてるけど、どうしたの？」"
+                },
+                {
+                    cn: "男：我現在正在跟D公司的客服聯絡。因為電腦的轉軸又壞了，全部有六台。",
+                    pinyin: "Nán: Wǒ xiànzài zhèngzài gēn D gōngsī de kèfú liánluò. Yīnwèi diànnǎo de zhuǎnzhóu yòu huài le, quánbù yǒu liù tái.",
+                    en: "A: Right now I'm talking to Brand D's customer service. The hinges are broken as usual, six PCs in total.",
+                    ja: "A「いま、D社のサポセンに連絡してるんだよ。ヒンジがいつものように壊れてるからさ。全部で6台もあるんだ」"
+                },
+                {
+                    cn: "女：真的，每次都壞掉。應該要召回才對吧。",
+                    pinyin: "Nǚ: Zhēn de, měi cì dōu huài diào. Yīnggāi yào zhàohuí cái duì ba.",
+                    en: "B: Honestly, they always break. They really should issue a recall.",
+                    ja: "B「ほんとに、いつも壊れてるよな。リコールすればいいのに」"
+                },
+                {
+                    cn: "男：結果客服人員一直問「什麼時候壞的？」、「有沒有什麼原因？」。根本沒有原因，而且使用者都不一樣，哪有辦法管理。",
+                    pinyin: "Nán: Jiéguǒ kèfú rényuán yìzhí wèn \"shénme shíhòu huài de?\", \"yǒu méi yǒu shénme yuányīn?\". Gēnběn méi yǒu yuányīn, érqiě shǐyòngzhě dōu bù yíyàng, nǎ yǒu bànfǎ guǎnlǐ.",
+                    en: "A: But the agent keeps nagging, 'When did it break?' or 'Was there a specific trigger?' There's no trigger! And with different users, how are we supposed to track all that?",
+                    ja: "A「そしたら、窓口担当が、いつから壊れてますか、きっかけはありますかってしつこいんだ。きっかけなんてないし、使用者がバラバラだからいつなんて管理しきれないんだよ」"
+                },
+                {
+                    cn: "女：我們是公司，這很正常吧。",
+                    pinyin: "Nǚ: Wǒmen shì gōngsī, zhè hěn zhèngcháng ba.",
+                    en: "B: Exactly, we're a corporate client, so that's totally expected.",
+                    ja: "B「法人だからあたりまえだよね」"
+                },
+                {
+                    cn: "男：最後他竟然說「如果時間一樣，就是使用方式的問題」，還說是我們的嫌疑，真是太失禮了。",
+                    pinyin: "Nán: Zuìhòu tā jìngrán shuō \"rúguǒ shíjiān yíyàng, jiùshì shǐyòng fāngshì de wèntí\", hái shuō shì wǒmen de xiányí, zhēn shì tài shīlǐ le.",
+                    en: "A: To top it off, he said if they broke around the same time, it must be user error. He even brought up 'suspicion'—it's insanely rude!",
+                    ja: "A「挙句の果てには、時期が一緒だと、使い方の問題ですって言いだすんだ。嫌疑とか言い出して、失礼極まりない」"
+                },
+                {
+                    cn: "女：那個是不是AI機器人啊？",
+                    pinyin: "Nǚ: Nàge shì bú shì AI jīqìrén a?",
+                    en: "B: Wait, is that an AI bot or something?",
+                    ja: "B「それって、AIボットじゃないの？」"
+                },
+                {
+                    cn: "男：我一開始就問他是不是AI，他說是真人。可是他一直重複一樣的話，煩死人了。",
+                    pinyin: "Nán: Wǒ yì kāishǐ jiù wèn tā shì bú shì AI, tā shuō shì zhēnrén. Kěshì tā yìzhí chóngfù yíyàng de huà, fán sǐ rén le.",
+                    en: "A: That's what I asked first! He claimed to be human, but kept repeating the exact same lines. It's beyond annoying.",
+                    ja: "A「それ。最初に聞いたんだよ、AI（人工知能）ですかって。そしたら人間だっていうけど、同じこと繰り返し聞いくるし、ウザいことこの上ない」"
+                },
+                {
+                    cn: "女：我們下次有一千到一千五百台的採購計畫，如果不把他們剔除，真的會很麻煩。",
+                    pinyin: "Nǚ: Wǒmen xià cì yǒu yì qiān dào yì qiān wǔ bǎi tái de cǎigòu jìhuà, rúguǒ bù bǎ tāmen tīchú, zhēn de huì hěn máfan.",
+                    en: "B: We have a procurement plan for 1,000 to 1,500 units next time. If we don't drop them from selection, we're in big trouble.",
+                    ja: "B「次回1000-1500台の購入計画あるけど、選定から外してもらわないといい迷惑だね。」"
+                },
+                {
+                    cn: "男：真的，太對了！！！",
+                    pinyin: "Nán: Zhēn de, tài duì le!!!",
+                    en: "A: Absolutely, totally agree!!!",
+                    ja: "A「ホントだよ！！！」"
+                },
+                {
+                    cn: "【問題】關於男生的想法，下面哪一個是對的？",
+                    pinyin: "【Wèntí】Guānyú nánshēng de xiǎngfǎ, xiàmiàn nǎ yí gè shì duì de?",
+                    en: "[Question] Regarding the man's opinion, which of the following is correct?",
+                    ja: "【質問】男性の考えについて、正しいものはどれですか？"
+                }
+            ],
+
+            choices: [
+                {
+                    cn: "他對D公司的服務非常滿意",
+                    pinyin: "Tā duì D gōngsī de fúwù fēicháng mǎnyì",
+                    en: "He is very satisfied with Brand D's service.",
+                    ja: "1．D社の対応に非常に満足している"
+                },
+                {
+                    cn: "D公司現在馬上就要召回有轉軸問題的電腦",
+                    pinyin: "D gōngsī xiànzài mǎshàng jiù yào zhàohuí yǒu zhuǎnzhóu wèntí de diànnǎo",
+                    en: "Brand D plans to recall the PCs with hinge issues immediately.",
+                    ja: "2．D社は今すぐにヒンジ問題でリコールの計画がある"
+                },
+                {
+                    cn: "他覺得D公司客服人員的態度問題很大，非常生氣",
+                    pinyin: "Tā juéde D gōngsī kèfú rényuán de tàidù wèntí hěn dà, fēicháng shēngqì",
+                    en: "He feels Brand D's customer support has major issues and is extremely angry.",
+                    ja: "3．D社の窓口担当の品質には問題しかなく、怒りを感じる"
+                },
+                {
+                    cn: "他覺得下次採購電腦時應該要更仔細評估D公司",
+                    pinyin: "Tā juéde xià cì cǎigòu diànnǎo shí yīnggāi yào gèng zǐxì pínggū D gōngsī",
+                    en: "He feels they should evaluate Brand D more carefully next time.",
+                    ja: "4．次回の選定は慎重に行うべきだ"
+                }
+            ],
+            correctAnswer: 2,
+
+            grammarPoint: "・轉軸（ヒンジ）：ノートPCの折りたたみ関節部分\n・提告（裁判を起こす・提訴する）\n・召回（リコールする）\n・竟然…（あろうことか〜、まさか〜）：最後他竟然說…\n・煩死人了（死ぬほどウザい・煩わしい）：程度を表す「〜死人了」\n・剔除（選定から外す・除外する）"
+        }
+    ];
+
+    let currentIndex = 0;
+    let isPlaying = false;
+    let synth = window.speechSynthesis;
+
+    const counterEl = document.getElementById('question-counter');
+    const playBtn = document.getElementById('play-btn');
+    const showQBtn = document.getElementById('show-q-btn');
+    const dialogueArea = document.getElementById('dialogue-text-area');
+    const choicesContainer = document.getElementById('choices-container');
+    const resultArea = document.getElementById('result-area');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    function loadQuestion(index) {
+        const q = questions[index];
+        counterEl.innerText = `第 ${index + 1} 問 / 全 ${questions.length} 問`;
+        
+        // 対話文テキストエリア（4言語生成）
+        dialogueArea.style.display = 'none';
+        dialogueArea.innerHTML = '';
+        q.dialogue.forEach(line => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'dialogue-line';
+            lineDiv.innerHTML = `
+                <div class="lang-cn">${line.cn}</div>
+                <div class="lang-pinyin">${line.pinyin}</div>
+                <div class="lang-en">${line.en}</div>
+                <div class="lang-ja">${line.ja}</div>
+            `;
+            dialogueArea.appendChild(lineDiv);
+        });
+
+        // 選択肢（4言語生成）
+        choicesContainer.innerHTML = '';
+        q.choices.forEach((choice, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.innerHTML = `
+                <div class="lang-cn">(${i + 1}) ${choice.cn}</div>
+                <div class="lang-pinyin">${choice.pinyin}</div>
+                <div class="lang-en">${choice.en}</div>
+                <div class="lang-ja">${choice.ja}</div>
+            `;
+            btn.onclick = () => checkAnswer(i, btn);
+            choicesContainer.appendChild(btn);
+        });
+
+        resultArea.style.display = 'none';
+        prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
+        nextBtn.style.visibility = index < questions.length - 1 ? 'visible' : 'hidden';
+        
+        synth.cancel();
+    }
+
+    function playAudio() {
+        if (isPlaying) return;
+        
+        const q = questions[currentIndex];
+        const repeatCount = parseInt(document.getElementById('repeat-count').value);
+        let currentRepeat = 0;
+
+        playBtn.disabled = true;
+        playBtn.innerText = '🔊 再生中...';
+        isPlaying = true;
+
+        function speak() {
+            if (currentRepeat >= repeatCount) {
+                isPlaying = false;
+                playBtn.disabled = false;
+                playBtn.innerText = '🔊 音声を再生する';
+                
+                // 再生回数完了後に自動で対話・問題文を表示
+                dialogueArea.style.display = 'block';
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(q.audioText);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.9;
+
+            utterance.onend = () => {
+                currentRepeat++;
+                setTimeout(speak, 1000);
+            };
+
+            utterance.onerror = (e) => {
+                console.error('Speech synthesis error', e);
+                isPlaying = false;
+                playBtn.disabled = false;
+                playBtn.innerText = '🔊 音声を再生する (エラー)';
+            };
+
+            synth.speak(utterance);
+        }
+
+        synth.cancel();
+        speak();
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const q = questions[currentIndex];
+        const buttons = document.querySelectorAll('.choice-btn');
+        
+        buttons.forEach(btn => btn.disabled = true);
+
+        // 回答選択時にも自動的にお対話文を表示
+        dialogueArea.style.display = 'block';
+
+        if (selectedIndex === q.correctAnswer) {
+            selectedBtn.classList.add('correct');
+            document.getElementById('judgement').innerText = '⭕ 正解！';
+            document.getElementById('judgement').style.color = '#4CAF50';
+        } else {
+            selectedBtn.classList.add('incorrect');
+            buttons[q.correctAnswer].classList.add('correct');
+            document.getElementById('judgement').innerText = '❌ 不正解...';
+            document.getElementById('judgement').style.color = '#f44336';
+        }
+
+        document.getElementById('grammar-point').innerText = q.grammarPoint;
+        resultArea.style.display = 'block';
+    }
+
+    // イベントリスナー
+    playBtn.addEventListener('click', playAudio);
+    
+    showQBtn.addEventListener('click', () => {
+        dialogueArea.style.display = 'block';
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            loadQuestion(currentIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < questions.length - 1) {
+            currentIndex++;
+            loadQuestion(currentIndex);
+        }
+    });
+
+    loadQuestion(currentIndex);
+</script>
+</body>
+</html>
