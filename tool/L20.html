@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: 方向補語 & TOCFL対策まとめ</title>
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #F5A623;
+            --bg-color: #F8F9FA;
+            --text-color: #333;
+            --card-bg: #FFFFFF;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 30px;
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            background-color: #FFF3CD;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #856404;
+        }
+        .tocfl-meta {
+            border: 2px solid var(--secondary);
+            background-color: #FFFAEA;
+        }
+        .tocfl-meta h3 {
+            color: #D08000;
+            margin-top: 0;
+        }
+        .grammar-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E9ECEF;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .grammar-box span {
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .grammar-box .location {
+            background: #E74C3C;
+        }
+        .quiz-container {
+            margin-top: 20px;
+            border-top: 1px dashed #ccc;
+            padding-top: 20px;
+        }
+        .question {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .answer {
+            display: none;
+            background: #D4EDDA;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lesson 11: 方向補語 ＆ TOCFL対策まとめ</h1>
+
+    <div class="card">
+        <h2>1. 方向補語の基本構造</h2>
+        <p>方向補語は、動作が「空間をどのように移動するか」を表します。基本の組み合わせは以下の通りです。</p>
+        <table>
+            <tr>
+                <th>動詞</th>
+                <th>補語A (移動の経路)</th>
+                <th>補語B (話し手との距離)</th>
+            </tr>
+            <tr>
+                <td>走 (歩く)<br>跑 (走る)<br>拿 (持つ)<br>搬 (運ぶ)</td>
+                <td>上 / 下 / 進 / 出 / 回 / 過 / 起</td>
+                <td>來 (こちらへ)<br>去 (あちらへ)</td>
+            </tr>
+        </table>
+        <p>例：他跑進來了。 (Tā pǎo jìn lái le.) = 彼は走って入ってきた。</p>
+    </div>
+
+    <div class="card">
+        <h2>2. ⚠️最重要：目的語（場所 vs 事物）の語順ルール</h2>
+        <p>目的語が「場所」か「事物」かによって、語順のルールが厳密に決まっています。</p>
+        
+        <h3>【ルール1】目的語が「場所」の場合（絶対法則）</h3>
+        <p>場所は必ず補語Aと補語Bの<span class="highlight">間（サンドイッチ）</span>に入ります。</p>
+        <div class="grammar-box">
+            動詞 + <span>補語A</span> + <span class="location">場所</span> + <span>補語B (來/去)</span>
+        </div>
+        <p>⭕️ 走 <strong>進</strong> <span style="color:#E74C3C; font-weight:bold;">教室</span> <strong>來</strong> (教室に入ってくる)<br>
+           ❌ 走進來教室 (この語順は不可)</p>
+
+        <h3>【ルール2】目的語が「事物」の場合</h3>
+        <p>事物の場合は、サンドイッチにしても、後ろにくっつけてもどちらでもOKです。</p>
+        <ul>
+            <li>⭕️ 買 <strong>回</strong> 晚餐 <strong>來</strong> (夕食を買って帰ってくる)</li>
+            <li>⭕️ 買 <strong>回來</strong> 晚餐</li>
+        </ul>
+    </div>
+
+    <div class="card tocfl-meta">
+        <h2>3. 🎯 TOCFL解法メタ知識（Band A対策）</h2>
+        <h3>🎧 リスニング (聽力測驗) の解法</h3>
+        <ul>
+            <li><strong>視点（來 vs 去）のトラップ：</strong> 音声が「走過<strong>去</strong>」と言っているのに、画像では人が「カメラ目線で向かってきている」イラストなら不正解です。「去」は背中を向けて遠ざかるイラスト、「來」は近づいてくるイラストと紐づけましょう。</li>
+            <li><strong>起の用法：</strong> 「想起來（思い出す）」「看起來（〜に見える）」など、「起」は空間の移動だけでなく、状態の変化や抽象的な意味で頻出します。</li>
+        </ul>
+
+        <h3>📖 リーディング (閱讀測驗) の解法</h3>
+        <ul>
+            <li><strong>並べ替え問題の秒殺テクニック：</strong> 選択肢の中に「場所を表す名詞（樓上, 房間, 學校など）」と「來/去」が両方含まれていたら、<strong>「場所＋來/去」の並びになる選択肢を即座に探します。</strong>（例：回＋台灣＋去）</li>
+            <li><strong>動詞の連続：</strong> 「拿去洗（持っていって洗う）」のように、間に何も挟まず動詞が連続するパターンは長文読解でよく出ます。「動作が起こる順番」通りに訳せば意味が通ります。</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. TOCFL 実戦クイズ</h2>
+        <p>正しい語順を選んでください。</p>
+        
+        <div class="quiz-container">
+            <div class="question">Q1. 私たちは2階へ歩いて上がっていった。</div>
+            <p>A: 我們走上去二樓了。<br>B: 我們走上二樓去了。</p>
+            <button onclick="toggleAnswer('ans1')">正解を見る</button>
+            <div id="ans1" class="answer">
+                <strong>正解：B</strong><br>
+                「二樓（2階）」は場所なので、必ず「上（補語A）」と「去（補語B）」の間にサンドイッチします。
+            </div>
+        </div>
+
+        <div class="quiz-container">
+            <div class="question">Q2. 彼は本を取り出した。</div>
+            <p>A: 他拿出一本書來。<br>B: 他拿出來一本書。<br>C: AもBも正解</p>
+            <button onclick="toggleAnswer('ans2')">正解を見る</button>
+            <div id="ans2" class="answer">
+                <strong>正解：C</strong><br>
+                「一本書（本）」は事物なので、サンドイッチしても、最後尾においてもどちらでも文法的に正しいです。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === "block") {
+                el.style.display = "none";
+            } else {
+                el.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: 有 / 沒有 ＋名詞＋動詞 ＆ TOCFL対策</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --accent: #16A085;
+            --secondary: #E67E22;
+            --bg-color: #F4F6F7;
+            --card-bg: #FFFFFF;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--accent);
+            margin-top: 25px;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+            font-size: 1.3em;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        }
+        .formula-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #EAECEE;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-weight: bold;
+        }
+        .formula-box span {
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        .formula-box .noun { background: var(--secondary); }
+        .formula-box .verb { background: #2980B9; }
+        
+        .tocfl-meta {
+            border: 2px solid var(--secondary);
+            background-color: #FEF9E7;
+        }
+        .tocfl-meta h2 {
+            color: var(--secondary);
+            border-left-color: var(--secondary);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #BDC3C7;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #EAEDED;
+        }
+
+        .quiz-container {
+            margin-top: 15px;
+            border-top: 1px dashed #BDC3C7;
+            padding-top: 15px;
+        }
+        .answer {
+            display: none;
+            background: #D4EDDA;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        button:hover {
+            background-color: #117A65;
+        }
+        .badge {
+            background: #E74C3C;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lesson 12: 有 / 沒有 の後続修飾 ＆ TOCFL対策まとめ</h1>
+
+    <!-- 1. 基本文法構文 -->
+    <div class="card">
+        <h2>1. コア文法：『有 / 沒有 ＋ 名詞 ＋ 動詞』</h2>
+        <p>名詞（時間・お金・機会など）の後ろに動詞を続け、<strong>「〜する［時間/お金/機会］がある・ない」</strong> という目的・関連動作を説明します。</p>
+        
+        <div class="formula-box">
+            主語 ＋ <span>有 / 沒有</span> ＋ <span class="noun">名詞（時間/錢/機會）</span> ＋ <span class="verb">動詞 (〜する)</span>
+        </div>
+
+        <h3>代表的な例文</h3>
+        <ul>
+            <li><strong>我最近沒有時間去野餐。</strong><br><small>(Wǒ zuìjìn méiyǒu shíjiān qù yěcān.) ＝ 最近ピクニックに行く時間がありません。</small></li>
+            <li><strong>你有錢買這本書嗎？</strong><br><small>(Nǐ yǒu qián mǎi zhè běn shū ma?) ＝ あなたはこの本を買うお金がありますか？</small></li>
+            <li><strong>我沒有機會去台灣。</strong><br><small>(Wǒ méiyǒu jīhuì qù Táiwān.) ＝ 私には台湾へ行く機会がありません。</small></li>
+        </ul>
+    </div>
+
+    <!-- 2. 有人 vs 有的人 徹底比較 -->
+    <div class="card">
+        <h2>2. 超重要：『有人』と『有的人』の使い分け</h2>
+        <p>TOCFLや日常会話で非常に間違えやすいポイントです。</p>
+        <table>
+            <tr>
+                <th>表現</th>
+                <th>ニュアンス</th>
+                <th>使いどころ・注意点</th>
+            </tr>
+            <tr>
+                <td><strong>有人</strong></td>
+                <td>単なる事実・出来事の報告<br>「（誰か）〜な人がいる」</td>
+                <td>特定の出来事に使える。<br>⭕️ 剛才<strong>有人</strong>問我……（さっきある人が聞いた）</td>
+            </tr>
+            <tr>
+                <td><strong>有的人</strong></td>
+                <td>グループ分け・対比<br>「〜な人もいれば、（〜な人もいる）」</td>
+                <td>出来事の報告には使えない！<br>❌ 剛才<strong>有的人</strong>問我……<br>⭕️ <strong>有的人</strong>喜歡，<strong>有的人</strong>不喜歡。</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 3. 副詞・重要熟語 -->
+    <div class="card">
+        <h2>3. Lesson 12 の頻出副詞 ＆ 表現</h2>
+        <ul>
+            <li><strong>平常都…… <span class="badge">セット運用</span></strong>：普段はいつも〜する。<br><small>例：他<strong>平常都</strong>搭電梯。（彼は普段いつもエレベーターに乗る）</small></li>
+            <li><strong>有時候（有的時候）</strong>：ときどき。<br><small>※ 基本は「的」なしの <strong>有時候</strong> を使えばOK！</small></li>
+            <li><strong>還是……吧</strong>：やっぱり〜した方がいい（提案・アドバイス）。<br><small>例：你<strong>還是</strong>別脫口罩<strong>吧</strong>！（あなたはやっぱりマスクを外さない方がいいよ）</small></li>
+        </ul>
+    </div>
+
+    <!-- 4. TOCFL解法メタ知識 -->
+    <div class="card tocfl-meta">
+        <h2>4. 🎯 TOCFL解法メタ知識（Band A対策）</h2>
+        <h3>📖 リーディング（閱讀測驗）</h3>
+        <ul>
+            <li><strong>語順の日本語トラップ：</strong> 日本語の「〜する時間（去野餐的時間）」につられて `去野餐的時間` と選ばないこと！「有」を使うときは必ず <strong>「有 ＋ 時間 ＋ 動詞」</strong> の順番になります。</li>
+            <li><strong>「可是 / 但是」の直後を狙う：</strong> 「有的人覺得……，<strong>可是我……</strong>」のように対比の文脈が出たら、接続詞の直後（話し手の主張）が解法の鍵になります。</li>
+        </ul>
+
+        <h3>🎧 リスニング（聽力測驗）</h3>
+        <ul>
+            <li><strong>乗り物動詞「搭（dā）」：</strong> 「坐」だけでなく「搭公車」「搭捷運」「搭電梯」が頻繁に出てきます。「搭＝乗る」と瞬時に変換！</li>
+            <li><strong>感嘆の「好＋形容詞」：</strong> 「好多（すごく多い）」「好酸（すごく酸っぱい）」など、会話スクリプトの感情表現を素早く聞き取りましょう。</li>
+        </ul>
+    </div>
+
+    <!-- 5. 実戦クイズ -->
+    <div class="card">
+        <h2>5. TOCFL 実戦確認クイズ</h2>
+
+        <div class="quiz-container">
+            <div class="question">Q1. 「さっき誰かが部屋に入ってきた」の正しい中国語は？</div>
+            <p>A: 剛才有的人進房間來了。<br>B: 剛才有人進房間來了。</p>
+            <button onclick="toggleAnswer('ans1')">正解を見る</button>
+            <div id="ans1" class="answer">
+                <strong>正解：B</strong><br>
+                単なる出来事の報告（さっき〜した）には「有人」を使います。「有的人」は対比（〜な人もいる）の表現なので使えません。
+            </div>
+        </div>
+
+        <div class="quiz-container">
+            <div class="question">Q2. 並べ替え：正しい語順を選んでください。「（私は）台湾料理を食べる機会がない」</div>
+            <p>A: 我沒有吃台灣菜的機會。<br>B: 我沒有機會吃台灣菜。</p>
+            <button onclick="toggleAnswer('ans2')">正解を見る</button>
+            <div id="ans2" class="answer">
+                <strong>正解：B</strong><br>
+                「有/沒有 ＋ 名詞（機會） ＋ 動詞（吃台灣菜）」のパターンが最も標準的かつ自然です。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === "block") {
+                el.style.display = "none";
+            } else {
+                el.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 13: 「了」の5つの文型完全攻略 ＆ 音声付例文集</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --accent: #27AE60;
+            --secondary: #E67E22;
+            --bg-color: #F4F6F7;
+            --card-bg: #FFFFFF;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--accent);
+            margin-top: 25px;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+            font-size: 1.3em;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        }
+        .formula-box {
+            background: #E8F8F5;
+            border-left: 4px solid var(--accent);
+            padding: 12px 15px;
+            margin: 10px 0 15px 0;
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+        .tocfl-meta {
+            border: 2px solid var(--secondary);
+            background-color: #FEF9E7;
+        }
+        .tocfl-meta h2 {
+            color: var(--secondary);
+            border-left-color: var(--secondary);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #BDC3C7;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #EAEDED;
+        }
+        .num {
+            width: 5%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .zh {
+            width: 40%;
+            font-size: 1.05em;
+        }
+        .pinyin {
+            color: #7F8C8D;
+            font-size: 0.9em;
+        }
+        .ja {
+            width: 40%;
+            font-size: 0.95em;
+        }
+        .audio-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .audio-btn:hover {
+            background-color: #1E8449;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lesson 13: 「了」の5つの文型完全攻略 ＆ 音声付例文集</h1>
+
+    <!-- TOCFL メタ知識 -->
+    <div class="card tocfl-meta">
+        <h2>🎯 TOCFL解法メタ知識（「了」の一瞬見分け術）</h2>
+        <ul>
+            <li><strong>【継続（文型4） vs 変化（不...了）】の見分け方：</strong>
+                <ul>
+                    <li>文末に「了」があり、文中に **「已經」＋ 数量詞（一個、三年など）** があれば 👉 <strong>継続（〜し続けている）</strong></li>
+                    <li>文末の「了」の前に **「不」や「沒」** が入っていれば 👉 <strong>状態の変化（〜しなくなった）</strong></li>
+                </ul>
+            </li>
+            <li><strong>語順の鉄則（文型2）：</strong> 目的語に「数字や量（一個、兩場、很多）」がついたら、「了」は必ず <strong>動詞の直後</strong>（動詞＋了＋数量詞＋名詞）！文末に置かない。</li>
+            <li><strong>「過」との違い：</strong> 「了」は動作の完了・実現に焦点を当て、「過」は「〜したことがある」という過去の経験に焦点を当てる。</li>
+        </ul>
+    </div>
+
+    <!-- 文型(1) -->
+    <div class="card">
+        <h2>文型(1)：動詞 ＋ 名詞 ＋ 了（〜した）</h2>
+        <div class="formula-box">シンプルな名詞が目的語の完了表現</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">1</td>
+                <td class="zh">他早就換衣服了。<br><span class="pinyin">Tā zǎojiù huàn yīfú le.</span></td>
+                <td class="ja">彼はとっくに着替えた。</td>
+                <td><button class="audio-btn" onclick="playAudio('他早就換衣服了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td class="zh">你寫拼音了嗎？<br><span class="pinyin">Nǐ xiě pīnyīn le ma?</span></td>
+                <td class="ja">あなたはピンインを書きましたか。</td>
+                <td><button class="audio-btn" onclick="playAudio('你寫拼音了嗎？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td class="zh">沒想到他也訂票了。<br><span class="pinyin">Méi xiǎng dào tā yě dìng piào le.</span></td>
+                <td class="ja">彼もチケットを予約していたなんて。</td>
+                <td><button class="audio-btn" onclick="playAudio('沒想到他也訂票了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">14</td>
+                <td class="zh">我很早就吃晚餐了。<br><span class="pinyin">Wǒ hěn zǎo jiù chī wǎncān le.</span></td>
+                <td class="ja">私は早い時間に晩ご飯を食べた。</td>
+                <td><button class="audio-btn" onclick="playAudio('我很早就吃晚餐了。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 文型(2) -->
+    <div class="card">
+        <h2>文型(2)：動詞 ＋ 了 ＋ 数量詞＋名詞（〜した）</h2>
+        <div class="formula-box">数量（1個、2回など）を伴う動作の完了（「了」は動詞の直後）</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">2</td>
+                <td class="zh">我中午吃了一個粽子。<br><span class="pinyin">Wǒ zhōngwǔ chī le yí ge zòngzi.</span></td>
+                <td class="ja">私はお昼にチマキを1個食べた。</td>
+                <td><button class="audio-btn" onclick="playAudio('我中午吃了一個粽子。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td class="zh">小梨在彰化租了一間房子。<br><span class="pinyin">Xiǎolí zài Zhānghuà zū le yì jiān fángzi.</span></td>
+                <td class="ja">小梨は彰化で家を1軒借りた。</td>
+                <td><button class="audio-btn" onclick="playAudio('小梨在彰化租了一間房子。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td class="zh">我最近買了一套注音符號的郵票。<br><span class="pinyin">Wǒ zuìjìn mǎi le yí tào zhùyīn fúhào de yóupiào.</span></td>
+                <td class="ja">私は最近注音符号の切手を1セット買った。</td>
+                <td><button class="audio-btn" onclick="playAudio('我最近買了一套注音符號的郵票。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">10</td>
+                <td class="zh">我的信箱這幾天收到了很多垃圾郵件，你可以幫我看一下嗎？<br><span class="pinyin">Wǒ de xìnxiāng zhè jǐ tiān shōu dào le hěn duō lèsè yóujiàn, nǐ kěyǐ bāng wǒ kàn yíxià ma?</span></td>
+                <td class="ja">私のメールボックスに、ここ数日迷惑メールがたくさん届いた。ちょっと見てくれる？</td>
+                <td><button class="audio-btn" onclick="playAudio('我的信箱這幾天收到了很多垃圾郵件，你可以幫我看一下嗎？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">11</td>
+                <td class="zh">我們大學的華語中心上個月辦了兩場活動。<br><span class="pinyin">Wǒmen dàxué de Huáyǔ zhōngxīn shàng ge yuè bàn le liǎng chǎng huódòng.</span></td>
+                <td class="ja">私たちの大学の華語センターは、先月イベントを2回開催した。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們大學的華語中心上個月辦了兩場活動。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">12</td>
+                <td class="zh">我上午打了好幾次電話給他，他都在通話中。<br><span class="pinyin">Wǒ shàngwǔ dǎ le hǎo jǐ cì diànhuá gěi tā, tā dōu zài tōnghuà zhōng.</span></td>
+                <td class="ja">午前中に何度も彼に電話したけど、ずっと話し中だった。</td>
+                <td><button class="audio-btn" onclick="playAudio('我上午打了好幾次電話給他，他都在通話中。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">13</td>
+                <td class="zh">他昨天單字只背了十分鐘左右，現在當然全忘了。<br><span class="pinyin">Tā zuótiān dānzì zhǐ bèi le shí fēnzhōng zuǒyòu, xiànzài dāngrán quán wàng le.</span></td>
+                <td class="ja">彼は昨日単語の暗記を10分ほどしか頼まなかったので、今はもちろん全部忘れている。</td>
+                <td><button class="audio-btn" onclick="playAudio('他昨天單字只背了十分鐘左右，現在當然全忘了。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 文型(3) -->
+    <div class="card">
+        <h2>文型(3)：動詞 ＋ 了 ＋ 名詞 ……（〜してから／したが／したから……）</h2>
+        <div class="formula-box">文末に「了」を置かず文を接続する（条件・因果・時間の前後関係）</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">3</td>
+                <td class="zh">我做了沙拉……<br><span class="pinyin">Wǒ zuò le shālā...</span></td>
+                <td class="ja">私はサラダを作って／作ったけど／作ったから……</td>
+                <td><button class="audio-btn" onclick="playAudio('我做了沙拉')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">15</td>
+                <td class="zh">我很早就吃了晚餐，現在已經餓了。<br><span class="pinyin">Wǒ hěn zǎo jiù chī le wǎncān, xiànzài yǐjīng è le.</span></td>
+                <td class="ja">私は早い時間に晩ご飯を食べたから、今はもうお腹が空いた。</td>
+                <td><button class="audio-btn" onclick="playAudio('我很早就吃了晚餐，現在已經餓了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">16</td>
+                <td class="zh">他交了女朋友以後就不跟我們玩了。<br><span class="pinyin">Tā jiāo le nǚpéngyǒu yǐhòu jiù bù gēn wǒmen wán le.</span></td>
+                <td class="ja">彼は彼女ができてから僕たちと遊ばなくなった。</td>
+                <td><button class="audio-btn" onclick="playAudio('他交了女朋友以後就不跟我們玩了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">17</td>
+                <td class="zh">我剛剛去了辦公室，但是老師剛好不在。<br><span class="pinyin">Wǒ gānggāng qù le bàngōngshì, dànshì lǎoshī gānghǎo bú zài.</span></td>
+                <td class="ja">さっき事務室に行ったけど、先生はちょうどいらっしゃらなかった。</td>
+                <td><button class="audio-btn" onclick="playAudio('我剛剛去了辦公室，但是老師剛好不在。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">18</td>
+                <td class="zh">他在火車站轉了車以後，才發現下車的時候忘了拿外套。<br><span class="pinyin">Tā zài huǒchēzhàn zhuǎn le chē yǐhòu, cái fāxiàn xià chē de shíhòu wàng le ná wàitào.</span></td>
+                <td class="ja">彼は駅で乗り換えた後、下りる時に上着を忘れてきたことにやっと気づいた。</td>
+                <td><button class="audio-btn" onclick="playAudio('他在火車站轉了車以後，才發現下車的時候忘了拿外套。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">19</td>
+                <td class="zh">我剛才喝了一瓶啤酒，現在不能開車。<br><span class="pinyin">Wǒ gāngcái hē le yì píng píjiǔ, xiànzài bù néng kāi chē.</span></td>
+                <td class="ja">私はさっきビールを1本飲んだので、今は車を運転できない。</td>
+                <td><button class="audio-btn" onclick="playAudio('我剛才喝了一瓶啤酒，現在不能開車。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 文型(4) -->
+    <div class="card">
+        <h2>文型(4)：動詞 ＋ 了 ＋ 数量詞＋名詞 ＋ 了（〜している［継続］）</h2>
+        <div class="formula-box">最強のダブル「了」！過去から始まって「今も継続中・累積中」を示す</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">4</td>
+                <td class="zh">他已經找了半天了。<br><span class="pinyin">Tā yǐjīng zhǎo le bàntiān le.</span></td>
+                <td class="ja">彼はもう長い時間探している。</td>
+                <td><button class="audio-btn" onclick="playAudio('他已經找了半天了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">20</td>
+                <td class="zh">我已經喝了一瓶啤酒了，可是還想要再喝。<br><span class="pinyin">Wǒ yǐjīng hē le yì píng píjiǔ le, kěshì hái xiǎng yào zài hē.</span></td>
+                <td class="ja">私はもうビールを1本飲んでいるけれど、まだ飲みたい。</td>
+                <td><button class="audio-btn" onclick="playAudio('我已經喝了一瓶啤酒了，可是還想要再喝。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">21</td>
+                <td class="zh">這部電影我非常喜歡，已經看了十幾次了。<br><span class="pinyin">Zhè bù diànyǐng wǒ fēicháng xǐhuān, yǐjīng kàn le shí jǐ cì le.</span></td>
+                <td class="ja">この映画は私はとても好きで、もう十数回見ています。</td>
+                <td><button class="audio-btn" onclick="playAudio('這部電影我非常喜歡，已經看了十幾次了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">22</td>
+                <td class="zh">我在這裡住了二十年了，附近的鄰居我全都認識。<br><span class="pinyin">Wǒ zài zhèlǐ zhù le èrshí nián le, fùjīn de línjū wǒ quán dōu rènshì.</span></td>
+                <td class="ja">私はここに住んで20年になり、近所の人たちはみんな知り合いだ。</td>
+                <td><button class="audio-btn" onclick="playAudio('我在這裡住了二十年了，附近的鄰居我全都認識。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">23</td>
+                <td class="zh">你已經點了五道菜了，應該夠了吧！<br><span class="pinyin">Nǐ yǐjīng diǎn le wǔ dào cài le, yīnggāi gòu le ba!</span></td>
+                <td class="ja">あなたはもう料理を5品注文しているから、多分もう十分でしょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('你已經點了五道菜了，應該夠了吧！')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">24</td>
+                <td class="zh">我傳了好幾封簡訊給你了，你都沒看到嗎？<br><span class="pinyin">Wǒ chuán le hǎo jǐ fēng jiǎnxùn gěi nǐ le, nǐ dōu méi yòu kàn dào ma?</span></td>
+                <td class="ja">私はあなたにショートメッセージを何本も送っているのに、あなたはどれも見ていないの？</td>
+                <td><button class="audio-btn" onclick="playAudio('我傳了好幾封簡訊給你了，你都沒看到嗎？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">25</td>
+                <td class="zh">我們已經推車走了半個小時了，還沒走到加油站。<br><span class="pinyin">Wǒmen yǐjīng tuī chē zǒu le bàn ge xiǎoshí le, hái méi zǒu dào jiāyóuzhàn.</span></td>
+                <td class="ja">私たちはバイクを押してもう30分も歩いているのに、まだガソリンスタンドにたどりついていない。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們已經推車走了半個小時了，還沒走到加油站。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 文型(5) -->
+    <div class="card">
+        <h2>文型(5)：動詞 ＋ 数量詞(時間量) ＋ 了（〜してから……経つ）</h2>
+        <div class="formula-box">決定的な出来事（離脱・結婚・移動）から経過した期間を表す</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">5</td>
+                <td class="zh">我們認識快十年了。<br><span class="pinyin">Wǒmen rènshì kuài shí nián le.</span></td>
+                <td class="ja">私たちが知り合ってから もうすぐ10年になる。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們認識快十年了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">26</td>
+                <td class="zh">你們結婚幾年了？<br><span class="pinyin">Nǐmen jiéhūn jǐ nián le?</span></td>
+                <td class="ja">あなたたちは結婚して何年になるの？</td>
+                <td><button class="audio-btn" onclick="playAudio('你們結婚幾年了？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">27</td>
+                <td class="zh">我男朋友出國念書三個月了，我很想他。<br><span class="pinyin">Wǒ nánpéngyǒu chū guó niàn shū sān ge yuè le, wǒ hěn xiǎng tā.</span></td>
+                <td class="ja">彼氏が海外留学に行って3か月になる。彼にすごく会いたい。</td>
+                <td><button class="audio-btn" onclick="playAudio('我男朋友出國念書三個月了，我很想他。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">28</td>
+                <td class="zh">真不敢相信！我們高中畢業已經二十年了。<br><span class="pinyin">Zhēn bù gǎn xiāngxìn! Wǒmen gāozhōng bìyè yǐjīng èrshí nián le.</span></td>
+                <td class="ja">本当に信じられない。私たちが高校を卒業してもう20年になる。</td>
+                <td><button class="audio-btn" onclick="playAudio('真不敢相信！我們高中畢業已經二十年了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">29</td>
+                <td class="zh">你來台北快半年了，還沒去其他地方觀光過嗎？<br><span class="pinyin">Nǐ lái Táiběi kuài bàn nián le, hái méi qù qítā dìfāng guāngguāng guò ma?</span></td>
+                <td class="ja">あなたが台北に来てもうすぐ半年になるけど、まだ他の場所に観光に行ったことはないの？</td>
+                <td><button class="audio-btn" onclick="playAudio('你來台北快半年了，還沒去其他地方觀光過嗎？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">30</td>
+                <td class="zh">你吃完飯已經半個小時了，怎麼還沒吃藥呢？<br><span class="pinyin">Nǐ chī wán fàn yǐjīng bàn ge xiǎoshí le, zěnme hái méi chī yào ne?</span></td>
+                <td class="ja">あなたはご飯を食べ終わってもう30分経っているのに、なぜまだ薬を飲んでいないの？</td>
+                <td><button class="audio-btn" onclick="playAudio('你吃完飯已經半個小時了，怎麼還沒吃藥呢？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">31</td>
+                <td class="zh">我從越南回來六年多了，有時候還是會不習慣日本的生活。<br><span class="pinyin">Wǒ cóng Yuènán huí lái liù nián duō le, yǒu shíhòu háishì huì bù xíguàn Rìběn de shēnghuó.</span></td>
+                <td class="ja">私がベトナムから帰ってきて6年以上経つけど、それでも日本の生活になじめないと思うときがある。</td>
+                <td><button class="audio-btn" onclick="playAudio('我從越南回來六年多了，有時候還是會不習慣日本的生活。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // ブラウザ標準の SpeechSynthesis API を使用した音声再生機能
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                // 再生中の音声を停止
+                window.speechSynthesis.cancel();
+                
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW'; // 台湾華語（繁体字）の発音に設定
+                utterance.rate = 0.85;     // 学習用に少しゆっくりめの速度
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声読み上げに対応していません。");
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 14: 「再」の用法完全攻略 ＆ 音声付例文集</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --accent: #2980B9;
+            --secondary: #E67E22;
+            --bg-color: #F4F6F7;
+            --card-bg: #FFFFFF;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--accent);
+            margin-top: 25px;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+            font-size: 1.25em;
+        }
+        h3 {
+            color: var(--primary);
+            margin-top: 20px;
+            font-size: 1.1em;
+            border-bottom: 1px dashed #BDC3C7;
+            padding-bottom: 5px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        }
+        .formula-box {
+            background: #EBF5FB;
+            border-left: 4px solid var(--accent);
+            padding: 12px 15px;
+            margin: 10px 0 15px 0;
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+        .tocfl-meta {
+            border: 2px solid var(--secondary);
+            background-color: #FEF9E7;
+        }
+        .tocfl-meta h2 {
+            color: var(--secondary);
+            border-left-color: var(--secondary);
+        }
+        .qa-digest {
+            border: 2px solid #27AE60;
+            background-color: #EAFAF1;
+        }
+        .qa-digest h2 {
+            color: #27AE60;
+            border-left-color: #27AE60;
+        }
+        .qa-digest ul {
+            padding-left: 20px;
+        }
+        .qa-digest li {
+            margin-bottom: 8px;
+        }
+        .alert-text {
+            color: #E74C3C;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #BDC3C7;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #EAEDED;
+        }
+        .num {
+            width: 5%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .zh {
+            width: 42%;
+            font-size: 1.05em;
+        }
+        .pinyin {
+            color: #7F8C8D;
+            font-size: 0.9em;
+        }
+        .ja {
+            width: 38%;
+            font-size: 0.95em;
+        }
+        .audio-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .audio-btn:hover {
+            background-color: #1B4F72;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lesson 14: 副詞「再」の5大用法完全攻略 ＆ 音声付例文集</h1>
+
+    <!-- TOCFL メタ知識 -->
+    <div class="card tocfl-meta">
+        <h2>🎯 TOCFL解法メタ知識（「再」の一瞬見分け術）</h2>
+        <ul>
+            <li><strong>【再 vs 又】の時間の決定的な違い：</strong>
+                <ul>
+                    <li><strong>再（zài）：未来（これから）</strong> 繰り返す動作・追加。「これからまた〜する」</li>
+                    <li><strong>又（yòu）：過去〜現在（すでに）</strong> 繰り返された動作。「また（すでに）〜した」</li>
+                </ul>
+            </li>
+            <li><strong>「先……，再……」の語順パターン：</strong> 動作の絶対的な順序（まずA、それからB）を表す。並べ替え問題の定番セット。</li>
+            <li><strong>「等……，再……」の条件待ち：</strong> 文頭に「等（〜を待って）」が来たら、後半の述語には「再」がセットで入る。</li>
+            <li><strong>「要是……，就……」との複合：</strong> 仮定（要是）の条件の中に「再」が入ると、「（これから）また〜したら」という未来の条件を作る。</li>
+        </ul>
+    </div>
+
+    <!-- 新規追加：Q&A ダイジェスト -->
+    <div class="card qa-digest">
+        <h2>💡 Q&Aダイジェスト：ネイティブのニュアンスとNGパターン</h2>
+        
+        <h3>1. 「再」の有無でニュアンスはどう変わる？</h3>
+        <ul>
+            <li><strong>【追加】コーヒーのおかわり：</strong><br>
+                ⭕️ 你要不要<b>再</b>喝一杯咖啡？（もう1杯どう？ / 自然）<br>
+                ❌ 你要不要不喝一杯咖啡？（不自然。「ひとまず飲まない？」なら「你要不要先不喝咖啡？」）</li>
+            <li><strong>【交渉】値引きのお願い：</strong><br>
+                ✨ 你可以<b>再</b>便宜一點嗎？（今の価格基準から<b>さらに</b>安くして！ / 交渉で一番自然）<br>
+                ⭕️ 你可以便宜一點嗎？（安くして？ / フラットな表現）</li>
+            <li><strong>【保留】スケジュールの遅延：</strong><br>
+                ✨ 晚一點<b>再</b>洗澡。（疲れてるからお風呂は<b>後回し・保留</b>にしよう / 理由との繋がりが強い）<br>
+                ⭕️ 晚一點洗澡。（遅めに入るね / 単なる予定の伝達）</li>
+        </ul>
+
+        <h3>2. 「再」が【必須】なシチュエーション</h3>
+        <ul>
+            <li><strong>順序の徹底（まずAしてからB）：</strong> 「先吃飯，<b>再</b>洗澡。」</li>
+            <li><strong>角を立てない保留・断り（今は無理だから後で）：</strong> 「我現在很忙，等一下<b>再</b>喝。」</li>
+            <li><strong>追加・度合いの促進（もう一度・さらに）：</strong> 「你可以<b>再</b>說一次嗎？」</li>
+        </ul>
+
+        <h3>3. 🚨 絶対NG！「再」の誤用4パターン</h3>
+        <ul>
+            <li><span class="alert-text">❌ 過去の出来事には使えない</span> ➔ ⭕️「又」を使う（例：他昨天<b>又</b>來了。）</li>
+            <li><span class="alert-text">❌ 状態・存在動詞（是・有）には使えない</span> ➔ ⭕️「當」や「還」を使う（例：我想<b>再當</b>學生 / 明天<b>還</b>有時間。）</li>
+            <li><span class="alert-text">❌ 進行中・継続中の動作には使えない</span> ➔ ⭕️「還在」を使う（例：他現在<b>還在</b>吃飯。）</li>
+            <li><span class="alert-text">❌ 時間詞の前に置いてはいけない</span> ➔ ⭕️【時間 ＋ 再】の順にする（❌我們再明天討論 ➔ ⭕️我們明天<b>再</b>討論。）</li>
+        </ul>
+    </div>
+
+    <!-- 用法 I -->
+    <div class="card">
+        <h2>【用法 I】同じ動作を繰り返す・追加する</h2>
+        <div class="formula-box">「もう一度〜する」「さらに〜する」（未来の反復・追加）</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">1</td>
+                <td class="zh">請你再說一次。<br><span class="pinyin">Qǐng nǐ zài shuō yí cì.</span></td>
+                <td class="ja">もう一度言ってください。</td>
+                <td><button class="audio-btn" onclick="playAudio('請你再說一次。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td class="zh">這道菜，再多加一點糖會更好吃。<br><span class="pinyin">Zhè dào cài, zài duō jiā yì diǎn táng huì gèng hǎochī.</span></td>
+                <td class="ja">この料理は、もう少し砂糖を加えたほうがもっとおいしくなる。</td>
+                <td><button class="audio-btn" onclick="playAudio('這道菜，再多加一點糖會更好吃。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td class="zh">這家店的牛肉麵真好吃，我下次還要再來。<br><span class="pinyin">Zhè jiā diàn de niúròumiàn zhēn hǎochī, wǒ xià cì hái yào zài lái.</span></td>
+                <td class="ja">この店の牛肉麺は本当においしい。次回また来たい。</td>
+                <td><button class="audio-btn" onclick="playAudio('這家店的牛肉麵真好吃，我下次還要再來。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td class="zh">要是你再遲到，我下次就不跟你約會了。<br><span class="pinyin">Yàoshi nǐ zài chídào, wǒ xià cì jiù bù gēn nǐ yuēhuì le.</span></td>
+                <td class="ja">もしもあなたがまた遅刻したら、私は次回あなたとデートしないからね。</td>
+                <td><button class="audio-btn" onclick="playAudio('要是你再遲到，我下次就不跟你約會了。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td class="zh">雖然這張門票有點貴，但是我想再看一次。<br><span class="pinyin">Suīrán zhè zhāng ménpiào yǒudiǎn guì, dànshì wǒ xiǎng zài kàn yí cì.</span></td>
+                <td class="ja">このチケットは少し高いけれど、もう一度見たい。</td>
+                <td><button class="audio-btn" onclick="playAudio('雖然這張門票有點貴，但是我想再看一次。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td class="zh">你要不要再喝一杯咖啡？<br><span class="pinyin">Nǐ yào bú yào zài hē yì bēi kāfēi?</span></td>
+                <td class="ja">もう一杯コーヒーを飲みますか。</td>
+                <td><button class="audio-btn" onclick="playAudio('你要不要再喝一杯咖啡？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td class="zh">時間還早，我們再聊一下吧！<br><span class="pinyin">Shíjiān hái zǎo, wǒmen zài liáo yíxià ba!</span></td>
+                <td class="ja">まだ時間も早いし、もう少しおしゃべりしましょう！</td>
+                <td><button class="audio-btn" onclick="playAudio('時間還早，我們再聊一下吧！')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td class="zh">太貴了！你可以再便宜一點嗎？<br><span class="pinyin">Tài guì le! Nǐ kěyǐ zài piányí yì diǎn ma?</span></td>
+                <td class="ja">高すぎます！もう少し安くしてもらえませんか。</td>
+                <td><button class="audio-btn" onclick="playAudio('太貴了！你可以再便宜一點嗎？')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 用法 II - 文型(1) -->
+    <div class="card">
+        <h2>【用法 II】動作の保留 - 文型(1)</h2>
+        <div class="formula-box">〈時間詞(A) ＋ “再” ＋ 動詞句(B)〉「AになってからBする」</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">9</td>
+                <td class="zh">我們明天再討論吧。<br><span class="pinyin">Wǒmen míngtiān zài tǎolùn ba.</span></td>
+                <td class="ja">相談するのは明日にしよう。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們明天再討論吧。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">10</td>
+                <td class="zh">這件事太複雜了，我們下禮拜再談。<br><span class="pinyin">Zhè jiàn shì tài fùzá le, wǒmen xià lǐbài zài tán.</span></td>
+                <td class="ja">この件は複雑すぎるので、来週改めて話し合いましょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('這件事太複雜了，我們下禮拜再談。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">11</td>
+                <td class="zh">我現在太累了，晚一點再洗澡。<br><span class="pinyin">Wǒ xiànzài tài lèi le, wǎn yì diǎn zài xǐzǎo.</span></td>
+                <td class="ja">私は今とても疲れているので、少し後でお風呂に入ります。</td>
+                <td><button class="audio-btn" onclick="playAudio('我現在太累了，晚一點再洗澡。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">12</td>
+                <td class="zh">這本書我還沒看完，過幾天再還你。<br><span class="pinyin">Zhè běn shū wǒ hái méi kàn wán, guò jǐ tiān zài huán nǐ.</span></td>
+                <td class="ja">この本はまだ読み終わっていないので、数日後に返します。</td>
+                <td><button class="audio-btn" onclick="playAudio('這本書我還沒看完，過幾天再還你。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">13</td>
+                <td class="zh">他現在正忙，我們待會兒再打電話給他。<br><span class="pinyin">Tā xiànzài zhèng máng, wǒmen dāihuǐr zài dǎ diànhuá gěi tā.</span></td>
+                <td class="ja">彼は今忙しいので、あとで電話をかけ直しましょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('他現在正忙，我們待會兒再打電話給他。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">14</td>
+                <td class="zh">這件事不急，我們以後再決定。<br><span class="pinyin">Zhè jiàn shì bù jí, wǒmen yǐhòu zài juédìng.</span></td>
+                <td class="ja">この件は急がないので、あとで決めましょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('這件事不急，我們以後再決定。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">15</td>
+                <td class="zh">我今天沒帶錢包，下次再請你吃飯。<br><span class="pinyin">Wǒ jīntiān méi dài qiánbāo, xià cì zài qǐng nǐ chīfàn.</span></td>
+                <td class="ja">今日は財布を忘れたので、今度ご飯をおごりますね。</td>
+                <td><button class="audio-btn" onclick="playAudio('我今天沒帶錢包，下次再請你吃飯。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 用法 II - 文型(2) -->
+    <div class="card">
+        <h2>【用法 II】動作の順序 - 文型(2)</h2>
+        <div class="formula-box">〈“先” ＋ 動詞句1(A) , “再” ＋ 動詞句2(B)〉「まずAして、それからBする」</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">16</td>
+                <td class="zh">你應該先吃飯，再吃藥。<br><span class="pinyin">Nǐ yīnggāi xiān chīfàn, zài chī yào.</span></td>
+                <td class="ja">先にご飯を食べてから薬を飲まなければならない。</td>
+                <td><button class="audio-btn" onclick="playAudio('你應該先吃飯，再吃藥。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">17</td>
+                <td class="zh">請你先洗手，再來吃東西。<br><span class="pinyin">Qǐng nǐ xiān xǐshǒu, zài lái chī dōngxī.</span></td>
+                <td class="ja">先に手を洗ってから食べに来てください。</td>
+                <td><button class="audio-btn" onclick="playAudio('請你先洗手，再來吃東西。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">18</td>
+                <td class="zh">我們打算先去台北玩三天，再去台中。<br><span class="pinyin">Wǒmen dǎsuàn xiān qù Táiběi wán sān tiān, zài qù Táizhōng.</span></td>
+                <td class="ja">私たちはまず台北で3日遊んでから、台中に行く予定です。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們打算先去台北玩三天，再去台中。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">19</td>
+                <td class="zh">你最好先看說明書，再使用這台機器。<br><span class="pinyin">Nǐ zuì hǎo xiān kàn shuōmíngshū, zài shǐyòng zhè tái jīqì.</span></td>
+                <td class="ja">説明書を先に読んでから、この機械を使ったほうがいいですよ。</td>
+                <td><button class="audio-btn" onclick="playAudio('你最好先看說明書，再使用這台機器。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">20</td>
+                <td class="zh">我想先去洗手間，再進去開會。<br><span class="pinyin">Wǒ xiǎng xiān qù xǐshǒujiān, zài jìnqù kāihuì.</span></td>
+                <td class="ja">お手洗いに先に行ってから、会議室に入りたいです。</td>
+                <td><button class="audio-btn" onclick="playAudio('我想先去洗手間，再進去開會。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">21</td>
+                <td class="zh">做做看！先切水果，再把牛奶倒進去。<br><span class="pinyin">Zuò zuò kàn! Xiān qiē shuǐguǒ, zài bǎ niúnǎi dào jìnqù.</span></td>
+                <td class="ja">作ってみよう！まず果物を切ってから、牛乳を注ぎ入れます。</td>
+                <td><button class="audio-btn" onclick="playAudio('做做看！先切水果，再把牛奶倒進去。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">22</td>
+                <td class="zh">我們應該先買機票，再訂飯店。<br><span class="pinyin">Wǒmen yīnggāi xiān mǎi jīpiào, zài dìng fàndiàn.</span></td>
+                <td class="ja">私たちはまず航空券を買ってから、ホテルを予約するべきだ。</td>
+                <td><button class="audio-btn" onclick="playAudio('我們應該先買機票，再訂飯店。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 用法 II - 文型(3) -->
+    <div class="card">
+        <h2>【用法 II】条件待ちの保留 - 文型(3)</h2>
+        <div class="formula-box">〈“等” ＋ 主述句(A) , (主語) ＋ “再” ＋ 動詞句2(B)〉「Aの状態になってからBする」</div>
+        <table>
+            <tr><th class="num">No</th><th class="zh">中国語 / ピンイン</th><th class="ja">日本語訳</th><th>🔊</th></tr>
+            <tr>
+                <td class="num">23</td>
+                <td class="zh">等他醒了，我再跟他說。<br><span class="pinyin">Děng tā xǐng le, wǒ zài gēn tā shuō.</span></td>
+                <td class="ja">彼が目を覚ましてから、私が彼に話す。</td>
+                <td><button class="audio-btn" onclick="playAudio('等他醒了，我再跟他說。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">24</td>
+                <td class="zh">等雨停了，我們再出門吧。<br><span class="pinyin">Děng yǔ tíng le, wǒmen zài chūmén ba.</span></td>
+                <td class="ja">雨がやんでから、出かけましょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('等雨停了，我們再出門吧。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">25</td>
+                <td class="zh">等我拿到薪水，再買那隻新手機。<br><span class="pinyin">Děng wǒ ná dào xīnshuǐ, zài mǎi nà zhī xīn shǒujī.</span></td>
+                <td class="ja">給料をもらってから、あの新しいスマホを買う。</td>
+                <td><button class="audio-btn" onclick="playAudio('等我拿到薪水，再買那隻新手機。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">26</td>
+                <td class="zh">等大家人都到齊了，我們再開始開會。<br><span class="pinyin">Děng dàjiā rén dōu dào qí le, wǒmen zài kāishǐ kāihuì.</span></td>
+                <td class="ja">みんなが揃ってから、会議を始めましょう。</td>
+                <td><button class="audio-btn" onclick="playAudio('等大家人都到齊了，我們再開始開會。')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">27</td>
+                <td class="zh">等你看完這本書，再借給我好嗎？<br><span class="pinyin">Děng nǐ kàn wán zhè běn shū, zài jiè gěi wǒ hǎo ma?</span></td>
+                <td class="ja">この本を読み終わったら、私に貸してくれませんか。</td>
+                <td><button class="audio-btn" onclick="playAudio('等你看完這本書，再借給我好嗎？')">🔊</button></td>
+            </tr>
+            <tr>
+                <td class="num">28</td>
+                <td class="zh">等這期課上完了，我再考慮要不要報名下一期。<br><span class="pinyin">Děng zhè qī kè shàng wán le, wǒ zài kǎolǜ yào bú yào bào míng xià yì qī.</span></td>
+                <td class="ja">今期のコースが終わってから、次の期に申し込むかどうか考えます。</td>
+                <td><button class="audio-btn" onclick="playAudio('等這期課上完了，我再考慮要不要報名下一期。')">🔊</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // ブラウザ標準の SpeechSynthesis API を使用した音声再生機能（台湾華語設定）
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW'; // 台湾華語（繁体字）の発音
+                utterance.rate = 0.85;     // 学習用に少しゆっくりめの速度
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("お使いのブラウザは音声読み上げに対応していません。");
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 15 まとめ</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --accent-color: #e74c3c;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .grammar-point {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .sentence {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .pinyin, .translation {
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        .explanation {
+            background-color: #eef2f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .vocab-grid, .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .vocab-item, .compare-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #ddd;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 15: 極限の程度補語と重要文法</h1>
+    
+    <div class="controls">
+        <button onclick="toggleDetails()">日本語訳 / ピンインを隠す (テストモード)</button>
+    </div>
+
+    <h2>1. 程度補語（極限状態の表現）</h2>
+
+    <div class="card">
+        <div class="grammar-point">1. 形容詞 ＋ 得要命（死ぬほど〜だ）</div>
+        <div class="sentence">月台上人多得要命。</div>
+        <div class="pinyin toggle-target">Yuètái shàng rén duō de yàomìng.</div>
+        <div class="translation toggle-target">ホームの上は人が死ぬほど多い。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> やや口語的。不満や困惑など、ネガティブな強調によく使われる。
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="grammar-point">2. 形容詞 ＋ 得不得了（とんでもなく〜だ）</div>
+        <div class="sentence">我這次旅遊買了很多書，行李箱重得不得了。</div>
+        <div class="pinyin toggle-target">Wǒ zhè cì lǚyóu mǎi le hěn duō shū, xínglǐxiāng zhòng de bùdéliǎo.</div>
+        <div class="translation toggle-target">今回の旅行で本をたくさん買って、スーツケースがとんでもなく重い。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> 口語から文章まで幅広く使える。ポジティブ（開心得不得了）にも自然に使える上品な表現。
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="grammar-point">3. 形容詞 ＋ 得要死（死ぬほど〜だ）</div>
+        <div class="sentence">我剛來台灣念書的時候，每次講中文都緊張得要死。</div>
+        <div class="pinyin toggle-target">Wǒ gāng lái Táiwān niànshū de shíhòu, měi cì jiǎng Zhōngwén dōu jǐnzhāng de yàosǐ.</div>
+        <div class="translation toggle-target">台湾に留学しに来たばかりの頃、中国語を話すたびに死ぬほど緊張した。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> 非常に口語的で感情が強くこもる表現。「得要命」とほぼ同じ。
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="grammar-point">4. 形容詞 ＋ 得很（非常に〜だ / 実に〜だ）</div>
+        <div class="sentence">我身體健康得很，你不需要太擔心。</div>
+        <div class="pinyin toggle-target">Wǒ shēntǐ jiànkāng de hěn, nǐ bù xūyào tài dānxīn.</div>
+        <div class="translation toggle-target">私の体はとっても元気だから、そんなに心配しなくていいよ。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> 相手を安心させたり、強い確信を持って事実をきっぱり言い切る場面で活躍する。
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="grammar-point">5. 形容詞 ＋ 極了（極めて〜だ） ※「得」は不要</div>
+        <div class="sentence">最近流行的感冒嚴重極了。</div>
+        <div class="pinyin toggle-target">Zuìjìn liúxíng de gǎnmào yánzhòng jí le.</div>
+        <div class="translation toggle-target">最近流行している風邪は、きわめて重症だ。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> 書面語やニュースなど、少し整った言い回しで好まれる。「得」を挟まない点に注意。
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="grammar-point">6. 形容詞 ＋ 死了（死ぬほど〜だ） ※「得」は不要</div>
+        <div class="sentence">累死了！我整理行李整理了半天了。</div>
+        <div class="pinyin toggle-target">Lèi sǐ le! Wǒ zhěnglǐ xínglǐ zhěnglǐ le bàn tiān le.</div>
+        <div class="translation toggle-target">疲れて死にそう！荷造りを半日もやってるよ。</div>
+        <div class="explanation">
+            <strong>特徴:</strong> 形容詞に直接つく短い感嘆表現。「可愛死了（死ぬほど可愛い）」などポジティブにも。
+            <br>★ <strong>文法注意（時量補語）:</strong> 目的語（行李）があるため、動詞（整理）を重複させてから時間を置く。
+        </div>
+    </div>
+
+    <h2>2. 結果補語の比較：「好」 vs 「完」</h2>
+    
+    <div class="compare-grid">
+        <div class="compare-item">
+            <h3>整理好（状態重視）</h3>
+            <p><strong>ニュアンス:</strong> 準備完了、完璧に整った状態。次の段階へ進める。</p>
+            <p><strong>疑問文:</strong> 行李整理好了嗎？<br><span class="translation toggle-target">（準備できた？＝出発できる？）</span></p>
+            <p>※ 旅行のパッキングなど「整えること」が目的の場合はこちらが自然。</p>
+        </div>
+        <div class="compare-item">
+            <h3>整理完（工程・量重視）</h3>
+            <p><strong>ニュアンス:</strong> 作業終了。残っていたタスクや量がゼロになった。</p>
+            <p><strong>疑問文:</strong> 功課做完了嗎？<br><span class="translation toggle-target">（宿題、全部終わらせた？）</span></p>
+            <p>※ 本を読む、食べる、作業を終わらせる場面でよく使う。</p>
+        </div>
+    </div>
+
+    <h2>3. 台湾華語の重要語彙</h2>
+    
+    <div class="vocab-grid">
+        <div class="vocab-item">
+            <strong>月台 (yuètái)</strong><br>
+            <span class="translation toggle-target">プラットホーム（※站台ではない）</span>
+        </div>
+        <div class="vocab-item">
+            <strong>行李箱 (xínglǐxiāng)</strong><br>
+            <span class="translation toggle-target">スーツケース</span>
+        </div>
+        <div class="vocab-item">
+            <strong>兒子 (érzi)</strong><br>
+            <span class="translation toggle-target">息子</span>
+        </div>
+        <div class="vocab-item">
+            <strong>女兒 (nǚ'ér)</strong><br>
+            <span class="translation toggle-target">娘</span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "日本語訳 / ピンインを表示する" : "日本語訳 / ピンインを隠す (テストモード)";
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 16 まとめ</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 35px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 12px;
+            font-size: 1.3em;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        button:hover {
+            background-color: #d35400;
+            transform: translateY(-1px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        .sentence-zh {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1a252f;
+            margin-bottom: 6px;
+        }
+        .sentence-pinyin {
+            color: #27ae60;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #edf2f7;
+            color: #4a5568;
+            font-size: 0.8em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .note-box {
+            background-color: #fff9db;
+            border-left: 4px solid #f1c40f;
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .comparison-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 16: 緊縮文と関連表現のまとめ</h1>
+    
+    <div class="controls">
+        <button onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- 1. 一...就... -->
+    <h2>1. 〈一 ＋ A ＋ 就 ＋ B〉「(ちょっと)AするとすぐBする／Bになる」</h2>
+    
+    <div class="card">
+        <span class="tag">⑤ 過去の動作</span>
+        <div class="sentence-zh">他一下課就打開手機了。</div>
+        <div class="sentence-pinyin toggle-target">Tā yí xià kè jiù dǎ kāi shǒujī le.</div>
+        <div class="sentence-ja toggle-target">彼は授業が終わるとすぐスマホを開いた。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑥ 心理的変化</span>
+        <div class="sentence-zh">他一想到明天的比賽，就開始緊張了。</div>
+        <div class="sentence-pinyin toggle-target">Tā yì xiǎng dào míngtiān de bǐsài, jiù kāishǐ jǐnzhāng le.</div>
+        <div class="sentence-ja toggle-target">彼は明日の大会のことを考えると、すぐ緊張し始めた。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑦ 偶発的なアクシデント</span>
+        <div class="sentence-zh">他昨天煮飯的時候，一不注意就受傷了。</div>
+        <div class="sentence-pinyin toggle-target">Tā zuótiān zhǔ fàn de shíhòu, yì bú zhùyì jiù shòushāng le.</div>
+        <div class="sentence-ja toggle-target">彼は昨日ご飯を作っているときに、ちょっとうっかりしたらすぐけがをしてしまった。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑧ 習慣・条件（會を伴う）</span>
+        <div class="sentence-zh">我女兒一感冒，就會發燒。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ nǚ'ér yì gǎnmào, jiù huì fāshāo.</div>
+        <div class="sentence-ja toggle-target">娘は風邪をひくとすぐに熱が出る。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑨ 習慣・条件（會を伴う）</span>
+        <div class="sentence-zh">天氣一冷，我就會想搬到暖和的地方去。</div>
+        <div class="sentence-pinyin toggle-target">Tiānqì yì lěng, wǒ jiù huì xiǎng bān dào nuǎnhuo de dìfāng qù.</div>
+        <div class="sentence-ja toggle-target">寒くなると、すぐに暖かいところに引っ越したくなる。</div>
+    </div>
+
+    <!-- 2. 又...又... -->
+    <h2>2. 〈又 ＋ A ＋ 又 ＋ B〉「AでもあるしBでもある／AもするしBもする」</h2>
+    
+    <div class="card">
+        <span class="tag">⑩ 形容詞 ＋ 形容詞</span>
+        <div class="sentence-zh">那間百貨公司又大又涼快，我常常去那裡逛街。</div>
+        <div class="sentence-pinyin toggle-target">Nà jiān bǎihuò gōngsī yòu dà yòu liángkuài, wǒ chángcháng qù nàlǐ guàngjiē.</div>
+        <div class="sentence-ja toggle-target">あのデパートは大きいし涼しいから、私はよくショッピングに行く。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑪ 動詞句 ＋ 動詞句</span>
+        <div class="sentence-zh">你又喝咖啡，又吃冰淇淋，肚子不會痛嗎？</div>
+        <div class="sentence-pinyin toggle-target">Nǐ yòu hē kāfēi, yòu chī bīngqílín, dùzi bú huì tòng ma?</div>
+        <div class="sentence-ja toggle-target">あなたはコーヒーを飲んでアイスも食べてるけど、お腹が痛くならないの？</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑫ 助動詞句 ＋ 助動詞句</span>
+        <div class="sentence-zh">媽媽又要照顧弟弟，又要上班，多辛苦啊。</div>
+        <div class="sentence-pinyin toggle-target">Māma yòu yào zhàogù dìdi, yòu yào shàngbān, duō xīnkǔ a.</div>
+        <div class="sentence-ja toggle-target">お母さんは、弟の世話もしなければならないし、仕事もあって、なんて大変なんだろう。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑬ 動作 ＋ 動作（補語内）</span>
+        <div class="sentence-zh">他聽到那句話以後，開心得又笑又跳。</div>
+        <div class="sentence-pinyin toggle-target">Tā tīng dào nà jù huà yǐhòu, kāixīn de yòu xiào yòu tiào.</div>
+        <div class="sentence-ja toggle-target">その言葉を聞いて、彼は笑ったり跳びはねたりするほど喜んだ。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑭ 才能・能力の並列</span>
+        <div class="sentence-zh">她又會唱歌，又會跳舞。</div>
+        <div class="sentence-pinyin toggle-target">Tā yòu huì chàng gē, yòu huì tiào wǔ.</div>
+        <div class="sentence-ja toggle-target">彼女は歌も歌えるしダンスもできる。</div>
+    </div>
+
+    <!-- 💡 又 vs 有 -->
+    <div class="note-box toggle-target">
+        <strong>💡 質問まとめ：「又」と「有」のリスニング＆使い分け</strong><br>
+        <ul>
+            <li><strong>動作の事実（例: 喝咖啡/吃冰淇淋）:</strong> 台湾華語では「有...有...（〜もしたし〜もした）」と言ってもほぼ同義。</li>
+            <li><strong>能力・性質（例: 會唱歌/又大又圓）:</strong> 「有」は使えず、<strong>必ず「又...又...」</strong> を使用する（能力の並列）。</li>
+        </ul>
+    </div>
+
+    <!-- 3. 一邊...一邊... -->
+    <h2>3. 〈一邊 ＋ A ＋ 一邊 ＋ B〉「AしながらBする」</h2>
+    
+    <div class="card">
+        <span class="tag">⑮ 習慣</span>
+        <div class="sentence-zh">我每天早上都會一邊看新聞一邊準備出門。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ měitiān zǎoshàng dōu huì yìbiān kàn xīnwén yìbiān zhǔnbèi chū mén.</div>
+        <div class="sentence-ja toggle-target">私は毎朝ニュースを見ながら出かける準備をする。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑯ 嗜好</span>
+        <div class="sentence-zh">阿信喜歡一邊看報紙，一邊吃早餐。</div>
+        <div class="sentence-pinyin toggle-target">Āxìn xǐhuān yìbiān kàn bàozhǐ, yìbiān chī zǎocān.</div>
+        <div class="sentence-ja toggle-target">阿信は新聞を読みながら朝ご飯を食べるのが好きだ。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑰ 禁止（不要）</span>
+        <div class="sentence-zh">你不要一邊騎腳踏車一邊講電話，很危險。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ bú yào yìbiān qí jiǎotàchē yìbiān jiǎng diànhuá, hěn wéixiǎn.</div>
+        <div class="sentence-ja toggle-target">自転車に乗って電話するのはやめて。危ないよ。</div>
+    </div>
+
+    <!-- 4. 越...越... / 越來越... -->
+    <h2>4. 〈越 ＋ A ＋ 越 ＋ B〉／〈越來越...〉「〜すればするほど…／どんどん〜」</h2>
+    
+    <div class="card">
+        <span class="tag">⑱ 定番フレーズ（〜越好）</span>
+        <div class="sentence-zh">句子越短越好。</div>
+        <div class="sentence-pinyin toggle-target">Jùzi yuè duǎn yuè hǎo.</div>
+        <div class="sentence-ja toggle-target">文は短ければ短いほどよい。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑲ 変化・感触</span>
+        <div class="sentence-zh">這條裙子越看越可愛。</div>
+        <div class="sentence-pinyin toggle-target">Zhè tiáo qúnzi yuè kàn yuè kě'ài.</div>
+        <div class="sentence-ja toggle-target">このスカートは見れば見るほどかわいい。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">⑳ 心理的比例</span>
+        <div class="sentence-zh">功課越忙，我越想玩遊戲。</div>
+        <div class="sentence-pinyin toggle-target">Gōngkè yuè máng, wǒ yuè xiǎng wán yóuxì.</div>
+        <div class="sentence-ja toggle-target">勉強が忙しければ忙しいほど、ゲームがしたくなる。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">㉑ 反比例的状況</span>
+        <div class="sentence-zh">真奇怪，我的房間怎麼越打掃越亂？</div>
+        <div class="sentence-pinyin toggle-target">Zhēn qíguài, wǒ de fángjiān zěnme yuè dǎsǎo yuè luàn?</div>
+        <div class="sentence-ja toggle-target">本当に不思議だ。私の部屋はどうして掃除すればするほど散らかるんだろう。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">㉒ 越來越 ＋ 形容詞</span>
+        <div class="sentence-zh">這幾年的電視節目越來越無聊。</div>
+        <div class="sentence-pinyin toggle-target">Zhè jǐ nián de diànshì jiémù yuèláiyuè wúliáo.</div>
+        <div class="sentence-ja toggle-target">ここ数年のテレビ番組は、どんどんつまらなくなる。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">㉓ 越來越 ＋ 心理動詞</span>
+        <div class="sentence-zh">長大以後，我越來越不喜歡跟別人比了。</div>
+        <div class="sentence-pinyin toggle-target">Zhǎngdà yǐhòu, wǒ yuèláiyuè bù xǐhuān gēn biérén bǐ le.</div>
+        <div class="sentence-ja toggle-target">大人になってから、私は人と競うのがどんどん嫌になってきた。</div>
+    </div>
+
+    <div class="card">
+        <span class="tag">㉔ 越來越 ＋ 動詞/状態</span>
+        <div class="sentence-zh">颱風越來越近了，你別忘記準備好食物和水。</div>
+        <div class="sentence-pinyin toggle-target">Táifēng yuèláiyuè jìn le, nǐ bié wàngjì zhǔnbèi hǎo shíwù hé shuǐ.</div>
+        <div class="sentence-ja toggle-target">台風がどんどん近づいてくるから、忘れずに食べ物や水の準備をすませて。</div>
+    </div>
+
+    <!-- 5. 緊縮文と複文の比較 -->
+    <h2>5. 複文と緊縮文の比較（如果の省略）</h2>
+    
+    <div class="comparison-grid">
+        <div class="comparison-card">
+            <span class="tag">㉕ 通常の複文（標準的）</span>
+            <div class="sentence-zh" style="font-size:1.1em;">你如果不喜歡，就不要買了。</div>
+            <div class="sentence-pinyin toggle-target">Nǐ rúguǒ bù xǐhuān, jiù bú yào mǎi le.</div>
+            <div class="sentence-ja toggle-target">もし好きじゃなければ、買うのをやめなさい。</div>
+        </div>
+        <div class="comparison-card">
+            <span class="tag">㉖ 緊縮文（会話的）</span>
+            <div class="sentence-zh" style="font-size:1.1em;">你不喜歡就不要買了。</div>
+            <div class="sentence-pinyin toggle-target">Nǐ bù xǐhuān jiù bú yào mǎi le.</div>
+            <div class="sentence-ja toggle-target">好きじゃなければ買うのをやめなさい。</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+</script>
+
+</body>
+</html>
