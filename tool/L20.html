@@ -1796,3 +1796,1751 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 17 まとめ (使役文・兼語文)</title>
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --accent-color: #e53e3e;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 12px;
+            font-size: 1.4em;
+        }
+        h3 {
+            color: #2c5282;
+            margin-top: 25px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        button:hover {
+            background-color: #2c5282;
+            transform: translateY(-2px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .sentence-zh {
+            font-size: 1.35em;
+            font-weight: bold;
+            color: #1a202c;
+            margin-bottom: 6px;
+        }
+        .sentence-pinyin {
+            color: #38a169;
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #ebf8fa;
+            color: #319795;
+            font-size: 0.85em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .note-box {
+            background-color: #fffff0;
+            border-left: 4px solid #ecc94b;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .note-box h4 {
+            margin-top: 0;
+            color: #b7791f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #edf2f7;
+            color: #4a5568;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 17: 兼語文（使役文）と関連表現</h1>
+    
+    <div class="controls">
+        <button onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- 兼語文の基本構造 -->
+    <div class="note-box">
+        <h4>💡 兼語文（使役文）の基本構造と英文法の対応</h4>
+        <p><strong>〈 主語1 ＋ 使役動詞 ＋ 目的語1兼主語2 ＋ 動詞句2 〉</strong></p>
+        <p class="toggle-target">
+            英語の<strong>第5文型（S + V + O + C）</strong>や<strong>使役動詞（make, let, have, ask）</strong>と構造・ニュアンスが完全に一致します。<br>
+            ※否定詞（不 / 沒）は、必ず<strong>最初の使役動詞の前</strong>に置きます（例：不讓）。
+        </p>
+        <table class="toggle-target">
+            <tr>
+                <th>動詞</th>
+                <th>ニュアンス</th>
+                <th>英語の対応</th>
+            </tr>
+            <tr>
+                <td><strong>請</strong> (qǐng)</td>
+                <td>丁寧にお願いする、招待する</td>
+                <td>ask / invite</td>
+            </tr>
+            <tr>
+                <td><strong>要</strong> (yào)</td>
+                <td>要求する、指示する</td>
+                <td>tell / want</td>
+            </tr>
+            <tr>
+                <td><strong>叫</strong> (jiào)</td>
+                <td>命令する、強く指示する</td>
+                <td>order / make</td>
+            </tr>
+            <tr>
+                <td><strong>讓</strong> (ràng)</td>
+                <td>①許可する ②（人を）〜な気持ちにさせる</td>
+                <td>let / make</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Category 1: 請 -->
+    <h2>1. 〈 請 〉丁寧なお願い・依頼・招待</h2>
+    
+    <div class="card">
+        <span class="tag">⑤ 依頼</span>
+        <div class="sentence-zh">老師請大家回答問題。</div>
+        <div class="sentence-pinyin toggle-target">Lǎoshī qǐng dàjiā huídá wèntí.</div>
+        <div class="sentence-ja toggle-target">先生はみんなに質問に答えるよう頼んだ。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑥ 招待</span>
+        <div class="sentence-zh">我朋友請我去那家新開的餐廳吃飯。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ péngyǒu qǐng wǒ qù nà jiān xīn kāi de cāntīng chī fàn.</div>
+        <div class="sentence-ja toggle-target">友達が私をその新しくオープンしたレストランでの食事に招待してくれた。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑦ 業務上の依頼</span>
+        <div class="sentence-zh">經理請黃小姐幫客人訂位。</div>
+        <div class="sentence-pinyin toggle-target">Jīnglǐ qǐng Huáng xiǎojiě bāng kèrén dìwèi.</div>
+        <div class="sentence-ja toggle-target">マネージャーは黄さんに客の席を予約するよう頼んだ。</div>
+    </div>
+
+    <!-- Category 2: 要 -->
+    <h2>2. 〈 要 〉指示・要求</h2>
+    
+    <div class="card">
+        <span class="tag">⑧ 業務上の指示</span>
+        <div class="sentence-zh">主管要我先把報告寫好。</div>
+        <div class="sentence-pinyin toggle-target">Zhǔguǎn yào wǒ xiān bǎ bàogào xiě hǎo.</div>
+        <div class="sentence-ja toggle-target">上司は私にまず報告書を書き上げるよう求めた。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑨ 家庭内の指示</span>
+        <div class="sentence-zh">媽媽要哥哥先洗手再吃飯。</div>
+        <div class="sentence-pinyin toggle-target">Māma yào gēge xiān xǐ shǒu zài chī fàn.</div>
+        <div class="sentence-ja toggle-target">お母さんはお兄さんに先に手を洗ってからご飯を食べるよう求めた。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑩ 身近な要求</span>
+        <div class="sentence-zh">姊姊要我幫她打掃臥室，因為她明天有約會。</div>
+        <div class="sentence-pinyin toggle-target">Jiějie yào wǒ bāng tā dǎsǎo wòshì, yīnwèi tā míngtiān yǒu yuēhuì.</div>
+        <div class="sentence-ja toggle-target">お姉ちゃんは明日デートがあるからという理由で、私に寝室の掃除を手伝うよう言ってきた。</div>
+    </div>
+
+    <!-- Category 3: 叫 -->
+    <h2>3. 〈 叫 〉命令・強い指示（〜させる）</h2>
+    
+    <div class="card">
+        <span class="tag">⑪ 上司の命令</span>
+        <div class="sentence-zh">老闆叫我明天早一點去公司。</div>
+        <div class="sentence-pinyin toggle-target">Lǎobǎn jiào wǒ míngtiān zǎo yìdiǎn qù gōngsī.</div>
+        <div class="sentence-ja toggle-target">ボスは私に明日少し早く会社に来るよう言った。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑫ 厄介な押し付け</span>
+        <div class="sentence-zh">他常常叫我幫他做作業，真討厭。</div>
+        <div class="sentence-pinyin toggle-target">Tā chángcháng jiào wǒ bāng tā zuò zuòyè, zhēn tǎoyàn.</div>
+        <div class="sentence-ja toggle-target">彼はよく私に宿題を手伝えと言ってきて、本当に嫌だ。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑬ 指導</span>
+        <div class="sentence-zh">老師叫我們一邊聽一邊寫。</div>
+        <div class="sentence-pinyin toggle-target">Lǎoshī jiào wǒmen yìbiān tīng yìbiān xiě.</div>
+        <div class="sentence-ja toggle-target">先生は私たちに聞きながら書くように言った。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉒ 命令</span>
+        <div class="sentence-zh">老闆叫他明天加班。</div>
+        <div class="sentence-pinyin toggle-target">Lǎobǎn jiào tā míngtiān jiābān.</div>
+        <div class="sentence-ja toggle-target">ボスは彼に明日残業しろと言った。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉓ 使役の約束</span>
+        <div class="sentence-zh">他答應叫朋友幫忙解決問題。</div>
+        <div class="sentence-pinyin toggle-target">Tā dāyìng jiào péngyǒu bāngmáng jiějué wèntí.</div>
+        <div class="sentence-ja toggle-target">彼は友達に問題解決の手伝いをさせると約束した。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉔ 禁止の使役</span>
+        <div class="sentence-zh">你別叫孩子們在客廳裡吵鬧。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ bié jiào háizimen zài kètīng lǐ chǎonào.</div>
+        <div class="sentence-ja toggle-target">子どもたちにリビングで騒がせないで。</div>
+    </div>
+
+    <!-- Category 4: 讓 -->
+    <h2>4. 〈 讓 〉許可・感情の誘発</h2>
+    
+    <h3>許可・不許可（let）</h3>
+    <div class="card">
+        <span class="tag">⑭ 不許可（否定）</span>
+        <div class="sentence-zh">醫生不讓我喝冰水。</div>
+        <div class="sentence-pinyin toggle-target">Yīshēng bú ràng wǒ hē bīng shuǐ.</div>
+        <div class="sentence-ja toggle-target">医者は私に冷たい水を飲ませてくれない。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑮ 不許可（否定）</span>
+        <div class="sentence-zh">父母不讓妹妹太晚回家。</div>
+        <div class="sentence-pinyin toggle-target">Fùmǔ bú ràng mèimei tài wǎn huí jiā.</div>
+        <div class="sentence-ja toggle-target">両親は妹に遅く帰るのを許さない。</div>
+    </div>
+
+    <h3>無生物主語・感情の変化（make）</h3>
+    <div class="card">
+        <span class="tag">⑯ 喜び</span>
+        <div class="sentence-zh">這個好消息讓我們高興極了。</div>
+        <div class="sentence-pinyin toggle-target">Zhè ge hǎo xiāoxī ràng wǒmen gāoxìng jí le.</div>
+        <div class="sentence-ja toggle-target">この良い知らせは私たちをものすごく喜ばせた。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑰ 学び・結果</span>
+        <div class="sentence-zh">這次的失敗讓我學到了很多。</div>
+        <div class="sentence-pinyin toggle-target">Zhè cì de shībài ràng wǒ xué dào le hěn duō.</div>
+        <div class="sentence-ja toggle-target">今回の失敗は私に多くを学ばせた（＝多くの勉強になった）。</div>
+    </div>
+    <div class="card">
+        <span class="tag">十八 怒り</span>
+        <div class="sentence-zh">你做的事情總是讓我生氣！</div>
+        <div class="sentence-pinyin toggle-target">Nǐ zuò de shìqíng zǒngshì ràng wǒ shēngqì!</div>
+        <div class="sentence-ja toggle-target">きみのすることはいつも私を怒らせる！</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑲ 涙・感動</span>
+        <div class="sentence-zh">那部感人的電影讓每個人都流淚了。</div>
+        <div class="sentence-pinyin toggle-target">Nà bù gǎnrén de diànyǐng ràng měi ge rén dōu liú lèi le.</div>
+        <div class="sentence-ja toggle-target">あの感動的な映画はすべての人を涙させた。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑳ 安心</span>
+        <div class="sentence-zh">請你讓我放心，好嗎？</div>
+        <div class="sentence-pinyin toggle-target">Qǐng nǐ ràng wǒ fàngxīn, hǎo ma?</div>
+        <div class="sentence-ja toggle-target">私を安心させてくれない？</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉑ 否定文（状態）</span>
+        <div class="sentence-zh">這件事沒讓我太難過。</div>
+        <div class="sentence-pinyin toggle-target">Zhè jiàn shì méi ràng wǒ tài nánguò.</div>
+        <div class="sentence-ja toggle-target">この件は私をそれほど悲しませなかった。</div>
+    </div>
+
+    <!-- 深掘り Q&A セクション -->
+    <h2>5. 深掘り！Q&A・文法解説まとめ</h2>
+    
+    <div class="note-box toggle-target">
+        <h4>① 音が似ている「再(zài)」と「早(zǎo)」の決定的な聞き分け方</h4>
+        <p>例文：老闆叫我明天早一點去公司。</p>
+        <ul>
+            <li><strong>語順ルール：</strong>「形容詞 ＋ 一點 ＋ 動詞（少し〜する）」の形になるため、<code>〜 一點 ＋ 去</code> の前に入るのは必ず <strong>早(zǎo)</strong> です。</li>
+            <li>「再(zài)」は副詞なので、<code>再一點去</code> という語順は文法的に存在しません。（※「明日になってから行く」なら <code>明天再去</code> となります）</li>
+            <li><strong>声調：</strong> 再(zài) は四声（強く下げる）、早(zǎo) は三声（低く抑える）。</li>
+        </ul>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>② 結果補語「到」の有無（學了 vs 學到了）</h4>
+        <p>例文：這次的失敗讓我學到了很多。</p>
+        <ul>
+            <li><strong>學到：</strong> 学んだ知識や教訓を「結果として自分のものにした（到達した）」ことを強調します。失敗談や成果を語る際は必ず <code>到</code> を付けます。</li>
+            <li><strong>學：</strong> 「〜を勉強している（進行）」「〜年間学んだ（期間）」「〜で学んだ（場所）」など、プロセスや行為そのものを指すときは <code>到</code> を付けません。</li>
+        </ul>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>③ 「請 ＋ 人 ＋ 幫忙 ＋ 動詞」のクッション効果</h4>
+        <p>例文：請醫生幫忙說明狀況。</p>
+        <p>単に「請醫生說明（お医者さんに説明してもらう）」とするよりも、間に <strong>幫忙（手伝う/助けてもらう）</strong> を挟むことで、「お手数ですが状況をご説明いただく」という非常に丁寧で柔らかい依頼・配慮の表現になります。台湾華語の日常で超頻出です。</p>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>④ 把構文 ＋ 複合方向補語（把手機收起來）</h4>
+        <p>例文：把手機收起來。</p>
+        <ul>
+            <li><strong>把 (bǎ)：</strong> 目的語（スマホ）を前に引っ張り出し、それに働きかけて処置・変化させることを表します。</li>
+            <li><strong>收起來 (shōu qǐlái)：</strong> 「起來」には方向だけでなく「分散しているものを1箇所にまとめる・しまう・隠す」という派生義があります。「見えないようにしっかり片付ける/しまう」という動作の結果を表す決まり文句です。</li>
+        </ul>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>⑤ 兼語文の言い換えテクニック（「要」を使わない場合）</h4>
+        <p>例文：媽媽要哥哥先洗手再吃飯。</p>
+        <p>使役動詞「要」がパッと出てこない時は、「〜に〜と言う（對/跟＋人＋說）」という日常会話の形に崩せます。</p>
+        <ul>
+            <li>媽媽<strong>對</strong>哥哥<strong>說：</strong>「先洗手再吃飯。」（直接引用）</li>
+            <li>媽媽<strong>跟</strong>哥哥<strong>說要</strong>先洗手再吃飯。（台湾日常会話風）</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 18 まとめ (把構文)</title>
+    <style>
+        :root {
+            --primary-color: #d97706; /* オレンジ系でアクセント */
+            --accent-color: #059669; /* グリーン系 */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            font-size: 1.4em;
+        }
+        h3 {
+            color: #b45309;
+            margin-top: 25px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        button:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .sentence-zh {
+            font-size: 1.35em;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        .sentence-pinyin {
+            color: var(--accent-color);
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.85em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .note-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .note-box h4 {
+            margin-top: 0;
+            color: #047857;
+        }
+        .important-box {
+            background-color: #fffbeb;
+            border: 2px solid #fcd34d;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 18: 「把」構文（処置文）の完全マスター</h1>
+    
+    <div class="controls">
+        <button onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- コア解説：把構文と話題化 -->
+    <div class="important-box toggle-target">
+        <h2 style="margin-top: 0; color: #b45309;">🌟 核心：なぜ「把構文」が必要なのか？（話題化との違い）</h2>
+        <p>日本語の「〜を」に当たる目的語を前に出す方法には、<strong>「把構文」</strong>と<strong>「話題化」</strong>の2つがあります。ネイティブはこの2つを明確に使い分けています。</p>
+        
+        <table>
+            <tr>
+                <th>特徴</th>
+                <th>話題化（Topic）</th>
+                <th>把構文（Ba）</th>
+            </tr>
+            <tr>
+                <td><strong>構造</strong></td>
+                <td>S ＋ <strong>O</strong> ＋ V<br>（例：他 功課 還沒寫完）</td>
+                <td>S ＋ <strong>把</strong> ＋ O ＋ V ＋ Z<br>（例：他還沒 把 功課 寫完）</td>
+            </tr>
+            <tr>
+                <td><strong>英語のイメージ</strong></td>
+                <td><strong>As for...</strong> (〜について言えば)</td>
+                <td><strong>Make + O + C</strong> (OをCの状態にする)</td>
+            </tr>
+            <tr>
+                <td><strong>ニュアンス</strong></td>
+                <td>事実の報告。カジュアル。</td>
+                <td><strong>強い処置・変化・結果の強調。</strong></td>
+            </tr>
+            <tr>
+                <td><strong>弱点 / 強み</strong></td>
+                <td>❌ 否定詞や助動詞が増えると文構造が崩壊しやすい。誰が誰をどうしたか曖昧になることがある。</td>
+                <td>⭕️ 「把」が標識になるため、<strong>文がどれだけ複雑になっても構造がブレない。</strong>指示や命令に最適。</td>
+            </tr>
+        </table>
+
+        <h4>💡 把構文が存在する3つの理由</h4>
+        <ol>
+            <li><strong>動詞の後ろの渋滞解消：</strong> 中国語は動詞の後ろに「目的語」と「場所・結果」を同時に置けない。だから「把」を使って目的語を前に避難させる。</li>
+            <li><strong>「処置＋結果」をひと息で言う：</strong> 単なる動作ではなく「対象を料理して、どう変化させたか」を強調するため。</li>
+            <li><strong>命令のテンポ：</strong> 「あのターゲット（把＋物）を ➔ こうしろ（動詞＋補語）！」と指示を出すのに最も理にかなった語順。</li>
+        </ol>
+    </div>
+
+    <!-- Category 1: 動詞 ＋ 結果補語 -->
+    <h2>1. 〈 把 ＋ 対象 ＋ 動詞 ＋ 結果補語（形容詞/完了など） 〉</h2>
+    
+    <div class="card">
+        <span class="tag">⑥ 状態の変化</span>
+        <div class="sentence-zh">你應該把手洗乾淨。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ yīnggāi bǎ shǒu xǐ gānjìng.</div>
+        <div class="sentence-ja toggle-target">手をきれいに洗わなきゃだめ。（※「你應該手洗」だと「手作業で洗う」という意味になってしまうので注意！）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑦ 状態の変化（疑問・非難）</span>
+        <div class="sentence-zh">你怎麼不把自己東西收好？</div>
+        <div class="sentence-pinyin toggle-target">Nǐ zěnme bù bǎ zìjǐ de dōngxī shōu hǎo?</div>
+        <div class="sentence-ja toggle-target">あなたはどうして自分のものをちゃんと片づけないの？（否定詞「不」は必ず把の前に置く）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑧ 完了</span>
+        <div class="sentence-zh">他還沒把功課寫完。</div>
+        <div class="sentence-pinyin toggle-target">Tā hái méi bǎ gōngkè xiě wán.</div>
+        <div class="sentence-ja toggle-target">彼はまだ宿題を終わらせていない。（※話題化で「他功課還沒寫完」と言うのも非常に自然）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑨ 消失・除去</span>
+        <div class="sentence-zh">我不敢把這個蛋糕吃掉。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ bù gǎn bǎ zhè ge dàngāo chī diào.</div>
+        <div class="sentence-ja toggle-target">私はこのケーキを食べてしまう勇気がない。（「掉」＝〜して無くしてしまう）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑭ 状態の変化</span>
+        <div class="sentence-zh">你應該把要這樣做的理由說清楚。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ yīnggāi bǎ yào zhèyàng zuò de lǐyóu shuō qīngchǔ.</div>
+        <div class="sentence-ja toggle-target">あなたは、そのようにしなければならない理由を、はっきり言わなければならない。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑮ 消失・除去</span>
+        <div class="sentence-zh">我打算把讀完的書全部賣掉。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ dǎsuàn bǎ dú wán de shū quánbù mài diào.</div>
+        <div class="sentence-ja toggle-target">私は読み終えた本を全部売ってしまうつもりだ。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑯ 完了・消失</span>
+        <div class="sentence-zh">弟弟把家裡的烤肉醬都用完了。</div>
+        <div class="sentence-pinyin toggle-target">Dìdi bǎ jiā lǐ de kǎoròujiàng dōu yòng wán le.</div>
+        <div class="sentence-ja toggle-target">弟は家にある焼肉のタレを全部使ってしまった。</div>
+    </div>
+
+    <!-- Category 2: 動詞 ＋ 在 ＋ 場所 -->
+    <h2>2. 〈 把 ＋ 対象 ＋ 動詞 ＋ 在 ＋ 場所 〉固定・配置</h2>
+    
+    <div class="card">
+        <span class="tag">⑫ 配置</span>
+        <div class="sentence-zh">你最好把錢存在銀行裡。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ zuìhǎo bǎ qián cún zài yínháng lǐ.</div>
+        <div class="sentence-ja toggle-target">あなたはお金を銀行に預けたほうがよい。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑰ 心理的配置</span>
+        <div class="sentence-zh">他一直把那次比賽的結果放在心上。</div>
+        <div class="sentence-pinyin toggle-target">Tā yìzhí bǎ nà cì bǐsài de jiéguǒ fàng zài xīn shàng.</div>
+        <div class="sentence-ja toggle-target">彼はあの試合の結果をずっと気に留めている。（心の上に置く）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑱ 固定・付着</span>
+        <div class="sentence-zh">這張郵票好漂亮！我想把它貼在筆記本上。</div>
+        <div class="sentence-pinyin toggle-target">Zhè zhāng yóupiào hǎo piàoliàng! Wǒ xiǎng bǎ tā tiē zài bǐjìběn shàng.</div>
+        <div class="sentence-ja toggle-target">この切手すごくきれい。ノートに貼りたい。</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑲ 放置（禁止）</span>
+        <div class="sentence-zh">野餐的時候，請不要把垃圾留在公園裡。</div>
+        <div class="sentence-pinyin toggle-target">Yěcān de shíhòu, qǐng bú yào bǎ lèsè liú zài gōngyuán lǐ.</div>
+        <div class="sentence-ja toggle-target">ピクニックのときは、ゴミを公園に残さないでください。</div>
+    </div>
+
+    <!-- Category 3: 動詞 ＋ 到 ＋ 場所 -->
+    <h2>3. 〈 把 ＋ 対象 ＋ 動詞 ＋ 到 ＋ 場所 〉到達・移動</h2>
+    
+    <div class="card">
+        <span class="tag">④ 物理的移動</span>
+        <div class="sentence-zh">哥哥把車開到學校了。</div>
+        <div class="sentence-pinyin toggle-target">Gēge bǎ chē kāi dào xuéxiào le.</div>
+        <div class="sentence-ja toggle-target">兄が車を学校に乗って行ってしまった。（※「哥哥車開到學校了」と話題化すると、単なる事実報告のトーンになる）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑳ 転送・郵送</span>
+        <div class="sentence-zh">他打算把那封信寄到哪裡？</div>
+        <div class="sentence-pinyin toggle-target">Tā dǎsuàn bǎ nà fēng xìn jì dào nǎlǐ?</div>
+        <div class="sentence-ja toggle-target">彼はあの手紙をどこに送るつもりなの？</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉑ 移動・収納</span>
+        <div class="sentence-zh">你把醬油裝到袋子裡了沒有？</div>
+        <div class="sentence-pinyin toggle-target">Nǐ bǎ jiàngyóu zhuāng dào dàizi lǐ le méi yǒu?</div>
+        <div class="sentence-ja toggle-target">あなたは醤油を袋に入れましたか。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉒ データ転送</span>
+        <div class="sentence-zh">我想把手機裡的照片傳到電腦裡。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ xiǎng bǎ shǒujī lǐ de zhàopiàn chuán dào diànnǎo lǐ.</div>
+        <div class="sentence-ja toggle-target">私はスマホの写真をパソコンに送りたい。</div>
+    </div>
+
+    <!-- Category 4: 動詞 ＋ 給 ＋ 人 -->
+    <h2>4. 〈 把 ＋ 対象 ＋ 動詞 ＋ 給 ＋ 人 〉授与・手渡し</h2>
+    
+    <div class="card">
+        <span class="tag">㉓ 授与</span>
+        <div class="sentence-zh">你先幫我把這三個盒子交給她吧。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ xiān bāng wǒ bǎ zhè sān ge hézi jiāo gěi tā ba.</div>
+        <div class="sentence-ja toggle-target">この3つの箱を先に彼女に渡してちょうだい。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉔ 返却</span>
+        <div class="sentence-zh">我想經過阿明家的時候，把他的雨傘還給他。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ xiǎng jīngguò Āmíng jiā de shíhòu, bǎ tā de yǔsǎn huán gěi tā.</div>
+        <div class="sentence-ja toggle-target">阿明の家の前を通るときに、彼の傘を返そうと思う。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉕ 贈与</span>
+        <div class="sentence-zh">我想把這份禮物送給他，不知道他會不會喜歡？</div>
+        <div class="sentence-pinyin toggle-target">Wǒ xiǎng bǎ zhè fèn lǐwù sòng gěi tā, bù zhīdào tā huì bú huì xǐhuān?</div>
+        <div class="sentence-ja toggle-target">このプレゼントを彼に贈ろうと思うけど、彼は気に入るかなあ？</div>
+    </div>
+
+    <!-- Category 5: 動詞 ＋ 方向補語 -->
+    <h2>5. 〈 把 ＋ 対象 ＋ 動詞 ＋ 方向補語 〉方向的移動</h2>
+    
+    <div class="card">
+        <span class="tag">⑩ 方向</span>
+        <div class="sentence-zh">你把那個杯子拿來吧。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ bǎ nà ge bēizi ná lái ba.</div>
+        <div class="sentence-ja toggle-target">あのコップを持ってきてね。（※文頭の bǎ は介詞、文末の ba は「お願い/提案」を和らげる語気助詞）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑪ 方向</span>
+        <div class="sentence-zh">你快把衣服放進洗衣機裡。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ kuài bǎ yīfú fàng jìn xǐyījī lǐ.</div>
+        <div class="sentence-ja toggle-target">早く服を洗濯機に入れて。（※「你衣服快放進洗衣機裡！」と話題化すると非常にカジュアルで自然）</div>
+    </div>
+    <div class="card">
+        <span class="tag">⑬ 方向（離脱）</span>
+        <div class="sentence-zh">你不要把他的腳踏車騎走。</div>
+        <div class="sentence-pinyin toggle-target">Nǐ bú yào bǎ tā de jiǎotàchē qí zǒu.</div>
+        <div class="sentence-ja toggle-target">彼の自転車に乗っていかないで。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉖ 方向</span>
+        <div class="sentence-zh">要上課了，請把課本拿出來。</div>
+        <div class="sentence-pinyin toggle-target">Yào shàngkè le, qǐng bǎ kèběn ná chū lái.</div>
+        <div class="sentence-ja toggle-target">もうすぐ授業だから、教科書を出してください。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉗ 方向（戻る）</span>
+        <div class="sentence-zh">我去把車開回來，你在這邊等我就好了。</div>
+        <div class="sentence-pinyin toggle-target">Wǒ qù bǎ chē kāi huí lái, nǐ zài zhèbiān děng wǒ jiù hǎo le.</div>
+        <div class="sentence-ja toggle-target">車を取ってくる（運転して戻ってくる）から、このへんで待っていたらいいよ。</div>
+    </div>
+    <div class="card">
+        <span class="tag">㉘ 方向</span>
+        <div class="sentence-zh">你們不可以把國外的豬肉帶進台灣。</div>
+        <div class="sentence-pinyin toggle-target">Nǐmen bù kěyǐ bǎ guó wài de zhūròu dài jìn Táiwān.</div>
+        <div class="sentence-ja toggle-target">海外の豚肉を台湾に持ち込んではいけません。</div>
+    </div>
+
+    <!-- 深掘り Q&A セクション -->
+    <h2>6. 深掘り！Q&A・文法解説まとめ</h2>
+    
+    <div class="note-box toggle-target">
+        <h4>① 「把手洗乾淨」 vs 「手洗」 の違い</h4>
+        <p>「手を洗う」と言いたい場合、必ず <strong>把手洗乾淨</strong> や <strong>去洗手</strong> にします。<br>
+        もし <strong>「你應該手洗」</strong> と言うと、「手」が手段（Hand-wash）の意味になり、「（服などを）手作業で手洗いすべきだ」という意味に変わってしまいます！</p>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>② 2つの「ba」の聞き分け（你把那個杯子拿來吧）</h4>
+        <ul>
+            <li><strong>最初の「把 (bǎ)」：</strong> 三声。低く抑える音。「〜を」というターゲットを指定する介詞。</li>
+            <li><strong>最後の「吧 (ba)」：</strong> 軽声。軽く添える音。「〜してね / 〜しよう」という命令を和らげる語気助詞。英語の <code>, will you?</code> や <code>, okay?</code> と同じ働きをします。</li>
+        </ul>
+    </div>
+
+    <div class="note-box toggle-target">
+        <h4>③ 「讓（Lesson 17）」と「把（Lesson 18）」の違い</h4>
+        <p>どちらも「make」のイメージですが、アプローチが違います。</p>
+        <ul>
+            <li><strong>讓 ＋ 物 ＋ 變得…：</strong> 状況や要因が、間接的に物を変化させる。（例：科技讓生活變得方便 / テクノロジーが生活を便利にする）</li>
+            <li><strong>把 ＋ 物 ＋ 動詞 ＋ 補語：</strong> 主語が直接手を下して、物を処置・料理する。（例：我把房間打掃乾淨 / 私が部屋を綺麗にする）</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 18 超実践まとめ (把構文と言い換え)</title>
+    <style>
+        :root {
+            --primary-color: #d97706; 
+            --accent-color: #059669; 
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            font-size: 1.4em;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .main-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .main-btn:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .sentence-zh {
+            font-size: 1.35em;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .play-btn {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.1s;
+        }
+        .play-btn:hover {
+            transform: scale(1.2);
+        }
+        .sentence-pinyin {
+            color: var(--accent-color);
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.85em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .variation-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .variation-box h5 {
+            margin: 0 0 10px 0;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .variation-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .var-type {
+            font-size: 0.8em;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #475569;
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .var-text {
+            flex: 1;
+        }
+        .var-note {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 18: 「把」構文と言い換え実践</h1>
+    
+    <div class="controls">
+        <button class="main-btn" onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- Category 1: 状態の変化・完了 -->
+    <h2>1. 状態の変化・完了（動詞 ＋ 結果補語）</h2>
+    
+    <!-- 例文⑥ -->
+    <div class="card">
+        <span class="tag">⑥ 状態の変化</span>
+        <div class="sentence-zh">
+            你應該把手洗乾淨。
+            <button class="play-btn" onclick="speak('你應該把手洗乾淨。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Nǐ yīnggāi bǎ shǒu xǐ gānjìng.</div>
+        <div class="sentence-ja toggle-target">手をきれいに洗わなきゃだめ。</div>
+        
+        <div class="variation-box toggle-target">
+            <h5>💬 言い換えバリエーション</h5>
+            <div class="variation-item">
+                <span class="var-type">把構文</span>
+                <div class="var-text">
+                    你應該把手洗乾淨。 <button class="play-btn" onclick="speak('你應該把手洗乾淨。')">🔊</button>
+                    <div class="var-note">【処置】「手」という対象をきれいな状態にする。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type">S V O</span>
+                <div class="var-text">
+                    你應該去洗手。 <button class="play-btn" onclick="speak('你應該去洗手。')">🔊</button>
+                    <div class="var-note">【動作の報告】「手を洗いに行くべきだ」（※日常会話で最も自然な表現）</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type" style="background:#fecaca; color:#991b1b;">⚠️ 注意</span>
+                <div class="var-text">
+                    你應該手洗。 <button class="play-btn" onclick="speak('你應該手洗。')">🔊</button>
+                    <div class="var-note">「手」が手段になり「（服などを）手作業で手洗いすべきだ」という意味に変わってしまう！</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 例文⑧ -->
+    <div class="card">
+        <span class="tag">⑧ 完了</span>
+        <div class="sentence-zh">
+            他還沒把功課寫完。
+            <button class="play-btn" onclick="speak('他還沒把功課寫完。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Tā hái méi bǎ gōngkè xiě wán.</div>
+        <div class="sentence-ja toggle-target">彼はまだ宿題を終わらせていない。</div>
+
+        <div class="variation-box toggle-target">
+            <h5>💬 言い換えバリエーション</h5>
+            <div class="variation-item">
+                <span class="var-type">把構文</span>
+                <div class="var-text">
+                    他還沒把功課寫完。 <button class="play-btn" onclick="speak('他還沒把功課寫完。')">🔊</button>
+                    <div class="var-note">【タスクの処置】宿題というタスクを処理し終えていない。カチッとした表現。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type" style="background:#dbeafe; color:#1e40af;">話題化</span>
+                <div class="var-text">
+                    他功課還沒寫完。 <button class="play-btn" onclick="speak('他功課還沒寫完。')">🔊</button>
+                    <div class="var-note">【S + O + V】「彼、宿題はまだ終わってないよ」。<b>日常会話で超頻出の自然な表現！</b></div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type">S V O</span>
+                <div class="var-text">
+                    他還沒寫完功課。 <button class="play-btn" onclick="speak('他還沒寫完功課。')">🔊</button>
+                    <div class="var-note">【動作の報告】通常の語順。「まだ書き終えていない」という動作の事実を伝える。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category 3: 到達・移動 -->
+    <h2>2. 到達・移動（動詞 ＋ 到 ＋ 場所）</h2>
+
+    <!-- 例文④ -->
+    <div class="card">
+        <span class="tag">④ 物理的移動</span>
+        <div class="sentence-zh">
+            哥哥把車開到學校了。
+            <button class="play-btn" onclick="speak('哥哥把車開到學校了。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Gēge bǎ chē kāi dào xuéxiào le.</div>
+        <div class="sentence-ja toggle-target">兄が車を学校に乗って行ってしまった。</div>
+
+        <div class="variation-box toggle-target">
+            <h5>💬 言い換えバリエーション</h5>
+            <div class="variation-item">
+                <span class="var-type">把構文</span>
+                <div class="var-text">
+                    哥哥把車開到學校了。 <button class="play-btn" onclick="speak('哥哥把車開到學校了。')">🔊</button>
+                    <div class="var-note">【結果の強調】「車がない！兄が学校へ移動させてしまった」という変化に焦点。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type" style="background:#dbeafe; color:#1e40af;">話題化</span>
+                <div class="var-text">
+                    哥哥車開到學校了。 <button class="play-btn" onclick="speak('哥哥車開到學校了。')">🔊</button>
+                    <div class="var-text">【事実報告】「車だけどさ、お兄ちゃんが学校に乗ってったよ」というフラットな会話表現。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category 5: 方向的移動 -->
+    <h2>3. 方向的移動（動詞 ＋ 方向補語）</h2>
+
+    <!-- 例文⑪ -->
+    <div class="card">
+        <span class="tag">⑪ 方向</span>
+        <div class="sentence-zh">
+            你快把衣服放進洗衣機裡。
+            <button class="play-btn" onclick="speak('你快把衣服放進洗衣機裡。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Nǐ kuài bǎ yīfú fàng jìn xǐyījī lǐ.</div>
+        <div class="sentence-ja toggle-target">早く服を洗濯機に入れて。</div>
+
+        <div class="variation-box toggle-target">
+            <h5>💬 言い換えバリエーション</h5>
+            <div class="variation-item">
+                <span class="var-type">把構文</span>
+                <div class="var-text">
+                    你快把衣服放進洗衣機裡。 <button class="play-btn" onclick="speak('你快把衣服放進洗衣機裡。')">🔊</button>
+                    <div class="var-note">【処置の指示】「服を中にいれなさい」という標準的で明確な指示。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type" style="background:#dbeafe; color:#1e40af;">話題化</span>
+                <div class="var-text">
+                    你衣服快放進洗衣機裡！ <button class="play-btn" onclick="speak('你衣服快放進洗衣機裡！')">🔊</button>
+                    <div class="var-note">【S + O + V】「服だけどさ、早く洗濯機に入れなよ！」。親しい間柄でよく使うテンポの良い形。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type">S V O</span>
+                <div class="var-text">
+                    你快放衣服進洗衣機裡。 <button class="play-btn" onclick="speak('你快放衣服進洗衣機裡。')">🔊</button>
+                    <div class="var-note">通常の語順。文法的には正しいが、やや説明的な響きになる。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type">省略形</span>
+                <div class="var-text">
+                    你快放進去！ <button class="play-btn" onclick="speak('你快放進去！')">🔊</button>
+                    <div class="var-note">目の前に服がある時、「早く（中に）入れちゃいな！」という究極のカジュアル表現。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // ピンイン・訳の表示切り替え
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+
+    // Web Speech API を使った音声再生（台湾華語設定）
+    function speak(text) {
+        // 発言中ならキャンセル
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW'; // 台湾華語に設定
+        utterance.rate = 0.9;     // 少しゆっくりめ（学習用）
+        
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 18 完全マスター (把構文・言い換え・音声付)</title>
+    <style>
+        :root {
+            --primary-color: #d97706; 
+            --accent-color: #059669; 
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            font-size: 1.4em;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .main-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .main-btn:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .sentence-zh {
+            font-size: 1.35em;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .play-btn {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.1s;
+        }
+        .play-btn:hover {
+            transform: scale(1.2);
+        }
+        .sentence-pinyin {
+            color: var(--accent-color);
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.85em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .variation-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .variation-box h5 {
+            margin: 0 0 10px 0;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .variation-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .var-type {
+            font-size: 0.8em;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #475569;
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .var-text {
+            flex: 1;
+        }
+        .var-note {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 18: 「把」構文と実用フレーズ・言い換え比較</h1>
+    
+    <div class="controls">
+        <button class="main-btn" onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- Category: 方向的移動 -->
+    <h2>方向的移動（動詞 ＋ 複合方向補語 など）</h2>
+
+    <!-- 例文㉗ -->
+    <div class="card">
+        <span class="tag">㉗ 方向（戻る）</span>
+        <div class="sentence-zh">
+            我去把車開回來，你在這邊等我就好了。
+            <button class="play-btn" onclick="speak('我去把車開回來，你在這邊等我就好了。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Wǒ qù bǎ chē kāi huí lái, nǐ zài zhèbiān děng wǒ jiù hǎo le.</div>
+        <div class="sentence-ja toggle-target">車を取ってくる（運転して戻ってくる）から、このへんで待っていたらいいよ。</div>
+
+        <div class="variation-box toggle-target">
+            <h5>💬 言い換えバリエーション & 解説</h5>
+            <div class="variation-item">
+                <span class="var-type">把構文</span>
+                <div class="var-text">
+                    我去把車開回來。 <button class="play-btn" onclick="speak('我去把車開回來。')">🔊</button>
+                    <div class="var-note">【処置＋方向】「車を運転して（自分たちのいる場所へ）乗ってくる」という動作＋到達地点を明確に伝える標準的表現。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type" style="background:#dbeafe; color:#1e40af;">話題化</span>
+                <div class="var-text">
+                    車我去開回來。 <button class="play-btn" onclick="speak('車我去開回來。')">🔊</button>
+                    <div class="var-note">【O + S + V】「車ならさ、僕が運転して持ってくるよ」と車をトピックとして提示するカジュアルな日常会話表現。</div>
+                </div>
+            </div>
+            <div class="variation-item">
+                <span class="var-type">S V O</span>
+                <div class="var-text">
+                    我去開車回來。 <button class="play-btn" onclick="speak('我去開車回來。')">🔊</button>
+                    <div class="var-note">普通の語順。「車を運転して戻ってくる」という一連の行動の報告。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+
+    function speak(text) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band-A Lesson 18 完全マスター (把構文・指示詞・音声付)</title>
+    <style>
+        :root {
+            --primary-color: #d97706; 
+            --accent-color: #059669; 
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            font-size: 1.4em;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .main-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .main-btn:hover {
+            background-color: #b45309;
+            transform: translateY(-2px);
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .sentence-zh {
+            font-size: 1.35em;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .play-btn {
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.1s;
+        }
+        .play-btn:hover {
+            transform: scale(1.2);
+        }
+        .sentence-pinyin {
+            color: var(--accent-color);
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .sentence-ja {
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.85em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        /* 指示詞専用イラストグリッド */
+        .demonstrative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .demo-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .demo-svg {
+            width: 100%;
+            height: 120px;
+            background: #f8fafc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .demo-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        .demo-pinyin {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .demo-desc {
+            font-size: 0.9em;
+            color: #475569;
+            margin-top: 5px;
+        }
+
+        .variation-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .variation-box h5 {
+            margin: 0 0 10px 0;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .variation-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .var-type {
+            font-size: 0.8em;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #475569;
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .var-text {
+            flex: 1;
+        }
+        .var-note {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lesson 18: 把構文 ＆ 指示詞② 完全マスター</h1>
+    
+    <div class="controls">
+        <button class="main-btn" onclick="toggleDetails()">ピンイン・訳・解説の表示切り替え（暗記モード）</button>
+    </div>
+
+    <!-- 指示詞② セクション -->
+    <h2>🌟 指示詞② ビジュアル＆イラスト解説</h2>
+    <p>手元・相手の近く・遠く・疑問を表す指示詞のビジュアルイメージです。</p>
+
+    <div class="demonstrative-grid">
+        
+        <!-- 這邊 -->
+        <div class="demo-card">
+            <svg class="demo-svg" viewBox="0 0 200 120">
+                <!-- 話者 -->
+                <circle cx="60" cy="60" r="15" fill="#d97706" />
+                <path d="M 60 75 L 60 100 M 50 85 L 70 85" stroke="#d97706" stroke-width="3" />
+                <!-- 自分の周りの円 -->
+                <circle cx="60" cy="70" r="35" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="4" />
+                <text x="60" y="25" font-size="12" text-anchor="middle" fill="#d97706" font-weight="bold">手元・このへん</text>
+            </svg>
+            <div class="demo-title">
+                這邊 <button class="play-btn" onclick="speak('這邊')">🔊</button>
+            </div>
+            <div class="demo-pinyin toggle-target">zhèbiān</div>
+            <div class="demo-desc toggle-target">こちら、そちら、このへん、そのへん</div>
+        </div>
+
+        <!-- 那邊 -->
+        <div class="demo-card">
+            <svg class="demo-svg" viewBox="0 0 200 120">
+                <!-- 話者 -->
+                <circle cx="40" cy="60" r="12" fill="#94a3b8" />
+                <!-- 指差し矢印 -->
+                <path d="M 60 60 L 130 60" stroke="#059669" stroke-width="3" marker-end="url(#arrow)" />
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669" />
+                    </marker>
+                </defs>
+                <!-- 遠くの対象 -->
+                <circle cx="150" cy="60" r="15" fill="#059669" />
+                <text x="150" y="25" font-size="12" text-anchor="middle" fill="#059669" font-weight="bold">あちら・遠く</text>
+            </svg>
+            <div class="demo-title">
+                那邊 <button class="play-btn" onclick="speak('那邊')">🔊</button>
+            </div>
+            <div class="demo-pinyin toggle-target">nàbiān</div>
+            <div class="demo-desc toggle-target">あちら、あのへん</div>
+        </div>
+
+        <!-- 哪邊 -->
+        <div class="demo-card">
+            <svg class="demo-svg" viewBox="0 0 200 120">
+                <!-- 疑問人物 -->
+                <circle cx="100" cy="50" r="15" fill="#2563eb" />
+                <text x="100" y="30" font-size="18" text-anchor="middle" fill="#2563eb" font-weight="bold">?</text>
+                <!-- 左右の矢印 -->
+                <path d="M 60 80 L 30 80 M 140 80 L 170 80" stroke="#2563eb" stroke-width="2" marker-end="url(#blue-arrow)" />
+                <defs>
+                    <marker id="blue-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+                    </marker>
+                </defs>
+                <text x="100" y="105" font-size="12" text-anchor="middle" fill="#2563eb">どちら？どのへん？</text>
+            </svg>
+            <div class="demo-title">
+                哪邊 <button class="play-btn" onclick="speak('哪邊')">🔊</button>
+            </div>
+            <div class="demo-pinyin toggle-target">nǎbiān</div>
+            <div class="demo-desc toggle-target">どちら、どのへん（疑問）</div>
+        </div>
+
+        <!-- 這樣 -->
+        <div class="demo-card">
+            <svg class="demo-svg" viewBox="0 0 200 120">
+                <!-- アイコン：手元のやり方 -->
+                <rect x="70" y="30" width="60" height="60" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+                <path d="M 85 60 L 95 70 L 115 50" stroke="#d97706" stroke-width="3" fill="none" />
+                <text x="100" y="105" font-size="12" text-anchor="middle" fill="#d97706" font-weight="bold">この状態・やり方</text>
+            </svg>
+            <div class="demo-title">
+                這樣 <button class="play-btn" onclick="speak('這樣')">🔊</button>
+            </div>
+            <div class="demo-pinyin toggle-target">zhèyàng</div>
+            <div class="demo-desc toggle-target">このように、そのように ／ このような</div>
+        </div>
+
+        <!-- 那樣 -->
+        <div class="demo-card">
+            <svg class="demo-svg" viewBox="0 0 200 120">
+                <!-- アイコン：離れた状態 -->
+                <rect x="110" y="30" width="50" height="50" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2" />
+                <path d="M 40 70 L 95 55" stroke="#64748b" stroke-width="2" stroke-dasharray="3" marker-end="url(#gray-arrow)" />
+                <defs>
+                    <marker id="gray-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+                    </marker>
+                </defs>
+                <text x="135" y="100" font-size="12" text-anchor="middle" fill="#64748b">あの状態・やり方</text>
+            </svg>
+            <div class="demo-title">
+                那樣 <button class="play-btn" onclick="speak('那樣')">🔊</button>
+            </div>
+            <div class="demo-pinyin toggle-target">nàyàng</div>
+            <div class="demo-desc toggle-target">そのように、あのように ／ あのような</div>
+        </div>
+
+    </div>
+
+    <!-- 把構文＆指示詞の例文セクション -->
+    <h2>💡 指示詞と把構文の実用例文</h2>
+
+    <!-- 例文⑭ -->
+    <div class="card">
+        <span class="tag">這樣 の使用例</span>
+        <div class="sentence-zh">
+            你應該把要這樣做的理由說清楚。
+            <button class="play-btn" onclick="speak('你應該把要這樣做的理由說清楚。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Nǐ yīnggāi bǎ yào zhèyàng zuò de lǐyóu shuō qīngchǔ.</div>
+        <div class="sentence-ja toggle-target">あなたは、そのようにしなければならない理由を、はっきり言わなければならない。</div>
+    </div>
+
+    <!-- 例文㉗ -->
+    <div class="card">
+        <span class="tag">這邊 の使用例</span>
+        <div class="sentence-zh">
+            我去把車開回來，你在這邊等我就好了。
+            <button class="play-btn" onclick="speak('我去把車開回來，你在這邊等我就好了。')" title="音声を再生">🔊</button>
+        </div>
+        <div class="sentence-pinyin toggle-target">Wǒ qù bǎ chē kāi huí lái, nǐ zài zhèbiān děng wǒ jiù hǎo le.</div>
+        <div class="sentence-ja toggle-target">車を取ってくる（運転して戻ってくる）から、このへんで待っていたらいいよ。</div>
+    </div>
+
+</div>
+
+<script>
+    let isHidden = false;
+    function toggleDetails() {
+        const targets = document.querySelectorAll('.toggle-target');
+        const btn = document.querySelector('.controls button');
+        
+        isHidden = !isHidden;
+        
+        targets.forEach(el => {
+            if(isHidden) {
+                el.classList.add('hidden');
+            } else {
+                el.classList.remove('hidden');
+            }
+        });
+        
+        btn.textContent = isHidden ? "ピンイン・訳・解説を表示する" : "ピンイン・訳・解説の表示切り替え（暗記モード）";
+    }
+
+    function speak(text) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+
+</body>
+</html>
