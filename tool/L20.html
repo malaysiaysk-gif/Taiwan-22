@@ -3544,3 +3544,447 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 19 台湾華語 文法完全攻略マニュアル（音声付き）</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #0d9488;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      border-left: 5px solid var(--primary);
+      padding-left: 12px;
+      margin: 40px 0 20px 0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .formula {
+      background-color: #eff6ff;
+      border: 1px dashed var(--primary);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .example-box {
+      background-color: #f1f5f9;
+      border-left: 4px solid var(--secondary);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      position: relative;
+    }
+
+    /* ルビ（ピンイン）のスタイル */
+    ruby {
+      ruby-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--text);
+      margin-right: 2px;
+    }
+    
+    rt {
+      font-size: 0.75rem;
+      color: var(--secondary);
+      font-weight: normal;
+      margin-bottom: 2px;
+    }
+
+    .zh-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      padding-right: 40px; /* ボタン用の余白 */
+    }
+
+    .jp {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    /* 再生ボタンのスタイル */
+    .play-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .play-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
+    }
+
+    .play-btn:active {
+      transform: scale(0.95);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .badge-blue { background-color: var(--primary); }
+    .badge-green { background-color: var(--secondary); }
+    .badge-orange { background-color: var(--accent); }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Lesson 19 台湾華語 文法完全攻略</h1>
+    <p>時間の表現・起点・限定・離合詞・「之後 vs 以後」徹底解説ノート</p>
+  </header>
+
+  <!-- Section 1 -->
+  <div class="section-title">1. 時間の起点表現：從…開始 / 從…起</div>
+  <div class="card">
+    <div class="formula">【語順】 主語 + [從 + 時間詞 + 開始 / 起] + 動作</div>
+    <p>中国語では「時間の前提（条件）」を動作の前に置きます。疑問文や決意の文でも語順はブレません。</p>
+
+    <div class="example-box">
+      <button class="play-btn" onclick="speak('從下個月開始，這家動物園只在週末開。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>從<rt>cóng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby>，
+        <ruby>這<rt>zhè</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>園<rt>yuán</rt></ruby>
+        <ruby>只<rt>zhǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>開<rt>kāi</rt></ruby>。
+      </div>
+      <div class="jp">来月から、この動物園は週末だけ営業します。</div>
+    </div>
+
+    <div class="example-box">
+      <button class="play-btn" onclick="speak('數學是從什麼時候開始變得這麼難的？')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>的<rt>de</rt></ruby>？
+      </div>
+      <div class="jp">数学はいつからこんなに難しくなったんだ？（※「是…的」強調構文）</div>
+    </div>
+
+    <div class="example-box">
+      <button class="play-btn" onclick="speak('我從明天開始要認真念書。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+      </div>
+      <div class="jp">明日から真面目に勉強するぞ！（※「起」に置き換えも可：從明天起）</div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section-title">2. 「之後 (zhīhòu)」 vs 「以後 (yǐhòu)」 徹底比較</div>
+  <div class="card">
+    <p>Lesson 19の最大のポイント！どちらを使うか迷ったらこのルールで一発解決です。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>之後 (zhīhòu)</th>
+          <th>以後 (yǐhòu)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>基本役割</strong></td>
+          <td>「Aという出来事の<strong>後で</strong>」（万能）</td>
+          <td>「今より未来の<strong>今後・将来</strong>」</td>
+        </tr>
+        <tr>
+          <td><strong>過去の出来事</strong></td>
+          <td><span style="color:var(--secondary); font-weight:bold;">⭕️ 完璧</span>（畢業之後、就...）</td>
+          <td><span style="color:var(--accent); font-weight:bold;">🔺 やや不自然</span></td>
+        </tr>
+        <tr>
+          <td><strong>単独での「今後は」</strong></td>
+          <td><span style="color:var(--accent); font-weight:bold;">❌ 使えない</span></td>
+          <td><span style="color:var(--secondary); font-weight:bold;">⭕️ 完璧</span>（以後請多指教）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="example-box">
+      <span class="badge badge-blue">過去の思い出</span>
+      <button class="play-btn" onclick="speak('我畢業之後，就搬來台北了。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>我<rt>wǒ</rt></ruby><ruby>畢<rt>bì</rt></ruby><ruby>業<rt>yè</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>了<rt>le</rt></ruby>。
+      </div>
+      <div class="jp">卒業したあと、すぐに台北へ引っ越してきました。（※過去のストーリーなので「之後」が自然）</div>
+    </div>
+
+    <div class="example-box">
+      <span class="badge badge-orange">単独で未来を宣言</span>
+      <button class="play-btn" onclick="speak('以後，我要每天念書。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+      </div>
+      <div class="jp">これからは毎日勉強します。（※基準なしの単独使いは「以後」一択）</div>
+    </div>
+
+    <div class="example-box">
+      <span class="badge badge-green">ルール・マナー案内</span>
+      <button class="play-btn" onclick="speak('上捷運以後，請往裡面走。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>上<rt>shàng</rt></ruby><ruby>捷<rt>jié</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>面<rt>miàn</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。
+      </div>
+      <div class="jp">MRTに乗車後は、奥へお進みください。（※案内アナウンス等ではどちらも自然に使えます）</div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section-title">3. 介詞「在」と時間の限定・副詞の位置</div>
+  <div class="card">
+    <div class="formula">【語順】 主語 + 副詞(只/都) + [在 + 時間/場所] + 動詞</div>
+    
+    <div class="example-box">
+      <button class="play-btn" onclick="speak('吳小姐平日都在台北工作，只在假日回基隆。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>吳<rt>wú</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>姐<rt>jiě</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby>，
+        <ruby>只<rt>zhǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>假<rt>jià</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>基<rt>jī</rt></ruby><ruby>隆<rt>lóng</rt></ruby>。
+      </div>
+      <div class="jp">呉さんは平日いつも台北で仕事をしており、休日にだけ基隆へ帰る。</div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section-title">4. 離合詞と結果補語</div>
+  <div class="card">
+    <div class="formula">【鉄則】 結果補語（完）は、必ず動詞 (V) の直後に挟み込む！</div>
+    <div class="example-box">
+      <button class="play-btn" onclick="speak('他在開完會三十分鐘後才到。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>分<rt>fēn</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>到<rt>dào</rt></ruby>。
+      </div>
+      <div class="jp">彼は会議が終わって30分も経ってから、ようやくやってきた。（※「才」は遅さを強調）</div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section-title">5. 期間・頻度・指示の応用表現</div>
+  <div class="card">
+    <div class="example-box">
+      <span class="badge badge-blue">日 ➔ 泊 の順番</span>
+      <button class="play-btn" onclick="speak('從明天起，我要去京都玩八天七夜。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>京<rt>jīng</rt></ruby><ruby>都<rt>dū</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>八<rt>bā</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>七<rt>qī</rt></ruby><ruby>夜<rt>yè</rt></ruby>。
+      </div>
+      <div class="jp">明日から、京都へ7泊8日（8天7夜）の旅行に行きます。</div>
+    </div>
+
+    <div class="example-box">
+      <span class="badge badge-green">少 / 多 + 動詞</span>
+      <button class="play-btn" onclick="speak('醫生要我從今天起，少吃泡麵，多吃一點青菜。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>醫<rt>yī</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，
+        <ruby>少<rt>shǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>泡<rt>pào</rt></ruby><ruby>麵<rt>miàn</rt></ruby>，
+        <ruby>多<rt>duō</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>青<rt>qīng</rt></ruby><ruby>菜<rt>cài</rt></ruby>。
+      </div>
+      <div class="jp">医者に、今日からカップ麺を控えて（少吃）、野菜をもっと食べる（多吃一點）ように言われました。</div>
+    </div>
+
+    <div class="example-box">
+      <span class="badge badge-orange">仕事に応募する</span>
+      <button class="play-btn" onclick="speak('我從明天開始要應徵這份工作。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>應<rt>yìng</rt></ruby><ruby>徵<rt>zhēng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby>。
+      </div>
+      <div class="jp">明日からこの仕事に応募するつもりです。（※保留にする場合は「先不應徵」）</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 音声合成（Text-to-Speech）用のJavaScript -->
+<script>
+  function speak(text) {
+    // ブラウザが音声合成をサポートしているか確認
+    if ('speechSynthesis' in window) {
+      // 読み上げ中の音声をキャンセルして新しく再生
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      // 台湾華語（繁体字）に設定
+      utterance.lang = 'zh-TW';
+      
+      // 学習用に少しだけゆっくりめ（0.85倍速）に設定。1.0で標準速度です。
+      utterance.rate = 0.85; 
+      
+      // 音声の再生
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("申し訳ありません。お使いのブラウザは音声再生に対応していません。ChromeやSafariなどの最新ブラウザをご利用ください。");
+    }
+  }
+</script>
+
+</body>
+</html>
+
+<!-- Section 6 -->
+  <div class="section-title">6. 方向を示す介詞「往」：〈往 ＋ 方向 ＋ 動詞〉と「向」の違い</div>
+  <div class="card">
+    <div class="formula">【語順】 主語 + [往 + 方向/場所] + 動詞</div>
+    <p>「〜（の方向）へ向かって…する」という動作の方向（ベクトル）を表します。道案内や移動の指示で必須の表現です。</p>
+
+    <div class="example-box">
+      <span class="badge badge-blue">道案内の大定番</span>
+      <button class="play-btn" onclick="speak('一直往前走，就會看到捷運站。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>一<rt>yì</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>走<rt>zǒu</rt></ruby>，
+        <ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>捷<rt>jié</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>站<rt>zhàn</rt></ruby>。
+      </div>
+      <div class="jp">まっすぐ前へ向かって歩けば、すぐにMRTの駅が見えます。</div>
+    </div>
+
+    <div class="example-box">
+      <span class="badge badge-green">移動の指示</span>
+      <button class="play-btn" onclick="speak('請往裡面走。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>請<rt>qǐng</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>面<rt>miàn</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。
+      </div>
+      <div class="jp">奥（中）のほうへ進んでください。</div>
+    </div>
+
+    <h4 style="margin-top: 24px; color: var(--primary-dark);">💡 「往 (wǎng)」と「向 (xiàng)」の決定的な違い</h4>
+    <p>どちらも「〜へ向かって」と訳せますが、<strong>後ろに置ける言葉（対象）</strong>に明確なルールの違いがあります。</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>介詞</th>
+          <th>後ろに置けるもの</th>
+          <th>得意な動詞・ニュアンス</th>
+          <th>例文・NG例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>往</strong> (wǎng)</td>
+          <td><strong>方向・場所</strong> のみ<br><span style="font-size: 0.85em; color: #e11d48; font-weight: bold;">※「人」は絶対NG！</span></td>
+          <td>物理的な<strong>「移動のベクトル」</strong><br>（走、飛、開 など）</td>
+          <td>⭕️ 往右轉 (右へ曲がる)<br>❌ 往他說 (彼に向かって言う)</td>
+        </tr>
+        <tr>
+          <td><strong>向</strong> (xiàng)</td>
+          <td><strong>方向・場所・<span style="color:var(--primary);">人</span></strong></td>
+          <td>動作の<strong>「対象・ターゲット」</strong><br>（說、道歉、學習 など）</td>
+          <td>⭕️ 向前走 (前へ歩く)<br>⭕️ 向他說 (彼に向かって言う)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p style="font-size: 0.9rem; color: var(--text-light);">※「前へ歩く」など物理的な移動の場合、<code>往前走</code> も <code>向前走</code> も両方使えますが、台湾の日常会話では <code>往</code> の方がよく使われます。</p>
+
+    <div class="example-box">
+      <span class="badge badge-orange">「向」は人に対して使える！</span>
+      <button class="play-btn" onclick="speak('我要向他道歉。')" title="音声を再生">🔊</button>
+      <div class="zh-container">
+        <ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>向<rt>xiàng</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>歉<rt>qiàn</rt></ruby>。
+      </div>
+      <div class="jp">私は彼に向かって（彼に対して）謝らなければならない。（※「往他」とは言えません）</div>
+    </div>
+  </div>
