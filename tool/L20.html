@@ -3988,3 +3988,333 @@
       <div class="jp">私は彼に向かって（彼に対して）謝らなければならない。（※「往他」とは言えません）</div>
     </div>
   </div>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 20 文法・Q&A まとめ</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --highlight-color: #f1c40f;
+            --bg-color: #f9f9f9;
+            --box-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        .card {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .zh {
+            font-size: 1.4em; /* ピンインが見やすいように少し大きく */
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        ruby {
+            ruby-align: center;
+        }
+        rt {
+            font-size: 0.5em;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+        .jp {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 10px;
+        }
+        .point {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            border-left: 3px solid #3498db;
+        }
+        .bad {
+            color: var(--accent-color);
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        .good {
+            color: #27ae60;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #c0392b;
+            font-family: monospace;
+        }
+        .play-btn {
+            background-color: #f1c40f;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.1s, background-color 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .play-btn:hover {
+            background-color: #f39c12;
+            transform: scale(1.05);
+        }
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📝 Lesson 20 文法＆Q&Aまとめ</h1>
+
+    <h2>1. 不是 A，就是 B（AでなければBだ）</h2>
+    <p>行動や状態が「2パターンのどちらか（二者択一）」に限定されることを強調する表現。</p>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('他下課以後不是去踢足球，就是在圖書館念書。')" title="音声を再生">🔊</button>
+            <ruby>他<rt>tā</rt></ruby>
+            <ruby>下<rt>xià</rt></ruby><ruby>課<rt>kè</rt></ruby>
+            <ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>去<rt>qù</rt></ruby>
+            <ruby>踢<rt>tī</rt></ruby><ruby>足<rt>zú</rt></ruby><ruby>球<rt>qiú</rt></ruby>，
+            <ruby>就<rt>jiù</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>在<rt>zài</rt></ruby>
+            <ruby>圖<rt>tú</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>館<rt>guǎn</rt></ruby>
+            <ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+        </div>
+        <div class="jp">彼は放課後、サッカーをしに行くか、図書館で勉強するかのどちらかだ。</div>
+        <div class="point">💡 <strong>主語が同じ場合：</strong> 主語（他）は <code>不是</code> の手前に置く。※「不就是」は反語になるためNG！</div>
+    </div>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('週末不是我教孩子們煮菜，就是太太教他們功課。')" title="音声を再生">🔊</button>
+            <ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>我<rt>wǒ</rt></ruby>
+            <ruby>教<rt>jiāo</rt></ruby>
+            <ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>們<rt>men</rt></ruby>
+            <ruby>煮<rt>zhǔ</rt></ruby><ruby>菜<rt>cài</rt></ruby>，
+            <ruby>就<rt>jiù</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>太<rt>tài</rt></ruby><ruby>太<rt>tai</rt></ruby>
+            <ruby>教<rt>jiāo</rt></ruby>
+            <ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby>
+            <ruby>功<rt>gōng</rt></ruby><ruby>課<rt>kè</rt></ruby>。
+        </div>
+        <div class="jp">週末は私が子供に料理を教えるか、妻が勉強を教えるかのどちらかだ。</div>
+        <div class="point">💡 <strong>主語が違う場合：</strong> <code>不是</code> と <code>就是</code> の直後にそれぞれの主語（我 / 太太）を置く。</div>
+    </div>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('這禮拜天氣很差，每天不是陰天，就是雨天。')" title="音声を再生">🔊</button>
+            <ruby>這<rt>zhè</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby>
+            <ruby>天<rt>tiān</rt></ruby><ruby>氣<rt>qì</rt></ruby>
+            <ruby>很<rt>hěn</rt></ruby><ruby>差<rt>chà</rt></ruby>，
+            <ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>陰<rt>yīn</rt></ruby><ruby>天<rt>tiān</rt></ruby>，
+            <ruby>就<rt>jiù</rt></ruby><ruby>是<rt>shì</rt></ruby>
+            <ruby>雨<rt>yǔ</rt></ruby><ruby>天<rt>tiān</rt></ruby>。
+        </div>
+        <div class="jp">今週は天気が悪くて、毎日くもりか雨ばかりだ。</div>
+        <div class="point">💡 動詞だけでなく、名詞（陰天/雨天）を直接置いて状況を限定することも可能。</div>
+    </div>
+
+    <h2>2. 不但 A，而且 / 還 B（Aなだけでなく、さらにBだ）</h2>
+    <p>同じ方向性（＋と＋、または −と−）の特徴や動作を累加する表現。</p>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('台灣的大學不但學費不貴，而且獎學金也不難拿。')" title="音声を再生">🔊</button>
+            <ruby>台<rt>Tái</rt></ruby><ruby>灣<rt>wān</rt></ruby><ruby>的<rt>de</rt></ruby>
+            <ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>但<rt>dàn</rt></ruby>
+            <ruby>學<rt>xué</rt></ruby><ruby>費<rt>fèi</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>貴<rt>guì</rt></ruby>，
+            <ruby>而<rt>ér</rt></ruby><ruby>且<rt>qiě</rt></ruby>
+            <ruby>獎<rt>jiǎng</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>金<rt>jīn</rt></ruby>
+            <ruby>也<rt>yě</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>拿<rt>ná</rt></ruby>。
+        </div>
+        <div class="jp">台湾の大学は学費が手頃なだけでなく、奨学金も取りやすい。</div>
+        <div class="point">💡 <strong>主語が違う場合：</strong> 後半の主語（獎學金）の後に <code>也</code> を添えると自然。「学費が…さらに奨学金<strong>も</strong>…」</div>
+    </div>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('這間海鮮餐廳菜很好吃，而且服務很棒。')" title="音声を再生">🔊</button>
+            <ruby>這<rt>zhè</rt></ruby><ruby>間<rt>jiān</rt></ruby>
+            <ruby>海<rt>hǎi</rt></ruby><ruby>鮮<rt>xiān</rt></ruby>
+            <ruby>餐<rt>cān</rt></ruby><ruby>廳<rt>tīng</rt></ruby>
+            <ruby>菜<rt>cài</rt></ruby>
+            <ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby>，
+            <ruby>而<rt>ér</rt></ruby><ruby>且<rt>qiě</rt></ruby>
+            <ruby>服<rt>fú</rt></ruby><ruby>務<rt>wù</rt></ruby>
+            <ruby>很<rt>hěn</rt></ruby><ruby>棒<rt>bàng</rt></ruby>。
+        </div>
+        <div class="jp">このレストランは料理がおいしい上に、サービスも素晴らしい。</div>
+        <div class="point">💡 口語では <code>不但</code> を省略して、後半の <code>而且</code> だけで繋ぐことがよくある！</div>
+    </div>
+
+    <div class="card">
+        <div class="zh">
+            <button class="play-btn" onclick="speakText('今天白天不但下了大雨，還很悶熱。')" title="音声を再生">🔊</button>
+            <ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby>
+            <ruby>白<rt>bái</rt></ruby><ruby>天<rt>tiān</rt></ruby>
+            <ruby>不<rt>bú</rt></ruby><ruby>但<rt>dàn</rt></ruby>
+            <ruby>下<rt>xià</rt></ruby><ruby>了<rt>le</rt></ruby>
+            <ruby>大<rt>dà</rt></ruby><ruby>雨<rt>yǔ</rt></ruby>，
+            <ruby>還<rt>hái</rt></ruby>
+            <ruby>很<rt>hěn</rt></ruby><ruby>悶<rt>mēn</rt></ruby><ruby>熱<rt>rè</rt></ruby>。
+        </div>
+        <div class="jp">今日の昼間は、大雨が降ったうえにすごく蒸し暑かった。</div>
+        <div class="point">💡 <code>而且</code> の代わりに <code>還</code> を使うと、「さらに（拍車をかけて）〜まで！」という感情が強調される。</div>
+    </div>
+
+    <h2>3. 語彙・ニュアンスの深掘り（Q&Aより）</h2>
+    
+    <div class="card">
+        <h3>🔍 「差(chà)」と「查(chá)」の違い</h3>
+        <table>
+            <tr>
+                <th>漢字</th><th>意味</th><th>例</th>
+            </tr>
+            <tr>
+                <td><strong>差 (chà)</strong></td><td>悪い・劣っている・足りない</td><td>天氣很差（天気が悪い）、差不多</td>
+            </tr>
+            <tr>
+                <td><strong>查 (chá)</strong></td><td>調べる</td><td>查字典（辞書を調べる）</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>📅 休日の言い方</h3>
+        <ul>
+            <li><strong>假日 (jiàrì)：</strong> カレンダー上の祝日や週末。</li>
+            <li><strong>週末 (zhōumò)：</strong> 会話でよく使う「土日」。</li>
+            <li><strong>休假 / 放假：</strong> 休みを取る・休みになる（動詞/状態）。</li>
+            <li><strong>歇困 (hioh-khùn)：</strong> 台湾語で「休む・休日」。</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>辦 (bàn) の使い方</h3>
+        <p>「手配する・処理する・開催する」という超重要動詞。</p>
+        <ul>
+            <li><strong>辦活動：</strong> イベントを開催する。</li>
+            <li><strong>辦簽證：</strong> ビザを手配する・申請する。</li>
+            <li><strong>怎麼辦？：</strong> どうしよう！？ / どうする？</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>📍 場所の「在」と 時間詞のルール</h3>
+        <ul>
+            <li><strong>場所で何かをする時：</strong> <code>在</code> が絶対必要。<br>
+                <span class="good">⭕️ 在便利商店可以吃飯。</span> / <span class="bad">❌ 便利商店可以吃飯。</span></li>
+            <li><strong>場所そのものを評価する時：</strong> <code>在</code> は不要。<br>
+                <span class="good">⭕️ 這間餐廳很好吃。</span> / <span class="bad">❌ 在這間餐廳很好吃。</span></li>
+            <li><strong>時間詞の場合：</strong> <code>在</code> は不要（そのまま置く）。<br>
+                <span class="good">⭕️ 今天白天下了大雨。</span> / <span class="bad">❌ 在今天白天...</span></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>🌧️ 「了」の位置：下了大雨 vs 下大雨了</h3>
+        <table>
+            <tr>
+                <th>表現</th><th>ニュアンス</th><th>場面</th>
+            </tr>
+            <tr>
+                <td><strong>下了大雨</strong></td><td>大雨が<strong>降った</strong>（完了）</td><td>過去の出来事・事実を回想して説明する時</td>
+            </tr>
+            <tr>
+                <td><strong>下大雨了</strong></td><td>大雨が<strong>降ってきた</strong>（変化）</td><td>窓の外を見てリアルタイムの変化に気づいた時</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 音声再生用のJavaScript -->
+    <script>
+        function speakText(text) {
+            // 現在再生中の音声があれば停止
+            window.speechSynthesis.cancel();
+
+            // 新しい音声を作成
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // 台湾華語（zh-TW）に設定
+            utterance.lang = 'zh-TW';
+            
+            // 学習用に少しだけゆっくり再生（0.9倍速）
+            utterance.rate = 0.9;
+            
+            // 再生
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
