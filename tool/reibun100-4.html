@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -826,18 +826,31 @@
             speakNext();
         }
 
-        function speakText(text) {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        var voices = window.speechSynthesis.getVoices();
-        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
-        var u = new SpeechSynthesisUtterance(text);
-        u.lang = 'zh-TW';
-        u.rate = 0.85;
-        if (taiwanVoice) { u.voice = taiwanVoice; }
-        window.speechSynthesis.speak(u);
-    }
-} else {
+        function speakText(text, btnId, isVocab, speakerType) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW'; 
+            utterance.rate = currentSpeechRate;  
+
+            utterance.onstart = () => {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                if (isVocab) {
+                    const icon = btn.querySelector('.lucide-volume-2');
+                    if (icon) {
+                        icon.classList.remove('text-blue-400', 'text-blue-500');
+                        icon.classList.add('animate-pulse', 'text-blue-600');
+                    }
+                } else {
                     btn.classList.remove('text-slate-400');
                     if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
                     else btn.classList.add('text-indigo-600', 'bg-indigo-100');
