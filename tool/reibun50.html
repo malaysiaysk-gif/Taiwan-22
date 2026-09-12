@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -1001,36 +1001,18 @@
             setTimeout(speakNext, 100);
         }
 
-        function speakText(text, btnId, isVocab, speakerType) {
-            if (!('speechSynthesis' in window)) return;
-            window.speechSynthesis.cancel();
-            window.speechSynthesis.resume(); // バグ対策
-
-            resetActiveUI();
-
-            playingId = btnId;
-            playingType = isVocab ? 'vocab' : 'single';
-
-            const utterance = new SpeechSynthesisUtterance(text);
-            
-            // 明示的にVoiceをセット
-            if (twVoice) utterance.voice = twVoice;
-            utterance.lang = 'zh-TW'; 
-            utterance.rate = currentSpeechRate;  
-
-            // GC対策で配列に保持
-            window.globalUtterances.push(utterance);
-
-            utterance.onstart = () => {
-                const btn = document.getElementById(btnId);
-                if (!btn) return;
-                if (isVocab) {
-                    const icon = btn.querySelector('.lucide-volume-2');
-                    if (icon) {
-                        icon.classList.remove('text-blue-400');
-                        icon.classList.add('animate-pulse', 'text-blue-600');
-                    }
-                } else {
+        function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+} else {
                     btn.classList.remove('text-slate-400');
                     if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
                     else btn.classList.add('text-indigo-600', 'bg-indigo-100');

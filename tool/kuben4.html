@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+﻿html_content = """<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -1092,17 +1092,18 @@ html_content = """<!DOCTYPE html>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+     function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -1896,17 +1897,18 @@ print("taiwan_chinese_lesson21_aligned.html updated.")</a>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+      function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -2702,17 +2704,18 @@ print("taiwan_chinese_lesson22_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+       function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -3493,17 +3496,18 @@ print("taiwan_chinese_lesson23_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+  function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -4294,17 +4298,18 @@ print("taiwan_chinese_lesson24_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+    function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -5163,17 +5168,18 @@ print("taiwan_chinese_lesson25_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+   function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -6007,17 +6013,18 @@ print("taiwan_chinese_lesson26_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+  function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -6838,17 +6845,18 @@ print("taiwan_chinese_lesson27_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -7715,17 +7723,18 @@ print("taiwan_chinese_lesson28_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+    function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
@@ -8728,17 +8737,18 @@ print("taiwan_chinese_lesson29_aligned.html created.")</div>
             }
         }
 
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-TW';
-                utterance.rate = 0.85; 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("お使いのブラウザは音声再生に対応していません。Chrome、Edge、Safariなどの最新版をご利用ください。");
-            }
-        }
+     function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var voices = window.speechSynthesis.getVoices();
+        var taiwanVoice = voices.find(function(v){ return v.name.indexOf('Google 國語') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Yating') !== -1; }) || voices.find(function(v){ return v.name.indexOf('Hanhan') !== -1; }) || voices.find(function(v){ return v.lang === 'zh-TW' || v.lang === 'zh-tw'; });
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = 'zh-TW';
+        u.rate = 0.85;
+        if (taiwanVoice) { u.voice = taiwanVoice; }
+        window.speechSynthesis.speak(u);
+    }
+}
     </script>
 </body>
 </html>
