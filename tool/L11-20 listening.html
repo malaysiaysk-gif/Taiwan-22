@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL リスニング対策 - Lesson 11~20</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Pinyin Pro (自動ピンイン付与ライブラリ) -->
+    <script src="https://unpkg.com/pinyin-pro"></script>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+        .content-hidden .secret-target { filter: blur(8px); opacity: 0.3; pointer-events: none; user-select: none; }
+        body.global-reveal .content-hidden .secret-target,
+        .question-container:not(.content-hidden) .secret-target { filter: blur(0px); opacity: 1; pointer-events: auto; user-select: auto; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+    <header class="max-w-4xl mx-auto mb-6 text-center">
+        <h1 class="text-3xl font-bold text-indigo-700 mb-2">TOCFL リスニング対策アプリ</h1>
+        <p class="text-slate-600">一覧学習・フラッシュカードテスト (Lesson 11〜20)</p>
+        <p class="text-sm text-slate-500 mt-2">入門基礎級模擬試題聽力測驗</p>
+    </header>
+
+    <div class="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-3">
+        <button onclick="switchTab('list')" id="tab-list" class="px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors">一覧学習</button>
+        <button onclick="switchTab('flashcard')" id="tab-flashcard" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors">フラッシュカードテスト</button>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-6 flex justify-center items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-200">
+        <label for="speed-slider" class="text-sm font-bold text-slate-600 flex items-center gap-2">
+            <i data-lucide="gauge" class="w-4 h-4"></i>
+            音声スピード: <span id="speed-display" class="text-indigo-600 w-11 text-right font-mono">0.95x</span>
+        </label>
+        <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.05" value="0.95" class="w-32 md:w-48 accent-indigo-600 cursor-pointer">
+    </div>
+
+    <div id="list-view" class="max-w-4xl mx-auto">
+        <div class="mb-6 flex justify-end">
+            <button onclick="toggleGlobalReveal()" id="global-reveal-btn" class="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg shadow-sm hover:bg-slate-50 transition-colors font-medium text-sm">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>すべての解答・スクリプトを表示</span>
+            </button>
+        </div>
+        <main id="list-content" class="space-y-8"></main>
+    </div>
+
+    <div id="flashcard-view" class="hidden max-w-3xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-10 flex flex-col items-center">
+            <div class="text-center mb-6 w-full">
+                <h2 class="text-lg font-bold text-slate-700 mb-2">測試範圍: 聽力測驗</h2>
+                <div class="flex justify-center gap-2 bg-slate-100 p-1 rounded-lg inline-flex flex-wrap">
+                    <button onclick="setFlashcardMode('vocab')" id="fc-mode-vocab" class="px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all">聽力選意 (4選1)</button>
+                    <button onclick="setFlashcardMode('sentence')" id="fc-mode-sentence" class="px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all">聽力測驗 (全出題)</button>
+                </div>
+            </div>
+            <div id="flashcard-container" class="w-full cursor-pointer transition-all" onclick="handleCardClick()"></div>
+            <div class="mt-8 flex justify-between items-center w-full">
+                <button onclick="prevCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors"><i data-lucide="chevron-left" class="w-8 h-8"></i></button>
+                <div class="flex items-center gap-4">
+                    <button onclick="reshuffleCards()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors rounded-full hover:bg-indigo-50"><i data-lucide="shuffle" class="w-5 h-5"></i></button>
+                    <span id="fc-counter" class="text-slate-500 font-mono font-medium"></span>
+                </div>
+                <button onclick="nextCard()" class="p-2 text-slate-400 hover:text-indigo-600 transition-colors"><i data-lucide="chevron-right" class="w-8 h-8"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 完璧な台湾ボイス設定
+        // ==========================================
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+
+        // ==========================================
+        // データ定義と解析 (Lesson 11~20)
+        // ==========================================
+        const rawData = `
+Lesson 11
+1
+他先進來了。
+🔊
+Tā xiān jìn lái le.
+彼は先に入ってきた。
+2
+我今天要走回去。
+🔊
+Wǒ jīntiān yào zǒu huí qù.
+私は今日は歩いて帰る。
+3
+他拿出門票了。
+🔊
+Tā ná chū le ménpiào.
+彼は入場券を取り出した。
+4
+你最好搬回台中(來)。
+🔊
+Nǐ zuìhǎo bān huí Táizhōng (lái).
+あなたは台中に引っ越して戻ってくるほうがいい。
+5
+冰箱裡的水果是誰買來的？
+🔊
+Bīngxiāng lǐ de shuǐguǒ shì shéi mǎi lái de?
+冷蔵庫の果物は誰が買ってきたの？
+6
+這台相機是跟我爸爸借來的。
+🔊
+Zhè tái xiàngjī shì gēn wǒ bàba jiè lái de.
+このカメラは父から借りてきたものだ。
+7
+那個包包，我可以帶去嗎？
+🔊
+Nà ge bāobāo, wǒ kěyǐ dài qù ma?
+あのバッグ、持っていってもいい？
+8
+這兩條毛巾，我可不可以拿去洗？
+🔊
+Zhè liǎng tiáo máojīn, wǒ kě bù kěyǐ ná qù xǐ?
+この2枚のタオルは、持っていって洗ってもいい？
+9
+沒(有)帶來。
+🔊
+Méi (yǒu) dài lái.
+持ってこなかった／持ってきていない。
+10
+他回來了。
+🔊
+Tā huí lái le.
+彼は帰った（帰ってきた）。
+11
+他回去了。
+🔊
+Tā huí qù le.
+彼は帰った（帰っていった）。
+12
+他回家了。
+🔊
+Tā huí jiā le.
+彼は家に帰った。
+13
+喂？我到你家樓下了，可以上去了嗎？
+🔊
+Wéi? Wǒ dào nǐ jiā lóuxià le, kěyǐ shàng qù le ma?
+もしもし、あなたの家の下に着いたけど、もう上がっていってもいい？
+14
+哥哥什麼時候回來？機票已經訂好了嗎？
+🔊
+Gēge shénme shíhòu huí lái? Jīpiào yǐjīng dìng hǎo le ma?
+お兄ちゃんはいつ帰ってくるの？航空券はもう予約がすんでいるの？
+15
+觀光巴士上的客人都還沒下來。
+🔊
+Guāngguāng bāshī shàng de kèrén dōu hái méi xià lái.
+観光バスのお客さんは、みんなまだ降りてきていない。
+16
+你過來一下！
+🔊
+Nǐ guò lái yíxià!
+ちょっと（こっちへ）来て。
+17
+他跑進來了。
+🔊
+Tā pǎo jìn lái le.
+彼は駆け込んだ（駆け込んできた）。
+18
+他跑進去了。
+🔊
+Tā pǎo jìn qù le.
+彼は駆け込んだ（駆け込んでいった）。
+19
+他跑進電梯了。
+🔊
+Tā pǎo jìn diàntī le.
+彼はエレベーターに駆け込んだ。
+20
+要是你不舒服，就不要站起來。
+🔊
+Yàoshì nǐ bù shūfú, jiù búyào zhàn qǐ lái.
+もし気分が悪いなら、立ち上がらないで。
+21
+你終於來了，趕快坐下來吧！
+🔊
+Nǐ zhōngyú lái le, gǎnkuài zuò xià lái ba!
+ようやく来たね。早く座って。
+22
+我借給你的那本詞典，你今天可以先帶回去用。
+🔊
+Wǒ jiè gěi nǐ de nà běn cídiǎn, nǐ jīntiān kěyǐ xiān dài huí qù yòng.
+あなたに貸したあの辞書は、今日はとりあえず持って帰って使っていいよ。
+23
+小光走出去以後，立刻就開始下雪了。
+🔊
+Xiǎoguāng zǒu chū qù yǐhòu, lìkè jiù kāishǐ xià xuě le.
+小光が外に出た後、すぐに雪が降り始めた。
+24
+那個衣櫃，為什麼還沒搬上二樓呢？
+🔊
+Nà ge yīguì, wèishénme hái méi bān shàng èr lóu ne?
+あのタンスは、なぜまだ2階に運び上げていないの？
+25
+護照趕快收進包包裡吧，如果不見了怎麼辦？
+🔊
+Hùzhào gǎnkuài shōu jìn bāobāo lǐ ba, rúguǒ bú jiàn le zěnme bàn?
+パスポートは早くカバンにしまったら？もしなくなったらどうするの？
+26
+你可以幫我拿門口的那雙皮鞋來嗎？
+🔊
+Nǐ kěyǐ bāng wǒ ná ménkǒu de nà shuāng píxié lái ma?
+玄関のあの革靴を取ってきてくれるかな。
+27
+下午可能會下雨，你還是帶把雨傘去吧。
+🔊
+Xiàwǔ kěnéng huì xià yǔ, nǐ háishì dài bǎ yǔsǎn qù ba.
+午後は多分雨が降るから、やはり傘を持っていって。
+28
+楊伯伯昨天寄來了一封信。
+🔊
+Yáng bóbo zuótiān jì lái le yì fēng xìn.
+楊おじさんが昨日手紙を1通送ってきた。
+29
+看完的書，你應該放回書架上面(去)。
+🔊
+Kàn wán de shū, nǐ yīnggāi fàng huí shūjià shàngmiàn (qù).
+読み終えた本は、本棚に戻さなければだめだよ。
+30
+大力拿起筆(來)，開始計畫他這次的越南旅行。
+🔊
+Dàlì ná qǐ bǐ (lái), kāishǐ jìhuà tā zhè cì de Yuènán lǚxíng.
+大力はペンを手に取ると、今回のベトナム旅行の計画を立て始めた。
+
+Lesson 12
+5
+她今天可能沒有時間睡覺。
+🔊
+Tā jīntiān kěnéng méiyǒu shíjiān shuìjiào.
+彼女は今日多分寝る時間がないだろう。
+6
+你有錢喝飲料，但沒有錢吃飯嗎？
+🔊
+Nǐ yǒu qián hē yǐnliào, dàn méiyǒu qián chī fàn ma?
+きみは飲み物を飲むお金はあるのに、ご飯を食べるお金はないの？
+7
+最近有很多人生病，你還是別脫口罩吧。
+🔊
+Zuìjìn yǒu hěn duō rén shēngbìng, nǐ háishì bié tuō kǒuzhào ba.
+最近病気の人が多いから、やはりマスクを外さないほうがいい。
+8
+上個月我回了宜蘭一趟，發現有好多地方都變了。
+🔊
+Shàng ge yuè wǒ huí le Yílán yí tàng, fāxiàn yǒu hǎo duō dìfāng dōu biàn le.
+先月私は一度宜蘭に帰って、変わったところがずいぶんたくさんあることに気づいた。
+9
+有些小孩很安靜，有些小孩很吵，大家都不一樣。
+🔊
+Yǒu xiē xiǎohái hěn ānjìng, yǒu xiē xiǎohái hěn chǎo, dàjiā dōu bù yíyàng.
+静かな子どもも(何人か)いるし、騒がしい子どもも(何人か)いて、みんな違うのだ。
+10
+剛才沒有人叫你啊，你是不是聽錯了？
+🔊
+Gāngcái méiyǒu rén jiào nǐ a, nǐ shì bú shì tīng cuò le?
+さっきは誰もきみのことを呼んでいないよ。聞き間違えたんじゃない？
+11
+有一個美國學生來找你。
+🔊
+Yǒu yí ge Měiguó xuéshēng lái zhǎo nǐ.
+(1人の)アメリカ人の学生があなたを訪ねてきたよ。
+12
+有的人覺得百香果太酸，可是我非常喜歡。
+🔊
+Yǒu de rén juéde bǎixiāngguǒ tài suān, kěshì wǒ fēicháng xǐhuān.
+パッションフルーツはすっぱすぎると想う人もいるけれど、私は大好きだ。
+13
+有的人覺得工作比什麼都重要，但是我認為生活比較重要。
+🔊
+Yǒu de rén juéde gōngzuò bǐ shénme dōu zhòngyào, dànshì wǒ rènwéi shēnghuó bǐjiào zhòngyào.
+仕事が何よりも大切だと思う人もいるが、私は生活のほうが大切だと思う。
+14
+我有(的)時候會想家。
+🔊
+Wǒ yǒu (de) shíhòu huì xiǎng jiā.
+私はホームシックになることもある。
+15
+他平常都搭電梯，不過有(的)時候也會爬樓梯。
+🔊
+Tā píngcháng dōu dā diàntī, búguò yǒu (de) shíhòu yě huì pá lóutī.
+彼は普段エレベーターに乗っているが、時には階段を上ることもある。
+16
+有的女生不喜歡逛街，喜歡在網路上買東西。
+🔊
+Yǒu de nǚshēng bù xǐhuān guàngjiē, xǐhuān zài wǎnglù shàng mǎi dōngxī.
+街中をぶらぶらするのが好きじゃなく、ネットで買い物をするのが好きな女の子もいる。
+17
+有的學生已經拿到簽證了。
+🔊
+Yǒu de xuéshēng yǐjīng ná dào qiānzhèng le.
+すでにビザを入手した学生もいる。
+18
+有(的)比較貴。
+🔊
+Yǒu (de) bǐjiào guì.
+けっこう高いの（＝靴）もある。
+19
+這位歌手的歌，有的很好唱，有的很難唱。
+🔊
+Zhè wèi gēshǒu de gē, yǒu de hěn hǎochàng, yǒu de hěn nánchàng.
+この歌手の歌は、歌いやすいの（＝歌）もあるし、歌いにくい（＝歌）もある。
+20
+剛才有人問我去游泳池怎麼走。
+🔊
+Gāngcái yǒu rén wèn wǒ qù yóuyǒngchí zěnme zǒu.
+さっき、[ある人がプールへの行き方を私に聞いた／プールへの行き方を私に聞いた人がいた]。
+21
+以前有人跟他說過：「愛笑的人比較受歡迎。」
+🔊
+Yǐqián yǒu rén gēn tā shuō guò: “Ài xiào de rén bǐjiào shòu huānyíng.”
+「よく笑う人のほうが人気がある」と以前[ある人が彼に言った／彼に言った人がいる]。
+
+Lesson 13
+1
+他早就換衣服了。
+🔊
+Tā zǎojiù huàn yīfú le.
+彼はとっくに着替えた。
+2
+我中午吃了一個粽子。
+🔊
+Wǒ zhōngwǔ chī le yí ge zòngzi.
+私はお昼にチマキを1個食べた。
+3
+我做了沙拉……
+🔊
+Wǒ zuò le shālā...
+私はサラダを作って／作ったけど／作ったから……
+4
+他已經找了半天了。
+🔊
+Tā yǐjīng zhǎo le bàntiān le.
+彼はもう長い時間探している。
+5
+我們認識快十年了。
+🔊
+Wǒmen rènshì kuài shí nián le.
+私たちが知り合ってから もうすぐ10年になる。
+6
+你寫拼音了嗎？
+🔊
+Nǐ xiě pīnyīn le ma?
+あなたはピンインを書きましたか。
+7
+沒想到他也訂票了。
+🔊
+Méi xiǎng dào tā yě dìng piào le.
+彼もチケットを予約していたなんて。
+8
+小梨在彰化租了一間房子。
+🔊
+Xiǎolí zài Zhānghuà zū le yì jiān fángzi.
+小梨は彰化で家を1軒借りた。
+9
+我最近買了一套注音符號的郵票。
+🔊
+Wǒ zuìjìn mǎi le yí tào zhùyīn fúhào de yóupiào.
+私は最近注音符号の切手を1セット買った。
+10
+我的信箱這幾天收到了很多垃圾郵件，你可以幫我看一下嗎？
+🔊
+Wǒ de xìnxiāng zhè jǐ tiān shōu dào le hěn duō lèsè yóujiàn, nǐ kěyǐ bāng wǒ kàn yíxià ma?
+私のメールボックスに、ここ数日迷惑メールがたくさん届いた。ちょっと見てくれる？
+11
+我們大學的華語中心上個月辦了兩場活動。
+🔊
+Wǒmen dàxué de Huáyǔ zhōngxīn shàng ge yuè bàn le liǎng chǎng huódòng.
+私たちの大学の華語センターは、先月イベントを2回開催した。
+12
+我上午打了好幾次電話給他，他都在通話中。
+🔊
+Wǒ shàngwǔ dǎ le hǎo jǐ cì diànhuá gěi tā, tā dōu zài tōnghuà zhōng.
+午前中に何度も彼に電話したけど、ずっと話し中だった。
+13
+他昨天單字只背了十分鐘左右，現在當然全忘了。
+🔊
+Tā zuótiān dānzì zhǐ bèi le shí fēnzhōng zuǒyòu, xiànzài dāngrán quán wàng le.
+彼は昨日単語の暗記を10分ほどしかしなかったので、今はもちろん全部忘れている。
+14
+我很早就吃晚餐了。
+🔊
+Wǒ hěn zǎo jiù chī wǎncān le.
+私は早い時間に晩ご飯を食べた。（文が終わる感じ）
+15
+我很早就吃了晚餐，現在已經餓了。
+🔊
+Wǒ hěn zǎo jiù chī le wǎncān, xiànzài yǐjīng è le.
+私は早い時間に晩ご飯を食べたから、今はもうお腹が空いた。
+16
+他交了女朋友以後就不跟我們玩了。
+🔊
+Tā jiāo le nǚpéngyǒu yǐhòu jiù bù gēn wǒmen wán le.
+彼は彼女ができてから僕たちと遊ばなくなった。
+17
+我剛剛去了辦公室，但是老師剛好不在。
+🔊
+Wǒ gānggāng qù le bàngōngshì, dànshì lǎoshī gānghǎo bú zài.
+さっき事務室に行ったけど、先生はちょうどいらっしゃらなかった。
+18
+他在火車站轉了車以後，才發現下車的時候忘了拿外套。
+🔊
+Tā zài huǒchēzhàn zhuǎn le chē yǐhòu, cái fāxiàn xià chē de shíhòu wàng le ná wàitào.
+彼は(列車の)駅で乗り換えた後、下りる時に上着を忘れてきたことにやっと気づいた。
+19
+我剛才喝了一瓶啤酒，現在不能開車。
+🔊
+Wǒ gāngcái hē le yì píng píjiǔ, xiànzài bù néng kāi chē.
+私はさっきビールを1本飲んだので、今は車を運転できない。
+20
+我已經喝了一瓶啤酒了，可是還想要再喝。
+🔊
+Wǒ yǐjīng hē le yì píng píjiǔ le, kěshì hái xiǎng yào zài hē.
+私はもうビールを1本飲んでいるけど、まだ飲みたい。
+21
+這部電影我非常喜歡，已經看了十幾次了。
+🔊
+Zhè bù diànyǐng wǒ fēicháng xǐhuān, yǐjīng kàn le shí jǐ cì le.
+この映画は私はとても好きで、もう十数回見ています。
+22
+我在這裡住了二十年了，附近的鄰居我全都認識。
+🔊
+Wǒ zài zhèlǐ zhù le èrshí nián le, fùjīn de línjū wǒ quán dōu rènshì.
+私はここに住んで20年になり、近所の人たちはみんな知り合いだ。
+23
+你已經點了五道菜了，應該夠了吧！
+🔊
+Nǐ yǐjīng diǎn le wǔ dào cài le, yīnggāi gòu le ba!
+あなたはもう料理を5品注文しているから、多分もう十分でしょう。
+24
+我傳了好幾封簡訊給你了，你都沒看到嗎？
+🔊
+Wǒ chuán le hǎo jǐ fēng jiǎnxùn gěi nǐ le, nǐ dōu méi yòu kàn dào ma?
+私はあなたにショートメッセージを何本も送っているのに、あなたはどれも見ていないの？
+25
+我們已經推車走了半個小時了，還沒走到加油站。
+🔊
+Wǒmen yǐjīng tuī chē zǒu le bàn ge xiǎoshí le, hái méi zǒu dào jiāyóuzhàn.
+私たちは[バイク/車]を押してもう30分も歩いているのに、まだガソリンスタンドにたどりついていない。
+26
+你們結婚幾年了？
+🔊
+Nǐmen jiéhūn jǐ nián le?
+あなたたちは結婚して何年になるの？
+27
+我男朋友出國念書三個月了，我很想他。
+🔊
+Wǒ nánpéngyǒu chū guó niàn shū sān ge yuè le, wǒ hěn xiǎng tā.
+彼氏が海外留学に行って3か月になる。彼にすごく会いたい。
+28
+真不敢相信！我們高中畢業已經二十年了。
+🔊
+Zhēn bù gǎn xiāngxìn! Wǒmen gāozhōng bìyè yǐjīng èrshí nián le.
+本当に信じられない。私たちが高校を卒業してもう20年になる。
+29
+你來台北快半年了，還沒去其他地方觀光過嗎？
+🔊
+Nǐ lái Táiběi kuài bàn nián le, hái méi qù qítā dìfāng guāngguāng guò ma?
+あなたが台北に来てもうすぐ半年になるけど、まだ他の場所に観光に行ったことはないの？
+30
+你吃完飯已經半個小時了，怎麼還沒吃藥呢？
+🔊
+Nǐ chī wán fàn yǐjīng bàn ge xiǎoshí le, zěnme hái méi chī yào ne?
+あなたはご飯を食べ終わってもう30分経っているのに、なぜまだ薬を飲んでいないの？
+31
+我從越南回來六年多了，有時候還是會不習慣日本的生活。
+🔊
+Wǒ cóng Yuènán huí lái liù nián duō le, yǒu shíhòu háishì huì bù xíguàn Rìběn de shēnghuó.
+私がベトナムから帰ってきて6年以上経つけど、それでも日本の生活になじめないと思うときがある。
+
+Lesson 14
+5
+我們什麼時候能再見面呢？
+🔊
+Wǒmen shénme shíhòu néng zài jiànmiàn ne?
+私たちはいつまた会えるかな？
+6
+你要是再遲到，我下次就不跟你約會了。
+🔊
+Nǐ yàoshì zài chídào, wǒ xià cì jiù bù gēn nǐ yuēhuì le.
+あなたがもしまた遅刻したら、次はもうあなたとデートはしない。
+7
+這道菜，再多加一點糖會更好吃。
+🔊
+Zhè dào cài, zài duō jiā yìdiǎn táng huì gèng hǎochī.
+この料理は、もう少し砂糖を加えたほうがもっとおいしくなる。
+8
+這個科學報告我沒看懂，晚上要再讀一遍。
+🔊
+Zhè ge kēxué bàogào wǒ méi kàn dǒng, wǎnshàng yào zài dú yí biàn.
+この科学的な報告書は、私は読んで理解できていないから、夜もう一度読む。
+9
+我上午很忙，下午再打掃臥室和餐廳。
+🔊
+Wǒ shàngwǔ hěn máng, xiàwǔ zài dǎsǎo wòshì hé cāntīng.
+私は午前中忙しいので、寝室とダイニングルームの掃除は午後にする。
+10
+我跟阿力談完以後，後天左右再聯絡你。
+🔊
+Wǒ gēn Ālì tán wán yǐhòu, hòutiān zuǒyòu zài liánluò nǐ.
+僕と阿力との話が終わった後、明後日ぐらいにきみに連絡するよ。
+11
+那，你需要幫忙的時候，再跟我說。
+🔊
+Nà, nǐ xūyào bāngmáng de shíhòu, zài gēn wǒ shuō.
+じゃあ、手助けが必要なときに私に言って。
+12
+我們走吧！這件事明天再說吧。
+🔊
+Wǒmen zǒu ba! Zhè jiàn shì míngtiān zài shuō ba.
+[行きましょう。／帰りましょう。] この件は明日にしましょう。
+13
+那家公司的資料，我明天再看。
+🔊
+Nà jiā gōngsī de zīliào, wǒ míngtiān zài kàn.
+あの会社の資料は、[明日見ます／見るのは明日にします]。 (保留のニュアンス)
+14
+那家公司的資料，我明天再看一次。
+🔊
+Nà jiā gōngsī de zīliào, wǒ míngtiān zài kàn yí cì.
+あの会社の資料は、明日もう一度見ます。 (繰り返しのニュアンス)
+15
+我要先畫完這張畫，再背單字。
+🔊
+Wǒ yào xiān huà wán zhè zhāng huà, zài bèi dānzì.
+私はまずこの絵を描き終えて、それから単語を覚える。
+16
+下雨的時候，我都先背書包，再穿雨衣。
+🔊
+Xià yǔ de shíhòu, wǒ dōu xiān bēi shūbāo, zài chuān yǔyī.
+雨が降るときは、いつも先にカバンを背負って、それからカッパを着る。
+17
+我在一號出口，你先整理好東西，再來找我。
+🔊
+Wǒ zài yī hào chūkǒu, nǐ xiān zhěnglǐ hǎo dōngxī, zài lái zhǎo wǒ.
+僕は1番出口にいるから、きみはまず荷物をちゃんと整理して、それから僕のところに来て。
+18
+沒關係，你先說完，我再說。
+🔊
+Méiguānxi, nǐ xiān shuō wán, wǒ zài shuō.
+気にしないで。あなたが話し終えてから私が話すよ。
+19
+我先教你這個網站怎麼用，你再自己試一下吧。
+🔊
+Wǒ xiān jiāo nǐ zhè ge wǎngzhàn zěnme yòng, nǐ zài zìjǐ shì yíxià ba.
+私がまずこのサイトの使い方を教えるから、それからあなたが自分でちょっと試して。
+20
+美術館最近人太多了，等人少一點了，我們再去。
+🔊
+Měishùguǎn zuìjìn rén tài duō le, děng rén shǎo yìdiǎn le, wǒmen zài qù.
+美術館は最近人が多すぎるので、人がちょっと少なくなってから私たちは行く。
+21
+這件事情，等你長大以後，我再告訴你，好不好？
+🔊
+Zhè jiàn shìqíng, děng nǐ zhǎngdà yǐhòu, wǒ zài gàosù nǐ, hǎo bù hǎo?
+この件は、あなたが大人になってからあなたに言うのでいい？
+22
+等你們約好時間，我再幫你們訂位。
+🔊
+Děng nǐmen yuē hǎo shíjiān, wǒ zài bāng nǐmen dìngwèi.
+あなたたちが時間を[約束したら/決めたら]、席を予約してあげるね。
+23
+等家家考完試，我們再一起去動物園玩吧。
+🔊
+Děng Jiājiā kǎo wán shì, wǒmen zài yìqǐ qù dòngwùyuán wán ba.
+家家の試験が終わってから、一緒に動物園に遊びに行きましょう。
+24
+等雨停了，我再去藥局拿藥。
+🔊
+Děng yǔ tíng le, wǒ zài qù yàojú ná yào.
+雨がやんでから、薬局へ薬をもらいに行く。 (※自分ではコントロールできないので"等"を使う)
+25
+我們先討論好這次活動的目的，再選擇地點吧。
+🔊
+Wǒmen xiān tǎolùn hǎo zhè cì huódòng de mùdì, zài xuǎnzé dìdiǎn ba.
+私たちはまず今回のイベントの目的をしっかり話し合ってから、場所を選びましょう。 (※自分たちで決められるので"先"を使う)
+26
+她下禮拜才會去北部。
+🔊
+Tā xià lǐbài cái huì qù běibù.
+彼女は来週ようやく北部に行く。 (※目的地があるので"去")
+27
+我晚上要去泡溫泉。
+🔊
+Wǒ wǎnshàng yào qù pào wēnquán.
+私は夜温泉に入りに行く。 (※目的があるので"去")
+28
+不要走！
+🔊
+Bú yào zǒu!
+行かないで！（そばにいて！） (※出発点から離れることに注目しているので"走")
+
+Lesson 15
+4
+月台上人多得要命。
+🔊
+Yuètái shàng rén duō de yàomìng.
+ホームはめちゃくちゃ人が多い。
+5
+我這次旅遊買了很多書，行李箱重得不得了。
+🔊
+Wǒ zhè cì lǚyóu mǎi le hěn duō shū, xínglǐxiāng zhòng de bùdéliǎo.
+私は今回の旅行で本をたくさん買ったので、スーツケースが重くてたまらない。
+6
+日本和台灣只有一個小時的時差，好算得很。
+🔊
+Rìběn hé Táiwān zhǐ yǒu yí ge xiǎoshí de shíchā, hǎosuàn de hěn.
+日本と台湾は1時間の時差しかないから、すごく計算しやすい。
+7
+你去過那家店嗎？他們的拉麵好吃得不得了。
+🔊
+Nǐ qù guò nà jiā diàn ma? Tāmen de lāmiàn hǎochī de bùdéliǎo.
+あの店に行ったことある？あそこのラーメンはめちゃくちゃおいしいよ。
+8
+我家有五個孩子，每天要洗的衣服都多得不得了。
+🔊
+Wǒ jiā yǒu wǔ ge háizi, měitiān yào xǐ de yīfú dōu duō de bùdéliǎo.
+我が家には子どもが5人いるから、毎日洗濯物がものすごく多い。
+9
+他平常安靜得不得了，今天怎麼變得這麼愛講話？
+🔊
+Tā píngcháng ānjìng de bùdéliǎo, jīntiān zěnme biàn de zhème ài jiǎng huà?
+彼は普段めちゃくちゃおとなしいのに、今日はどうしてあんなにおしゃべりになっているの？
+10
+這杯果汁甜得要命，我想加一點水喝。
+🔊
+Zhè bēi guǒzhī tián de yàomìng, wǒ xiǎng jiā yìdiǎn shuǐ hē.
+このジュースはすごく甘いから、私はちょっと水を加えて飲みたい。
+11
+你的房間亂得要命，你什麼時候才要打掃？
+🔊
+Nǐ de fángjiān luàn de yàomìng, nǐ shénme shíhòu cái yào dǎsǎo?
+あなたの部屋はめちゃくちゃ散らかっている。いつになったら掃除するの？
+12
+他客氣得要命，每次都不收我的禮物。
+🔊
+Tā kèqì de yàomìng, měi cì dōu bù shōu wǒ de lǐwù.
+彼はすごく遠慮深くて、毎回私のプレゼントを受け取らない。
+13
+我剛來台灣念書的時候，每次講中文都緊張得要死。
+🔊
+Wǒ gāng lái Táiwān niàn shū de shíhòu, měi cì jiǎng Zhōngwén dōu jǐnzhāng de yàosǐ.
+台湾に留学に来たばかりの頃は、中国語を話すたびにめちゃくちゃ緊張した。（※得要命の代わりに得要死も可）
+14
+小明跟他們不一樣，努力得很。
+🔊
+Xiǎomíng gēn tāmen bù yíyàng, nǔlì de hěn.
+小明は彼らとは違って、めちゃくちゃ努力家だ。
+15
+這首歌三年前流行得很，你怎麼沒聽過呢？
+🔊
+Zhè shǒu gē sān nián qián liúxíng de hěn, nǐ zěnme méi tīng guò ne?
+この歌は3年前にすごく流行していたのに、きみはどうして聞いたことがないの？
+16
+我身體健康得很，你不需要太擔心。
+🔊
+Wǒ shēntǐ jiànkāng de hěn, nǐ bù xūyào tài dānxīn.
+私の体はすごく健康だから、あなたは心配しすぎる必要はないよ。
+17
+你煮的咖哩飯，孩子們都喜歡極了。
+🔊
+Nǐ zhǔ de gālǐfàn, háizimen dōu xǐhuān jí le.
+あなたが作ったカレーライス、子どもたちはすごく好きだよ。
+18
+大家都說他的歌唱得好極了。
+🔊
+Dàjiā dōu shuō tā de gē chàng de hǎo jí le.
+彼は歌がめちゃくちゃ上手いとみんな言っている。
+19
+最近流行的感冒嚴重極了。
+🔊
+Zuìjìn liúxíng de gǎnmào yánzhòng jí le.
+最近流行している風邪は、すごくひどいものだ。
+20
+媽媽，我餓死了！可以先吃一點餅乾嗎？
+🔊
+Māma, wǒ è sǐ le! Kěyǐ xiān chī yìdiǎn bǐnggān ma?
+お母さん、お腹が空いてたまらないよ。先にクッキーをちょっと食べてもいい？
+21
+教室裡吵死了，老師怎麼還沒來？
+🔊
+Jiàoshì lǐ chǎo sǐ le, lǎoshī zěnme hái méi lái?
+教室の中はめちゃくちゃ騒がしい。先生はなぜまだいらっしゃらないのだろう？
+22
+累死了！我整理行李整理了半天了，還沒整理好。
+🔊
+Lèi sǐ le! Wǒ zhěnglǐ xínglǐ zhěnglǐ le bàntiān le, hái méi zhěnglǐ hǎo.
+すごく疲れた。荷物の整理を長い時間しているのに、まだ整理が終わらない。
+23
+他跑得很快。
+🔊
+Tā pǎo de hěn kuài.
+彼は走るのが速い。 【様態補語：〜するのが…だ】
+24
+他忙得沒有時間回家。
+🔊
+Tā máng de méi yǒu shíjiān huí jiā.
+彼は家に帰る時間がないほど忙しい。 【様態補語：〜するほど…だ】
+25
+他忙得不得了。
+🔊
+Tā máng de bùdéliǎo.
+彼はめちゃくちゃ忙しい。 【程度補語：めちゃくちゃ〜だ】
+
+Lesson 16
+5
+他一下課就打開手機了。
+🔊
+Tā yí xià kè jiù dǎ kāi shǒujī le.
+彼は授業が終わるとすぐスマホを開いた。
+6
+他一想到明天的比賽，就開始緊張了。
+🔊
+Tā yì xiǎng dào míngtiān de bǐsài, jiù kāishǐ jǐnzhāng le.
+彼は明日の大会のことを考えると、すぐ緊張し始めた。
+7
+他昨天煮飯的時候，一不注意就受傷了。
+🔊
+Tā zuótiān zhǔ fàn de shíhòu, yì bú zhùyì jiù shòushāng le.
+彼は昨日ご飯を作っているときに、ちょっとうっかりしたらすぐけがをしてしまった。
+8
+我女兒一感冒，就會發燒。
+🔊
+Wǒ nǚ'ér yì gǎnmào, jiù huì fāshāo.
+娘は風邪をひくとすぐに熱が出る。
+9
+天氣一冷，我就會想搬到暖和的地方去。
+🔊
+Tiānqì yì lěng, wǒ jiù huì xiǎng bān dào nuǎnhuo de dìfāng qù.
+寒くなると、すぐに暖かいところに引っ越したくなる。
+10
+那間百貨公司又大又涼快，我常常去那裡逛街。
+🔊
+Nà jiān bǎihuò gōngsī yòu dà yòu liángkuài, wǒ chángcháng qù nàlǐ guàngjiē.
+あのデパートは大きいし涼しいから、私はよくショッピングに行く。
+11
+你又喝咖啡，又吃冰淇淋，肚子不會痛嗎？
+🔊
+Nǐ yòu hē kāfēi, yòu chī bīngqílín, dùzi bú huì tòng ma?
+あなたはコーヒーを飲んでアイスも食べてるけど、お腹が痛くならないの？
+12
+媽媽又要照顧弟弟，又要上班，多辛苦啊。
+🔊
+Māma yòu yào zhàogù dìdi, yòu yào shàngbān, duō xīnkǔ a.
+お母さんは、弟の世話もしなければならないし、仕事もあって、なんて大変なんだろう。
+13
+他聽到那句話以後，開心得又笑又跳。
+🔊
+Tā tīng dào nà jù huà yǐhòu, kāixīn de yòu xiào yòu tiào.
+その言葉を聞いて、彼は笑ったり跳びはねたりするほど喜んだ。
+14
+她又會唱歌，又會跳舞。
+🔊
+Tā yòu huì chàng gē, yòu huì tiào wǔ.
+彼女は歌も歌えるしダンスもできる。
+15
+我每天早上都會一邊看新聞一邊準備出門。
+🔊
+Wǒ měitiān zǎoshàng dōu huì yìbiān kàn xīnwén yìbiān zhǔnbèi chū mén.
+私は毎朝ニュースを見ながら出かける準備をする。
+16
+阿信喜歡一邊看報紙，一邊吃早餐。
+🔊
+Āxìn xǐhuān yìbiān kàn bàozhǐ, yìbiān chī zǎocān.
+阿信は新聞を読みながら朝ご飯を食べるのが好きだ。
+17
+你不要一邊騎腳踏車一邊講電話，很危險。
+🔊
+Nǐ bú yào yìbiān qí jiǎotàchē yìbiān jiǎng diànhuá, hěn wéixiǎn.
+自転車に乗って電話するのはやめて。危ないよ。
+18
+句子越短越好。
+🔊
+Jùzi yuè duǎn yuè hǎo.
+文は短ければ短いほどよい。
+19
+這條裙子越看越可愛。
+🔊
+Zhè tiáo qúnzi yuè kàn yuè kě'ài.
+このスカートは見れば見るほどかわいい。
+20
+功課越忙，我越想玩遊戲。
+🔊
+Gōngkè yuè máng, wǒ yuè xiǎng wán yóuxì.
+勉強が忙しければ忙しいほど、ゲームがしたくなる。
+21
+真奇怪，我的房間怎麼越打掃越亂？
+🔊
+Zhēn qíguài, wǒ de fángjiān zěnme yuè dǎsǎo yuè luàn?
+本当に不思議だ。私の部屋はどうして掃除すればするほど散らかるんだろう。
+22
+這幾年的電視節目越來越無聊。
+🔊
+Zhè jǐ nián de diànshì jiémù yuèláiyuè wúliáo.
+ここ数年のテレビ番組は、どんどんつまらなくなる。
+23
+長大以後，我越來越不喜歡跟別人比了。
+🔊
+Zhǎngdà yǐhòu, wǒ yuèláiyuè bù xǐhuān gēn biérén bǐ le.
+大人になってから、私は人と競うのがどんどん嫌になってきた。
+24
+颱風越來越近了，你別忘記準備好食物和水。
+🔊
+Táifēng yuèláiyuè jìn le, nǐ bié wàngjì zhǔnbèi hǎo shíwù hé shuǐ.
+台風がどんどん近づいてくるから、忘れずに食べ物や水の準備をすませて。
+25
+你如果不喜歡，就不要買了。
+🔊
+Nǐ rúguǒ bù xǐhuān, jiù bú yào mǎi le.
+もし好きじゃなければ、買うのをやめなさい。 【複文】
+26
+你不喜歡就不要買了。
+🔊
+Nǐ bù xǐhuān jiù bú yào mǎi le.
+好きじゃなければ買うのをやめなさい。 【緊縮文（会話でよく使う）】
+
+Lesson 17
+5
+老師請大家回答問題。
+🔊
+Lǎoshī qǐng dàjiā huídá wèntí.
+先生はみんなに質問に答えるよう頼んだ。
+6
+我朋友請我去那家新開的餐廳吃飯。
+🔊
+Wǒ péngyǒu qǐng wǒ qù nà jiān xīn kāi de cāntīng chī fàn.
+友達が私をその新しくオープンしたレストランでの食事に招待してくれた。
+7
+經理請黃小姐幫客人訂位。
+🔊
+Jīnglǐ qǐng Huáng xiǎojiě bāng kèrén dìwèi.
+マネージャーは黄さんに客の席を予約するよう頼んだ。
+8
+主管要我先把報告寫好。
+🔊
+Zhǔguǎn yào wǒ xiān bǎ bàogào xiě hǎo.
+上司は私にまず報告書を書き上げるよう求めた。
+9
+媽媽要哥哥先洗手再吃飯。
+🔊
+Māma yào gēge xiān xǐ shǒu zài chī fàn.
+お母さんはお兄さんに先に手を洗ってからご飯を食べるよう求めた。
+10
+姊姊要我幫她打掃臥室，因為她明天有約會。
+🔊
+Jiějie yào wǒ bāng tā dǎsǎo wòshì, yīnwèi tā míngtiān yǒu yuēhuì.
+お姉ちゃんは明日デートがあるからという理由で、私に寝室の掃除を手伝うよう言ってきた。
+11
+老闆叫我明天早一點去公司。
+🔊
+Lǎobǎn jiào wǒ míngtiān zǎo yìdiǎn qù gōngsī.
+ボスは私に明日少し早く会社に来るよう言った。
+12
+他常常叫我幫他做作業，真討厭。
+🔊
+Tā chángcháng jiào wǒ bāng tā zuò zuòyè, zhēn tǎoyàn.
+彼はよく私に宿題を手伝えと言ってきて、本当に嫌だ。
+13
+老師叫我們一邊聽一邊寫。
+🔊
+Lǎoshī jiào wǒmen yìbiān tīng yìbiān xiě.
+先生は私たちに聞きながら書くように言った。
+14
+醫生不讓我喝冰水。
+🔊
+Yīshēng bú ràng wǒ hē bīng shuǐ.
+医者は私に冷たい水を飲ませてくれない。
+15
+父母不讓妹妹太晚回家。
+🔊
+Fùmǔ bú ràng mèimei tài wǎn huí jiā.
+両親は妹に遅く帰るのを許さない。
+16
+這個好消息讓我們高興極了。
+🔊
+Zhè ge hǎo xiāoxī ràng wǒmen gāoxìng jí le.
+この良い知らせは私たちをものすごく喜ばせた。
+17
+這次的失敗讓我學到了很多。
+🔊
+Zhè cì de shībài ràng wǒ xué dào le hěn duō.
+今回の失敗は私に多くを学ばせた（＝多くの勉強になった）。
+18
+你做的事情總是讓我生氣！
+🔊
+Nǐ zuò de shìqíng zǒngshì ràng wǒ shēngqì!
+きみのすることはいつも私を怒らせる！
+19
+那部感人的電影讓每個人都流淚了。
+🔊
+Nà bù gǎnrén de diànyǐng ràng měi ge rén dōu liú lèi le.
+あの感動的な映画はすべての人を涙させた。
+20
+請你讓我放心，好嗎？
+🔊
+Qǐng nǐ ràng wǒ fàngxīn, hǎo ma?
+私を安心させてくれない？
+21
+這件事沒讓我太難過。
+🔊
+Zhè jiàn shì méi ràng wǒ tài nánguò.
+この件は私をそれほど悲しませなかった。
+22
+老闆叫他明天加班。
+🔊
+Lǎobǎn jiào tā míngtiān jiābān.
+ボスは彼に明日残業しろと言った。
+23
+他答應叫朋友幫忙解決問題。
+🔊
+Tā dāyìng jiào péngyǒu bāngmáng jiějué wèntí.
+彼は友達に問題解決の手伝いをさせると約束した。
+24
+你別叫孩子們在客廳裡吵鬧。
+🔊
+Nǐ bié jiào háizimen zài kètīng lǐ chǎonào.
+子どもたちにリビングで騒がせないで。
+
+Lesson 18
+4
+哥哥把車開到學校了。
+🔊
+Gēge bǎ chē kāi dào xuéxiào le.
+兄が車を学校に乗って行ってしまった。（「車が学校に行ってしまった」と伝えたい）
+5
+哥哥平常都開車上學。
+🔊
+Gēge píngcháng dōu kāichē shàngxué.
+兄は普段車で通学している。（兄の移動手段は車だと伝えたい ※把構文ではない）
+6
+你應該把手洗乾淨。
+🔊
+Nǐ yīnggāi bǎ shǒu xǐ gānjìng.
+手をきれいに洗わなきゃだめ。
+7
+你怎麼不把自己東西收好？
+🔊
+Nǐ zěnme bù bǎ zìjǐ de dōngxī shōu hǎo?
+あなたはどうして自分のものをちゃんと片づけないの？
+8
+他還沒把功課寫完。
+🔊
+Tā hái méi bǎ gōngkè xiě wán.
+彼はまだ宿題を終わらせていない。
+9
+我不敢把這個蛋糕吃掉。
+🔊
+Wǒ bù gǎn bǎ zhè ge dàngāo chī diào.
+私はこのケーキを食べてしまう勇気がない。
+10
+你把那個杯子拿來吧。
+🔊
+Nǐ bǎ nà ge bēizi ná lái ba.
+あのコップを持ってきて。
+11
+你快把衣服放進洗衣機裡。
+🔊
+Nǐ kuài bǎ yīfú fàng jìn xǐyījī lǐ.
+早く服を洗濯機に入れて。
+12
+你最好把錢存在銀行裡。
+🔊
+Nǐ zuìhǎo bǎ qián cún zài yínháng lǐ.
+あなたはお金を銀行に預けたほうがよい。
+13
+你不要把他的腳踏車騎走。
+🔊
+Nǐ bú yào bǎ tā de jiǎotàchē qí zǒu.
+彼の自転車に乗っていかないで。
+14
+你應該把要這樣做的理由說清楚。
+🔊
+Nǐ yīnggāi bǎ yào zhèyàng zuò de lǐyóu shuō qīngchǔ.
+あなたは、そのようにしなければならない理由を、はっきり言わなければならない。
+15
+我打算把讀完的書全部賣掉。
+🔊
+Wǒ dǎsuàn bǎ dú wán de shū quánbù mài diào.
+私は読み終えた本を全部売ってしまうつもりだ。
+16
+弟弟把家裡的烤肉醬都用完了。
+🔊
+Dìdi bǎ jiā lǐ de kǎoròujiàng dōu yòng wán le.
+弟は家にある焼肉のタレを全部使ってしまった。
+17
+他一直把那次比賽的結果放在心上。
+🔊
+Tā yìzhí bǎ nà cì bǐsài de jiéguǒ fàng zài xīn shàng.
+彼はあの試合の結果をずっと気に留めている。
+18
+這張郵票好漂亮！我想把它貼在筆記本上。
+🔊
+Zhè zhāng yóupiào hǎo piàoliàng! Wǒ xiǎng bǎ tā tiē zài bǐjìběn shàng.
+この切手すごくきれい。ノートに貼りたい。
+19
+野餐的時候，請不要把垃圾留在公園裡。
+🔊
+Yěcān de shíhòu, qǐng bú yào bǎ lèsè liú zài gōngyuán lǐ.
+ピクニックのときは、ゴミを公園に残さないでください。
+20
+他打算把那封信寄到哪裡？
+🔊
+Tā dǎsuàn bǎ nà fēng xìn jì dào nǎlǐ?
+彼はあの手紙をどこに送るつもりなの？
+21
+你把醬油裝到袋子裡了沒有？
+🔊
+Nǐ bǎ jiàngyóu zhuāng dào dàizi lǐ le méi yǒu?
+あなたは醤油を袋に入れましたか。
+22
+我想把手機裡的照片傳到電腦裡。
+🔊
+Wǒ xiǎng bǎ shǒujī lǐ de zhàopiàn chuán dào diànnǎo lǐ.
+私はスマホの写真をパソコンに送りたい。
+23
+你先幫我把這三個盒子交給她吧。
+🔊
+Nǐ xiān bāng wǒ bǎ zhè sān ge hézi jiāo gěi tā ba.
+この3つの箱を先に彼女に渡してちょうだい。
+24
+我想經過阿明家的時候，把他的雨傘還給他。
+🔊
+Wǒ xiǎng jīngguò Āmíng jiā de shíhòu, bǎ tā de yǔsǎn huán gěi tā.
+阿明の家の前を通るときに、彼の傘を返そうと思う。
+25
+我想把這份禮物送給他，不知道他會不會喜歡？
+🔊
+Wǒ xiǎng bǎ zhè fèn lǐwù sòng gěi tā, bù zhīdào tā huì bú huì xǐhuān?
+このプレゼントを彼に贈ろうと思うけど、彼は気に入るかなあ？
+26
+要上課了，請把課本拿出來。
+🔊
+Yào shàngkè le, qǐng bǎ kèběn ná chū lái.
+もうすぐ授業だから、教科書を出してください。
+27
+我去把車開回來，你在這邊等我就好了。
+🔊
+Wǒ qù bǎ chē kāi huí lái, nǐ zài zhèbiān děng wǒ jiù hǎo le.
+車を[運転して戻ってくる／取ってくる]から、このへんで待っていたらいいよ。
+28
+你們不可以把國外的豬肉帶進台灣。
+🔊
+Nǐmen bù kěyǐ bǎ guó wài de zhūròu dài jìn Táiwān.
+海外の豚肉を台湾に持ち込んではいけません。
+
+Lesson 19
+4
+阿英平常都在平日白天上游泳課。
+🔊
+Āyīng píngcháng dōu zài píngrì báitiān shàng yóuyǒng kè.
+阿英は普段平日の昼間に水泳のレッスンを受ける。
+5
+我是在研究所畢業那年搬來的，已經住在這裡快三年了。
+🔊
+Wǒ shì zài yánjiūsuǒ bìyè nà nián bān lái de, yǐjīng zhù zài zhèlǐ kuài sān nián le.
+私は大学院を卒業した年に引っ越してきたので、ここに住んでまもなく3年になろうとしている。
+6
+我的腳是在搬書桌的時候受傷的。
+🔊
+Wǒ de jiǎo shì zài bān shūzhuō de shíhòu shòushāng de.
+私の足は勉強机を運んだときにけがをしたのです。
+7
+我父母不讓我們在吃飯時滑手機。
+🔊
+Wǒ fùmǔ bù ràng wǒmen zài chī fàn shí huá shǒujī.
+両親は、食事の時に私たちが携帯をいじるのを許してくれない。
+8
+他忘了在用微波爐加熱以前把那包醬油拿出來。
+🔊
+Tā wàng le zài yòng wéibólú jiārè yǐqián bǎ nà bāo jiàngyóu ná chūlái.
+彼は、レンジで温める前に、あの醤油を取り出すのを忘れた。
+9
+他在開完會三十分鐘後才到。
+🔊
+Tā zài kāi wán huì sānshí fēnzhōng hòu cái dào.
+彼は会議が終わって30分後にようやく着いた。
+10
+他在我生氣以後才把這件事告訴我。
+🔊
+Tā zài wǒ shēngqì yǐhòu cái bǎ zhè jiàn shì gàosù wǒ.
+彼は私が怒った後でようやくそのことを私に告げた。
+11
+他每次都在大家睡覺的時間打給我。
+🔊
+Tā měi cì dōu zài dàjiā shuìjiào de shíjiān dǎ gěi wǒ.
+彼は毎回みんなが寝ている時間に電話をかけてくる。
+12
+吳小姐平日都在台北工作，只在假日回基隆。
+🔊
+Wú xiǎojiě píngrì dōu zài Táiběi gōngzuò, zhǐ zài jiàrì huí Jīlóng.
+吳さんは平日は台北で働いていて、休みの日だけ基隆に帰る。
+13
+我哥哥每天都很早出門，很晚回家，我們只能在半夜見到他。
+🔊
+Wǒ gēge měitiān dōu hěn zǎo chū mén, hěn wǎn huí jiā, wǒmen zhǐ néng zài bànyè jiàn dào tā.
+兄は毎日早く出かけて遅くに家に帰るので、夜中しか会えない。
+14
+去年的春假是從四月二號開始放的。
+🔊
+Qùnián de chūnjià shì cóng sì yuè èr hào kāishǐ fàng de.
+去年の春休みは4月2日から始まったのです。
+15
+從下個月開始，這家動物園只在週末開。
+🔊
+Cóng xià ge yuè kāishǐ, zhè jiā dòngwùyuán zhǐ zài zhōumò kāi.
+来月から、この動物園は週末だけオープンする。
+16
+數學是從什麼時候開始變得這麼難的？
+🔊
+Shùxué shì cóng shénme shíhòu kāishǐ biàn de zhème nán de?
+数学って、いつからこんなに難しくなったの？
+17
+從明天起，我要去京都玩八天七夜。
+🔊
+Cóng míngtiān qǐ, wǒ yào qù Jīngdū wán bā tiān qī yè.
+明日から7泊8日で京都に遊びに行く。（※開始の代わりに起も使える）
+18
+醫生要我從今天起，少吃泡麵，多吃一點青菜。
+🔊
+Yīshēng yào wǒ cóng jīntiān qǐ, shǎo chī pàomiàn, duō chī yìdiǎn qīngcài.
+医者が私に、今日からインスタントラーメンを減らして、葉物野菜を多めに食べるようにと言った。
+19
+我們從哪裡出發？
+🔊
+Wǒmen cóng nǎlǐ chūfā?
+私たちはどこから出発しますか。（※場所詞なので"開始/起"は不要）
+20
+我從明天開始要認真念書。
+🔊
+Wǒ cóng míngtiān kāishǐ yào rènzhēn niàn shū.
+私は明日からまじめに勉強する。（※副詞/助動詞は開始の後）
+21
+從明天開始，我要認真念書。
+🔊
+Cóng míngtiān kāishǐ, wǒ yào rènzhēn niàn shū.
+明日から、私はまじめに勉強する。（※"從...開始/起"が文頭に来ることもある）
+22
+這種鳥一到秋天就會往南邊飛。
+🔊
+Zhè zhǒng niǎo yí dào qiūtiān jiù huì wǎng nánbiān fēi.
+この種の鳥は、秋になるとすぐ南へ向かって飛ぶ。
+23
+小姐，不好意思，請問最近的加油站應該往哪裡走？
+🔊
+Xiǎojiě, bù hǎoyìsi, qǐngwèn zuìjìn de jiāyóuzhàn yīnggāi wǎng nǎlǐ zǒu?
+(女性に) すみません、一番近いガソリンスタンドは、どちらへ向かって行ったらいいのでしょうか。
+24
+上捷運以後，請往裡面走。
+🔊
+Shàng jiéyùn yǐhòu, qǐng wǎng lǐmiàn zǒu.
+MRTに乗車後は、奥に向かってお進みください。
+25
+一直往前走，你會看到郵局和醫院的中間有一家小旅館。
+🔊
+Yìzhí wǎng qián zǒu, nǐ huì kàn dào yóujú hé yīyuàn de zhōngjiān yǒu yì jiā xiǎo lǚguǎn.
+ずっと前へ向かって歩いたら(まっすぐ行ったら)、郵便局と病院の間に小さなホテルが見えます。
+26
+你怎麼敢從那麼高的地方往下看？不會覺得很可怕嗎？
+🔊
+Nǐ zěnme gǎn cóng nàme gāo de dìfāng wǎng xià kàn? Bú huì juéde hěn kěpà ma?
+あなたは、どうしてあんなに高いところから下を見る勇気があるの？怖いと思わないの？
+
+Lesson 20
+5
+我這幾天不是發燒，就是咳嗽，越來越不舒服。
+🔊
+Wǒ zhè jǐ tiān bú shì fāshāo, jiù shì késòu, yuèláiyuè bù shūfú.
+ここ数日は、熱が出るか咳が出るかのどちらかで、だんだん体調が悪くなる。
+6
+每次我提到結婚，爸爸不是生氣，就是不說話。
+🔊
+Měi cì wǒ tí dào jiéhūn, bàba bú shì shēngqì, jiù shì bù shuō huà.
+私が結婚の話に触れるたびに、父は怒るか黙り込むかのどちらかだ。
+7
+他下課以後不是去踢足球，就是在圖書館念書。
+🔊
+Tā xiàkè yǐhòu bú shì qù tī zúqiú jiù shì zài túshūguǎn niàn shū.
+彼は、授業が終わると、サッカーをするのでなければ図書館で勉強する。
+8
+我最近都沒跟我男朋友約會，不是我沒有空，就是他要加班。
+🔊
+Wǒ zuìjìn dōu méi gēn wǒ nánpéngyǒu yuēhuì, bú shì wǒ méi yǒu kòng, jiù shì tā yào jiābān.
+私は最近ずっと彼氏とデートをしていない。私に暇がないか、彼に残業があるかのどちらかだ。
+9
+我在台灣過得很開心，每天不是老師請客，就是同學帶我去觀光。
+🔊
+Wǒ zài Táiwān guò de hěn kāixīn, měitiān bú shì lǎoshī qǐngkè, jiù shì tóngxué dài wǒ qù guāngguāng.
+私は台湾で楽しく過ごしている。毎日先生がごちそうしてくれるか、友達が観光に付き合ってくれるかのどちらかだ。
+10
+我們都認為家庭教育很重要，所以週末不是我教孩子們煮菜，就是太太教他們功課。
+🔊
+Wǒmen dōu rènwéi jiātíng jiàoyù hěn zhòngyào, suǒyǐ zhōumò bú shì wǒ jiāo háizimen zhǔ cài, jiù shì tàitai jiāo tāmen gōngkè.
+私たちはどちらも家庭教育が大切だと思っているから、週末は私が料理を教えるか、妻が子供に勉強を教えるかのどちらかだ。
+11
+這禮拜天氣很差，每天不是陰天，就是雨天。
+🔊
+Zhè lǐbài tiānqì hěn chā, měitiān bú shì yīntiān, jiù shì yǔtiān.
+今週は天気が悪い。毎日くもりか雨だ。
+12
+我們每次約的時間不是平日晚上九點以後，就是假日中午。
+🔊
+Wǒmen měi cì yuē de shíjiān bú shì píngrì wǎnshàng jiǔ diǎn yǐhòu, jiù shì jiàrì zhōngwǔ.
+私たちが待ち合わせる時間は、いつも平日の夜9時以降か休日の昼だ。
+13
+把我的蛋糕吃完的人，不是弟弟，就是爸爸。
+🔊
+Bǎ wǒ de dàngāo chī wán de rén, bú shì dìdi, jiù shì bàba.
+私のケーキを食べてしまったのは、弟じゃなければお父さんだ。
+14
+好消息！奇奇不但會游泳了，而且游得很好。
+🔊
+Hǎo xiāoxī! Qíqí búdàn huì yóuyǒng le, érqiě yóu de hěn hǎo.
+いいニュースだよ。奇奇は泳げるようになって、しかも泳ぎが上手なんだ。
+15
+從前沒有飛機的時候，出國不但很貴，而且非常麻煩。
+🔊
+Cóngqián méi yǒu fēijī de shíhòu, chū guó búdàn hěn guì, érqiě fēicháng máfán.
+昔飛行機がなかった頃、海外に行くのは高価だっただけでなく、非常に面倒だった。
+16
+那間美術館不但有世界各國的畫，而且還常常會辦各種活動。
+🔊
+Nà jiān měishùguǎn búdàn yǒu shìjiè gè guó de huà, érqiě hái chángcháng huì bàn gè zhǒng huódòng.
+あの美術館には世界各国の絵があるだけでなく、その上しょっちゅうさまざまなイベントもある。
+17
+阿姨租給我的這間房子，不但交通很方便，而且家具都是新的。
+🔊
+Āyí zū gěi wǒ de zhè jiān fángzi, búdàn jiāotōng hěn fāngbiàn, érqiě jiājù dōu shì xīn de.
+おばさんが貸してくれたこの部屋は、交通が便利な上に、家具も全部新しいものだ。
+18
+我們去那家茶館好嗎？那裡不但茶很好喝，而且冷氣也很涼。
+🔊
+Wǒmen qù nà jiā cháguǎn hǎo ma? Nàlǐ búdàn chá hěn hǎohē, érqiě lěngqì yě hěn liáng.
+あの茶館に行くのでどうだろう？あそこはお茶もおいしいし、冷房も涼しい。
+19
+台灣的大學不但學費不貴，而且獎學金也不難拿。
+🔊
+Táiwān de dàxué búdàn xuéfèi bù guì, érqiě jiǎngxuéjīn yě bù nán ná.
+台湾の大学は、学費が高くない上に奨学金をもらうのも難しくない。
+20
+這間海鮮餐廳菜很好吃，而且服務很棒。
+🔊
+Zhè jiān hǎixiān cāntīng cài hěn hǎochī, érqiě fúwù hěn bàng.
+このシーフードレストランは、料理がおいしい上に、サービスも素晴らしい。（※"不但"が省略されている形）
+21
+在便利商店，不但可以吃飯，也可以上網。
+🔊
+Zài biànlì shāngdiàn, búdàn kěyǐ chī fàn, yě kěyǐ shàngwǎng.
+コンビニでは、食事ができるだけでなく、インターネットも使える。
+22
+今天白天不但下了大雨，還很悶熱。
+🔊
+Jīntiān báitiān búdàn xià le dà yǔ, hái hěn mēnrè.
+今日の昼間は大雨が降っただけでなく、さらにムッとする暑さだった。
+23
+他會說台語，也會說客語。
+🔊
+Tā huì shuō Táiyǔ, yě huì shuō Kèyǔ.
+彼は台湾語が話せるし、客家語も話せる。(※2種類の言語の難しさに差を言っていない)
+24
+他不但會說台語，也會說客語。
+🔊
+Tā búdàn huì shuō Táiyǔ, yě huì shuō Kèyǔ.
+彼は台湾語が話せるだけでなく、客家語も話せる。(※難しさにあまり差を感じない)
+25
+他不但會說台語，而且(也)會說客語。
+🔊
+Tā búdàn huì shuō Táiyǔ, érqiě (yě) huì shuō Kèyǔ.
+彼は台湾語が話せるだけでなく、(その上)客家語も話せる。(※客家語のほうがちょっと難しい感じ)
+26
+他不但會說台語，(而且)還會說客語。
+🔊
+Tā búdàn huì shuō Táiyǔ, (érqiě) hái huì shuō Kèyǔ.
+彼は台湾語が話せるだけでなく、客家語さえも話せる。(※客家語のほうがずいぶん難しい感じ)
+`;
+
+        function parseTestData(text) {
+            const data = [];
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+            let currentLesson = "聽力測驗";
+            let globalId = 1;
+            
+            let i = 0;
+            while (i < lines.length) {
+                if (lines[i].startsWith('Lesson ')) {
+                    currentLesson = lines[i];
+                    i++; continue;
+                }
+                if (lines[i].includes('例文網羅')) { i++; continue; }
+                
+                // 項目番号の検知
+                if (/^\d+$/.test(lines[i])) {
+                    let speakerIconIndex = -1;
+                    for (let k = 1; k <= 5; k++) {
+                        if (i + k < lines.length && lines[i + k] === '🔊') {
+                            speakerIconIndex = i + k;
+                            break;
+                        }
+                    }
+                    
+                    if (speakerIconIndex !== -1) {
+                        const chineseLines = [];
+                        for (let j = i + 1; j < speakerIconIndex; j++) {
+                            chineseLines.push(lines[j]);
+                        }
+                        const chineseText = chineseLines.join(' ');
+                        
+                        let pinyinLines = [];
+                        let jpLines = [];
+                        let j = speakerIconIndex + 1;
+                        
+                        // ピンイン部分の収集 (かなや全角記号が現れるまで)
+                        while (j < lines.length) {
+                            const line = lines[j];
+                            if (/[ぁ-んァ-ヶ]/.test(line) || line.includes('。') || line.includes('（※') || line.includes('【')) {
+                                break;
+                            }
+                            pinyinLines.push(line);
+                            j++;
+                        }
+                        
+                        // 日本語部分の収集 (次の項目番号かLessonまで)
+                        while (j < lines.length) {
+                            const nextLine = lines[j];
+                            if (nextLine.startsWith('Lesson ')) break;
+                            if (/^\d+$/.test(nextLine)) {
+                                let nextSpeakerIndex = -1;
+                                for (let k = 1; k <= 5; k++) {
+                                    if (j + k < lines.length && lines[j + k] === '🔊') {
+                                        nextSpeakerIndex = j + k;
+                                        break;
+                                    }
+                                }
+                                if (nextSpeakerIndex !== -1) break; 
+                                
+                                // stray lesson numbers (e.g. "21" end of L21)
+                                if (nextLine === currentLesson.replace('Lesson ', '').trim()) {
+                                    break;
+                                }
+                            }
+                            jpLines.push(nextLine);
+                            j++;
+                        }
+                        
+                        data.push({
+                            id: globalId++,
+                            sectionName: currentLesson,
+                            script: [{ speaker: "例句", text: chineseText }],
+                            ans: "句子理解",
+                            choices: [],
+                            meta: `<strong>拼音：</strong>${pinyinLines.join('<br>')}<br><strong>日文：</strong>${jpLines.join('<br>')}`,
+                            vocab: [{ word: chineseText, pinyin: pinyinLines.join(' '), jp: jpLines.join(' '), speak: chineseText }],
+                            explanations: []
+                        });
+                        
+                        i = j;
+                        continue;
+                    } else {
+                        // 単独の章番号の残骸などをスキップ
+                        if (lines[i] === currentLesson.replace('Lesson ', '').trim()) {
+                            i++; continue;
+                        }
+                    }
+                }
+                i++;
+            }
+            return data;
+        }
+
+        const questionsData = parseTestData(rawData);
+
+        // ==========================================
+        // 共通・状態管理
+        // ==========================================
+        let playingId = null;
+        let playingType = null;
+        let isGlobalReveal = false;
+        let currentSpeechRate = 0.95;
+
+        function switchTab(tabId) {
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            const views = ['list', 'flashcard'];
+            views.forEach(v => {
+                document.getElementById(`${v}-view`).classList.add('hidden');
+                document.getElementById(`tab-${v}`).className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-colors";
+            });
+
+            document.getElementById(`${tabId}-view`).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).className = "px-6 py-2 rounded-full font-bold bg-indigo-600 text-white shadow-md transition-colors";
+
+            if (tabId === 'flashcard') {
+                setFlashcardMode(fcMode);
+            }
+        }
+
+        function toggleGlobalReveal() {
+            isGlobalReveal = !isGlobalReveal;
+            if (isGlobalReveal) {
+                document.body.classList.add('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i><span>すべて隠す</span>`;
+            } else {
+                document.body.classList.remove('global-reveal');
+                document.getElementById('global-reveal-btn').innerHTML = `<i data-lucide="eye" class="w-4 h-4"></i><span>すべての解答・スクリプトを表示</span>`;
+            }
+            lucide.createIcons({root: document.getElementById('global-reveal-btn')});
+        }
+
+        // ==========================================
+        // 音声再生ロジック
+        // ==========================================
+        function resetActiveUI() {
+            if (!playingId) return;
+            const btn = document.getElementById(playingId);
+            if (!btn) return;
+
+            if (playingType === 'vocab') {
+                const icon = btn.querySelector('.lucide-volume-2');
+                if (icon) {
+                    icon.classList.remove('animate-pulse', 'text-blue-600');
+                    icon.classList.add('text-blue-400');
+                }
+            } else if (playingType === 'single') {
+                btn.classList.remove('text-indigo-600', 'bg-indigo-100', 'text-emerald-600', 'bg-emerald-100');
+                btn.classList.add('text-slate-400');
+                const icon = btn.querySelector('.lucide-play');
+                if (icon) icon.setAttribute('fill', 'none');
+            } else if (playingType === 'conversation') {
+                btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btn.id.includes('fc-sent-play-after')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i>`;
+                } else if(btn.id.includes('btn-list-conv')) {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-5 h-5"></i> 2回再生して表示`;
+                } else if (btn.id.includes('fc-sent-play-')) {
+                    const count = btn.id.replace('fc-sent-play-', '');
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-6 h-6"></i> ${count}回再生`;
+                } else {
+                    btn.innerHTML = `<i data-lucide="play-circle" class="w-8 h-8"></i> 音声を再生`;
+                }
+                lucide.createIcons({root: btn});
+            }
+        }
+
+        function playConversation(qId, btnId, loopCount = 1, callback = null) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = 'conversation';
+
+            const btn = document.getElementById(btnId);
+            if(btn) {
+                btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-300');
+                if(btnId.includes('fc-sent-play-after') || btnId.includes('btn-list-conv')) {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 再生中...`;
+                } else {
+                     btn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> 再生中...`;
+                }
+                lucide.createIcons({root: btn});
+            }
+
+            const q = questionsData.find(x => x.id === qId);
+            if (!q) return;
+
+            const utterances = [];
+
+            for(let i=0; i<loopCount; i++) {
+                q.script.forEach((line, index) => {
+                    let delay = 600;
+                    if (index === q.script.length - 2) delay = 1200; 
+                    if (i === 0 && index === q.script.length - 1 && (!q.choices || q.choices.length === 0)) delay = 2000; 
+                    utterances.push({ text: line.text, delayAfter: delay });
+                });
+
+                if (q.choices && q.choices.length > 0) {
+                    q.choices.forEach((choice, index) => {
+                        let delay = 1000;
+                        const cleanChoice = choice.replace(/^[（(]([A-D])[）)]\s*/, '$1 '); 
+                        if (i === 0 && index === q.choices.length - 1) delay = 2000;
+                        utterances.push({ text: cleanChoice, delayAfter: delay });
+                    });
+                }
+            }
+
+            let currentIndex = 0;
+            function speakNext() {
+                if (playingId !== btnId) return; 
+                
+                if (currentIndex >= utterances.length) {
+                    resetActiveUI();
+                    playingId = null;
+                    playingType = null;
+                    if (callback) callback();
+                    return;
+                }
+
+                const currentItem = utterances[currentIndex];
+                const utterance = new SpeechSynthesisUtterance(currentItem.text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = currentSpeechRate;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+
+                utterance.onend = () => {
+                    const delay = currentItem.delayAfter;
+                    currentIndex++;
+                    setTimeout(() => { if (playingId === btnId) speakNext(); }, delay);
+                };
+                utterance.onerror = () => {
+                    currentIndex++;
+                    if (playingId === btnId) speakNext();
+                };
+                window.speechSynthesis.speak(utterance);
+            }
+            speakNext();
+        }
+
+        function speakText(text, btnId, isVocab, speakerType) {
+            if (!('speechSynthesis' in window)) {
+                showToast("お使いのブラウザは音声再生に対応していません。");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            resetActiveUI();
+
+            playingId = btnId;
+            playingType = isVocab ? 'vocab' : 'single';
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW'; 
+            utterance.rate = currentSpeechRate;  
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+
+            utterance.onstart = () => {
+                const btn = document.getElementById(btnId);
+                if (!btn) return;
+                if (isVocab) {
+                    const icon = btn.querySelector('.lucide-volume-2');
+                    if (icon) {
+                        icon.classList.remove('text-blue-400');
+                        icon.classList.add('animate-pulse', 'text-blue-600');
+                    }
+                } else {
+                    btn.classList.remove('text-slate-400');
+                    if (speakerType === '問') btn.classList.add('text-emerald-600', 'bg-emerald-100');
+                    else btn.classList.add('text-indigo-600', 'bg-indigo-100');
+                    const icon = btn.querySelector('.lucide-play');
+                    if (icon) icon.setAttribute('fill', 'currentColor');
+                }
+            };
+
+            utterance.onend = () => { resetActiveUI(); playingId = null; playingType = null; };
+            utterance.onerror = () => { resetActiveUI(); playingId = null; playingType = null; };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-4 left-1/2 transform -translate-x-1/2 bg-rose-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 font-bold transition-opacity duration-300";
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function getRubyText(text, makePinyinMain = false) {
+            if (typeof pinyinPro === 'undefined') return text;
+            try {
+                const pinyinArr = pinyinPro.pinyin(text, { type: 'array' });
+                const charArr = Array.from(text);
+                
+                for (let i = 0; i < charArr.length; i++) {
+                    if (charArr[i] === '得' && charArr[i+1] === '先') {
+                        pinyinArr[i] = 'děi';
+                    }
+                }
+
+                let html = '';
+                for (let i = 0; i < charArr.length; i++) {
+                    const char = charArr[i];
+                    const py = pinyinArr[i];
+                    if (/[\u4e00-\u9fa5]/.test(char) && py !== char) {
+                        if (makePinyinMain) {
+                            html += `<ruby style="ruby-position: over;" class="mx-1 text-xl sm:text-2xl md:text-3xl text-red-600 font-bold tracking-wider">${py}<rt class="text-xs sm:text-sm text-slate-600 font-sans tracking-normal font-bold">${char}</rt></ruby>`;
+                        } else {
+                            html += `<ruby style="ruby-position: under;" class="mx-[1px]">${char}<rt class="text-[0.7rem] text-slate-400 font-sans tracking-tighter">${py}</rt></ruby>`;
+                        }
+                    } else {
+                        if (makePinyinMain) {
+                            html += `<span class="mx-0.5 text-xl sm:text-2xl md:text-3xl text-slate-400">${char}</span>`;
+                        } else {
+                            html += `<span class="mx-[1px]">${char}</span>`;
+                        }
+                    }
+                }
+                return html;
+            } catch (e) {
+                return text;
+            }
+        }
+
+        function generateScriptHtml(script, qId, prefix = "list") {
+            return script.map((line, idx) => {
+                const btnId = `btn-${prefix}-line-${qId}-${idx}`;
+                let speakerBg = line.speaker === '男' ? 'bg-blue-100 text-blue-700' : 
+                                line.speaker === '女' ? 'bg-pink-100 text-pink-700' : 
+                                line.speaker === '問' ? 'bg-emerald-100 text-emerald-700' : 
+                                line.speaker === '例句' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700';
+                                
+                const phrases = line.text.match(/[^，。！？、,.\!\?]+[，。！？、,.\!\?]*/g) || [line.text];
+
+                return `
+                    <div class="flex flex-col gap-3 bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm w-full">
+                        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 w-full">
+                            <span class="font-bold px-3 py-1.5 rounded-md text-sm ${speakerBg} shrink-0 shadow-sm">${line.speaker}</span>
+                            <button id="${btnId}" onclick="speakText('${line.text.replace(/'/g, "\\'")}', '${btnId}', false, '${line.speaker}')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-200 transition-colors text-slate-500 bg-white border border-slate-200 shadow-sm shrink-0 text-sm font-bold" title="全文を再生">
+                                <i data-lucide="play" class="w-4 h-4 fill-current text-slate-400"></i> 全文再生
+                            </button>
+                        </div>
+                        <div class="w-full text-left pt-2">
+                            <p class="break-all whitespace-normal">
+                                ${phrases.map((phrase, pIdx) => {
+                                    const phraseBtnId = `${btnId}-p${pIdx}`;
+                                    const textToSpeak = phrases.slice(pIdx).join('').replace(/'/g, "\\'");
+                                    
+                                    const playBtn = pIdx > 0 ? `
+                                        <button id="${phraseBtnId}" onclick="speakText('${textToSpeak}', '${phraseBtnId}', false, '${line.speaker}')" class="inline-flex items-center justify-center align-middle mx-1.5 p-1.5 rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition-colors text-slate-400 border border-slate-200 bg-white shadow-sm shrink-0" title="ここから再生">
+                                            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                                        </button>
+                                    ` : '';
+                                    
+                                    return `
+                                        <span class="leading-[3.5rem] sm:leading-[4.5rem] align-middle inline">
+                                            ${playBtn}${getRubyText(phrase, true)}
+                                        </span>
+                                    `;
+                                }).join('')}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateVocabHtml(vocab, qId, prefix = "list") {
+            if (!vocab || vocab.length === 0) return '';
+            return vocab.map((v, idx) => {
+                const btnId = `btn-${prefix}-vocab-${qId}-${idx}`;
+                return `
+                    <div class="flex items-center gap-3 border border-slate-100 bg-white p-2.5 rounded-lg hover:border-indigo-200 transition-colors shadow-sm col-span-1 md:col-span-2">
+                        <button id="${btnId}" onclick="speakText('${v.speak.replace(/'/g, "\\'")}', '${btnId}', true)" class="flex-shrink-0 flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-md font-mono text-sm transition-colors group">
+                            <i data-lucide="volume-2" class="w-4 h-4 text-blue-400 group-hover:text-blue-600"></i>
+                            朗讀
+                        </button>
+                        <div class="flex flex-col justify-center overflow-hidden">
+                            <span class="font-bold text-slate-800 truncate" title="${v.word}">${v.word}</span>
+                            <span class="text-xs text-slate-500 truncate" title="${v.jp}">${v.jp}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateChoicesHtml(choices, qId, ans, isSecret = false, prefix = "list") {
+            if (!choices || choices.length === 0) return '';
+            return choices.map((choice, cIdx) => {
+                const optionLetter = (choice.match(/[A-D]/) || [])[0] || '';
+                const isCorrect = optionLetter === ans;
+                const btnId = `btn-${prefix}-choice-${qId}-${optionLetter || cIdx}`;
+                
+                const speakTextStr = choice.replace(/^[（(][A-D][）)]\s*/, optionLetter ? `${optionLetter} ` : '').replace(/'/g, "\\'");
+                const secretClass = isSecret ? 'secret-target' : '';
+                const ansHtml = isCorrect ? `<span class="${secretClass} flex-shrink-0 ml-2 text-emerald-600 font-bold text-xs bg-emerald-100 px-2 py-1 rounded">正解</span>` : '';
+                
+                return `
+                    <div class="p-3 rounded-lg border border-slate-200 bg-white flex justify-between items-center shadow-sm gap-2">
+                        <div class="flex items-start gap-2">
+                            <button id="${btnId}" onclick="event.stopPropagation(); speakText('${speakTextStr}', '${btnId}', false)" class="${secretClass} flex-shrink-0 p-1 rounded-full hover:bg-slate-100 transition-colors text-slate-400 mt-0.5">
+                                <i data-lucide="play" class="w-4 h-4"></i>
+                            </button>
+                            <span class="text-slate-800 leading-relaxed">${getRubyText(choice)}</span>
+                        </div>
+                        ${ansHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateExplanationsHtml(explanations, qId, prefix = "list") {
+            if (!explanations || explanations.length === 0) return '';
+            return `
+                <div class="mt-3 pt-3 border-t border-amber-200/60">
+                    <strong class="block mb-2 text-amber-800 flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4"></i>語彙・文法解説</strong>
+                    <ul class="space-y-1.5 text-sm">
+                        ${explanations.map((ex, idx) => {
+                            const btnId = `btn-${prefix}-expl-${qId}-${idx}`;
+                            const speakStr = ex.word.replace(/'/g, "\\'").replace(/\.\.\./g, " ").replace(/[\/\(\)（）]/g, " ");
+                            return `
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-500 mt-1 font-bold">•</span>
+                                <div class="flex-1 flex flex-wrap items-baseline gap-x-1 gap-y-1">
+                                    <button id="${btnId}" onclick="event.stopPropagation(); speakText('${speakStr}', '${btnId}', true)" class="inline-flex items-center gap-1 font-bold text-amber-900 hover:text-indigo-700 bg-amber-100/60 hover:bg-indigo-100 px-1.5 py-0.5 rounded transition-colors group shadow-sm" title="音声を再生">
+                                        <span>${ex.word}</span>
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5 text-blue-500 group-hover:text-indigo-600 transition-colors"></i>
+                                    </button>
+                                    ${ex.pinyin ? `<span class="text-amber-700 font-mono text-xs ml-1">(${ex.pinyin})</span>` : ''}
+                                    <span class="text-amber-800 break-words">：${ex.meaning}</span>
+                                </div>
+                            </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // 1. 一覧学習の描画
+        // ==========================================
+        function renderListView() {
+            const container = document.getElementById('list-content');
+            let html = '';
+            let currentSection = "";
+
+            questionsData.forEach(q => {
+                if (q.sectionName && q.sectionName !== currentSection) {
+                    currentSection = q.sectionName;
+                    html += `
+                        <div class="py-4 mt-8 mb-2 border-t-2 border-indigo-100 pt-8 first:mt-0 first:border-0 first:pt-0">
+                            <h2 class="text-2xl font-bold text-indigo-800 flex items-center justify-center gap-2">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                                ${currentSection}
+                            </h2>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <article id="list-q-${q.id}" class="question-container content-hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="bg-indigo-50 border-b border-indigo-100 px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                            <div class="flex items-center gap-4">
+                                <h2 class="text-xl font-bold text-indigo-800 shrink-0">第 ${q.id} 題</h2>
+                                <button onclick="playConversation(${q.id}, 'btn-list-conv-${q.id}', 2, () => { document.getElementById('list-q-${q.id}').classList.remove('content-hidden'); })" id="btn-list-conv-${q.id}" class="flex items-center gap-1.5 bg-white border border-indigo-200 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-bold shadow-sm hover:bg-indigo-50 transition-colors">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    2回再生して表示
+                                </button>
+                            </div>
+                            <div class="secret-target flex items-center gap-2 bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold transition-all duration-500 text-sm">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>測驗重點: <br class="sm:hidden" />${q.ans || "未輸入"}</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            ${q.choices && q.choices.length > 0 ? `<section><h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">選擇題</h3><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${generateChoicesHtml(q.choices, q.id, q.ans, true, 'list')}</div></section>` : ''}
+                            
+                            <section class="secret-target transition-all duration-500 delay-100">
+                                <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">聽力內容</h3>
+                                <div class="space-y-3">${generateScriptHtml(q.script, q.id, 'list')}</div>
+                            </section>
+
+                            <section class="bg-amber-50 border border-amber-200 rounded-lg p-4 secret-target transition-all duration-500 delay-300">
+                                <div class="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500"></i><h4>解析</h4>
+                                </div>
+                                <div class="text-amber-900 text-sm leading-relaxed">
+                                    ${q.meta}
+                                    ${generateExplanationsHtml(q.explanations, q.id, 'list')}
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ==========================================
+        // 2. フラッシュカードのロジック
+        // ==========================================
+        let fcTargetQuestions = [];
+        let allVocabs = [];
+        
+        let vocabTestQueue = [];
+        let sentenceTestQueue = [];
+        
+        let fcMode = 'vocab';
+        let currentCardIndex = 0;
+        
+        let isVocabAnswered = false;
+        let lastVocabAnswer = null;
+        
+        let isSentenceRevealed = false;
+
+        function initFlashcardsData() {
+            fcTargetQuestions = questionsData; 
+            
+            const vocabMap = new Map();
+            fcTargetQuestions.forEach(q => {
+                if (q.vocab) {
+                    q.vocab.forEach(v => {
+                        if (!vocabMap.has(v.word) && v.jp && !v.jp.includes('不正解')) {
+                            vocabMap.set(v.word, v);
+                        }
+                    });
+                }
+            });
+            allVocabs = Array.from(vocabMap.values());
+        }
+
+        function generateVocabChoices(correctVocab) {
+            const allJps = allVocabs.map(v => v.jp).filter(jp => jp !== correctVocab.jp);
+            const shuffledJps = allJps.sort(() => Math.random() - 0.5);
+            const choices = [correctVocab.jp];
+            for (let i = 0; i < 3 && i < shuffledJps.length; i++) {
+                choices.push(shuffledJps[i]);
+            }
+            return choices.sort(() => Math.random() - 0.5);
+        }
+
+        function setFlashcardMode(mode) {
+            if (fcTargetQuestions.length === 0) initFlashcardsData();
+            fcMode = mode;
+            currentCardIndex = 0;
+
+            if (mode === 'vocab') {
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                vocabTestQueue = [...allVocabs].sort(() => Math.random() - 0.5).map(v => ({
+                    ...v,
+                    choices: generateVocabChoices(v)
+                }));
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+            } else {
+                document.getElementById('fc-mode-sentence').className = "px-6 py-2 rounded-md text-sm font-bold bg-white text-indigo-700 shadow-sm transition-all";
+                document.getElementById('fc-mode-vocab').className = "px-6 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-700 transition-all";
+                
+                sentenceTestQueue = [...fcTargetQuestions].sort(() => Math.random() - 0.5);
+                isSentenceRevealed = false;
+            }
+            renderFlashcard();
+        }
+
+        function handleCardClick() {
+            if (fcMode === 'sentence' && !isSentenceRevealed) {
+                isSentenceRevealed = true;
+                renderFlashcard();
+            }
+        }
+
+        function answerVocab(choice) {
+            if (isVocabAnswered) return;
+            lastVocabAnswer = choice;
+            isVocabAnswered = true;
+            renderFlashcard();
+        }
+
+        function nextCard() {
+            window.speechSynthesis.cancel();
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            if (currentCardIndex < maxLen - 1) {
+                currentCardIndex++;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            window.speechSynthesis.cancel();
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                isVocabAnswered = false;
+                lastVocabAnswer = null;
+                isSentenceRevealed = false;
+                renderFlashcard();
+            }
+        }
+
+        function reshuffleCards() {
+            window.speechSynthesis.cancel();
+            setFlashcardMode(fcMode);
+        }
+
+        function renderFlashcard() {
+            const container = document.getElementById('flashcard-container');
+            const maxLen = fcMode === 'vocab' ? vocabTestQueue.length : sentenceTestQueue.length;
+            
+            if (maxLen === 0) {
+                 container.innerHTML = '<div class="text-center p-8 text-slate-500">沒有資料。</div>';
+                 return;
+            }
+
+            document.getElementById('fc-counter').innerText = `${currentCardIndex + 1} / ${maxLen}`;
+            let contentHtml = '';
+
+            if (fcMode === 'vocab') {
+                const item = vocabTestQueue[currentCardIndex];
+                
+                if (!isVocabAnswered) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-4">
+                            <p class="text-slate-500 mb-6 font-bold tracking-wide">音声を聽いて、正しい意味を選んでください</p>
+                            <button id="fc-vocab-play" onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play', true)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-5 px-10 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-3 text-xl">
+                                <i data-lucide="volume-2" class="w-8 h-8"></i> 音声を聽く
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl mx-auto">
+                            ${item.choices.map((choice, idx) => `
+                                <button onclick="event.stopPropagation(); answerVocab('${choice.replace(/'/g, "\\'")}')" class="p-4 bg-white border-2 border-slate-200 rounded-xl shadow-sm hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 transition-all text-slate-700 font-bold text-center h-full flex items-center justify-center min-h-[6rem] leading-relaxed text-sm sm:text-base">
+                                    ${choice}
+                                </button>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    const isCorrect = lastVocabAnswer === item.jp;
+                    contentHtml = `
+                        <div class="text-center mb-8 mt-4 animate-fade-in">
+                            <div class="inline-flex items-center justify-center p-4 rounded-full ${isCorrect ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'} mb-6 shadow-inner">
+                                <i data-lucide="${isCorrect ? 'check-circle' : 'x-circle'}" class="w-12 h-12"></i>
+                            </div>
+                            <div class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4 tracking-wide leading-snug">${item.word}</div>
+                            <div class="text-lg sm:text-xl text-slate-500 font-mono mb-6 bg-slate-100 inline-block px-4 py-2 rounded-md leading-relaxed break-all max-w-full">${item.pinyin}</div>
+                            <div class="text-xl font-bold text-indigo-700 leading-relaxed">${item.jp}</div>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-10">
+                            <button onclick="event.stopPropagation(); speakText('${item.speak.replace(/'/g, "\\'")}', 'fc-vocab-play-after', true)" id="fc-vocab-play-after" class="p-4 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors border border-slate-200">
+                                <i data-lucide="volume-2" class="w-6 h-6"></i>
+                            </button>
+                            <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow hover:bg-indigo-700 transition-colors flex items-center gap-2 text-lg">
+                                次の問題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                const item = sentenceTestQueue[currentCardIndex];
+                
+                if (!isSentenceRevealed) {
+                    contentHtml = `
+                        <div class="text-center mb-10 mt-8">
+                            <div class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-widest">${item.sectionName}</div>
+                            <h3 class="text-3xl font-bold text-slate-800 mb-8">第 ${item.id} 題</h3>
+                            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12">
+                                <button id="fc-sent-play-1" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-1', 1)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 1回再生
+                                </button>
+                                <button id="fc-sent-play-2" onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-2', 2)" class="bg-indigo-100 text-indigo-700 border-2 border-indigo-300 font-bold py-3 px-5 sm:px-6 rounded-full shadow-md hover:bg-indigo-200 transition-colors inline-flex items-center gap-2 text-base sm:text-lg">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i> 2回再生
+                                </button>
+                            </div>
+                            <p class="text-slate-500 font-medium bg-slate-100 inline-block px-6 py-3 rounded-lg"><i data-lucide="mouse-pointer-click" class="w-5 h-5 inline-block align-text-bottom mr-1 text-slate-400"></i> カードをクリック、またはSpaceキーで解答・解説を表示</p>
+                        </div>
+                    `;
+                } else {
+                    contentHtml = `
+                        <div class="w-full text-left animate-fade-in">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 border-b border-slate-200 pb-4 gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">${item.sectionName}</span>
+                                    <h3 class="text-2xl font-bold text-slate-800">第 ${item.id} 題 解答・解析</h3>
+                                </div>
+                                <button onclick="event.stopPropagation(); playConversation(${item.id}, 'fc-sent-play-after', 1)" id="fc-sent-play-after" class="p-3 rounded-full bg-slate-100 text-slate-500 hover:bg-indigo-100 hover:text-indigo-600 transition-colors shrink-0">
+                                    <i data-lucide="play-circle" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="bg-emerald-50 text-emerald-800 px-5 py-4 rounded-xl font-bold mb-8 flex items-center gap-3 text-lg border border-emerald-100 shadow-sm">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-emerald-600 shrink-0"></i> 重點: ${item.ans || "句子理解"}
+                            </div>
+
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> 聽力內容</h4>
+                                <div class="space-y-4 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    ${generateScriptHtml(item.script, `fc-sent-${item.id}`, 'fc')}
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4 mb-8">
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> 解析</h4>
+                                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-amber-900 text-sm leading-relaxed shadow-sm font-medium">
+                                    ${item.meta}
+                                    ${generateExplanationsHtml(item.explanations, item.id, 'fc')}
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end pt-4 border-t border-slate-100">
+                                <button onclick="event.stopPropagation(); nextCard()" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                    下一題 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            container.innerHTML = `
+                <div class="relative w-full min-h-[300px] bg-slate-50 rounded-2xl border-2 border-slate-200 p-6 md:p-10 flex flex-col justify-center items-center hover:border-indigo-200 transition-all shadow-sm">
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded bg-slate-200 text-xs font-bold text-slate-500 uppercase tracking-widest z-20">${(fcMode === 'vocab' && isVocabAnswered) || (fcMode === 'sentence' && isSentenceRevealed) ? 'Answer / Explanation' : 'Question'}</div>
+                    <div class="w-full mt-6">${contentHtml}</div>
+                </div>
+            `;
+            lucide.createIcons({root: container});
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('flashcard-view').classList.contains('hidden')) {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (fcMode === 'sentence' && !isSentenceRevealed) {
+                        isSentenceRevealed = true;
+                        renderFlashcard();
+                    }
+                } else if (e.code === 'ArrowRight') nextCard();
+                else if (e.code === 'ArrowLeft') prevCard();
+            }
+        });
+
+        // ==========================================
+        // 初期化
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListView();
+            lucide.createIcons();
+
+            const speedSlider = document.getElementById('speed-slider');
+            const speedDisplay = document.getElementById('speed-display');
+            speedSlider.addEventListener('input', (e) => {
+                currentSpeechRate = parseFloat(e.target.value);
+                speedDisplay.innerText = currentSpeechRate.toFixed(2) + 'x';
+            });
+        });
+    </script>
+</body>
+</html>
