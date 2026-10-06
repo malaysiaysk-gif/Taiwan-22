@@ -1,0 +1,46 @@
+Python
+import os
+import re
+
+# 注入したい完璧な台湾ボイスコード
+taiwan_code = """
+let taiwanVoice = null;
+function initTaiwanVoice() {
+    if ('speechSynthesis' in window) {
+        const voices = window.speechSynthesis.getVoices();
+        taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                      voices.find(v => v.name.includes('Yating')) ||
+                      voices.find(v => v.name.includes('Hanhan')) ||
+                      voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+    }
+}
+if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+    initTaiwanVoice();
+}
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.85;
+        if (taiwanVoice) { utterance.voice = taiwanVoice; }
+        window.speechSynthesis.speak(utterance);
+    }
+}
+"""
+
+folder_path = "."
+
+for filename in os.listdir(folder_path):
+    if filename.endswith(".html"):
+        file_path = os.path.join(folder_path, filename)
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # speakText関数周辺を正規表現で丸ごと置換
+        if "function speakText" in content:
+            new_content = re.sub(r'function speakText\(text\) \{[\s\S]*?\}', taiwan_code, content)
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(new_content)
+            print(f"置換成功: {filename}")
