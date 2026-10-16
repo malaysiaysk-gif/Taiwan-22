@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL対策：台湾華語 動詞重疊・重要構文総まとめ</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #eef5fc;
+            --accent: #ff7b00;
+            --text-main: #333;
+            --border-color: #dce4ec;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f7f9fc;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .intro {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .category-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        /* テキストエリアの調整（ピンイン拡大対応） */
+        .sentence-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--secondary);
+            padding: 25px 15px 15px 15px; 
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .chinese-text {
+            font-size: 1.5em;
+            letter-spacing: 0.05em;
+            line-height: 3; 
+        }
+        ruby {
+            margin-right: 18px; 
+        }
+        rt {
+            font-size: 1.5em; 
+            color: #333; 
+            font-weight: bold; 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            padding-bottom: 5px; 
+        }
+        .play-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        /* 単語ピックアップ用のボタンスタイル */
+        .mini-btn {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+        .translation {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .grammar-section, .vocab-section {
+            margin-top: 15px;
+        }
+        .section-title {
+            font-size: 1.05em;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 8px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .tocfl-tag {
+            display: inline-block;
+            background: #e10050;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+        /* 単語リストのレイアウト */
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .vocab-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 5px;
+            font-size: 1.1em;
+        }
+        .vocab-pinyin {
+            color: #666;
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFLメタ開放視点：台湾華語 動詞重疊・重要構文総まとめ</h1>
+        <div class="intro">
+            <strong>【TOCFL（華語文能力測驗）対策の視点】</strong><br>
+            本資料は、TOCFL Band A〜Bレベルにおいて最頻出となる**「動詞の重ね型（動詞重疊）」**を中心に、ネイティブが日常的に用いる文法・語彙を網羅的に整理したものです。<br>
+            「ちょっと〜する」「〜してみる」といった動作の短さ・気軽さを表す表現は、通常の動詞（AA / V一V）、過去の試行（V了一V）、離合詞（AAB）、試行の強調（VV看）など、形態によって明確なルールが存在します。音声機能とピンインを活用し、台湾特有の語彙（垃圾 lèsè、機車 jīchē 等）と合わせて学習してください。
+        </div>
+
+        <!-- Category 1 -->
+        <div class="category-title">1. 基本の動詞重疊（AA型 / V一V型）：動作の気軽さ・短さ</div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你平常那麼忙，假日的時候多陪陪孩子吧。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>忙<rt>máng</rt></ruby>， 
+                    <ruby>假<rt>jià</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>陪<rt>péi</rt></ruby><ruby>陪<rt>pe</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>吧<rt>ba</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あなたは普段あんなに忙しいのだから、休みの日はもっと子どもと一緒に過ごしてあげなさい。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('平常')">▶</button><span class="vocab-word">平常</span> <span class="vocab-pinyin">(píngcháng)</span>：普段</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('假日')">▶</button><span class="vocab-word">假日</span> <span class="vocab-pinyin">(jiàrì)</span>：休日</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('陪')">▶</button><span class="vocab-word">陪</span> <span class="vocab-pinyin">(péi)</span>：付き添う</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band A</span></div>
+                <ul>
+                    <li><strong>AA型重ね形（陪陪）：</strong>「陪（付き添う）」を重ねることで「少し時間を割いてあげる」という親しみや気遣いのニュアンスを付与。</li>
+                    <li><strong>多 ＋ 動詞：</strong>「積極的に〜する、もっと〜する」。勧誘やアドバイスの定番表現。</li>
+                    <li><strong>...的時候：</strong>「〜のとき」。TOCFL必須の時間条件節。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他說，熱狗烤一烤再吃會更好吃。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>說<rt>shuō</rt></ruby>，
+                    <ruby>熱<rt>rè</rt></ruby><ruby>狗<rt>gǒu</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼が言うには、ホットドッグは少し焼いてから食べたほうがもっと美味しいそうです。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('熱狗')">▶</button><span class="vocab-word">熱狗</span> <span class="vocab-pinyin">(règǒu)</span>：ホットドッグ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('烤')">▶</button><span class="vocab-word">烤</span> <span class="vocab-pinyin">(kǎo)</span>：焼く</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>V一V型（烤一烤）：</strong>「ちょっと焼く」。料理や準備などにおける短い動作のプロセスを示す。</li>
+                    <li><strong>(先)...再...：</strong>「〜してから...する」。順序関係。</li>
+                    <li><strong>會 ＋ 状態/結果：</strong>推測や「〜になるはずだ」という状況の変化。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('簽證早一點辦一辦，才會比較放心。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>簽<rt>Qiān</rt></ruby><ruby>證<rt>zhèng</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>辦<rt>bàn</rt></ruby>，
+                    <ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>心<rt>xīn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ビザの申請は早めに済ませておいてこそ、安心できます。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('簽證')">▶</button><span class="vocab-word">簽證</span> <span class="vocab-pinyin">(qiānzhèng)</span>：ビザ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('辦')">▶</button><span class="vocab-word">辦</span> <span class="vocab-pinyin">(bàn)</span>：処理する、手続きする</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('放心')">▶</button><span class="vocab-word">放心</span> <span class="vocab-pinyin">(fàngxīn)</span>：安心する</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>V一V型（辦一辦）：</strong>「サッと済ませる、パパッと処理する」。事務手続きの気軽さを表す。</li>
+                    <li><strong>早一點 ＋ 動詞：</strong>「早めに〜する」。TOCFLでは「形容詞＋一點」が副詞的に働く構造が頻出。</li>
+                    <li><strong>才 ＋ 會...：</strong>「〜してはじめて...になる」。前節が必須条件であることを強く示す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我女朋友晚一點要來，房間裡的垃圾得丟一丟。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>來<rt>lái</rt></ruby>，
+                    <ruby>房<rt>fáng</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>垃<rt>lè</rt></ruby><ruby>圾<rt>sè</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>丟<rt>diū</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼女が後で来ることになっているから、部屋の中のごみを捨てておかなきゃ。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('垃圾')">▶</button><span class="vocab-word">垃圾</span> <span class="vocab-pinyin">(lèsè)</span>：ごみ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('丟')">▶</button><span class="vocab-word">丟</span> <span class="vocab-pinyin">(diū)</span>：捨てる</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>得 (děi) ＋ 動詞：</strong>「〜しなければならない」。助動詞の用法。</li>
+                    <li><strong>V一V型（丟一丟）：</strong>「パッと捨てる、片付ける」。</li>
+                    <li><strong>垃圾 (lèsè)：</strong>台湾華語特有の発音（※普通話 lājī）。TOCFLリスニングで注意が必要な重要単語。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-title">2. 試行と過去の短暫動作（VV看 / V了一V型）</div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你聞聞看，這塊奶油多香啊！')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>聞<rt>wen</rt></ruby><ruby>看<rt>kàn</rt></ruby>，
+                    <ruby>這<rt>zhè</rt></ruby><ruby>塊<rt>kuài</rt></ruby><ruby>奶<rt>nǎi</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>香<rt>xiāng</rt></ruby><ruby>啊<rt>a</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">ちょっとにおいを嗅いでみて、このバター（生クリーム）はなんて良い香りなんでしょう！</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('聞')">▶</button><span class="vocab-word">聞</span> <span class="vocab-pinyin">(wén)</span>：嗅ぐ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('奶油')">▶</button><span class="vocab-word">奶油</span> <span class="vocab-pinyin">(nǎiyóu)</span>：バター、クリーム</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('香')">▶</button><span class="vocab-word">香</span> <span class="vocab-pinyin">(xiāng)</span>：香りが良い</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band A</span></div>
+                <ul>
+                    <li><strong>動詞重疊 ＋ 看（聞聞看）：</strong>「試しに〜してみる」。TOCFLの会話問題における頻出の「試行」表現。（例：吃吃看、穿穿看）</li>
+                    <li><strong>多 ＋ 形容詞 ＋ 啊：</strong>「なんて〜なんだろう！」。程度の高さを強調する感嘆文。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我看了一看天空，感覺等一下會下雨。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>空<rt>kōng</rt></ruby>，
+                    <ruby>感<rt>gǎn</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>雨<rt>yǔ</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">空をちらっと見上げたら、もう少ししたら雨が降りそうな気がする。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('感覺')">▶</button><span class="vocab-word">感覺</span> <span class="vocab-pinyin">(gǎnjué)</span>：感じる、〜な気がする</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('下雨')">▶</button><span class="vocab-word">下雨</span> <span class="vocab-pinyin">(xiàyǔ)</span>：雨が降る</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>V ＋ 了 ＋ 一 ＋ V（看了一看）：</strong>「（過去に）ちょっと〜してみた」。動作がすでに完了しており、かつ短時間であったことを表すアスペクト構造。</li>
+                    <li><strong>等一下：</strong>「のちほど、もうすぐ」。近接未来の時間を表す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-title">3. 離合詞の重疊（AAB型）：気楽な日常のアクティビティ</div>
+        <div class="intro" style="margin-top:10px;">
+            ※「動詞＋名詞（目的語）」からなる単語（離合詞）を重ねる場合、動詞部分のみを重ねる【AAB型】となります。Band B以降の作文・並び替え問題の確実な得点源です。
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我家在中部的鄉下，歡迎你們來烤烤肉、泡泡溫泉。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鄉<rt>xiāng</rt></ruby><ruby>下<rt>xià</rt></ruby>，
+                    <ruby>歡<rt>huān</rt></ruby><ruby>迎<rt>yíng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>肉<rt>ròu</rt></ruby>、
+                    <ruby>泡<rt>pào</rt></ruby><ruby>泡<rt>pào</rt></ruby><ruby>溫<rt>wēn</rt></ruby><ruby>泉<rt>quán</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私の家は中部（台湾中部）の田舎にあります。皆で遊びに来て、バーベキューをしたり温泉に浸かったりしてくださいね。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('鄉下')">▶</button><span class="vocab-word">鄉下</span> <span class="vocab-pinyin">(xiāngxià)</span>：田舎</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('歡迎')">▶</button><span class="vocab-word">歡迎</span> <span class="vocab-pinyin">(huānyíng)</span>：歓迎する</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('溫泉')">▶</button><span class="vocab-word">溫泉</span> <span class="vocab-pinyin">(wēnquán)</span>：温泉</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>離合詞AAB型（烤烤肉）：</strong>「烤肉（BBQする）」のA（烤）を重ねて「ワイワイ気楽にBBQを楽しむ」ニュアンス。</li>
+                    <li><strong>離合詞AAB型（泡泡溫泉）：</strong>「泡溫泉（温泉に浸かる）」のA（泡）を重ねて「ゆったり温泉を楽しむ」ニュアンス。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你有空的時候可以去停車場開開車，練習一下。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>空<rt>kòng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>場<rt>chǎng</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>車<rt>chē</rt></ruby>，
+                    <ruby>練<rt>liàn</rt></ruby><ruby>習<rt>xí</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">時間があるときに駐車場に行って少し運転してみて、ちょっと練習するといいよ。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('停車場')">▶</button><span class="vocab-word">停車場</span> <span class="vocab-pinyin">(tíngchēchǎng)</span>：駐車場</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('練習')">▶</button><span class="vocab-word">練習</span> <span class="vocab-pinyin">(liànxí)</span>：練習する</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>離合詞AAB型（開開車）：</strong>「開車（運転する）」の動詞「開」を重ね、「サクッと運転してみる」試行を表す。</li>
+                    <li><strong>動詞 ＋ 一下：</strong>「一下」は動量補語として機能し、動作・時間の短さを表す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他週末喜歡跟朋友一起聊聊天、逛逛街。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>天<rt>tiān</rt></ruby>、
+                    <ruby>逛<rt>guàng</rt></ruby><ruby>逛<rt>guàng</rt></ruby><ruby>街<rt>jiē</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼は週末、友達と一緒に雑談したり街をぶらぶらしたりするのが好きです。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('週末')">▶</button><span class="vocab-word">週末</span> <span class="vocab-pinyin">(zhōumò)</span>：週末</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('聊天')">▶</button><span class="vocab-word">聊天</span> <span class="vocab-pinyin">(liáotiān)</span>：おしゃべりする</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('逛街')">▶</button><span class="vocab-word">逛街</span> <span class="vocab-pinyin">(guàngjiē)</span>：街をぶらつく</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>跟 A 一起 V：</strong>「Aと一緒にVする」。介詞「跟」の最重要構文の一つ。</li>
+                    <li><strong>離合詞AAB型（聊聊天）：</strong>「聊天（雑談する）」→「のんびりお喋りする」。</li>
+                    <li><strong>離合詞AAB型（逛逛街）：</strong>「逛街（街をぶらつく）」→「ウィンドウショッピングを楽しむ」。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-title">4. 応用比較構文：否定比較（不比）</div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你比一比就會發現，郊區的環境不比市區的差。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby>，
+                    <ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>環<rt>huán</rt></ruby><ruby>境<rt>jìng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>差<rt>chà</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あなたがちょっと比べたらすぐに気づくでしょうが、郊外の環境は都心部の環境に比べて悪くありません（負けていません）。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('發現')">▶</button><span class="vocab-word">發現</span> <span class="vocab-pinyin">(fāxiàn)</span>：気づく、発見する</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('郊區')">▶</button><span class="vocab-word">郊區</span> <span class="vocab-pinyin">(jiāoqū)</span>：郊外</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('環境')">▶</button><span class="vocab-word">環境</span> <span class="vocab-pinyin">(huánjìng)</span>：環境</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・構文 <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>V一V型（比一比）：</strong>「試しに比較してみる」。</li>
+                    <li><strong>A 不比 B ＋ 形容詞：</strong>【否定比較構文】「AはBと比べても（その形容詞の点で）劣っていない・同等以上に良い」。相手の先入観を反証する文脈で必須となる高度な比較表現。</li>
+                    <li><strong>名詞の省略（市區的）：</strong>「市區的環境」の「環境」が文脈上明らかなため、「的」を残して省略。読解問題のキーポイント。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完璧な台湾ボイスコード -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL対策：台湾華語 把構文・動詞重疊・重要構文総まとめ</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #eef5fc;
+            --accent: #ff7b00;
+            --text-main: #333;
+            --border-color: #dce4ec;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f7f9fc;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .intro {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .category-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .sentence-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--secondary);
+            padding: 25px 15px 15px 15px; 
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .chinese-text {
+            font-size: 1.5em;
+            letter-spacing: 0.05em;
+            line-height: 3; 
+        }
+        ruby {
+            margin-right: 18px; 
+        }
+        rt {
+            font-size: 1.5em; 
+            color: #333; 
+            font-weight: bold; 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            padding-bottom: 5px; 
+        }
+        .play-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        /* 単語ピックアップ用のボタンスタイル */
+        .mini-btn {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+        .translation {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .grammar-section, .vocab-section {
+            margin-top: 15px;
+        }
+        .section-title {
+            font-size: 1.05em;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 8px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .tocfl-tag {
+            display: inline-block;
+            background: #e10050;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+        /* 単語リストのレイアウト */
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .vocab-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 5px;
+            font-size: 1.1em;
+        }
+        .vocab-pinyin {
+            color: #666;
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFLメタ開放視点：把構文・試行重疊・生活表現総まとめ</h1>
+        <div class="intro">
+            <strong>【TOCFL（華語文能力測驗）対策の視点】</strong><br>
+            本資料は、直近で学んだ18文節を網羅的に体系化したものです。<br>
+            TOCFL Band Bでの合否を分ける**「把構文（処置文）」の語順ルール**、**「動詞の試行表現（AA看 / V一V）」**に加えて、短文中に含まれる**TOCFL頻出語彙**をピックアップしました。各単語の音声ボタンを押して発音チェックに活用してください。
+        </div>
+
+        <!-- Category 1 -->
+        <div class="category-title">1. 動詞重疊・試行表現と自然発生（AA看 / V一V / 想）</div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我想查查看這兩個城市的氣候有什麼不同。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>查<rt>chá</rt></ruby><ruby>查<rt>cha</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>城<rt>chéng</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>同<rt>tóng</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">この2つの都市の気候にどのような違いがあるか、ちょっと調べてみたいです。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('查')">▶</button><span class="vocab-word">查</span> <span class="vocab-pinyin">(chá)</span>：調べる、検索する</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('氣候')">▶</button><span class="vocab-word">氣候</span> <span class="vocab-pinyin">(qìhòu)</span>：気候</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('城市')">▶</button><span class="vocab-word">城市</span> <span class="vocab-pinyin">(chéngshì)</span>：都市、街</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>AA看（查查看）：</strong>「（試しに）ちょっと〜してみる」。動作の重疊＋看による気楽な試行。</li>
+                    <li><strong>間接疑問文：</strong>「有什麼不同」がそのまま「查查看」の目的語になる語順構造。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這個故事好無聊，我聽一聽就想睡了。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>無<rt>wú</rt></ruby><ruby>聊<rt>liáo</rt></ruby>，
+                    <ruby>我<rt>wǒ</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このお話はすごく退屈で、ちょっと聞いているだけで眠くなってきちゃったよ。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('故事')">▶</button><span class="vocab-word">故事</span> <span class="vocab-pinyin">(gùshì)</span>：物語、お話</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('無聊')">▶</button><span class="vocab-word">無聊</span> <span class="vocab-pinyin">(wúliáo)</span>：退屈だ、つまらない</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>V一V型（聽一聽）：</strong>「少し〜しているうちに」。短時間・継続の動作。</li>
+                    <li><strong>「想」の生理現象表現：</strong>意図的ではなく「自然発生的な欲求・睡魔の発生」を表す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-title">2. 把構文：基本構造と状態変化</div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('她把飯吃得多麼乾淨啊！')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>她<rt>Tā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby><ruby>啊<rt>a</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">彼女はおご飯をなんて綺麗に（綺麗さっぱり）食べたのでしょう！</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('乾淨')">▶</button><span class="vocab-word">乾淨</span> <span class="vocab-pinyin">(gānjìng)</span>：綺麗だ、清潔だ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('多麼')">▶</button><span class="vocab-word">多麼</span> <span class="vocab-pinyin">(duōme)</span>：なんて〜なんだろう（感嘆）</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>把構文 ＋ 様態補語：</strong>「把 ＋ 目的語 ＋ 動詞 ＋ 得 ＋ 補語」。処置した結果生じた状態を説明。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我又把錢數了一次，結果還是不夠。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>數<rt>shǔ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby>，
+                    <ruby>結<rt>jié</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>夠<rt>gòu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私はもう一度お札（お金）を数え直してみたけれど、結果はやっぱり足りなかった。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('數')">▶</button><span class="vocab-word">數</span> <span class="vocab-pinyin">(shǔ)</span>：数える（動詞）</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('結果')">▶</button><span class="vocab-word">結果</span> <span class="vocab-pinyin">(jiéguǒ)</span>：結果</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('夠')">▶</button><span class="vocab-word">夠</span> <span class="vocab-pinyin">(gòu)</span>：足りる、十分だ</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>多音字「數」：</strong>動詞は `shǔ`（数える）、名詞は `shù`（数字）。</li>
+                    <li><strong>還是：</strong>努力や確認にもかかわらず「やはり（結果が不変である）」落胆のニュアンス。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我打算把那棟房子賣了。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>棟<rt>dòng</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>賣<rt>mài</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私はあの家（建物）を売ってしまおうと計画しています。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('打算')">▶</button><span class="vocab-word">打算</span> <span class="vocab-pinyin">(dǎsuàn)</span>：〜するつもりだ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('棟')">▶</button><span class="vocab-word">棟</span> <span class="vocab-pinyin">(dòng)</span>：〜棟（建物の量詞）</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('房子')">▶</button><span class="vocab-word">房子</span> <span class="vocab-pinyin">(fángzi)</span>：家、建物</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-title">3. 把構文 ＋ V一V / 順序・完了アドバイス</div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('趕快把藥吃了，感冒才會好得快。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>趕<rt>Gǎn</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby>，
+                    <ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>快<rt>kuài</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">早く薬を飲んじゃいなさい。そうしてこそ風邪が早く治るんだから。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('趕快')">▶</button><span class="vocab-word">趕快</span> <span class="vocab-pinyin">(gǎnkuài)</span>：急いで、早く</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('感冒')">▶</button><span class="vocab-word">感冒</span> <span class="vocab-pinyin">(gǎnmào)</span>：風邪(をひく)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('吃藥')">▶</button><span class="vocab-word">吃藥</span> <span class="vocab-pinyin">(chī yào)</span>：薬を飲む</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>吃藥（※喝藥は不可）：</strong>中国語・台湾華語では薬の服用は常に「吃」。</li>
+                    <li><strong>才 ＋ 會：</strong>必要条件の帰結（〜してこそ〜になる）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這裡的河水很髒，回家後記得把手洗一洗。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>河<rt>hé</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>髒<rt>zāng</rt></ruby>，
+                    <ruby>回<rt>huí</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>洗<rt>xǐ</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ここの川の水はとても汚いので、家に帰ったら忘れずに手を洗いなさい。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('髒')">▶</button><span class="vocab-word">髒</span> <span class="vocab-pinyin">(zāng)</span>：汚い</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('記得')">▶</button><span class="vocab-word">記得</span> <span class="vocab-pinyin">(jìde)</span>：忘れずに〜する、覚えている</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>記得 ＋ 動作：</strong>「忘れずに〜する」（日常会話の超頻出誘導フレーズ）。</li>
+                    <li><strong>把構文 ＋ V一V型（把手洗一洗）：</strong>パパッと手を洗うという軽快な処置表現。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('把電視關一關吧，環保一點！')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>把<rt>Bǎ</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>視<rt>shì</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>吧<rt>ba</rt></ruby>，
+                    <ruby>環<rt>huán</rt></ruby><ruby>保<rt>bǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">テレビを（パパッと）消しなさいよ、少しは環境に配慮して（省エネして）！</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('環保')">▶</button><span class="vocab-word">環保</span> <span class="vocab-pinyin">(huánbǎo)</span>：環境保護、エコだ</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>形容詞 ＋ 一點（環保一點）：</strong>現状からの変化・配慮を求める要求（もっとエコにしなさい）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-title">4. 把構文の【語順ルール】：否定・疑問詞・過失・授与・比較</div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你可以把環境污染的影響再說明一次嗎？')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>環<rt>huán</rt></ruby><ruby>境<rt>jìng</rt></ruby><ruby>污<rt>wū</rt></ruby><ruby>染<rt>rǎn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>響<rt>xiǎng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">環境汚染の影響について、もう一度説明していただけますか？</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('環境污染')">▶</button><span class="vocab-word">環境污染</span> <span class="vocab-pinyin">(huánjìng wūrǎn)</span>：環境汚染</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('影響')">▶</button><span class="vocab-word">影響</span> <span class="vocab-pinyin">(yǐngxiǎng)</span>：影響</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('說明')">▶</button><span class="vocab-word">說明</span> <span class="vocab-pinyin">(shuōmíng)</span>：説明する</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你把這一課多唸幾遍就會懂了。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>唸<rt>niàn</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>遍<rt>biàn</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>懂<rt>dǒng</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">この課をあと何回か繰り返し音読すれば、きっと分かるようになりますよ。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('唸')">▶</button><span class="vocab-word">唸</span> <span class="vocab-pinyin">(niàn)</span>：音読する、勉強する</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('遍')">▶</button><span class="vocab-word">遍</span> <span class="vocab-pinyin">(biàn)</span>：〜回（通して行う）</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('懂')">▶</button><span class="vocab-word">懂</span> <span class="vocab-pinyin">(dǒng)</span>：分かる、理解する</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我把這個社會新聞看了好幾遍，還是沒辦法相信他做了這麼可怕的事。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>社<rt>shè</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>遍<rt>biàn</rt></ruby>，
+                    <ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>事<rt>shì</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私はこの社会ニュースを何度も読み返してみたけれど、彼がこんなに恐ろしいことをしたなんて、やはりどうしても信じられない。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('社會')">▶</button><span class="vocab-word">社會</span> <span class="vocab-pinyin">(shèhuì)</span>：社会</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('新聞')">▶</button><span class="vocab-word">新聞</span> <span class="vocab-pinyin">(xīnwén)</span>：ニュース</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('相信')">▶</button><span class="vocab-word">相信</span> <span class="vocab-pinyin">(xiāngxìn)</span>：信じる</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('可怕')">▶</button><span class="vocab-word">可怕</span> <span class="vocab-pinyin">(kěpà)</span>：恐ろしい</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>沒辦法 ＋ 動詞：</strong>「どうしても〜できない」（困惑・不能の強調）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('對不起，其實我在搬家的時候不小心把你的拖鞋丟了。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>對<rt>Duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，
+                    <ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>拖<rt>tuō</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ごめんなさい、実は引越しをしていた時、うっかりあなたのスリッパを捨てちゃったんです。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('搬家')">▶</button><span class="vocab-word">搬家</span> <span class="vocab-pinyin">(bānjiā)</span>：引越しをする</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('不小心')">▶</button><span class="vocab-word">不小心</span> <span class="vocab-pinyin">(bù xiǎoxīn)</span>：うっかり、不注意で</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('拖鞋')">▶</button><span class="vocab-word">拖鞋</span> <span class="vocab-pinyin">(tuōxié)</span>：スリッパ</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>不小心 ＋ 把構文：</strong>「うっかり〜しちゃった」（過失・ハプニングの定番構文）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我猜她還沒把那些門票給他。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>猜<rt>cāi</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私の推測だけど、彼女はまだあのチケットを彼に渡していないと思う。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('猜')">▶</button><span class="vocab-word">猜</span> <span class="vocab-pinyin">(cāi)</span>：推測する、当てる</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('門票')">▶</button><span class="vocab-word">門票</span> <span class="vocab-pinyin">(ménpiào)</span>：チケット、入場券</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>還沒 ＋ 把……：</strong>【重要規則】未完了否定「還沒」も必ず「把」の前に置く。</li>
+                    <li><strong>把 ＋ 目的語 ＋ 給 ＋ 人：</strong>所有権・移転の把構文。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你為什麼把這個壞消息直接告訴她了？')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>壞<rt>huài</rt></ruby><ruby>消<rt>xiāo</rt></ruby><ruby>息<rt>xí</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>sù</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>了<rt>le</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">あなたはどうしてこの悪い知らせを直接彼女に言っちゃったの？</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('消息')">▶</button><span class="vocab-word">消息</span> <span class="vocab-pinyin">(xiāoxí)</span>：知らせ、ニュース</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('直接')">▶</button><span class="vocab-word">直接</span> <span class="vocab-pinyin">(zhíjiē)</span>：直接、ストレートに</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('告訴')">▶</button><span class="vocab-word">告訴</span> <span class="vocab-pinyin">(gàosù)</span>：伝える</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>為什麼 ＋ 把……：</strong>【重要規則】疑問副詞「為什麼」も「把」の前に配置。</li>
+                    <li><strong>把 ＋ 情報 ＋ 告訴 ＋ 人：</strong>情報伝達の把構文。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我把這樣做的好處跟壞處都告訴你了，你可以自己決定要怎麼做。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>壞<rt>huài</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>sù</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>了<rt>le</rt></ruby>，
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>做<rt>zuò</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このようにすることのメリットとデメリットはすべてあなたに伝えましたから、どうするかは自分で決めて構いませんよ。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('好處')">▶</button><span class="vocab-word">好處</span> <span class="vocab-pinyin">(hǎochù)</span>：メリット、長所</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('壞處')">▶</button><span class="vocab-word">壞處</span> <span class="vocab-pinyin">(huàichù)</span>：デメリット、短所</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('決定')">▶</button><span class="vocab-word">決定</span> <span class="vocab-pinyin">(juédìng)</span>：決める、決定する</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>「都」の位置：</strong>網羅を表す「都」は把構文内では動詞の直前（把句の後ろ）に置く。</li>
+                    <li><strong>決定 ＋ 間接疑問句（要怎麼做）：</strong>後続節にそのまま疑問語順を埋め込む。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('爸爸說不要到處把手機號碼給別人，尤其是不認識的人。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>爸<rt>Bà</rt></ruby><ruby>爸<rt>ba</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>碼<rt>mǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby>，
+                    <ruby>尤<rt>yóu</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お父さんは、むやみに携帯電話の番号を人に教えちゃダメだって言っていたよ。特に知らない人にはね。</div>
+            
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('到處')">▶</button><span class="vocab-word">到處</span> <span class="vocab-pinyin">(dàochù)</span>：いたるところに、むやみに</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('尤其')">▶</button><span class="vocab-word">尤其</span> <span class="vocab-pinyin">(yóuqí)</span>：特に、とりわけ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('認識')">▶</button><span class="vocab-word">認識</span> <span class="vocab-pinyin">(rènshì)</span>：知り合いである</span>
+                </div>
+            </div>
+
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>不要 ＋ 到處 ＋ 把……：</strong>禁止（不要）および範囲副詞（到處）も「把」の前に置く。</li>
+                    <li><strong>尤其是……：</strong>「特に〜だ」。特定の対象を強調・限定。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完璧な台湾ボイスコード -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL対策：台湾華語 方向補語・結果補語・重要構文総まとめ</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #eef5fc;
+            --accent: #ff7b00;
+            --text-main: #333;
+            --border-color: #dce4ec;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f7f9fc;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .intro {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .category-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .sentence-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--secondary);
+            padding: 25px 15px 15px 15px; 
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .chinese-text {
+            font-size: 1.5em;
+            letter-spacing: 0.05em;
+            line-height: 3; 
+        }
+        ruby {
+            margin-right: 18px; 
+        }
+        rt {
+            font-size: 1.5em; 
+            color: #333; 
+            font-weight: bold; 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            padding-bottom: 5px; 
+        }
+        .play-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        .mini-btn {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
+        .translation {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .grammar-section, .vocab-section {
+            margin-top: 15px;
+        }
+        .section-title {
+            font-size: 1.05em;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 8px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .tocfl-tag {
+            display: inline-block;
+            background: #e10050;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .vocab-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fcfcfc;
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 5px;
+            font-size: 1.1em;
+        }
+        .vocab-pinyin {
+            color: #666;
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFLメタ開放視点：方向補語・結果補語・把構文 総まとめ</h1>
+        <div class="intro">
+            <strong>【TOCFL（華語文能力測驗）対策の視点】</strong><br>
+            本資料は、直近で学んだ15個の例文を体系的に整理したものです。<br>
+            TOCFL Band Bを突破するための鍵となる**「方向補語・結果補語（上、下、下來、下去）」**の物理的・抽象的用法と、**「把構文」の語順ルール**に特化しています。大きなピンインと単語音声機能を活用して、リスニングと文法構造の把握を同時に行いましょう。
+        </div>
+
+        <!-- Category 1 -->
+        <div class="category-title">1. 把構文：授与・場所の指定と否定詞の位置</div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('爸爸說不要到處把手機號碼給別人，尤其是不認識的人。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>爸<rt>Bà</rt></ruby><ruby>爸<rt>ba</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>碼<rt>mǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>尤<rt>yóu</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お父さんは、むやみに携帯電話の番号を人に教えちゃダメだって言っていたよ。特に知らない人にはね。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('到處')">▶</button><span class="vocab-word">到處</span> <span class="vocab-pinyin">(dàochù)</span>：いたるところに</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('號碼')">▶</button><span class="vocab-word">號碼</span> <span class="vocab-pinyin">(hàomǎ)</span>：番号</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('尤其')">▶</button><span class="vocab-word">尤其</span> <span class="vocab-pinyin">(yóuqí)</span>：特に</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>不要＋到處＋把：</strong>禁止詞「不要」や場所範囲「到處」は必ず「把」の前に置く。</li>
+                    <li><strong>把＋情報＋給＋人：</strong>「〜を…に渡す/教える」という授与・移転の把構文。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-title">2. 結果補語「上」：密着・固定・目標への到達</div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('最後離開教室的人，請把門關上。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>最<rt>Zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>教<rt>jiào</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>上<rt>shàng</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">最後に教室を出る人は、ドアを閉めてください。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('離開')">▶</button><span class="vocab-word">離開</span> <span class="vocab-pinyin">(líkāi)</span>：離れる、出る</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('教室')">▶</button><span class="vocab-word">教室</span> <span class="vocab-pinyin">(jiàoshì)</span>：教室</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>關上（密着の補語）：</strong>ドアや窓を「動かして枠にピッタリくっつける（閉める）」状態の完成。</li>
+                    <li><strong>長い修飾語＋的：</strong>「最後離開教室的」が一つの修飾ブロックとして「人」を修飾。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('相信我，穿上這雙鞋子你會跑得更快！')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>相<rt>Xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>我<rt>wǒ</rt></ruby>，<ruby>穿<rt>chuān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>快<rt>kuài</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">私を信じて、この靴を履いたらあなたはもっと速く走れるようになるよ！</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('相信')">▶</button><span class="vocab-word">相信</span> <span class="vocab-pinyin">(xiāngxìn)</span>：信じる</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('雙')">▶</button><span class="vocab-word">雙</span> <span class="vocab-pinyin">(shuāng)</span>：〜足（ペアを数える量詞）</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>穿上（密着の補語）：</strong>服や靴を「しっかり身につけた（フィットさせた）」状態の完成。</li>
+                    <li><strong>動詞＋得＋更＋形容詞：</strong>「跑得更快」で「さらに速く走る」という様態補語。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('為了考上那所大學，他最近每天都讀好幾個小時的書。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>為<rt>Wèi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あの大学に合格するために、彼は最近毎日何時間も本を読んでいる（勉強している）。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('為了')">▶</button><span class="vocab-word">為了</span> <span class="vocab-pinyin">(wèile)</span>：〜のために</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('所')">▶</button><span class="vocab-word">所</span> <span class="vocab-pinyin">(suǒ)</span>：学校を数える量詞</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>考上（到達の補語）：</strong>試験を受けて「目標（合格）に到達する」という結果の完成。</li>
+                    <li><strong>讀＋時間＋的書：</strong>離合詞（讀書）の間に時間を挟み込み継続時間を表す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他花了十年才終於當上總經理。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>終<rt>zhōng</rt></ruby><ruby>於<rt>yú</rt></ruby><ruby>當<rt>dāng</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>總<rt>zǒng</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>理<rt>lǐ</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼は10年もの時間を費やして、ようやく社長（総支配人）の座に就きました。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('終於')">▶</button><span class="vocab-word">終於</span> <span class="vocab-pinyin">(zhōngyú)</span>：ようやく、ついに</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('總經理')">▶</button><span class="vocab-word">總經理</span> <span class="vocab-pinyin">(zǒngjīnglǐ)</span>：社長、総支配人</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>當上（到達の補語）：</strong>努力の末に「役職・地位の座に上り詰める」。</li>
+                    <li><strong>才終於：</strong>「それだけ時間がかかってようやく」というプロセスの長さ・苦労の強調。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-title">3. 結果・方向補語「下 / 下來」：分離・記録・定着・心理</div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我希望我孫女可以早一點放下這件事。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>孫<rt>sūn</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私は孫娘がこの件を少しでも早く吹き切って（手放して）くれることを願っています。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('希望')">▶</button><span class="vocab-word">希望</span> <span class="vocab-pinyin">(xīwàng)</span>：願う</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('放下')">▶</button><span class="vocab-word">放下</span> <span class="vocab-pinyin">(fàngxià)</span>：手放す、吹っ切る</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>放下（心理的補語）：</strong>心の重荷や未練を「下に置いて手放す（割り切る）」という抽象用法。</li>
+                    <li><strong>早一點＋動詞：</strong>「少し早めに〜する」という要望やアドバイス。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這個新聞，你是從哪份報紙上剪下來的？')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">このニュース、あなたはどの新聞から切り取ってきたの？</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('報紙')">▶</button><span class="vocab-word">報紙</span> <span class="vocab-pinyin">(bàozhǐ)</span>：新聞</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('剪')">▶</button><span class="vocab-word">剪</span> <span class="vocab-pinyin">(jiǎn)</span>：切る、切り取る</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>是...的構文：</strong>過去の動作の「情報源・経緯」にフォーカスを当てる強調構文。</li>
+                    <li><strong>剪下來（分離の補語）：</strong>全体からハサミで「切り離して（下）、手元に持ってくる（來）」。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('老公，脫下來的衣服要放在籃子裡，不要到處丟。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>老<rt>Lǎo</rt></ruby><ruby>公<rt>gōng</rt></ruby>，<ruby>脫<rt>tuō</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fu</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>籃<rt>lán</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>，<ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>丟<rt>diū</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あなた、脱いだ服はカゴの中に入れてね、あちこちに脱ぎ散らかさないで。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('老公')">▶</button><span class="vocab-word">老公</span> <span class="vocab-pinyin">(lǎogōng)</span>：夫、旦那さん</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('籃子')">▶</button><span class="vocab-word">籃子</span> <span class="vocab-pinyin">(lánzi)</span>：カゴ</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('丟')">▶</button><span class="vocab-word">丟</span> <span class="vocab-pinyin">(diū)</span>：捨てる、投げる</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>脫下來（分離の補語）：</strong>身につけていたものを「体から外して（下）、手元に持ってくる（來）」。</li>
+                    <li><strong>放在...裡：</strong>「動作＋在＋場所」で動作の結果どこに留まるかを表す。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('媽媽剛才說等一下要買衛生紙、肥皂、牙刷和牙膏，你都記下來了嗎？')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>媽<rt>Mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>衛<rt>wèi</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby>、<ruby>肥<rt>féi</rt></ruby><ruby>皂<rt>zào</rt></ruby>、<ruby>牙<rt>yá</rt></ruby><ruby>刷<rt>shuā</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>牙<rt>yá</rt></ruby><ruby>膏<rt>gāo</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">お母さんがさっき、後でトイレットペーパーと石鹸、歯ブラシと歯磨き粉を買うって言っていたけれど、全部メモした？</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('衛生紙')">▶</button><span class="vocab-word">衛生紙</span> <span class="vocab-pinyin">(wèishēngzhǐ)</span>：トイレットペーパー</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('肥皂')">▶</button><span class="vocab-word">肥皂</span> <span class="vocab-pinyin">(féizào)</span>：石鹸</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('牙膏')">▶</button><span class="vocab-word">牙膏</span> <span class="vocab-pinyin">(yágāo)</span>：歯磨き粉</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>記下來（記録の補語）：</strong>流れる情報を「紙に定着させ（下）、手元に残す（來）」。</li>
+                    <li><strong>頓号（、）と和：</strong>並列は読点ではなく頓号を使い、最後だけ「和」で繋ぐ。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他們夫妻討論了好幾個月，最後還是決定買下這棟郊區的房子。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>夫<rt>fū</rt></ruby><ruby>妻<rt>qī</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby>，<ruby>最<rt>zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>棟<rt>dòng</rt></ruby><ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼ら夫婦は何ヶ月も話し合った末、最終的にやはりこの郊外の家を買い取ることに決めました。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('討論')">▶</button><span class="vocab-word">討論</span> <span class="vocab-pinyin">(tǎolùn)</span>：話し合う</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('郊區')">▶</button><span class="vocab-word">郊區</span> <span class="vocab-pinyin">(jiāoqū)</span>：郊外</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>買下（定着の補語）：</strong>代金を支払い「しっかり買い取る・所有権を確定させる」。</li>
+                    <li><strong>還是決定：</strong>迷った末に「やっぱりこれに決める」という意思決定のリアルな表現。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這份禮物是大家為妳準備的，希望妳可以收下。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>下<rt>xià</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このプレゼントは皆があなたのために用意したものです。受け取っていただけると嬉しいです。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('禮物')">▶</button><span class="vocab-word">禮物</span> <span class="vocab-pinyin">(lǐwù)</span>：プレゼント</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('準備')">▶</button><span class="vocab-word">準備</span> <span class="vocab-pinyin">(zhǔnbèi)</span>：準備する</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>收下（所有の補語）：</strong>好意や品物を「自分の手元にしっかり受け取って収める」。</li>
+                    <li><strong>妳：</strong>台湾で相手が女性であることを明確にする代名詞（女偏の妳）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-title">4. 複合方向補語「下來」：計算の導出・動作の継続蓄積</div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這樣算下來，搭客運其實還比較便宜。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>搭<rt>dā</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>便<rt>pián</rt></ruby><ruby>宜<rt>yí</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">こんなふうに計算してみると、長距離バスに乗るほうが実は割と安上がりだね。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('搭')">▶</button><span class="vocab-word">搭</span> <span class="vocab-pinyin">(dā)</span>：乗る（台湾で多用される）</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('客運')">▶</button><span class="vocab-word">客運</span> <span class="vocab-pinyin">(kèyùn)</span>：長距離バス</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('便宜')">▶</button><span class="vocab-word">便宜</span> <span class="vocab-pinyin">(piányí)</span>：安い</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>算下來（算出の補語）：</strong>計算を重ねて「最終的な結果を手元に導き出す」。</li>
+                    <li><strong>還＋比較＋形容詞：</strong>「思ったよりも割と〜だ」という意外な判断や納得を添える。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他大學的時候每個禮拜讀一本書，四年讀下來就讀了兩百多本書。')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>四<rt>sì</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼は大学時代、毎週1冊の本を読んでいて、4年間読み続けた結果、なんと200冊以上の本を読んだことになります。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('禮拜')">▶</button><span class="vocab-word">禮拜</span> <span class="vocab-pinyin">(lǐbài)</span>：週（星期と同様）</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>讀下來（継続の補語）：</strong>長期間途切れずに「ずっと継続して積み重ねてきた」。</li>
+                    <li><strong>端数の「多」の位置：</strong>「兩百多本書」のように、100以上のきりの良い数字では「数詞＋多＋量詞」の順。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Category 5 -->
+        <div class="category-title">5. 複合方向補語「下去」：未来への継続・方針</div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('別急，先聽下去吧！')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>別<rt>Bié</rt></ruby><ruby>急<rt>jí</rt></ruby>，<ruby>先<rt>xiān</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>吧<rt>ba</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">焦らないで、まずは（最後まで）そのまま聞き続けようよ！</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('別急')">▶</button><span class="vocab-word">別急</span> <span class="vocab-pinyin">(bié jí)</span>：焦らないで</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band A/B</span></div>
+                <ul>
+                    <li><strong>聽下去（未来継続の補語）：</strong>動作を中断せず「このまま未来へ向かって続けていく」。</li>
+                    <li><strong>別...，先...吧：</strong>相手の焦りをなだめ、優先行動を促す完璧な日常会話パターン。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('已經過了半個多小時了，我們還要繼續等下去嗎？')" aria-label="再生">▶</button>
+                <div class="chinese-text">
+                    <ruby>已<rt>Yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>繼<rt>jì</rt></ruby><ruby>續<rt>xù</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">もう30分以上も過ぎたけれど、私たちはまだこのまま待ち続けなきゃいけないの？</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 重要単語ピックアップ</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('已經')">▶</button><span class="vocab-word">已經</span> <span class="vocab-pinyin">(yǐjīng)</span>：すでに、もう</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('繼續')">▶</button><span class="vocab-word">繼續</span> <span class="vocab-pinyin">(jìxù)</span>：続ける</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・語彙のポイント <span class="tocfl-tag">Band B</span></div>
+                <ul>
+                    <li><strong>繼續 ＋ 動詞 ＋ 下去：</strong>「繼續（方針）」と「下去（未来継続）」を両方使うことで「このままさらに続けていくのか」という強い強調を生む（意味の重畳）。</li>
+                    <li><strong>端数の「多」の位置：</strong>「半個多小時」のように、1未満の分数と単位の組み合わせでは「半＋量詞＋多＋名詞」の順。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完璧な台湾ボイスコード -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A/B 完全攻略：台湾華語 総合学習マスターシート 中間まとめ1-68</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #eef5fc;
+            --accent: #ff7b00;
+            --text-main: #2b2b2b;
+            --border-color: #dce4ec;
+            --tag-bg: #e10050;
+            --highlight: #fff3cd;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f4f7fa;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 12px;
+            font-size: 1.8em;
+        }
+        .intro {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            border-left: 5px solid var(--accent);
+        }
+        .category-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 35px;
+            font-size: 1.25em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            margin-top: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+        }
+        .sentence-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--secondary);
+            padding: 28px 18px 18px 18px; 
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .chinese-text {
+            font-size: 1.55em;
+            letter-spacing: 0.05em;
+            line-height: 3.2; 
+        }
+        ruby {
+            margin-right: 16px; 
+        }
+        rt {
+            font-size: 1.45em; 
+            color: #1a1a1a; 
+            font-weight: bold; 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            padding-bottom: 6px; 
+        }
+        .play-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+            background-color: #e06d00;
+        }
+        .mini-btn {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8em;
+            margin-right: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .translation {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+        .section-title {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .tocfl-tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .vocab-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .vocab-pinyin {
+            color: #555;
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .meta-box {
+            background-color: var(--highlight);
+            border: 1px solid #ffeba3;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.93em;
+        }
+        .meta-box-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: white;
+            font-size: 0.92em;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFL Band A/B メタ開放視点：台湾華語 総合マスターシート</h1>
+        <div class="intro">
+            <strong>【TOCFL華語文能力測驗 徹底対策】</strong><br>
+            これまでの学習セッションで解説した全21個の例文構造、各種補語（方向・結果・様態）、把構文の厳密な語順、および質疑応答で展開した**「類義語比較（想/喜歡、不比/沒有）」「派生構文（AAB型離合詞重複、V一V/V了一V）」「数詞ルール（十幾/幾十、端数『多』の位置）」**を網羅的に統合したデータです。<br>
+            ピンイン表示（特大設定）と台湾華語ボイス再生（文節・単語単体）を活用して視覚・聴覚からメタ攻略しましょう。
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 1: 把構文・処置・アクシデント
+             ========================================== -->
+        <div class="category-title">
+            <span>1. 把構文・否定・過失・授与（把字句）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">Band A/B 必修</span>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('爸爸說不要到處把手機號碼給別人，尤其是不認識的人。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>爸<rt>Bà</rt></ruby><ruby>爸<rt>ba</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>碼<rt>mǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>尤<rt>yóu</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お父さんは、むやみに携帯電話の番号を人に教えちゃダメだって言っていたよ。特に知らない人にはね。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 単語・表現</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('到處')">▶</button><span class="vocab-word">到處</span> <span class="vocab-pinyin">(dàochù)</span>：いたるところに</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('號碼')">▶</button><span class="vocab-word">號碼</span> <span class="vocab-pinyin">(hàomǎ)</span>：番号</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('尤其')">▶</button><span class="vocab-word">尤其</span> <span class="vocab-pinyin">(yóuqí)</span>：特に</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('認識')">▶</button><span class="vocab-word">認識</span> <span class="vocab-pinyin">(rènshì)</span>：知っている/知り合いだ</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">語順最重要</span></div>
+                <ul>
+                    <li><strong>「把」の前に置く鉄則：</strong>否定詞「不要」や副詞「到處」は必ず「把」の直前に置く。（❌ 把手機號碼不要... は誤り）</li>
+                    <li><strong>授与の把構文：</strong>「把 ＋ 情報/物品 ＋ 給 ＋ 対象」のパターン。</li>
+                    <li><strong>尤其（是）：</strong>全体（別人）の中から特定範囲（不認識的人）を強調指名する。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('對不起，其實我在搬家的時候不小心把你的拖鞋丟了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>對<rt>Duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>拖<rt>tuō</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ごめんなさい、実は私、引っ越しの時にうっかりあなたのスリッパを捨てちゃった（失くしちゃった）の。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 単語・表現</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('其實')">▶</button><span class="vocab-word">其實</span> <span class="vocab-pinyin">(qíshí)</span>：実は</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('搬家')">▶</button><span class="vocab-word">搬家</span> <span class="vocab-pinyin">(bānjiā)</span>：引っ越しする</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('不小心')">▶</button><span class="vocab-word">不小心</span> <span class="vocab-pinyin">(bù xiǎoxīn)</span>：うっかり/不注意で</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('拖鞋')">▶</button><span class="vocab-word">拖鞋</span> <span class="vocab-pinyin">(tuōxié)</span>：スリッパ/サンダル</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">過失パターン</span></div>
+                <ul>
+                    <li><strong>不小心 ＋ 把 ＋ 目的語 ＋ 完了/結果：</strong>不注意で不可逆的な変化をもたらした場面の定番構文（例：不小心把杯子打破了）。</li>
+                    <li><strong>「丟」の多義性：</strong>①捨てる（把垃圾丟掉） / ②失くす（我的錢包丟了）。</li>
+                </ul>
+                <div class="meta-box">
+                    <div class="meta-box-title">💡 履物類の量詞（雙）と派生語</div>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('皮鞋')">▶</button><span class="vocab-word">皮鞋</span> (píxié) 革靴</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('球鞋')">▶</button><span class="vocab-word">球鞋</span> (qiúxié) スニーカー</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('高跟鞋')">▶</button><span class="vocab-word">高跟鞋</span> (gāogēnxié) ハイヒール</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 2: 結果補語・方向補語「上 / 下」
+             ========================================== -->
+        <div class="category-title">
+            <span>2. 結果補語・方向補語「上 / 下」（密着・到達・所有）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">Band A/B 必修</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('最後離開教室的人，請把門關上。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>最<rt>Zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>教<rt>jiào</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>上<rt>shàng</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">最後に教室を出る人は、ドアを閉めてください。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">補語「上」</span></div>
+                <ul>
+                    <li><strong>關上（密着）：</strong>離れていたものを枠にピッタリ固定して閉める状態。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('相信我，穿上這雙鞋子你會跑得更快！')">▶</button>
+                <div class="chinese-text">
+                    <ruby>相<rt>Xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>我<rt>wǒ</rt></ruby>，<ruby>穿<rt>chuān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>快<rt>kuài</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">私を信じて、この靴を履いたらあなたはもっと速く走れるようになるよ！</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">様態補語</span></div>
+                <ul>
+                    <li><strong>穿上（着用）：</strong>「穿上外套」「戴上帽子」のように身につける動作の完成。</li>
+                    <li><strong>跑得更快（様態補語）：</strong>動詞 ＋ 得 ＋ 副詞（更） ＋ 形容詞。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('為了考上那所大學，他最近每天都讀好幾個小時的書。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>為<rt>Wèi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>書<rt>shū</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あの大学に合格するために、彼は最近毎日何時間も勉強している。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">到達の「上」</span></div>
+                <ul>
+                    <li><strong>考上 / 當上：</strong>目標や高い地位・役職に到達・合格する。</li>
+                    <li><strong>好幾 ＋ 量詞：</strong>主観的な多さ・長さの強調（好幾個月 / 好幾年）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我希望我孫女可以早一點放下這件事。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>孫<rt>sūn</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私は孫娘がこの件を少しでも早く吹き切って（手放して）くれることを願っています。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">心理補語「下」</span></div>
+                <ul>
+                    <li><strong>放下：</strong>心の重荷・こだわりを「手放す・割り切る」。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他們夫妻討論了好幾個月，最後還是決定買下這棟郊區的房子。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>夫<rt>fū</rt></ruby><ruby>妻<rt>qī</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby>，<ruby>最<rt>zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>棟<rt>dòng</rt></ruby><ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼ら夫婦は何ヶ月も話し合った末、最終的にやはりこの郊外の家を購入することに決めました。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">所有定着</span></div>
+                <ul>
+                    <li><strong>買下 / 租下 / 留下：</strong>契約や代金支払いで「所有権・権利を自分のものとして固定する」。</li>
+                    <li><strong>肯定文の「還是」：</strong>試行錯誤や迷いの末に「やっぱりこれに落ち着いた」という結論。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這份禮物是大家為妳準備的，希望妳可以收下。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>下<rt>xià</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このプレゼントは皆があなたのために用意したものです。受け取っていただけると嬉しいです。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL識別：受諾の「收下」 vs 「接受」</div>
+                <ul>
+                    <li><strong>收下（物理的物体・品物）：</strong>收下禮物 / 收下這份心意（手元に納める）。</li>
+                    <li><strong>接受（抽象的概念・条件）：</strong>接受建議 / 接受條件 / 接受挑戰 / 接受批評。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 3: 複合方向補語「下來 / 下去」
+             ========================================== -->
+        <div class="category-title">
+            <span>3. 複合方向補語「下來（累積/導出）」 vs 「下去（未来継続）」</span>
+            <span style="font-size: 0.8em; font-weight: normal;">時間ベクトルの識別</span>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這個新聞，你是從哪份報紙上剪下來的？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">このニュース、あなたはどの新聞から切り取ってきたの？</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">分離・手元</span></div>
+                <ul>
+                    <li><strong>剪下來 / 脫下來：</strong>全体や体から外して（下）手元へ引き出す（來）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('媽媽剛才說等一下要買衛生紙、肥皂、牙刷和牙膏，你都記下來了嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>媽<rt>Mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>衛<rt>wèi</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby>、<ruby>肥<rt>féi</rt></ruby><ruby>皂<rt>zào</rt></ruby>、<ruby>牙<rt>yá</rt></ruby><ruby>刷<rt>shuā</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>牙<rt>yá</rt></ruby><ruby>膏<rt>gāo</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">お母さんがさっき、後でトイレットペーパーと石鹸、歯ブラシと歯磨き粉を買うって言っていたけれど、全部メモした？</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">記録定着</span></div>
+                <ul>
+                    <li><strong>記下來 / 寫下來 / 拍下來 / 背下來：</strong>流れる情報を形にして手元に残す。</li>
+                    <li><strong>頓号（、）と和：</strong>並列の記号は頓号を使い、最後の要素の直前だけ「和/跟」を置く。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這樣算下來，搭客運其實還比較便宜。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>搭<rt>dā</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>便<rt>pián</rt></ruby><ruby>宜<rt>yí</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">こんなふうに計算してみると、長距離バスに乗るほうが実は割と安上がりだね。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">結果の導出</span></div>
+                <ul>
+                    <li><strong>算下來：</strong>計算プロセスを経て「結論・数値をもとへ導き出す」。</li>
+                    <li><strong>搭（dā）：</strong>台湾華語で「乗り物に乗る（搭客運/搭捷運/搭高鐵）」際の必須動詞。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我這十幾年教下來，覺得現在的孩子們越來越聰明了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>教<rt>jiāo</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>聰<rt>cōng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私がこの10年余り教えてきた経験からすると、今の子供たちはどんどん賢くなっていると感じます。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL最重要：数量規模「十幾」 vs 「幾十」</div>
+                <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('十幾年')">▶</button><span class="vocab-word">十幾年</span> (shí jǐ nián) 10数年（11〜19年）</span>
+                <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('幾十年')">▶</button><span class="vocab-word">幾十年</span> (jǐ shí nián) 数十年（20〜90年）</span>
+            </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('已經過了半個多小時了，我們還要繼續等下去嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>已<rt>Yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>繼<rt>jì</rt></ruby><ruby>續<rt>xù</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">もう30分以上も過ぎたけれど、私たちはまだこのまま待ち続けなきゃいけないの？</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL極重要：端数「多（duō）」の位置ルール完全比較</div>
+                <table>
+                    <tr>
+                        <th>基準数詞の性質</th>
+                        <th>語順構造</th>
+                        <th>具体例</th>
+                    </tr>
+                    <tr>
+                        <td>10の倍数・整数 (10, 20, 100)</td>
+                        <td><strong>数詞 ＋ 多 ＋ 量詞 ＋ 名詞</strong></td>
+                        <td>兩百多本書 / 十多個人 / 三十多年</td>
+                    </tr>
+                    <tr>
+                        <td>1桁の整数・「半」(0.5)</td>
+                        <td><strong>数詞 ＋ 量詞 ＋ 多 ＋ 名詞</strong></td>
+                        <td>半個多小時 / 三個多月 / 五年多</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 4: 試行・重複・比較・動作
+             ========================================== -->
+        <div class="category-title">
+            <span>4. 試行（V一V / AAB離合詞）＆ 比較構文（不比 / 沒有）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">会話・表現力</span>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('你比一比就會發現，郊區的環境不比市區的差。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby>，<ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>環<rt>huán</rt></ruby><ruby>境<rt>jìng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>差<rt>chà</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ちょっと比べてみればすぐ気づくと思いますが、郊外の環境は市内の環境に比べて決して劣っていませんよ。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL識別：「不比」 vs 「沒有」のニュアンス比較</div>
+                <ul>
+                    <li><strong>A 沒有 B ＋ 形容詞（客観的）：</strong>AはBほど〜ない（Bの方が上であることを素直に認める）。</li>
+                    <li><strong>A 不比 B ＋ 形容詞（主張・反論）：</strong>AはBに比べて決して劣っていない/負けていない（「郊外は悪い」という先入観に反論する）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('小毛想了一想，決定接受他叔叔的建議。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>小<rt>Xiǎo</rt></ruby><ruby>毛<rt>máo</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>想<rt>xiǎng</rt></ruby>，<ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>叔<rt>shū</rt></ruby><ruby>叔<rt>shu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>建<rt>jiàn</rt></ruby><ruby>議<rt>yì</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">小毛（シャオマオ）はちょっとじっくり考えた末、叔父さんの提案を受け入れることに決めました。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">過去の試行</span></div>
+                <ul>
+                    <li><strong>想了一想（V 了一 V）：</strong>過去に「ちょっと〜してみた」という試行動作の完了。</li>
+                    <li><strong>「想」の多義性：</strong>①考える（想一想/想辦法） / ②〜したい（想去） / ③恋しい（想家）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我家在中部的鄉下，歡迎你們來烤烤肉、泡泡溫泉。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鄉<rt>xiāng</rt></ruby><ruby>下<rt>xià</rt></ruby>，<ruby>歡<rt>huān</rt></ruby><ruby>迎<rt>yíng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>烤<rt>kao</rt></ruby><ruby>肉<rt>ròu</rt></ruby>、<ruby>泡<rt>pào</rt></ruby><ruby>泡<rt>pao</rt></ruby><ruby>溫<rt>wēn</rt></ruby><ruby>泉<rt>quán</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私の家は中部のお田舎にあって、皆でバーベキューしたり温泉に入ったりしに遊びにおいでよ！</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 類似音聞き分け対比：鄉下 (xiāngxià) vs 山上 (shānshàng)</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('鄉下')">▶</button><span class="vocab-word">鄉下</span> <span class="vocab-pinyin">(xiāngxià)</span>：田舎（口を引いてシアンシア）</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('山上')">▶</button><span class="vocab-word">山上</span> <span class="vocab-pinyin">(shānshàng)</span>：山の上（舌を持ち上げてシャンシャン）</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 17 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('他週末喜歡跟朋友一起聊聊天、逛逛街。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>聊<rt>liao</rt></ruby><ruby>天<rt>tiān</rt></ruby>、<ruby>逛<rt>guàng</rt></ruby><ruby>逛<rt>guang</rt></ruby><ruby>街<rt>jiē</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼は週末、友達と一緒にぶらぶらおしゃべりをしたり街をブラブラするのが好きです。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL核心識別：「想」 vs 「喜歡」</div>
+                <ul>
+                    <li><strong>想（一時的願望/思考）：</strong>特定時点での意志。「我週末想去逛街」（今週末買い物に行きたい）。</li>
+                    <li><strong>喜歡（恒常的嗜好/習慣）：</strong>普段からの好み。「他週末喜歡逛街」（彼は普段週末に買い物に行くのが好きだ）。</li>
+                </ul>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">離合詞重複（AAB型）一覧 <span class="tocfl-tag">会話・作文必修</span></div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('聊聊天')">▶</button><span class="vocab-word">聊聊天</span> (liáoliao tiān)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('逛逛街')">▶</button><span class="vocab-word">逛逛街</span> (guàngguang jiē)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('烤烤肉')">▶</button><span class="vocab-word">烤烤肉</span> (kǎokao ròu)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('泡泡溫泉')">▶</button><span class="vocab-word">泡泡溫泉</span> (pàopao wēnquán)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('散散步')">▶</button><span class="vocab-word">散散步</span> (sànsan bù)</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('唱唱歌')">▶</button><span class="vocab-word">唱唱歌</span> (chàngchang gē)</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 完璧な台湾ボイスコード（提示Pythonコード準拠） -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A/B 完全攻略：台湾華語 総合マスターシート (Part 2)</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #eef5fc;
+            --accent: #ff7b00;
+            --text-main: #2b2b2b;
+            --border-color: #dce4ec;
+            --tag-bg: #e10050;
+            --highlight: #fff3cd;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #f4f7fa;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 12px;
+            font-size: 1.8em;
+        }
+        .intro {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            border-left: 5px solid var(--accent);
+        }
+        .category-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-top: 35px;
+            font-size: 1.25em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            margin-top: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+        }
+        .sentence-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--secondary);
+            padding: 28px 18px 18px 18px; 
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .chinese-text {
+            font-size: 1.55em;
+            letter-spacing: 0.05em;
+            line-height: 3.2; 
+        }
+        ruby {
+            margin-right: 16px; 
+        }
+        rt {
+            font-size: 1.45em; 
+            color: #1a1a1a; 
+            font-weight: bold; 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            padding-bottom: 6px; 
+        }
+        .play-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+            background-color: #e06d00;
+        }
+        .mini-btn {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8em;
+            margin-right: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+        .translation {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+        .section-title {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .tocfl-tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .vocab-item {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+        .vocab-pinyin {
+            color: #555;
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .meta-box {
+            background-color: var(--highlight);
+            border: 1px solid #ffeba3;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.93em;
+        }
+        .meta-box-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: white;
+            font-size: 0.92em;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFL Band A/B メタ開放視点：マスターシート (Part 2)</h1>
+        <div class="intro">
+            <strong>【TOCFL華語文能力測驗 徹底対策：方向補語『起來』徹底網羅＆時間詞マスター】</strong><br>
+            後半セッションで扱った全10個の主要例文に加え、質疑応答で解説した**「起來の多角的マップ（物理・遮断・集計・結合・収納・記憶・蓄積）」「多音字『背』『得』」「穿 vs 戴」「想出來 vs 想起來」「拿上來 vs 拿起來」「之前/以前/前 vs 以後/之後/後」**の識別知識をすべて集約しました。
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 1: 物理的動作・即時反応・補語「起來」
+             ========================================== -->
+        <div class="category-title">
+            <span>1. 物理的動作・習慣・即時反応（站起來 / 跳起來 / 飛起來 / 背起來）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">Band A/B 必修</span>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('小劉很有禮貌，客人進辦公室時都會站起來打招呼。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>小<rt>Xiǎo</rt></ruby><ruby>劉<rt>liú</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>貌<rt>mào</rt></ruby>，<ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>招<rt>zhāo</rt></ruby><ruby>呼<rt>hu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">劉くん（小劉）はとても礼儀正しく、お越しになった客がオフィスに入ってくると、いつも立ち上がって挨拶をします。</div>
+            <div class="vocab-section">
+                <div class="section-title">📝 単語・表現</div>
+                <div class="vocab-list">
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('禮貌')">▶</button><span class="vocab-word">禮貌</span> <span class="vocab-pinyin">(lǐmào)</span>：礼儀正しい</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('辦公室')">▶</button><span class="vocab-word">辦公室</span> <span class="vocab-pinyin">(bàngōngshì)</span>：オフィス</span>
+                    <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('打招呼')">▶</button><span class="vocab-word">打招呼</span> <span class="vocab-pinyin">(dǎ zhāohu)</span>：挨拶をする</span>
+                </div>
+            </div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">徹底習慣</span></div>
+                <ul>
+                    <li><strong>都會 ＋ 動詞：</strong>「どんな時も例外なく〜する習わし・習慣だ」という徹底した傾向の強調。</li>
+                    <li><strong>……時：</strong>口語の「……的時候」のフォーマル・文末短縮表現。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('姊姊的鬧鐘太吵了，家裡的貓一聽到就會跳起來跑走。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>姊<rt>Jiě</rt></ruby><ruby>姊<rt>jie</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鬧<rt>nào</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>貓<rt>māo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跳<rt>tiào</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お姉ちゃんの目覚まし時計がうるさすぎるので、家の猫は聞こえた瞬間すぐに飛び起きて逃げ出します。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">離脱補語「走」</span></div>
+                <ul>
+                    <li><strong>一……就……：</strong>条件成立直後の即時反応構文（聞こえた瞬間すぐに）。</li>
+                    <li><strong>動詞 ＋ 走（離脱）：</strong>動作によってその場から居なくなる（跑走：走り去る / 拿走：持っていく / 偷走：盗み去る）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('颱風天出門的時候，帽子沒戴好的話，風一吹就會飛起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>颱<rt>Tái</rt></ruby><ruby>風<rt>fēng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>帽<rt>mào</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>戴<rt>dài</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>風<rt>fēng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>吹<rt>chuī</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>飛<rt>fēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">台風の日に外出する時、帽子をしっかり被っていないと、風が吹いたらすぐに飛んでいってしまいますよ。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL語彙最超重要：着用動詞「穿」 vs 「戴」の不変ルール</div>
+                <ul>
+                    <li><strong>穿 (chuān)：</strong>服、ズボン、靴、靴下など身体に通して身につけるもの（穿衣服 / 穿鞋子）。</li>
+                    <li><strong>戴 (dài)：</strong>帽子、メガネ、時計、指輪、マスク、手袋など身体に装着・固定するもの（戴帽子 / 戴眼鏡 / 戴口罩）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我們要下車了，大家把背包背起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もうすぐ降りますよ、皆さんリュックを背負ってください。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL多音字マスター：漢字「背」の発音識別</div>
+                <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('背背包')">▶</button><span class="vocab-word">背</span> <span class="vocab-pinyin">(bēi / 第1声)</span>：【動詞】背負う（背背包 / 背小孩）</span>
+                <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('背包')">▶</button><span class="vocab-word">背包 / 背單字</span> <span class="vocab-pinyin">(bèi / 第4声)</span>：【名詞】リュック / 【動詞】暗記する</span>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 2: 遮断・集合・包囲・収容の「起來」
+             ========================================== -->
+        <div class="category-title">
+            <span>2. 遮断・集合・包囲・収納（關起來 / 加起來 / 包起來 / 收起來）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">日常会話・接客</span>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('冷氣開著呢，快點把門關起來吧。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>冷<rt>Lěng</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>著<rt>zhe</rt></ruby><ruby>呢<rt>ne</rt></ruby>，<ruby>快<rt>kuài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>吧<rt>ba</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">冷房がついたままだよ、早くドアを閉めて（閉め切って）よ。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 補語識別：關上（密着） vs 關起來（遮断・閉鎖）</div>
+                <ul>
+                    <li><strong>關上：</strong>離れていた扉を枠にピタッと「枠に密着させて閉める」物理的完成。</li>
+                    <li><strong>關起來：</strong>空間を完全に区切って「閉め切る / 閉じ込める / 遮断する」（把門關起來 / 把狗關起來）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('這兩雙襪子加起來一共是兩百三十元。需要幫您包起來嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>襪<rt>wà</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>共<rt>gòng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>元<rt>yuán</rt></ruby>。<ruby>需<rt>Xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>您<rt>nín</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">この2足の靴下を合わせると合計で230元になります。包みましょうか？</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">接客・集計</span></div>
+                <ul>
+                    <li><strong>加起來 / 算起來：</strong>バラバラの数値をひとつに足し合わせる・合算する。</li>
+                    <li><strong>包起來 / 收起來：</strong>袋や紙で包み込む / クローゼットに収めて隠す。</li>
+                    <li><strong>幫您 ＋ 動詞：</strong>「お客様のために〜いたしましょうか」（幫您加熱 / 幫您結帳）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('夏天要到了，差不多應該把冬天的被子和枕頭收起來了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>夏<rt>Xià</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>差<rt>chà</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>冬<rt>dōng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>被<rt>bèi</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>枕<rt>zhěn</rt></ruby><ruby>頭<rt>tou</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もうすぐ夏が来るから、そろそろ冬の掛け布団と枕を仕舞う（片付ける）べきですね。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">副詞「差不多」</span></div>
+                <ul>
+                    <li><strong>差不多 ＋ 應該 / 該：</strong>「そろそろ〜する時期・時間だ」。</li>
+                    <li><strong>收起來：</strong>不要になったものをスッキリ片付けて仕舞い込む。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 3: 抽象的結合・記憶・蓄積の「起來」
+             ========================================== -->
+        <div class="category-title">
+            <span>3. 結合・記憶・蓄積（連起來 / 想起來 / 存起來）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">高度論理・思考</span>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('我們得把事情連起來看，才能找到問題出現的原因。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>因<rt>yīn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私たちは出来事をひとつに繋ぎ合わせて観察して初めて、問題が発生した原因を見つけ出すことができます。</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL多音字マスター：漢字「得」の発音識別</div>
+                <ul>
+                    <li><strong>děi (第3声) 【助動詞】：</strong>〜しなければならない（我們得走了 / 我們得把事情連起來看）。</li>
+                    <li><strong>de (軽声) 【構造助詞】：</strong>様態・可能補語（跑得快 / 看得懂）。</li>
+                    <li><strong>dé (第2声) 【動詞】：</strong>獲得する / （病気に）かかる（得到第一名 / 得感冒）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('對了！我之前跟他合作過，怎麼現在才想起來？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>對<rt>Duì</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>合<rt>hé</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>過<rt>guo</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">そうだ！私、以前彼と一緒にお仕事したことあるじゃん、なんで今になってやっと思い出してるんだろう？</div>
+            <div class="meta-box">
+                <div class="meta-box-title">💡 TOCFL最重要補語対比：想起來 vs 想出來</div>
+                <ul>
+                    <li><strong>想起來（記憶の復元）：</strong>既存の記憶（名前・顔・過去の約束）を脳の底から引っ張り出す。</li>
+                    <li><strong>想出來（無からの創造）：</strong>ゼロから新しいアイデア・解答・解決策を考え出す（例：想出答案來）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="play-btn" onclick="speakText('如果你把每天喝飲料的錢存起來，也許十年之後就可以買一台車了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>如<rt>Rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>飲<rt>yǐn</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>存<rt>cún</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もし毎日ジュースを買って飲むお金を貯金しておけば、もしかしたら10年後には車が1台買えちゃうかもしれませんよ。</div>
+            <div class="grammar-section">
+                <div class="section-title">文法・TOCFLメタ解法 <span class="tocfl-tag">蓄積の「起來」</span></div>
+                <ul>
+                    <li><strong>存起來 / 省起來：</strong>リソース（お金・エネルギー）を手元に貯め込んでストックする。</li>
+                    <li><strong>量詞「台 (tái)」：</strong>台湾華語で自動車・バイク・パソコンを数える助数詞（※大陸の「輛」より圧倒的に頻用）。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             CATEGORY 4: 質疑応答メタまとめ（時間前後の対比表）
+             ========================================== -->
+        <div class="category-title">
+            <span>4. 質疑応答メタまとめ：時間前後（以前/之前/前 vs 以後/之後/後）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">超頻出対比</span>
+        </div>
+
+        <div class="card">
+            <div class="section-title">【TOCFL文法整理】「〜より前」 vs 「〜より後」完全比較表</div>
+            <table>
+                <tr>
+                    <th>区分</th>
+                    <th>〜より前（過去方向）</th>
+                    <th>〜より後（未来・順序方向）</th>
+                </tr>
+                <tr>
+                    <td><strong>基本形 (代名詞/後置)</strong></td>
+                    <td>
+                        <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('之前')">▶</button><span class="vocab-word">之前</span> (zhīqián)</span><br>
+                        <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('以前')">▶</button><span class="vocab-word">以前</span> (yǐqián)</span>
+                    </td>
+                    <td>
+                        <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('之後')">▶</button><span class="vocab-word">之後</span> (zhīhòu)</span><br>
+                        <span class="vocab-item"><button class="play-btn mini-btn" onclick="speakText('以後')">▶</button><span class="vocab-word">以後</span> (yǐhòu)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>単独・文頭での用法</strong></td>
+                    <td>
+                        <strong>以前……</strong>（昔は〜だった）<br>
+                        <strong>之前……</strong>（その前は〜）
+                    </td>
+                    <td>
+                        <strong>以後……</strong>（今後は/将来は〜）<br>
+                        <strong>之後……</strong>（その後/それから〜）
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>接尾・直接連結 (数値/動詞句)</strong></td>
+                    <td>
+                        <strong>動詞句 ＋ 之前/以前</strong>（例：吃飯之前）<br>
+                        <strong>時間 ＋ 前</strong>（例：三天前 / 五分鐘前）
+                    </td>
+                    <td>
+                        <strong>動詞句 ＋ 之後/以後</strong>（例：畢業以後）<br>
+                        <strong>時間 ＋ 後</strong>（例：十年後 / 三天後）
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- 完璧な台湾ボイスコード（提示Pythonコード準拠） -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
