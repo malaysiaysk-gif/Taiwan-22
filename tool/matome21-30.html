@@ -3723,3 +3723,1538 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A/B 台湾華語 メタ攻略完全マスターシート</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --primary-light: #ebf5fb;
+            --accent: #e67e22;
+            --danger: #c0392b;
+            --success: #27ae60;
+            --text-dark: #2c3e50;
+            --border-color: #d5dbdb;
+            --card-bg: #ffffff;
+            --highlight: #fef9e7;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9f9;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 4px solid var(--primary);
+            padding-bottom: 12px;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .meta-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .meta-header h2 {
+            margin-top: 0;
+            color: #f1c40f;
+            font-size: 1.3em;
+        }
+
+        .category-title {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            margin-top: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .sentence-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background-color: var(--primary-light);
+            padding: 22px 18px 15px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* ピンイン（rt）のサイズ強調・視認性確保 */
+        .chinese-text {
+            font-size: 1.6em;
+            line-height: 3.4;
+            letter-spacing: 0.05em;
+            flex-grow: 1;
+        }
+
+        ruby {
+            margin-right: 12px;
+        }
+
+        rt {
+            font-size: 0.85em; /* ピンインをはっきり大きく表示 */
+            color: #1a5276;
+            font-weight: bold;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            transform: translateY(-8px);
+        }
+
+        .btn-play {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .btn-play:hover {
+            transform: scale(1.1);
+            background-color: #d35400;
+        }
+
+        .btn-play-sm {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.85em;
+            cursor: pointer;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .btn-play-sm:hover {
+            background-color: #2980b9;
+        }
+
+        .translation {
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .grammar-box {
+            background-color: #fcf3cf;
+            border: 1px solid #f9e79f;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.95em;
+        }
+
+        .grammar-title {
+            font-weight: bold;
+            color: #7d6608;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .vocab-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            font-size: 0.93em;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .badge-wrong {
+            background-color: var(--danger);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .badge-correct {
+            background-color: var(--success);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFL Band A/B 台湾華語 メタ解剖マスターシート</h1>
+        
+        <div class="meta-header">
+            <h2>🎯 TOCFL試験・メタ解剖得点直結ロジック</h2>
+            <ul>
+                <li><strong>語順・否定の完全トラップ排除：</strong> 補語否定（<code>找不到</code>）と結果否定（<code>沒找到</code>）の選択。<code>不找到</code> は100%誤り。</li>
+                <li><strong>方向補語（起來 / 上來 / 下去）：</strong> 単なる「持ち上げ」だけでなく、抽象意味（遮断、記憶復元、継続限界）が出題の中心。</li>
+                <li><strong>視点・方向の一致（去 vs 來）：</strong> 話し手が内部（閉鎖空間）にいるなら <code>出不去</code>、外部にいるなら <code>出不來</code>。</li>
+                <li><strong>台湾固有語彙の自動置換：</strong> <code>便利商店 ➔ 超商</code>, <code>學習 ➔ 念書/讀書</code>, <code>研究生院 ➔ 研究所</code>, <code>坐 ➔ 搭</code>。</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 1: TOCFL頻出 単語音声マスター -->
+        <div class="category-title">
+            <span>📚 TOCFL Band A/B 最重要単語・表現（単体音声付き）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">クリックで発音確認</span>
+        </div>
+
+        <div class="card">
+            <div class="vocab-grid">
+                <div class="vocab-item">
+                    <div><strong>超商</strong> (chāoshāng)<br><small>コンビニ</small></div>
+                    <button class="btn-play-sm" onclick="speakText('超商')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>美乃滋</strong> (měinǎizī)<br><small>マヨネーズ</small></div>
+                    <button class="btn-play-sm" onclick="speakText('美乃滋')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>居留證</strong> (jūliúzhèng)<br><small>ARC/居留カード</small></div>
+                    <button class="btn-play-sm" onclick="speakText('居留證')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>禮拜</strong> (lǐbài)<br><small>〜曜日 / 週間</small></div>
+                    <button class="btn-play-sm" onclick="speakText('禮拜')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>搭</strong> (dā)<br><small>（乗り物に）乗る</small></div>
+                    <button class="btn-play-sm" onclick="speakText('搭')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>念書</strong> (niànshū)<br><small>勉強する / 通学する</small></div>
+                    <button class="btn-play-sm" onclick="speakText('念書')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>研究所</strong> (yánjiūsuǒ)<br><small>大学院</small></div>
+                    <button class="btn-play-sm" onclick="speakText('研究所')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>鑰匙</strong> (yàoshi)<br><small>鍵</small></div>
+                    <button class="btn-play-sm" onclick="speakText('鑰匙')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>恐怕</strong> (kǒngpà)<br><small>恐らく（懸念）</small></div>
+                    <button class="btn-play-sm" onclick="speakText('恐怕')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>幾乎</strong> (jīhū)<br><small>ほとんど</small></div>
+                    <button class="btn-play-sm" onclick="speakText('幾乎')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>背 (bēi)</strong><br><small>【動】背負う</small></div>
+                    <button class="btn-play-sm" onclick="speakText('背')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>背包 (bèibāo)</strong><br><small>【名】リュック</small></div>
+                    <button class="btn-play-sm" onclick="speakText('背包')">🔊</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: 核心文法比較表 -->
+        <div class="category-title">
+            <span>⚖️ TOCFL引っかけ対策：核心文法対比</span>
+            <span style="font-size: 0.8em; font-weight: normal;">識別テーブル</span>
+        </div>
+
+        <div class="card">
+            <h3>1. 「見つからない」の否定パターン徹底比較</h3>
+            <table>
+                <tr><th>表現</th><th>文法構造</th><th>ニュアンス・意味</th><th>判定</th></tr>
+                <tr><td><strong>找不到</strong></td><td>動詞 ＋ 不 ＋ 到</td><td>見つからない（これから探しても不可能性・見込みなし）</td><td><span class="badge-correct">正</span></td></tr>
+                <tr><td><strong>沒找到</strong></td><td>沒 ＋ 動詞 ＋ 到</td><td>見つからなかった（過去に探したが発見できなかった事実）</td><td><span class="badge-correct">正</span></td></tr>
+                <tr><td><strong>不找到</strong></td><td>不 ＋ 動詞 ＋ 到</td><td>（文法的に存在しないエラー形）</td><td><span class="badge-wrong">誤</span></td></tr>
+            </table>
+
+            <h3 style="margin-top: 25px;">2. 「脱出不能」 vs 「自己の意志」</h3>
+            <table>
+                <tr><th>表現</th><th>文法構造</th><th>意味の焦点</th><th>例文</th></tr>
+                <tr><td><strong>出不去</strong></td><td>可能補語（出＋不＋去）</td><td>【物理的不可能】閉じ込められて出られない。</td><td><code>門鎖住了，我們出不去。</code></td></tr>
+                <tr><td><strong>不去</strong></td><td>意志の否定（不＋去）</td><td>【自己の意思】自分の意思で行かないことにする。</td><td><code>太累了，我明天不去。</code></td></tr>
+            </table>
+
+            <h3 style="margin-top: 25px;">3. 「看」系可能補語の識別</h3>
+            <table>
+                <tr><th>表現</th><th>発音</th><th>焦点</th><th>識別ポイント</th></tr>
+                <tr><td><strong>看不懂</strong></td><td>kàn bù dǒng</td><td>理解不能</td><td>文字・意味・ノートが解読できない時</td></tr>
+                <tr><td><strong>看不見</strong></td><td>kàn bú jiàn</td><td>視界不能</td><td>暗闇や障害物で見えない時</td></tr>
+                <tr><td><strong>看不到</strong></td><td>kàn bú dào</td><td>到達・入手不能</td><td>満員で見えない、または探しても目に入らない時</td></tr>
+            </table>
+        </div>
+
+        <!-- SECTION 3: 全例文＆文法網羅解説 -->
+        <div class="category-title">
+            <span>📖 網羅的実践例文・文法解説（全29選）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">TOCFL標準ピンイン・音声付き</span>
+        </div>
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('小劉很有禮貌，客人進辦公室時都會站起來打招呼。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>小<rt>Xiǎo</rt></ruby><ruby>劉<rt>liú</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>貌<rt>mào</rt></ruby>，<ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>招<rt>zhāo</rt></ruby><ruby>呼<rt>hu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">劉くん（小劉）はとても礼儀正しく、お越しになった客がオフィスに入ってくると、いつも立ち上がって挨拶をします。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFLメタポイント</div>
+                物理的動作「站起來（立ち上がる）」。習慣を表す「都會〜」。
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('姊姊的鬧鐘太吵了，家裡的貓一聽到就會跳起來跑走。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>姊<rt>Jiě</rt></ruby><ruby>姊<rt>jie</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鬧<rt>nào</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>貓<rt>māo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跳<rt>tiào</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お姉ちゃんの目覚まし時計がうるさすぎるので、家の猫は聞こえた瞬間すぐに飛び起きて逃げ出します。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFLメタポイント</div>
+                「一……就……（〜するとすぐ）」＋ 即時反応の「跳起來（跳ね起きる）」。
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('颱風天出門的時候，帽子沒戴好的話，風一吹就會飛起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>颱<rt>Tái</rt></ruby><ruby>風<rt>fēng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>帽<rt>mào</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>戴<rt>dài</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>風<rt>fēng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>吹<rt>chuī</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>飛<rt>fēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">台風の日に外出する時、帽子をしっかり被っていないと、風が吹いたらすぐに飛んでいってしまいますよ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFLメタポイント</div>
+                仮定「……的話」＋ 浮上・離脱の「飛起來（舞い上がる）」。
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我們要下車了，大家把背包背起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もうすぐ降りますよ、皆さんリュックを背負ってください。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFL多音字注意！</div>
+                動詞の「背 (bēi：背負う)」と名詞の「背包 (bèibāo：リュック)」の発音（声調）の違いが超頻出。
+            </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('有問題的人可以隨時把手舉起來問。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>有<rt>Yǒu</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>隨<rt>suí</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>舉<rt>jǔ</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>問<rt>wèn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">質問がある方は、いつでも手を挙げて質問してください。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 補語識別：舉起來 vs 舉上來</div>
+                「舉起來」は挙手動作そのもの。「舉上來」は話し手（上）に向かって持ち上げさせる空間移動。
+            </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('冷氣開著呢，快點把門關起來吧。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>冷<rt>Lěng</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>著<rt>zhe</rt></ruby><ruby>呢<rt>ne</rt></ruby>，<ruby>快<rt>kuài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>吧<rt>ba</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">冷房がついたままだよ、早くドアを閉めて（閉め切って）よ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 抽象的起來（遮断・密封）</div>
+                「關起來」は単に閉めるだけでなく「完全に遮断・密閉する」状態を意味する。
+            </div>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這兩雙襪子加起來一共是兩百三十元。需要幫您包起來嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>襪<rt>wà</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>共<rt>gòng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>元<rt>yuán</rt></ruby>。<ruby>需<rt>Xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>您<rt>nín</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">この2足の靴下を合わせると合計で230元になります。包みましょうか？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 合計・包囲の「起來」</div>
+                加起來（合計して）、包起來（包み込む）。ペアを数える量詞「雙」。
+            </div>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('夏天要到了，差不多應該把冬天的被子和枕頭收起來了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>夏<rt>Xià</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>差<rt>chà</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>冬<rt>dōng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>被<rt>bèi</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>枕<rt>zhěn</rt></ruby><ruby>頭<rt>tou</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もうすぐ夏が来るから、そろそろ冬の掛け布団と枕を仕舞う（片付ける）べきですね。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 収納の「收起來」</div>
+                表に出ていたものを目立たない場所へ格納・整理する。
+            </div>
+        </div>
+
+        <!-- CARD 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('可以跟你借幾個衣架嗎？我想把洗好的毛巾掛起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>可<rt>Kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>借<rt>jiè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>架<rt>jià</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>毛<rt>máo</rt></ruby><ruby>巾<rt>jīn</rt></ruby><ruby>掛<rt>guà</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">ハンガーをいくつかお借りしてもいいですか？洗い終わったタオルを掛けたいんです。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 借用構文：跟……借</div>
+                人から借りる時は「跟＋人＋借」。人に貸す時は「借給＋人」。
+            </div>
+        </div>
+
+        <!-- CARD 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我們得把事情連起來看，才能找到問題出現的原因。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>因<rt>yīn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私たちは出来事をひとつに繋ぎ合わせて観察して初めて、問題が発生した原因を見つけ出すことができます。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 結合の「連起來」＋限定構文「……才能……」</div>
+                バラバラな要素を連結する「連起來」。〜して初めて可能になる「才能」。
+            </div>
+        </div>
+
+        <!-- CARD 11 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('對了！我之前跟他合作過，怎麼現在才想起來？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>對<rt>Duì</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>合<rt>hé</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>過<rt>guo</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">そうだ！私、以前彼と一緒にお仕事したことあるじゃん、なんで今頃になってやっと思い出したんだろう？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 記憶の復元「想起來」</div>
+                忘れていた過去の記憶を「思い出す」。無から創出する「想出來」との対比が頻出。
+            </div>
+        </div>
+
+        <!-- CARD 12 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('如果你把每天喝飲料的錢存起來，也許十年之後就可以買一台車了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>如<rt>Rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>飲<rt>yǐn</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>存<rt>cún</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もし毎日ジュースを買って飲むお金を貯金しておけば、もしかしたら10年後には車が1台買えちゃうかもしれませんよ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 蓄積の「存起來」</div>
+                コツコツと貯める・集積する抽象的表現。
+            </div>
+        </div>
+
+        <!-- CARD 13 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('他這個月拿得到居留證吧？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>居<rt>jū</rt></ruby><ruby>留<rt>liú</rt></ruby><ruby>證<rt>zhèng</rt></ruby><ruby>吧<rt>ba</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">彼は今月、居留証（ARC/在留カード）を受け取れるでしょうか？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 獲得の可能補語「拿得到」</div>
+                手に入れる能力・見込みがあるかを表す。否定形は「拿不到」。
+            </div>
+        </div>
+
+        <!-- CARD 14 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('那枝筆已經找到了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>那<rt>Nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あのペンはもう見つかりました。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 「被」を使わない自然な受動文</div>
+                被害の意味が含まれない自然な出来事の完了は、「目的語＋動詞＋結果補語＋了」の形をとる。
+            </div>
+        </div>
+
+        <!-- CARD 15 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('那枝筆大概找不到。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>那<rt>Nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>概<rt>gài</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>到<rt>dào</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あのペンは、たぶん見つからないでしょう。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 可能補語否定「找不到」</div>
+                「探しても見つかりそうにない」予測・見込みの否定。❌「不找到」は文法エラー！
+            </div>
+        </div>
+
+        <!-- CARD 16 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這麼多報告，一個禮拜恐怕寫不完。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>告<rt>gào</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>完<rt>wán</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">こんなにたくさんのレポート、1週間では恐らく書ききれないでしょう。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 懸念の副詞「恐怕」</div>
+                話し手にとって望ましくない・不都合な結果を予測する副詞。
+            </div>
+        </div>
+
+        <!-- CARD 17 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('那條褲子太髒了，我感覺已經洗不乾淨了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>那<rt>Nà</rt></ruby><ruby>條<rt>tiáo</rt></ruby><ruby>褲<rt>kù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>髒<rt>zāng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>感<rt>gǎn</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あのズボンは汚れすぎているので、もう洗い落とせない気がします。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 感情・感覚「感覺」 vs 量詞「條」</div>
+                直感的な予感「感覺」。ズボン・スカート・魚を数える量詞「條」。
+            </div>
+        </div>
+
+        <!-- CARD 18 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('最近，在我家附近的超商買不到日本的美乃滋了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>最<rt>Zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby>，<ruby>在<rt>zài</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>附<rt>fù</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>超<rt>chāo</rt></ruby><ruby>商<rt>shāng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>日<rt>Rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>美<rt>měi</rt></ruby><ruby>乃<rt>nǎi</rt></ruby><ruby>滋<rt>zī</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">最近、うちの近くのコンビニで日本のマヨネーズが買えなくなってしまいました。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 台湾生活語彙「超商」＋ 在庫切れ「買不到」</div>
+                便利商店の口語略称「超商」。売り切れで手に入らない状態「買不到」。
+            </div>
+        </div>
+
+        <!-- CARD 19 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('昨天買的醋在哪裡？我已經找了好久了，還是找不到。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>昨<rt>Zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>醋<rt>cù</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>久<rt>jiǔ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>到<rt>dào</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">昨日買ったお酢はどこにあるの？もうずいぶん長く探しているのに、やっぱり見つかりません。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 二重の「了」（動作の現在進行）</div>
+                「找了＋時間＋了」は、過去に始まって今現在も探している継続を表す。
+            </div>
+        </div>
+
+        <!-- CARD 20 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('其實我因為字寫得太難看，所以經常會看不懂自己的筆記。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>其<rt>Qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>因<rt>yīn</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>懂<rt>dǒng</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>記<rt>jì</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">実は私、字があまりにも汚いせいで、よく自分のノートが読めなくなってしまうんです。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 様態補語（寫得太難看） ＋ 看不懂</div>
+                動作の評価「V＋得＋評価」。文字や意味が理解できない「看不懂」。
+            </div>
+        </div>
+
+        <!-- CARD 21 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('搭電梯時如果突然停電，我們就出不去了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>搭<rt>Dā</rt></ruby><ruby>電<rt>diàntī</rt></ruby><ruby>梯<rt>tī</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>如<rt>rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>突<rt>tū</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>電<rt>diàn</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">エレベーターに乗っている時に万が一突然停電したら、私たちは外に出られなくなってしまいます。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 視点の一致「出不去」</div>
+                閉じ込められた内部の視点から「外へ出て行けない」。自分自身の意思で行かない「不去」とは全く異なる。
+            </div>
+        </div>
+
+        <!-- CARD 22 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我兒子快期末考了，每天下課後都在圖書館念書，幾乎見不到他。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>兒<rt>ér</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>期<rt>qī</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>圖<rt>tú</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>幾<rt>jī</rt></ruby><ruby>乎<rt>hū</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">息子の期末テストがもうすぐなので、彼は毎日放課後ずっと図書館で勉強していて、ほとんど顔を合わせられません。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 切迫の「快……了」 ＋ 念書 ＋ 見不到</div>
+                「快期末考了（もうすぐ期末テストだ）」、「念書（勉強する）」、「見不到（時間や都合が合わず会えない）」。
+            </div>
+        </div>
+
+        <!-- CARD 23 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('你再不回他電話，他恐怕要等不下去了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あなたがこれ以上彼の電話に折り返さないと、彼はもうこれ以上待ち続けられなくなって（待ちきれなくなって）しまうかもしれませんよ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 放置「再不……」 ＋ 継続不能「等不下去」</div>
+                これ以上放置するとダメだという条件「再不……」。限界に達して継続できない「等不下去」。
+            </div>
+        </div>
+
+        <!-- CARD 24 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我昨天做了一個很可怕的夢，但是現在已經想不起來了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>夢<rt>mèng</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">昨日とても恐ろしい夢を見たのですが、今はもう思い出せなくなってしまいました。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 離合詞「做夢」 ＋ 想不起來</div>
+                修飾語を割り込ませる離合詞（做了一個可怕的夢）。記憶が復元できない「想不起來」。
+            </div>
+        </div>
+
+        <!-- CARD 25 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這樣看下來，我這次也許考不上研究所。你平常這麼認真，一定考得上。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>研<rt>yán</rt></ruby><ruby>究<rt>jiū</rt></ruby><ruby>所<rt>suǒ</rt></ruby>。<ruby>你<rt>Nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>上<rt>shàng</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">「こうやって振り返ってみると、私、今回はもしかしたら大学院に合格できないかもしれません。」—「あなたは普段こんなに真面目なんだから、絶対合格できるよ！」</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 経過総括「看下來」 ＋ 考得上/考不上 ＋ 研究所</div>
+                一通りプロセスを見る「看下來」。合格基準に達する/達しない「考得上/考不上」。大学院は「研究所」。
+            </div>
+        </div>
+
+        <!-- CARD 26 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('只吃一個包子，你吃得飽嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>只<rt>Zhǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>飽<rt>bǎo</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">中華まん（包子）を1個食べるだけで、あなたはお腹いっぱいになりますか（満腹になれますか）？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 限定「只」 ＋ 到達可能性「吃得飽」</div>
+                「只（〜だけ）」という限定条件と、「吃得飽嗎（満腹になれる＝十分なのか？）」の組み合わせ。
+            </div>
+        </div>
+
+        <!-- CARD 27 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('胡椒粉在哪家超市都買得到；辣椒粉的話不一定買得到。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>胡<rt>Hú</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>超<rt>chāoshì</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>；<ruby>辣<rt>là</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">コショウの粉はどこのスーパーでも買えますが、唐辛子の粉なら買えるとは限りません（買えないこともあります）。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 全称「疑問詞＋都」 ＋ 部分否定「不一定」</div>
+                「在哪家超市都……（どこのスーパーでも例外なく）」。可能性が不確定な部分否定「不一定買得到」。
+            </div>
+        </div>
+
+        <!-- CARD 28 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('公園這麼大，怎麼可能找得到你的鑰匙？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>公<rt>Gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>大<rt>dà</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鑰<rt>yào</rt></ruby><ruby>匙<rt>shi</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">公園がこんなに広いのに、あなたの鍵なんて見つかるわけがないでしょう（どうして見つけることができるだろうか）？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 強い反語表現「怎麼可能……？」</div>
+                肯定の形（找得到）をとりつつ「100%見つかるわけがない（絕對找不到）」という強い否定・呆れを表す。
+            </div>
+        </div>
+
+        <!-- CARD 29 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這個背包裝了太多書，我沒辦法背起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>裝<rt>zhuāng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このリュックは本を詰め込みすぎていて、私は（重くて）背負い上げることができません。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 不可能「沒辦法＋動詞」 ＝ 「背不起來」</div>
+                「沒辦法背起來」は可能補語否定「背不起來」と同義。背包 (bèibāo) / 背 (bēi) の多音字に注意。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 完璧な台湾ボイス音声再生JavaScript（ユーザー指定コード完全組み込み） -->
+    <script>
+    let taiwanVoice = null;
+    function initTaiwanVoice() {
+        if ('speechSynthesis' in window) {
+            const voices = window.speechSynthesis.getVoices();
+            taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                          voices.find(v => v.name.includes('Yating')) ||
+                          voices.find(v => v.name.includes('Hanhan')) ||
+                          voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+        }
+    }
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+        initTaiwanVoice();
+    }
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-TW';
+            utterance.rate = 0.85;
+            if (taiwanVoice) { utterance.voice = taiwanVoice; }
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCFL Band A/B 台湾華語 メタ攻略完全マスターシート</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --primary-light: #ebf5fb;
+            --accent: #e67e22;
+            --danger: #c0392b;
+            --success: #27ae60;
+            --text-dark: #2c3e50;
+            --border-color: #d5dbdb;
+            --card-bg: #ffffff;
+            --highlight: #fef9e7;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9f9;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            border-bottom: 4px solid var(--primary);
+            padding-bottom: 12px;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .meta-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .meta-header h2 {
+            margin-top: 0;
+            color: #f1c40f;
+            font-size: 1.3em;
+        }
+
+        .category-title {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            margin-top: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .sentence-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background-color: var(--primary-light);
+            padding: 22px 18px 15px 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* ピンイン（rt）のサイズ強調・視認性確保 */
+        .chinese-text {
+            font-size: 1.6em;
+            line-height: 3.4;
+            letter-spacing: 0.05em;
+            flex-grow: 1;
+        }
+
+        ruby {
+            margin-right: 12px;
+        }
+
+        rt {
+            font-size: 0.85em; /* ピンインをはっきり大きく表示 */
+            color: #1a5276;
+            font-weight: bold;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            transform: translateY(-8px);
+        }
+
+        .btn-play {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .btn-play:hover {
+            transform: scale(1.1);
+            background-color: #d35400;
+        }
+
+        .btn-play-sm {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 0.85em;
+            cursor: pointer;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .btn-play-sm:hover {
+            background-color: #2980b9;
+        }
+
+        .translation {
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .grammar-box {
+            background-color: #fcf3cf;
+            border: 1px solid #f9e79f;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.95em;
+        }
+
+        .grammar-title {
+            font-weight: bold;
+            color: #7d6608;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .vocab-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            font-size: 0.93em;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .badge-wrong {
+            background-color: var(--danger);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .badge-correct {
+            background-color: var(--success);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOCFL Band A/B 台湾華語 メタ解剖マスターシート</h1>
+        
+        <!-- HEADER META LOGIC -->
+        <div class="meta-header">
+            <h2>🎯 TOCFL試験・得点直結メタ解剖ロジック</h2>
+            <ul>
+                <li><strong>語順・補語否定トラップ：</strong> 可能補語否定（<code>找不到</code>）と結果補語否定（<code>沒找到</code>）を区別。<code>不找到</code> は100%エラー選択肢。</li>
+                <li><strong>方向補語（起來 / 下來 / 下去）：</strong> 単なる空間移動だけでなく、派生用法（集約・遮断・記憶復元・未来への継続）が正答の鍵。</li>
+                <li><strong>日台異義語トラップ：</strong> <code>新聞</code>（ニュース） vs <code>報紙</code>（新聞紙）。これを混同させ直後の動詞（看/剪）を選ばせる問題が定番。</li>
+                <li><strong>多音字・声調区別：</strong> <code>背</code>（bēi：動詞「背負う」 vs bèi：名詞「背中」・動詞「暗記する」）、<code>得</code>（děi / de / dé）。</li>
+                <li><strong>概数「多」の語順：</strong> 1未満の端数は量詞の後（<code>半個多小時</code>）、10以上の整数は数詞の後（<code>十多個人</code>）。</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 1: VOCABULARY GRID WITH AUDIO -->
+        <div class="category-title">
+            <span>📚 TOCFL Band A/B 頻出単語・単体音声マスター</span>
+            <span style="font-size: 0.8em; font-weight: normal;">クリックで発音確認</span>
+        </div>
+
+        <div class="card">
+            <div class="vocab-grid">
+                <div class="vocab-item">
+                    <div><strong>超商</strong> (chāoshāng)<br><small>コンビニ</small></div>
+                    <button class="btn-play-sm" onclick="speakText('超商')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>美乃滋</strong> (měinǎizī)<br><small>マヨネーズ</small></div>
+                    <button class="btn-play-sm" onclick="speakText('美乃滋')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>居留證</strong> (jūliúzhèng)<br><small>居留カード(ARC)</small></div>
+                    <button class="btn-play-sm" onclick="speakText('居留證')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>禮拜</strong> (lǐbài)<br><small>〜曜日 / 週間</small></div>
+                    <button class="btn-play-sm" onclick="speakText('禮拜')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>搭</strong> (dā)<br><small>（乗り物に）乗る</small></div>
+                    <button class="btn-play-sm" onclick="speakText('搭')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>念書</strong> (niànshū)<br><small>勉強する / 通学する</small></div>
+                    <button class="btn-play-sm" onclick="speakText('念書')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>研究所</strong> (yánjiūsuǒ)<br><small>大学院</small></div>
+                    <button class="btn-play-sm" onclick="speakText('研究所')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>鑰匙</strong> (yàoshi)<br><small>鍵</small></div>
+                    <button class="btn-play-sm" onclick="speakText('鑰匙')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>恐怕</strong> (kǒngpà)<br><small>恐らく（懸念）</small></div>
+                    <button class="btn-play-sm" onclick="speakText('恐怕')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>幾乎</strong> (jīhū)<br><small>ほとんど</small></div>
+                    <button class="btn-play-sm" onclick="speakText('幾乎')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>背 (bēi)</strong><br><small>【動】背負う</small></div>
+                    <button class="btn-play-sm" onclick="speakText('背')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>背包 (bèibāo)</strong><br><small>【名】リュック</small></div>
+                    <button class="btn-play-sm" onclick="speakText('背包')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>新聞 (xīnwén)</strong><br><small>ニュース</small></div>
+                    <button class="btn-play-sm" onclick="speakText('新聞')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>報紙 (bàozhǐ)</strong><br><small>新聞紙・紙面</small></div>
+                    <button class="btn-play-sm" onclick="speakText('報紙')">🔊</button>
+                </div>
+                <div class="vocab-item">
+                    <div><strong>總經理 (zǒngjīnglǐ)</strong><br><small>社長・最高責任者</small></div>
+                    <button class="btn-play-sm" onclick="speakText('總經理')">🔊</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: CORE GRAMMAR COMPARISON TABLES -->
+        <div class="category-title">
+            <span>⚖️ TOCFL最頻出：文法・補語識別徹底比較</span>
+            <span style="font-size: 0.8em; font-weight: normal;">対比表</span>
+        </div>
+
+        <div class="card">
+            <h3>1. 「見つからない」の否定パターン比較</h3>
+            <table>
+                <tr><th>表現</th><th>構造</th><th>意味・ニュアンス</th><th>判定</th></tr>
+                <tr><td><strong>找不到</strong></td><td>動詞 ＋ 不 ＋ 到</td><td>（これから探しても）見つからない見込み</td><td><span class="badge-correct">正</span></td></tr>
+                <tr><td><strong>沒找到</strong></td><td>沒 ＋ 動詞 ＋ 到</td><td>（過去に探したが）見つからなかった事実</td><td><span class="badge-correct">正</span></td></tr>
+                <tr><td><strong>不找到</strong></td><td>不 ＋ 動詞 ＋ 到</td><td>文法構造エラー（存在しない）</td><td><span class="badge-wrong">誤</span></td></tr>
+            </table>
+
+            <h3 style="margin-top: 25px;">2. 想 + 補語（「想起來」 vs 「想出來」）</h3>
+            <table>
+                <tr><th>表現</th><th>補語の役割</th><th>意味の焦点</th><th>例文</th></tr>
+                <tr><td><strong>想起來</strong></td><td>起來（深層から浮上）</td><td>【記憶の復元】過去の思い出・名前を**思い出す**</td><td><code>他的名字我想起來了！</code></td></tr>
+                <tr><td><strong>想出來</strong></td><td>出來（無から産出）</td><td>【思考・創造】新しいアイデア・答えを**考え出す**</td><td><code>我想不出來這個問題的答案。</code></td></tr>
+            </table>
+
+            <h3 style="margin-top: 25px;">3. 方向補語（「下去」 vs 「下來」の時間軸対比）</h3>
+            <table>
+                <tr><th>表現</th><th>時間軸</th><th>ニュアンス</th><th>例文</th></tr>
+                <tr><td><strong>下去</strong></td><td>現在 ➔ 未来</td><td>これから先へ向かって動作を**継続・推進**する</td><td><code>別急，先聽下去吧！</code></td></tr>
+                <tr><td><strong>下來</strong></td><td>過去 ➔ 現在</td><td>過去から現在に向けて状態・動作が**受け継がれる/総括する**</td><td><code>這樣看下來，我考不上。</code></td></tr>
+            </table>
+
+            <h3 style="margin-top: 25px;">4. 端数「多 (duō)」の配置ルール</h3>
+            <table>
+                <tr><th>パターン</th><th>配置の法則</th><th>意味</th><th>例文</th></tr>
+                <tr><td><strong>1未満の端数</strong></td><td>数詞 ＋ 量詞 ＋ <strong>多</strong> ＋ 名詞</td><td>〜余り（分数レベルの端数）</td><td><code>半個多小時</code>（30分〜40分）</td></tr>
+                <tr><td><strong>10以上の整数</strong></td><td>数詞（10/20等） ＋ <strong>多</strong> ＋ 量詞 ＋ 名詞</td><td>〜数十・〜あまり（整数レベルの端数）</td><td><code>十多個人</code>（11〜19人）</td></tr>
+            </table>
+        </div>
+
+        <!-- SECTION 3: MASTER SENTENCES (FULL 31+ SENTENCES) -->
+        <div class="category-title">
+            <span>📖 解析済みマスター例文（ピンイン・解説・音声付き）</span>
+            <span style="font-size: 0.8em; font-weight: normal;">全文章完全収録</span>
+        </div>
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('小劉很有禮貌，客人進辦公室時都會站起來打招呼。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>小<rt>Xiǎo</rt></ruby><ruby>劉<rt>liú</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>貌<rt>mào</rt></ruby>，<ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>招<rt>zhāo</rt></ruby><ruby>呼<rt>hu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">劉くん（小劉）はとても礼儀正しく、お越しになった客がオフィスに入ってくると、いつも立ち上がって挨拶をします。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFLメタポイント</div>
+                物理的動作「站起來（立ち上がる）」。習慣を表す「都會〜」。
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('姊姊的鬧鐘太吵了，家裡的貓一聽到就會跳起來跑走。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>姊<rt>Jiě</rt></ruby><ruby>姊<rt>jie</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鬧<rt>nào</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>貓<rt>māo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跳<rt>tiào</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">お姉ちゃんの目覚まし時計がうるさすぎるので、家の猫は聞こえた瞬間すぐに飛び起きて逃げ出します。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 TOCFLメタポイント</div>
+                「一……就……（〜するとすぐ）」＋ 即時反応の「跳起來（跳ね起きる）」。
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我們要下車了，大家把背包背起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">もうすぐ降りますよ、皆さんリュックを背負ってください。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 多音字「背」に注意！</div>
+                動詞「背 (bēi：背負う)」と名詞「背包 (bèibāo：リュック)」の発音・声調の違いが出題される。
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('有問題的人可以隨時把手舉起來問。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>有<rt>Yǒu</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>隨<rt>suí</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>舉<rt>jǔ</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>問<rt>wèn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">質問がある方は、いつでも手を挙げて質問してください。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 把構文 ＋ 舉起來</div>
+                持ち上げる「舉起來」。挙手動作。
+            </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('冷氣開著呢，快點把門關起來吧。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>冷<rt>Lěng</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>著<rt>zhe</rt></ruby><ruby>呢<rt>ne</rt></ruby>，<ruby>快<rt>kuài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>吧<rt>ba</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">冷房がついたままだよ、早くドアを閉めて（閉め切って）よ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 抽象的起來（遮断・密閉）</div>
+                「關起來」は単に閉めるだけでなく「完全に遮断する」状態を作る。
+            </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這兩雙襪子加起來一共是兩百三十元。需要幫您包起來嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>襪<rt>wà</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>共<rt>gòng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>元<rt>yuán</rt></ruby>。<ruby>需<rt>Xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>您<rt>nín</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">この2足の靴下を合わせると合計で230元になります。包みましょうか？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 加起來（合計して）/ 包起來（包み込む）</div>
+                靴下や手袋を数える量詞「雙」。
+            </div>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我們得把事情連起來看，才能找到問題出現的原因。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>因<rt>yīn</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">私たちは出来事をひと繋ぎにして捉えて初めて、問題が発生した原因を見つけることができます。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 連起來 ＋ 必要条件「得……才能……」</div>
+                バラバラな要素を1つに統合する「連起來」。「得……才能……」は論理読解で必須。
+            </div>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('對了！我之前跟他合作過，怎麼現在才想起來？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>對<rt>Duì</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>合<rt>hé</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>過<rt>guo</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">そうだ！私、以前彼と一緒に仕事したことがあったんだ、なんで今頃になってやっと思い出したんだろう？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 想起來（記憶の復元） vs 想出來（創出）</div>
+                「對了！（あ、そうだ！）」＋「現在才……（今頃になってやっと……）」。
+            </div>
+        </div>
+
+        <!-- CARD 9 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('搭電梯時如果突然停電，我們就出不去了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>搭<rt>Dā</rt></ruby><ruby>電<rt>diàntī</rt></ruby><ruby>梯<rt>tī</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>如<rt>rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>突<rt>tū</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>電<rt>diàn</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">エレベーターに乗っている時に突然停電したら、私たちは外に出られなくなってしまいます。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 出不去（脱出不能） vs 不去（意志で行かない）</div>
+                「搭（乗る）」は台湾で乗り物に乗る際の標準単語。内部視点からの「出不去」。
+            </div>
+        </div>
+
+        <!-- CARD 10 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我兒子快期末考了，每天下課後都在圖書館念書，幾乎見不到他。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>兒<rt>ér</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>期<rt>qī</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>圖<rt>tú</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>幾<rt>jī</rt></ruby><ruby>乎<rt>hū</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">息子の期末テストがもうすぐなので、彼は毎日放課後ずっと図書館で勉強していて、ほとんど顔を合わせられません。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 快……了 ＋ 念書 ＋ 見不到</div>
+                時間切迫「快……了」。勉強する「念書」。会おうとしても会えない「見不到」。
+            </div>
+        </div>
+
+        <!-- CARD 11 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('你再不回他電話，他恐怕要等不下去了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>你<rt>Nǐ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">あなたがこれ以上彼の電話に折り返さないと、彼はもうこれ以上待ち続けられなくなって（待ちきれなくなって）しまうかもしれませんよ。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 再不……就/恐怕 ＋ 等不下去</div>
+                放置警告「再不……」。限界による継続不能「等不下去」。
+            </div>
+        </div>
+
+        <!-- CARD 12 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('我昨天做了一個很可怕的夢，但是現在已經想不起來了。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>我<rt>Wǒ</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>夢<rt>mèng</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">昨日とても恐ろしい夢を見たのですが、今はもう思い出せなくなってしまいました。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 離合詞「做夢」 ＋ 想不起來</div>
+                離合詞修飾「做了一個可怕的夢」。過去の夢を思い出せない「想不起來」。
+            </div>
+        </div>
+
+        <!-- CARD 13 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這樣看下來，我這次也許考不上研究所。你平常這麼認真，一定考得上。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>研<rt>yán</rt></ruby><ruby>究<rt>jiū</rt></ruby><ruby>所<rt>suǒ</rt></ruby>。<ruby>你<rt>Nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>上<rt>shàng</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">「こうやって振り返ってみると、私、今回はもしかしたら大学院に合格できないかもしれません。」—「あなたは普段こんなに真面目なんだから、絶対合格できるよ！」</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 看下來 ＋ 考得上/考不上 ＋ 研究所</div>
+                プロセスの観察総括「看下來」。合格ラインに達する/達しない「考得上/考不上」。大学院は「研究所」。
+            </div>
+        </div>
+
+        <!-- CARD 14 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('只吃一個包子，你吃得飽嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>只<rt>Zhǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>gè</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>飽<rt>bǎo</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">中華まん（包子）を1個食べるだけで、あなたはお腹いっぱいになりますか（満腹になれますか）？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 限定「只」 ＋ 吃得飽</div>
+                「只（〜だけ）」と「吃得飽嗎（満腹になれる＝十分なのか？）」の文脈組み合わせ。
+            </div>
+        </div>
+
+        <!-- CARD 15 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('胡椒粉在哪家超市都買得到；辣椒粉的話不一定買得到。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>胡<rt>Hú</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>超<rt>chāoshì</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>；<ruby>辣<rt>là</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">コショウの粉はどこのスーパーでも買えますが、唐辛子の粉なら買えるとは限りません（買えないこともあります）。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 疑問詞＋都（全称） ＋ 不一定買得到（部分否定）</div>
+                「在哪家超市都（どのスーパーでも例外なく）」。「不一定買得到」は買える可能性も残る部分否定。
+            </div>
+        </div>
+
+        <!-- CARD 16 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('公園這麼大，怎麼可能找得到你的鑰匙？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>公<rt>Gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>大<rt>dà</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鑰<rt>yào</rt></ruby><ruby>匙<rt>shi</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">公園がこんなに広いのに、あなたの鍵なんて見つかるわけがないでしょう（どうして見つけることができるだろうか）？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 反語構文「怎麼可能……？」</div>
+                肯定形「找得到」を反語にして「絕對找不到（絶対に見つかるわけがない）」を表す。
+            </div>
+        </div>
+
+        <!-- CARD 17 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這個背包裝了太多書，我沒辦法背起來。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>裝<rt>zhuāng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このリュックは本を詰め込みすぎていて、私は（重くて）背負い上げることができません。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 沒辦法背起來 ＝ 背不起來</div>
+                手立てがない「沒辦法」＋ 担ぎ上げる「背起來」。
+            </div>
+        </div>
+
+        <!-- CARD 18 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('他花了十年才終於當上總經理。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>他<rt>Tā</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>終<rt>zhōng</rt></ruby><ruby>於<rt>yú</rt></ruby><ruby>當<rt>dāng</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>總<rt>zǒng</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>理<rt>lǐ</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">彼は10年もの歳月をかけて、ようやく（ついに）社長（総支配人）になることができました。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 時間的遅さ「才」 ＋ 當上（役職への就任）</div>
+                「才」はプロセスの困難さや時間の長さを強調。「當上」で重要な役職に就任する。
+            </div>
+        </div>
+
+        <!-- CARD 19 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這個新聞，你是從哪份報紙上剪下來的？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">このニュース（の記事）、あなたはどの新聞から切り抜いた（ハサミで切り取った）のですか？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 新聞（ニュース） vs 報紙（新聞紙） ＋ 剪下來</div>
+                「新聞（ニュース）」と「報紙（新聞紙）」の違いはTOCFL超頻出トラップ。「剪下來（ハサミで切り抜く）」。
+            </div>
+        </div>
+
+        <!-- CARD 20 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('這份禮物是大家為妳準備的，希望妳可以收下。')">▶</button>
+                <div class="chinese-text">
+                    <ruby>這<rt>Zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>下<rt>xià</rt></ruby>。
+                </div>
+            </div>
+            <div class="translation">このプレゼントはみんながあなたのために用意したものです。受け取っていただけると嬉しいです。</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 方向補語「下（收下）」 ＋ 強調構文「是……的」</div>
+                自分の手元に納める「收下」。女性に対する代名詞「妳」。
+            </div>
+        </div>
+
+        <!-- CARD 21 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('別急，先聽下去吧！')">▶</button>
+                <div class="chinese-text">
+                    <ruby>別<rt>Bié</rt></ruby><ruby>急<rt>jí</rt></ruby>，<ruby>先<rt>xiān</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>吧<rt>ba</rt></ruby>！
+                </div>
+            </div>
+            <div class="translation">そう焦らないで、まずは（最後まで/このまま）話を聞き続けましょうよ！</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 別急 ＋ 先 ＋ 聽下去（未来への継続）</div>
+                今から先へと動作を押し進めて継続する「下去」。
+            </div>
+        </div>
+
+        <!-- CARD 22 -->
+        <div class="card">
+            <div class="sentence-container">
+                <button class="btn-play" onclick="speakText('已經過了半個多小時了，我們還要繼續等下去嗎？')">▶</button>
+                <div class="chinese-text">
+                    <ruby>已<rt>Yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>繼<rt>jì</rt></ruby><ruby>續<rt>xù</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？
+                </div>
+            </div>
+            <div class="translation">もう30分以上も過ぎたけれど、私たちはまだこのまま待ち続けなければいけないのでしょうか？</div>
+            <div class="grammar-box">
+                <div class="grammar-title">📌 半個多小時（端数の「多」の位置） ＋ 等下去</div>
+                1未満の端数は量詞の後ろ「半個多小時」。このまま待ち続ける「等下去」。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 完璧な台湾ボイス音声再生JavaScript（ユーザー指定コード完全組み込み） -->
+    <script>
+let taiwanVoice = null;
+function initTaiwanVoice() {
+    if ('speechSynthesis' in window) {
+        const voices = window.speechSynthesis.getVoices();
+        taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                      voices.find(v => v.name.includes('Yating')) ||
+                      voices.find(v => v.name.includes('Hanhan')) ||
+                      voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+    }
+}
+if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+    initTaiwanVoice();
+}
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.85;
+        if (taiwanVoice) { utterance.voice = taiwanVoice; }
+        window.speechSynthesis.speak(utterance);
+    }
+}
+    </script>
+</body>
+</html>
