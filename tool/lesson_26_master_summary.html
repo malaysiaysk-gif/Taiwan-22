@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 26 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 26 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">那條牛仔褲已經穿不下了。(可能補語2：可能補語独自の形 / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (27句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 可能補語固有形深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 26 例文全27句（①〜㉗ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 26 文法メタマトリクス：可能補語独自の固定形式 4パターン & 「食べられない」5大使い分け
+                </h2>
+                <p class="text-sm text-slate-600">「〜の下に結果補語がない」可能補語独自の4大体系と、TOCFLで最頻出となる「食べられない」の5つの理由別の完全識別。</p>
+            </div>
+
+            <!-- 1. 可能補語独自の形 4パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 可能補語独自の形 4パターン（TOCFL最重要体系）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">補語パターン</th>
+                                <th class="p-3">核心概念・理由</th>
+                                <th class="p-3">代表動詞構文</th>
+                                <th class="p-3">例文とニュアンス</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">⑴ V 不下</td>
+                                <td class="p-3 text-slate-700">空間・面積・容量・胃袋の限界（入りきらない）</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">坐不下 / 裝不下 / 穿不下 / 寫不下 / 吃不下</td>
+                                <td class="p-3 font-semibold text-slate-900">車子坐不下（乗れない/定員オーバー）<br>牛仔褲穿不下（太って履けない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">⑵ V 不起</td>
+                                <td class="p-3 text-slate-700">金銭的コスト・地位・精神的耐力（担えない）</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">買不起 / 租不起 / 念不起 / 看不起 / 對不起</td>
+                                <td class="p-3 font-semibold text-slate-900">房子租不起（家賃が高くて借りられない）<br>看不起人（人を見下す）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">⑶ V 不動</td>
+                                <td class="p-3 text-slate-700">重量・体力・疲労で身体・物体を動かせない</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">搬不動 / 走不動 / 提不動 / 跑不動 / 載不動</td>
+                                <td class="p-3 font-semibold text-slate-900">餐桌搬不動（重くて運べない）<br>累得走不動（疲れて歩けない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700 text-base">⑷ V 不了</td>
+                                <td class="p-3 text-slate-700">客観的事情・環境で「どうしても成立しない」（隙間埋め）</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">忘不了 / 去不了 / 回不了 / 到不了 / 飛不了</td>
+                                <td class="p-3 font-semibold text-slate-900">忘不了那些日子（あの日々を忘れられない）<br>颱風天飛不了（台風で飛べない）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「食べられない」の5大使い分け (TOCFL超頻出ひっかけ) -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    ② 💡「食べられない」の理由別 5大可能補語使い分け (TOCFL Band A-B 超最重要)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-blue-800 text-sm">吃不完</div>
+                        <div class="font-semibold text-slate-800">【量の問題】</div>
+                        <p class="text-slate-600 leading-normal">料理の量が多すぎて完食（完）できない。</p>
+                        <div class="font-mono text-xs font-bold text-blue-900 bg-white p-1.5 rounded border border-slate-200">菜太多吃不完</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-emerald-800 text-sm">吃不到</div>
+                        <div class="font-semibold text-slate-800">【目的未達成】</div>
+                        <p class="text-slate-600 leading-normal">売り切れや行列で店で食べられない（到）。</p>
+                        <div class="font-mono text-xs font-bold text-emerald-900 bg-white p-1.5 rounded border border-slate-200">賣光了吃不到</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-amber-800 text-sm">吃不下</div>
+                        <div class="font-semibold text-slate-800">【胃袋の容量】</div>
+                        <p class="text-slate-600 leading-normal">お腹がいっぱいで胃袋に入らない（下）。</p>
+                        <div class="font-mono text-xs font-bold text-amber-900 bg-white p-1.5 rounded border border-slate-200">太飽了吃不下</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-800 text-sm">吃不起</div>
+                        <div class="font-semibold text-slate-800">【金銭的コスト】</div>
+                        <p class="text-slate-600 leading-normal">価格が高すぎてお金が足りない（起）。</p>
+                        <div class="font-mono text-xs font-bold text-rose-900 bg-white p-1.5 rounded border border-slate-200">太貴了吃不起</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-purple-800 text-sm">吃不了</div>
+                        <div class="font-semibold text-slate-800">【その他の事情】</div>
+                        <p class="text-slate-600 leading-normal">辛すぎる・硬すぎる・体質・アレルギーなど。</p>
+                        <div class="font-mono text-xs font-bold text-purple-900 bg-white p-1.5 rounded border border-slate-200">太辣了吃不了</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 26 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「看不起」と「對不起」の構造解剖、可能補語「V不了」と助動詞「不能 V」の細微差。</p>
+            </div>
+
+            <!-- QA 1: 「看不起」 vs 「對不起」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">文法的固定化</span>
+                    「看不起（見下す）」と「對不起（ごめんなさい）」はなぜ可能補語なのか？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 看不起（kàn bù qǐ）＝ 評価を下に見る</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            相手を「自分と同等以上の高さ（起）まで引き上げて評価することができない」ことから、「見下す・バカにする」という意味に固定化。
+                        </p>
+                        <p class="font-mono text-blue-900 font-bold bg-white p-2 rounded border border-slate-200">例：他從來不看不起窮人。（彼は貧しい人を決して見下さない。）</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">2. 對不起（duì bù qǐ）＝ 顔向けできない</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            申し訳なさから「相手に正対する（對）だけの資格や姿勢（起）を保てない」ことが原義で、謝罪のフレーズとして定着。
+                        </p>
+                        <p class="font-mono text-rose-900 font-bold bg-white p-2 rounded border border-slate-200">例：實在對不起他。（彼に本当に申し訳ない。）</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「V不了」 vs 「不能 V」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">構文比較</span>
+                    「去不了」と「不能去」の微妙なニュアンス差と使い分け
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-purple-800">去不了（可能補語否定）</div>
+                            <p class="text-slate-600">客観的な急用、事故、病気、悪天候などにより「行こうとしてもどうしても行くことが叶わない」物理的・環境的不可能。</p>
+                            <div class="font-mono text-xs font-bold text-purple-900 mt-1">例：明天有急事，去不了派對了。</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">不能去（助動詞否定）</div>
+                            <p class="text-slate-600">規則、親の禁止、道徳、本人の判断・意志により「行ってはならない・行くべきではない」禁止・制約。</p>
+                            <div class="font-mono text-xs font-bold text-slate-900 mt-1">例：媽媽說太晚了，不能去。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 26 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('comp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">可能補語</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">生活・衣類</button>
+                    <button onclick="filterVocab('travel')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">交通・社会</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 26 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 27 Sentences from 1 to 27)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "我的車坐不下這麼多人。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>坐<rt>zuò</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>人<rt>rén</rt></ruby>。",
+                translation: "私の車はこんなにたくさんの人は乗れない（乗せきれない）。",
+                structure: "【主題】我的車， 【可能補語(定員)】坐不下 ＋ 這麼多人",
+                point: "<b>坐不下（zuò bú xià）</b>：車内スペース・座席数の限界で全員が乗り切らない（V不下：容量の限界）。"
+            },
+            {
+                id: 2,
+                hanzi: "在市區裡我租不起房子。",
+                rubyHtml: "<ruby>在<rt>zài</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>租<rt>zū</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "街の中心部では（家賃が高くて）家（部屋）が借りられない。",
+                structure: "【場所】在市區裡， 【可能補語(経済)】我 ＋ 租不起 ＋ 房子",
+                point: "<b>租不起（zū bù qǐ）</b>：家賃が予算をオーバーして金銭的に借りる負担に耐えられない（V不起）。"
+            },
+            {
+                id: 3,
+                hanzi: "那張餐桌他們會不會搬不動？",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>桌<rt>zhuō</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>動<rt>dòng</rt></ruby>？",
+                translation: "あのダイニングテーブル、彼らは重くて運べないだろうか？",
+                structure: "【主題】那張餐桌， 【推測疑問】他們會不會 ＋ 【可能補語(重量)】搬不動？",
+                point: "<b>搬不動（bān bú dòng）</b>：テーブルが重すぎて自分の体力・筋力で移動させられない（V不動）。"
+            },
+            {
+                id: 4,
+                hanzi: "我一直忘不了那些日子。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "私はあの日々のことがずっと忘れられない。",
+                structure: "【主語・継続】我一直 ＋ 【可能補語(感情)】忘不了 ＋ 那些日子",
+                point: "<b>忘不了（wàng bù liǎo）</b>：どうしても忘れることができない（固有固定形 V不了）。「日子（日々・月日）」"
+            },
+            {
+                id: 5,
+                hanzi: "我可以用這邊的紙嗎？我的筆記本快寫不下了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "こっちの紙を使ってもいい？私のノートはもうすぐ（空白のページがなくなって）書けなくなってしまうの。",
+                structure: "【許可】我可以用這邊的紙嗎？ 【直前変化】筆記本 快 [寫不下了]",
+                point: "<b>寫不下（xiě bú xià）</b>：ノートの余白やページが埋まってしまい書ききれない。「快...了（もうすぐ〜になる）」"
+            },
+            {
+                id: 6,
+                hanzi: "這碗牛肉麵份量太多了，我真的吃不下了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>碗<rt>wǎn</rt></ruby><ruby>牛<rt>niú</rt></ruby><ruby>肉<rt>ròu</rt></ruby><ruby>麵<rt>miàn</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>量<rt>liàng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この牛肉麺は量が多すぎて、私はもう本当にお腹に入りません（食べられません）。",
+                structure: "【過剰】份量太多了， 【胃袋の限界】我真的 [吃不下了]",
+                point: "<b>吃不下（chī bú xià）</b>：お腹が満腹でこれ以上胃袋に入らない。「份量（fènliàng：ボリューム・量）」"
+            },
+            {
+                id: 7,
+                hanzi: "這個行李箱太小，裝不下你買的所有伴手禮。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>行<rt>xíng</rt></ruby><ruby>李<rt>lǐ</rt></ruby><ruby>箱<rt>xiāng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>小<rt>xiǎo</rt></ruby>，<ruby>裝<rt>zhuāng</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>伴<rt>bàn</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>禮<rt>lǐ</rt></ruby>。",
+                translation: "このスーツケースは小さすぎて、あなたが買ったすべてのお土産を詰め込めません。",
+                structure: "【過小】行李箱太小， 【容量限界】裝不下 ＋ [所有伴手禮]",
+                point: "<b>裝不下（zhuāng bú xià）</b>：箱や鞄の容量不足で入りきらない。「伴手禮（bànshǒulǐ：台湾でのお土産）」"
+            },
+            {
+                id: 8,
+                hanzi: "這條牛仔褲是我變胖以前買的，現在已經穿不下了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>條<rt>tiáo</rt></ruby><ruby>牛<rt>niú</rt></ruby><ruby>仔<rt>zǎi</rt></ruby><ruby>褲<rt>kù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>胖<rt>pàng</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>穿<rt>chuān</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "このジーンズは太る前に買ったもので、今はもう履けなくなってしまいました。",
+                structure: "【強調】是變胖以前買的， 【体型変化】現在已經 [穿不下了]",
+                point: "<b>穿不下（chuān bú xià）</b>：体型変化やサイズが小さくて衣類が身につけられない。タイトルフレーズ。"
+            },
+            {
+                id: 9,
+                hanzi: "台北市中心的名牌包和房子，一般的上班族根本買不起。",
+                rubyHtml: "<ruby>台<rt>tái</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>名<rt>míng</rt></ruby><ruby>牌<rt>pái</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>一<rt>yì</rt></ruby><ruby>般<rt>bān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>班<rt>bān</rt></ruby><ruby>族<rt>zú</rt></ruby><ruby>根<rt>gēn</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>。",
+                translation: "台北市中心部のブランドバッグや住宅は、普通のサラリーマンには到底買えません。",
+                structure: "【主題】北市中心的名牌包和房子， 【金銭的不可能】上班族 根本 [買不起]",
+                point: "<b>買不起（mǎi bù qǐ）</b>：高価すぎて金銭的に購入費用が払えない。「根本（到底〜ない）」"
+            },
+            {
+                id: 10,
+                hanzi: "那所私立大學的學費非常貴，我們家實在念不起。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>私<rt>sī</rt></ruby><ruby>立<rt>lì</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>費<rt>fèi</rt></ruby><ruby>非<rt>fēi</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>貴<rt>guì</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>。",
+                translation: "あの私立大学の学費はとても高いので、我が家ではとても学費を払えません（通わせられません）。",
+                structure: "【学費高額】學費非常貴， 【学費負担不能】我們家實在 [念不起]",
+                point: "<b>念不起（niàn bù qǐ）</b>：学費が高くて経済的に大学に通う余裕がない。「念（通学・勉強する）」"
+            },
+            {
+                id: 11,
+                hanzi: "雖然他現在很有錢，但他從來不看不起窮人。",
+                rubyHtml: "<ruby>雖<rt>suī</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>錢<rt>qián</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>窮<rt>qióng</rt></ruby><ruby>人<rt>rén</rt></ruby>。",
+                translation: "彼は今でお金持ちですが、貧しい人を決して見下したりしません。",
+                structure: "【逆接】雖然很有錢，但他 從來不 ＋ 【見下す】看不起窮人",
+                point: "<b>看不起（kàn bù qǐ）</b>：人を馬鹿にする・見下す。「從來不（これまで一度も〜ない）」"
+            },
+            {
+                id: 12,
+                hanzi: "我做了這麼過分的事，實在對不起他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>分<rt>fèn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>事<rt>shì</rt></ruby>，<ruby>實<rt>shí</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>對<rt>duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "私はこんなに酷いことをしてしまい、本当に彼に申し訳ない（顔向けができない）。",
+                structure: "【過失】做了過分的事， 【申し訳なさ】實在 [對不起他]",
+                point: "<b>對不起（duì bù qǐ）</b>：申し訳ない・顔向けができない。「過分（guòfèn：度が過ぎている）」"
+            },
+            {
+                id: 13,
+                hanzi: "我今天爬了一整天的山，現在腳痠得走不動了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>爬<rt>pá</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>整<rt>zhěng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>山<rt>shān</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>腳<rt>jiǎo</rt></ruby><ruby>痠<rt>suān</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "今日は丸一日山登りをしたので、今は足がだるくて歩けません。",
+                structure: "【登山】爬了一整天的山， 【様態補語＋動作不能】腳痠得 ＋ [走不動了]",
+                point: "<b>走不動（zǒu bú dòng）</b>：疲労で自分の足を動かして歩くことができない。「痠（suān：だるい）」"
+            },
+            {
+                id: 14,
+                hanzi: "這個大箱子太重了，我一個人實在提不動。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>箱<rt>xiāng</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>提<rt>tí</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>動<rt>dòng</rt></ruby>。",
+                translation: "この大きな箱は重すぎて、私一人ではとても持ち上げられません。",
+                structure: "【重量過剰】大箱子太重了， 【持ち上げ不能】我一個人 實在 [提不動]",
+                point: "<b>提不動（tí bú dòng）</b>：手で持ち上げたり下げて移動させるパワーが足りない。「提（提げる）」"
+            },
+            {
+                id: 15,
+                hanzi: "我今天跑了五公里，最後兩百公尺真的跑不動了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>里<rt>lǐ</rt></ruby>，<ruby>最<rt>zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>尺<rt>chǐ</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "今日は5キロ走ったが、最後の200メートルは本当に走れなくなった。",
+                structure: "【距離】跑了五公里， 【疲労限界】最後兩百公尺 真的 [跑不動了]",
+                point: "<b>跑不動（pǎo bú dòng）</b>：体力の限界で走って進むことができない。「公尺（メートル）」"
+            },
+            {
+                id: 16,
+                hanzi: "這台小機車載不動我們兩個人。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>載<rt>zài</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>人<rt>rén</rt></ruby>。",
+                translation: "この小さなスクーターは私たち2人を乗せて走るパワー（馬力）がない。",
+                structure: "【排気量限界】這台小機車， 【載積パワー不足】載不動 ＋ 我們兩個人",
+                point: "<b>載不動（zài bú dòng）</b>：車やバイクの馬力が足りず、人を乗せて動かせない。「機車（スクーター）」"
+            },
+            {
+                id: 17,
+                hanzi: "今天的颱風太大了，所有班機都飛不了。",
+                rubyHtml: "<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>颱<rt>tái</rt></ruby><ruby>風<rt>fēng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>班<rt>bān</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>飛<rt>fēi</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "今日の台風は大きすぎて、すべてのフライトが飛ぶことができない。",
+                structure: "【天候悪化】颱風太大了， 【運航不能】所有班機都 [飛不了]",
+                point: "<b>飛不了（fēi bù liǎo）</b>：悪天候により飛行機がどうしても運航できない（隙間補語 V不了）。"
+            },
+            {
+                id: 18,
+                hanzi: "我明天突然有急事，所以去不了你的生日派對了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>突<rt>tū</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>急<rt>jí</rt></ruby><ruby>事<rt>shì</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>派<rt>pài</rt></ruby><ruby>對<rt>duì</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "明日急用ができてしまったので、あなたの誕生日パーティーに行けなくなりました。",
+                structure: "【急用発生】突然有急事， 【参加不能】所以 [去不了] 生日派對了",
+                point: "<b>去不了（qù bù liǎo）</b>：予定変更や急用で行けなくなった。「派對（pàiduì：パーティー）」"
+            },
+            {
+                id: 19,
+                hanzi: "塞車塞得這麼嚴重，我們恐怕按時到不了機場。",
+                rubyHtml: "<ruby>塞<rt>sāi</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>塞<rt>sāi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>嚴<rt>yán</rt></ruby><ruby>重<rt>zhòng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>按<rt>àn</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>場<rt>chǎng</rt></ruby>。",
+                translation: "渋滞がこんなにひどいので、私達はおそらく時間通りに空港に着けないだろう。",
+                structure: "【渋滞描写】塞車塞得這麼嚴重， 【推測・到着不能】恐怕按時 [到不了] 機場",
+                point: "<b>到不了（dào bù liǎo）</b>：時間内目的地に到達できない。「塞車（sāichē：渋滞する）」"
+            },
+            {
+                id: 20,
+                hanzi: "他的腳受傷了，今天恐怕回不了家。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>腳<rt>jiǎo</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>傷<rt>shāng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby><ruby>家<rt>jiā</rt></ruby>。",
+                translation: "彼は足を怪我してしまったので、今日はあいにく家に帰れないだろう。",
+                structure: "【怪我】腳受傷了， 【帰宅不能】恐怕 [回不了家]",
+                point: "<b>回不了（huí bù liǎo）</b>：身体上の問題で帰宅が不可能な状態。「受傷（shòushāng：怪我する）」"
+            },
+            {
+                id: 21,
+                hanzi: "這種天氣熱得讓人受不了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>熱<rt>rè</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>讓<rt>ràng</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "こんな天気は暑くて（誰もが）耐えられない。",
+                structure: "【主語】這種天氣， 【程度補語＋使役】熱得 ＋ 讓人 [受不了]",
+                point: "<b>受不了（shòu bù liǎo）</b>：我慢できない・耐えられない。程度補語「～得受不了」として超頻出。"
+            },
+            {
+                id: 22,
+                hanzi: "事情已經到了這個地步，誰也改變不了。",
+                rubyHtml: "<ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>步<rt>bù</rt></ruby>，<ruby>誰<rt>shéi</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>改<rt>gǎi</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "事態がすでにここまできてしまったら、誰にも変えることはできない。",
+                structure: "【窮地】事情到了這個地步， 【全否定】誰也 [改變不了]",
+                point: "<b>改變不了（gǎibiàn bù liǎo）</b>：不可逆の状況において変更・修正ができない。「這個地步（この段階）」"
+            },
+            {
+                id: 23,
+                hanzi: "這盤菜太辣了，我吃不了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>盤<rt>pán</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>辣<rt>là</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "この料理は辛すぎて、（体質・体調的理由で）私は食べられない。",
+                structure: "【味覚過剰】這盤菜太辣了， 【身体・体質的不能】我 [吃不了]",
+                point: "<b>吃不了（chī bù liǎo）</b>：量や胃袋ではなく、辛すぎる・硬すぎる・アレルギー等他の理由で食せない。"
+            },
+            {
+                id: 24,
+                hanzi: "這家名店的蛋撻太熱門，我排隊排了半天還是吃不到。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>名<rt>míng</rt></ruby><ruby>店<rt>diàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>蛋<rt>dàn</rt></ruby><ruby>撻<rt>tà</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>熱<rt>rè</rt></ruby><ruby>門<rt>mén</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>排<rt>pái</rt></ruby><ruby>隊<rt>duì</rt></ruby><ruby>排<rt>pái</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "この有名店のエッグタルトは人気すぎて、長いこと並んだのにやっぱりありつけなかった（買えなかった）。",
+                structure: "【人気】蛋撻太熱門， 【行列時間】排隊排了半天， 【目的不達成】還是 [吃不到]",
+                point: "<b>吃不到（chī bú dào）</b>：売り切れや入手不可で口にする目的が達せられない。「蛋撻（dàntà：エッグタルト）」"
+            },
+            {
+                id: 25,
+                hanzi: "菜點得太多了，我們兩個人絕對吃不完。",
+                rubyHtml: "<ruby>菜<rt>cài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>絕<rt>jué</rt></ruby><ruby>對<rt>duì</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "料理を頼みすぎて、私たち2人では絶対に食べきれない。",
+                structure: "【過剰注文】菜點得太多了， 【完食不能】我們絕對 [吃不完]",
+                point: "<b>吃不完（chī bù wán）</b>：注文した料理の量自体が多すぎて完食（完）できない。"
+            },
+            {
+                id: 26,
+                hanzi: "我剛才吃了兩個大便當，現在什麼都吃不下了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>便<rt>biàn</rt></ruby><ruby>當<rt>dāng</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "さっき大きな弁当を2つ食べたので、今はもう何もお腹に入りません。",
+                structure: "【直前飲食】吃了兩個大便當， 【満腹限界】現在什麼都 [吃不下了]",
+                point: "<b>吃不下（chī bú xià）</b>：自分の胃袋に空き容量（下）が一切残っていない状態。"
+            },
+            {
+                id: 27,
+                hanzi: "高級餐廳的黑鮪魚太貴了，我們一般學生根本吃不起。",
+                rubyHtml: "<ruby>高<rt>gāo</rt></ruby><ruby>級<rt>jí</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>廳<rt>tīng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>黑<rt>hēi</rt></ruby><ruby>鮪<rt>wěi</rt></ruby><ruby>魚<rt>yú</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>貴<rt>guì</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>般<rt>bān</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>根<rt>gēn</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>。",
+                translation: "高級レストランのクロマグロは高すぎて、私たち普通の学生にはとても高くて食べられません。",
+                structure: "【高額】黑鮪魚太貴了， 【価格負担不能】學生根本 [吃不起]",
+                point: "<b>吃不起（chī bù qǐ）</b>：料理の値段が高すぎて財布の負担に耐えられない（V不起）。「黑鮪魚（クロマグロ）」"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "牛仔褲", pinyin: "niúzǎikù", meaning: "ジーンズ・デニムパンツ", cat: "life" },
+            { hanzi: "伴手禮", pinyin: "bànshǒulǐ", meaning: "お土産・手土産 (台湾特有表現)", cat: "life" },
+            { hanzi: "上班族", pinyin: "shàngbānzú", meaning: "サラリーマン・会社員", cat: "travel" },
+            { hanzi: "名牌包", pinyin: "míngpái bāo", meaning: "ブランドバッグ", cat: "life" },
+            { hanzi: "腳痠", pinyin: "jiǎo suān", meaning: "足がだるい・足の筋肉痛", cat: "life" },
+            { hanzi: "機車", pinyin: "jīchē", meaning: "スクーター・バイク", cat: "travel" },
+            { hanzi: "塞車", pinyin: "sāichē", meaning: "交通渋滞する", cat: "travel" },
+            { hanzi: "受傷", pinyin: "shòushāng", meaning: "怪我をする", cat: "life" },
+            { hanzi: "蛋撻", pinyin: "dàntà", meaning: "エッグタルト", cat: "life" },
+            { hanzi: "黑鮪魚", pinyin: "hēiwěiyú", meaning: "クロマグロ", cat: "life" },
+            { hanzi: "坐不下", pinyin: "zuò bú xià", meaning: "定員オーバーで座れない", cat: "comp" },
+            { hanzi: "穿不下", pinyin: "chuān bú xià", meaning: "サイズ変化で着られない", cat: "comp" },
+            { hanzi: "買不起", pinyin: "mǎi bù qǐ", meaning: "高価で買えない", cat: "comp" },
+            { hanzi: "看不起", pinyin: "kàn bù qǐ", meaning: "見下す・バカにする", cat: "comp" },
+            { hanzi: "搬不動", pinyin: "bān bú dòng", meaning: "重くて運べない", cat: "comp" },
+            { hanzi: "忘不了", pinyin: "wàng bù liǎo", meaning: "忘れられない", cat: "comp" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 28 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 28 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">TOCFL Band A-B 文法・語彙 メタ攻略マスターガイド (白底高對比)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (18句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 音響・補語深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 28 例文全18句（特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically -->
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    TOCFL Band A-B 文法メタマトリクス
+                </h2>
+                <p class="text-sm text-slate-600">検定試験で高頻度で狙われる識別問題・構造差・副詞・補語体系を網羅。</p>
+            </div>
+
+            <!-- 1. 3つの de (的/得/地) -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 構造助詞「的・得・地」の役割・語順比較 (TOCFL超重要)
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">助詞</th>
+                                <th class="p-3">文法パターン</th>
+                                <th class="p-3">機能と役割</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-lg">的 (de)</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">修飾語 ＋ 的 ＋ 名詞</td>
+                                <td class="p-3 text-slate-700">定語（名詞修飾） / 所有 / 代名詞化</td>
+                                <td class="p-3 font-semibold text-slate-900">認真<b>的</b>態度 / 台灣買<b>的</b></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-lg">得 (de)</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞/形容詞 ＋ 得 ＋ 補語</td>
+                                <td class="p-3 text-slate-700">様態補語 / 程度補語 / 可能補語</td>
+                                <td class="p-3 font-semibold text-slate-900">擔心<b>得</b>要命 / 笑<b>得</b>肚子痛</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-lg">地 (de)</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">形容詞句 ＋ 地 ＋ 動詞</td>
+                                <td class="p-3 text-slate-700">状語（動作の行われ方を描写）</td>
+                                <td class="p-3 font-semibold text-slate-900">認真<b>地</b>工作 / 客客氣氣<b>地</b>問</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 程度補語極限 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 程度補語（強調・極限表現）のニュアンスマトリクス
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-blue-700 text-base mb-1">〜得要命 (de yàomìng)</div>
+                        <div class="text-xs text-slate-500 mb-2">「死ぬほど/たまらなく〜だ」</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">形容詞・感情動詞に接続。強い感情や身体的苦痛・不満を吐露する強力な口語表現。</p>
+                        <div class="mt-2 text-xs font-mono font-bold text-blue-800">例：擔心得要命、忙得要命</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-emerald-700 text-base mb-1">〜得很 (de hěn)</div>
+                        <div class="text-xs text-slate-500 mb-2">「非常に〜だ / とても〜だ」</div>
+                        <p class="text-xs text-slate-700 leading-relaxed">形容詞の後に置き客観的かつ力強く状態を評価。書面・口語ともに頻出。</p>
+                        <div class="mt-2 text-xs font-mono font-bold text-emerald-800">例：水深得很、大得很</div>
+                    </div>
+                    <div class="bg-slate-900 text-white p-4 rounded-xl">
+                        <div class="font-bold text-amber-400 text-base mb-1">〜死了 (sǐ le)</div>
+                        <div class="text-xs text-slate-300 mb-2">「〜で死にそうだ」</div>
+                        <p class="text-xs text-slate-200 leading-relaxed">口語で最も多用される誇張表現。マイナス状態（熱、累、餓）に接続しやすい。</p>
+                        <div class="mt-2 text-xs font-mono font-bold text-amber-300">例：熱死了、累死了</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 頻度副詞 / 選択詞 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 頻度副詞 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-amber-700 mb-3">③ 頻度副詞の対比 (總是 vs 老是 vs 一直)</h3>
+                    <ul class="space-y-3 text-sm text-slate-800">
+                        <li class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <span class="font-bold text-slate-900">總是 (zǒngshì)</span>：いつも、常に（客観的・ニュートラル〜褒め文）
+                        </li>
+                        <li class="bg-rose-50 p-3 rounded-xl border border-rose-200">
+                            <span class="font-bold text-rose-700">老是 (lǎoshì)</span>：いつも、しょっちゅう（<b>不満・愚痴・非難の感情</b>）
+                        </li>
+                        <li class="bg-blue-50 p-3 rounded-xl border border-blue-200">
+                            <span class="font-bold text-blue-700">一直 (yìzhí)</span>：ずっと、連続して（途切れず継続している）
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 還是 vs 或者 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-rose-700 mb-3">④ 選択の「還是」vs「或者」(TOCFL識別問題最頻出)</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-rose-50 p-3 rounded-xl border border-rose-200">
+                            <div class="font-bold text-rose-800">還是 (háishì) 【疑問文専用】</div>
+                            <p class="text-xs text-rose-700">二者択一で尋ねる：「Aですか、それともBですか？」</p>
+                            <p class="font-mono text-xs text-slate-900 font-bold mt-1">你是台灣人，還是日本人？</p>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                            <div class="font-bold text-emerald-800">或者 (huòzhě) 【平叙文専用】</div>
+                            <p class="text-xs text-emerald-700">並列条件：「AまたはB、あるいは」</p>
+                            <p class="font-mono text-xs text-slate-900 font-bold mt-1">我喝咖啡或者茶都可以。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 補語・副詞の組み合わせ -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-blue-700 mb-2 text-sm">⑤ 時間制限・達成の補語</h4>
+                    <ul class="text-xs space-y-2 text-slate-700">
+                        <li><b class="text-slate-900">來得及 / 來不及</b><br>時間に間に合う / 間に合わない</li>
+                        <li><b class="text-slate-900">做得到 / 做不到</b><br>やり遂げられる / できない</li>
+                        <li><b class="text-slate-900">搭上 / 沒搭上</b><br>乗り物に乗れる / 乗り遅れる</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-emerald-700 mb-2 text-sm">⑥ 重ね言葉の型</h4>
+                    <ul class="text-xs space-y-2 text-slate-700">
+                        <li><b class="text-slate-900">形容詞 AABB</b><br>客客氣氣地 (描写・状態強調)</li>
+                        <li><b class="text-slate-900">動詞 ABAB</b><br>討論討論 (ちょっと試みる)</li>
+                        <li><b class="text-slate-900">1音節 AA</b><br>圓圓的 / 慢慢地 (親しみ)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-amber-700 mb-2 text-sm">⑦ 条件副詞 (才 vs 就)</h4>
+                    <ul class="text-xs space-y-2 text-slate-700">
+                        <li><b class="text-slate-900">才 (cái)</b><br>厳しい前提を満たして「初めて〜になる」</li>
+                        <li><b class="text-slate-900">就 (jiù)</b><br>条件を満たせば「すぐに・容易に〜だ」</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-purple-700 mb-2 text-sm">⑧ 意味上の受動文</h4>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        「被」を使わずに受動文を構築。<br>
+                        <b class="text-slate-900">肥皂賣得很好</b><br>(石鹸の売れ行きが良い)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート
+                </h2>
+                <p class="text-sm text-slate-600">「左右」音響・発音メカニズム、結果補語「關掉 vs 關上」の機能的違い、電源ONの補語バリエーション。</p>
+            </div>
+
+            <!-- QA 1: 左右の発音 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">音響・発音メカニズム</span>
+                    「左右 (zuǒyòu)」が日本語の「ぞーよー」と異なり区切れて聴こえる3つの理由
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-blue-800 text-sm">1. 母音の独立性と口型</div>
+                        <p class="text-slate-600 leading-relaxed">zuǒ の語尾母音 [o] で一度口の形が完成し、yòu の開始音 [y (ㄧ)] へ滑り替わるため、各音節が物理的に独立して聞こえます。</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-emerald-800 text-sm">2. ピッチの劇的な跳ね上がり</div>
+                        <p class="text-slate-600 leading-relaxed">zuǒ（半三声：声の底の最低音）から yòu（四声：最高ピッチからの急降下）へ声帯を一気にジャンプさせるためポーズが生じます。</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-amber-800 text-sm">3. 数量の区切りポーズ</div>
+                        <p class="text-slate-600 leading-relaxed">「七千步左右，才健康」のように「左右」直後は意味の境界（息継ぎ）となるため yòu が短く明瞭に発音されます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 關掉 vs 關上 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">結果補語の機能差</span>
+                    「關掉 (guān diào)」vs「關上 (guān shàng)」の機能的使い分け
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <div class="text-base font-bold text-blue-700 mb-1">關掉 (guān diào) ＝ 電源・機能のオフ</div>
+                        <p class="text-xs text-slate-600 mb-3">補語「掉」は<b>「消失・離脱・停止」</b>を表す。電化製品、音、水などの機能を停止させる。</p>
+                        <ul class="text-xs space-y-1 font-mono text-slate-800 font-semibold">
+                            <li>• 關掉電視 (テレビの電源を切る)</li>
+                            <li>• 關掉鬧鐘 (目覚まし時計を止める)</li>
+                            <li>• 關掉冷氣 (エアコンを切る)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <div class="text-base font-bold text-amber-700 mb-1">關上 (guān shàng) ＝ 物理的密閉・閉鎖</div>
+                        <p class="text-xs text-slate-600 mb-3">補語「上」は<b>「接触・結合・閉じる」</b>を表す。開いているドアや窓などをぴったり閉める。</p>
+                        <ul class="text-xs space-y-1 font-mono text-slate-800 font-semibold">
+                            <li>• 關上門 (ドアを閉める)</li>
+                            <li>• 關上窗戶 (窓を閉める)</li>
+                            <li>• 關上盒子 (箱の蓋を閉じる)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 3: 機能ONの補語 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">対義・機能ON表現</span>
+                    「關掉（電源OFF）」に対する「機能ON」の動詞・補語バリエーション
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-blue-700 text-sm mb-1">1. 打開 / 開</div>
+                        <p class="text-slate-600 mb-2">最も基本的。家電や照明のスイッチを入れる。</p>
+                        <p class="font-mono text-slate-900 font-bold">打開電視 / 開燈</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-emerald-700 text-sm mb-1">2. ～起來 (qǐlái)</div>
+                        <p class="text-slate-600 mb-2">動作・機能の立ち上がり・始動。</p>
+                        <p class="font-mono text-slate-900 font-bold">動起來 / 熱起來</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-amber-700 text-sm mb-1">3. ～上 (shàng)</div>
+                        <p class="text-slate-600 mb-2">回線・回路の結合・オンライン化。</p>
+                        <p class="font-mono text-slate-900 font-bold">連上 Wi-Fi / 接上電源</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-indigo-700 text-sm mb-1">4. 開啟 (kāiqǐ)</div>
+                        <p class="text-slate-600 mb-2">スマホやPC設定の機能「有効化」。</p>
+                        <p class="font-mono text-slate-900 font-bold">開啟藍牙 / 開啟定位</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 28 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('daily')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">日常・医療</button>
+                    <button onclick="filterVocab('edu')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">学業・交通</button>
+                    <button onclick="filterVocab('culture')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">台湾文化</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 28 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine (Exact Code as Required)
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (With Huge Pinyin Ruby markup)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "叔叔的家人一定擔心得要命。",
+                rubyHtml: "<ruby>叔<rt>shū</rt></ruby><ruby>叔<rt>shu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>擔<rt>dān</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>命<rt>mìng</rt></ruby>。",
+                translation: "おじさんのご家族は、きっと死ぬほど心配しているに違いありません。",
+                structure: "【主語】叔叔的家人 ＋ 【副詞】一定 ＋ 【述語】擔心 ＋ 【程度補語】得要命",
+                point: "<b>程度補語「～得要命」</b>：形容詞/感情動詞に接続し「死ぬほど〜だ」「たまらなく〜だ」という極限の程度を表す（TOCFL Band B 必須）。"
+            },
+            {
+                id: 2,
+                hanzi: "感冒的人應該好好(地)休息。",
+                rubyHtml: "<ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>好<rt>hāo</rt></ruby>(<ruby>地<rt>de</rt></ruby>)<ruby>休<rt>xiū</rt></ruby><ruby>息<rt>xi</rt></ruby>。",
+                translation: "風邪をひいている人は、しっかりと休むべきです。",
+                structure: "【主語（修飾節）】感冒的人 ＋ 【助動詞】應該 ＋ 【状語】好好(地) ＋ 【動詞】休息",
+                point: "<b>好好(地)＋動詞</b>：台湾華語では2つ目の好が第1声(hāo)に声調変化。「しっかり〜する」。助詞「地」は省略可能。"
+            },
+            {
+                id: 3,
+                hanzi: "他總是認真(地)工作。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>總<rt>zǒng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby>(<ruby>地<rt>de</rt></ruby>)<ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby>。",
+                translation: "彼はいつも真面目に働いています。",
+                structure: "【主語】他 ＋ 【頻度副詞】總是 ＋ 【状語】認真(地) ＋ 【動詞】工作",
+                point: "<b>總是 vs 老是</b>：總是は客観的・ニュートラルな「いつも」。愚痴・不満を表す「老是」とTOCFLで厳密識別。"
+            },
+            {
+                id: 4,
+                hanzi: "數學不太好的學生也可以念經濟系嗎？",
+                rubyHtml: "<ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>濟<rt>jì</rt></ruby><ruby>系<rt>xì</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "数学があまり得意でない学生でも、経済学部で学ぶことはできますか？",
+                structure: "【主語（主述修飾句）】[數學不太好]的學生 ＋ 【副詞+助動詞】也可以 ＋ 【動詞+目的語】念經濟系 ＋ 嗎",
+                point: "<b>念（niàn）</b>：台湾日常会話で「〜学部で学ぶ・専攻する・大学に通う」を表す定番動詞（大陸での讀書/學習）。"
+            },
+            {
+                id: 5,
+                hanzi: "你平常用的洗髮精是台灣的，還是從國外進口的？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>髮<rt>fà</rt></ruby><ruby>精<rt>jīng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>灣<rt>wān</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>外<rt>wài</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>口<rt>kǒu</rt></ruby><ruby>的<rt>de</rt></ruby>？",
+                translation: "あなたが普段使っているシャンプーは台湾製（のもの）ですか、それとも海外から輸入されたものですか？",
+                structure: "【主題】你平常用的洗髮精 ＋ 【選択疑問文】是[台灣的]，還是[從國外進口的]？",
+                point: "<b>選擇疑問句「還是」</b>：疑問文の選択肢には「還是」を使用。「或者」は平叙文専用でTOCFL引っかけ超定番。"
+            },
+            {
+                id: 6,
+                hanzi: "妳這件大衣的顏色真好看！",
+                rubyHtml: "<ruby>妳<rt>nǐ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>顏<rt>yán</rt></ruby><ruby>色<rt>sè</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>看<rt>kàn</rt></ruby>！",
+                translation: "あなたのこのコートの色、本当に素敵ね！",
+                structure: "【主語】妳這件大衣的顏色 ＋ 【感嘆副詞】真 ＋ 【形容詞】好看",
+                point: "<b>指示詞 ＋ 量詞 ＋ 名詞</b>：這件大衣。服の量詞「件（jiàn）」と、ズボン・マフラー等の「條（tiáo）」の区別必須。"
+            },
+            {
+                id: 7,
+                hanzi: "今天是中秋節，天上的月亮圓圓的。",
+                rubyHtml: "<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>秋<rt>qiū</rt></ruby><ruby>節<rt>jié</rt></ruby>，<ruby>天<rt>tiān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>亮<rt>liàng</rt></ruby><ruby>圓<rt>yuán</rt></ruby><ruby>圓<rt>yuán</rt></ruby><ruby>的<rt>de</rt></ruby>。",
+                translation: "今日は中秋節（お月見の日）で、空に浮かぶ月がまん丸としています。",
+                structure: "【前節】今天是中秋節， 【後節】天上的月亮 ＋ 【形容詞重ね型】圓圓的",
+                point: "<b>1音節形容詞AA型 ＋ 的</b>：述語として使う場合、文末の「的」は省略不可。親しみ・視覚的描写を添える。"
+            },
+            {
+                id: 8,
+                hanzi: "阿光的老婆是你介紹給他的嗎？",
+                rubyHtml: "<ruby>阿<rt>ā</rt></ruby><ruby>光<rt>guāng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>婆<rt>pó</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>介<rt>jiè</rt></ruby><ruby>紹<rt>shào</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "阿光（アグアン）の奥さんは、あなたが彼に紹介したのですか？",
+                structure: "【主題】阿光的老婆 ＋ 【強調構文】是 [你] 介紹給他的 ＋ 嗎？",
+                point: "<b>強調構文「是……的」</b>：確定した過去の事実について「誰が」紹介したのか（動作主）に焦点を当てて強調。"
+            },
+            {
+                id: 9,
+                hanzi: "他們公司的肥皂最近賣得很好，還出口到其他國家去。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>肥<rt>féi</rt></ruby><ruby>皂<rt>zào</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>賣<rt>mài</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>口<rt>kǒu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>去<rt>qù</rt></ruby>。",
+                translation: "彼らの会社の石鹸は最近とても売れており、さらに他の国へも輸出されています。",
+                structure: "【無生物主語】肥皂 ＋ 【様態補語】賣得很好， 【展開】還 ＋ 【複合補語】出口到 [其他國家] 去",
+                point: "<b>無被動標識受動文</b>：「被」を使わずに受動的状態を表す（肥皂賣得很好）。「出口到...去」の方向補語構文も重要。"
+            },
+            {
+                id: 10,
+                hanzi: "那部電影太有趣了，我們都笑得肚子好痛。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>趣<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>笑<rt>xiào</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>肚<rt>dù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>痛<rt>tòng</rt></ruby>。",
+                translation: "あの映画はとても面白くて、私たちはみんなお腹が痛くなるほど笑いました。",
+                structure: "【前節】那部電影太有趣了， 【後節】我們都笑得 ＋ 【節補語】[肚子好痛]",
+                point: "<b>動詞 ＋ 得 ＋ 節補語</b>：「得」の後ろに［S+V/Adj］文章を置き、動作によって生じた状態（お腹が痛い）を描写。"
+            },
+            {
+                id: 11,
+                hanzi: "這座游泳池水深得很，小朋友玩水的時候要注意安全！",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>座<rt>zuò</rt></ruby><ruby>游<rt>yóu</rt></ruby><ruby>泳<rt>yǒng</rt></ruby><ruby>池<rt>chí</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>深<rt>shēn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby>，<ruby>小<rt>xiǎo</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>注<rt>zhù</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>全<rt>quán</rt></ruby>！",
+                translation: "このプールは水深がとても深いので、子供たちが水遊びをするときは安全に気をつけてください！",
+                structure: "【主語】這座游泳池 ＋ 【程度補語】水深得很， 【条件節】玩水的時候 ＋ 【指示】要注意安全",
+                point: "<b>形容詞 ＋ 得很</b>：「非常に〜だ」。大型建造物・施設を数える量詞「座（zuò）」も頻出。"
+            },
+            {
+                id: 12,
+                hanzi: "醫生說人每天都得走七千步左右才健康，你做得到嗎？",
+                rubyHtml: "<ruby>醫<rt>yī</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>七<rt>qī</rt></ruby><ruby>千<rt>qiān</rt></ruby><ruby>步<rt>bù</rt></ruby><ruby>左<rt>zuǒ</rt></ruby><ruby>右<rt>yòu</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>健<rt>jiàn</rt></ruby><ruby>康<rt>kāng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "お医者さんが言うには、人は毎日7000歩ほど歩いて初めて健康でいられるそうですが、あなたは達成できますか？",
+                structure: "【必要条件】得走七千步左右 ＋ 【副詞】才健康， 【可能補語】你做得到嗎？",
+                point: "<b>才（cái）</b>：厳しい前提条件を満たして「初めて〜になる」。可能補語「做得到（達成できる） / 做不到（達成できない）」の対比。"
+            },
+            {
+                id: 13,
+                hanzi: "要是昨天的我沒有不小心把鬧鐘關掉，今天就來得及搭上那班車了。",
+                rubyHtml: "<ruby>要<rt>yào</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>鬧<rt>nào</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>掉<rt>diào</rt></ruby>，<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>及<rt>jí</rt></ruby><ruby>搭<rt>dā</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>班<rt>bān</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "もし昨日の私がおっかり目覚まし時計を止めてしまっていなければ、今日はあの電車（バス）に間に合っていたのに。",
+                structure: "【仮定】要是 [昨天的我] 沒有把鬧鐘關掉， 【結果】就 [來得及] 搭上那班車了",
+                point: "<b>關掉 vs 來得及</b>：關掉（消失・停止の掉）/ 來得及（時間に間に合う）。乗り物に乗る「搭」と便を数える「班」も重要。"
+            },
+            {
+                id: 14,
+                hanzi: "你不覺得那朵雲在慢慢地變大嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>朵<rt>duǒ</rt></ruby><ruby>雲<rt>yún</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>慢<rt>màn</rt></ruby><ruby>慢<rt>mān</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あの雲がゆっくり大きくなってきていると思わない？",
+                structure: "【反語/同意確認】你不覺得……嗎？ 【節】那朵雲 在 [慢慢地] 變大",
+                point: "<b>雲や花の量詞「朵（duǒ）」</b>：雲・花を数える必須量詞。「慢慢地」は台湾華語で2つ目が第1声(mān)変化。"
+            },
+            {
+                id: 15,
+                hanzi: "客人客客氣氣地問我：「我今天帶來的現金不夠，可以刷卡嗎？」",
+                rubyHtml: "<ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>客<rt>ke</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>我<rt>wǒ</rt></ruby>：「<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>帶<rt>dài</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>金<rt>jīn</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>夠<rt>gòu</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>刷<rt>shuā</rt></ruby><ruby>卡<rt>kǎ</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？」",
+                translation: "お客様がとても丁寧に私に「今日持ってきた現金が足りないのですが、カード払いはできますか？」と訊ねました。",
+                structure: "【状語（AABB重ね）】客客氣氣地問我， 【直接話法】現金不夠，可以 [刷卡] 嗎？",
+                point: "<b>形容詞AABB重ね</b>：客氣 ➔ 客客氣氣地（とても丁寧に）。決済の離合詞「刷卡（カードを切る）」も超頻出。"
+            },
+            {
+                id: 16,
+                hanzi: "這間科學博物館禮拜六免費，所有人都可以自由地參觀。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>科<rt>kē</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>博<rt>bó</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>六<rt>liù</rt></ruby><ruby>免<rt>miǎn</rt></ruby><ruby>費<rt>fèi</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>由<rt>yóu</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>參<rt>cān</rt></ruby><ruby>觀<rt>guān</rt></ruby>。",
+                translation: "この科学博物館は土曜日が無料なので、すべての人が自由に見学できます。",
+                structure: "【施設量詞】這間博物館， 【集合語＋都】所有人都可以 ＋ 【状語】自由地參觀",
+                point: "<b>施設・店舗の量詞「間（jiān）」</b>：博物館・会社・店舗の数え方。「所有人」の後ろには呼応の「都」が必須。"
+            },
+            {
+                id: 17,
+                hanzi: "在努力了三年之後，小雨終於成功地解決了這個問題。",
+                rubyHtml: "<ruby>在<rt>zài</rt></ruby><ruby>努<rt>nǔ</rt></ruby><ruby>力<rt>lì</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>小<rt>xiǎo</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>終<rt>zhōng</rt></ruby><ruby>於<rt>yú</rt></ruby><ruby>成<rt>chéng</rt></ruby><ruby>功<rt>gōng</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>解<rt>jiě</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby>。",
+                translation: "3年間の努力の末に、小雨（シャオユー）はついにこの問題を解決することに成功しました。",
+                structure: "【前置詞句】在……之後， 【主語】小雨 ＋ 【副詞】終於 ＋ 【状語】成功地 ＋ 【動詞+了】解決了",
+                point: "<b>終於（zhōngyú）</b>：苦難や長時間の努力を経て「ついに・ようやく」。口語の「總算」とのニュアンス比較も重視。"
+            },
+            {
+                id: 18,
+                hanzi: "他輕鬆地做到了大家都覺得很困難的工作。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>輕<rt>qīng</rt></ruby><ruby>鬆<rt>sōng</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>困<rt>kùn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby>。",
+                translation: "彼は、誰もが難しいと感じる仕事を軽々とやり遂げました。",
+                structure: "【主語】他 ＋ 【状語】輕鬆地 ＋ 【結果補語】做到了 ＋ 【複雜修飾目的語】[大家都覺得很困難的]工作",
+                point: "<b>結果補語「動詞 ＋ 到」</b>：目標・達成点に到達する（做到）。修飾節内の集合主語「大家」にも呼応の「都」を配置。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "感冒", pinyin: "gǎnmào", meaning: "風邪をひく / 風邪", cat: "daily" },
+            { hanzi: "洗髮精", pinyin: "xǐfàjīng", meaning: "シャンプー (台湾標準)", cat: "daily" },
+            { hanzi: "潤髮乳", pinyin: "rùnfàrǔ", meaning: "コンディショナー", cat: "daily" },
+            { hanzi: "沐浴乳", pinyin: "mùyùrǔ", meaning: "ボディソープ", cat: "daily" },
+            { hanzi: "肥皂", pinyin: "féizào", meaning: "固形石鹸", cat: "daily" },
+            { hanzi: "念 / 讀", pinyin: "niàn / dú", meaning: "(大学で)学ぶ / 専攻する", cat: "edu" },
+            { hanzi: "經濟系", pinyin: "Jīngjìxì", meaning: "経済学部 / 経済学科", cat: "edu" },
+            { hanzi: "搭捷運", pinyin: "dā jiéyùn", meaning: "MRT(台湾地下鉄)に乗る", cat: "edu" },
+            { hanzi: "來得及", pinyin: "láidejí", meaning: "時間に間に合う", cat: "edu" },
+            { hanzi: "來不及", pinyin: "láibují", meaning: "時間切れで間に合わない", cat: "edu" },
+            { hanzi: "刷卡", pinyin: "shuākǎ", meaning: "カードで支払う", cat: "daily" },
+            { hanzi: "付現", pinyin: "fùxiàn", meaning: "現金で支払う", cat: "daily" },
+            { hanzi: "掃碼", pinyin: "sǎo mǎ", meaning: "QRコード決済をする", cat: "daily" },
+            { hanzi: "中秋節", pinyin: "Zhōngqiūjié", meaning: "中秋節 (伝統三大祝日)", cat: "culture" },
+            { hanzi: "烤肉", pinyin: "kǎoròu", meaning: "バーベキュー (台湾の中秋節定番)", cat: "culture" },
+            { hanzi: "柚子", pinyin: "yòuzi", meaning: "文旦 (中秋節に食べる柑橘)", cat: "culture" },
+            { hanzi: "阿光 / 小雨", pinyin: "Ā Guāng / Xiǎoyǔ", meaning: "台湾の親しいニックネーム文化", cat: "culture" },
+            { hanzi: "做得到", pinyin: "zuò de dào", meaning: "やり遂げられる / 達成可能", cat: "daily" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // On Page Load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

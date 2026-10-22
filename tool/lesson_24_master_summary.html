@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 24 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 24 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">怎麼現在才想起來？ (方向補語3：V起來「下から上」と「まとまる、落ち着く」 / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (20句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 方向補語V起來深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 24 例文全20句（④〜㉓ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 24 文法メタマトリクス：複合方向補語「～起來（qǐlái）」の全用法体系
+                </h2>
+                <p class="text-sm text-slate-600">物理的な垂直移動から「集積・固定・適切な場所への保管」、そして記憶の「想起」へと拡張する「起來」の仕組み。</p>
+            </div>
+
+            <!-- 1. V起來 3大パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「～起來」の3大用法マトリクス（TOCFL超最重要）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">カテゴリ</th>
+                                <th class="p-3">コアニュアンス</th>
+                                <th class="p-3">代表動詞構文</th>
+                                <th class="p-3">例文とポイント</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">A. 物理的垂直移動</td>
+                                <td class="p-3 text-slate-700">「下から上へ」持ち上がる・跳ね上がる動作</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">站起來 / 舉起來 / 抱起來 / 飛起來 / 跳起來</td>
+                                <td class="p-3 font-semibold text-slate-900">把手舉起來 (手を挙げる)<br>站起來打招呼 (立ち上がって挨拶する)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">B-1. 集積・保管・閉鎖</td>
+                                <td class="p-3 text-slate-700">バラバラなものを1つにまとめ、然るべき場所に格納・保護する</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">收起來 / 關起來 / 包起來 / 躲起來 / 掛起來 / 存起來</td>
+                                <td class="p-3 font-semibold text-slate-900">把被子收起來 (布団を片付ける)<br>把錢存起來 (お金を貯め込む)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-base">B-3. 意識の浮上・想起</td>
+                                <td class="p-3 text-slate-700">記憶の底に眠っていた記憶が意識の表面に浮かび上がる</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">想起來 (思い出す)</td>
+                                <td class="p-3 font-semibold text-slate-900">怎麼現在才想起來？ (どうして今頃思い出したのか？)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 似ている方向補語の識別 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    ② 混同しやすい方向補語ペアの厳密対比（TOCFL激王手ひっかけ）
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 拿起來 vs 拿上來 -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-blue-800 text-base">【拿起來】 vs 【拿上來】</div>
+                        <div class="text-xs space-y-2 text-slate-700">
+                            <p><b>拿起來（ná qǐlái）：</b> その場で下から持ち上げる（位置の階層移動なし）。<br>例：把包包拿起來（カバンを持ち上げる）</p>
+                            <p><b>拿上來（ná shànglái）：</b> 下の場所・階から上の場所・階へ持って上がってくる（実際の空間移動あり）。<br>例：把包包拿上來（カバンを持って（上の階へ）上がってくる）</p>
+                        </div>
+                    </div>
+                    <!-- 想起來 vs 想出來 -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-purple-800 text-base">【想起來】 vs 【想出來】</div>
+                        <div class="text-xs space-y-2 text-slate-700">
+                            <p><b>想起來（xiǎng qǐlái）：</b> 過去に知っていた・経験した記憶を「思い出す」。<br>例：我想起來了，他叫小明。（思い出した、彼の名前は小明だ）</p>
+                            <p><b>想出來（xiǎng chūlái）：</b> これまで存在しなかった新しい考え・アイデア・答えを「思いつく・捻出する」。<br>例：想出答案來（答えを思いつく）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 語順のルール (V起來了 vs V了起來) -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                <h3 class="text-lg font-bold text-indigo-700">③ 「了」の位置と語順ルール（V起來了 vs V了起來）</h3>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200 text-xs space-y-2 text-indigo-950">
+                    <p class="font-bold text-indigo-900">完了の「了」を伴う場合の語順は以下の2パターンが存在します：</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
+                        <div class="p-2.5 bg-white rounded border border-indigo-200 text-slate-900">
+                            <b>パターン A：把 ＋ O ＋ V 起來 了</b><br>
+                            例：把兒子抱起來了。（息子を抱き上げた）
+                        </div>
+                        <div class="p-2.5 bg-white rounded border border-indigo-200 text-slate-900">
+                            <b>パターン B：把 ＋ O ＋ V 了 起來</b><br>
+                            例：把兒子抱了起來。（息子を抱き上げた）
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mt-1">※どちらも文法的に正しく、TOCFL読解でも頻出です。「了」が動詞の直後に挿入される形（パターンB）も覚えておきましょう。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 24 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「想起來」と「想出來」の脳内認知プロセスの違い、収納・保管を表す「起來」のコア心理、可能補語否定形。</p>
+            </div>
+
+            <!-- QA 1: 「想起來」 vs 「想出來」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">認知メカニズム</span>
+                    「思い出す（想起來）」と「思いつく（想出來）」の完全比較
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 想起來（xiǎng qǐlái）＝ 記憶の復元</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            頭の奥底（記憶の倉庫）に眠っていた情報が、浮上（起來）して再び意識に上ってくるイメージ。
+                        </p>
+                        <p class="font-mono text-blue-900 font-bold bg-white p-2 rounded border border-slate-200">例：怎麼現在才想起來？（どうして今頃思い出したのか？）</p>
+                        <p class="text-slate-500">否定可能補語：<b>想不起來</b>（思い出せない）</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">2. 想出來（xiǎng chūlái）＝ 思考からの創出</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            アイデア・解法・企画など、元々存在しなかったゼロから思考によって「生み出す（出來）」イメージ。
+                        </p>
+                        <p class="font-mono text-emerald-900 font-bold bg-white p-2 rounded border border-slate-200">例：沒想出答案來。（答えを思いつけなかった。）</p>
+                        <p class="text-slate-500">否定可能補語：<b>想不出來</b>（アイデアが出てこない）</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「まとまる・保管する」起來のコアイメージ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">意味の派生</span>
+                    なぜ「收」「關」「包」「存」に「起來」がつくと「収める・保管する」になるのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>「起來」の持つ原義は「バラバラに散らばったものを1つに引き寄せてまとめる」動作です。ここから派生して、<b>「安全・適切な状態に収めて保護する」</b> という意味が生まれます。</p>
+                    <ul class="list-disc list-inside space-y-2 font-semibold text-slate-800">
+                        <li><b>收起來（shōu qǐlái）：</b> 物を片付けて押し入れ等に収める。</li>
+                        <li><b>關起來（guān qǐlái）：</b> 閉じ込める・鍵をかけて中にしっかり閉まっておく。</li>
+                        <li><b>包起來（bāo qǐlái）：</b> 包み紙でしっかり1つに包み込む。</li>
+                        <li><b>存起來（cún qǐlái）：</b> 散財せずにお金を銀行口座等に固めて貯蓄する。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QA 3: 朝起きる「起來」の特殊性 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">離合詞的動作</span>
+                    「起床・起きる」を表す「起來」の内部構造
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-2 text-slate-700 leading-relaxed">
+                    <p>「我還不想起來（まだ起きたくない）」の「起來」は、単なる方向補語ではなく、**「起（メイン動詞：起き上がる）」＋「來（方向補語）」** という動詞構造そのものを形成しています。</p>
+                    <p class="font-mono text-slate-800 bg-white p-2.5 rounded border border-slate-200">
+                        ・起得來（起きられる） / 起不來（起きられない）<br>
+                        ・起來！（起きなさい！）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 24 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('action')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動作・方向</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">日用品・生活</button>
+                    <button onclick="filterVocab('nature')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">気象・環境</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 24 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 20 Sentences from 4 to 23)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "有問題的人可以隨時把手舉起來問。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>隨<rt>suí</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>舉<rt>jǔ</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>問<rt>wèn</rt></ruby>。",
+                translation: "質問がある人は、いつでも手を挙げて質問したらいいよ。",
+                structure: "【条件】有問題的人， 【許可】可以隨時 ＋ 【把構文＋垂直動作】把手舉起來 ＋ 問",
+                point: "<b>舉起來（jǔ qǐlái）</b>：手を上へ垂直に持ち上げる。前置詞「把」との組み合わせ。"
+            },
+            {
+                id: 5,
+                hanzi: "小劉很有禮貌，客人進辦公室時都會站起來打招呼。",
+                rubyHtml: "<ruby>小<rt>xiǎo</rt></ruby><ruby>劉<rt>liú</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>貌<rt>mào</rt></ruby>，<ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>招<rt>zhāo</rt></ruby><ruby>呼<rt>hū</rt></ruby>。",
+                translation: "小劉は礼儀正しい。お客さんがオフィスに入ってくると、いつも立ち上がって挨拶する。",
+                structure: "【評価】小劉很有禮貌， 【時間節】客人進辦公室時， 【習慣】都會 ＋ 【起立】站起來 ＋ 打招呼",
+                point: "<b>站起來（zhàn qǐlái）</b>：座った姿勢から立ち上がる。「打招呼（挨拶する）」の離合詞表現。"
+            },
+            {
+                id: 6,
+                hanzi: "姊姊的鬧鐘太吵了，家裡的貓一聽到就會跳起來跑走。",
+                rubyHtml: "<ruby>姊<rt>jiě</rt></ruby><ruby>姊<rt>jie</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鬧<rt>nào</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>貓<rt>māo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跳<rt>tiào</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。",
+                translation: "お姉ちゃんの目覚まし時計はうるさすぎる。家の猫はその音が聞こえるとすぐ跳び上がって走って逃げてしまう。",
+                structure: "【過剰】鬧鐘太吵了， 【一…就…】一聽到， 就會 ＋ 【跳躍】跳起來 ＋ 跑走",
+                point: "<b>跳起來（tiào qǐlái）</b>：驚いて宙へ跳び上がる動作。姊姊（台湾での「姉」の表記）。"
+            },
+            {
+                id: 7,
+                hanzi: "吃完飯後，他又把菜單拿起來看了看有什麼點心。",
+                rubyHtml: "<ruby>吃<rt>chī</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>單<rt>dān</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>心<rt>xīn</rt></ruby>。",
+                translation: "食事が終わった後、彼はまたメニューを手に取ってどんなデザートがあるか見てみた。",
+                structure: "【時間】吃完飯後， 【重複動作】又 ＋ 【把構文】把菜單 [拿起來] ＋ 【V了V】看了看……",
+                point: "<b>拿起來（ná qǐlái）</b>：手元で持ち上げる（場所の移動なし）。動詞重ね型「看了看（ちょっと見た）」との連携。"
+            },
+            {
+                id: 8,
+                hanzi: "颱風天出門的時候，帽子沒戴好的話，風一吹就會飛起來。",
+                rubyHtml: "<ruby>颱<rt>tái</rt></ruby><ruby>風<rt>fēng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby>，<ruby>帽<rt>mào</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>戴<rt>dài</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>風<rt>fēng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>吹<rt>chuī</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>飛<rt>fēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "台風の日に出かけるときは、帽子をちゃんとかぶっておかないと、風が吹いたとたんに舞い上がってしまう。",
+                structure: "【仮定】帽子沒戴好的話， 【一…就…】風一吹， 就會 ＋ 【舞い上がる】飛起來",
+                point: "<b>飛起來（fēi qǐlái）</b>：風で上空へ舞い上がる。颱風天（台風の日）。"
+            },
+            {
+                id: 9,
+                hanzi: "我們要下車了，大家把背包背起來。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "もうすぐ（バスや電車などを）降りるから、みんなリュックを背負って。",
+                structure: "【直前変化】我們要下車了， 【指示】大家 ＋ 【把構文】把背包 [背起來]",
+                point: "<b>背起來（bēi qǐlái）</b>：リュックなどを背中に持ち上げて背負う。「背（bēi：背負う）」と「背包（bēibāo：リュック）」の音変化。"
+            },
+            {
+                id: 10,
+                hanzi: "他一回家，就把兒子抱了起來。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>家<rt>jiā</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>兒<rt>ér</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>抱<rt>bào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "彼は家に帰るとすぐに息子を抱き上げた。",
+                structure: "【一…就…】一回家， 就 ＋ 【把構文＋語順B】把兒子 [抱了起來] （＝抱起來了）",
+                point: "<b>抱了起來 / 抱起來了</b>：抱き上げる。「了」を「起來」の間に挟む語順Bパターン。"
+            },
+            {
+                id: 11,
+                hanzi: "冷氣開著呢，快點把門關起來吧。",
+                rubyHtml: "<ruby>冷<rt>lěng</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>著<rt>zhe</rt></ruby><ruby>呢<rt>ne</rt></ruby>，<ruby>快<rt>kuài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "クーラーがついているよ。早くドアを閉めて。",
+                structure: "【状態持続】冷氣開著呢， 【促し】快點 ＋ 【把構文＋密閉】把門 [關起來] 吧",
+                point: "<b>關起來（guān qǐlái）</b>：ドアを閉めて外気から遮断・固定する（保管・閉鎖の起來）。「冷氣（クーラー）」"
+            },
+            {
+                id: 12,
+                hanzi: "這兩雙襪子加起來一共是兩百三十元。需要幫您包起來嗎？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>襪<rt>wà</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>共<rt>gòng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>元<rt>yuán</rt></ruby>。<ruby>需<rt>xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>您<rt>nín</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "この2足の靴下を合わせると合計230元です。お包みしますか。",
+                structure: "【合計集積】加起來 一共是……， 【丁寧な提案】需要幫您 [包起來] 嗎？",
+                point: "<b>加起來（合計して）/ 包起來（お包みする）</b>：まとめる・まとめ上げる集積の「起來」。靴下の量詞「雙（雙）」。"
+            },
+            {
+                id: 13,
+                hanzi: "我們得把事情連起來看，才能找到問題出現的原因。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>原<rt>yuán</rt></ruby><ruby>因<rt>yīn</rt></ruby>。",
+                translation: "私たちは、ものごとを結びつけて見なければ、問題発生の原因を見つけることができない。",
+                structure: "【必要】得把事情 [連起來看]， 【条件達成】才能 [找到] 原因",
+                point: "<b>連起來（lián qǐlái）</b>：点と点を結びつけて1つにまとめる（連結・集積）。「得（děi：〜しなければならない）」"
+            },
+            {
+                id: 14,
+                hanzi: "夏天要到了，差不多應該把冬天的被子和枕頭收起來了。",
+                rubyHtml: "<ruby>夏<rt>xià</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>差<rt>chà</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>冬<rt>dōng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>被<rt>bèi</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>枕<rt>zhěn</rt></ruby><ruby>頭<rt>tou</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "もうすぐ夏になるから、冬物の布団と枕はそろそろしまわなければならない。",
+                structure: "【季節変化】夏天要到了， 【準備】差不多應該 把[被子和枕頭] [收起來了]",
+                point: "<b>收起來（shōu qǐlái）</b>：片付けてしかるべき場所に保管する（収納の起來）。「枕頭（zhěntou：枕）」"
+            },
+            {
+                id: 15,
+                hanzi: "對了！我之前跟他合作過，怎麼現在才想起來？",
+                rubyHtml: "<ruby>對<rt>duì</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>合<rt>hé</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>過<rt>guò</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>？",
+                translation: "あ、そうだ。私は以前彼とコラボしたことがあったんだ。どうして今まで思い出さなかったんだろう。",
+                structure: "【気付き】對了！ 【過去経験】之前跟他合作過， 【疑問・反問】怎麼現在才 [想起來]？",
+                point: "<b>想起來（xiǎng qǐlái）</b>：記憶の奥底から想起する。「才（今頃になってようやく）」との相性抜群。"
+            },
+            {
+                id: 16,
+                hanzi: "每次家裡有客人來，小狗都會緊張得躲起來。",
+                rubyHtml: "<ruby>每<rt>měi</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>小<rt>xiǎo</rt></ruby><ruby>狗<rt>gǒu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>緊<rt>jǐn</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>躲<rt>duǒ</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "家にお客さんが来るたびに、ワンちゃんは緊張して隠れてしまう。",
+                structure: "【頻度】每次有客人來， 【様態/結果】小狗都會 ＋ 緊張得 ＋ 【身を隠す】躲起來",
+                point: "<b>躲起來（duǒ qǐlái）</b>：姿を隠して安全な場所に身を潜める（保護・隠蔽の起來）。"
+            },
+            {
+                id: 17,
+                hanzi: "可以跟你借幾個衣架嗎？我想把洗好的毛巾掛起來。",
+                rubyHtml: "<ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>借<rt>jiè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>架<rt>jià</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>毛<rt>máo</rt></ruby><ruby>巾<rt>jīn</rt></ruby><ruby>掛<rt>guà</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "ハンガーをいくつか借りてもいい？洗ったタオルを掛けておきたいんだ。",
+                structure: "【依頼】可以跟妳借幾個衣架嗎？ 【把構文＋固定】我想把 [洗好的毛巾] [掛起來]",
+                point: "<b>掛起來（guà qǐlái）</b>：ハンガーなどに吊り下げて固定する。「衣架（ハンガー）」"
+            },
+            {
+                id: 18,
+                hanzi: "你如果把每天喝飲料的錢存起來，也許十年之後就可以買一台車了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>如<rt>rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>飲<rt>yǐn</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>存<rt>cún</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "もしあなたが毎日飲み物を飲むお金を貯めておいたら、10年後には車が1台買えるようになるかもしれないよ。",
+                structure: "【仮定】你如果 把[喝飲料的錢] [存起來]， 【結果推測】也許十年之後 就可以買一台車了",
+                point: "<b>存起來（cún qǐlái）</b>：散財せずに貯蓄して貯め込む（集積）。車の量詞「台（tái）」。"
+            },
+            {
+                id: 19,
+                hanzi: "她把包包拿起來了。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼女はカバンを持ち上げた。",
+                structure: "【把構文】她把包包 ＋ 【手元動作】拿起來了",
+                point: "<b>拿起來 vs 拿上來</b>：その場で持ち上げる持ち上げ動作（階層移動なし）。"
+            },
+            {
+                id: 20,
+                hanzi: "她把包包拿上來了。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼女はカバンを持って上がってきた。",
+                structure: "【把構文】她把包包 ＋ 【空間移動】拿上來了",
+                point: "<b>拿上來</b>：下の階から上の階へ持って上がってくる実際の空間移動を伴う。"
+            },
+            {
+                id: 21,
+                hanzi: "我想起來了！我把充電器忘在旅館裡了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>充<rt>chōng</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>器<rt>qì</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>旅<rt>lǚ</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "思い出した！僕は充電器をホテルに忘れてきたんだ。",
+                structure: "【記憶想起】我想起來了！ 【把構文＋着地】把充電器 [忘在旅館裡了]",
+                point: "<b>想起來了 / 忘在...</b>：記憶の想起「想起來」。忘れる対象の放置場所「忘在＋場所」。"
+            },
+            {
+                id: 22,
+                hanzi: "這個問題太難了，我想了三個小時也沒想出答案來。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>答<rt>dá</rt></ruby><ruby>案<rt>àn</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "この問題は難しすぎて、3時間考えても答えを思いつかなかった。",
+                structure: "【困難】問題太難了， 【時間消費】想了三個小時， 【創出不能】沒想出 [答案] 來",
+                point: "<b>想出來（アイディア創出）</b>：ゼロからの答えの捻出。「沒想出答案來（答案を挟む語順）」。"
+            },
+            {
+                id: 23,
+                hanzi: "我知道天亮了，可是我還不想起來。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>亮<rt>liàng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "外が明るくなっているのはわかっているけど、私はまだ起きたくない。",
+                structure: "【認知】我知道天亮了， 【転折・起床】可是我還 [不想起來]",
+                point: "<b>起來（起床する）</b>：ここでは「起（起き上がる）」＋「來」で朝ベッドから起きる動作そのもの。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "禮貌", pinyin: "lǐmào", meaning: "礼儀・マナー", cat: "life" },
+            { hanzi: "打招呼", pinyin: "dǎ zhāohū", meaning: "挨拶をする (離合詞)", cat: "action" },
+            { hanzi: "鬧鐘", pinyin: "nàozhōng", meaning: "目覚まし時計", cat: "life" },
+            { hanzi: "颱風天", pinyin: "táifēngtiān", meaning: "台風の日", cat: "nature" },
+            { hanzi: "背包", pinyin: "bēibāo", meaning: "リュックサック・バックパック", cat: "life" },
+            { hanzi: "被子 / 枕頭", pinyin: "bèizi / zhěntou", meaning: "掛け布団 / 枕", cat: "life" },
+            { hanzi: "衣架 / 毛巾", pinyin: "yījià / máojīn", meaning: "ハンガー / タオル", cat: "life" },
+            { hanzi: "充電器", pinyin: "chōngdiànqì", meaning: "充電器", cat: "life" },
+            { hanzi: "旅館", pinyin: "lǚguǎn", meaning: "ホテル・宿", cat: "life" },
+            { hanzi: "舉起來", pinyin: "jǔ qǐlái", meaning: "持ち上げる・挙げる", cat: "action" },
+            { hanzi: "站起來", pinyin: "zhàn qǐlái", meaning: "立ち上がる", cat: "action" },
+            { hanzi: "收起來", pinyin: "shōu qǐlái", meaning: "片付ける・しまい込む", cat: "action" },
+            { hanzi: "躲起來", pinyin: "duǒ qǐlái", meaning: "隠れる・身を潜める", cat: "action" },
+            { hanzi: "存起來", pinyin: "cún qǐlái", meaning: "貯蓄する・貯め込む", cat: "action" },
+            { hanzi: "想起來", pinyin: "xiǎng qǐlái", meaning: "思い出す (記憶想起)", cat: "action" },
+            { hanzi: "想出來", pinyin: "xiǎng chūlái", meaning: "思いつく (アイデア創出)", cat: "action" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>

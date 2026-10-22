@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 22 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 22 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">你不用把事情想得太嚴重 (“把”構文2：動詞の後に置く語句5パターン / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 把構文・動詞補語深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 22 例文全22句（④〜㉕ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 22 文法メタマトリクス：「把」構文（動詞の後ろに置く5つの語句パターン）
+                </h2>
+                <p class="text-sm text-slate-600">「把」構文の本質は【処置とその結果】。動詞単体では文を終えられず、後ろに結果を示す要素が必須です。</p>
+            </div>
+
+            <!-- 1. 動詞の後に置く語句 5つの追加パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「把」構文で動詞の後ろに置く 5つの公式補語パターン
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">パターン</th>
+                                <th class="p-3">公式文法構造</th>
+                                <th class="p-3">意味と制約ルール</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">(6) 様態補語</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">把 ＋ O ＋ V 得 ＋ 様態補語</td>
+                                <td class="p-3 text-slate-700">処置の結果、目的語がどのような状態になったか、またはどのように捉えているかを描写。</td>
+                                <td class="p-3 font-semibold text-slate-900">把字寫得這麼小<br>把家人看得非常重要</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">(7) 数量補語</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">把 ＋ O ＋ V 了 ＋ 数量(次/遍)</td>
+                                <td class="p-3 text-slate-700">動作を繰り返す回数を表す。「遍」は全行程（最初から最後まで）の反復。</td>
+                                <td class="p-3 font-semibold text-slate-900">把錢數了一次<br>把這課多念幾遍</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-base">(8) 「了」のみ</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">把 ＋ O ＋ 消滅動詞 ＋ 了</td>
+                                <td class="p-3 text-slate-700"><b>「消失・離脱」を意味する動詞（吃/喝/忘/丟/賣）限定！</b>結果として無くなるため「了」だけで文が完了。※買了などは不可。</td>
+                                <td class="p-3 font-semibold text-slate-900">把水喝了 / 把藥吃了<br>把房子賣了 (❌把房子買了)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">(9) 動詞重ね型</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">把 ＋ O ＋ V一V / ABAB</td>
+                                <td class="p-3 text-slate-700">「さっさと〜してしまう」「手早く処理する」。1音節は「V一V」、2音節は「一」不可でABAB型。</td>
+                                <td class="p-3 font-semibold text-slate-900">把手洗一洗<br>把書房打掃打掃</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700 text-base">(10) 二重目的語</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">把 ＋ 直接目的語(物) ＋ 給/告訴 ＋ 人</td>
+                                <td class="p-3 text-slate-700">二重目的語動詞（給/告訴）を用い、物を相手（人）へ移動・伝達させる。</td>
+                                <td class="p-3 font-semibold text-slate-900">把門票給他<br>把壞消息告訴她</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. TOCFL 罠・識別問題 (遍 vs 次, 消失動詞の「了」) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 遍 vs 次 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                    <h3 class="text-lg font-bold text-rose-700">② 「遍（biàn）」vs「次（cì）」の厳密使い分け（TOCFL超最重要）</h3>
+                    <div class="bg-rose-50 p-4 rounded-xl border border-rose-200 text-xs space-y-2">
+                        <div class="font-bold text-rose-900">動作の「全工程の完了」か「単純な回数」か</div>
+                        <p class="text-rose-800 leading-relaxed">
+                            <b>遍（biàn）</b>：本、映画、ニュースなど、最初から最後まで通して全て完了した1回。<br>
+                            <b>次（cì）</b>：動作が行われた単なる一回（全行程を完了したかは不問）。
+                        </p>
+                        <div class="font-mono text-xs">
+                            <p class="text-emerald-700 font-bold">⭕️ 這本書我看了一遍。（最初から最後まで読んだ）</p>
+                            <p class="text-slate-700 font-bold">⭕️ 我去過台灣三次。（台湾へ3回行った）</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 消滅動詞 vs 非消滅動詞 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                    <h3 class="text-lg font-bold text-amber-700">③ 「把 ＋ O ＋ 動詞 ＋ 了」が使える動詞の制約</h3>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs space-y-2">
+                        <div class="font-bold text-amber-900">なぜ「把房子賣了」はOKで「*把房子買了」はNGなのか？</div>
+                        <p class="text-amber-800 leading-relaxed">
+                            「把」構文の動詞の後に「了」だけを置くことができるのは、その動作によって<b>主語の手元から目的語が「消える・失われる」消滅動詞（吃/喝/忘/丟/賣）</b>のみです。
+                        </p>
+                        <div class="font-mono text-xs">
+                            <p class="text-emerald-700 font-bold">⭕️ 把房子賣了（家を売り払って手元から無くなった）</p>
+                            <p class="text-rose-600 font-bold">❌ 把房子買了（買っても無くなるわけではないので不可 $\rightarrow$ 把房子買下來了 ⭕️）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 22 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">把構文での「看（〜と思う）」の抽象的用法、二重目的語動詞「告訴」の構文メカニズム、「好幾遍」のニュアンス。</p>
+            </div>
+
+            <!-- QA 1: 「把 A 看得……」の抽象的意味 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">意味拡張</span>
+                    「把家人看得非常重要」の「看」はなぜ「見つめる」ではなく「重視する」の意味になるのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>動詞<b>「看（kàn）」</b>は物理的に目で「見る」以外に、<b>「判断する、〜と考える、評価・評価基準として見る」</b>という抽象的な思考動詞として使われます。</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-white p-3 rounded border border-slate-200">
+                            <div class="font-bold text-blue-800">把 A 看得重 / 看得非常重要</div>
+                            <p class="text-slate-600">Aを重く見る $\rightarrow$ **Aを非常に大切に思う、重視する**</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-slate-200">
+                            <div class="font-bold text-blue-800">把 A 看得輕 / 看不起 A</div>
+                            <p class="text-slate-600">Aを軽視する $\rightarrow$ **Aを軽く見る、見下す**</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「告訴」の二重目的語と把構文 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">二重目的語構造</span>
+                    「把壞消息告訴她」の構造解剖（前置詞「對」や「跟」を使わずにダイレクトに人へ伝える理由）
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>動詞「告訴（gàosù）」は本質的に<b>【誰に(人) ＋ 何を(物)】</b>という2つの目的語を前置詞なしで直接取ることができる**二重目的語動詞**です。</p>
+                    <ul class="list-disc list-inside space-y-1.5 font-semibold text-slate-800">
+                        <li><b>通常文：</b> 我告訴她一個壞消息。（S ＋ 告訴 ＋ 人 ＋ 物）</li>
+                        <li><b>把構文：</b> 我把一個壞消息告訴她。（S ＋ 把 ＋ 物 ＋ 告訴 ＋ 人）</li>
+                    </ul>
+                    <p>※「把消息**對**她說」のように「對/跟」を使う場合は動詞が「說」に変化します。「告訴」の後ろには直接目的語（人）が来ます。</p>
+                </div>
+            </div>
+
+            <!-- QA 3: 「好幾遍」のニュアンス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">強調表現</span>
+                    「好幾遍（hǎo jǐ biàn）」の「好」の役割と感覚
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-2 text-slate-700 leading-relaxed">
+                    <p>「幾遍」は「何回か、数回」ですが、頭に **「好（hǎo）」** がつくと**「かなりの回数、何回も何回も（うんざりするほど/繰り返し）」**という強調のニュアンスが加わります。</p>
+                    <p class="font-mono text-slate-900 font-bold bg-white p-2.5 rounded border border-slate-200">例：我把新聞看了好幾遍。（ニュースを何度も何度も穴があくほど見返した。）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 22 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('action')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動作・処理</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">生活・環境</button>
+                    <button onclick="filterVocab('abstract')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">概念・副詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 22 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 4 to 25)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "你怎麼把味噌湯煮得這麼甜？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>味<rt>wèi</rt></ruby><ruby>增<rt>zēng</rt></ruby><ruby>湯<rt>tāng</rt></ruby><ruby>煮<rt>zhǔ</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>甜<rt>tián</rt></ruby>？",
+                translation: "あなたはなぜ味噌汁をこんなに甘く作ったの？",
+                structure: "【疑問】你怎麼 ＋ 【把構文】把味噌湯 ＋ 【V得＋様態補語】煮得這麼甜？",
+                point: "<b>把 ＋ O ＋ V得 ＋ 様態補語</b>：調理・処置の結果（味付けなど）を描写。「味噌湯（wèicēngtāng）」の台湾発音。"
+            },
+            {
+                id: 5,
+                hanzi: "她把飯吃得多麼乾淨啊！",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby><ruby>啊<rt>a</rt></ruby>！",
+                translation: "彼女はなんと綺麗にごはんを食べるのでしょう。",
+                structure: "【主語】她 ＋ 【把構文】把飯 ＋ 【感嘆様態補語】吃得多麼乾淨啊！",
+                point: "<b>多麼……啊！</b>：感嘆表現。「把飯吃得……」でご飯を粒一つ残さず綺麗に食べ尽くした状態を絶賛。"
+            },
+            {
+                id: 6,
+                hanzi: "這張紙還很空，你不用把字寫得這麼小。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>空<rt>kōng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>小<rt>xiǎo</rt></ruby>。",
+                translation: "この紙はまだ空いているから、字をこんなに小さく書く必要はないよ。",
+                structure: "【前提】這張紙還很空， 【否定助動詞】你不用 ＋ 【把構文＋様態補語】把字寫得這麼小",
+                point: "<b>不用（búyòng）</b>：「把」の否定・不用の助動詞は<b>必ず「把」の前に置く</b>（×把字不用寫...）。"
+            },
+            {
+                id: 7,
+                hanzi: "他把家人看得非常重要。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>非<rt>fēi</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>要<rt>yào</rt></ruby>。",
+                translation: "彼は家族をとても大切に思っている。",
+                structure: "【主語】他 ＋ 【把構文】把家人 ＋ 【思考様態補語】看得非常重要",
+                point: "<b>把 A 看得……（重視する）</b>：動詞「看」は物理的視覚だけでなく「〜と見なす・評価する」の意味。"
+            },
+            {
+                id: 8,
+                hanzi: "我又把錢數了一次，結果還是不夠。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>數<rt>shǔ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby>，<ruby>結<rt>jié</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>夠<rt>gòu</rt></ruby>。",
+                translation: "私はもう一度お金を数えてみたが、結局やはり足りなかった。",
+                structure: "【動作の繰返し】我又 ＋ 【把構文＋動量補語】把錢數了一次， 【結果】結果還是不夠",
+                point: "<b>把 ＋ O ＋ V了 ＋ 数量補語（次）</b>：動作を行った回数を表す。「又（yòu）」は過去の重複動作。"
+            },
+            {
+                id: 9,
+                hanzi: "你可以把環境污染的影響再說明一次嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>環<rt>huán</rt></ruby><ruby>境<rt>jìng</rt></ruby><ruby>污<rt>wū</rt></ruby><ruby>染<rt>rǎn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>響<rt>xiǎng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "環境汚染の影響をもう一度説明してくれる？",
+                structure: "【依頼】你可以 ＋ 【把構文】把 [環境污染的影響] ＋ 【動作】再說明一次 ＋ 嗎？",
+                point: "<b>再（zài）＋ 動詞 ＋ 一次</b>：これからの未来の動作の重複指示。「再」も「把」の直前に配置可能。"
+            },
+            {
+                id: 10,
+                hanzi: "你把這一課多念幾遍就會懂了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>遍<rt>biàn</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>懂<rt>dǒng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この課を何度も練習したらわかるよ。",
+                structure: "【条件】你把這一課 ＋ 多念幾遍， 【結果】就會懂了",
+                point: "<b>念（niàn）幾遍</b>：教科書や音読を最初から最後まで通して（遍）何回か声に出して読むこと。"
+            },
+            {
+                id: 11,
+                hanzi: "我把這個社會新聞看了好幾遍，還是沒辦法相信他做了這麼可怕的事。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>社<rt>shè</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>遍<rt>biàn</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>事<rt>shì</rt></ruby>。",
+                translation: "この事件のニュースを繰り返し見たけれど、彼がそんな恐ろしいことをしたとはやはりどうしても信じられない。",
+                structure: "【熟読】我把社會新聞 ＋ 看了好幾遍， 【不可能】還是沒辦法相信……",
+                point: "<b>好幾遍</b>：強調の「好」＋幾遍＝何度も何度も熟読・全編鑑賞したこと。「沒辦法相信（信じられない）」。"
+            },
+            {
+                id: 12,
+                hanzi: "你先把水喝了再說吧。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "（その件は）水を飲んでしまってからにしたら。",
+                structure: "【優先動作】你先 ＋ 【把構文＋消滅動詞了】把水喝了 ＋ 【後回し】再說吧",
+                point: "<b>把 ＋ O ＋ 喝了（消滅動詞）</b>：「喝」は飲むと手元から消えるため「了」だけで文が成立。「……再說吧（〜は後回しにする）」。"
+            },
+            {
+                id: 13,
+                hanzi: "趕快把藥吃了，感冒才會好得快。",
+                rubyHtml: "<ruby>趕<rt>gǎn</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>快<rt>kuài</rt></ruby>。",
+                translation: "さっさと薬を飲んでしまわないと、風邪の治りが遅くなるよ。",
+                structure: "【促し】趕快 ＋ 【把構文】把藥吃了， 【必要条件】感冒才會好得快",
+                point: "<b>把藥吃了</b>：「吃（食べる/服用する）」も体内に消える消滅動詞。「才會好得快（そうして初めて早く良くなる）」。"
+            },
+            {
+                id: 14,
+                hanzi: "你別把老師剛才教的忘了，明天也許會考。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>教<rt>jiāo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>考<rt>kǎo</rt></ruby>。",
+                translation: "先生がさっき教えたことを忘れてしまわないように。明日テストに出るかもしれないよ。",
+                structure: "【禁止】你別 ＋ 【把構文】把 [老師剛才教的] 忘生了， 【推測】明天也許會考",
+                point: "<b>別 ＋ 把 ＋ O ＋ 忘了</b>：禁止副詞「別」は「把」の前。「忘」も記憶から無くなる消滅動詞。"
+            },
+            {
+                id: 15,
+                hanzi: "對不起，其實我在搬家的時候不小心把你的拖鞋丟了。",
+                rubyHtml: "<ruby>對<rt>duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>拖<rt>tuō</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "ごめんなさい。実は引越しのときに、あなたのスリッパをうっかり捨ててしまったの。",
+                structure: "【時間節】搬家的時候， 【過失】不小心 ＋ 【把構文】把你的拖鞋丟了",
+                point: "<b>把拖鞋丟了</b>：「丟（捨てる/紛失する）」も手元から無くなる消滅動詞。不小心（うっかり）の置く位置は「把」の前。"
+            },
+            {
+                id: 16,
+                hanzi: "我打算把那棟房子賣了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>棟<rt>dòng</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>賣<rt>mài</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あの家を売ってしまう予定だ。",
+                structure: "【意図】我打算 ＋ 【把構文】把那棟房子賣了",
+                point: "<b>賣了 vs 買了（TOCFL超重要）</b>：賣（売る）は所有権が消えるので「賣了」OK！買（買う）は「買了」不可（買下來了⭕️）。"
+            },
+            {
+                id: 17,
+                hanzi: "你先把菜點一點，他們大概馬上就到了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>點<rt>diǎn</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>概<rt>gài</rt></ruby><ruby>馬<rt>mǎ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "先にとっとと注文をしてしまって。彼らはもうすぐ着くから。",
+                structure: "【手早い処置】你先 ＋ 【把構文＋動詞重ね】把菜點一點， 【推測】他們馬上就到了",
+                point: "<b>把菜點一點（V一V型）</b>：1音節動詞「點（注文する）」の重ね型。さっさと注文を済ませる意識。"
+            },
+            {
+                id: 18,
+                hanzi: "這裡的河水很髒，回家後記得把手洗一洗。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>河<rt>hé</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>髒<rt>zāng</rt></ruby>，<ruby>回<rt>huí</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>洗<rt>xǐ</rt></ruby>。",
+                translation: "ここの川の水は汚いから、家に帰ったら忘れずにさっさと手を洗ってしまいなさい。",
+                structure: "【助言】記得 ＋ 【把構文＋V一V】把手洗一洗",
+                point: "<b>洗一洗</b>：日常の手洗い・洗濯などのササッとする動作。「記得（忘れずに〜する）」との組み合わせ。"
+            },
+            {
+                id: 19,
+                hanzi: "把電視關一關吧，環保一點！",
+                rubyHtml: "<ruby>把<rt>bǎ</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>視<rt>shì</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>吧<rt>ba</rt></ruby>，<ruby>環<rt>huán</rt></ruby><ruby>保<rt>bǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby>！",
+                translation: "テレビはさっさと消してしまって。もっとエコに。",
+                structure: "【提案】把電視關一關吧， 【理由】環保一點！",
+                point: "<b>關一關</b>：テレビや電気をさっさと消す。「環保（huánbǎo）」は台湾で超頻出の「環境保護・エコ」。"
+            },
+            {
+                id: 20,
+                hanzi: "你把頭髮剪一剪吧！",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>頭<rt>tóu</rt></ruby><ruby>髮<rt>fǎ</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>一<rt>yi</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "髪をさっさと切ってしまったら？",
+                structure: "【勧め】你 ＋ 【把構文＋V一V】把頭髮剪一剪 ＋ 吧",
+                point: "<b>剪一剪</b>：1音節動詞「剪」には必ず間に「一」を挟む（×剪剪）。「頭髮（fǎ）」は台湾発音。"
+            },
+            {
+                id: 21,
+                hanzi: "你先把書房打掃打掃再走吧。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>掃<rt>sǎo</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>掃<rt>sǎo</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "まず書斎をぱぱっと掃除してしまってから行って。",
+                structure: "【順序】你先 ＋ 【把構文＋ABAB】把書房打掃打掃 ＋ 再走吧",
+                point: "<b>打掃打掃（ABAB型）</b>：2音節動詞の重ね型には「一」を足さない（❌打掃一打掃）。"
+            },
+            {
+                id: 22,
+                hanzi: "我猜她還沒把那些門票給他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>猜<rt>cāi</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "推測だけど彼女はあれらの入場券をまだ彼にあげていないと思う。",
+                structure: "【推測】我猜， 【否定把構文】她還沒 ＋ 把那些門票 ＋ 【二重目的語】給他",
+                point: "<b>把 ＋ 物 ＋ 給 ＋ 人</b>：二重目的語動詞「給」。否定「還沒」は「把」の前に置く。"
+            },
+            {
+                id: 23,
+                hanzi: "你為什麼把這個壞消息直接告訴她了？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>壞<rt>huài</rt></ruby><ruby>消<rt>xiāo</rt></ruby><ruby>息<rt>xī</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>su</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>了<rt>le</rt></ruby>？",
+                translation: "なぜこの悪い知らせを直接彼女に話したの？",
+                structure: "【疑問】你為什麼 ＋ 【把構文】把這個壞消息 ＋ 直接 ＋ 【二重目的語】告訴她了？",
+                point: "<b>把 ＋ 物 ＋ 告訴 ＋ 人</b>：「告訴」も「給」同様に人へダイレクトに伝える二重目的語動詞。"
+            },
+            {
+                id: 24,
+                hanzi: "我把這樣做的好處跟壞處都告訴你了，你可以自己決定要怎麼做。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>壞<rt>huài</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>su</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>做<rt>zuò</rt></ruby>。",
+                translation: "こうすることのメリットとデメリットを全部きみに伝えたから、どうするかは自分で決めたらいいよ。",
+                structure: "【前提傳達】我把 [好處跟壞處] 都告訴你了， 【自己決定】你可以自己決定……",
+                point: "<b>好處跟壞處（長所と短所）</b>：対義語の組み合わせ。副詞「都」が「把」の後ろの動詞前に位置する点も注意。"
+            },
+            {
+                id: 25,
+                hanzi: "爸爸說不要到處把手機號碼給別人，尤其是不認識的人。",
+                rubyHtml: "<ruby>爸<rt>bà</rt></ruby><ruby>爸<rt>ba</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>碼<rt>mǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>尤<rt>yóu</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>。",
+                translation: "「あちこちで携帯番号を他人に渡してはだめ。特に知らない人には」と父が言う。",
+                structure: "【禁止】不要到處 ＋ 【把構文】把手機號碼給別人， 【強調】尤其是不認識的人",
+                point: "<b>到處（dàochù）/ 尤其（yóuqí）</b>：禁止「不要到處」は「把」の前。「尤其（特に）」もTOCFL Band B必須語。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "味噌湯", pinyin: "wèicēngtāng", meaning: "味噌汁 (台湾標準発音)", cat: "life" },
+            { hanzi: "污染", pinyin: "wūrǎn", meaning: "汚染する / 汚染", cat: "life" },
+            { hanzi: "社會新聞", pinyin: "shèhuì xīnwén", meaning: "事件事故ニュース", cat: "abstract" },
+            { hanzi: "拖鞋", pinyin: "tuōxié", meaning: "スリッパ・サンダル", cat: "life" },
+            { hanzi: "棟", pinyin: "dòng", meaning: "ビル・家屋を数える量詞", cat: "life" },
+            { hanzi: "環保", pinyin: "huánbǎo", meaning: "環境保護・エコ", cat: "life" },
+            { hanzi: "打掃", pinyin: "dǎsǎo", meaning: "掃除する (2音節)", cat: "action" },
+            { hanzi: "壞消息", pinyin: "huài xiāoxī", meaning: "悪い知らせ", cat: "abstract" },
+            { hanzi: "好處 / 壞處", pinyin: "hǎochù / huàichù", meaning: "メリット / デメリット", cat: "abstract" },
+            { hanzi: "到處", pinyin: "dàochù", meaning: "至る所・あちこち", cat: "abstract" },
+            { hanzi: "尤其", pinyin: "yóuqí", meaning: "特に・とりわけ", cat: "abstract" },
+            { hanzi: "數", pinyin: "shǔ", meaning: "数える (動詞)", cat: "action" },
+            { hanzi: "遍", pinyin: "biàn", meaning: "全行程完了の回数 (量詞)", cat: "action" },
+            { hanzi: "丟", pinyin: "diū", meaning: "捨てる・失う (消滅動詞)", cat: "action" },
+            { hanzi: "賣", pinyin: "mài", meaning: "売る (消滅動詞)", cat: "action" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // On Page Load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 23 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 23 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">沒辦法，我已經喜歡上他了。(方向補語2：派生用法 / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 方向補語派生深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 23 例文全22句（⑤〜㉖ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 23 文法メタマトリクス：方向補語の派生用法（抽象的拡張）
+                </h2>
+                <p class="text-sm text-slate-600">物理的な移動だけでなく、状態の開始・定着・継続・目標達成を表す方向補語の抽象的用法を網羅体系化。</p>
+            </div>
+
+            <!-- 1. 方向補語派生 3大パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「〜上」の派生用法 3パターン（TOCFL超最重要）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">カテゴリ</th>
+                                <th class="p-3">コアニュアンス</th>
+                                <th class="p-3">代表動詞構文</th>
+                                <th class="p-3">例文とポイント</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">(1) 密着・結合</td>
+                                <td class="p-3 text-slate-700">離れていたものがぴったり密着・閉鎖する</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">關上 / 貼上 / 穿上 / 鎖上</td>
+                                <td class="p-3 font-semibold text-slate-900">把門關上 (ドアを閉める)<br>貼上郵票 (切手を貼る)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">(2) 目標達成</td>
+                                <td class="p-3 text-slate-700">困難や目標・基準に到達して手に入れる</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">考上 / 搭上 / 當上 / 考上大學</td>
+                                <td class="p-3 font-semibold text-slate-900">考上那所大學 (合格する)<br>當上總經理 (社長になる)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-base">(3) 感情・状態開始</td>
+                                <td class="p-3 text-slate-700">好意・関心・感情が芽生えて固まる</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">愛上 / 看上 / 喜歡上 / 迷上</td>
+                                <td class="p-3 font-semibold text-slate-900">喜歡上他 (好きになる)<br>看上能力 (気に入る)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「〜下（來）」の派生用法 (分離 vs 定着) -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    ② 「〜下（來）」の派生用法（分離 vs 定着）と目的語の制約
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-rose-800 text-base">A. 分離・離脱 (使役・解放)</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">元の場所から離れて下へ向かう、または心理的に手放す。</p>
+                        <div class="space-y-1.5 text-xs font-mono font-bold">
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">放下這件事 (あきらめる・手放す)</div>
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">從報紙上剪下來 (切り取る)</div>
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">脫下來的衣服 (脱いだ服)</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-blue-800 text-base">B. 定着・所有・記録 (固定)</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">記憶、紙面、自分の所有物としてしっかりと留め置く。</p>
+                        <div class="space-y-1.5 text-xs font-mono font-bold">
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">記下來 (ノートに書き留める)</div>
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">買下這棟房子 (買い取る)</div>
+                            <div class="p-2 bg-white rounded border border-slate-200 text-slate-800">收下禮物 (受け取る)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 font-bold">
+                    ⚠️ TOCFL激王手トラップ：目的語がある場合、「來」は脱落・省略されます！<br>
+                    ⭕️ 放下這件事 / 買下這棟房子 &nbsp;&nbsp;&nbsp;&nbsp; ❌ <span class="line-through text-rose-600">放下來這件事</span> / <span class="line-through text-rose-600">買下來這棟房子</span>
+                </div>
+            </div>
+
+            <!-- 3. 時間の継続「～下來」vs「～下去」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-indigo-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    ③ 時間の継続：「〜下來」 (過去$\rightarrow$現在) vs 「〜下去」 (現在$\rightarrow$未来)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-indigo-800 text-base">動詞 ＋ 下來（過去から現在への継続）</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">過去からこれまでずっと継続して行われてきた蓄積描写。</p>
+                        <div class="p-2 bg-white rounded border border-slate-200 text-xs font-mono text-indigo-900 font-bold">
+                            • 算下來 (計算してきた結果)<br>
+                            • 四年讀下來 (4年間読み続けてきた)<br>
+                            • 十幾年教下來 (十数年間教えてきて)
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-purple-800 text-base">動詞 ＋ 下去（現在から未来への継続）</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">今この瞬間から未来に向かって、動作・状態を継続させていく。</p>
+                        <div class="p-2 bg-white rounded border border-slate-200 text-xs font-mono text-purple-900 font-bold">
+                            • 聽下去 (聞き続ける)<br>
+                            • 等下去 (待ち続ける)<br>
+                            • 喝下去 (飲み続ける)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 23 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「看上」と「喜歡上」のニュアンス差、「記下來」と「記錄下來」の精緻な使い分け、方向補語の語順ルール。</p>
+            </div>
+
+            <!-- QA 1: 「看上」vs「喜歡上」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">ニュアンス比較</span>
+                    「看上（kàn shàng）」と「喜歡上（xǐhuān shàng）」の違いとは？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 看上（kàn shàng）</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            評価・品定め・選定の結果、**「気に入る・目をつける」**。人の能力や品物、条件に対する肯定的な評価判断のニュアンスが強い。
+                        </p>
+                        <p class="font-mono text-blue-900 font-bold bg-white p-2 rounded border border-slate-200">例：老闆看上了他的能力。（オーナーは彼の能力に目をつけた。）</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">2. 喜歡上（xǐhuān shàng）</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            感情・愛着が湧いて**「好きになる」**。恋愛感情や個人的な好み・趣味が芽生える情緒的な変化を表す。
+                        </p>
+                        <p class="font-mono text-emerald-900 font-bold bg-white p-2 rounded border border-slate-200">例：我已經喜歡上他了。（もう彼のことを好きになっちゃった。）</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「記下來」 vs 「記錄下來」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">語彙の精度</span>
+                    「記下來」と「記錄下來」の機能差（メモ書き vs 正式な記録）
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>どちらも「記録として留める」意味ですが、動作の規模と目的が異なります。</p>
+                    <ul class="list-disc list-inside space-y-2 font-semibold text-slate-800">
+                        <li><b>記下來（jì xià lái）：</b> メモを取る、忘れないように手帳や紙にサッと書き留める（買い物リストなど）。</li>
+                        <li><b>記錄下來（jìlù xià lái）：</b> 歴史、ストーリー、議事録、データなどを正式・詳細にドキュメントとして残す。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QA 3: 目的語を挟む位置（語順規則） -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL語順法則</span>
+                    複合方向補語（動詞＋下＋來）と目的語（場所・一般名詞）の位置関係
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-2 text-slate-700 leading-relaxed">
+                    <p class="font-bold text-indigo-900">1. 普通の名詞（事物）の場合：</p>
+                    <p class="font-mono text-slate-800 bg-white p-2.5 rounded border border-slate-200">⭕️ 剪下新聞來 / 剪下來新聞（※把構文を使うのが最も自然：把新聞剪下來）</p>
+                    <p class="font-bold text-indigo-900 mt-2">2. 「下」のみで目的語を取る場合（來は消滅）：</p>
+                    <p class="font-mono text-slate-800 bg-white p-2.5 rounded border border-slate-200">⭕️ 買下這棟房子 / 放下這件事 （× 買下來這棟房子）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 23 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('action')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動作・補語</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">日用品・生活</button>
+                    <button onclick="filterVocab('transit')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">交通・社会</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 23 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 5 to 26)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "最後離開教室的人，請把門關上。",
+                rubyHtml: "<ruby>最<rt>zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>教<rt>jiào</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>上<rt>shàng</rt></ruby>。",
+                translation: "最後に教室を離れる人は、ドアをちゃんと閉めてください。",
+                structure: "【修飾句主語】最後離開教室的人， 【把構文】請把門 ＋ 【方向補語(密着)】關上",
+                point: "<b>關上（guān shàng）</b>：密着・閉鎖を表す「上」。ドアや窓をしっかり閉める。"
+            },
+            {
+                id: 6,
+                hanzi: "給張伯伯的信，你已經貼上郵票了嗎？",
+                rubyHtml: "<ruby>給<rt>gěi</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>伯<rt>bó</rt></ruby><ruby>伯<rt>bo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>信<rt>xìn</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>貼<rt>tiē</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "張おじさんへの手紙は、もう切手を貼りつけましたか。",
+                structure: "【主題】給張伯伯的信， 【動作】你已經 ＋ 【方向補語(付着)】貼上郵票 ＋ 了嗎？",
+                point: "<b>貼上（tiē shàng）</b>：表面にぴったり貼りつける付着の「上」。「張伯伯（張おじさん）」。"
+            },
+            {
+                id: 7,
+                hanzi: "相信我，穿上這雙鞋子你會跑得更快！",
+                rubyHtml: "<ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>我<rt>wǒ</rt></ruby>，<ruby>穿<rt>chuān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>快<rt>kuài</rt></ruby>！",
+                translation: "僕を信じて。この靴を履いたら走るのがもっと速くなるよ。",
+                structure: "【信憑】相信我， 【着用】穿上這雙鞋子 ＋ 【様態補語】你會跑得更快！",
+                point: "<b>穿上（chuān shàng）</b>：衣服や靴を身体に着用して身につける「上」。"
+            },
+            {
+                id: 8,
+                hanzi: "為了考上那所大學，他最近每天都讀好幾個小時的書。",
+                rubyHtml: "<ruby>為<rt>wèi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>書<rt>shū</rt></ruby>。",
+                translation: "あの大学に合格するために、彼は最近毎日何時間も勉強している。",
+                structure: "【目的】為了 [考上那所大學]， 【習慣】他最近每天都 ＋ 讀好幾個小時的書",
+                point: "<b>考上（kǎo shàng）</b>：合格・受かる（達成・目標到達の「上」）。学校の量詞「所（suǒ）」"
+            },
+            {
+                id: 9,
+                hanzi: "我剛才跑了半天，還是沒有搭上公車。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>搭<rt>dā</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>車<rt>chē</rt></ruby>。",
+                translation: "さっきずいぶん走ったのに、やはりバスに乗れなかった。",
+                structure: "【前節】跑了半天(長い時間)， 【結果否定】還是沒有 ＋ 【達成】搭上公車",
+                point: "<b>搭上（dā shàng）</b>：バスや電車に間に合って無事乗り込む。「跑了半天（散々走る）」。"
+            },
+            {
+                id: 10,
+                hanzi: "他花了十年才終於當上總經理。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>終<rt>zhōng</rt></ruby><ruby>於<rt>yú</rt></ruby><ruby>當<rt>dāng</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>總<rt>zǒng</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>理<rt>lǐ</rt></ruby>。",
+                translation: "彼は10年費やしてついに社長になった。",
+                structure: "【時間消費】花了十年 ＋ 【遅延・達成】才終於 ＋ 【就任】當上總經理",
+                point: "<b>當上（dāng shàng）</b>：地位や役職に就任する達成の「上」。「總經理（社長・総支配人）」。"
+            },
+            {
+                id: 11,
+                hanzi: "學長說他那天一看到美美，就愛上她了。",
+                rubyHtml: "<ruby>學<rt>xué</rt></ruby><ruby>長<rt>zhǎng</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>美<rt>měi</rt></ruby><ruby>美<rt>měi</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>愛<rt>ài</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "先輩は、あの日美美を見かけてすぐに恋してしまったと言った。",
+                structure: "【伝聞】學長說， 【一…就…】一看到美美， 就 ＋ 【愛着発生】愛上她了",
+                point: "<b>愛上（ài shàng）</b>：愛着・恋愛感情が生まれて定着する発生の「上」。「學長（男性の先輩）」。"
+            },
+            {
+                id: 12,
+                hanzi: "老闆看上了小天的能力。",
+                rubyHtml: "<ruby>老<rt>lǎo</rt></ruby><ruby>闆<rt>bǎn</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>力<rt>lì</rt></ruby>。",
+                translation: "オーナーは小天の能力が気に入った。",
+                structure: "【主語】老闆 ＋ 【評価・目をつける】看上了 ＋ 【目的語】小天的能力",
+                point: "<b>看上（kàn shàng）</b>：評価や選定の結果、気に入る・目に留まる。"
+            },
+            {
+                id: 13,
+                hanzi: "沒辦法，我已經喜歡上他了。",
+                rubyHtml: "<ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "しょうがないよ。彼のことがもう好きになったんだから。",
+                structure: "【諦め】沒辦法， 【感情定着】我已經 ＋ 喜歡上他了",
+                point: "<b>喜歡上（xǐhuān shàng）</b>：好きという感情が芽生える。タイトルフレーズ。"
+            },
+            {
+                id: 14,
+                hanzi: "我希望我孫女可以早一點放下這件事。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>孫<rt>sūn</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby>。",
+                translation: "孫娘がその件を早くあきらめられることを願っている。",
+                structure: "【願望】我希望孫女 ＋ 早一點 ＋ 【手放す】放下這件事",
+                point: "<b>放下（fàng xià）</b>：執着や悩みを心理的に手放す（分離の「下」）。目的語があるため「來」はつかない。"
+            },
+            {
+                id: 15,
+                hanzi: "這個新聞，你是從哪份報紙上剪下來的？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>剪<rt>jiǎn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby>？",
+                translation: "このニュース、どの新聞から切り取ったの？",
+                structure: "【主題】這個新聞， 【強調構文】你是從哪份報紙上 ＋ 【切り取る】剪下來的？",
+                point: "<b>剪下來（jiǎn xià lái）</b>：元の紙面から切り離す（分離の「下來」）。"
+            },
+            {
+                id: 16,
+                hanzi: "老公，脫下來的衣服要放在籃子裡，不要到處丟。",
+                rubyHtml: "<ruby>老<rt>lǎo</rt></ruby><ruby>公<rt>gōng</rt></ruby>，<ruby>脫<rt>tuō</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>籃<rt>lán</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>，<ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>處<rt>chù</rt></ruby><ruby>丟<rt>diū</rt></ruby>。",
+                translation: "ねえ、脱いだ服はカゴに入れて。あちこち放り投げないで。",
+                structure: "【呼びかけ】老公， 【分離名詞句】脫下來的衣服 ＋ 要放在籃子裡， 【禁止】不要到處丟",
+                point: "<b>脫下來（tuō xià lái）</b>：身体から衣服を脱いで離す（分離）。「老公（旦那さん）」。"
+            },
+            {
+                id: 17,
+                hanzi: "媽媽剛才說等一下要買衛生紙、肥皂、牙刷和牙膏，你都記下來了嗎？",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>衛<rt>wèi</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby>、<ruby>肥<rt>féi</rt></ruby><ruby>皂<rt>zào</rt></ruby>、<ruby>牙<rt>yá</rt></ruby><ruby>刷<rt>shuā</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>牙<rt>yá</rt></ruby><ruby>膏<rt>gāo</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "お母さんが、後でティシュと石鹸、歯ブラシ、歯磨き粉を買うとさっき言ってたけど、全部書き留めた？",
+                structure: "【引用リスト】買衛生紙、肥皂、牙刷和牙膏， 【書き留める】你都記下來了嗎？",
+                point: "<b>記下來（jì xià lái）</b>：忘れないように手帳や紙にメモして留める（定着の「下來」）。"
+            },
+            {
+                id: 18,
+                hanzi: "你可以幫我把這個故事記錄下來嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>錄<rt>lù</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "この物語を記録しておいてくれますか。",
+                structure: "【依頼】你可以幫我 ＋ 【把構文】把這個故事 ＋ 【記録保存】記錄下來嗎？",
+                point: "<b>記錄下來（jìlù xià lái）</b>：正式・詳細に記録して保存する。「幫我（私を手伝って）」。"
+            },
+            {
+                id: 19,
+                hanzi: "他們夫妻討論了好幾個月，最後還是決定買下這棟郊區的房子。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>夫<rt>fū</rt></ruby><ruby>妻<rt>qī</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby>，<ruby>最<rt>zuì</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>棟<rt>dòng</rt></ruby><ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "彼ら夫婦は何ヶ月も相談して、結局やはりこの郊外の家を買い取ることにした。",
+                structure: "【協議】討論了好幾個月， 【決断】最後還是決定 ＋ 【所有】買下這棟郊區的房子",
+                point: "<b>買下（mǎi xià）</b>：買い取って自分の所有にする（定着の「下」）。目的語があるため「來」不要。"
+            },
+            {
+                id: 20,
+                hanzi: "這份禮物是大家為妳準備的，希望妳可以收下。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>妳<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>下<rt>xià</rt></ruby>。",
+                translation: "このプレゼントはみんながあなたのために準備したものです。受け取ってもらえるといいな。",
+                structure: "【強調】這份禮物是大家為妳準備的， 【受納】希望妳可以 ＋ 收下",
+                point: "<b>收下（shōu xià）</b>：自分のものとして受け取る（定着の「下」）。"
+            },
+            {
+                id: 21,
+                hanzi: "這樣算下來，搭客運其實還比較便宜。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>搭<rt>dā</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>便<rt>pián</rt></ruby><ruby>宜<rt>yí</rt></ruby>。",
+                translation: "こうやって（あれこれ）計算したら、長距離バスで行くほうが実はまだ安かった。",
+                structure: "【試算蓄積】這樣算下來， 【結果】搭客運 ＋ 其實還比較便宜",
+                point: "<b>算下來（suàn xià lái）</b>：過去から現在に至るあれこれの計算の継続・蓄積。「客運（長距離バス）」。"
+            },
+            {
+                id: 22,
+                hanzi: "他大學的時候每個禮拜讀一本書，四年讀下來就讀了兩百多本書。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>四<rt>sì</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby>。",
+                translation: "大学時代、彼は毎週1冊本を読んでいて、4年間読み続けたら二百数十冊になった。",
+                structure: "【習慣】每個禮拜讀一本書， 【4年間の継続蓄積】四年讀下來 ＋ 就讀了兩百多本書",
+                point: "<b>讀下來（dú xià lái）</b>：過去から現在までの長期に渡る読書の継続・成果蓄積。"
+            },
+            {
+                id: 23,
+                hanzi: "我這十幾年教下來，覺得現在的孩子們越來越聰明了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>教<rt>jiāo</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>聰<rt>cōng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この十数年教えてきて、今の子どもたちはどんどん賢くなっていると感じる。",
+                structure: "【教職蓄積】這十幾年教下來， 【所感】覺得現在的孩子們 ＋ 越來越聰明了",
+                point: "<b>教下來（jiāo xià lái）</b>：十数年の指導経験の蓄積。「越來越（益々〜だ）」。"
+            },
+            {
+                id: 24,
+                hanzi: "別急，先聽下去吧！",
+                rubyHtml: "<ruby>別<rt>bié</rt></ruby><ruby>急<rt>jí</rt></ruby>，<ruby>先<rt>xiān</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "慌てないで。まず続けて聞いてごらん！",
+                structure: "【制止】別急， 【未来への継続】先聽下去吧！",
+                point: "<b>聽下去（tīng xià qù）</b>：今から未来に向かって「聞き続ける」継続の「下去」。"
+            },
+            {
+                id: 25,
+                hanzi: "已經過了半個多小時了，我們還要繼續等下去嗎？",
+                rubyHtml: "<ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>繼<rt>jì</rt></ruby><ruby>續<rt>xù</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "もう30分以上経っているけど、私たちはまだこのまま待ち続けるの？",
+                structure: "【時間経過】已經過了半個多小時了， 【未来継続疑問】還要繼續 ＋ 等下去嗎？",
+                point: "<b>等下去（děng xià qù）</b>：これからも未来に向かって待ち続けること。"
+            },
+            {
+                id: 26,
+                hanzi: "你酒喝得太多了！再這樣喝下去，會影響到身體健康。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>再<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby>，<ruby>會<rt>huì</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>響<rt>xiǎng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>身<rt>shēn</rt></ruby><ruby>體<rt>tǐ</rt></ruby><ruby>健<rt>jiàn</rt></ruby><ruby>康<rt>kāng</rt></ruby>。",
+                translation: "あなたはお酒を飲みすぎる。これ以上飲み続けたら、健康に影響が出るよ。",
+                structure: "【過剰】酒喝得太多了！ 【未来継続条件】再這樣喝下去， 【危険予測】會影響到身體健康",
+                point: "<b>喝下去（hē xià qù）</b>：今の悪習を未来へ継続させること。「影響到（〜に影響を及ぼす）」。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "郵票", pinyin: "yóupiào", meaning: "切手", cat: "life" },
+            { hanzi: "總經理", pinyin: "zǒngjīnglǐ", meaning: "社長・総支配人", cat: "transit" },
+            { hanzi: "學長", pinyin: "xuézhǎng", meaning: "(男性の)先輩", cat: "transit" },
+            { hanzi: "孫女", pinyin: "sūnnǚ", meaning: "孫娘", cat: "life" },
+            { hanzi: "衛生紙", pinyin: "wèishengzhǐ", meaning: "トイレットペーパー / ティッシュ", cat: "life" },
+            { hanzi: "牙刷 / 牙膏", pinyin: "yáshuā / yágāo", meaning: "歯ブラシ / 歯磨き粉", cat: "life" },
+            { hanzi: "記錄", pinyin: "jìlù", meaning: "記録する / ドキュメント化する", cat: "action" },
+            { hanzi: "客運", pinyin: "kèyùn", meaning: "長距離高速バス (台湾交通)", cat: "transit" },
+            { hanzi: "考上", pinyin: "kǎo shàng", meaning: "試験に合格する (方向補語)", cat: "action" },
+            { hanzi: "搭上", pinyin: "dā shàng", meaning: "乗り物に間に合って乗る", cat: "transit" },
+            { hanzi: "放下", pinyin: "fàng xià", meaning: "手放す・諦める", cat: "action" },
+            { hanzi: "收下", pinyin: "shōu xià", meaning: "受け取る・受納する", cat: "action" },
+            { hanzi: "算下來", pinyin: "suàn xiàlái", meaning: "試算・計算した結果", cat: "action" },
+            { hanzi: "等下去", pinyin: "děng xià qù", meaning: "待ち続ける (未来継続)", cat: "action" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

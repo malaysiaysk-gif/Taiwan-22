@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 25 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 25 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">新鮮的芒果，這個季節買不到。(可能補語1：基本的な用法 / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (25句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 可能補語深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 25 例文全25句（①〜㉕ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 25 文法メタマトリクス：可能補語の基本構造・3大成り立ち・結果補語との厳密対比
+                </h2>
+                <p class="text-sm text-slate-600">能力・客観的条件・時間的制約によって「〜できる / どうしても〜できない」を表す可能補語の核心体系。</p>
+            </div>
+
+            <!-- 1. 可能補語 3つの成り立ち分類 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 可能補語の3大分類と基本パターン（TOCFL最重要）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">分類タイプ</th>
+                                <th class="p-3">元となった補語形式</th>
+                                <th class="p-3">可能補語 (肯定形 / 否定形)</th>
+                                <th class="p-3">代表例とニュアンス</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">A. 結果補語由来</td>
+                                <td class="p-3 text-slate-700 font-mono text-xs">吃完 / 找到 / 看懂 / 洗乾淨</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">V 得 C / V 不 C<br>(吃得完 / 吃不完)</td>
+                                <td class="p-3 font-semibold text-slate-900">找得到（見つけられる）<br>洗不乾淨（洗っても綺麗にならない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">B. 方向補語由来</td>
+                                <td class="p-3 text-slate-700 font-mono text-xs">進來 / 出去 / 站起來 / 關起來</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">V 得 Dir / V 不 Dir<br>(進得來 / 進不去)</td>
+                                <td class="p-3 font-semibold text-slate-900">出不去（外へ出られない）<br>關不起來（どうしても閉まらない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-base">C. 固有固定形 (次章予告)</td>
+                                <td class="p-3 text-slate-700 font-mono text-xs">去 (行く・成立する)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">V 得了 / V 不了<br>(去得了 / 去不了)</td>
+                                <td class="p-3 font-semibold text-slate-900">去不了（行くことができない）<br>受不了（耐えられない）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 結果補語 vs 可能補語 厳密比較 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    ② 過去の事象「結果補語」 vs 可能性・能力「可能補語」 (TOCFL超最重要ひっかけ)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-blue-800 text-base">【結果補語の否定：沒 ＋ V ＋ C】</div>
+                        <div class="text-xs space-y-2 text-slate-700">
+                            <p><b>時制・性質：</b> 過去または完了済みの動作において、結果が達成されなかった「事実」の報告。</p>
+                            <p class="font-mono text-xs font-bold text-blue-900 bg-white p-2.5 rounded border border-slate-200">
+                                例：那枝筆沒找到。（あのペンは見つからなかった［事実］）
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-rose-800 text-base">【可能補語の否定：V ＋ 不 ＋ C】</div>
+                        <div class="text-xs space-y-2 text-slate-700">
+                            <p><b>時制・性質：</b> 条件・環境・能力の制約により、「（今後も/どうしても）達成不可能」という判断・状態の描写。</p>
+                            <p class="font-mono text-xs font-bold text-rose-900 bg-white p-2.5 rounded border border-slate-200">
+                                例：那枝筆大概找不到。（あのペンはたぶん見つからない［見込み・不可能］）
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 可能補語肯定形が使われる3大場面 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                <h3 class="text-lg font-bold text-indigo-700">③ 可能補語「肯定形 (V得C)」が使われる3大限定条件</h3>
+                <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200 text-xs space-y-3 text-indigo-950">
+                    <p class="font-bold text-indigo-900">可能補語の本質は「不可能性の伝達（否定形）」ですが、肯定形（V得C）は以下の特殊文脈でのみ登場します：</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="p-3 bg-white rounded-lg border border-indigo-200 text-slate-900 space-y-1">
+                            <div class="font-bold text-blue-800">1. 反論・強い主張</div>
+                            <p class="text-slate-600">否定の懸念に対して「絶対できる！」と対抗する。</p>
+                            <div class="font-mono text-xs font-bold text-blue-900 mt-1">一定考得上！（絶対合格できる！）</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-lg border border-indigo-200 text-slate-900 space-y-1">
+                            <div class="font-bold text-emerald-800">2. 疑問文 (V得C嗎?)</div>
+                            <p class="text-slate-600">相手の能力や条件達成の有無を尋ねる。</p>
+                            <div class="font-mono text-xs font-bold text-emerald-900 mt-1">只吃一個，吃得飽嗎？</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-lg border border-indigo-200 text-slate-900 space-y-1">
+                            <div class="font-bold text-purple-800">3. 可能・不可能な対比</div>
+                            <p class="text-slate-600">可能な条件と不可能な条件を並列対比する。</p>
+                            <div class="font-mono text-xs font-bold text-purple-900 mt-1">買得到；辣椒粉不一定買得到。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 25 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「沒找到」と「找不到」の認知プロセスの決定差、可能補語と「沒辦法 ＋ V」の使い分け。</p>
+            </div>
+
+            <!-- QA 1: 「沒找到」 vs 「找不到」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">認知プロセス比較</span>
+                    「沒找到」と「找不到」はどのように使い分けるべきか？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 沒找到（結果補語否定）＝ 過去の特定の探す試みの失敗</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            昨日やさっき探したという具体的な動作を行い、その時点での「見つからなかった」という客観的事実。
+                        </p>
+                        <p class="font-mono text-blue-900 font-bold bg-white p-2 rounded border border-slate-200">例：我昨天找了，但是沒找到。（昨日探したけれど見つからなかった）</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">2. 找不到（可能補語否定）＝ 現在・未来も含めた見込めなさ</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            今も探しているが手応えがない、または範囲が広すぎて「今後もどうしても見つけられない」という限界状況。
+                        </p>
+                        <p class="font-mono text-rose-900 font-bold bg-white p-2 rounded border border-slate-200">例：公園這麼大，怎麼找得到？（公園はこんなに広いのだから、見つかるはずがない）</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 可能補語 vs 沒辦法＋動詞 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">言い換え表現</span>
+                    「走不回去」と「沒辦法走回去」の文法的関係とニュアンス差
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>どちらも「歩いて帰ることはできない」という不可能性を表しますが、構造とニュアンスに若干の差があります。</p>
+                    <ul class="list-disc list-inside space-y-2 font-semibold text-slate-800">
+                        <li><b>走不回去（可能補語）：</b> 距離が遠すぎる・足が痛いなど、身体能力や客観条件の限界にフォーカスしたストレートな表現。</li>
+                        <li><b>沒辦法走回去（助動詞的構文）：</b> 手段・方法・客観的状況として「歩いて帰る手段がとれない」という客観的説明。</li>
+                    </ul>
+                    <p class="text-slate-600">※例文24や25のように、日常会話ではほぼ同義として言い換えが可能です。</p>
+                </div>
+            </div>
+
+            <!-- QA 3: 可能補語否定形につく「了」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">語氣助詞「了」</span>
+                    「買不到」と「買不到了」の違い（状態の変化）
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-2 text-slate-700 leading-relaxed">
+                    <p>文末の **「了」** は「～になった（状況の変化）」を表します。</p>
+                    <p class="font-mono text-slate-800 bg-white p-2.5 rounded border border-slate-200">
+                        ・買不到（買えない / 手に入らない）<br>
+                        ・買不到了（以前は買えていたが、季節が過ぎたり売り切れたりして**買えなくなった**）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 25 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('comp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">可能補語</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">生活・調味料</button>
+                    <button onclick="filterVocab('edu')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">学業・社会</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 25 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 25 Sentences from 1 to 25)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "這些菜我們也許會吃不完。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "これらの料理、私たちは食べきれないかもしれない。",
+                structure: "【主題】這些菜， 【推測】我們也許會 ＋ 【可能補語否定】吃不完",
+                point: "<b>吃不完（chī bù wán）</b>：量が多くて完食することが不可能（結果補語「吃完」から派生）。"
+            },
+            {
+                id: 2,
+                hanzi: "他這個月拿得到居留證吧？",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>居<rt>jū</rt></ruby><ruby>留<rt>liú</rt></ruby><ruby>證<rt>zhèng</rt></ruby><ruby>吧<rt>ba</rt></ruby>？",
+                translation: "彼は今月居留証がもらえるのでしょう？",
+                structure: "【時間】這個月， 【可能補語肯定】拿得到 ＋ 居留證 ＋ 吧？",
+                point: "<b>拿得到（ná de dào）</b>：受け取れる・手に入れられるという肯定可能補語。推測疑問の「吧」。"
+            },
+            {
+                id: 3,
+                hanzi: "我們都進不去。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>去<rt>qù</rt></ruby>。",
+                translation: "私たちはみんな［入っていく／入る］ことができない。",
+                structure: "【主語】我們都 ＋ 【方向可能補語否定】進不去",
+                point: "<b>進不去（jìn bú qù）</b>：入り口が閉まっている・鍵がないなどの理由で中に入っていけない。"
+            },
+            {
+                id: 4,
+                hanzi: "爸爸今天回得來嗎？",
+                rubyHtml: "<ruby>爸<rt>bà</rt></ruby><ruby>爸<rt>ba</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "お父さんは今日は帰ってくることができる？",
+                structure: "【主語】爸爸今天 ＋ 【方向可能補語肯定】回得來 ＋ 嗎？",
+                point: "<b>回得來（huí de lái）</b>：帰宅できるかどうか能力・条件を尋ねる疑問形。"
+            },
+            {
+                id: 5,
+                hanzi: "那枝筆已經找到了。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あのペンはもう見つかった。",
+                structure: "【主題】那枝筆 ＋ 【完了事実】已經 [找到了]",
+                point: "<b>結果補語（找到了）</b>：探す動作の結果、無事発見できたという完了した事実。"
+            },
+            {
+                id: 6,
+                hanzi: "那枝筆沒找到。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "あのペンは見つからなかった。",
+                structure: "【主題】那枝筆 ＋ 【結果否定】沒 [找到]",
+                point: "<b>結果補語の否定（沒找到）</b>：探したが発見に至らなかったという過去の事実報告。"
+            },
+            {
+                id: 7,
+                hanzi: "那枝筆應該找得到。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "あのペンは見つかるはずだ。",
+                structure: "【主題】那枝筆 ＋ 【推測】應該 ＋ 【可能補語肯定】找得到",
+                point: "<b>可能補語（找得到）</b>：「見つけられる見込み・可能性」の推測。"
+            },
+            {
+                id: 8,
+                hanzi: "那枝筆大概找不到。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>概<rt>gài</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "あのペンは多分見つからない。",
+                structure: "【主題】那枝筆 ＋ 【推測】大概 ＋ 【可能補語否定】找不到",
+                point: "<b>可能補語（找不到）</b>：「探しても見つけるのは不可能だろう」という見込み判断。"
+            },
+            {
+                id: 9,
+                hanzi: "這麼多報告，一個禮拜恐怕寫不完。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>告<rt>gào</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "こんなにたくさんのレポート、1週間ではおそらく書き終われない。",
+                structure: "【主題】這麼多報告， 【時間制限】一個禮拜 ＋ 恐怕 ＋ 【可能補語否定】寫不完",
+                point: "<b>寫不完（xiě bù wán）</b>：時間や量の関係で書き終わることが不可能。「恐怕（kǒngpà：おそらく～だろう）」。"
+            },
+            {
+                id: 10,
+                hanzi: "那條褲子太髒了，我感覺已經洗不乾淨了。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>條<rt>tiáo</rt></ruby><ruby>褲<rt>kù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>髒<rt>zāng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>感<rt>gǎn</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あのズボンは汚れすぎているから、もう洗ってもきれいにならない気がする。",
+                structure: "【過剰】褲子太髒了， 【所感・変化】我感覺已經 ＋ 【可能補語否定】洗不乾淨了",
+                point: "<b>洗不乾淨（xǐ bù gānjìng）</b>：汚れが酷く洗っても清潔な状態にするのは無理だ。"
+            },
+            {
+                id: 11,
+                hanzi: "最近，在我家附近的超商買不到日本的美乃滋了。",
+                rubyHtml: "<ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby>，<ruby>在<rt>zài</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>附<rt>fù</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>超<rt>chāo</rt></ruby><ruby>商<rt>shāng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>美<rt>měi</rt></ruby><ruby>乃<rt>nǎi</rt></ruby><ruby>滋<rt>zī</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "最近、我が家の近くのコンビニでは、日本のマヨネーズが買えなくなった。",
+                structure: "【場所】在我家附近的超商， 【可能補語否定＋変化】買不到 [美乃滋] 了",
+                point: "<b>買不到...了</b>：以前は買えていたが入荷しなくなり「買えなくなった」。「美乃滋（マヨネーズ）」"
+            },
+            {
+                id: 12,
+                hanzi: "昨天買的醋在哪裡？我已經找了好久了，還是找不到。",
+                rubyHtml: "<ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>醋<rt>cù</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>久<rt>jiǔ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "昨日買ったお酢はどこ？ずいぶん長い間探しているけど、やはり見つからないよ。",
+                structure: "【疑問】昨天買的醋在哪裡？ 【時間継続】找了好久了， 【結果不達成】還是 [找不到]",
+                point: "<b>找不到（zhǎo bú dào）</b>：いくら探しても見つけることができない限界状態。"
+            },
+            {
+                id: 13,
+                hanzi: "其實我因為字寫得太難看，所以經常會看不懂自己的筆記。",
+                rubyHtml: "<ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>因<rt>yīn</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>懂<rt>dǒng</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>記<rt>jì</rt></ruby>。",
+                translation: "実は、私は字がすごく汚いので、自分のメモが読めないことがしょっちゅうある。",
+                structure: "【原因】因為字寫得太難看， 【結果】所以經常會 ＋ 【理解不能】看不懂 [筆記]",
+                point: "<b>看不懂（kàn bù dǒng）</b>：見て理解することができない。「筆記（ノート・メモ）」"
+            },
+            {
+                id: 14,
+                hanzi: "我今天參加了兩場籃球比賽，現在累得站不起來。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>參<rt>cān</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>場<rt>chǎng</rt></ruby><ruby>籃<rt>lán</rt></ruby><ruby>球<rt>qiú</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>賽<rt>sài</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>累<rt>lèi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "今日はバスケの試合に2ゲーム出たので、今は疲れて立ち上がれない。",
+                structure: "【過去動作】參加了兩場比賽， 【程度・可能補語】累得 ＋ 【起立不能】站不起來",
+                point: "<b>站不起來（zhàn bù qǐlái）</b>：疲労の限界で立ち上がることが不可能。球技試合の量詞「場（chǎng）」"
+            },
+            {
+                id: 15,
+                hanzi: "搭電梯時如果突然停電，我們就出不去了。",
+                rubyHtml: "<ruby>搭<rt>dā</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>梯<rt>tī</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>如<rt>rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>突<rt>tū</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>電<rt>diàn</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "エレベーターに乗っているときに、もし急に停電したら、私たちは出られなくなる。",
+                structure: "【仮定】如果突然停電， 【結果変化】我們就 ＋ 【脱出不能】出不去了",
+                point: "<b>出不去（chū bú qù）</b>：外へ脱出することが不可能になる。「停電（tíngdiàn）」"
+            },
+            {
+                id: 16,
+                hanzi: "我兒子快期末考了，每天下課後都在圖書館念書，幾乎見不到他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>兒<rt>ér</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>期<rt>qī</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>圖<rt>tú</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>幾<rt>jī</rt></ruby><ruby>乎<rt>hū</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "息子はもうすぐ期末試験なので、毎日授業が終わった後図書館で勉強していてほとんど会えない。",
+                structure: "【直前】快期末考了， 【生活】在圖書館念書， 【面会不能】幾乎 [見不到他]",
+                point: "<b>見不到（jiàn bú dào）</b>：会う機会が得られない。「期末考（期末テスト）/ 念書（勉強する）」"
+            },
+            {
+                id: 17,
+                hanzi: "浴室的門壞了，現在關不起來。",
+                rubyHtml: "<ruby>浴<rt>yù</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>壞<rt>huài</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "バスルームのドアが壊れて、今は閉められない。",
+                structure: "【故障】浴室的門壞了， 【閉鎖不能】現在 [關不起來]",
+                point: "<b>關不起來（guān bù qǐlái）</b>：故障でぴったり閉めて固定することができない（閉鎖の起來）。"
+            },
+            {
+                id: 18,
+                hanzi: "你再不回他電話，他恐怕要等不下去了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>恐<rt>kǒng</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "これ以上彼に電話を返さなかったら、彼はおそらくそろそろ待ちきれなくなる。",
+                structure: "【条件】你再不回電話， 【推測・継続不能】他恐怕要 [等不下去了]",
+                point: "<b>等不下去（děng bú xiàqù）</b>：これ以上未来に向かって待ち続けることが耐えられない。"
+            },
+            {
+                id: 19,
+                hanzi: "我昨天做了一個很可怕的夢，但是現在已經想不起來了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>夢<rt>mèng</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "昨夜怖い夢を見たけれど、今はもう思い出せなくなった。",
+                structure: "【過去事実】做了一個可怕的夢， 【想起不能】現在已經 [想不起來了]",
+                point: "<b>想不起來（xiǎng bù qǐlái）</b>：記憶の奥から脳内に思い起こすことが不可能。"
+            },
+            {
+                id: 20,
+                hanzi: "這樣看下來，我這次也許考不上研究所。— 你平常這麼認真，一定考得上。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>許<rt>xǔ</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>研<rt>yán</rt></ruby><ruby>究<rt>jiū</rt></ruby><ruby>所<rt>suǒ</rt></ruby>。— <ruby>你<rt>nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>上<rt>shàng</rt></ruby>。",
+                translation: "こう見てくると、私は今回大学院に合格できないかもしれない。— きみは普段からそんなに真面目なんだから、きっと合格できるよ。",
+                structure: "【弱気】考不上研究所 ＋ 【反論・励まし】一定 [考得上]",
+                point: "<b>考不上 vs 考得上</b>：合格の可能補語対比。肯定形「考得上」は相手の弱気への力強い反論・主張で登場。"
+            },
+            {
+                id: 21,
+                hanzi: "只吃一個包子，你吃得飽嗎？",
+                rubyHtml: "<ruby>只<rt>zhǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>飽<rt>bǎo</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "中華まん1個しか食べないで、あなたはお腹がいっぱいにな（れ）るの？",
+                structure: "【小食条件】只吃一個包子， 【疑問】你 [吃得飽嗎]？",
+                point: "<b>吃得飽嗎（chī de bǎo ma）</b>：満腹になれるかどうかの肯定可能補語の疑問表現。"
+            },
+            {
+                id: 22,
+                hanzi: "胡椒粉在哪家超市都買得到；辣椒粉的話不一定買得到。",
+                rubyHtml: "<ruby>胡<rt>hú</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>超<rt>chāo</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>；<ruby>辣<rt>là</rt></ruby><ruby>椒<rt>jiāo</rt></ruby><ruby>粉<rt>fěn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "粉末のコショーはどこのスーパーでも買えるけど、粉末の唐辛子だったら買えるとは限らない。",
+                structure: "【全般購入可能】在哪家超市都 [買得到]， 【不確定】不一定 [買得到]",
+                point: "<b>買得到（mǎi de dào）</b>：入手可能。胡椒粉（胡椒パウダー）/ 辣椒粉（唐辛子パウダー）。"
+            },
+            {
+                id: 23,
+                hanzi: "公園這麼大，怎麼可能找得到你的鑰匙？",
+                rubyHtml: "<ruby>公<rt>gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>大<rt>dà</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鑰<rt>yào</rt></ruby><ruby>匙<rt>shi</rt></ruby>？",
+                translation: "公園はこんなに大きいのに、あなたのカギが見つかるわけないでしょう。",
+                structure: "【広大条件】公園這麼大， 【反語疑問】怎麼可能 [找得到]……？",
+                point: "<b>怎麼可能 ＋ 肯定可能補語？</b>：反語表現（「どうして見つけられるだろうか＝見つかるはずがない」）。「鑰匙（鍵）」"
+            },
+            {
+                id: 24,
+                hanzi: "宿舍離這裡太遠了，我們走不回去。（宿舍離這裡太遠了，我們沒辦法走回去。）",
+                rubyHtml: "<ruby>宿<rt>sù</rt></ruby><ruby>舍<rt>shè</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>遠<rt>yuǎn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>去<rt>qù</rt></ruby>。（<ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>去<rt>qù</rt></ruby>）",
+                translation: "寮はここから遠すぎるので、私たちは歩いて帰るのは無理だ。（沒辦法＋動詞 での言い換えも可能）",
+                structure: "【距離過剰】宿舍離這裡太遠了， 【移動不能】走不回去 ＝ 沒辦法走回去",
+                point: "<b>走不回去 ＝ 沒辦法走回去</b>：徒歩での移動不可能性の言い換え対比。「宿舍（sùshè：寮）」"
+            },
+            {
+                id: 25,
+                hanzi: "這個背包裝了太多書，我背不起來。（這個背包裝了太多書，我沒辦法背起來。）",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>裝<rt>zhuāng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。（<ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>）",
+                translation: "このリュックには本をたくさん詰めすぎたので、私は背負えない。（沒辦法＋動詞 での言い換えも可能）",
+                structure: "【重量過剰】裝了太多書， 【背負不能】背不起來 ＝ 沒辦法背起來",
+                point: "<b>背不起來 ＝ 沒辦法背起來</b>：重すぎて担ぎ持ち上げることができない（起來の不可能性）。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "居留證", pinyin: "jūliúzhèng", meaning: "居留証 (ARC / 台湾滞在許可証)", cat: "edu" },
+            { hanzi: "美乃滋", pinyin: "měinǎizī", meaning: "マヨネーズ (台湾では甘いマヨネーズも多め)", cat: "life" },
+            { hanzi: "筆記", pinyin: "bǐjì", meaning: "ノート・メモ書き", cat: "edu" },
+            { hanzi: "停電", pinyin: "tíngdiàn", meaning: "停電する", cat: "life" },
+            { hanzi: "期末考", pinyin: "qímòkǎo", meaning: "期末試験", cat: "edu" },
+            { hanzi: "研究所", pinyin: "yánjiūsuǒ", meaning: "大学院 (台湾での言い方)", cat: "edu" },
+            { hanzi: "胡椒粉", pinyin: "hújiāofěn", meaning: "粉末コショー", cat: "life" },
+            { hanzi: "辣椒粉", pinyin: "làjiāofěn", meaning: "粉末唐辛子", cat: "life" },
+            { hanzi: "鑰匙", pinyin: "yàoshi", meaning: "鍵・キー", cat: "life" },
+            { hanzi: "宿舍", pinyin: "sùshè", meaning: "学生寮・社員寮", cat: "edu" },
+            { hanzi: "買不到", pinyin: "mǎi bù dào", meaning: "買えない・手に入らない", cat: "comp" },
+            { hanzi: "找得到", pinyin: "zhǎo de dào", meaning: "見つけられる", cat: "comp" },
+            { hanzi: "吃不完", pinyin: "chī bù wán", meaning: "食べきれない", cat: "comp" },
+            { hanzi: "看不懂", pinyin: "kàn bù dǒng", meaning: "見て理解できない", cat: "comp" },
+            { hanzi: "站不起來", pinyin: "zhàn bù qǐlái", meaning: "立ち上がれない", cat: "comp" },
+            { hanzi: "沒辦法", pinyin: "méi bànfǎ", meaning: "方法がない・～できない", cat: "comp" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

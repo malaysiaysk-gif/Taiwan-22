@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 21 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 従来比2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルーで視認性抜群 */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 21 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">這件襯衫很可愛，你穿穿看吧！ (動詞の重ね型 / TOCFL Band A-B)</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (24句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 重疊詞・離合詞深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 21 例文全24句（全句特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically -->
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 21 文法メタマトリクス：動詞の重ね型（動詞重疊）5大型 & TOCFLトラップ
+                </h2>
+                <p class="text-sm text-slate-600">検定試験で問われる重ね型の構造、離合詞のAAB型、`看`・`一`・`了` の付与条件を体系整理。</p>
+            </div>
+
+            <!-- 1. 動詞の重ね型 5パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 動詞の重ね型 5つの公式パターン（TOCFL超重要）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">パターン</th>
+                                <th class="p-3">公式文法構造</th>
+                                <th class="p-3">ニュアンスと制約</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">(1) VV / ABAB</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞1 ＋ 動詞1 (または ABAB)</td>
+                                <td class="p-3 text-slate-700">「ちょっと〜する」。<b>2文字の動詞（討論討論/練習練習）が使えるのはこのVV/ABAB形のみ！</b></td>
+                                <td class="p-3 font-semibold text-slate-900">等等 / 走走 / <b>討論討論</b></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">(2) V 一 V</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞1 ＋ 一 ＋ 動詞1</td>
+                                <td class="p-3 text-slate-700">「さっさと〜してしまう」。1音節動詞専用。<b>把構文（把垃圾丟一丟）とも高相性。</b></td>
+                                <td class="p-3 font-semibold text-slate-900">烤一烤 / 比一比 / 辦一辦</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-indigo-700 text-base">(3) VV 看</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞1 ＋ 動詞1 ＋ 看</td>
+                                <td class="p-3 text-slate-700">「試しに〜してみる」。<b>※「V一V看」という重ね方は不可（*穿一穿看 X）。</b></td>
+                                <td class="p-3 font-semibold text-slate-900">穿穿看 / 聞聞看 / 查查看</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">(4) V了(一)V</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞1 ＋ 了 ＋ (一) ＋ 動詞1……</td>
+                                <td class="p-3 text-slate-700">「ちょっと〜したら……」。<b>過去の短時間の動作で、後ろに文を繋げて複文にする。</b></td>
+                                <td class="p-3 font-semibold text-slate-900">看了一看 / 算了一算 / 想了一想</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700 text-base">(5) 並列 VV</td>
+                                <td class="p-3 font-mono text-xs bg-slate-50 font-bold text-slate-700 rounded px-2 py-1">動詞A ＋ 目的語，動詞B ＋ 目的語</td>
+                                <td class="p-3 text-slate-700">「〜したり、……したり」。リラックスした週末や娯楽の行動の並列。</td>
+                                <td class="p-3 font-semibold text-slate-900">烤烤肉，泡泡溫泉 / 唱唱歌，看看星星</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 離合詞の重ね型 (AAB型) vs 動詞＋一下 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 離合詞の重ね型（AAB型） & 「動詞 ＋ 一下」代用ルール (TOCFL識別最頻出)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-emerald-800 text-base">離合詞の重ね型：【AAB型】</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">離合詞は「動詞＋目的語」構造のため、<b>最初の動詞部分のみを重ねます</b>（ABABはNG）。</p>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="p-2 bg-white rounded border border-slate-200 font-bold text-emerald-700">⭕️ 散散步 / 聊聊天 / 逛逛街 / 唱唱歌</div>
+                            <div class="p-2 bg-rose-50 rounded border border-rose-200 font-bold text-rose-700">❌ 散步散步 / 聊天聊天 / 逛街逛街</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <div class="font-bold text-blue-800 text-base">「動詞 ＋ 一下」による代用と使い分け</div>
+                        <p class="text-xs text-slate-600 leading-relaxed">重ね型にできる2文字動詞は限られます。標準的・万能な言い方は<b>「動詞 ＋ 一下」</b>です。</p>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="p-2 bg-white rounded border border-slate-200 font-bold text-blue-700">練習一下 / 參觀一下 / 介紹一下 / 檢查一下</div>
+                            <p class="text-slate-500 font-normal">※ 2文字動詞の重ね型（練習練習）は口語で親しい相手への勧め・命令的ニュアンス。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. TOCFL 罠・識別問題 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 聽一聽 vs 聽聽 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                    <h3 class="text-lg font-bold text-rose-700">③ 「聽一聽就……」の「一」の脱落禁止トラップ</h3>
+                    <div class="bg-rose-50 p-4 rounded-xl border border-rose-200 text-xs space-y-2">
+                        <div class="font-bold text-rose-900">「ちょっと〜しただけで、すぐに…になった」</div>
+                        <p class="text-rose-700 leading-relaxed">後ろに「就想睡了（眠くなった）」などの結果が続く複文では、<b>「聽一聽就……」の「一」は省略不可！</b></p>
+                        <div class="font-mono text-xs">
+                            <p class="text-emerald-700 font-bold">⭕️ 我聽一聽就想睡了。</p>
+                            <p class="text-rose-600 font-bold">❌ 我聽聽就想睡了。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 不比 vs 沒有 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3">
+                    <h3 class="text-lg font-bold text-amber-700">④ 比較否定「不比」vs「沒有」のニュアンス差</h3>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs space-y-2">
+                        <div class="font-bold text-amber-900">「郊區不比市區差」の比較文解剖</div>
+                        <p class="text-amber-800 leading-relaxed"><b>不比（bù bǐ）</b>：「〜に比べて劣っているわけではない（反論・擁護）」。<br><b>沒有（méiyǒu）</b>：「〜ほど〜ない（単純な下回りの比較）」。</p>
+                        <div class="font-mono text-xs">
+                            <p class="text-slate-900 font-bold">不比市區差 ＝ 街中心部と比べても劣っていない（同等以上だ）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 21 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">動詞重疊の声調変化、離合詞がAAB型になる理由、「〜してみる」の表現バリエーション。</p>
+            </div>
+
+            <!-- QA 1: 重疊詞の発音と声調変化 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">発音メカニズム</span>
+                    動詞重ね型における2文字目の声調（軽声化と台湾口語）
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-blue-800 text-sm">1. 基本ルール：軽声化</div>
+                        <p class="text-slate-600 leading-relaxed">重疊（VV）の2文字目は基本的に軽声（けいせい）になり、短く軽く発音されます。<br><b>例：看看 (kànkan), 等等 (děngdeng)</b></p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-emerald-800 text-sm">2. 台湾華語の口語傾向</div>
+                        <p class="text-slate-600 leading-relaxed">台湾では完全な軽声にならず、元の声調を軽く残して柔らかく発音する傾向があります。<br><b>例：走走 (zǒuzǒu), 看看 (kànkàn)</b></p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-amber-800 text-sm">3. 「一」を挟む場合変調</div>
+                        <p class="text-slate-600 leading-relaxed">「V一V」の「一」は、後ろの動詞の声調（1/2/3声なら第4声yì、4声なら第2声yí）に声調変化します。<br><b>例：烤一烤 (kǎo yì kǎo) / 辦一辦 (bàn yí bàn)</b></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: なぜ離合詞はAAB型になるのか -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">文法構造論</span>
+                    なぜ離合詞（散步/聊天）は「散散步」「聊聊天」のようにAAB型になるのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>離合詞（離合詞）は一見1つの単語に見えますが、文法構造的には<b>【動詞(A) ＋ 目的語名詞(B)】</b>の短句です。</p>
+                    <ul class="list-disc list-inside space-y-1.5 font-semibold text-slate-800">
+                        <li><b>散步</b> ＝ 散（歩く：動詞）＋ 步（歩み・ステップ：名詞）</li>
+                        <li><b>聊天</b> ＝ 聊（おしゃべりする：動詞）＋ 天（世間話：名詞）</li>
+                    </ul>
+                    <p>中国語の文法規則において、<b>重疊（重ね型）にできるのは「動詞」のみ</b>です。名詞を重ねることはできないため、動詞部分（A）だけを重ねて **散散步 (AAB)** となります。</p>
+                </div>
+            </div>
+
+            <!-- QA 3: 〜してみる（看 vs 一下） -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">表現ニュアンス</span>
+                    「〜してみる」の「VV看」vs「V看」vs「V一下」のニュアンス比較
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-blue-700 text-sm mb-1">1. 穿穿看 (VV看)</div>
+                        <p class="text-slate-600 mb-2">動詞を重ねて「看」をつける。親しみやすく、柔らかく試着や試行を勧める標準表現。</p>
+                        <p class="font-mono text-slate-900 font-bold">你穿穿看吧！</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-emerald-700 text-sm mb-1">2. 穿看看 (V看看)</div>
+                        <p class="text-slate-600 mb-2">台湾華語の口語で非常に多用される形。動詞1回＋「看看」。</p>
+                        <p class="font-mono text-slate-900 font-bold">你穿看看！</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="font-bold text-amber-700 text-sm mb-1">3. 試穿一下 (V一下)</div>
+                        <p class="text-slate-600 mb-2">丁寧でニュートラル。「ちょっと試着してみる」。接客業やビジネスでも多用。</p>
+                        <p class="font-mono text-slate-900 font-bold">我可以試穿一下嗎？</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 21 重要語彙 & 台湾日常カルチャー
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('action')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">基本動詞</button>
+                    <button onclick="filterVocab('food')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">食べ物・生活</button>
+                    <button onclick="filterVocab('nature')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">自然・地域</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 21 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 24 Sentences from 4 to 27)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "我還在換衣服，你等等我！",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>換<rt>huàn</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fú</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>等<rt>deng</rt></ruby><ruby>我<rt>wǒ</rt></ruby>！",
+                translation: "まだ着替えをしているから、ちょっと待ってて！",
+                structure: "【進行】還在 ＋ 換衣服， 【命令・依頼】你 ＋ 【動詞重ね型】等等 ＋ 我",
+                point: "<b>動詞重ね型「等等」</b>：1音節動詞「等」を重ねて「ちょっと待つ」。語気を和らげて親しい依頼を表現。"
+            },
+            {
+                id: 5,
+                hanzi: "今天天氣這麼好，我們要不要去海邊走走？",
+                rubyHtml: "<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>海<rt>hǎi</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>走<rt>zǒu</rt></ruby>？",
+                translation: "今日は天気がいいから、海辺を散歩しない？",
+                structure: "【前置条件】天氣這麼好， 【提案】我們要不要 ＋ 去 [海邊] ＋ 【動詞重ね型】走走？",
+                point: "<b>走走（散歩する）</b>：動作の短時間・リラックスした気休めの動作を表す。「去海邊走走」は散策の定番。"
+            },
+            {
+                id: 6,
+                hanzi: "我忘記帶傘了，讓我在這裡躲躲雨吧！",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>帶<rt>dài</rt></ruby><ruby>傘<rt>sǎn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>讓<rt>ràng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>躲<rt>duǒ</rt></ruby><ruby>躲<rt>duǒ</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "傘を忘れてきたので、ちょっとここで雨宿りさせて！",
+                structure: "【理由】忘記帶傘了， 【使役・許可】讓我 ＋ 在這裡 ＋ 【離合詞重ね】躲躲雨 ＋ 吧",
+                point: "<b>離合詞「躲雨」の重ね型</b>：動詞「躲」のみを重ねて「躲躲雨（AAB型）」にする（×躲雨躲雨）。"
+            },
+            {
+                id: 7,
+                hanzi: "這個問題，我等一下開會的時候再跟經理討論討論。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby>。",
+                translation: "この問題は、この後の打合せのときに、マネージャーと相談してみるよ。",
+                structure: "【主題】這個問題， 【時間】開會的時候 ＋ 再跟經理 ＋ 【2音節動詞重ね】討論討論",
+                point: "<b>2音節動詞のABAB型「討論討論」</b>：2音節動作動詞はABAB型。※「討論一討論」や「討論討論看」は不可。"
+            },
+            {
+                id: 8,
+                hanzi: "你平常那麼忙，假日的時候多陪陪孩子吧。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>忙<rt>máng</rt></ruby>，<ruby>假<rt>jiǎ</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>陪<rt>péi</rt></ruby><ruby>陪<rt>péi</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "あなたは普段あんなに忙しいのだから、休みのときは、しっかり子どもの相手をしてあげて。",
+                structure: "【前提】平常那麼忙， 【アドバイス】多 ＋ 【動詞重ね】陪陪 ＋ 孩子 ＋ 吧",
+                point: "<b>多 ＋ 動詞重ね型</b>：「多陪陪（しっかり付き添ってあげる）」。副詞「多」と組み合わせた優しい助言。"
+            },
+            {
+                id: 9,
+                hanzi: "學姐說：「你們在比賽前應該多練習練習！」",
+                rubyHtml: "<ruby>學<rt>xué</rt></ruby><ruby>姐<rt>jiě</rt></ruby><ruby>說<rt>shuō</rt></ruby>：「<ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>賽<rt>sài</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>練<rt>liàn</rt></ruby><ruby>習<rt>xí</rt></ruby><ruby>練<rt>liàn</rt></ruby><ruby>習<rt>xí</rt></ruby>！」",
+                translation: "先輩が「大会の前は、しっかり練習しなきゃだめよ」と言った。",
+                structure: "【引用】學姐說， 【指導】在比賽前 ＋ 應該多 ＋ 【2音節動詞重ね】練習練習",
+                point: "<b>練習練習（ABAB型）</b>：2音節動詞の重ね型。一般的には「練習一下」とも言い換え可能。"
+            },
+            {
+                id: 10,
+                hanzi: "他說，熱狗烤一烤再吃會更好吃。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>說<rt>shuō</rt></ruby>，<ruby>熱<rt>rè</rt></ruby><ruby>狗<rt>gǒu</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby>。",
+                translation: "彼は、フランクフルトソーセージはさっとあぶってから食べるともっとおいしいと言った。",
+                structure: "【前提手順】熱狗 ＋ 【V一V型】烤一烤 ＋ 【順序】再吃 ＋ 【予測】會更好吃",
+                point: "<b>V 一 V 型「烤一烤」</b>：「さっさと/サッと〜してしまう」の動作。「一」の声調は4声(yì)に変化。"
+            },
+            {
+                id: 11,
+                hanzi: "你比一比就會發現，郊區的環境不比市區的差。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby>，<ruby>郊<rt>jiāo</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>環<rt>huán</rt></ruby><ruby>境<rt>jìng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>區<rt>qū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>差<rt>chà</rt></ruby>。",
+                translation: "ちょっと比べたら、郊外の環境が街の中心部より劣っているわけではないことがわかるよ。",
+                structure: "【仮定動作】你 [比一比] ＋ 就會發現， 【比較否定】郊區的環境 [不比] 市區的差",
+                point: "<b>不比（bù bǐ）</b>：「〜に比べて劣っていない」。単純比較の「沒有」と異なり、相手の偏見に反論するニュアンス。"
+            },
+            {
+                id: 12,
+                hanzi: "簽證早一點辦一辦，才會比較放心。",
+                rubyHtml: "<ruby>簽<rt>qiān</rt></ruby><ruby>證<rt>zhèng</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>辦<rt>bàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>心<rt>xīn</rt></ruby>。",
+                translation: "ビザは早めにさっさと手続きしてしまうほうが安心だ。",
+                structure: "【主題】簽證 ＋ 早一點 ＋ 【V一V型】辦一辦， 【条件結果】才會比較放心",
+                point: "<b>辦一辦</b>：手続きなどを「さっさと片付ける」という処理意識。「辦」が4声のため「一」は2声(yí)に変化。"
+            },
+            {
+                id: 13,
+                hanzi: "我女朋友晚一點要來，房間裡的垃圾得丟一丟。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>房<rt>fáng</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>樂<rt>lè</rt></ruby><ruby>色<rt>sè</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>丟<rt>diū</rt></ruby>。",
+                translation: "僕の彼女がもう少ししたら来るから、部屋のゴミはさっと捨ててしまわないといけない。",
+                structure: "【前節】女朋友晚一點要來， 【必要性】垃圾 ＋ 得(děi) ＋ 【V一V型】丟一丟",
+                point: "<b>垃圾（lèsè）</b>：台湾華語独特の発音（lèsè）。「丟一丟」でゴミのさっとした処理・処分を表現。"
+            },
+            {
+                id: 14,
+                hanzi: "這件襯衫很可愛，你穿穿看吧！",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>襯<rt>chèn</rt></ruby><ruby>衫<rt>shān</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>愛<rt>ài</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>穿<rt>chuān</rt></ruby><ruby>穿<rt>chuān</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "このブラウスはかわいいから着てみて。",
+                structure: "【理由】這件襯衫很可愛， 【勧め】你 ＋ 【VV看型】穿穿看 ＋ 吧",
+                point: "<b>動詞重ね型 ＋ 看「穿穿看」</b>：「〜してみる（試着してみる）」。※「*穿一穿看」のように「一」を挟むのは誤り。"
+            },
+            {
+                id: 15,
+                hanzi: "你聞聞看，這塊奶油多香啊！",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>這<rt>zhè</rt></ruby><ruby>塊<rt>kuài</rt></ruby><ruby>奶<rt>nǎi</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>香<rt>xiāng</rt></ruby><ruby>啊<rt>a</rt></ruby>！",
+                translation: "匂いをかいでみて。このバターなんていい香りなんでしょう。",
+                structure: "【試行】你 ＋ 【VV看】聞聞看， 【感嘆】這塊奶油 ＋ 多 [香] 呀！",
+                point: "<b>聞（wén）</b>：「匂いを嗅ぐ」。感嘆表現「多＋形容詞＋啊（なんて〜なんだろう）」との組み合わせ。"
+            },
+            {
+                id: 16,
+                hanzi: "我想查查看這兩個城市的氣候有什麼不同。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>查<rt>chá</rt></ruby><ruby>查<rt>chá</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>城<rt>chéng</rt></ruby><ruby>市<rt>shì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>同<rt>tóng</rt></ruby>。",
+                translation: "このふたつの都市の気候がどう違うのか調べてみたい。",
+                structure: "【願望】我想 ＋ 【VV看】查查看 ＋ 【目的語節】這兩個城市的氣候有什麼不同",
+                point: "<b>查查看</b>：「調べてみる」。「有什麼不同（どのような違いがあるか）」は間接疑問文の定番。"
+            },
+            {
+                id: 17,
+                hanzi: "這個故事好無聊，我聽一聽就想睡了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>無<rt>wú</rt></ruby><ruby>聊<rt>liáo</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この物語はすごくつまらないので、ちょっと聞いただけで眠くなってしまった。",
+                structure: "【原因】這個故事好無聊， 【条件結果】我 [聽一聽] ＋ 就想睡了",
+                point: "<b>聽一聽就……（TOCFL超最重要）</b>：「〜したらすぐに…になった」。この複文では「一」の省略不可（×聽聽就想睡了）。"
+            },
+            {
+                id: 18,
+                hanzi: "我看了一看天空，感覺等一下會下雨。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>(<ruby>一<rt>yì</rt></ruby>)<ruby>看<rt>kàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>空<rt>kōng</rt></ruby>，<ruby>感<rt>gǎn</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>雨<rt>yǔ</rt></ruby>。",
+                translation: "空をちょっと見たら、この後雨が降るような気がした。",
+                structure: "【過去動作】我 [看了一看] 天空， 【推測】感覺等一下會下雨",
+                point: "<b>V 了 (一) V 型</b>：過去の完了動作＋重ね型。「看了一看（ちょっと空を見たら）」。「一」は省略可能。"
+            },
+            {
+                id: 19,
+                hanzi: "她算了一算，才發現她沒有錢住那家飯店。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>了<rt>le</rt></ruby>(<ruby>一<rt>yí</rt></ruby>)<ruby>算<rt>suàn</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>住<rt>zhù</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>店<rt>diàn</rt></ruby>。",
+                translation: "彼女はちょっと計算して、ようやくそのホテルに泊まるお金がないことに気づいた。",
+                structure: "【動作】她 [算了一算]， 【気付き】才發現 ＋ 【連動句】沒有錢住那家飯店",
+                point: "<b>算了一算 / 才發現</b>：計算という動作を経て初めて（才）判明したという展開。「算」が4声のため「一」は2声(yí)。"
+            },
+            {
+                id: 20,
+                hanzi: "小毛想了一想，決定接受他叔叔的建議。",
+                rubyHtml: "<ruby>小<rt>xiǎo</rt></ruby><ruby>毛<rt>máo</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>了<rt>le</rt></ruby>(<ruby>一<rt>yì</rt></ruby>)<ruby>想<rt>xiǎng</rt></ruby>，<ruby>決<rt>jué</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>叔<rt>shū</rt></ruby><ruby>叔<rt>shu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>建<rt>jiàn</rt></ruby><ruby>議<rt>yì</rt></ruby>。",
+                translation: "小毛はちょっと考えて、（父方の）おじさんのアドバイスを受け入れることに決めた。",
+                structure: "【思考動作】小毛 [想了一想]， 【決断】決定接受 ＋ 叔叔的建議",
+                point: "<b>想了一想</b>：少し思案を巡らせたことの描写。「叔叔（父方の叔父/おじさん）」の家族親族用語。"
+            },
+            {
+                id: 21,
+                hanzi: "我家在中部的鄉下，歡迎你們來烤烤肉、泡泡溫泉。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鄉<rt>xiāng</rt></ruby><ruby>下<rt>xià</rt></ruby>，<ruby>歡<rt>huān</rt></ruby><ruby>迎<rt>yíng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>肉<rt>ròu</rt></ruby>、<ruby>泡<rt>pào</rt></ruby><ruby>泡<rt>pào</rt></ruby><ruby>溫<rt>wēn</rt></ruby><ruby>泉<rt>quán</rt></ruby>。",
+                translation: "私の家は中部の田舎にあるから、ぜひバーベキューをしたり温泉につかったりしに来てください。",
+                structure: "【所在地】我家在中部的鄉下， 【並列のお誘い】歡迎你們來 ＋ [烤烤肉]、[泡泡溫泉]",
+                point: "<b>離合詞の並列重ね型（AAB）</b>：「烤烤肉（BBQをする）」、「泡泡溫泉（温泉に入る）」。楽しむ娯楽の並列。"
+            },
+            {
+                id: 22,
+                hanzi: "他約我們去他家一起吃吃飯、打打遊戲。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>約<rt>yuē</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>飯<rt>fàn</rt></ruby>、<ruby>打<rt>dǎ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>遊<rt>yóu</rt></ruby><ruby>戲<rt>xì</rt></ruby>。",
+                translation: "彼は、一緒にご飯を食べたりゲームをしたりしないかと、私たちを誘った。",
+                structure: "【兼語文】他約我們 [去他家]， 【並列活動】一起 [吃吃飯]、[打打遊戲]",
+                point: "<b>吃吃飯、打打遊戲</b>：離合詞（吃飯）と「動詞＋名詞（打遊戲）」の重ね型並列。リラックスした交流を表す。"
+            },
+            {
+                id: 23,
+                hanzi: "晚上要不要一起去山上唱唱歌、看看星星？",
+                rubyHtml: "<ruby>晚<rt>wǎn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>山<rt>shān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>唱<rt>chàng</rt></ruby><ruby>唱<rt>chàng</rt></ruby><ruby>歌<rt>gē</rt></ruby>、<ruby>看<rt>kàn</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>星<rt>xīng</rt></ruby><ruby>星<rt>xing</rt></ruby>？",
+                translation: "夜、一緒に山に行って歌を歌ったり星を見たりしない？",
+                structure: "【提案】要不要一起去山上 ＋ 【並列活動】[唱唱歌]、[看看星星]？",
+                point: "<b>唱唱歌（AAB） / 看看星星（VV+N）</b>：歌を歌う（離合詞）と星を見る動作の並列重ね型。"
+            },
+            {
+                id: 24,
+                hanzi: "我們吃完飯以後去醫院旁邊的公園散散步，好不好？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>醫<rt>yī</rt></ruby><ruby>院<rt>yuàn</rt></ruby><ruby>旁<rt>páng</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>散<rt>sàn</rt></ruby><ruby>散<rt>sàn</rt></ruby><ruby>步<rt>bù</rt></ruby>，<ruby>好<rt>hǎo</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>好<rt>hǎo</rt></ruby>？",
+                translation: "ご飯がすんだら、病院の横の公園にちょっと散歩に行かない？",
+                structure: "【時間節】吃完飯以後， 【行動】去 [公園] ＋ 【離合詞重ね】散散步， 【確認】好不好？",
+                point: "<b>散散步（AAB型）</b>：離合詞「散步」の重ね型。※「*散步散步」は不可。"
+            },
+            {
+                id: 25,
+                hanzi: "他週末喜歡跟朋友一起聊聊天、逛逛街。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>天<rt>tiān</rt></ruby>、<ruby>逛<rt>guàng</rt></ruby><ruby>逛<rt>guàng</rt></ruby><ruby>街<rt>jiē</rt></ruby>。",
+                translation: "彼は、週末にはよく友達と一緒におしゃべりしたり、街に遊びに行ったりする。",
+                structure: "【習慣】週末喜歡跟朋友一起 ＋ 【離合詞並列】[聊聊天]、[逛逛街]",
+                point: "<b>聊聊天 / 逛逛街</b>：台湾日常会話で頻出する「おしゃべりする」と「ウィンドーショッピングする」の並列。"
+            },
+            {
+                id: 26,
+                hanzi: "你有空的時候可以去停車場開開車，練習一下。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>空<rt>kòng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hou</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>場<rt>chǎng</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>車<rt>chē</rt></ruby>，<ruby>練<rt>liàn</rt></ruby><ruby>習<rt>xí</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby>。",
+                translation: "暇なときに、駐車場でちょっと車を運転して、練習してみるといいよ。",
+                structure: "【条件】你有空的時候， 【アドバイス】去停車場 ＋ [開開車]， 【補足】練習一下",
+                point: "<b>開開車 / 練習一下</b>：離合詞的構造（開車 ➔ 開開車）と、2音節動詞＋一下（練習一下）の併用対比。"
+            },
+            {
+                id: 27,
+                hanzi: "聽說你們大學的校園很漂亮，我可以參觀一下嗎？",
+                rubyHtml: "<ruby>聽<rt>tīng</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>校<rt>xiào</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>漂<rt>piào</rt></ruby><ruby>亮<rt>liàng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>參<rt>cān</rt></ruby><ruby>觀<rt>guān</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あなたたちの大学のキャンパスはきれいだと聞きました。ちょっと見学してもいいですか。",
+                structure: "【伝聞】聽說 [校園很漂亮]， 【許可の依頼】我可以 ＋ 【動詞+一下】參觀一下 ＋ 嗎？",
+                point: "<b>參觀一下</b>：2音節動作動詞の丁寧な依頼。「參觀參觀」と言うより「參觀一下」がフォーマルで自然。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "換衣服", pinyin: "huàn yīfú", meaning: "服を着替える", cat: "action" },
+            { hanzi: "海邊", pinyin: "hǎibiān", meaning: "海辺・海岸", cat: "nature" },
+            { hanzi: "躲雨", pinyin: "duǒyǔ", meaning: "雨宿りをする (離合詞)", cat: "action" },
+            { hanzi: "討論", pinyin: "tǎolùn", meaning: "話し合う・相談する", cat: "action" },
+            { hanzi: "陪", pinyin: "péi", meaning: "付き添う・相手をする", cat: "action" },
+            { hanzi: "練習", pinyin: "liànxí", meaning: "練習する", cat: "action" },
+            { hanzi: "熱狗", pinyin: "règǒu", meaning: "フランクフルト・ホットドッグ", cat: "food" },
+            { hanzi: "郊區", pinyin: "jiāoqū", meaning: "郊外", cat: "nature" },
+            { hanzi: "市區", pinyin: "shìqū", meaning: "市街地・街中心部", cat: "nature" },
+            { hanzi: "簽證", pinyin: "qiānzhèng", meaning: "ビザ (査証)", cat: "action" },
+            { hanzi: "垃圾", pinyin: "lèsè", meaning: "ゴミ (台湾標準発音 lèsè)", cat: "food" },
+            { hanzi: "襯衫", pinyin: "chènshān", meaning: "シャツ・ブラウス", cat: "food" },
+            { hanzi: "奶油", pinyin: "nǎiyóu", meaning: "バター・クリーム", cat: "food" },
+            { hanzi: "無聊", pinyin: "wúliáo", meaning: "退屈だ・つまらない", cat: "action" },
+            { hanzi: "鄉下", pinyin: "xiāngxià", meaning: "田舎・地方", cat: "nature" },
+            { hanzi: "泡溫泉", pinyin: "pào wēnquán", meaning: "温泉につかる (離合詞)", cat: "action" },
+            { hanzi: "逛街", pinyin: "guàngjiē", meaning: "街ぶら・ウィンドーショッピング", cat: "action" },
+            { hanzi: "校園", pinyin: "xiàoyuán", meaning: "キャンパス・校庭", cat: "nature" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // On Page Load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>
+```
+
+I have generated `lesson21_master_summary.html` in the artifact window.
+
+### Highlights of Lesson 21 Summary:
+1. **Light High-Contrast Mode & 2x Ruby Pinyin**: High visibility text with blue Pinyin text rendered above Chinese characters in 2x scale.
+2. **All 24 Sentences (#4 to #27)**: Complete breakdown with Japanese translation, structural analysis, TOCFL exam tips, and `speakText()` speech buttons.
+3. **5 Verb Reduplication Formulas**:
+   - `VV / ABAB` (等一等 ✕ $\rightarrow$ 等等 ◯, 討論討論)
+   - `V 一 V` (烤一烤, 丟一丟)
+   - `VV 看` (穿穿看, 聞聞看)
+   - `V 了 (一) V` (看了一看, 算了一算)
+   - `VV.. VV..` (烤烤肉，泡泡溫泉)
+4. **離合詞 (AAB) & `動詞＋一下` Rules**: Detailed explanation of why separable verbs become `散散步` (AAB) rather than `*散步散步` (ABAB), and how `練習一下` functions in formal speech.
+5. **TOCFL Pitfalls**:
+   - `聽一聽就想睡了` (the mandatory "一" in sentence result clauses).
+   - `不比` vs `沒有` comparison nuances.
