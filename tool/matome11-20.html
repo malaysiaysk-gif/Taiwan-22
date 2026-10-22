@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣華語 & TOCFL Band A-B 徹底總整理 (Lesson 11-20 總導覽)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        台灣華語 & TOCFL Master Index 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">Lesson 11–20</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">TOCFL Band A-B 核心文法・構文・表現 徹底全網羅ポータル</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('cards')" id="tab-cards" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">Lesson 一覧 (11-20)</button>
+                <button onclick="switchTab('matrix')" id="tab-matrix" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマップ</button>
+                <button onclick="switchTab('roadmap')" id="tab-roadmap" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">学習ロードマップ</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: LESSON CARDS ==================== -->
+        <section id="sec-cards" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 11 〜 Lesson 20 教材モジュールナビゲーター
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">各カードをクリックすると、対象Lessonの特大ピンインルビ＆台湾音声対応ページへ移動できます。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="lessonSearch" oninput="filterLessons()" placeholder="文法テーマやキーワードで検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="lessonCardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- Lesson cards injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX MAP ==================== -->
+        <section id="sec-matrix" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 11–20 文法機能メタマトリクスマップ
+                </h2>
+                <p class="text-sm text-slate-600">比較・後置修飾・アスペクト（了）・保留（再）・程度補語・呼応副詞・使役・把構文・介詞・複文接続詞の横断整理。</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                        <tr>
+                            <th class="p-3 w-24">Lesson</th>
+                            <th class="p-3 w-48">核心文法構造</th>
+                            <th class="p-3">文法機能・絶対ルール</th>
+                            <th class="p-3 w-64">代表文型・キーフレーズ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 11</td>
+                            <td class="p-3 font-bold text-slate-800">比較構文</td>
+                            <td class="p-3 text-slate-600">比 / 沒有 / 一樣 / 更加 による差格・同格比較の語順ルール。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">A 比 B ＋ 形容詞<br>A 沒有 B ＋ 形容詞</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 12</td>
+                            <td class="p-3 font-bold text-slate-800">「有」による後置修飾</td>
+                            <td class="p-3 text-slate-600">不特定主語の回避原則と「有＋名詞＋動詞句」による後方修飾。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">沒有時間睡覺<br>有的...，有的...</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 13</td>
+                            <td class="p-3 font-bold text-slate-800">「了」の5大体系</td>
+                            <td class="p-3 text-slate-600">目的語の位置（裸名詞 vs 数量詞）、ダブル“了”による現在継続。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">V＋了＋O(数量詞)<br>V＋了＋O＋了</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 14</td>
+                            <td class="p-3 font-bold text-slate-800">「再」の動作保留</td>
+                            <td class="p-3 text-slate-600">反復ではなく動作の延期・タイマー設定。「先/等」「走/去」の比較。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">時間/条件 ＋ 再 ＋ V<br>先...再... / 等...再...</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 15</td>
+                            <td class="p-3 font-bold text-slate-800">程度補語</td>
+                            <td class="p-3 text-slate-600">「得」を使うタイプ（不得了/要命）と使わないタイプ（極了/死了）。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">adj ＋ 得不得了<br>adj/心裡V ＋ 死了/極了</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 16</td>
+                            <td class="p-3 font-bold text-slate-800">呼応副詞 ＆ 緊縮文</td>
+                            <td class="p-3 text-slate-600">一...就... / 又...又... / 一邊...一邊... / 越...越... の文法一致規則。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">一 A 就(會) B<br>越 A 越 B / 越來越 B</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 17</td>
+                            <td class="p-3 font-bold text-slate-800">兼語文（使役構文）</td>
+                            <td class="p-3 text-slate-600">4大使役動詞（請・要・叫・讓）の強制度・丁寧度グラデーションと否定位置。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">請 / 要 / 叫 / 讓<br>否定：不/沒 ＋ 使役動詞</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 18</td>
+                            <td class="p-3 font-bold text-slate-800">「把」構文 1</td>
+                            <td class="p-3 text-slate-600">「A＋把＋特定B＋V＋Z」の骨格、否定位置（把の前）、5大Z補語パターン。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">把 B 洗乾淨 / 存在...<br>把 B 開到... / 交給...</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 19</td>
+                            <td class="p-3 font-bold text-slate-800">介詞 2（時間・空間）</td>
+                            <td class="p-3 text-slate-600">時間詞の「在」必須条件、「從...開始/起」の語順、方向「往」vs到達「到」。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">在 [節/只在] ...<br>從...開始 / 往...走</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-mono font-extrabold text-blue-600">Lesson 20</td>
+                            <td class="p-3 font-bold text-slate-800">接続詞 2 ＆ 主語位置</td>
+                            <td class="p-3 text-slate-600">不是...就是...（断言選択）、主語同一／不一致による配置転換、也/還累積強弱。</td>
+                            <td class="p-3 font-mono text-xs font-semibold text-slate-800">S＋不是...就是...<br>不是 S1...，就是 S2...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: ROADMAP ==================== -->
+        <section id="sec-roadmap" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    TOCFL Band A-B マスターロードマップ (Lesson 11-20)
+                </h2>
+                <p class="text-sm text-slate-600">基礎単文の段階から、複文・使役・処置（把構文）・精密な接続詞を使いこなす中級へのステップアップ学習指針。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-3">
+                    <div class="text-xs font-extrabold text-blue-600 uppercase tracking-wider">PHASE 1</div>
+                    <h3 class="text-base font-bold text-slate-900">表現の拡張と描写力の強化</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        <b>Lesson 11–13</b>：比較表現（比/沒有）、存在提示と後置修飾（有）、そして「了」による時間の経過や動作の継続を正しくコントロールする基礎を固めます。
+                    </p>
+                </div>
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-3">
+                    <div class="text-xs font-extrabold text-emerald-600 uppercase tracking-wider">PHASE 2</div>
+                    <h3 class="text-base font-bold text-slate-900">時間軸・度合い・リズムの制御</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        <b>Lesson 14–16</b>：「再」による動作の保留・優先順位付け、感情や状態を強調する程度補語、さらに「一...就...」「越...越...」などの呼応副詞で会話のリズムを作ります。
+                    </p>
+                </div>
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-3">
+                    <div class="text-xs font-extrabold text-purple-600 uppercase tracking-wider">PHASE 3</div>
+                    <h3 class="text-base font-bold text-slate-900">複雑な文脈構成と使役・処置</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        <b>Lesson 17–20</b>：使役文（請/要/叫/讓）で他者への働きかけを表現し、「把」構文で対象への処置結果を正確に記述。接続詞と主語配置ルールで高度な複文を完成させます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Taiwan Huayu TOCFL Master Summary Guide | Lesson 11–20 Portal Index
+    </footer>
+
+    <!-- JavaScript Data & UI Navigation -->
+    <script>
+        // Lessons Master Data
+        const lessonsData = [
+            {
+                id: 11,
+                title: "Lesson 11 台灣華語 徹底總整理",
+                subtitle: "比較構文（比 / 沒有 / 一樣 / 更加 / TOCFL Band A-B）",
+                file: "lesson_11_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「A比B...」「A沒有B...」「A跟B一樣」など、華語における比較表現の体系的整理と語順ルール。",
+                badge: "比較構文",
+                count: "20句",
+                color: "blue"
+            },
+            {
+                id: 12,
+                title: "Lesson 12 台灣華語 徹底總整理",
+                subtitle: "我最近沒有時間去野餐。（“有”による後置修飾 & 不特定主語 / TOCFL Band A-B）",
+                file: "lesson_12_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「有＋名詞＋動詞句」による名詞の修飾構造、および「不特定の「一個〜」を文頭主語にしない」華語の原則。",
+                badge: "有・後置修飾",
+                count: "17句",
+                color: "indigo"
+            },
+            {
+                id: 13,
+                title: "Lesson 13 台灣華語 徹底總整理",
+                subtitle: "我男朋友出國念書三個月了，我很想他。（“了”の用法4 / TOCFL Band A-B）",
+                file: "lesson_13_taiwan_huayu_tocfl_master_summary.html",
+                desc: "目的語の位置（裸名詞 vs 数量詞）、ダブル“了”による動作の現在進行・継続、経過時間の5大体系。",
+                badge: "アスペクト「了」",
+                count: "31句",
+                color: "emerald"
+            },
+            {
+                id: 14,
+                title: "Lesson 14 台灣華語 徹底總整理",
+                subtitle: "這件事明天再說吧。（“再”の用法・動作保留・先/等/走/去 / TOCFL Band A-B）",
+                file: "lesson_14_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「再」による動作の保留（タイマー設定）、「先...再...」「等...再...」の主導権対比、および「走 vs 去」。",
+                badge: "副詞「再」・時間制御",
+                count: "24句",
+                color: "amber"
+            },
+            {
+                id: 15,
+                title: "Lesson 15 台灣華語 徹底總整理",
+                subtitle: "我們都擔心死了。（程度補語・得の有無・様態補語との比較 / TOCFL Band A-B）",
+                file: "lesson_15_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「得」を伴うタイプ（不得了/要命）と使わないタイプ（極了/死了）の分類、および様態補語との違い。",
+                badge: "程度補語",
+                count: "22句",
+                color: "rose"
+            },
+            {
+                id: 16,
+                title: "Lesson 16 台灣華語 徹底總整理",
+                subtitle: "天氣越熱，客人越多。（副詞の呼応形4パターン・緊縮文 / TOCFL Band A-B）",
+                file: "lesson_16_taiwan_huayu_tocfl_master_summary.html",
+                desc: "一...就... / 又...又... / 一邊...一邊... / 越...越... の4大対副詞文型と会話での緊縮文。",
+                badge: "呼応副詞・緊縮文",
+                count: "22句",
+                color: "purple"
+            },
+            {
+                id: 17,
+                title: "Lesson 17 台灣華語 徹底總整理",
+                subtitle: "老闆叫我明天早一點去公司。（兼語文・使役動詞「請・要・叫・讓」/ TOCFL Band A-B）",
+                file: "lesson_17_taiwan_huayu_tocfl_master_summary.html",
+                desc: "4大使役動詞（請/要/叫/讓）の語感・強制度・感情誘発と、否定詞（不/沒）の絶対配置位置。",
+                badge: "兼語文・使役動詞",
+                count: "20句",
+                color: "blue"
+            },
+            {
+                id: 18,
+                title: "Lesson 18 台灣華語 徹底總整理",
+                subtitle: "哥哥把車開到學校了。（“把”構文1・Z要素の5大パターン・否定詞位置 / TOCFL Band A-B）",
+                file: "lesson_18_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「把」構文の基本骨格（A＋把＋特定B＋V＋Z）、否定詞の配置（把の手前）、動詞後ろの5大Z補語。",
+                badge: "「把」構文",
+                count: "25句",
+                color: "indigo"
+            },
+            {
+                id: 19,
+                title: "Lesson 19 台灣華語 徹底總整理",
+                subtitle: "我打算從明年開始學台語。（介詞2：在＋時間 / 從＋時間＋開始・起 / 往＋方向 / TOCFL Band A-B）",
+                file: "lesson_19_taiwan_huayu_tocfl_master_summary.html",
+                desc: "時間詞における「在」の必須条件、「從...開始/起」の構文規則、方向の「往」と到達点の「到」。",
+                badge: "介詞（時間・空間）",
+                count: "23句",
+                color: "emerald"
+            },
+            {
+                id: 20,
+                title: "Lesson 20 台灣華語 徹底總整理",
+                subtitle: "每次我提到結婚，爸爸不是生氣，就是不說話。（接続詞2・主語配置規則・副詞(也/還)比較 / TOCFL Band A-B）",
+                file: "lesson_20_taiwan_huayu_tocfl_master_summary.html",
+                desc: "「不是...就是...」の断言選択、主語の一致/不一致による接続詞の配置転換、副詞（也/還）の強弱グラデーション。",
+                badge: "複文接続詞・主語規則",
+                count: "22句",
+                color: "amber"
+            }
+        ];
+
+        // Render Lesson Cards
+        function renderCards(data) {
+            const container = document.getElementById('lessonCardContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-blue-400 rounded-2xl p-6 transition shadow-sm hover:shadow-md flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-extrabold border border-blue-200 uppercase tracking-wider">
+                                ${item.badge}
+                            </span>
+                            <span class="text-xs font-mono text-slate-400 font-bold">${item.count}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition flex items-center gap-2">
+                            ${item.title}
+                        </h3>
+                        <p class="text-xs text-blue-600 font-semibold leading-normal">
+                            ${item.subtitle}
+                        </p>
+                        <p class="text-xs text-slate-500 leading-relaxed pt-1">
+                            ${item.desc}
+                        </p>
+                    </div>
+
+                    <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 font-mono">Module #${item.id}</span>
+                        <a href="${item.file}" class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition">
+                            学習ページを開く
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Tab Switching
+        function switchTab(tab) {
+            ['cards', 'matrix', 'roadmap'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        // Search Filter
+        function filterLessons() {
+            const query = document.getElementById('lessonSearch').value.toLowerCase();
+            const filtered = lessonsData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.subtitle.toLowerCase().includes(query) ||
+                item.desc.toLowerCase().includes(query) ||
+                item.badge.toLowerCase().includes(query)
+            );
+            renderCards(filtered);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderCards(lessonsData);
+        }
+    </script>
+</body>
+</html>

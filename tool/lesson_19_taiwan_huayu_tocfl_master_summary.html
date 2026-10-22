@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 19 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 19 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">我打算從明年開始學台語。（介詞2：在＋時間 / 從＋時間＋開始・起 / 往＋方向 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (23句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 介詞の差異深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 19 例文網羅（④〜㉖ 全23句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 19 文法メタマトリクス：介詞（在・從・往）の用途限定ルール
+                </h2>
+                <p class="text-sm text-slate-600">時間詞に「在」を付ける必須条件、「從」における場所詞と時間詞の構文差、方向を示す「往」と目的地の「到」の徹底対比。</p>
+            </div>
+
+            <!-- 1. 時間詞における「在」の必須ルール -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    ① 時間詞の前に介詞「在」が【必須】となる2大条件
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">条件1: 時間詞が「主語＋動詞（節）」で始まる場合</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            単なる時間名詞（三點、明天）ではなく、文の構造（節）が時間表現化している場合は「在」を省略できません。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900">
+                            ・他在 <span class="font-bold border-b border-blue-500">我生氣以後</span> 才把這件事告訴我。<br>
+                            ・我父母不讓我在 <span class="font-bold border-b border-blue-500">吃飯時</span> 滑手機。
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">条件2: 限定の副詞「只」と一緒に使う場合</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            「特定の日や時間だけに限定して行う」ことを強調する「只在...」の形では、「在」が必須となります。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-emerald-900">
+                            ・吳小姐平日都在台北工作，<span class="font-bold border-b border-emerald-500">只在</span>假日回基隆。<br>
+                            ・我們<span class="font-bold border-b border-emerald-500">只能在</span>半夜見到他。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 「從」における場所と時間の構文対比 & 「往」vs「到」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-amber-700 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        ② 「從」の対象による要件差 ＆ 「往」vs「到」の焦点対比
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3">介詞</th>
+                                    <th class="p-3">受ける語句</th>
+                                    <th class="p-3">構文ルール</th>
+                                    <th class="p-3">焦点・ニュアンス</th>
+                                    <th class="p-3">代表例文</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-3 font-extrabold text-blue-700" rowspan="2">從 (cóng)</td>
+                                    <td class="p-3 font-semibold text-slate-800">場所詞</td>
+                                    <td class="p-3 font-mono text-xs font-bold text-slate-800">從 ＋ 場所 ＋ 動詞</td>
+                                    <td class="p-3 text-slate-700">起点となる場所（※開始/起は加えない）</td>
+                                    <td class="p-3 font-semibold text-slate-900">我們<span class="text-blue-700">從哪裡</span>出發？</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-3 font-semibold text-slate-800">時間詞</td>
+                                    <td class="p-3 font-mono text-xs font-bold text-slate-800">從 ＋ 時間 ＋ <span class="text-rose-600">開始/起</span> ＋ 動詞</td>
+                                    <td class="p-3 text-slate-700">起点の時間（<b>※開始 または 起 が必須！</b>）</td>
+                                    <td class="p-3 font-semibold text-slate-900">我<span class="text-blue-700">從明天開始</span>要認真念書。</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-3 font-extrabold text-purple-700">往 (wǎng)</td>
+                                    <td class="p-3 font-semibold text-slate-800">方向/場所</td>
+                                    <td class="p-3 font-mono text-xs font-bold text-slate-800">往 ＋ 方向 ＋ 走/飛/看</td>
+                                    <td class="p-3 text-slate-700"><b>出発点からの進行方向</b>に注目（〜の方へ向かって）</td>
+                                    <td class="p-3 font-semibold text-slate-900">請<span class="text-purple-700">往裡面走</span>。</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-3 font-extrabold text-rose-700">到 (dào)</td>
+                                    <td class="p-3 font-semibold text-slate-800">目的地/場所</td>
+                                    <td class="p-3 font-mono text-xs font-bold text-slate-800">到 ＋ 目的地 ＋ 去/到達</td>
+                                    <td class="p-3 text-slate-700"><b>最終的な到達点・目的地</b>に注目（〜に到着する）</td>
+                                    <td class="p-3 font-semibold text-slate-900"><span class="text-rose-700">到台北101</span>去。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 19 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">なぜ時間詞の「從」には「開始/起」が必要なのか？助動詞や副詞の配置位置ルール。</p>
+            </div>
+
+            <!-- QA 1: 「從...開始/起」の「開始/起」が必要な理由と語順 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">文法規則</span>
+                    💡 「從明天開始要認真念書」における助動詞（要）や副詞の位置は？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        介詞フレーズ「從 ＋ 時間 ＋ 開始/起」は文全体の修飾語（連用修飾語）として機能します。そのため、未来の予定・意志を表す助動詞<b>「要」「打算」</b>や副詞は、基本的に<b>「開始/起」の後ろ</b>（主動詞の直前）に配置されます。
+                    </p>
+                    <div class="font-mono text-xs font-bold text-blue-900 bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>⭕️ 我 從明天開始 <span class="text-rose-600">要</span> 認真念書。（要は開始の後ろ）</div>
+                        <div>⭕️ 從明天開始，我 <span class="text-rose-600">要</span> 認真念書。（介詞句全体が文頭に出るパターン）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「往」と「到」の決定的な違い -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">空間感覚</span>
+                    「往南邊飛」と「到南邊去」はどうイメージが違う？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>「往（wǎng）」</b>はコンパスの針のように<b>「向き（ベクトルの方向）」</b>を指し示します。「往南邊飛」は南の方向に向かって飛んでいく動作そのものを描写し、最終的にどこに到達するかは問われません（そのため「走」「飛」「看」など方向を伴う動作動詞と親和性が高いです）。
+                    </p>
+                    <p>
+                        一方<b>「到（dào）」</b>はピン留めのように<b>「到達点（ゴール）」</b>を重視します。「到南邊去」は南という目的地にたどり着くことが主眼となります（そのため「去」「來」「到達」などの移動完了・到達を意味する動詞とセットで使われます）。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 19 重要語彙 & 介詞表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('prep')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">介詞・時間表現</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・施設</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 19 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 23 Sentences from 4 to 26)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "阿英平常都在平日白天上游泳課。",
+                rubyHtml: "<ruby>阿<rt>Ā</rt></ruby><ruby>英<rt>yīng</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>白<rt>bái</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>游<rt>yóu</rt></ruby><ruby>泳<rt>yǒng</rt></ruby><ruby>課<rt>kè</rt></ruby>。",
+                translation: "阿英は普段平日の昼間に水泳のレッスンを受ける。",
+                structure: "【在＋時間詞】在 [平日白天] 上游泳課",
+                point: "<b>平日白天（píngrì báitiān）</b>：平日の昼間。「上游泳課（水泳の授業を受ける）」"
+            },
+            {
+                id: 5,
+                hanzi: "我是在研究所畢業那年搬來的，已經住在這裡快三年了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>研<rt>yán</rt></ruby><ruby>究<rt>jiū</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>畢<rt>bì</rt></ruby><ruby>業<rt>yè</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>住<rt>zhù</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "私は大学院を卒業した年に引っ越してきたので、ここに住んでまもなく3年になろうとしている。",
+                structure: "【是...在＋節（時間）...的】是在 [研究所畢業那年] 搬來的",
+                point: "<b>研究所（yánjiūsuǒ）</b>：大学院（台湾用語）。「畢業那年（卒業したあの年）」"
+            },
+            {
+                id: 6,
+                hanzi: "我的腳是在搬書桌的時候受傷的。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>腳<rt>jiǎo</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>桌<rt>zhuō</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>傷<rt>shāng</rt></ruby><ruby>的<rt>de</rt></ruby>。",
+                translation: "私の足は勉強机を運んだときにけがをしたのです。",
+                structure: "【在＋動詞句＋的時候】在 [搬書桌的時候] 受傷的",
+                point: "💡<b>在...的時候</b>：節で構成される時間の表現には「在」が付与される。"
+            },
+            {
+                id: 7,
+                hanzi: "我父母不讓我們在吃飯時滑手機。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>父<rt>fù</rt></ruby><ruby>母<rt>mǔ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>讓<rt>ràng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>滑<rt>huá</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby>。",
+                translation: "両親は、食事の時に私たちが携帯をいじるのを許してくれない。",
+                structure: "【使役(讓)＋在＋動詞句＋時】在 [吃飯時] 滑手機",
+                point: "<b>滑手機（huá shǒujī）</b>：スマホを操作する/いじる（台湾超頻出口語）。"
+            },
+            {
+                id: 8,
+                hanzi: "他忘了在用微波爐加熱以前把那包醬油拿出來。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>微<rt>wéi</rt></ruby><ruby>波<rt>bó</rt></ruby><ruby>爐<rt>lú</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>熱<rt>rè</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>醬<rt>jiàng</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "彼は、レンジで温める前に、あの醤油を取り出すのを忘れた。",
+                structure: "【在＋動詞句＋以前＋把構文】在 [用微波爐加熱以前] 把...",
+                point: "<b>微波爐（wéibólú）</b>：電子レンジ。「加熱（温める）」"
+            },
+            {
+                id: 9,
+                hanzi: "他在開完會三十分鐘後才到。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>分<rt>fēn</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "彼は会議が終わって30分後にようやく着いた。",
+                structure: "【在＋動詞句＋時間長度＋後＋才】在 [開完會30分鐘後] 才到",
+                point: "<b>開完會（kāi wán huì）</b>：会議を終える。「才到（遅くなってようやく到着した）」"
+            },
+            {
+                id: 10,
+                hanzi: "他在我生氣以後才把這件事告訴我。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>sù</rt></ruby><ruby>我<rt>wǒ</rt></ruby>。",
+                translation: "彼は私が怒った後でようやくそのことを私に告げた。",
+                structure: "【在＋主述句(節)＋以後＋才】在 [我生氣以後] 才把...",
+                point: "💡<b>在＋主述句＋以後</b>：主語と動詞を持つ節であるため「在」が必須。"
+            },
+            {
+                id: 11,
+                hanzi: "他每次都在大家睡覺的時間打給我。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>覺<rt>jiào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>我<rt>wǒ</rt></ruby>。",
+                translation: "彼は毎回みんなが寝ている時間に電話をかけてくる。",
+                structure: "【在＋動詞句＋的時間】在 [大家睡覺的時間]",
+                point: "<b>打給我（dǎ gěi wǒ）</b>：私に電話をかける。"
+            },
+            {
+                id: 12,
+                hanzi: "吳小姐平日都在台北工作，只在假日回基隆。",
+                rubyHtml: "<ruby>吳<rt>Wú</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>姐<rt>jiě</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby>，<ruby>只<rt>zhǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>假<rt>jià</rt></ruby><ruby>日<rt>rì</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>基<rt>Jī</rt></ruby><ruby>隆<rt>lóng</rt></ruby>。",
+                translation: "吳さんは平日は台北で働いていて、休みの日だけ基隆に帰る。",
+                structure: "【只在＋時間詞】只在 [假日] 回基隆",
+                point: "💡<b>只在＋時間</b>：「只」を伴う場合は「在」を省略不可。"
+            },
+            {
+                id: 13,
+                hanzi: "我哥哥每天都很早出門，很晚回家，我們只能在半夜見到他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>哥<rt>gē</rt></ruby><ruby>哥<rt>ge</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby>，<ruby>很<rt>hěn</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>家<rt>jiā</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>夜<rt>yè</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "兄は毎日早く出かけて遅くに家に帰るので、夜中しか会えない。",
+                structure: "【只能在＋時間詞】只能在 [半夜] 見到他",
+                point: "<b>半夜（bànyè）</b>：夜中・真夜中。「只能在...（〜しかできない）」"
+            },
+            {
+                id: 14,
+                hanzi: "去年的春假是從四月二號開始放的。",
+                rubyHtml: "<ruby>去<rt>qù</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>春<rt>chūn</rt></ruby><ruby>假<rt>jià</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>四<rt>sì</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>二<rt>èr</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>的<rt>de</rt></ruby>。",
+                translation: "去年の春休みは4月2日から始まったのです。",
+                structure: "【是從＋時間＋開始＋動詞＋的】是從 [4月2號] 開始放的",
+                point: "<b>春假（chūnjià）</b>：春休み。「放假（休みになる）」"
+            },
+            {
+                id: 15,
+                hanzi: "從下個月開始，這家動物園只在週末開。",
+                rubyHtml: "<ruby>從<rt>cóng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby>，<ruby>這<rt>zhè</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>開<rt>kāi</rt></ruby>。",
+                translation: "来月から、この動物園は週末だけオープンする。",
+                structure: "【從＋時間＋開始，...只在＋時間】從下個月開始 ... 只在週末開",
+                point: "💡<b>雙重介詞</b>：文頭に「從...開始」、後半に「只在...」。"
+            },
+            {
+                id: 16,
+                hanzi: "數學是從什麼時候開始變得這麼難的？",
+                rubyHtml: "<ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>的<rt>de</rt></ruby>？",
+                translation: "数学って、いつからこんなに難しくなったの？",
+                structure: "【是從＋疑問詞＋開始...的】是從 [什麼時候] 開始...",
+                point: "<b>變得（biàn de）</b>：〜に変化する・〜になる。"
+            },
+            {
+                id: 17,
+                hanzi: "從明天起，我要去京都玩八天七夜。",
+                rubyHtml: "<ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>京<rt>Jīng</rt></ruby><ruby>都<rt>dū</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>八<rt>bā</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>七<rt>qī</rt></ruby><ruby>夜<rt>yè</rt></ruby>。",
+                translation: "明日から7泊8日で京都に遊びに行く。",
+                structure: "【從＋時間＋起】從 [明天] 起",
+                point: "<b>八天七夜（bā tiān qī yè）</b>：7泊8日（天と夜の順序に注目）。"
+            },
+            {
+                id: 18,
+                hanzi: "醫生要我從今天起，少吃泡麵，多吃一點青菜。",
+                rubyHtml: "<ruby>醫<rt>yī</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>少<rt>shǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>泡<rt>pào</rt></ruby><ruby>麵<rt>miàn</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>青<rt>qīng</rt></ruby><ruby>菜<rt>cài</rt></ruby>。",
+                translation: "医者が私に、今日からインスタントラーメンを減らして、葉物野菜を多めに食べるようにと言った。",
+                structure: "【使役(要)＋從＋時間＋起＋少/多＋動詞】從今天起 [少吃...] [多吃...]",
+                point: "<b>泡麵（pàomiàn）</b>：カップ麺/インスタントラーメン。「青菜（葉物野菜）」"
+            },
+            {
+                id: 19,
+                hanzi: "我們從哪裡出發？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>發<rt>fā</rt></ruby>？",
+                translation: "私たちはどこから出発しますか。",
+                structure: "【從＋場所詞＋動詞】從 [哪裡] 出發",
+                point: "💡<b>場所詞の「從」</b>：場所を受ける場合は「開始/起」は添えない！"
+            },
+            {
+                id: 20,
+                hanzi: "我從明天開始要認真念書。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>。",
+                translation: "私は明日からまじめに勉強する。",
+                structure: "【從＋時間＋開始＋助動詞】從明天開始 [要認真念書]",
+                point: "💡<b>助動詞の位置</b>：意志・目的の「要」は「開始」の後ろ。"
+            },
+            {
+                id: 21,
+                hanzi: "從明天開始，我要認真念書。",
+                rubyHtml: "<ruby>從<rt>cóng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby>。",
+                translation: "明日から、私はまじめに勉強する。",
+                structure: "【介詞句文頭前置】從明天開始， 我要...",
+                point: "<b>文頭配置</b>：時間フレーズ全体を主語の前に置いて強調可能。"
+            },
+            {
+                id: 22,
+                hanzi: "這種鳥一到秋天就會往南邊飛。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>鳥<rt>niǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>秋<rt>qiū</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>南<rt>nán</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>飛<rt>fēi</rt></ruby>。",
+                translation: "この種の鳥は、秋になるとすぐ南へ向かって飛ぶ。",
+                structure: "【一...就...會＋往＋方向＋動詞】往 [南邊] 飛",
+                point: "<b>往...飛（wǎng...fēi）</b>：〜へ向かって飛ぶ（進行方向に焦点）。"
+            },
+            {
+                id: 23,
+                hanzi: "小姐，不好意思，請問最近的加油站應該往哪裡走？",
+                rubyHtml: "<ruby>小<rt>xiǎo</rt></ruby><ruby>姐<rt>jiě</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>思<rt>sī</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>走<rt>zǒu</rt></ruby>？",
+                translation: "(女性に) すみません、一番近いガソリンスタンドは、どちらへ向かって行ったらいいのでしょうか。",
+                structure: "【往＋疑問方向詞＋走】往 [哪裡] 走",
+                point: "<b>加油站（jiāyóuzhàn）</b>：ガソリンスタンド。「往哪裡走（どちらへ進むか）」"
+            },
+            {
+                id: 24,
+                hanzi: "上捷運以後，請往裡面走。",
+                rubyHtml: "<ruby>上<rt>shàng</rt></ruby><ruby>捷<rt>jié</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>面<rt>miàn</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。",
+                translation: "MRTに乗車後は、奥に向かってお進みください。",
+                structure: "【往＋位置詞＋走】請 往 [裡面] 走",
+                point: "<b>捷運（jiéyùn）</b>：MRT/台湾都市鉄道。「往裡面走（奥へお進みください）」"
+            },
+            {
+                id: 25,
+                hanzi: "一直往前走，你會看到郵局和醫院的中間有一家小旅館。",
+                rubyHtml: "<ruby>一<rt>yì</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>走<rt>zǒu</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>局<rt>jú</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>醫<rt>yī</rt></ruby><ruby>院<rt>yuàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>旅<rt>lǚ</rt></ruby><ruby>館<rt>guǎn</rt></ruby>。",
+                translation: "ずっと前へ向かって歩いたら(まっすぐ行ったら)、郵便局と病院の間に小さなホテルが見えます。",
+                structure: "【一直往＋方向＋走】一直 往 [前] 走",
+                point: "<b>一直往前走（yìzhí wǎng qián zǒu）</b>：まっすぐ直進する（道案内の決定版）。"
+            },
+            {
+                id: 26,
+                hanzi: "你怎麼敢從那麼高的地方往下看？不會覺得很可怕嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>敢<rt>gǎn</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>高<rt>gāo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>方<rt>fāng</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>看<rt>kàn</rt></ruby>？<ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>怕<rt>pà</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あなたは、どうしてあんなに高いところから下を見る勇気があるの？怖いと思わないの？",
+                structure: "【從＋場所＋往＋方向＋動詞】從[那麼高的地方] 往 [下] 看",
+                point: "💡<b>從(起点)＋往(方向)</b>：起点と視線の向きを併用する複合介詞文。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "滑手機", pinyin: "huá shǒujī", meaning: "スマホをいじる・操作する", cat: "verb" },
+            { hanzi: "微波爐", pinyin: "wéibólú", meaning: "電子レンジ", cat: "noun" },
+            { hanzi: "泡麵", pinyin: "pàomiàn", meaning: "インスタントラーメン・カップ麺", cat: "noun" },
+            { hanzi: "加油站", pinyin: "jiāyóuzhàn", meaning: "ガソリンスタンド", cat: "noun" },
+            { hanzi: "捷運", pinyin: "jiéyùn", meaning: "捷運 (台湾の都市MRT)", cat: "noun" },
+            { hanzi: "研究所", pinyin: "yánjiūsuǒ", meaning: "大学院", cat: "noun" },
+            { hanzi: "平日白天", pinyin: "píngrì báitiān", meaning: "平日の昼間", cat: "prep" },
+            { hanzi: "從...開始 / 起", pinyin: "cóng...kāishǐ / qǐ", meaning: "〜から（時間の起点）", cat: "prep" },
+            { hanzi: "往...走 / 看", pinyin: "wǎng...zǒu / kàn", meaning: "〜の方向へ進む / 見る", cat: "prep" },
+            { hanzi: "只在", pinyin: "zhǐ zài", meaning: "〜だけ（時間の限定）", cat: "prep" },
+            { hanzi: "八天七夜", pinyin: "bā tiān qī yè", meaning: "7泊8日", cat: "prep" },
+            { hanzi: "變得", pinyin: "biàn de", meaning: "〜に変化する・〜になる", cat: "verb" },
+            { hanzi: "出發", pinyin: "chūfā", meaning: "出発する", cat: "verb" },
+            { hanzi: "可怕", pinyin: "kěpà", meaning: "恐ろしい・怖い", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

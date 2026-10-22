@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 12 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">我最近沒有時間去野餐。（“有”による後置修飾 & 不特定主語 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (17句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 有人 vs 有的人深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 12 例文全17句（⑤〜㉑ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 12 文法メタマトリクス：「有」による後置修飾 & 不特定主語の表現規則
+                </h2>
+                <p class="text-sm text-slate-600">華語の「原則＝前置修飾」に対する例外構造「後ろから修飾する“有”構文」と、対立・一部を示す「有的」の整理。</p>
+            </div>
+
+            <!-- 1. 「有」構文の2大構造 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「有」構文の2大パターンと文法制約
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型</th>
+                                <th class="p-3">基本構造</th>
+                                <th class="p-3">文法機能・ニュアンス</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">⑴ 有 ＋ 名詞(A) ＋ 動詞句/形容詞句(B)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">(沒有) 名詞 ＋ 動詞/形容詞句</td>
+                                <td class="p-3 text-slate-700"><b>【後置修飾 & 不特定主語導入】</b><br>「BするAがある/ない」。BがAを後ろから修飾。不特定な人・物を文章に導入する。</td>
+                                <td class="p-3 font-semibold text-slate-900">沒有時間睡覺（寝る時間がない）<br>有一個美國學生來找你（アメリカ人が訪ねてきた）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">⑵ 有的 ＋ 名詞(A) ＋ 動詞句/形容詞句(B)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">有的 ＋ 名詞 ＋ 述語</td>
+                                <td class="p-3 text-slate-700"><b>【部分指し示し & 対立】</b><br>「BであるAもある（でもそうでないAもある）」。全体の中の「一部」を指す。</td>
+                                <td class="p-3 font-semibold text-slate-900">有的人覺得百香果太酸（そう思う人もいる）<br>有的很好唱，有的很難唱（歌いやすいのもある）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「不特定主語の回避」ルール -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    ② 華語の大原則：不特定主語（一個〜）を主語に置かない！
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        華語では<b>「不特定の存在（相手がまだ知らない未知の人・物）」を文頭の主語として直接置くことを嫌う</b>性質があります。そのため、「ある〜が…した」という場合、文頭に「有」を置くことで存在をまず提示します。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono font-bold">
+                        <div class="p-3 bg-red-50 text-red-900 rounded-lg border border-red-200">
+                            ❌ 一個美國學生來找你。<br><span class="text-xs font-normal">（不特定の「一個〜」が文頭主語で不自然）</span>
+                        </div>
+                        <div class="p-3 bg-emerald-50 text-emerald-900 rounded-lg border border-emerald-200">
+                            ⭕ 有一個美國學生來找你。<br><span class="text-xs font-normal">（「有」で存在を提示してから動作へ接続）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 「想」の多様な意味 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded-full font-bold">多義語</span>
+                    ③ 動詞「想（xiǎng）」の主な3つの意味
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="font-bold text-slate-900 text-sm mb-1">1. 〜したい (助動詞)</div>
+                        <p class="text-slate-600">動作への希望・意志。</p>
+                        <div class="font-mono text-xs font-bold text-indigo-900 mt-1">我想去野餐</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="font-bold text-slate-900 text-sm mb-1">2. 恋しく思う・会いたい (動詞)</div>
+                        <p class="text-slate-600">人や故郷を懐かしむ。</p>
+                        <div class="font-mono text-xs font-bold text-indigo-900 mt-1">想家（ホームシックになる）</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="font-bold text-slate-900 text-sm mb-1">3. 〜と思う・考える (動詞)</div>
+                        <p class="text-slate-600">推測や思考を表す（節を従える）。</p>
+                        <div class="font-mono text-xs font-bold text-indigo-900 mt-1">我想你應該去</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 12 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「有人」と「有的人」の決定的な違いと使い分けの落とし穴。</p>
+            </div>
+
+            <!-- QA 1: 「有人」 vs 「有的人」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">最重要識別</span>
+                    💡 「有人（yǒu rén）」と「有的人（yǒu de rén）」はどう使い分ける？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 有人（yǒu rén）＝「ある人（不特定1人〜少数）」</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            特定の一回限りの出来事・状況において<b>「（誰だか分からないが）ある人が〜した」</b>という存在事実を述べます。
+                        </p>
+                        <p class="font-mono text-blue-900 font-bold bg-white p-2 rounded border border-slate-200">
+                            ⭕ 剛才有人問我去游泳池怎麼走。<br>
+                            （さっきある人がプールへの行き方を聞いてきた。）
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">2. 有的人（yǒu de rén）＝「〜な人もいる（対比・分類）」</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            全体の中で<b>「あるタイプの人々もいれば、そうでない人もいる」</b>という対比や分類・習慣を述べます。特定事件の報告には使えません。
+                        </p>
+                        <p class="font-mono text-rose-900 font-bold bg-white p-2 rounded border border-slate-200">
+                            ⭕ 有的人覺得百香果太酸。<br>
+                            ❌ 剛才有的人問我…… (特定の1回の出来事には不可！)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「有(的)時候」の省略とニュアンス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">口語省略</span>
+                    「有的時候」と「有時候」の違いは？「的」は省略できる？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「有的時候（yǒu de shíhòu）」と「有時候（yǒu shíhòu）」は<b>意味的に全く同じ（時々・〜なときもある）</b>です。
+                    </p>
+                    <p>
+                        日常会話では「的」が省略された<b>「有時候」の方が頻繁に使われます</b>。同様に「有人」も場面によっては「有的人」と同義で総称的に使われることがありますが、前述の「特定の単発事件」では「有人」しか使えない点に注意しましょう。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 12 重要語彙 & 台湾日常表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('gram')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">有/有的構文</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・果物・地名</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動詞・形容詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 12 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 17 Sentences from 5 to 21)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "她今天可能沒有時間睡覺。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>覺<rt>jiào</rt></ruby>。",
+                translation: "彼女は今日多分寝る時間がないだろう。",
+                structure: "【有＋名詞＋動詞句】沒有 [時間] [睡覺]",
+                point: "<b>沒有時間睡覺</b>：寝る時間（動詞句睡覺が時間後置修飾）。"
+            },
+            {
+                id: 6,
+                hanzi: "你有錢喝飲料，但沒有錢吃飯嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>飲<rt>yǐn</rt></ruby><ruby>料<rt>liào</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "きみは飲み物を飲むお金はあるのに、ご飯を食べるお金はないの？",
+                structure: "【有＋名詞＋動詞句】有 [錢] [喝飲料] ， 沒有 [錢] [吃飯]",
+                point: "<b>有錢喝飲料</b>：ジュースを飲むお金がある。"
+            },
+            {
+                id: 7,
+                hanzi: "最近有很多人生病，你還是別脫口罩吧。",
+                rubyHtml: "<ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>病<rt>bìng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>脫<rt>tuō</rt></ruby><ruby>口<rt>kǒu</rt></ruby><ruby>罩<rt>zhào</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "最近病気の人が多いから、やはりマスクを外さないほうがいい。",
+                structure: "【有＋名詞＋動詞句】有 [很多人] [生病]",
+                point: "<b>脫口罩（tuō kǒuzhào）</b>：マスクを外す。「生病（病気になる）」"
+            },
+            {
+                id: 8,
+                hanzi: "上個月我回了宜蘭一趟，發現有好多地方都變了。",
+                rubyHtml: "<ruby>上<rt>shàng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>宜<rt>Yí</rt></ruby><ruby>蘭<rt>lán</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>趟<rt>tàng</rt></ruby>，<ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>方<rt>fāng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "先月私は一度宜蘭に帰って、変わったところがずいぶんたくさんあることに気づいた。",
+                structure: "【有＋名詞＋動詞句】有 [好多地方] [都變了]",
+                point: "<b>宜蘭（Yílán）</b>：宜蘭（台湾北東部の地名）。「一趟（yí tàng：〜へ一回行く）」"
+            },
+            {
+                id: 9,
+                hanzi: "有些小孩很安靜，有些小孩很吵，大家都不一樣。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>靜<rt>jìng</rt></ruby>，<ruby>有<rt>yǒu</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>吵<rt>chǎo</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>樣<rt>yàng</rt></ruby>。",
+                translation: "静かな子どもも(何人か)いるし、騒がしい子どもも(何人か)いて、みんな違うのだ。",
+                structure: "【有些……，有些……】[有些小孩 很安靜]， [有些小孩 很吵]",
+                point: "<b>有些（yǒuxiē）</b>：〜なもの・人も一部いる（複数指名）。"
+            },
+            {
+                id: 10,
+                hanzi: "剛才沒有人叫你啊，你是不是聽錯了？",
+                rubyHtml: "<ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>叫<rt>jiào</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>啊<rt>a</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>錯<rt>cuò</rt></ruby><ruby>了<rt>le</rt></ruby>？",
+                translation: "さっきは誰もきみのことを呼んでいないよ。聞き間違えたんじゃない？",
+                structure: "【沒有人＋動詞句】剛才 沒有 [人] [叫你]",
+                point: "<b>沒有人叫你</b>：あなたを呼ぶ人はいなかった（全否定）。"
+            },
+            {
+                id: 11,
+                hanzi: "有一個美國學生來找你。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>美<rt>Měi</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>你<rt>nǐ</rt></ruby>。",
+                translation: "(1人の)アメリカ人の学生があなたを訪ねてきたよ。",
+                structure: "【不特定主語の有構文】有 [一個美國學生] [來找你]",
+                point: "💡<b>不特定主語</b>：「一個美國學生」を直接文頭に置けず、「有」を前置する。"
+            },
+            {
+                id: 12,
+                hanzi: "有的人覺得百香果太酸，可是我非常喜歡。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>香<rt>xiāng</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>酸<rt>suān</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>非<rt>fēi</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby>。",
+                translation: "パッションフルーツはすっぱすぎると想う人もいるけれど、私は大好きだ。",
+                structure: "【有的人＋動詞句】[有的人] [覺得百香果太酸]",
+                point: "<b>百香果（bǎixiāngguǒ）</b>：パッションフルーツ（台湾特産果物）。"
+            },
+            {
+                id: 13,
+                hanzi: "有的人覺得工作比什麼都重要，但是我認為生活比較重要。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>工<rt>gōng</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>要<rt>yào</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>為<rt>wéi</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>活<rt>huó</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>要<rt>yào</rt></ruby>。",
+                translation: "仕事が何よりも大切だと思う人もいるが、私は生活のほうが大切だと思う。",
+                structure: "【有的人（対比）】[有的人] 覺得...， 但是我 認為...",
+                point: "<b>認為（rènwéi）</b>：〜だと考える・評価する（公式的考え）。"
+            },
+            {
+                id: 14,
+                hanzi: "我有(的)時候會想家。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>有<rt>yǒu</rt></ruby>(<ruby>的<rt>de</rt></ruby>)<ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>家<rt>jiā</rt></ruby>。",
+                translation: "私はホームシックになることもある。",
+                structure: "【頻度＋多義語想】我有(的)時候 會 [想家]",
+                point: "💡<b>想家（xiǎng jiā）</b>：実家や故郷を恋しく思う・ホームシック。「的」省略可。"
+            },
+            {
+                id: 15,
+                hanzi: "他平常都搭電梯，不過有(的)時候也會爬樓梯。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>搭<rt>dā</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>梯<rt>tī</rt></ruby>，<ruby>不<rt>bú</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>有<rt>yǒu</rt></ruby>(<ruby>的<rt>de</rt></ruby>)<ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>爬<rt>pá</rt></ruby><ruby>樓<rt>lóu</rt></ruby><ruby>梯<rt>tī</rt></ruby>。",
+                translation: "彼は普段エレベーターに乗っているが、時には階段を上ることもある。",
+                structure: "【日常習慣 vs 例外】平常...， 不過 [有(的)時候] 也會 [爬樓梯]",
+                point: "<b>搭電梯（dā diàntī）</b>：エレベーターに乗る。<b>爬樓梯（pá lóutī）</b>：階段を上る。"
+            },
+            {
+                id: 16,
+                hanzi: "有的女生不喜歡逛街，喜歡在網路上買東西。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>逛<rt>guàng</rt></ruby><ruby>街<rt>jiē</rt></ruby>，<ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>網<rt>wǎng</rt></ruby><ruby>路<rt>lù</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>東<rt>dōng</rt></ruby><ruby>西<rt>xī</rt></ruby>。",
+                translation: "街中をぶらぶらするのが好きじゃなく、ネットで買い物をするのが好きな女の子もいる。",
+                structure: "【有的＋名詞】[有的女生] 不喜歡逛街...",
+                point: "<b>逛街（guàngjiē）</b>：街ぶら・ウィンドーショッピングをする。"
+            },
+            {
+                id: 17,
+                hanzi: "有的學生已經拿到簽證了。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>簽<rt>qiān</rt></ruby><ruby>證<rt>zhèng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "すでにビザを入手した学生もいる。",
+                structure: "【有的＋名詞＋結果補語】[有的學生] 已經 [拿到] 簽證了",
+                point: "<b>拿到（ná dào）</b>：手に入れる・受領する。"
+            },
+            {
+                id: 18,
+                hanzi: "有(的)比較貴。",
+                rubyHtml: "<ruby>有<rt>yǒu</rt></ruby>(<ruby>的<rt>de</rt></ruby>)<ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>貴<rt>guì</rt></ruby>。",
+                translation: "けっこう高いの（＝靴など）もある。",
+                structure: "【代名詞的有的】[有(的)] 比較貴",
+                point: "<b>有(的)</b>：文脈で既知の名詞（靴や服）を省略して「〜なものもある」。"
+            },
+            {
+                id: 19,
+                hanzi: "這位歌手的歌，有的很好唱，有的很難唱。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>位<rt>wèi</rt></ruby><ruby>歌<rt>gē</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>歌<rt>gē</rt></ruby>，<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>唱<rt>chàng</rt></ruby>，<ruby>有<rt>yǒu</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>唱<rt>chàng</rt></ruby>。",
+                translation: "この歌手の歌は、歌いやすいの（＝歌）もあるし、歌いにくい（＝歌）もある。",
+                structure: "【主題＋有的……，有的……】歌手的歌， [有的] 很好唱， [有的] 很難唱",
+                point: "<b>好唱 / 難唱（hǎochàng / nánchàng）</b>：歌いやすい / 歌いにくい。"
+            },
+            {
+                id: 20,
+                hanzi: "剛才有人問我去游泳池怎麼走。",
+                rubyHtml: "<ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>游<rt>yóu</rt></ruby><ruby>泳<rt>yǒng</rt></ruby><ruby>池<rt>chí</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。",
+                translation: "さっき、[ある人がプールへの行き方を私に聞いた／プールへの行き方を私に聞いた人がいた]。",
+                structure: "【特定事件・有人】剛才 [有人] [問我去游泳池怎麼走]",
+                point: "💡<b>有人（yǒu rén）</b>：特定の一回限りの出来事。「有的人」に置き換え不可！"
+            },
+            {
+                id: 21,
+                hanzi: "以前有人跟他說過：「愛笑的人比較受歡迎。」",
+                rubyHtml: "<ruby>以<rt>yǐ</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>過<rt>guò</rt></ruby>：「<ruby>愛<rt>ài</rt></ruby><ruby>笑<rt>xiào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>迎<rt>yíng</rt></ruby>。」",
+                translation: "「よく笑う人のほうが人気がある」と以前[ある人が彼に言った／彼に言った人がいる]。",
+                structure: "【過去経験・有人】以前 [有人] 跟我說過...",
+                point: "<b>受歡迎（shòu huānyíng）</b>：人気がある・歓迎される。「愛笑（よく笑う）」"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "有人", pinyin: "yǒu rén", meaning: "ある人・誰か (特定出来事の不特定者)", cat: "gram" },
+            { hanzi: "有的人", pinyin: "yǒu de rén", meaning: "〜な人もいる (全体の中の一部の対比)", cat: "gram" },
+            { hanzi: "有的時候", pinyin: "yǒu de shíhòu", meaning: "時々・〜なときもある (有時候とも)", cat: "gram" },
+            { hanzi: "野餐", pinyin: "yěcān", meaning: "ピクニック", cat: "noun" },
+            { hanzi: "宜蘭", pinyin: "Yílán", meaning: "宜蘭 (台湾北東部にある自然豊かな県)", cat: "noun" },
+            { hanzi: "百香果", pinyin: "bǎixiāngguǒ", meaning: "パッションフルーツ", cat: "noun" },
+            { hanzi: "游泳池", pinyin: "yóuyǒngchí", meaning: "スイミングプール", cat: "noun" },
+            { hanzi: "口罩", pinyin: "kǒudài", meaning: "マスク", cat: "noun" },
+            { hanzi: "脫口罩", pinyin: "tuō kǒuzhào", meaning: "マスクを外す", cat: "verb" },
+            { hanzi: "想家", pinyin: "xiǎng jiā", meaning: "ホームシックになる・実家が恋しい", cat: "verb" },
+            { hanzi: "搭電梯", pinyin: "dā diàntī", meaning: "エレベーターに乗る", cat: "verb" },
+            { hanzi: "爬樓梯", pinyin: "pá lóutī", meaning: "階段を上る", cat: "verb" },
+            { hanzi: "逛街", pinyin: "guàngjiē", meaning: "街ぶら・買い物を楽しむ", cat: "verb" },
+            { hanzi: "受歡迎", pinyin: "shòu huānyíng", meaning: "人気がある・モテる", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

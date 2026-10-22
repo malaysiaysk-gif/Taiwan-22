@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 16 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 16 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">天氣越熱，客人越多。（副詞の呼応形4パターン・緊縮文 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 呼応副詞 & 緊縮文 深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 16 例文網羅（⑤〜㉖ 全22句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 16 文法メタマトリクス：呼応副詞の4大構文 ＆ 緊縮文の仕組み
+                </h2>
+                <p class="text-sm text-slate-600">複文をつなぐ代表的な4つの対副詞文型と、話し言葉で多用される緊縮文（接続詞省略）の整理。</p>
+            </div>
+
+            <!-- 1. 呼応副詞の4大パターン分類 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 呼応副詞の4大パターンマトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型</th>
+                                <th class="p-3">基本構文</th>
+                                <th class="p-3">文法機能・制約ルール</th>
+                                <th class="p-3">代表例文</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">パターン 1</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">一 ＋ A ＋ 就 ＋ B</td>
+                                <td class="p-3 text-slate-700">「AするとすぐBする/Bになる」。法則・習慣を表す場合はB節に<b>“會”</b>を伴うことが多い。</td>
+                                <td class="p-3 font-semibold text-slate-900">他一下課就打開手機了。<br>女兒一感冒，就會發燒。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">パターン 2</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">又 ＋ A ＋ 又 ＋ B</td>
+                                <td class="p-3 text-slate-700">「AでもあるしBでもある」。<b>⚠️AとBは必ず同種のフレーズ（動詞＋動詞、形容詞＋形容詞）</b>にする。</td>
+                                <td class="p-3 font-semibold text-slate-900">又大又涼快 (形＋形)<br>又會唱歌又會跳舞 (動＋動)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">パターン 3</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">一邊 ＋ A ＋ 一邊 ＋ B</td>
+                                <td class="p-3 text-slate-700">「AしながらBする」。同時に並行して行う2つの主動的動作。</td>
+                                <td class="p-3 font-semibold text-slate-900">一邊看新聞，一邊準備出門。<br>一邊騎腳踏車，一邊講電話。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700 text-base" rowspan="2">パターン 4</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">越 ＋ A ＋ 越 ＋ B</td>
+                                <td class="p-3 text-slate-700">「AすればするほどBになる」。比例的変化。</td>
+                                <td class="p-3 font-semibold text-slate-900">越看越可愛。<br>功課越忙，我越想玩遊戲。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">越來越 ＋ B</td>
+                                <td class="p-3 text-slate-700">Aを特定せず「時間の経過とともに漸進的にBになる」。</td>
+                                <td class="p-3 font-semibold text-slate-900">電視節目越來越無聊。<br>颱風越來越近了。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 緊縮文 (縮約構文) の解説 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 会話で大活躍する「緊縮文（きんしゅくぶん）」の構造
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        複文（2つの節からなる文）において、<b>主語が同一であり、接続詞がなくても文脈が自明な場合</b>、読点（，）や接続詞（如果など）を省略して1つのテンポ良い文に縮める表現を「緊縮文」と呼びます。
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                        <div class="bg-white p-3.5 rounded-lg border border-slate-200 font-mono">
+                            <span class="text-slate-500 font-bold block mb-1">【通常の複文（フォーマル）】</span>
+                            你<span class="text-rose-600 font-bold">如果</span>不喜歡，就不要買了。
+                        </div>
+                        <div class="bg-blue-50 p-3.5 rounded-lg border border-blue-200 font-mono text-blue-900">
+                            <span class="text-blue-700 font-bold block mb-1">【緊縮文（日常会話・スピーディ）】</span>
+                            你不喜歡就不要買了！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 16 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「又…又…」の文法違反エラー防止ルールと、「一…就…」における“會”の役割。</p>
+            </div>
+
+            <!-- QA 1: 「又...又...」の文法制約原理 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 絶対注意事項</span>
+                    ❌ なぜ「她又會唱歌，又很可愛」は文法違反になるのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「又 A 又 B」は、<b>並列する2つの属性・動作の文法的性質を完全に一致させる</b>必要があります。
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><b>形容詞 ＋ 形容詞</b>：又大又涼快 ⭕️（大きい＋涼しい）</li>
+                        <li><b>動詞句 ＋ 動詞句</b>：又會唱歌，又會跳舞 ⭕️（歌える＋踊れる）</li>
+                        <li><b>混在（動詞句 ＋ 形容詞句）</b>：又會唱歌，又很可愛 ❌（動詞句と形容詞句の混在は不可！）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QA 2: 「一...就...」における「會」の役割 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">文法規則</span>
+                    💡 「一感冒，就會發燒」における助動詞「會」の役割は？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        特定の1回の過去の出来事（「さっき授業が終わったらすぐスマホを開いた」＝一下課就打開手機了）ではなく、<b>「〜するといつも必然的に…になる」という一般法則や習慣・習性</b>を述べる場合、後節の「就」の後に助動詞<b>「會」</b>を付与します。
+                    </p>
+                    <div class="font-mono text-xs font-bold text-blue-900 bg-white p-3 rounded border border-slate-200">
+                        ・天氣一冷，我就<b>會</b>想搬到暖和的地方去。（寒くなると、いつも引越したくなる）<br>
+                        ・我女兒一感冒，就<b>會</b>發燒。（娘は風邪をひくと、決まって熱を出す）
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 16 重要語彙 & 呼応表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('pattern')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">呼応フレーズ</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                    <button onclick="filterVocab('adj')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">形容詞・名詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 16 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 5 to 26)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "他一下課就打開手機了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は授業が終わるとすぐスマホを開いた。",
+                structure: "【一...就...】一下課 就 打開手機了",
+                point: "<b>一...就...（yì...jiù...）</b>：AするとすぐにBする（特定完了事実）。"
+            },
+            {
+                id: 6,
+                hanzi: "他一想到明天的比賽，就開始緊張了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>賽<rt>sài</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>緊<rt>jǐn</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は明日の大会のことを考えると、すぐ緊張し始めた。",
+                structure: "【一...就...】一想到...， 就開始緊張了",
+                point: "<b>想到（xiǎngdào）</b>：思いつく・頭に浮かぶ。「比賽（試合・競技）」"
+            },
+            {
+                id: 7,
+                hanzi: "他昨天煮飯的時候，一不注意就受傷了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>煮<rt>zhǔ</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>一<rt>yì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>注<rt>zhù</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>傷<rt>shāng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は昨日ご飯を作っているときに、ちょっとうっかりしたらすぐけがをしてしまった。",
+                structure: "【一...就...】一不注意 就 受傷了",
+                point: "<b>一不注意（yì bú zhùyì）</b>：ちょっと注意を怠るやいなや。「受傷（けがをする）」"
+            },
+            {
+                id: 8,
+                hanzi: "我女兒一感冒，就會發燒。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>兒<rt>ér</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>燒<rt>shāo</rt></ruby>。",
+                translation: "娘は風邪をひくとすぐに熱が出る。",
+                structure: "【一...就...會...】一感冒， 就會 發燒",
+                point: "💡<b>就...會...</b>：一般法則・習慣を表すため助動詞「會」が伴う。"
+            },
+            {
+                id: 9,
+                hanzi: "天氣一冷，我就會想搬到暖和的地方去。",
+                rubyHtml: "<ruby>天<rt>tiān</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>冷<rt>lěng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>暖<rt>nuǎn</rt></ruby><ruby>和<rt>huo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>方<rt>fāng</rt></ruby><ruby>去<rt>qù</rt></ruby>。",
+                translation: "寒くなると、すぐに暖かいところに引っ越したくなる。",
+                structure: "【一...就...會...】天氣一冷， 我就會...",
+                point: "<b>暖和（nuǎnhuo）</b>：暖かい。「搬到...去（〜へ引っ越していく）」"
+            },
+            {
+                id: 10,
+                hanzi: "那間百貨公司又大又涼快，我常常去那裡逛街。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>貨<rt>huò</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>涼<rt>liáng</rt></ruby><ruby>快<rt>kuài</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>逛<rt>guàng</rt></ruby><ruby>街<rt>jiē</rt></ruby>。",
+                translation: "あのデパートは大きいし涼しいから、私はよくショッピングに行く。",
+                structure: "【又...又...】[又大又涼快] (形＋形)",
+                point: "<b>涼快（liángkuài）</b>：涼しい。形容詞同士の並列。"
+            },
+            {
+                id: 11,
+                hanzi: "你又喝咖啡，又吃冰淇淋，肚子不會痛嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>咖<rt>kā</rt></ruby><ruby>啡<rt>fēi</rt></ruby>，<ruby>又<rt>yòu</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>冰<rt>bīng</rt></ruby><ruby>淇<rt>qí</rt></ruby><ruby>淋<rt>lín</rt></ruby>，<ruby>肚<rt>dù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>痛<rt>tòng</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あなたはコーヒーを飲んでアイスも食べてるけど、お腹が痛くならないの？",
+                structure: "【又...又...】[又喝咖啡， 又吃冰淇淋] (動＋動)",
+                point: "<b>冰淇淋（bīngqílín）</b>：アイスクリーム。動詞句同士の並列。"
+            },
+            {
+                id: 12,
+                hanzi: "媽媽又要照顧弟弟，又要上班，多辛苦啊。",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>照<rt>zhào</rt></ruby><ruby>顧<rt>gù</rt></ruby><ruby>弟<rt>dì</rt></ruby><ruby>弟<rt>di</rt></ruby>，<ruby>又<rt>yòu</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>班<rt>bān</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>辛<rt>xīn</rt></ruby><ruby>苦<rt>kǔ</rt></ruby><ruby>啊<rt>a</rt></ruby>。",
+                translation: "お母さんは、弟の世話もしなければならないし、仕事もあって、なんて大変なんだろう。",
+                structure: "【又...又...】[又要照顧...， 又要上班]",
+                point: "<b>照顧（zhàogù）</b>：世話をする・面倒をみる。「多...啊（なんて〜だろう）」"
+            },
+            {
+                id: 13,
+                hanzi: "他聽到那句話以後，開心得又笑又跳。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>句<rt>jù</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>開<rt>kāi</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>笑<rt>xiào</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>跳<rt>tiào</rt></ruby>。",
+                translation: "その言葉を聞いて、彼は笑ったり跳びはねたりするほど喜んだ。",
+                structure: "【様態補語＋又...又...】開心得 [又笑又跳]",
+                point: "<b>又笑又跳（yòu xiào yòu tiào）</b>：笑ったり跳ねたり（単音節動詞の並列）。"
+            },
+            {
+                id: 14,
+                hanzi: "她又會唱歌，又會跳舞。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>唱<rt>chàng</rt></ruby><ruby>歌<rt>gē</rt></ruby>，<ruby>又<rt>yòu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>跳<rt>tiào</rt></ruby><ruby>舞<rt>wǔ</rt></ruby>。",
+                translation: "彼女は歌も歌えるしダンスもできる。",
+                structure: "【又...又...】[又會唱歌， 又會跳舞]",
+                point: "💡<b>並列文法一貫性</b>：助動詞「會」を含む動詞句同士で揃えている（正解パターン）。"
+            },
+            {
+                id: 15,
+                hanzi: "我每天早上都會一邊看新聞一邊準備出門。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>新<rt>xīn</rt></ruby><ruby>聞<rt>wén</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby>。",
+                translation: "私は毎朝ニュースを見ながら出かける準備をする。",
+                structure: "【一邊...一邊...】[一邊看新聞] [一邊準備出門]",
+                point: "<b>一邊...一邊...（yìbiān...yìbiān...）</b>：同時進行の2つの動作。"
+            },
+            {
+                id: 16,
+                hanzi: "阿信喜歡一邊看報紙，一邊吃早餐。",
+                rubyHtml: "<ruby>阿<rt>Ā</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>紙<rt>zhǐ</rt></ruby>，<ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>餐<rt>cān</rt></ruby>。",
+                translation: "阿信は新聞を読みながら朝ご飯を食べるのが好きだ。",
+                structure: "【一邊...一邊...】[一邊看報紙] ， [一邊吃早餐]",
+                point: "<b>報紙（bàozhǐ）</b>：新聞。「早餐（朝食）」"
+            },
+            {
+                id: 17,
+                hanzi: "你不要一邊騎腳踏車一邊講電話，很危險。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>騎<rt>qí</rt></ruby><ruby>腳<rt>jiǎo</rt></ruby><ruby>踏<rt>tà</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>講<rt>jiǎng</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>很<rt>hěn</rt></ruby><ruby>危<rt>wéi</rt></ruby><ruby>險<rt>xiǎn</rt></ruby>。",
+                translation: "自転車に乗って電話するのはやめて。危ないよ。",
+                structure: "【禁止＋一邊...一邊...】不要 [一邊騎腳踏車] [一邊講電話]",
+                point: "<b>腳踏車（jiǎotàchē）</b>：自転車（台湾標準用語）。「講電話（通話する）」"
+            },
+            {
+                id: 18,
+                hanzi: "句子越短越好。",
+                rubyHtml: "<ruby>句<rt>jù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>短<rt>duǎn</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>好<rt>hǎo</rt></ruby>。",
+                translation: "文は短ければ短いほどよい。",
+                structure: "【越...越...】越短 越好",
+                point: "<b>越...越...（yuè...yuè...）</b>：〜であればあるほど…だ。"
+            },
+            {
+                id: 19,
+                hanzi: "這條裙子越看越可愛。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>條<rt>tiáo</rt></ruby><ruby>裙<rt>qún</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>愛<rt>'ài</rt></ruby>。",
+                translation: "このスカートは見れば見るほどかわいい。",
+                structure: "【越＋動詞＋越＋形容詞】越看 越可愛",
+                point: "<b>越看越...（yuè kàn yuè...）</b>：見れば見るほど〜だ。"
+            },
+            {
+                id: 20,
+                hanzi: "功課越忙，我越想玩遊戲。",
+                rubyHtml: "<ruby>功<rt>gōng</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>忙<rt>máng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>遊<rt>yóu</rt></ruby><ruby>戲<rt>xì</rt></ruby>。",
+                translation: "勉強が忙しければ忙しいほど、ゲームがしたくなる。",
+                structure: "【越...越...】功課越忙， 我越想...",
+                point: "<b>功課（gōngkè）</b>：宿題・勉強。「玩遊戲（ゲームで遊ぶ）」"
+            },
+            {
+                id: 21,
+                hanzi: "真奇怪，我的房間怎麼越打掃越亂？",
+                rubyHtml: "<ruby>真<rt>zhēn</rt></ruby><ruby>奇<rt>qí</rt></ruby><ruby>怪<rt>guài</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>掃<rt>sǎo</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>亂<rt>luàn</rt></ruby>？",
+                translation: "本当に不思議だ。私の部屋はどうして掃除すればするほど散らかるんだろう。",
+                structure: "【越...越...】越打掃 越亂",
+                point: "<b>越打掃越亂（yuè dǎsǎo yuè luàn）</b>：掃除すればするほど散らかる。"
+            },
+            {
+                id: 22,
+                hanzi: "這幾年的電視節目越來越無聊。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>視<rt>shì</rt></ruby><ruby>節<rt>jié</rt></ruby><ruby>目<rt>mù</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>無<rt>wú</rt></ruby><ruby>聊<rt>liáo</rt></ruby>。",
+                translation: "ここ数年のテレビ番組は、どんどんつまらなくなる。",
+                structure: "【越來越...】越來越 [無聊]",
+                point: "<b>越來越...（yuèláiyuè...）</b>：ますます〜になる・どんどん〜になる。"
+            },
+            {
+                id: 23,
+                hanzi: "長大以後，我越來越不喜歡跟別人比了。",
+                rubyHtml: "<ruby>長<rt>zhǎng</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "大人になってから、私は人と競うのがどんどん嫌になってきた。",
+                structure: "【越來越＋否定】越來越 [不喜歡跟別人比]",
+                point: "<b>跟別人比（gēn biérén bǐ）</b>：他者と比較する・競う。"
+            },
+            {
+                id: 24,
+                hanzi: "颱風越來越近了，你別忘記準備好食物和水。",
+                rubyHtml: "<ruby>颱<rt>tái</rt></ruby><ruby>風<rt>fēng</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>食<rt>shí</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>水<rt>shuǐ</rt></ruby>。",
+                translation: "台風がどんどん近づいてくるから、忘れずに食べ物や水の準備をすませて。",
+                structure: "【越來越...】颱風 越來越近了",
+                point: "<b>颱風（táifēng）</b>：台風。「準備好（しっかり準備を済ませる）」"
+            },
+            {
+                id: 25,
+                hanzi: "你如果不喜歡，就不要買了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>如<rt>rú</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "もし好きじゃなければ、買うのをやめなさい。",
+                structure: "【標準複文】你 如果不喜歡， 就不要買了",
+                point: "💡<b>標準複文</b>：「如果...就...」を形式通り用いた書き言葉・丁寧形。"
+            },
+            {
+                id: 26,
+                hanzi: "你不喜歡就不要買了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "好きじゃなければ買うのをやめなさい。",
+                structure: "【緊縮文】你不喜歡 就不要買了",
+                point: "💡<b>緊縮文</b>：「如果」や読点を省略しテンポ良く発話する口語の超頻出形。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "一...就...", pinyin: "yì...jiù...", meaning: "〜するとすぐ…だ", cat: "pattern" },
+            { hanzi: "又...又...", pinyin: "yòu...yòu...", meaning: "〜でもあり…でもある", cat: "pattern" },
+            { hanzi: "一邊...一邊...", pinyin: "yìbiān...yìbiān...", meaning: "〜しながら…する", cat: "pattern" },
+            { hanzi: "越...越...", pinyin: "yuè...yuè...", meaning: "〜すればするほど…だ", cat: "pattern" },
+            { hanzi: "越來越...", pinyin: "yuèláiyuè...", meaning: "どんどん〜になる", cat: "pattern" },
+            { hanzi: "涼快", pinyin: "liángkuài", meaning: "涼しい・爽やかだ", cat: "adj" },
+            { hanzi: "照顧", pinyin: "zhàogù", meaning: "世話をする・介護する", cat: "verb" },
+            { hanzi: "腳踏車", pinyin: "jiǎotàchē", meaning: "自転車 (台湾用語)", cat: "adj" },
+            { hanzi: "報紙", pinyin: "bàozhǐ", meaning: "新聞", cat: "adj" },
+            { hanzi: "功課", pinyin: "gōngkè", meaning: "宿題・学業", cat: "adj" },
+            { hanzi: "節目", pinyin: "jiémù", meaning: "テレビ・ラジオ番組", cat: "adj" },
+            { hanzi: "無聊", pinyin: "wúliáo", meaning: "退屈だ・つまらない", cat: "adj" },
+            { hanzi: "颱風", pinyin: "táifēng", meaning: "台風", cat: "adj" },
+            { hanzi: "發燒", pinyin: "fāshāo", meaning: "発熱する・熱を出す", cat: "verb" },
+            { hanzi: "受傷", pinyin: "shòushāng", meaning: "怪我をする", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 29 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 29 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">一個字都不能再增加了。（〈一個／一點／連……都……〉 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (30句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 都/也/半點深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 29 例文全30句（①〜㉚ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 29 文法メタマトリクス：強調を表す4つの「都」呼応形式
+                </h2>
+                <p class="text-sm text-slate-600">自分の主張や心情を強くアピール・強調するための4大基本パターンと否定表現の完全整理。</p>
+            </div>
+
+            <!-- 1. 強調を表す4つの文型 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 強調呼応構文 4大基本体系（TOCFL最重要）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型</th>
+                                <th class="p-3">基本構文</th>
+                                <th class="p-3">意味・否定制約</th>
+                                <th class="p-3">例文とニュアンス</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">⑴ 疑問詞 ＋ 都</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">疑問詞 ＋ 都 ＋ 述語</td>
+                                <td class="p-3 text-slate-700">「〜（で）も…だ」（全面的肯定/否定）</td>
+                                <td class="p-3 font-semibold text-slate-900">我哪個顏色都可以（どの色でもいい）<br>誰都做不到（誰もできない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">⑵ 一＋量詞 ＋ 都 ＋ 否定</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">一 ＋ 量詞(＋名詞) ＋ 都/也 ＋ 不/沒</td>
+                                <td class="p-3 text-slate-700">「ひとつ（の〜）も……ない」（<b>必ず否定形</b>）</td>
+                                <td class="p-3 font-semibold text-slate-900">一個字都不能再增加了（1文字も増やせない）<br>他一次都沒來過（1回も来ていない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">⑶ 一點 ＋ 都 ＋ 否定</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">一點(＋名詞) ＋ 都/也 ＋ 不/沒</td>
+                                <td class="p-3 text-slate-700">「少しも／まったく……ない」（<b>必ず否定形</b>）</td>
+                                <td class="p-3 font-semibold text-slate-900">一點都不奇怪（少しもおかしくない）<br>一點酒都沒喝（お酒をまったく飲んでいない）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700 text-base">⑷ (連)…… ＋ 都……</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">(連) ＋ 名詞など ＋ 都/也 ＋ 述語</td>
+                                <td class="p-3 text-slate-700">「〜でさえ……だ」（肯定・否定どちらも可）</td>
+                                <td class="p-3 font-semibold text-slate-900">連我的名字都不記得（名前さえ覚えていない）<br>連學費都可以用手機付了（学費さえスマホで払える）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 特別な強調表現：「半點」と「半＋量詞」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    ② 💡「半點 / 半＋量詞」による極限強調表現
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">半點（bàndiǎn）＋ 都 ＋ 否定</div>
+                        <p class="text-slate-600 leading-normal">「一點」の「半分」すらもない、というロジックで「ほんのわずか（かけら）もない」と徹底的に全否定する表現。</p>
+                        <div class="font-mono text-xs font-bold text-blue-900 bg-white p-2 rounded border border-slate-200">
+                            ・天上半點星星都看不到（星のかけらも見えない）<br>
+                            ・半點聲音都沒有（物音ひとつしない）
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">半 ＋ 個/顆 ＋ 都 ＋ 否定</div>
+                        <p class="text-slate-600 leading-normal">「一個」の「半分」すら存在しないという比喩。「人っ子ひとり／かけらも〜ない」の臨場感を醸し出します。</p>
+                        <div class="font-mono text-xs font-bold text-emerald-900 bg-white p-2 rounded border border-slate-200">
+                            ・半顆蛋都沒有（卵がかけらさえない）<br>
+                            ・半個人都沒看到（影も形も・人っ子ひとり見当たらない）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 29 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「都」と「也」の互換性と優先順位、肯定文での「連……都……」の使い方。</p>
+            </div>
+
+            <!-- QA 1: 「都」 vs 「也」 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">置き換えと優先度</span>
+                    💡 「都（dōu）」と「也（yě）」はいつでも置き換え可能？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>結論：</b>後続が<b>否定形（不/沒）の場合</b>は、「都」を「也」に置き換えることができます。（例：一點都不累 ＝ 一點也不累 / 一句話都沒說 ＝ 一句話也沒說）。
+                    </p>
+                    <p>
+                        ただし、台湾華語（ネイティブの日常会話）では圧倒的に<b>「都」を使用する割合が高い</b>です。「也」を使うとやや文語的・客観的になり、「都」を使うとより強い口調や口語的な情感が乗ります。
+                    </p>
+                    <p class="text-rose-800 font-bold">
+                        ⚠️ 注意：後続が「肯定形」の場合は「都」しか使えないケースが多いため、迷ったら「都」を使うのが最も自然で安全です。
+                    </p>
+                </div>
+            </div>
+
+            <!-- QA 2: 「連……都……」の肯定文パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">肯定での使用</span>
+                    「連（lián）」は否定文でしか使えない？肯定文での意味は？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>「連……都……」は肯定文でも頻繁に使われます。</b>
+                    </p>
+                    <p>
+                        「（普通ならあり得ない・考えにくい）極端な例」を提示することで、「〜でさえ（当然のように）…できる / …である」という驚きや進歩を強調します。
+                    </p>
+                    <div class="font-mono text-xs font-bold text-emerald-900 bg-white p-3 rounded border border-slate-200">
+                        例文20：現在(連)學費都可以用手機付了。<br>
+                        （学費のような大きな支払いですら、今やスマホで払えるほど便利になった！）
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 29 重要語彙 & 強調表現フレーズ
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('emp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">強調構文語彙</button>
+                    <button onclick="filterVocab('life')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">日常・生活</button>
+                    <button onclick="filterVocab('phrase')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">重要成句・動詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 29 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 30 Sentences from 1 to 30)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "我哪個顏色都可以。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>顏<rt>yán</rt></ruby><ruby>色<rt>sè</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby>。",
+                translation: "私はどの色でもかまわない。",
+                structure: "【疑問詞＋都】我 ＋ [哪個顏色 都 可以]",
+                point: "<b>哪個……都（nǎ ge... dōu）</b>：どれでも・どれを選んでも（全面的肯定）。"
+            },
+            {
+                id: 2,
+                hanzi: "他一次都沒來過。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>過<rt>guò</rt></ruby>。",
+                translation: "彼は一度も来たことがない。",
+                structure: "【一＋量詞＋都＋否定】他 ＋ [一次 都 沒來過]",
+                point: "<b>一次都沒（yí cì dōu méi）</b>：一度も〜ない（完全否定）。"
+            },
+            {
+                id: 3,
+                hanzi: "我昨天一點酒都沒喝。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>喝<rt>hē</rt></ruby>。",
+                translation: "私は昨日お酒をまったく飲んでいない。",
+                structure: "【一點＋名詞＋都＋否定】我昨天 ＋ [一點酒 都 沒喝]",
+                point: "<b>一點……都沒（yìdiǎn... dōu méi）</b>：お酒を少しも〜ない。"
+            },
+            {
+                id: 4,
+                hanzi: "他大概連我的名字都不記得。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>概<rt>gài</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>名<rt>míng</rt></ruby><ruby>字<rt>zi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>得<rt>de</rt></ruby>。",
+                translation: "彼は多分私の名前さえ覚えていないだろう。",
+                structure: "【連＋名詞＋都＋否定】他大概 ＋ [連我的名字 都 不記得]",
+                point: "<b>連……都不（lián... dōu bù）</b>：〜でさえ…ない（極端な例を否定）。"
+            },
+            {
+                id: 5,
+                hanzi: "發生了這麼嚴重的問題，你怎麼什麼都不知道？",
+                rubyHtml: "<ruby>發<rt>fā</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>嚴<rt>yán</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>道<rt>dào</rt></ruby>？",
+                translation: "こんな深刻な問題が起きたのに、あなたはどうして何も知らないの？",
+                structure: "【状況】發生了嚴重的問題， 【疑問詞＋都＋否定】你怎麼 ＋ [什麼 都 不知道]？",
+                point: "<b>什麼都不（shénme dōu bù）</b>：何も〜ない（全否定）。"
+            },
+            {
+                id: 6,
+                hanzi: "他們提的這種要求，誰都做不到。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>提<rt>tí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>求<rt>qiú</rt></ruby>，<ruby>誰<rt>shéi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "彼らが出してきたこんな要求は、誰も成し遂げられない。",
+                structure: "【主題】他們提的這種要求， 【疑問詞＋都＋可能補語否定】[誰 都 做不到]",
+                point: "<b>誰都（shéi dōu）</b>：誰もが・誰であっても。「提（tí：提起する）」"
+            },
+            {
+                id: 7,
+                hanzi: "他常說自己太窮了，哪裡都去不了，但其實他很有錢。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>窮<rt>qióng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>了<rt>liǎo</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>實<rt>shí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>錢<rt>qián</rt></ruby>。",
+                translation: "彼は、自分は貧しすぎてどこにも行けないとよく言うけれど、実はお金持ちだ。",
+                structure: "【発言】常說自己太窮了， [哪裡 都 去不了]， 【事実】但其實他很有錢",
+                point: "<b>哪裡都去不了（nǎlǐ dōu qù bù liǎo）</b>：どこにも行けない。「其實（実は）」"
+            },
+            {
+                id: 8,
+                hanzi: "字數已超過，一個字都不能再增加了。",
+                rubyHtml: "<ruby>字<rt>zì</rt></ruby><ruby>數<rt>shù</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>超<rt>chāo</rt></ruby><ruby>過<rt>guò</rt></ruby>，<ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>增<rt>zēng</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "文字数がもうオーバーしているので、これ以上1文字も増やせなくなった。",
+                structure: "【超過】字數已超過， 【一＋量詞＋都＋否定】[一個字 都 不能再增加了]",
+                point: "<b>一個字都（yí ge zì dōu）</b>：1文字も（増やせない）。タイトルフレーズ。"
+            },
+            {
+                id: 9,
+                hanzi: "媽媽，那隻老虎身體不舒服嗎？怎麼一塊肉都不吃？",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby>，<ruby>那<rt>nà</rt></ruby><ruby>隻<rt>zhī</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>虎<rt>hǔ</rt></ruby><ruby>身<rt>shēn</rt></ruby><ruby>體<rt>tǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>舒<rt>shū</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>塊<rt>kuài</rt></ruby><ruby>肉<rt>ròu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>吃<rt>chī</rt></ruby>？",
+                translation: "ママ、あのトラは体の調子が悪いの？どうしてひとかけらも肉を食べないの？",
+                structure: "【不調疑い】老虎身體不舒服嗎？ 【一＋量詞＋都＋否定】怎麼 [一塊肉 都 不吃]？",
+                point: "<b>一塊肉都不吃（yí kuài ròu dōu bù chī）</b>：肉の一片・一口すら食べない。"
+            },
+            {
+                id: 10,
+                hanzi: "他是不是心情不好？怎麼一句話也不說？",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>好<rt>hǎo</rt></ruby>？<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>句<rt>jù</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>說<rt>shuō</rt></ruby>？",
+                translation: "彼は気持ちがふさいでいるの？どうして一言もしゃべらないの？",
+                structure: "【推測】是不是心情不好？ 【一＋量詞＋也＋否定】怎麼 [一句話 也 不說]？",
+                point: "<b>一句話也不說（yí jù huà yě bù shuō）</b>：一言も話さない。ここで「也」を使用。"
+            },
+            {
+                id: 11,
+                hanzi: "小貓跑了半天，還是一隻老鼠都沒抓到。",
+                rubyHtml: "<ruby>小<rt>xiǎo</rt></ruby><ruby>貓<rt>māo</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>隻<rt>zhī</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>鼠<rt>shǔ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>抓<rt>zhuā</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "ネコちゃんはひとしきり駆け回って、それでもネズミを1匹も捕まえられなかった。",
+                structure: "【動作時間】小貓跑了半天， 【一＋量詞＋都＋否定】還是 [一隻老鼠 都 沒抓到]",
+                point: "<b>一隻老鼠都沒（yì zhī lǎoshǔ dōu méi）</b>：1匹のネズミすら捕まえられない。"
+            },
+            {
+                id: 12,
+                hanzi: "我想了好久了，還是一個句子都寫不出來。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>久<rt>jiǔ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>句<rt>jù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "私はずいぶん長い間考えているけれど、やはり一文も書けない。",
+                structure: "【思考時間】我想了好久了， 【一＋量詞＋都＋可能補語否定】還是 [一個句子 都 寫不出來]",
+                point: "<b>一個句子都（yí ge jùzi dōu）</b>：ひとつの文章すら生み出せない。"
+            },
+            {
+                id: 13,
+                hanzi: "我做錯了什麼？為什麼一個女朋友都交不到？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>錯<rt>cuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby>？<ruby>為<rt>wèi</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>交<rt>jiāo</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>？",
+                translation: "僕が何をしたと言うの？なぜ彼女が一人もできないの？",
+                structure: "【自問】我做錯了什麼？ 【一＋量詞＋都＋可能補語否定】為什麼 [一個女朋友 都 交不到]？",
+                point: "<b>交不到女朋友（jiāo bú dào nǚpéngyǒu）</b>：彼女が作れない（交：付き合う）。"
+            },
+            {
+                id: 14,
+                hanzi: "已經半夜兩點了，但是不知道為什麼我一點也不累。",
+                rubyHtml: "<ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>夜<rt>yè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>為<rt>wèi</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>累<rt>lèi</rt></ruby>。",
+                translation: "もう夜中の2時になったのに、なぜかわからないが私は少しも疲れていない。",
+                structure: "【時間】已經半夜兩點了， 【一點＋也＋否定】我 [一點 也 不累]",
+                point: "<b>一點也不累（yìdiǎn yě bú lèi）</b>：まったく疲れていない。"
+            },
+            {
+                id: 15,
+                hanzi: "這種情形我很常碰到，一點都不奇怪。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>情<rt>qíng</rt></ruby><ruby>形<rt>xíng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>碰<rt>pèng</rt></ruby><ruby>到<rt>dào</rt></ruby>，<ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>奇<rt>qí</rt></ruby><ruby>怪<rt>guài</rt></ruby>。",
+                translation: "このような状況には、私はしょっちゅう出合う。少しも不思議ではない。",
+                structure: "【経験】這種情形我很常碰到， 【一點＋都＋否定】[一點 都 不奇怪]",
+                point: "<b>一點都不奇怪（yìdiǎn dōu bù qíguài）</b>：少しも変ではない・当然だ。"
+            },
+            {
+                id: 16,
+                hanzi: "這件外套一點都不適合你，你換一件吧。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>外<rt>wài</rt></ruby><ruby>套<rt>tào</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>適<rt>shì</rt></ruby><ruby>合<rt>hé</rt></ruby><ruby>你<rt>nǐ</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>換<rt>huàn</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "このコートはあなたには全然似合わないよ。他のにしたら？",
+                structure: "【一點＋都＋否定】這件外套 [一點 都 不適合你]， 【提案】你換一件吧",
+                point: "<b>適合（shìhé）</b>：似合う・適している。「外套（wàitào：コート・ジャケット）」"
+            },
+            {
+                id: 17,
+                hanzi: "我現在才發現，自己真的一點都不了解台灣的歷史。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby>，<ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>了<rt>liǎo</rt></ruby><ruby>解<rt>jiě</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>灣<rt>wān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>歷<rt>lì</rt></ruby><ruby>史<rt>shǐ</rt></ruby>。",
+                translation: "自分が本当に台湾の歴史をまったく理解していなかったことに、私は今ようやく気づいた。",
+                structure: "【気づき】現在才發現， 【一點＋都＋否定】自己真的 [一點 都 不了解] 台灣的歷史",
+                point: "<b>了解（liǎojiě）</b>：理解する・知っている。「歷史（lìshǐ：歴史）」"
+            },
+            {
+                id: 18,
+                hanzi: "日本真的很乾淨，地上一點垃圾都沒有。",
+                rubyHtml: "<ruby>日<rt>rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby>，<ruby>地<rt>dì</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>拉<rt>lèsè</rt></ruby><ruby>圾<rt>lè</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>。",
+                translation: "日本は本当に清潔だ。地面にゴミがまったくない。",
+                structure: "【評価】日本真的很乾淨， 【一點＋名詞＋都＋否定】地上 [一點垃圾 都 沒有]",
+                point: "<b>垃圾（lèsè）</b>：ゴミ（台湾発音注意：lèsè）。"
+            },
+            {
+                id: 19,
+                hanzi: "我年輕的時候數學很好，但現在連國中數學都不會了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>輕<rt>qīng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "私は若い頃数学が得意だったのに、今は中学校の数学さえできなくなった。",
+                structure: "【過去】年輕的時候數學很好， 【連＋名詞＋都＋否定】現在 [連國中數學 都 不會了]",
+                point: "<b>國中（guózhōng）</b>：中学校（台湾用語）。「連……都不會（〜でさえ分からない）」"
+            },
+            {
+                id: 20,
+                hanzi: "這幾年網路越來越方便，現在(連)學費都可以用手機付了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>網<rt>wǎng</rt></ruby><ruby>路<rt>lù</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>方<rt>fāng</rt></ruby><ruby>便<rt>biàn</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby>(<ruby>連<rt>lián</rt></ruby>)<ruby>學<rt>xué</rt></ruby><ruby>費<rt>fèi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>付<rt>fù</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "ここ数年でインターネットがどんどん便利になり、今は学費さえスマホで支払えるようになった。",
+                structure: "【環境変化】網路越來越方便， 【連＋名詞＋都＋肯定】現在 [(連)學費 都 可以用手機付了]",
+                point: "<b>網路（wǎnglù）</b>：インターネット。「(連)……都（〜でさえも）」"
+            },
+            {
+                id: 21,
+                hanzi: "我今天帶太少錢出門了，(連)午餐都買不起。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>帶<rt>dài</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>少<rt>shǎo</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>了<rt>le</rt></ruby>，(<ruby>連<rt>lián</rt></ruby>)<ruby>午<rt>wǔ</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>。",
+                translation: "今日出かける時に持ってきたお金が少なすぎて、昼ご飯さえも買えない。",
+                structure: "【所持金不十分】帶太少錢出門了， 【(連)＋名詞＋都＋可能補語否定】[(連)午餐 都 買不起]",
+                point: "<b>買不起（mǎi bù qǐ）</b>：金銭的に買えない。「(連)……都（〜でさえも）」"
+            },
+            {
+                id: 22,
+                hanzi: "我跟他不熟，連他長什麼樣子都想不起來。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>熟<rt>shóu</rt></ruby>，<ruby>連<rt>lián</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>長<rt>zhǎng</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "私は彼と親しくないから、どんな外見だったのかさえ思い出せない。",
+                structure: "【関係】我跟他不熟， 【連＋小文＋都＋可能補語否定】[連他長什麼樣子 都 想不起來]",
+                point: "<b>想不起來（xiǎng bù qǐlái）</b>：思い出せない。「不熟（bù shóu：親しくない）」"
+            },
+            {
+                id: 23,
+                hanzi: "這種話，連小孩都不相信。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>連<rt>lián</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby>。",
+                translation: "そんな話は、子どもでさえ信じない。",
+                structure: "【主題】這種話， 【連＋名詞＋都＋否定】[連小孩 都 不相信]",
+                point: "<b>連小孩都不（lián xiǎohái dōu bù）</b>：子供でさえ〜しない（極端例）。"
+            },
+            {
+                id: 24,
+                hanzi: "聽說在德國，連一瓶水都很貴。",
+                rubyHtml: "<ruby>聽<rt>tīng</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>德<rt>dé</rt></ruby><ruby>國<rt>guó</rt></ruby>，<ruby>連<rt>lián</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>瓶<rt>píng</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>貴<rt>guì</rt></ruby>。",
+                translation: "ドイツでは水1本でさえも高いそうだ。",
+                structure: "【伝聞・場所】聽說在德國， 【連＋数量名詞＋都＋形容詞】[連一瓶水 都 很貴]",
+                point: "<b>連一瓶水都（lián yì píng shuǐ dōu）</b>：水1本でさえも。"
+            },
+            {
+                id: 25,
+                hanzi: "這本書我已經借了一個月了，但是我連一頁都還沒看。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>借<rt>jiè</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>頁<rt>yè</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby>。",
+                translation: "この本はもう1か月間借りているけれど、私はまだ1ページも読んでいない。",
+                structure: "【期間】借了一個月了， 【連＋一＋量詞＋都＋否定】但是我 [連一頁 都 還沒看]",
+                point: "<b>連一頁都（lián yí yè dōu）</b>：1ページでさえも（未読）。"
+            },
+            {
+                id: 26,
+                hanzi: "老師請他說明的時候，他緊張得連一個例子都舉不出來。",
+                rubyHtml: "<ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby><ruby>請<rt>qǐng</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>緊<rt>jǐn</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>例<rt>lì</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>舉<rt>jǔ</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "先生が彼に説明をお願いしたとき、彼は緊張して例をひとつも挙げられなかった。",
+                structure: "【程度補語＋連構文】他緊張得 ＋ [連一個例子 都 舉不出來]",
+                point: "<b>舉不出來（jǔ bù chūlái）</b>：（例などを）挙げられない。「舉例子（例を挙げる）」"
+            },
+            {
+                id: 27,
+                hanzi: "今天的雲很厚，天上半點星星都看不到。",
+                rubyHtml: "<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>雲<rt>yún</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>厚<rt>hòu</rt></ruby>，<ruby>天<rt>tiān</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>星<rt>xīng</rt></ruby><ruby>星<rt>xīng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "今日は雲が厚くて、空は星のかけらも見えない。",
+                structure: "【状況】今天的雲很厚， 【半點＋名詞＋都＋可能補語否定】天上 [半點星星 都 看不到]",
+                point: "💡<b>半點（bàndiǎn）</b>：「一點」の半分すらない（極度の強調否定）。"
+            },
+            {
+                id: 28,
+                hanzi: "夜晚的校園非常安靜，半點聲音都沒有。",
+                rubyHtml: "<ruby>夜<rt>yè</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>校<rt>xiào</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>非<rt>fēi</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>靜<rt>jìng</rt></ruby>，<ruby>半<rt>bàn</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>聲<rt>shēng</rt></ruby><ruby>音<rt>yīn</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>。",
+                translation: "夜のキャンパスはとても静かで、物音さえしない。",
+                structure: "【静寂】校園非常安靜， 【半點＋名詞＋都＋否定】[半點聲音 都 沒有]",
+                point: "<b>半點聲音都沒有（bàndiǎn shēngyīn dōu méiyǒu）</b>：物音ひとつすら聞こえない。"
+            },
+            {
+                id: 29,
+                hanzi: "家裡半顆蛋都沒有，沒辦法做蛋糕。",
+                rubyHtml: "<ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>顆<rt>kē</rt></ruby><ruby>蛋<rt>dàn</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>，<ruby>沒<rt>méi</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>蛋<rt>dàn</rt></ruby><ruby>糕<rt>gāo</rt></ruby>。",
+                translation: "家には卵のかけらさえないから、ケーキは作れない。",
+                structure: "【半＋量詞＋名詞＋都＋否定】家裡 [半顆蛋 都 沒有]， 【不可能】沒辦法做蛋糕",
+                point: "💡<b>半顆蛋（bàn kē dàn）</b>：卵ひとつすら（ない）。「顆（kē：球状のものの量詞）」"
+            },
+            {
+                id: 30,
+                hanzi: "喂？我們不是約一點嗎？怎麼半個人都沒看到？",
+                rubyHtml: "<ruby>喂<rt>wéi</rt></ruby>？<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>約<rt>yuē</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby>？",
+                translation: "もしもし、1時の待ち合わせじゃなかった？どうして影も形も見えないの？",
+                structure: "【反語確認】我們不是約一點嗎？ 【半＋量詞＋名詞＋都＋否定】怎麼 [半個人 都 沒看到]？",
+                point: "💡<b>半個人（bàn ge rén）</b>：人っ子ひとり（見当たらない）。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "一個字都", pinyin: "yí ge zì dōu", meaning: "1文字も〜ない", cat: "emp" },
+            { hanzi: "一點都", pinyin: "yìdiǎn dōu", meaning: "少しも〜ない・まったく〜ない", cat: "emp" },
+            { hanzi: "連……都", pinyin: "lián... dōu", meaning: "〜でさえも…", cat: "emp" },
+            { hanzi: "半點", pinyin: "bàndiǎn", meaning: "ほんのわずか・かけら（超強調否定）", cat: "emp" },
+            { hanzi: "半個人", pinyin: "bàn ge rén", meaning: "人っ子ひとり（見当たらない）", cat: "emp" },
+            { hanzi: "外套", pinyin: "wàitào", meaning: "コート・上着・ジャケット", cat: "life" },
+            { hanzi: "國中", pinyin: "guózhōng", meaning: "中学校 (台湾用語)", cat: "life" },
+            { hanzi: "垃圾", pinyin: "lèsè", meaning: "ゴミ (台湾独特の読み方)", cat: "life" },
+            { hanzi: "網路", pinyin: "wǎnglù", meaning: "インターネット (台湾用語)", cat: "life" },
+            { hanzi: "學費", pinyin: "xuéfèi", meaning: "学費・授業料", cat: "life" },
+            { hanzi: "適合", pinyin: "shìhé", meaning: "似合う・適している", cat: "phrase" },
+            { hanzi: "了解", pinyin: "liǎojiě", meaning: "理解する・知っている", cat: "phrase" },
+            { hanzi: "想不起來", pinyin: "xiǎng bù qǐlái", meaning: "思い出せない", cat: "phrase" },
+            { hanzi: "舉例子", pinyin: "jǔ lìzi", meaning: "例を挙げる", cat: "phrase" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

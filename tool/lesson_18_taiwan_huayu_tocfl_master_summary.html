@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 18 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 18 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">哥哥把車開到學校了。（“把”構文1・Z要素の5大パターン・否定詞位置 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (25句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 把構文の核心深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・動詞補語表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 18 例文網羅（④〜㉘ 全25句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 18 文法メタマトリクス：「把」構文の構造分解 ＆ 5大結果（Z）パターン
+                </h2>
+                <p class="text-sm text-slate-600">「主語 ＋ [否定詞/助動詞] ＋ 把 ＋ 特定名詞 ＋ 動詞 ＋ Z要素」の絶対ルールと、動詞後ろに置く補語(Z)の全分類。</p>
+            </div>
+
+            <!-- 1. 「把」構文の基本骨格と3大制約 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「把」構文の基本構造公式 ＆ 必須3大ルール
+                </h3>
+                <div class="bg-slate-900 text-white p-4 rounded-xl font-mono text-sm overflow-x-auto shadow-inner text-center font-extrabold">
+                    【公式】 A ＋ <span class="text-amber-400">[否定詞/助動詞]</span> ＋ <span class="text-blue-400">把</span> ＋ <span class="text-emerald-400">特定名詞(B)</span> ＋ <span class="text-purple-400">動詞(Y)</span> ＋ <span class="text-rose-400">結果・処理状態(Z)</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs pt-2">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-700 text-sm">ルール1: 動詞単独不可 (Z必須)</div>
+                        <p class="text-slate-600 leading-normal">
+                            動作をどう処理したか（Z）を示す言葉が必要。単に「把手洗」はNG。<br>
+                            ⭕️ 把手<span class="text-rose-700 font-bold">洗乾淨</span>
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-amber-700 text-sm">ルール2: 否定詞は「把」の前</div>
+                        <p class="text-slate-600 leading-normal">
+                            「不」「沒」「不要」などの否定詞や助動詞（應該、打算）は<b>必ず把の手前</b>に置く。<br>
+                            ⭕️ <span class="text-amber-700 font-bold">還沒</span>把功課寫完
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-emerald-700 text-sm">ルール3: 名詞Bは「特定」</div>
+                        <p class="text-slate-600 leading-normal">
+                            「どの物か」話し手と聞き手が特定できる言葉（那個、他的、手機裡的照片等）を置く。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 動詞後ろに置く Z要素の5大補語パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-purple-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    ② 動詞の後ろに添える「Z要素」の5大分類マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">Zのパターン</th>
+                                <th class="p-3">構造フレーズ</th>
+                                <th class="p-3">文法機能・処理の結末</th>
+                                <th class="p-3">代表例文</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">1. 結果補語</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 走 / 清楚 / 掉 / 完 / 好</td>
+                                <td class="p-3 text-slate-700">動作によって対象が消滅・完了・明確な状態になる。</td>
+                                <td class="p-3 font-semibold text-slate-900">把蛋糕<span class="text-blue-700">吃掉</span><br>把理由<span class="text-blue-700">說清楚</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">2. 在 ＋ 場所</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 在 ＋ 場所詞</td>
+                                <td class="p-3 text-slate-700">動作によって対象がある場所に<b>固定・留着</b>する。</td>
+                                <td class="p-3 font-semibold text-slate-900">把錢<span class="text-emerald-700">存在銀行裡</span><br>把郵票<span class="text-emerald-700">貼在筆記本上</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700">3. 到 ＋ 場所</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 到 ＋ 場所詞</td>
+                                <td class="p-3 text-slate-700">動作によって対象がある目的地・到達点へ<b>移動・移転</b>する。</td>
+                                <td class="p-3 font-semibold text-slate-900">把車<span class="text-amber-700">開到學校</span><br>把照片<span class="text-amber-700">傳到電腦裡</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700">4. 給 ＋ 人</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 給 ＋ 人</td>
+                                <td class="p-3 text-slate-700">動作によって対象が特定の人へ<b>授与・渡される</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">把盒子<span class="text-rose-700">交給她</span><br>把雨傘<span class="text-rose-700">還給他</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700">5. 方向補語 ＋ 場所</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 補語A ＋ 場所 ＋ 補語B</td>
+                                <td class="p-3 text-slate-700">動作によって対象が空間内を特定方向へ移動する。</td>
+                                <td class="p-3 font-semibold text-slate-900">把課本<span class="text-purple-700">拿出來</span><br>把豬肉<span class="text-purple-700">帶進台灣</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 18 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">普通文（SVO）と把構文（S＋把O＋V＋Z）のニュアンスの違いや、なぜ「把」構文が必要なのか。</p>
+            </div>
+
+            <!-- QA 1: 例文4 vs 例文5 の対比解説 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">ニュアンス対比</span>
+                    💡 例文4「哥哥把車開到學校了」と 例文5「哥哥平常都開車上學」の違いは？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">例文5：哥哥平常都開車上學 (普通文/手段報告)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            「兄の通学手段は車だ」という一般的な客観的事実や習慣を報告する文章です。「車」に対してどのような積極的処置をしたかという視点はありません。
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">例文4：哥哥把車開到學校了 (把構文/結果焦点)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            「特定されているあの車」を「運転して学校まで移動させ完了させた」という<b>事態の影響・結果の変化</b>に焦点を当てています。（例：「家から車がなくなって学校に行ってしまった」という影響の強調）。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: なぜ動詞単独（例：把手洗）ではいけないのか？ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">文法本質</span>
+                    なぜ「把」構文では動詞の後ろに必ず「Z要素（補語など）」が必要なのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「把」構文の本質的役割は、目的語に対して<b>「ある動作を加えた結果、対象がどう変化したか・どこに移動したか」</b>という処置（Disposition）を結末まで語りきることです。
+                    </p>
+                    <p>
+                        単に「把手洗」と言ってしまうと、動作の手前で文が唐突に中断し、「手を洗ってどうしたのか（綺麗にしたのか、濡らしたのか）」という結果情報が欠落するため、文法上未完成の不完全文になります。必ず「洗乾淨」「寫完」「吃掉」のように、結果や到達点を添える必要があります。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 18 重要語彙 & 把構文補語フレーズ
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('comp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">結果・方向補語</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・物品</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 18 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 25 Sentences from 4 to 28)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "哥哥把車開到學校了。",
+                rubyHtml: "<ruby>哥<rt>gē</rt></ruby><ruby>哥<rt>ge</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>校<rt>xiào</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "兄が車を学校に乗って行ってしまった。（「車が学校に行ってしまった」と伝えたい）",
+                structure: "【把＋名詞＋動詞＋到＋場所】把車 [開到學校了]",
+                point: "<b>開到（kāi dào）</b>：運転して〜に到着する。車が学校に移動した結果に焦点。"
+            },
+            {
+                id: 5,
+                hanzi: "哥哥平常都開車上學。",
+                rubyHtml: "<ruby>哥<rt>gē</rt></ruby><ruby>哥<rt>ge</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>學<rt>xué</rt></ruby>。",
+                translation: "兄は普段車で通学している。（兄の移動手段は車だと伝えたい ※把構文ではない）",
+                structure: "【連動文 / 通常のSVO】開車 上學",
+                point: "💡<b>対比</b>：通学の「手段」を述べる一般文（把構文ではない）。"
+            },
+            {
+                id: 6,
+                hanzi: "你應該把手洗乾淨。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby>。",
+                translation: "手をきれいに洗わなきゃだめ。",
+                structure: "【助動詞＋把＋動詞＋結果補語】應該 把手 [洗乾淨]",
+                point: "<b>洗乾淨（xǐ gānjìng）</b>：きれいに洗う。助動詞（應該）は把の手前。"
+            },
+            {
+                id: 7,
+                hanzi: "你怎麼不把自己東西收好？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>東<rt>dōng</rt></ruby><ruby>西<rt>xī</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>好<rt>hǎo</rt></ruby>？",
+                translation: "あなたはどうして自分のものをちゃんと片づけないの？",
+                structure: "【否定詞＋把＋動詞＋結果補語】不 把自己東西 [收好]",
+                point: "<b>收好（shōu hǎo）</b>：しっかり片付ける。否定詞（不）は把の手前。"
+            },
+            {
+                id: 8,
+                hanzi: "他還沒把功課寫完。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>功<rt>gōng</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "彼はまだ宿題を終わらせていない。",
+                structure: "【否定詞＋把＋動詞＋結果補語】還沒 把功課 [寫完]",
+                point: "<b>寫完（xiě wán）</b>：書き終える。否定（還沒）は把の手前。"
+            },
+            {
+                id: 9,
+                hanzi: "我不敢把這個蛋糕吃掉。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>敢<rt>gǎn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>蛋<rt>dàn</rt></ruby><ruby>糕<rt>gāo</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>掉<rt>diào</rt></ruby>。",
+                translation: "私はこのケーキを食べてしまう勇気がない。",
+                structure: "【助動詞＋把＋動詞＋掉】不敢 把這個蛋糕 [吃掉]",
+                point: "<b>吃掉（chī diào）</b>：平らげてしまう・食べてしまう。「不敢（〜する勇気がない）」"
+            },
+            {
+                id: 10,
+                hanzi: "你把那個杯子拿來吧。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>杯<rt>bēi</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "あのコップを持ってきて。",
+                structure: "【把＋特定目的語＋動詞＋方向補語】把那個杯子 [拿來]",
+                point: "<b>拿來（ná lái）</b>：持ってくる。特定目的語（那個杯子）。"
+            },
+            {
+                id: 11,
+                hanzi: "你快把衣服放進洗衣機裡。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>。",
+                translation: "早く服を洗濯機に入れて。",
+                structure: "【把＋動詞＋進＋場所】把衣服 [放進洗衣機裡]",
+                point: "<b>洗衣機（xǐyījī）</b>：洗濯機。「放進（入れて〜の中に納める）」"
+            },
+            {
+                id: 12,
+                hanzi: "你最好把錢存在銀行裡。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>存<rt>cún</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>銀<rt>yín</rt></ruby><ruby>行<rt>háng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>。",
+                translation: "あなたはお金を銀行に預けたほうがよい。",
+                structure: "【把＋動詞＋在＋場所】把錢 [存在銀行裡]",
+                point: "<b>存在（cún zài）</b>：〜の中に預け入れる・保管する。"
+            },
+            {
+                id: 13,
+                hanzi: "你不要把他的腳踏車騎走。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>腳<rt>jiǎo</rt></ruby><ruby>踏<rt>tà</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>騎<rt>qí</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。",
+                translation: "彼の自転車に乗っていかないで。",
+                structure: "【否定＋把＋動詞＋走】不要 把他的腳踏車 [騎走]",
+                point: "<b>騎走（qí zǒu）</b>：乗って立ち去る。否定（不要）は把の手前。"
+            },
+            {
+                id: 14,
+                hanzi: "你應該把要這樣做的理由說清楚。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>樣<rt>yàng</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>由<rt>yóu</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>清<rt>qīng</rt></ruby><ruby>楚<rt>chǔ</rt></ruby>。",
+                translation: "あなたは、そのようにしなければならない理由を、はっきり言わなければならない。",
+                structure: "【把＋長文特定目的語＋說清楚】把[理由] [說清楚]",
+                point: "<b>說清楚（shuō qīngchǔ）</b>：はっきり説明する・伝える。"
+            },
+            {
+                id: 15,
+                hanzi: "我打算把讀完的書全部賣掉。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>全<rt>quán</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>賣<rt>mài</rt></ruby><ruby>掉<rt>diào</rt></ruby>。",
+                translation: "私は読み終えた本を全部売ってしまうつもりだ。",
+                structure: "【把＋目的語＋副詞＋賣掉】把[讀完的書] 全部 [賣掉]",
+                point: "<b>賣掉（mài diào）</b>：売り払ってしまう（掉＝手元から処分）。"
+            },
+            {
+                id: 16,
+                hanzi: "弟弟把家裡的烤肉醬都用完了。",
+                rubyHtml: "<ruby>弟<rt>dì</rt></ruby><ruby>弟<rt>di</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>肉<rt>ròu</rt></ruby><ruby>醬<rt>jiàng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "弟は家にある焼肉のタレを全部使ってしまった。",
+                structure: "【把＋目的語＋都＋用完了】把[烤肉醬] 都 [用完了]",
+                point: "<b>烤肉醬（kǎoròujiàng）</b>：バーベキュー/焼肉のタレ。「用完（使い切る）」"
+            },
+            {
+                id: 17,
+                hanzi: "他一直把那次比賽的結果放在心上。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>直<rt>zhí</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>賽<rt>sài</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>結<rt>jié</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>上<rt>shàng</rt></ruby>。",
+                translation: "彼はあの試合の結果をずっと気に留めている。",
+                structure: "【把＋目的語＋放在心上】把[結果] [放在心上]",
+                point: "<b>放在心上（fàng zài xīn shàng）</b>：心に留める・気にする。"
+            },
+            {
+                id: 18,
+                hanzi: "這張郵票好漂亮！我想把它貼在筆記本上。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>漂<rt>piào</rt></ruby><ruby>亮<rt>liàng</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>它<rt>tā</rt></ruby><ruby>貼<rt>tiē</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>記<rt>jì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>上<rt>shàng</rt></ruby>。",
+                translation: "この切手すごくきれい。ノートに貼りたい。",
+                structure: "【把＋代名詞(它)＋貼在...上】把它 [貼在筆記本上]",
+                point: "<b>貼在...上（tiē zài...shàng）</b>：〜の上に貼り付ける。"
+            },
+            {
+                id: 19,
+                hanzi: "野餐的時候，請不要把垃圾留在公園裡。",
+                rubyHtml: "<ruby>野<rt>yě</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>拉<rt>lèsè</rt></ruby><ruby>圾<rt>lè</rt></ruby><ruby>留<rt>liú</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>。",
+                translation: "ピクニックのときは、ゴミを公園に残さないでください。",
+                structure: "【請不要＋把＋留在...裡】請不要 把垃圾 [留在公園裡]",
+                point: "<b>留在...裡（liú zài...lǐ）</b>：〜の中に残す/放置する。"
+            },
+            {
+                id: 20,
+                hanzi: "他打算把那封信寄到哪裡？",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>封<rt>fēng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>寄<rt>jì</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>？",
+                translation: "彼はあの手紙をどこに送るつもりなの？",
+                structure: "【打算＋把＋寄到＋疑問詞】把那封信 [寄到哪裡]",
+                point: "<b>寄到（jì dào）</b>：〜に送付・投函して送る。"
+            },
+            {
+                id: 21,
+                hanzi: "你把醬油裝到袋子裡了沒有？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>醬<rt>jiàng</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>裝<rt>zhuāng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>袋<rt>dài</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>？",
+                translation: "あなたは醤油を袋に入れましたか。",
+                structure: "【把＋動詞＋到＋場所＋了沒有】把醬油 [裝到袋子裡] 了沒有？",
+                point: "<b>裝到...裡（zhuāng dào...lǐ）</b>：詰めて入れる・パッキングする。"
+            },
+            {
+                id: 22,
+                hanzi: "我想把手機裡的照片傳到電腦裡。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>照<rt>zhào</rt></ruby><ruby>片<rt>piàn</rt></ruby><ruby>傳<rt>chuán</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>腦<rt>nǎo</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>。",
+                translation: "私はスマホの写真をパソコンに送りたい。",
+                structure: "【想＋把＋傳到...裡】把[照片] [傳到電腦裡]",
+                point: "<b>傳到（chuán dào）</b>：データ送信・転送する。"
+            },
+            {
+                id: 23,
+                hanzi: "你先幫我把這三個盒子交給她吧。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>盒<rt>hé</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>交<rt>jiāo</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "この3つの箱を先に彼女に渡してちょうだい。",
+                structure: "【幫我＋把＋動詞＋給＋人】把這三個盒子 [交給她]",
+                point: "<b>交給（jiāo gěi）</b>：手渡す・引き渡す。"
+            },
+            {
+                id: 24,
+                hanzi: "我想經過阿明家的時候，把他的雨傘還給他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>阿<rt>Ā</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>把<rt>bǎ</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>傘<rt>sǎn</rt></ruby><ruby>還<rt>huán</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "阿明の家の前を通るときに、彼の傘を返そうと思う。",
+                structure: "【把＋動詞＋給＋人】把他的雨傘 [還給他]",
+                point: "<b>還給（huán gěi）</b>：返却する・返す。「經過（通りかかる）」"
+            },
+            {
+                id: 25,
+                hanzi: "我想把這份禮物送給他，不知道他會不會喜歡？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>送<rt>sòng</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby>？",
+                translation: "このプレゼントを彼に贈ろうと思うけど、彼は気に入るかなあ？",
+                structure: "【把＋動詞＋給＋人】把這份禮物 [送給他]",
+                point: "<b>送給（sòng gěi）</b>：プレゼントする・贈る。"
+            },
+            {
+                id: 26,
+                hanzi: "要上課了，請把課本拿出來。",
+                rubyHtml: "<ruby>要<rt>yào</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>請<rt>qǐng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>課<rt>kè</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>來<rt>lái</rt></ruby>。",
+                translation: "もうすぐ授業だから、教科書を出してください。",
+                structure: "【把＋動詞＋複合方向補語】把課本 [拿出來]",
+                point: "<b>拿出來（ná chū lái）</b>：取り出す・外に出す。"
+            },
+            {
+                id: 27,
+                hanzi: "我去把車開回來，你在這邊等我就好了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>來<rt>lái</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>邊<rt>biān</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "車を［運転して戻ってくる／取ってくる］から、このへんで待っていたらいいよ。",
+                structure: "【把＋動詞＋開回來】把車 [開回來]",
+                point: "<b>開回來（kāi huí lái）</b>：車を運転して戻ってくる。"
+            },
+            {
+                id: 28,
+                hanzi: "你們不可以把國外的豬肉帶進台灣。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>外<rt>wài</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>豬<rt>zhū</rt></ruby><ruby>肉<rt>ròu</rt></ruby><ruby>帶<rt>dài</rt></ruby><ruby>進<rt>jìn</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>灣<rt>wān</rt></ruby>。",
+                translation: "海外の豚肉を台湾に持ち込んではいけません。",
+                structure: "【不可以＋把＋帶進＋場所】把[國外的豬肉] [帶進台灣]",
+                point: "<b>帶進（dài jìn）</b>：持ち込む・運び入れる（検疫厳禁ルール）。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "洗乾淨", pinyin: "xǐ gānjìng", meaning: "綺麗に洗う", cat: "comp" },
+            { hanzi: "收好", pinyin: "shōu hǎo", meaning: "しっかり片付ける", cat: "comp" },
+            { hanzi: "吃掉 / 賣掉", pinyin: "chī diào / mài diào", meaning: "食べてしまう / 売ってしまう", cat: "comp" },
+            { hanzi: "放在心上", pinyin: "fàng zài xīn shàng", meaning: "心に留める・気にする", cat: "comp" },
+            { hanzi: "交給 / 還給", pinyin: "jiāo gěi / huán gěi", meaning: "手渡す / 返却する", cat: "comp" },
+            { hanzi: "烤肉醬", pinyin: "kǎoròujiàng", meaning: "焼肉・バーベキューのタレ", cat: "noun" },
+            { hanzi: "洗衣機", pinyin: "xǐyījī", meaning: "洗濯機", cat: "noun" },
+            { hanzi: "筆記本", pinyin: "bǐjìběn", meaning: "ノート", cat: "noun" },
+            { hanzi: "醬油", pinyin: "jiàngyóu", meaning: "醤油", cat: "noun" },
+            { hanzi: "豬肉", pinyin: "zhūròu", meaning: "豚肉", cat: "noun" },
+            { hanzi: "不敢", pinyin: "bù gǎn", meaning: "〜する勇気がない", cat: "verb" },
+            { hanzi: "打算", pinyin: "dǎsuàn", meaning: "〜するつもりだ", cat: "verb" },
+            { hanzi: "裝", pinyin: "zhuāng", meaning: "詰める・パッキングする", cat: "verb" },
+            { hanzi: "傳", pinyin: "chuán", meaning: "送信する・転送する", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 13 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 13 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">我男朋友出國念書三個月了，我很想他。（“了”の用法4 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (31句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 「了」の配置・継続深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 13 例文全31句（①〜㉛ 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 13 文法メタマトリクス：「了」の位置と表現パターンの5大体系
+                </h2>
+                <p class="text-sm text-slate-600">目的語の構造（裸名詞 vs 数量詞つき名詞）や、動作の継続（ダブル“了”）、経過時間に応じた「了」の完全分類。</p>
+            </div>
+
+            <!-- 1. 「了」の5大文型対比 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「了」の5大構文パターン比較マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型</th>
+                                <th class="p-3">基本構文</th>
+                                <th class="p-3">「了」の位置・文法機能</th>
+                                <th class="p-3">例文とニュアンス</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base">文型 (1)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 目的語(裸名詞) ＋ 了</td>
+                                <td class="p-3 text-slate-700">文末に配置。シンプルな完了事態を報告し、<b>文がここで完結する</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">我我很早就吃晚餐了。<br>（私は早い時間に晩ご飯を食べた。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700 text-base">文型 (2)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 了 ＋ 目的語(数量＋名詞)</td>
+                                <td class="p-3 text-slate-700">動詞直後に配置。数量が確定した動作の完了を表す。</td>
+                                <td class="p-3 font-semibold text-slate-900">我中午吃了一個粽子。<br>（お昼にチマキを1個食べた。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700 text-base">文型 (3)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 了 ＋ 目的語(裸名詞) ……</td>
+                                <td class="p-3 text-slate-700">修飾語のない目的語の前に「了」を置くと、<b>後にさらに文が続く</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">我吃了晚餐，現在已經餓了。<br>（夕食を食べたから、今はもうお腹が空いた。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700 text-base">文型 (4)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 了 ＋ 目的語 ＋ 了</td>
+                                <td class="p-3 text-slate-700"><b>ダブル“了”</b>：動作が現在も継続中、または今後も続く可能性を示す。</td>
+                                <td class="p-3 font-semibold text-slate-900">我已經喝了一瓶啤酒了。<br>（もうビールを1本飲んでいるが、まだ飲む。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700 text-base">文型 (5)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞(句) ＋ 時間量 ＋ 了</td>
+                                <td class="p-3 text-slate-700">ある事態や動作が発生してから経過した累積時間を表す。</td>
+                                <td class="p-3 font-semibold text-slate-900">我男朋友出國念書三個月了。<br>（彼氏が留学に行って3か月になる。）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. ダブル“了”と“已經”の強力なコンボ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② ダブル“了”（V＋了＋O＋了）と副詞「已經」のニュアンス効果
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">1. 動作の現在進行・さらなる継続</div>
+                        <p class="text-slate-600 leading-normal">
+                            文末の“了”が存在することで、「これまでに〜した」という事実に加え、「今もなおその動作・状態が続いており、これからも増える可能性がある」ことを示します。
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">2. 主観的「強調」（すでにこんなに！）</div>
+                        <p class="text-slate-600 leading-normal">
+                            「已經（すでに）」と組み合わさることで、話し手が「時間が非常に長い」「数量や回数が非常に多い」と感じている情緒的な強調を表現します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 13 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">文型1と文型3の「了」の位置による終立感の違いと、経過時間「了」の構造的特徴。</p>
+            </div>
+
+            <!-- QA 1: 文型1 vs 文型3 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">文末終立感</span>
+                    💡 「吃晚餐了」と「吃了晚餐」はどうして余韻や文の続き方が違うの？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">吃晚餐了 (文末了＝完結)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            “了”が文末に位置するため、文全体を締めくくる役割を果たします。「晩ご飯を食べ終わったよ」という事実の報告として完結します。
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-amber-800 text-sm">吃了晚餐，…… (動詞直後了＋裸名詞＝未完結)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            修飾語のない名詞（晚餐）の前に“了”を置くと、中国語では文が途中で途切れたような感覚を生み出します。「〜を食べたので/食べてから、次に…」というように、後続の文を導く条件・時間的背景になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 経過時間を表す文型5 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">経過時間</span>
+                    「結婚幾年了？」や「出國念書三個月了」における文末の“了”
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        動作や状態が発生した時点から<b>「現時点までに経過した時間の長さ」</b>を表す場合、時間量（三個月、二十年、半年）の後に文末の“了”を付与します。
+                    </p>
+                    <div class="font-mono text-xs font-bold text-emerald-900 bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>・我們結婚幾年了？（結婚してから何年経ちましたか？）</div>
+                        <div>・高中畢業已經二十年了。（高校を卒業してもう20年になる。）</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 13 重要語彙 & 台湾日常表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('time')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">時間・副詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・地名</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動詞・量詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 13 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 31 Sentences from 1 to 31)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "他早就換衣服了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>換<rt>huàn</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼はとっくに着替えた。",
+                structure: "【文型(1) V＋O＋了】他 早就 換衣服 ＋ [了]",
+                point: "<b>早就（zǎojiù）</b>：とっくに。裸名詞目的語（衣服）の後の文末「了」。"
+            },
+            {
+                id: 2,
+                hanzi: "我中午吃了一個粽子。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>粽<rt>zòng</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "私はお昼にチマキを1個食べた。",
+                structure: "【文型(2) V＋了＋数量O】我 吃 [了] [一個粽子]",
+                point: "<b>粽子（zòngzi）</b>：チマキ。数量詞（一個）を伴うため「了」は動詞直後。"
+            },
+            {
+                id: 3,
+                hanzi: "我做了沙拉……",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>沙<rt>shā</rt></ruby><ruby>拉<rt>lā</rt></ruby>……",
+                translation: "私はサラダを作って／作ったけど／作ったから……",
+                structure: "【文型(3) V＋了＋裸名詞】我 做 [了] 沙拉……",
+                point: "💡<b>文が続く感</b>：修飾語のない目的語（沙拉）の前の「了」は後続文を暗示。"
+            },
+            {
+                id: 4,
+                hanzi: "他已經找了半天了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼はもう長い時間探している。",
+                structure: "【文型(4) ダブル了＋時間量】他 已經 找 [了] 半天 [了]",
+                point: "<b>半天（bàntiān）</b>：長い時間。ダブル「了」で現在も探索継続中であることを強調。"
+            },
+            {
+                id: 5,
+                hanzi: "我們認識快十年了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "私体が知り合ってからもうすぐ10年になる。",
+                structure: "【文型(5) V＋時間量＋了】我們 認識 [快十年了]",
+                point: "<b>快……了（もうすぐ〜になる）</b>：知り合ってからの経過時間を表す。"
+            },
+            {
+                id: 6,
+                hanzi: "你寫拼音了嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>拼<rt>pīn</rt></ruby><ruby>音<rt>yīn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あなたはピンインを書きましたか。",
+                structure: "【文型(1) 疑問文】你 寫拼音 [了] 嗎？",
+                point: "<b>拼音（pīnyīn）</b>：ピンイン。シンプルな事態完了の疑問文。"
+            },
+            {
+                id: 7,
+                hanzi: "沒想到他也訂票了。",
+                rubyHtml: "<ruby>沒<rt>méi</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>訂<rt>dìng</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼もチケットを予約していたなんて。",
+                structure: "【文型(1)】沒想到 他也 訂票 [了]",
+                point: "<b>沒想到（méi xiǎngdào）</b>：思いがけず・まさか。「訂票（チケット予約）」"
+            },
+            {
+                id: 8,
+                hanzi: "小梨在彰化租了一間房子。",
+                rubyHtml: "<ruby>小<rt>Xiǎo</rt></ruby><ruby>梨<rt>lí</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>彰<rt>Zhāng</rt></ruby><ruby>化<rt>huà</rt></ruby><ruby>租<rt>zū</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "小梨は彰化で家を1軒借りた。",
+                structure: "【文型(2)】在彰化 租 [了] [一間房子]",
+                point: "<b>彰化（Zhānghuà）</b>：台湾中部の地名（チャンホア）。数量目的語の前で「了」。"
+            },
+            {
+                id: 9,
+                hanzi: "我最近買了一套注音符號的郵票。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>套<rt>tào</rt></ruby><ruby>注<rt>zhù</rt></ruby><ruby>音<rt>yīn</rt></ruby><ruby>符<rt>fú</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>票<rt>piào</rt></ruby>。",
+                translation: "私は最近注音符号の切手を1セット買った。",
+                structure: "【文型(2)】買 [了] [一套注音符號的郵票]",
+                point: "<b>注音符號（zhùyīn fúhào）</b>：ボポモフォ（台湾の音標文字）。一套（1セット）。"
+            },
+            {
+                id: 10,
+                hanzi: "我的信箱這幾天收到了很多垃圾郵件，你可以幫我看一下嗎？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>箱<rt>xiāng</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>拉<rt>lèsè</rt></ruby><ruby>圾<rt>lè</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>件<rt>jiàn</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "私のメールボックスに、ここ数日迷惑メールがたくさん届いた。ちょっと見てくれる？",
+                structure: "【結果補語＋了＋数量O】收到 [了] [很多垃圾郵件]",
+                point: "<b>垃圾郵件（lèsè yóujiàn）</b>：迷惑メール（台湾発音: lèsè）。"
+            },
+            {
+                id: 11,
+                hanzi: "我們大學的華語中心上個月辦了兩場活動。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>華<rt>Huá</rt></ruby><ruby>語<rt>yǔ</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>場<rt>chǎng</rt></ruby><ruby>活<rt>huó</rt></ruby><ruby>動<rt>dòng</rt></ruby>。",
+                translation: "私たちの大学の華語センターは、先月イベントを2回開催した。",
+                structure: "【文型(2)】辦 [了] [兩場活動]",
+                point: "<b>場（chǎng）</b>：イベントや映画などの量詞。「華語中心（中国語センター）」"
+            },
+            {
+                id: 12,
+                hanzi: "我上午打了好幾次電話給他，他都在通話中。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>他<rt>tā</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>通<rt>tōng</rt></ruby><ruby>話<rt>huà</rt></ruby><ruby>中<rt>zhōng</rt></ruby>。",
+                translation: "午前中に何度も彼に電話したけど、ずっと話し中だった。",
+                structure: "【動詞＋了＋動量詞】打 [了] [好幾次電話]",
+                point: "<b>好幾次（hǎo jǐ cì）</b>：何回も・何度も。「通話中（話し中）」"
+            },
+            {
+                id: 13,
+                hanzi: "他昨天單字只背了十分鐘左右，現在當然全忘了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>單<rt>dān</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>分<rt>fēn</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>左<rt>zuǒ</rt></ruby><ruby>右<rt>yòu</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>當<rt>dāng</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>全<rt>quán</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は昨日単語の暗記を10分ほどしか怠らなかったので、今はもちろん全部忘れている。",
+                structure: "【動詞＋了＋時間量】背 [了] [十分鐘左右]",
+                point: "<b>背（bèi）</b>：暗記する・覚える。「單字（単語）」"
+            },
+            {
+                id: 14,
+                hanzi: "我很早就吃晚餐了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "私は早い時間に晩ご飯を食べた。（文が終わる感じ）",
+                structure: "【文型(1) 文末了】我 很早就 吃晚餐 [了]",
+                point: "💡<b>終立感</b>：文末に「了」があるため、これ以上話が続かず文が完結する。"
+            },
+            {
+                id: 15,
+                hanzi: "我很早就吃了晚餐，現在已經餓了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>餐<rt>cān</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>餓<rt>è</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "私は早い時間に晩ご飯を食べたから、今はもうお腹が空いた。",
+                structure: "【文型(3) 継続文】吃 [了] 晚餐， [現在已經餓了]",
+                point: "💡<b>文が続く</b>：動詞直後に「了」＋裸名詞の場合、理由・背景として後続文に繋がる。"
+            },
+            {
+                id: 16,
+                hanzi: "他交了女朋友以後就不跟我們玩了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>交<rt>jiāo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は彼女ができてから僕たちと遊ばなくなった。",
+                structure: "【文型(3) 条件/時間節】交 [了] 女朋友 以後， [就不...]",
+                point: "<b>交女朋友（jiāo nǚpéngyǒu）</b>：彼女を作る・付き合う。"
+            },
+            {
+                id: 17,
+                hanzi: "我剛剛去了辦公室，但是老師剛好不在。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>辦<rt>bàn</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>室<rt>shì</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>在<rt>zài</rt></ruby>。",
+                translation: "さっき事務室に行ったけど、先生はちょうどいらっしゃらなかった。",
+                structure: "【文型(3) 逆接前置】去 [了] 辦公室， [但是...]",
+                point: "<b>剛好（gānghǎo）</b>：あいにく・ちょうど。「辦公室（事務室・オフィス）」"
+            },
+            {
+                id: 18,
+                hanzi: "他在火車站轉了車以後，才發現下車的時候忘了拿外套。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>火<rt>huǒ</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>轉<rt>zhuǎn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>才<rt>cái</rt></ruby><ruby>發<rt>fā</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>外<rt>wài</rt></ruby><ruby>套<rt>tào</rt></ruby>。",
+                translation: "彼は(列車の)駅で乗り換えた後、下りる時に上着を忘れてきたことにやっと気づいた。",
+                structure: "【文型(3) 段階進行】轉 [了] 車 以後， [才發現...]",
+                point: "<b>轉車（zhuǎnchē）</b>：乗り換える。"
+            },
+            {
+                id: 19,
+                hanzi: "我剛才喝了一瓶啤酒，現在不能開車。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>瓶<rt>píng</rt></ruby><ruby>皮<rt>pí</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>車<rt>chē</rt></ruby>。",
+                translation: "私はさっきビールを1本飲んだので、今は車を運転できない。",
+                structure: "【文型(2) 事実完了】喝 [了] 一瓶啤酒 （動作終了）",
+                point: "💡<b>単数の了</b>：文末に「了」がないため、1本飲んで飲む動作は完了している。"
+            },
+            {
+                id: 20,
+                hanzi: "我已經喝了一瓶啤酒了，可是還想要再喝。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>瓶<rt>píng</rt></ruby><ruby>皮<rt>pí</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>喝<rt>hē</rt></ruby>。",
+                translation: "私はもうビールを1本飲んでいるけど、まだ飲みたい。",
+                structure: "【文型(4) ダブル了】已經 喝 [了] 一瓶啤酒 [了]",
+                point: "💡<b>ダブル了</b>：文末「了」があるため「これからもさらに飲む」継続意図を示す。"
+            },
+            {
+                id: 21,
+                hanzi: "這部電影我非常喜歡，已經看了十幾次了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>非<rt>fēi</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby>，<ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この映画は私はとても好きで、もう十数回見ています。",
+                structure: "【文型(4) 累積回数】已經 看 [了] 十幾次 [了]",
+                point: "<b>十幾次（shí jǐ cì）</b>：十数回。今後もまた見る可能性を含む。"
+            },
+            {
+                id: 22,
+                hanzi: "我在這裡住了二十年了，附近的鄰居我全都認識。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>住<rt>zhù</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>二<rt>èr</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>附<rt>fù</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>鄰<rt>lín</rt></ruby><ruby>居<rt>jū</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>全<rt>quán</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby>。",
+                translation: "私はここに住んで20年になり、近所の人たちはみんな知り合いだ。",
+                structure: "【文型(4) 居住継続】住 [了] 二十年 [了]",
+                point: "<b>鄰居（línjū）</b>：近所の人・隣人。今も居住継続中。"
+            },
+            {
+                id: 23,
+                hanzi: "你已經點了五道菜了，應該夠了吧！",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>夠<rt>gòu</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "あなたはもう料理を5品注文しているから、多分もう十分でしょう。",
+                structure: "【文型(4) 強調】已經 點 [了] 五道菜 [了]",
+                point: "<b>道（dào）</b>：料理の品数を数える量詞。すでに5品に達した強調。"
+            },
+            {
+                id: 24,
+                hanzi: "我傳了好幾封簡訊給你了，你都沒看到嗎？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>傳<rt>chuán</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>封<rt>fēng</rt></ruby><ruby>簡<rt>jiǎn</rt></ruby><ruby>訊<rt>xùn</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "私はあなたにショートメッセージを何本も送っているのに、あなたはどれも見ていないの？",
+                structure: "【文型(4) 累積送信】傳 [了] 好幾封簡訊 [了]",
+                point: "<b>簡訊（jiǎnxùn）</b>：ショートメッセージ・SMS（台湾用語）。"
+            },
+            {
+                id: 25,
+                hanzi: "我們已經推車走了半個小時了，還沒走到加油站。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>推<rt>tuī</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>站<rt>zhàn</rt></ruby>。",
+                translation: "私たちは［バイク/車］を押してもう30分も歩いているのに、まだガソリンスタンドにたどりついていない。",
+                structure: "【文型(4) 継続進行】走 [了] 半個小時 [了]",
+                point: "<b>加油站（jiāyóuzhàn）</b>：ガソリンスタンド。推車（車を押す）。"
+            },
+            {
+                id: 26,
+                hanzi: "你們結婚幾年了？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>結<rt>jié</rt></ruby><ruby>婚<rt>hūn</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>？",
+                translation: "あなたたちは結婚して何年になるの？",
+                structure: "【文型(5) 経過時間疑問】結婚 [幾年了]？",
+                point: "<b>結婚（jiéhūn）</b>：結婚する。結婚後の経過時間を尋ねる。"
+            },
+            {
+                id: 27,
+                hanzi: "我男朋友出國念書三個月了，我很想他。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>男<rt>nán</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>他<rt>tā</rt></ruby>。",
+                translation: "彼氏が海外留学に行って3か月になる。彼にすごく会いたい。",
+                structure: "【文型(5) 経過時間】出國念書 [三個月了]",
+                point: "<b>想（xiǎng）</b>：恋しく思う・会いたい。タイトルフレーズ。"
+            },
+            {
+                id: 28,
+                hanzi: "真不敢相信！我們高中畢業已經二十年了。",
+                rubyHtml: "<ruby>真<rt>zhēn</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>敢<rt>gǎn</rt></ruby><ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>高<rt>gāo</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>畢<rt>bì</rt></ruby><ruby>業<rt>yè</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>二<rt>èr</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "本当に信じられない。私体が高校を卒業してもう20年になる。",
+                structure: "【文型(5) 経過時間】高中畢業 已經 [二十年了]",
+                point: "<b>高中（gāozhōng）</b>：高校。「畢業（卒業する）」"
+            },
+            {
+                id: 29,
+                hanzi: "你來台北快半年了，還沒去其他地方觀光過嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>方<rt>fāng</rt></ruby><ruby>觀<rt>guāng</rt></ruby><ruby>光<rt>guāng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あなたが台北に来てもうすぐ半年になるけど、まだ他の場所に観光に行ったことはないの？",
+                structure: "【文型(5) 累積時間】來台北 [快半年了]",
+                point: "<b>觀光過（guāngguāng guò）</b>：観光したことがある（経験の過）。"
+            },
+            {
+                id: 30,
+                hanzi: "你吃完飯已經半個小時了，怎麼還沒吃藥呢？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>呢<rt>ne</rt></ruby>？",
+                translation: "あなたはご飯を食べ終わってもう30分経っているのに、なぜまだ薬を飲んでいないの？",
+                structure: "【文型(5) 完了後時間】吃完飯 已經 [半個小時了]",
+                point: "<b>吃藥（chī yào）</b>：薬を飲む（華語では「吃」を使用）。"
+            },
+            {
+                id: 31,
+                hanzi: "我從越南回來六年多了，有時候還是會不習慣日本的生活。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>越<rt>Yuè</rt></ruby><ruby>南<rt>nán</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>六<rt>liù</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>有<rt>yǒu</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>習<rt>xí</rt></ruby><ruby>慣<rt>guàn</rt></ruby><ruby>日<rt>Rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>活<rt>huó</rt></ruby>。",
+                translation: "私がベトナムから帰ってきて6年以上経つけど、それでも日本の生活になじめないと思うときがある。",
+                structure: "【文型(5) 帰国後時間】從越南回來 [六年多了]",
+                point: "<b>習慣（xíguàn）</b>：慣れる・習慣になる。「六年多（6年あまり）」"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "粽子", pinyin: "zòngzi", meaning: "チマキ", cat: "noun" },
+            { hanzi: "注音符號", pinyin: "zhùyīn fúhào", meaning: "注音符号 (ボポモフォ)", cat: "noun" },
+            { hanzi: "垃圾郵件", pinyin: "lèsè yóujiàn", meaning: "迷惑メール", cat: "noun" },
+            { hanzi: "簡訊", pinyin: "jiǎnxùn", meaning: "ショートメッセージ (SMS)", cat: "noun" },
+            { hanzi: "加油站", pinyin: "jiāyóuzhàn", meaning: "ガソリンスタンド", cat: "noun" },
+            { hanzi: "鄰居", pinyin: "línjū", meaning: "近所の人・隣人", cat: "noun" },
+            { hanzi: "高中", pinyin: "gāozhōng", meaning: "高校", cat: "noun" },
+            { hanzi: "早就", pinyin: "zǎojiù", meaning: "とっくに・ずいぶん前に", cat: "time" },
+            { hanzi: "已經", pinyin: "yǐjīng", meaning: "すでに・もう", cat: "time" },
+            { hanzi: "半天", pinyin: "bàntiān", meaning: "長い時間・しばらくの間", cat: "time" },
+            { hanzi: "交女朋友", pinyin: "jiāo nǚpéngyǒu", meaning: "彼女を作る", cat: "verb" },
+            { hanzi: "背單字", pinyin: "bèi dānzì", meaning: "単語を暗記する", cat: "verb" },
+            { hanzi: "轉車", pinyin: "zhuǎnchē", meaning: "乗り換える", cat: "verb" },
+            { hanzi: "吃藥", pinyin: "chī yào", meaning: "薬を飲む", cat: "verb" },
+            { hanzi: "場", pinyin: "chǎng", meaning: "イベント・映画などの量詞", cat: "verb" },
+            { hanzi: "道", pinyin: "dào", meaning: "料理の品数を数える量詞", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

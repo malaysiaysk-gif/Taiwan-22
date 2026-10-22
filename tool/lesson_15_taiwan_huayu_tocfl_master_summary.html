@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 15 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 15 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">我們都擔心死了。（程度補語・得の有無・様態補語との比較 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 様態 vs 程度 深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 15 例文網羅（④〜㉕ 全22句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 15 文法メタマトリクス：程度補語の2大構造 ＆ 様態補語との完全対比
+                </h2>
+                <p class="text-sm text-slate-600">「得」を使うタイプ・使わないタイプの体系整理と、類似表現（様態補語）との意味・文法機能の違い。</p>
+            </div>
+
+            <!-- 1. 程度補語の分類マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 程度補語の2大分類マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">区分</th>
+                                <th class="p-3">程度補語フレーズ</th>
+                                <th class="p-3">ニュアンス・特徴</th>
+                                <th class="p-3">代表例文</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base" rowspan="3">A: 「得」と<br>一緒に使う</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">〜得不得了 (de bùdéliǎo)</td>
+                                <td class="p-3 text-slate-700">「並外れて〜だ」「大変なことだ」。最も口語的で範囲が広い。</td>
+                                <td class="p-3 font-semibold text-slate-900">行李箱重得不得了。<br>（スーツケースが重くてたまらない。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">〜得要命 (de yàomìng)<br>〜得要死 (de yàosǐ)</td>
+                                <td class="p-3 text-slate-700">「命を落としそうなほど〜だ」。誇張表現。ネガティブや切迫した状態に多用。</td>
+                                <td class="p-3 font-semibold text-slate-900">房間亂得要命。<br>（部屋がめちゃくちゃ散らかっている。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">〜得很 (de hěn)</td>
+                                <td class="p-3 text-slate-700">「すごく〜だ」。客観的な評価や肯定・強調の口語表現。</td>
+                                <td class="p-3 font-semibold text-slate-900">我身體健康得很。<br>（私の体はすごく健康だ。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700 text-base" rowspan="2">B: 「得」を<br>使わない</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">〜極了 (jí le)</td>
+                                <td class="p-3 text-slate-700">「極めて〜だ」「最高に〜だ」。ポジティブな評価・感情に多い。</td>
+                                <td class="p-3 font-semibold text-slate-900">孩子們都喜歡極了。<br>（子どもたちはすごく好きだ。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">〜死了 (sǐ le)</td>
+                                <td class="p-3 text-slate-700">「〜で死にそうだ」「〜でたまらない」。主にネガティブな主観的状態。</td>
+                                <td class="p-3 font-semibold text-slate-900">我餓死了！<br>（お腹が空いてたまらない！）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 様態補語 vs 程度補語 の比較 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-amber-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    ② 「得」の後の補語判別：様態補語 vs 程度補語
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【様態補語】動作・状態の具体的観察</div>
+                        <ul class="space-y-1.5 text-slate-700">
+                            <li>・<b>公式</b>：動詞/形容詞 ＋ 得 ＋ <span class="text-blue-700 font-bold">具体描写（形容詞/小句）</span></li>
+                            <li>・<b>意味</b>：「〜するのが…だ」「〜するほど…だ」</li>
+                            <li>・<b>例</b>：他跑<b>得很快</b>。（彼の走りは速い＝具体的な様子）</li>
+                            <li>・<b>例</b>：他忙<b>得沒有時間回家</b>。（帰る時間がないほど忙しい＝具体的状態）</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">【程度補語】並外れたレベルの口語強調</div>
+                        <ul class="space-y-1.5 text-slate-700">
+                            <li>・<b>公式</b>：形容詞/心裡動詞 ＋ 得 ＋ <span class="text-rose-700 font-bold">固定程度フレーズ</span></li>
+                            <li>・<b>意味</b>：「めちゃくちゃ〜だ」「すごく〜だ」</li>
+                            <li>・<b>例</b>：他忙<b>得不得了</b>。（めちゃくちゃ忙しい＝程度の極致）</li>
+                            <li>・<b>例</b>：教室裡<b>吵死了</b>。（騒がしくて死にそうだ＝強度の強調）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 15 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">「死了」のネガティブ／ポジティブの使い分けや、感情動詞（心裡動詞）に対する補語接続ルール。</p>
+            </div>
+
+            <!-- QA 1: 「死了」の適用範囲 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">ニュアンス</span>
+                    💡 「〜死了」はポジティブな意味（美味しい、嬉しい）にも使えるの？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        教科書的には「累死了」「餓死了」「吵死了」「氣死了」など<b>不快・ネガティブな苦痛状態</b>で使うのが基本ルールとされます。
+                    </p>
+                    <p>
+                        しかし、若い世代の日常会話（親しい間柄）では、「美死了（綺麗すぎてたまらない）」「開心死了（嬉しすぎる）」のように、感情が高ぶった<b>ポジティブな強調</b>として使われることもよくあります。ただし、公の場や目上の人には避け、基本は「〜極了」や「〜得不得了」を推奨します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- QA 2: 動詞に付く程度補語（心裡動詞） -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">文法法則</span>
+                    なぜ「動作動詞」ではなく「心裡動詞」だけに程度補語が付くのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        程度補語は本来「状態・性状（形容詞）」のレベルを表す補語です。そのため、「吃（食べる）」や「跑（走る）」などの物理的動作動詞の直後に直接「死了」「極了」をつけることはできません（※動作の様子を言う場合は「吃得很快」「跑得極快」のような様態補語になる）。
+                    </p>
+                    <p>
+                        しかし、<b>「擔心（心配する）」「喜歡（好きだ）」「氣（怒る）」「討厭（嫌う）」</b>などの心理状態を表す動詞（心裡動詞）は、形容詞のように「度合い・感情の強さ」を持つため、直接程度補語（喜歡極了 / 擔心死了）を後置することができます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 15 重要語彙 & 形容詞・補語表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('comp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">程度補語</button>
+                    <button onclick="filterVocab('adj')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">形容詞・心理</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・その他</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 15 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 4 to 25)
+        const sentencesData = [
+            {
+                id: 4,
+                hanzi: "月台上人多得要命。",
+                rubyHtml: "<ruby>月<rt>yuè</rt></ruby><ruby>台<rt>tái</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>命<rt>mìng</rt></ruby>。",
+                translation: "ホームはめちゃくちゃ人が多い。",
+                structure: "【形容詞＋得要命】多 [得要命]",
+                point: "<b>月台（yuètái）</b>：プラットホーム（台湾用語）。多得要命（人多すぎ）。"
+            },
+            {
+                id: 5,
+                hanzi: "我這次旅遊買了很多書，行李箱重得不得了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>旅<rt>lǚ</rt></ruby><ruby>遊<rt>yóu</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>書<rt>shū</rt></ruby>，<ruby>行<rt>xíng</rt></ruby><ruby>李<rt>lǐ</rt></ruby><ruby>箱<rt>xiāng</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "私は今回の旅行で本をたくさん買ったので、スーツケースが重くてたまらない。",
+                structure: "【形容詞＋得不得了】重 [得不得了]",
+                point: "<b>行李箱（xínglǐxiāng）</b>：スーツケース。「重得不得了（重くてたまらない）」"
+            },
+            {
+                id: 6,
+                hanzi: "日本和台灣只有一個小時的時差，好算得很。",
+                rubyHtml: "<ruby>日<rt>Rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>灣<rt>wān</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>差<rt>chā</rt></ruby>，<ruby>好<rt>hǎo</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby>。",
+                translation: "日本と台湾は1時間の時差しかないから、すごく計算しやすい。",
+                structure: "【形容詞＋得很】好算 [得很]",
+                point: "<b>時差（shíchā）</b>：時差。「好算得很（計算がすごく簡単だ）」"
+            },
+            {
+                id: 7,
+                hanzi: "你去過那家店嗎？他們的拉麵好吃得不得了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>店<rt>diàn</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>拉<rt>lā</rt></ruby><ruby>麵<rt>miàn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "あの店に行ったことある？あそこのラーメンはめちゃくちゃおいしいよ。",
+                structure: "【形容詞＋得不得了】好吃 [得不得了]",
+                point: "<b>好吃得不得了（hǎochī de bùdéliǎo）</b>：めちゃくちゃ美味しい。"
+            },
+            {
+                id: 8,
+                hanzi: "我家有五個孩子，每天要洗的衣服都多得不得了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>衣<rt>yī</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "我が家には子どもが5人いるから、毎日洗濯物がものすごく多い。",
+                structure: "【形容詞＋得不得了】多 [得不得了]",
+                point: "<b>洗的衣服（要洗濯物）</b>：衣服多得不得了（量が極めて多い）。"
+            },
+            {
+                id: 9,
+                hanzi: "他平常安靜得不得了，今天怎麼變得這麼愛講話？",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>靜<rt>jìng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>了<rt>liǎo</rt></ruby>，<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>變<rt>biàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>愛<rt>ài</rt></ruby><ruby>講<rt>jiǎng</rt></ruby><ruby>話<rt>huà</rt></ruby>？",
+                translation: "彼は普段めちゃくちゃおとなしいのに、今日はどうしてあんなにおしゃべりになっているの？",
+                structure: "【形容詞＋得不得了】安靜 [得不得了]",
+                point: "<b>愛講話（ài jiǎnghuà）</b>：話すのが好き・おしゃべり。"
+            },
+            {
+                id: 10,
+                hanzi: "這杯果汁甜得要命，我想加一點水喝。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>杯<rt>bēi</rt></ruby><ruby>果<rt>guǒ</rt></ruby><ruby>汁<rt>zhī</rt></ruby><ruby>甜<rt>tián</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>命<rt>mìng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>水<rt>shuǐ</rt></ruby><ruby>喝<rt>hē</rt></ruby>。",
+                translation: "このジュースはすごく甘いから、私はちょっと水を加えて飲みたい。",
+                structure: "【形容詞＋得要命】甜 [得要命]",
+                point: "<b>甜得要命（tián de yàomìng）</b>：死ぬほど甘い（過度の強調）。"
+            },
+            {
+                id: 11,
+                hanzi: "你的房間亂得要命，你什麼時候才要打掃？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>亂<rt>luàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>命<rt>mìng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>掃<rt>sǎo</rt></ruby>？",
+                translation: "あなたの部屋はめちゃくちゃ散らかっている。いつになったら掃除するの？",
+                structure: "【形容詞＋得要命】亂 [得要命]",
+                point: "<b>亂（luàn）</b>：散らかっている。「才要...（ようやく〜するつもりか）」"
+            },
+            {
+                id: 12,
+                hanzi: "他客氣得要命，每次都不收我的禮物。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>客<rt>kè</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>命<rt>mìng</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>物<rt>wù</rt></ruby>。",
+                translation: "彼はすごく遠慮深くて、毎回私のプレゼントを受け取らない。",
+                structure: "【形容詞＋得要命】客氣 [得要命]",
+                point: "<b>客氣（kèqì）</b>：遠慮深い・丁寧すぎる。"
+            },
+            {
+                id: 13,
+                hanzi: "我剛來台灣念書的時候，每次講中文都緊張得要死。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>灣<rt>wān</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>每<rt>měi</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>講<rt>jiǎng</rt></ruby><ruby>中<rt>Zhōng</rt></ruby><ruby>文<rt>wén</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>緊<rt>jǐn</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>死<rt>sǐ</rt></ruby>。",
+                translation: "台湾に留学に来たばかりの頃は、中国語を話すたびにめちゃくちゃ緊張した。",
+                structure: "【心理状態＋得要死】緊張 [得要死]",
+                point: "<b>緊張得要死（jǐnzhāng de yàosǐ）</b>：死ぬほど緊張する（得要命と言い換え可）。"
+            },
+            {
+                id: 14,
+                hanzi: "小明跟他們不一樣，努力得很。",
+                rubyHtml: "<ruby>小<rt>Xiǎo</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>樣<rt>yàng</rt></ruby>，<ruby>努<rt>nǔ</rt></ruby><ruby>力<rt>lì</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby>。",
+                translation: "小明は彼らとは違って、めちゃくちゃ努力家だ。",
+                structure: "【形容詞＋得很】努力 [得很]",
+                point: "<b>努力得很（nǔlì de hěn）</b>：非常に努力する。"
+            },
+            {
+                id: 15,
+                hanzi: "這首歌三年前流行得很，你怎麼沒聽過呢？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>首<rt>shǒu</rt></ruby><ruby>歌<rt>gē</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>流<rt>liú</rt></ruby><ruby>行<rt>xíng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>呢<rt>ne</rt></ruby>？",
+                translation: "この歌は3年前にすごく流行していたのに、きみはどうして聞いたことがないの？",
+                structure: "【動詞/形容詞＋得很】流行 [得很]",
+                point: "<b>流行得很（liúxíng de hěn）</b>：大流行している。"
+            },
+            {
+                id: 16,
+                hanzi: "我身體健康得很，你不需要太擔心。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>身<rt>shēn</rt></ruby><ruby>體<rt>tǐ</rt></ruby><ruby>健<rt>jiàn</rt></ruby><ruby>康<rt>kāng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>需<rt>xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>擔<rt>dān</rt></ruby><ruby>心<rt>xīn</rt></ruby>。",
+                translation: "私の体はすごく健康だから、あなたは心配しすぎる必要はないよ。",
+                structure: "【形容詞＋得很】健康 [得很]",
+                point: "<b>健康得很（jiànkāng de hěn）</b>：すこぶる健康だ。"
+            },
+            {
+                id: 17,
+                hanzi: "你煮的咖哩飯，孩子們都喜歡極了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>煮<rt>zhǔ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>咖<rt>gā</rt></ruby><ruby>哩<rt>lǐ</rt></ruby><ruby>飯<rt>fàn</rt></ruby>，<ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>極<rt>jí</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あなたが作ったカレーライス、子どもたちはすごく好きだよ。",
+                structure: "【心裡動詞＋極了】喜歡 [極了]",
+                point: "💡<b>無「得」程度補語</b>：感情動詞（喜歡）の直後に「極了」が付く。"
+            },
+            {
+                id: 18,
+                hanzi: "大家都說他的歌唱得好極了。",
+                rubyHtml: "<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>歌<rt>gē</rt></ruby><ruby>唱<rt>chàng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>極<rt>jí</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は歌がめちゃくちゃ上手いとみんな言っている。",
+                structure: "【様態＋程度補語】唱得 好 [極了]",
+                point: "<b>好極了（hǎo jí le）</b>：最高に上手い・素晴らしい。"
+            },
+            {
+                id: 19,
+                hanzi: "最近流行的感冒嚴重極了。",
+                rubyHtml: "<ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>流<rt>liú</rt></ruby><ruby>行<rt>xíng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby><ruby>嚴<rt>yán</rt></ruby><ruby>重<rt>zhòng</rt></ruby><ruby>極<rt>jí</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "最近流行している風邪は、すごくひどいものだ。",
+                structure: "【形容詞＋極了】嚴重 [極了]",
+                point: "<b>嚴重（yánzhòng）</b>：重痛だ・深刻だ。「嚴重極了（極めて深刻だ）」"
+            },
+            {
+                id: 20,
+                hanzi: "媽媽，我餓死了！可以先吃一點餅乾嗎？",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>餓<rt>è</rt></ruby><ruby>死<rt>sǐ</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>餅<rt>bǐng</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "お母さん、お腹が空いてたまらないよ。先にクッキーをちょっと食べてもいい？",
+                structure: "【形容詞＋死了】餓 [死了]",
+                point: "💡<b>餓死了（è sǐ le）</b>：お腹が空いて死にそう（超頻出）。"
+            },
+            {
+                id: 21,
+                hanzi: "教室裡吵死了，老師怎麼還沒來？",
+                rubyHtml: "<ruby>教<rt>jiào</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>死<rt>sǐ</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>來<rt>lái</rt></ruby>？",
+                translation: "教室の中はめちゃくちゃ騒がしい。先生はなぜまだいらっしゃらないのだろう？",
+                structure: "【形容詞＋死了】吵 [死了]",
+                point: "<b>吵死了（chǎo sǐ le）</b>：うるさくてたまらない。"
+            },
+            {
+                id: 22,
+                hanzi: "累死了！我整理行李整理了半天了，還沒整理好。",
+                rubyHtml: "<ruby>累<rt>lèi</rt></ruby><ruby>死<rt>sǐ</rt></ruby><ruby>了<rt>le</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>整<rt>zhěng</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>行<rt>xíng</rt></ruby><ruby>李<rt>lǐ</rt></ruby><ruby>整<rt>zhěng</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>整<rt>zhěng</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby>。",
+                translation: "すごく疲れた。荷物の整理を長い時間しているのに、まだ整理が終わらない。",
+                structure: "【形容詞＋死了】累 [死了] 【重畳動詞＋ダブル了】整理行李 整理了半天了",
+                point: "<b>累死了（lèi sǐ le）</b>：疲れ果てた。"
+            },
+            {
+                id: 23,
+                hanzi: "他跑得很快。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>快<rt>kuài</rt></ruby>。",
+                translation: "彼は走るのが速い。",
+                structure: "【様態補語】跑得 [很快]",
+                point: "💡<b>様態補語</b>：走る具体的な速さ・様子を描写。"
+            },
+            {
+                id: 24,
+                hanzi: "他忙得沒有時間回家。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>忙<rt>máng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>家<rt>jiā</rt></ruby>。",
+                translation: "彼は家に帰る時間がないほど忙しい。",
+                structure: "【様態補語（結果小句）】忙得 [沒有時間回家]",
+                point: "💡<b>様態補語</b>：「帰る時間がない」という具体的な状況をもたらすほどの忙しさ。"
+            },
+            {
+                id: 25,
+                hanzi: "他忙得不得了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>忙<rt>máng</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>了<rt>liǎo</rt></ruby>。",
+                translation: "彼はめちゃくちゃ忙しい。",
+                structure: "【程度補語】忙 [得不得了]",
+                point: "💡<b>程度補語</b>：忙しさの度合いが極限であることを口語強調。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "得不得了", pinyin: "de bùdéliǎo", meaning: "めちゃくちゃ〜だ・〜でたまらない", cat: "comp" },
+            { hanzi: "得要命", pinyin: "de yàomìng", meaning: "死ぬほど〜だ・非常に", cat: "comp" },
+            { hanzi: "得要死", pinyin: "de yàosǐ", meaning: "死ぬほど〜だ", cat: "comp" },
+            { hanzi: "得很", pinyin: "de hěn", meaning: "すごく〜だ", cat: "comp" },
+            { hanzi: "極了", pinyin: "jí le", meaning: "極めて〜だ・最高に", cat: "comp" },
+            { hanzi: "死了", pinyin: "sǐ le", meaning: "〜で死にそうだ・たまらない", cat: "comp" },
+            { hanzi: "月台", pinyin: "yuètái", meaning: "プラットホーム", cat: "noun" },
+            { hanzi: "行李箱", pinyin: "xínglǐxiāng", meaning: "スーツケース", cat: "noun" },
+            { hanzi: "時差", pinyin: "shíchā", meaning: "時差", cat: "noun" },
+            { hanzi: "餅乾", pinyin: "bǐnggān", meaning: "クッキー・ビスケット", cat: "noun" },
+            { hanzi: "客氣", pinyin: "kèqì", meaning: "遠慮深い・丁寧だ", cat: "adj" },
+            { hanzi: "緊張", pinyin: "jǐnzhāng", meaning: "緊張する", cat: "adj" },
+            { hanzi: "嚴重", pinyin: "yánzhòng", meaning: "深刻だ・重痛だ", cat: "adj" },
+            { hanzi: "擔心", pinyin: "dānxīn", meaning: "心配する", cat: "adj" },
+            { hanzi: "愛講話", pinyin: "ài jiǎnghuà", meaning: "おしゃべりだ", cat: "adj" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

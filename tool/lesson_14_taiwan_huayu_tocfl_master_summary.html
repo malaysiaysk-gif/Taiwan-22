@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 14 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 14 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">這件事明天再說吧。（“再”の用法・動作保留・先/等/走/去 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (24句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 先/等 & 走/去 深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・台湾カルチャー</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 14 例文網羅（⑤〜㉘ 全24句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 14 文法メタマトリクス：「再」の2大分類 ＆ タイミング制御系
+                </h2>
+                <p class="text-sm text-slate-600">「反復・継続」と「動作の保留（タイマー設定）」の使い分け、および「先」vs「等」、「走」vs「去」の厳密な対比。</p>
+            </div>
+
+            <!-- 1. 副詞「再」の2大分類 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 副詞「再」の文法機能マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">用法区分</th>
+                                <th class="p-3">代表文型・構文</th>
+                                <th class="p-3">文法機能・ニュアンス</th>
+                                <th class="p-3">代表例文</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700 text-base" rowspan="2">用法 I<br><span class="text-xs font-normal text-slate-600">反復・追加</span></td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">再 ＋ 動詞 (＋数量)</td>
+                                <td class="p-3 text-slate-700">未実行の動作を<b>「もう一度・再び」</b>繰り返す。</td>
+                                <td class="p-3 font-semibold text-slate-900">請你再說一次。<br>（もう一度言ってください。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">再 ＋ 多/少 ＋ 動詞</td>
+                                <td class="p-3 text-slate-700">程度や数量を<b>「さらに加える・削る」</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">再多加一點糖會更好吃。<br>（もう少し砂糖を入れると美味しくなる。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700 text-base" rowspan="3">用法 II<br><span class="text-xs font-normal text-slate-600">動作の保留<br>（タイマー設定）</span></td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">時間詞(A) ＋ 再 ＋ 動詞(B)</td>
+                                <td class="p-3 text-slate-700"><b>文型(1)</b>：動作Bを<b>時間詞Aになるまで保留</b>する。</td>
+                                <td class="p-3 font-semibold text-slate-900">這件事明天再說吧。<br>（この件は明日にしよう。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">先 ＋ 動詞(A) ， 再 ＋ 動詞(B)</td>
+                                <td class="p-3 text-slate-700"><b>文型(2)</b>：まず能動的動作Aを行い、<b>完了後にBする</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">你應該先吃飯，再吃藥。<br>（先に食事が先、薬はその後。）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">等 ＋ 条件/状態(A) ， 再 ＋ 動詞(B)</td>
+                                <td class="p-3 text-slate-700"><b>文型(3)</b>：自然変化や他者都合のA状態を<b>待ってからBする</b>。</td>
+                                <td class="p-3 font-semibold text-slate-900">等雨停了，我再去藥局。<br>（雨がやむのを待って薬局に行く。）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「先」vs「等」／「走」vs「去」徹底対比 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-amber-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    ② 紛らわしい近義語の決定・選択マトリクス
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【先 vs 等】先行条件の主導権判定</div>
+                        <ul class="space-y-1.5 text-slate-700">
+                            <li>・<b>先（xiān）</b>：自分の意思でコントロールできる動作。（例：先討論目的、先畫完這張畫）</li>
+                            <li>・<b>等（děng）</b>：自分では制御不能な自然・他者の状態完了を待つ。（例：等雨停了、等他醒了、等長大）</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">【走 vs 去】移動の焦点の向き</div>
+                        <ul class="space-y-1.5 text-slate-700">
+                            <li>・<b>走（zǒu）</b>：<b>出発点（現在地）から離れること</b>に焦点。「離れないで！」＝不要走！、「そろそろ行こう！」＝我們走吧！</li>
+                            <li>・<b>去（qù）</b>：<b>目的地に向かうこと</b>に焦点。目的地を直後に伴う。（例：去北部、去泡溫泉、去動物園）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 14 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">同じ「明天再看」でも「再看一次」がつくとどうニュアンスが変わるか等の詳細解説。</p>
+            </div>
+
+            <!-- QA 1: 例文13 vs 例文14 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">ニュアンス比較</span>
+                    💡 例文13「我明天再看」と 例文14「我明天再看一次」の違いは？
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">例文13：我明天再看 (動作の保留)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            ここでの「再」は<b>保留（タイマー設定）</b>です。「今見るのではなく、見るタイミングを明日に延期・据え置く」という意味になります（まだ一度も見ていない可能性もある）。
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">例文14：我明天再看一次 (反復・繰返し)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            「一次（1回）」がついているため、この「再」は明確に<b>繰り返しの用法</b>になります。「すでに一度見たが、明日もう一回見直す」という意味になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「不要走！」と「不要去！」の決定的な現場での使い分け -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">現場会話</span>
+                    ドラマでよく聞く「不要走！」はなぜ「不要去！」と言わないのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「走」は現在地・話し手のそばから「去っていく（離れる）」動作そのものを指します。そのため、<b>「私のそばから離れてどこかへ行かないで！（ここに残って！）」</b>と訴えかけるときは「不要走！」と言います。
+                    </p>
+                    <p>
+                        一方、「不要去！」と言うと「（危ないから/遠いから）その目的地へ向かって行ってはダメだ」という意味になり、必ず頭の中に具体的な目的地が存在することになります。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 14 重要語彙 & 動作・時間表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('time')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">副詞・接続</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・場所</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 14 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 24 Sentences from 5 to 28)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "我們什麼時候能再見面呢？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>面<rt>miàn</rt></ruby><ruby>呢<rt>ne</rt></ruby>？",
+                translation: "私たちはいつまた会えるかな？",
+                structure: "【用法I：反復】能 [再] 見面 呢？",
+                point: "<b>再見面（zài jiànmiàn）</b>：再び会う。"
+            },
+            {
+                id: 6,
+                hanzi: "你要是再遲到，我下次就不跟你約會了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>遲<rt>chí</rt></ruby><ruby>到<rt>dào</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>約<rt>yuē</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あなたがもしまた遅刻したら、次はもうあなたとデートはしない。",
+                structure: "【仮定＋反復】要是 [再] 遲到， 我...就不...",
+                point: "<b>遲到（chídào）</b>：遅刻する。「約會（デートする）」"
+            },
+            {
+                id: 7,
+                hanzi: "這道菜，再多加一點糖會更好吃。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>菜<rt>cài</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>糖<rt>táng</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby>。",
+                translation: "この料理は、もう少し砂糖を加えたほうがもっとおいしくなる。",
+                structure: "【用法I：数量・程度の追加】[再多加] 一點糖",
+                point: "<b>再多加（zài duō jiā）</b>：さらに多めに加える。"
+            },
+            {
+                id: 8,
+                hanzi: "這個科學報告我沒看懂，晚上要再讀一遍。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>科<rt>kē</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>懂<rt>dǒng</rt></ruby>，<ruby>晚<rt>wǎn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>遍<rt>biàn</rt></ruby>。",
+                translation: "この科学的な報告書は、私は読んで理解できていないから、夜もう一度読む。",
+                structure: "【用法I：繰り返し】要 [再] 讀一遍",
+                point: "<b>遍（biàn）</b>：最初から最後まで読む/見る動作の回数量詞。"
+            },
+            {
+                id: 9,
+                hanzi: "我上午很忙，下午再打掃臥室和餐廳。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>忙<rt>máng</rt></ruby>，<ruby>下<rt>xià</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>掃<rt>sǎo</rt></ruby><ruby>臥<rt>wò</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>廳<rt>tīng</rt></ruby>。",
+                translation: "私は午前中忙しいので、寝室とダイニングルームの掃除は午後にする。",
+                structure: "【文型(1) 時間詞保留】下午 [再] 打掃...",
+                point: "<b>臥室（wòshì）</b>：寝室。「餐廳（ダイニング・レストラン）」"
+            },
+            {
+                id: 10,
+                hanzi: "我跟阿力談完以後，後天左右再聯絡你。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>阿<rt>Ā</rt></ruby><ruby>力<rt>lì</rt></ruby><ruby>談<rt>tán</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>後<rt>hòu</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>左<rt>zuǒ</rt></ruby><ruby>右<rt>yòu</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>聯<rt>lián</rt></ruby><ruby>絡<rt>luò</rt></ruby><ruby>你<rt>nǐ</rt></ruby>。",
+                translation: "僕と阿力との話が終わった後、明後日ぐらいにきみに連絡するよ。",
+                structure: "【文型(1) 時間詞保留】後天左右 [再] 聯絡你",
+                point: "<b>聯絡（liánluò）</b>：連絡する。連絡タイミングを明後日へ保留。"
+            },
+            {
+                id: 11,
+                hanzi: "那，你需要幫忙的時候，再跟我說。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>需<rt>xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>忙<rt>máng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>說<rt>shuō</rt></ruby>。",
+                translation: "じゃあ、手助けが必要なときに私に言って。",
+                structure: "【文型(1) 条件時間節】...的時候， [再] 跟我說",
+                point: "<b>幫忙（bāngmáng）</b>：手伝う・助ける。"
+            },
+            {
+                id: 12,
+                hanzi: "我們走吧！這件事明天再說吧。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>吧<rt>ba</rt></ruby>！<ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "［行きましょう。／帰りましょう。］ この件は明日にしましょう。",
+                structure: "【走＋文型(1)】我們走吧！ 明天 [再] 說吧",
+                point: "💡<b>走（離れる）＆ 再（保留）</b>：現在地から出る「走」と相談の「再（延期）」。"
+            },
+            {
+                id: 13,
+                hanzi: "那家公司的資料，我明天再看。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>資<rt>zī</rt></ruby><ruby>料<rt>liào</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>看<rt>kàn</rt></ruby>。",
+                translation: "あの会社の資料は、［明日見ます／見るのは明日にします］。(保留のニュアンス)",
+                structure: "【文型(1) 動作の保留】明天 [再] 看",
+                point: "💡<b>保留</b>：見る行為を明日に据え置く（まだ見ていない）。"
+            },
+            {
+                id: 14,
+                hanzi: "那家公司的資料，我明天再看一次。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>資<rt>zī</rt></ruby><ruby>料<rt>liào</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby>。",
+                translation: "あの会社の資料は、明日もう一度見ます。(繰り返しのニュアンス)",
+                structure: "【用法I 反復】明天 [再] 看一次",
+                point: "💡<b>反復</b>：「一次」があるため、すでに一度見ており、明日もう一回見直す。"
+            },
+            {
+                id: 15,
+                hanzi: "我要先畫完這張畫，再背單字。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>畫<rt>huà</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>張<rt>zhāng</rt></ruby><ruby>畫<rt>huà</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>單<rt>dān</rt></ruby><ruby>字<rt>zì</rt></ruby>。",
+                translation: "私はまずこの絵を描き終えて、それから単語を覚える。",
+                structure: "【文型(2) 先...再...】先 畫完...， [再] 背單字",
+                point: "<b>先...再...（xiān...zài...）</b>：自分の意志でコントロールできる動作順序。"
+            },
+            {
+                id: 16,
+                hanzi: "下雨的時候，我都先背書包，再穿雨衣。",
+                rubyHtml: "<ruby>下<rt>xià</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>包<rt>bāo</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>穿<rt>chuān</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>衣<rt>yī</rt></ruby>。",
+                translation: "雨が降るときは、いつも先にカバンを背負って、それからカッパを着る。",
+                structure: "【文型(2) 先...再...】先 背書包， [再] 穿雨衣",
+                point: "<b>背（bēi）</b>：背負う。「雨衣（カッパ・レインコート）」"
+            },
+            {
+                id: 17,
+                hanzi: "我在一號出口，你先整理好東西，再來找我。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>一<rt>yī</rt></ruby><ruby>號<rt>hào</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>口<rt>kǒu</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>整<rt>zhěng</rt></ruby><ruby>理<rt>lǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>東<rt>dōng</rt></ruby><ruby>西<rt>xī</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>我<rt>wǒ</rt></ruby>。",
+                translation: "僕は1番出口にいるから、きみはまず荷物をちゃんと整理して、それから僕のところに来て。",
+                structure: "【文型(2) 先...再...】先 整理好東西， [再] 來找我",
+                point: "<b>一號出口（yī hào chūkǒu）</b>：1番出口。"
+            },
+            {
+                id: 18,
+                hanzi: "沒關係，你先說完，我再說。",
+                rubyHtml: "<ruby>沒<rt>méi</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>係<rt>xì</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>完<rt>wán</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby>。",
+                translation: "気にしないで。あなたが話し終えてから私が話すよ。",
+                structure: "【文型(2) 先...再...】你 先 說完， 我 [再] 說",
+                point: "相手の発言完了を待ってから発言する譲歩の表現。"
+            },
+            {
+                id: 19,
+                hanzi: "我先教你這個網站怎麼用，你再自己試一下吧。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>教<rt>jiāo</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>網<rt>wǎng</rt></ruby><ruby>站<rt>zhàn</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>用<rt>yòng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>試<rt>shì</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "私がまずこのサイトの使い方を教えるから、それからあなたが自分でちょっと試して。",
+                structure: "【文型(2) 先...再...】我 先 教你...， 你 [再] 自己試一下",
+                point: "<b>網站（wǎngzhàn）</b>：ウェブサイト。「試一下（試す）」"
+            },
+            {
+                id: 20,
+                hanzi: "美術館最近人太多了，等人少一點了，我們再去。",
+                rubyHtml: "<ruby>美<rt>měi</rt></ruby><ruby>術<rt>shù</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>等<rt>děng</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>少<rt>shǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>去<rt>qù</rt></ruby>。",
+                translation: "美術館は最近人が多すぎるので、人がちょっと少なくなってから私たちは行く。",
+                structure: "【文型(3) 等...再...】等 人少一點了， 我們 [再] 去",
+                point: "💡<b>等（待つ）</b>：混雑状況は自分では変えられないため「等」を使用。"
+            },
+            {
+                id: 21,
+                hanzi: "這件事情，等你長大以後，我再告訴你，好不好？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>情<rt>qíng</rt></ruby>，<ruby>等<rt>děng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>長<rt>zhǎng</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>訴<rt>sù</rt></ruby><ruby>你<rt>nǐ</rt></ruby>，<ruby>好<rt>hǎo</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>好<rt>hǎo</rt></ruby>？",
+                translation: "この件は、あなたが大人になってからあなたに言うのでいい？",
+                structure: "【文型(3) 等...再...】等 你長大以後， 我 [再] 告訴你",
+                point: "<b>長大（zhǎngdà）</b>：成長する・大人になる。"
+            },
+            {
+                id: 22,
+                hanzi: "等你們約好時間，我再幫你們訂位。",
+                rubyHtml: "<ruby>等<rt>děng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>約<rt>yuē</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>訂<rt>dìng</rt></ruby><ruby>位<rt>wèi</rt></ruby>。",
+                translation: "あなたたちが時間を［約束したら/決めたら］、席を予約してあげるね。",
+                structure: "【文型(3) 等...再...】等 你們約好時間， 我 [再] 幫你們訂位",
+                point: "<b>訂位（dìngwèi）</b>：席を予約する。"
+            },
+            {
+                id: 23,
+                hanzi: "等家家考完試，我們再一起去動物園玩吧。",
+                rubyHtml: "<ruby>等<rt>děng</rt></ruby><ruby>家<rt>Jiā</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>試<rt>shì</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>園<rt>yuán</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "家家の試験が終わってから、一緒に動物園に遊びに行きましょう。",
+                structure: "【文型(3) 等...再...】等 家家考完試， 我們 [再] 一起去...",
+                point: "<b>考完試（kǎo wán shì）</b>：試験を受け終わる。"
+            },
+            {
+                id: 24,
+                hanzi: "等雨停了，我再去藥局拿藥。",
+                rubyHtml: "<ruby>等<rt>děng</rt></ruby><ruby>雨<rt>yǔ</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>局<rt>jú</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>藥<rt>yào</rt></ruby>。",
+                translation: "雨がやんでから、薬局へ薬をもらいに行く。",
+                structure: "【文型(3) 自然現象の待機】等 雨停了， 我 [再] 去藥局...",
+                point: "💡<b>不可抗力</b>：天候（雨停）はコントロールできないため「等」が必須。"
+            },
+            {
+                id: 25,
+                hanzi: "我們先討論好這次活動的目的，再選擇地點吧。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>活<rt>huó</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>目<rt>mù</rt></ruby><ruby>的<rt>dì</rt></ruby>，<ruby>再<rt>zài</rt></ruby><ruby>選<rt>xuǎn</rt></ruby><ruby>擇<rt>zé</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>吧<rt>ba</rt></ruby>。",
+                translation: "私たちはまず今回のイベントの目的をしっかり話し合ってから、場所を選びましょう。",
+                structure: "【文型(2) 能動的決定】先 討論好...， [再] 選擇地點",
+                point: "💡<b>能動</b>：自分たちで主動的に決められるため「先」を使用。"
+            },
+            {
+                id: 26,
+                hanzi: "她下禮拜才會去北部。",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>北<rt>běi</rt></ruby><ruby>部<rt>bù</rt></ruby>。",
+                translation: "彼女は来週ようやく北部に行く。",
+                structure: "【去＋目的地】去 [北部]",
+                point: "💡<b>去</b>：目的地（北部）が設定されているので「去」。"
+            },
+            {
+                id: 27,
+                hanzi: "我晚上要去泡溫泉。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>泡<rt>pào</rt></ruby><ruby>溫<rt>wēn</rt></ruby><ruby>泉<rt>quán</rt></ruby>。",
+                translation: "私は夜温泉に入りに行く。",
+                structure: "【去＋目的動作】去 [泡溫泉]",
+                point: "<b>泡溫泉（pào wēnquán）</b>：温泉に浸かる・入る。"
+            },
+            {
+                id: 28,
+                hanzi: "不要走！",
+                rubyHtml: "<ruby>不<rt>bú</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>走<rt>zǒu</rt></ruby>！",
+                translation: "行かないで！（そばにいて！）",
+                structure: "【走＝出発点からの離脱】不要 [走]！",
+                point: "💡<b>走</b>：話し手のいる場所から「離れる」ことに焦点がある。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "遲到", pinyin: "chídào", meaning: "遅刻する", cat: "verb" },
+            { hanzi: "打掃", pinyin: "dǎsǎo", meaning: "掃除する", cat: "verb" },
+            { hanzi: "聯絡", pinyin: "liánluò", meaning: "連絡する", cat: "verb" },
+            { hanzi: "長大", pinyin: "zhǎngdà", meaning: "成長する・大人になる", cat: "verb" },
+            { hanzi: "訂位", pinyin: "dìngwèi", meaning: "席を予約する", cat: "verb" },
+            { hanzi: "泡溫泉", pinyin: "pào wēnquán", meaning: "温泉に入る", cat: "verb" },
+            { hanzi: "臥室", pinyin: "wòshì", meaning: "寝室", cat: "noun" },
+            { hanzi: "餐廳", pinyin: "cāntīng", meaning: "ダイニング・食堂", cat: "noun" },
+            { hanzi: "雨衣", pinyin: "yǔyī", meaning: "レインコート・カッパ", cat: "noun" },
+            { hanzi: "網站", pinyin: "wǎngzhàn", meaning: "ウェブサイト", cat: "noun" },
+            { hanzi: "藥局", pinyin: "yàojú", meaning: "薬局・ドラッグストア", cat: "noun" },
+            { hanzi: "先", pinyin: "xiān", meaning: "まず・先に (自発的)", cat: "time" },
+            { hanzi: "等", pinyin: "děng", meaning: "〜するのを待って (不可抗力)", cat: "time" },
+            { hanzi: "再", pinyin: "zài", meaning: "再び / 保留して〜する", cat: "time" },
+            { hanzi: "走", pinyin: "zǒu", meaning: "立ち去る・離れる", cat: "verb" },
+            { hanzi: "去", pinyin: "qù", meaning: "目的地へ向かっていく", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>
