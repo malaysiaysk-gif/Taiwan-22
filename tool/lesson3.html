@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 3 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">您有什麼事嗎？（疑問詞派生用法：不定 / 包括「都・也」 / 反語 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (19句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 3 例文網羅（⑤〜㉓ 全19句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 3 文法メタマトリクス：疑問詞の3大派生用法（不定・包括・反語）
+                </h2>
+                <p class="text-sm text-slate-600">疑問代名詞（什麼/誰/哪裡/幾個等）が質問以外の意味（何か/全般否定/反語）を持つ文脈ルールを徹底分類。</p>
+            </div>
+
+            <!-- 1. 疑問詞の派生用法3大分類マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 疑問詞派生用法の構造 ＆ 語順比較
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">用法区分</th>
+                                <th class="p-3">語順構造・キーパーツ</th>
+                                <th class="p-3">ニュアンス・意味</th>
+                                <th class="p-3">文末助詞「嗎」の有無</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">1. 不定用法</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">疑問詞（＋名詞/動詞）(＋嗎)</td>
+                                <td class="p-3 text-slate-700">「何か」「誰か」「どこか」「いくつか」（特定のものを指さない）</td>
+                                <td class="p-3 text-emerald-600 font-bold">⭕️ 「嗎」を伴うと丁寧な尋ね方になる</td>
+                                <td class="p-3 font-semibold text-slate-900">您有什麼事嗎？ / 哪裡不舒服嗎？</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">2. 包括用法</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">疑問詞 ＋ 都 / 也 ＋ 述語</td>
+                                <td class="p-3 text-slate-700">「何でも」「誰でも」「どこでも」（全部肯定または全般否定）</td>
+                                <td class="p-3 text-rose-600 font-bold">❌ 平叙文（「嗎」は付けない）</td>
+                                <td class="p-3 font-semibold text-slate-900">去哪裡都可以。 / 誰都沒參加。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700">3. 反語用法</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">疑問詞 ＋ 會 / 有 ... (啊)？</td>
+                                <td class="p-3 text-slate-700">「どこに〜があろうか」「誰が〜しようか」（強い否定主張）</td>
+                                <td class="p-3 text-slate-600 font-bold">❌ 「嗎」は不可（「啊」等を伴う）</td>
+                                <td class="p-3 font-semibold text-slate-900">我哪裡有時間啊？ / 誰會相信？</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 不定用法における「嗎」による語気の比較 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 4.418 9 8z"></path></svg>
+                    ② 「嗎」の有無による丁寧さ・語気のコントラスト
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-rose-50/60 p-4 rounded-xl border border-rose-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">【疑問詞疑問文（嗎なし）】直接的・強い問いただし</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            疑問詞自体が質問の核心となるため、文末に「嗎」をつけません。状況によっては詰問・警戒の強い響きになります。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-rose-200 text-rose-900 font-bold">
+                            ・您有什麼事？（何のご用ですか？ ※不審者や部外者へのきつい詰問）
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">【不定用法＋嗎】配慮・丁寧な尋ね方</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            疑問詞を「何か」という不定の語として扱い、YES/NOで答えられる「嗎」の形にすることで、相手に圧迫感を与えない柔らかい表現になります。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-emerald-200 text-emerald-900 font-bold">
+                            ・您有什麼事嗎？（何かご用でしょうか？ ※受付や丁寧な応対）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 3 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLの文法・聴解テストで合否を分ける「都」と「也」の互換性および反語文の解釈。</p>
+            </div>
+
+            <!-- QA 1: 包括用法での「都」と「也」の使い分け -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 頻出規則</span>
+                    💡 包括用法で「都」と「也」はいつでも置き換えられる？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>【原則】</b>後ろのフレーズが<b>【否定形（不/沒）】</b>の場合は、「都」と「也」のどちらも使用できます（華語では「都」がより一般的です）。
+                    </p>
+                    <p>
+                        しかし、後ろのフレーズが<b>【肯定形】</b>の場合は、<b>「都」のみ使用可能</b>であり、「也」に置き換えることはできません。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>⭕️ 風太大了，我們哪裡 <span class="text-blue-700 font-bold">[都 / 也]</span> 不能去。（否定形：両方OK）</div>
+                        <div>⭕️ 小時候，我以為媽媽什麼 <span class="text-emerald-700 font-bold">都</span> 會。（肯定形：都 のみOK）</div>
+                        <div>❌ 小時候，我以為媽媽什麼 <span class="text-rose-600 font-bold">也</span> 會。（肯定形に 也 は不可！）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 反語用法の本質理解 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">リスニング罠対策</span>
+                    ❌ 「我哪裡有時間啊？」は「時間がある場所」を質問しているのではない？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        これは<b>【反語（反問）用法】</b>であり、場所を尋ねているのではありません。「疑問詞 ＋ 肯定（有/會...）」の形で、<b>「〜であるわけがない（＝強い全否定）」</b>を意味します。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-2">
+                        <div>・<b>我哪裡有時間啊？</b> ＝ 我根本沒有時間！（私に時間なんてあるわけないでしょう！）</div>
+                        <div>・<b>誰會相信這種話？</b> ＝ 沒有人會相信！（誰が信じるものか ＝ 誰も信じない！）</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 3 重要語彙 & 疑問詞派生表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('pronoun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">疑問代名詞</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞・状態</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・副詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 3 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 19 Sentences from 5 to 23)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "那位小姐是誰？",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>位<rt>wèi</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>姐<rt>jiě</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>誰<rt>shéi</rt></ruby>？",
+                translation: "あの女性は誰ですか。（※×那位小姐是誰嗎？）",
+                structure: "【基本疑問詞疑問文】是誰？",
+                point: "💡<b>嗎の禁止</b>：疑問詞（誰）を使う直接質問には「嗎」を付けない。"
+            },
+            {
+                id: 6,
+                hanzi: "你要幾個？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby>？",
+                translation: "いくついりますか。",
+                structure: "【基本疑問文】要幾個？",
+                point: "<b>幾個（jǐ ge）</b>：数（個数）を尋ねる直接質問。"
+            },
+            {
+                id: 7,
+                hanzi: "你要幾個嗎？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "いくつか要りますか。",
+                structure: "【不定用法＋嗎】要幾個嗎？",
+                point: "💡<b>不定用法</b>：「幾個（いくつか）」＋「嗎」で柔らかい提案。"
+            },
+            {
+                id: 8,
+                hanzi: "這兩個單字的意思有什麼不同嗎？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>單<rt>dān</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>思<rt>sī</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>同<rt>tóng</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "この2つの単語の意味には何か違いがありますか。",
+                structure: "【不定用法＋嗎】有什麼不同嗎？",
+                point: "<b>有什麼不同（yǒu shénme bùtóng）</b>：何か違いがあるか（不定表現）。"
+            },
+            {
+                id: 9,
+                hanzi: "你怎麼這麼安靜，哪裡不舒服嗎？要不要躺一下？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>靜<rt>jìng</rt></ruby>，<ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>舒<rt>shū</rt></ruby><ruby>服<rt>fú</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>要<rt>yào</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>躺<rt>tǎng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby>？",
+                translation: "あなたはどうしてそんなに静かなの？どこか調子悪いの？ちょっと横になる？",
+                structure: "【不定用法＋嗎】哪裡不舒服嗎？",
+                point: "<b>哪裡（nǎlǐ）</b>：どこか（体調の不調箇所を特定しない丁寧な配慮）。"
+            },
+            {
+                id: 10,
+                hanzi: "下星期一要開會，我需要準備什麼資料嗎？",
+                rubyHtml: "<ruby>下<rt>xià</rt></ruby><ruby>星<rt>xīng</rt></ruby><ruby>期<rt>qí</rt></ruby><ruby>一<rt>yī</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>會<rt>huì</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>需<rt>xū</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>準<rt>zhǔn</rt></ruby><ruby>備<rt>bèi</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>資<rt>zī</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "来週の月曜日は会議ですが、私は何か資料を準備しなければなりませんか。",
+                structure: "【不定用法＋嗎】準備什麼資料嗎？",
+                point: "<b>資料（zīliào）</b>：資料。「什麼資料嗎（何か資料でも）」"
+            },
+            {
+                id: 11,
+                hanzi: "鄰居說，他這幾天都不在家。",
+                rubyHtml: "<ruby>鄰<rt>lín</rt></ruby><ruby>居<rt>jū</rt></ruby><ruby>說<rt>shuō</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby>。",
+                translation: "この何日か彼は家にいない、と近所の人が言っていた。",
+                structure: "【不定時間＋全般否定】這幾天 都不在家",
+                point: "<b>鄰居（línjū）</b>：隣人・近所の人。「這幾天（ここ何日か）」"
+            },
+            {
+                id: 12,
+                hanzi: "希望我們哪天還能再見面。",
+                rubyHtml: "<ruby>希<rt>xī</rt></ruby><ruby>望<rt>wàng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>面<rt>miàn</rt></ruby>。",
+                translation: "いつの日かまた会えますように。",
+                structure: "【不定時間用法】哪天",
+                point: "<b>哪天（nǎ tiān）</b>：いつの日か（特定の日にちを指さない未来表現）。"
+            },
+            {
+                id: 13,
+                hanzi: "我渴了，想喝點什麼。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>渴<rt>kě</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>想<rt>xiǎng</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby>。",
+                translation: "喉が渇いたので、少し何か飲みたい。",
+                structure: "【不定目的語】喝點什麼",
+                point: "<b>喝點什麼（hē diǎn shénme）</b>：何かちょっと飲む（不定物）。"
+            },
+            {
+                id: 14,
+                hanzi: "您有什麼事？",
+                rubyHtml: "<ruby>您<rt>nín</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>事<rt>shì</rt></ruby>？",
+                translation: "「何のご用でしょうか。」（きつい口調。部外者が突然入ってきた場合など）",
+                structure: "【嗎なし疑問文】有什麼事？",
+                point: "💡<b>語気対比（きつい）</b>：嗎がないため「何の用だ？」という詰問感。"
+            },
+            {
+                id: 15,
+                hanzi: "您有什麼事嗎？",
+                rubyHtml: "<ruby>您<rt>nín</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>事<rt>shì</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "「何かご用でしょうか。」（丁寧な聞き方）",
+                structure: "【不定用法＋嗎】有什麼事嗎？",
+                point: "💡<b>語気対比（丁寧）</b>：「嗎」を付けることで「何かご用ですか」と柔らかい問診。"
+            },
+            {
+                id: 16,
+                hanzi: "別擔心，多少錢我都願意付。",
+                rubyHtml: "<ruby>別<rt>bié</rt></ruby><ruby>擔<rt>dān</rt></ruby><ruby>心<rt>xīn</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>少<rt>shǎo</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>願<rt>yuàn</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>付<rt>fù</rt></ruby>。",
+                translation: "心配しないで。いくらでも私は払う気があるから。",
+                structure: "【包括用法（肯定）】多少錢...人都願意付",
+                point: "<b>願意（yuànyì）</b>：〜する気がある・喜んで〜する。"
+            },
+            {
+                id: 17,
+                hanzi: "小時候，我以為媽媽什麼都會。",
+                rubyHtml: "<ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>為<rt>wéi</rt></ruby><ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby>。",
+                translation: "小さい頃、母は何でもできると思っていた。",
+                structure: "【包括用法（全肯定）】什麼 都會",
+                point: "<b>以為（yǐwéi）</b>：〜と思い込んでいた（実際は違った）。"
+            },
+            {
+                id: 18,
+                hanzi: "去哪裡都可以，就是不想去很吵的地方。",
+                rubyHtml: "<ruby>去<rt>qù</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>吵<rt>chǎo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>方<rt>fāng</rt></ruby>。",
+                translation: "どこに行くのでもかまわない。ただ、うるさい場所には行きたくない。",
+                structure: "【包括用法】去哪裡 都可以",
+                point: "<b>就是（jiùshì）</b>：ただ〜だけだ（条件限定・補足）。"
+            },
+            {
+                id: 19,
+                hanzi: "風太大了，我們哪裡 [都／也] 不能去。",
+                rubyHtml: "<ruby>風<rt>fēng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>［<ruby>都<rt>dōu</rt></ruby>／<ruby>也<rt>yě</rt></ruby>］<ruby>不<rt>bù</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby>。",
+                translation: "風が強すぎるから、私たちはどこにも行けない。",
+                structure: "【包括用法（否定互換）】哪裡 [都/也] 不能去",
+                point: "💡<b>都/也 互換</b>：否定文のため「都」も「也」もどちらも可。"
+            },
+            {
+                id: 20,
+                hanzi: "這次活動，女同學誰 [都／也] 沒有參加。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>活<rt>huó</rt></ruby><ruby>動<rt>dòng</rt></ruby>，<ruby>女<rt>nǚ</rt></ruby><ruby>同<rt>tóng</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>誰<rt>shéi</rt></ruby>［<ruby>都<rt>dōu</rt></ruby>／<ruby>也<rt>yě</rt></ruby>］<ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>參<rt>cān</rt></ruby><ruby>加<rt>jiā</rt></ruby>。",
+                translation: "今回のイベントには、女子学生は誰も参加しなかった。",
+                structure: "【包括用法（全般否定）】誰 [都/也] 沒有參加",
+                point: "<b>誰都/也（shéi dōu/yě）</b>：誰一人として〜ない。"
+            },
+            {
+                id: 21,
+                hanzi: "我哪裡有時間啊？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>哪<rt>nǎ</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>啊<rt>a</rt></ruby>？",
+                translation: "私がどこに時間があるというの？／私に時間があるわけないでしょう。",
+                structure: "【反語用法】哪裡有...啊？",
+                point: "💡<b>反語（全否定）</b>：「時間など全くない！」という強い主張。"
+            },
+            {
+                id: 22,
+                hanzi: "誰會相信這種話？",
+                rubyHtml: "<ruby>誰<rt>shéi</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>相<rt>xiāng</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>話<rt>huà</rt></ruby>？",
+                translation: "誰がそんな話を信じるというの？／そんな話、誰も信じないよ。",
+                structure: "【反語用法】誰會...？",
+                point: "💡<b>反語（全否定）</b>：「誰も信じるはずがない！」の意味。"
+            },
+            {
+                id: 23,
+                hanzi: "你平常都不關心別人，別人怎麼會關心你？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>平<rt>píng</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>別<rt>bié</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>你<rt>nǐ</rt></ruby>？",
+                translation: "あなたが普段から他の人のことを気にかけなかったら、［他の人があなたをどうして気にかけるの？／他の人があなたのことを気にかけたりしないよ。］",
+                structure: "【反語用法】怎麼會...？",
+                point: "<b>關心（guānxīn）</b>：気にかける・配慮する。「怎麼會（どうして〜するだろうか＝するはずがない）」"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "什麼", pinyin: "shénme", meaning: "何か（不定）/ 何も（包括）", cat: "pronoun" },
+            { hanzi: "誰", pinyin: "shéi", meaning: "誰か（不定）/ 誰も（包括）", cat: "pronoun" },
+            { hanzi: "哪裡", pinyin: "nǎlǐ", meaning: "どこか（不定）/ どこにも（包括）/ どこに〜か（反語）", cat: "pronoun" },
+            { hanzi: "安靜", pinyin: "ānjìng", meaning: "静かだ・おとなしい", cat: "verb" },
+            { hanzi: "願意", pinyin: "yuànyì", meaning: "〜する気がある・喜んで〜する", cat: "verb" },
+            { hanzi: "關心", pinyin: "guānxīn", meaning: "気にかける・関心を持つ", cat: "verb" },
+            { hanzi: "相信", pinyin: "xiāngxìn", meaning: "信じる", cat: "verb" },
+            { hanzi: "以為", pinyin: "yǐwéi", meaning: "〜だと思っていた（実際は違った）", cat: "verb" },
+            { hanzi: "鄰居", pinyin: "línjū", meaning: "隣人・近所の人", cat: "noun" },
+            { hanzi: "資料", pinyin: "zīliào", meaning: "資料・データ", cat: "noun" },
+            { hanzi: "平常", pinyin: "píngcháng", meaning: "普段・平常", cat: "noun" },
+            { hanzi: "就是", pinyin: "jiùshì", meaning: "ただ〜だけだ", cat: "noun" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

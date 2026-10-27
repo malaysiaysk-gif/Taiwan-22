@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2 概數與數值表達 徹底加筆網羅版 (TOCFL Band A-C 攻略)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.8em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.45rem;
+            line-height: 1.15;
+            color: #1d4ed8;
+            font-weight: 800;
+            margin-bottom: 4px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 012 2h2a2 2 0 012-2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        TOCFL 數值與概數表現 徹底加筆補完版
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">Band A~C 秘策</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">数十万・十数万・小数の読み方ルール・「幾」vs「多」の境界線・TOCFL引っかけ対策</p>
+                </div>
+            </div>
+
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('large-num')" id="tab-large-num" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">① 大桁概数（十數萬/數十萬）</button>
+                <button onclick="switchTab('ji-duo')" id="tab-ji-duo" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">② 「幾」vs「多」徹底比較</button>
+                <button onclick="switchTab('decimals')" id="tab-decimals" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">③ 小数・分数・パーセント</button>
+                <button onclick="switchTab('tocfl-traps')" id="tab-tocfl-traps" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">④ TOCFL 誤用トラップ対策</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: LARGE NUMBERS (十數萬 vs 數十萬) ==================== -->
+        <section id="sec-large-num" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    「十數萬（十数万）」と「數十萬（数十万）」の絶対的相違
+                </h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    日本語の「十数万」と「数十万」は、中国語でも全く同じ語順で表現します。TOCFLでは<b>「萬（万）」が万進法（4桁区切り）の基本単位</b>となるため、位の並び方に注意が必要です。
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <!-- 十數萬 -->
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-blue-800 text-base">十數萬（shí jǐ wàn）</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">10万 〜 19万</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            「10万＋α（1万〜9万の端数）」を表します。「萬」の前に<b>「十幾（shí jǐ）」</b>を置きます。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <div>・<span class="font-bold text-blue-700">十幾萬人</span> (shí jǐ wàn rén) ＝ 十数万人 (11万〜19万人)</div>
+                            <div>・<span class="font-bold text-blue-700">十幾萬塊</span> (shí jǐ wàn kuài) ＝ 十数万元 (11万〜19万元)</div>
+                        </div>
+                        <p class="text-xs text-slate-500 italic">※「十萬幾」とは言わないので注意！（「幾」は万単位の直前に置く）</p>
+                    </div>
+
+                    <!-- 數十萬 -->
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-emerald-800 text-base">數十萬（幾十萬 / jǐ shí wàn）</span>
+                            <span class="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">20万 〜 90万</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            「20万、30万…90万」を表します。「十萬」の前に<b>「幾（幾つかの）」</b>を置きます。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <div>・<span class="font-bold text-emerald-700">幾十萬人</span> (jǐ shí wàn rén) ＝ 数十万人 (20万〜90万人)</div>
+                            <div>・<span class="font-bold text-emerald-700">幾十萬塊</span> (jǐ shí wàn kuài) ＝ 数十万元 (20万〜90万元)</div>
+                        </div>
+                        <p class="text-xs text-slate-500 italic">※書き言葉では「數十萬」、口語やTOCFL聴解では「幾十萬」が多用されます。</p>
+                    </div>
+                </div>
+
+                <!-- 万進法の桁まとめテーブル -->
+                <div class="pt-4">
+                    <h3 class="text-sm font-bold text-slate-800 mb-2">【TOCFL Band B-C 必修】さらに大きな桁の概数一覧</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left border-collapse">
+                            <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2.5">日本語</th>
+                                    <th class="p-2.5">中国語（繁体字）</th>
+                                    <th class="p-2.5">ピンイン</th>
+                                    <th class="p-2.5">実際の数値範囲</th>
+                                    <th class="p-2.5">例文</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr>
+                                    <td class="p-2.5 font-bold">数百 / 数千</td>
+                                    <td class="p-2.5 font-bold text-blue-700">幾百 / 幾千</td>
+                                    <td class="p-2.5 font-mono">jǐ bǎi / jǐ qiān</td>
+                                    <td class="p-2.5">200〜900 / 2,000〜9,000</td>
+                                    <td class="p-2.5">這間店每天用<span class="font-bold">幾百顆</span>番茄。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-bold">数万</td>
+                                    <td class="p-2.5 font-bold text-blue-700">幾萬</td>
+                                    <td class="p-2.5 font-mono">jǐ wàn</td>
+                                    <td class="p-2.5">2万〜9万</td>
+                                    <td class="p-2.5">這些家具每個都要<span class="font-bold">幾萬塊</span>。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-bold">数十万</td>
+                                    <td class="p-2.5 font-bold text-blue-700">幾十萬 (數十萬)</td>
+                                    <td class="p-2.5 font-mono">jǐ shí wàn</td>
+                                    <td class="p-2.5">20万〜90万</td>
+                                    <td class="p-2.5">那台二手車要<span class="font-bold">幾十萬塊</span>。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-bold">数百万人</td>
+                                    <td class="p-2.5 font-bold text-blue-700">幾百萬人 (數百萬人)</td>
+                                    <td class="p-2.5 font-mono">jǐ bǎi wàn rén</td>
+                                    <td class="p-2.5">200万人〜900万人</td>
+                                    <td class="p-2.5">每年有<span class="font-bold">幾百萬人</span>來台灣觀光。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-bold">数千万人</td>
+                                    <td class="p-2.5 font-bold text-blue-700">幾千萬人 (數千萬人)</td>
+                                    <td class="p-2.5 font-mono">jǐ qiān wàn rén</td>
+                                    <td class="p-2.5">2,000万人〜9,000万人</td>
+                                    <td class="p-2.5">台灣人口有兩千三<span class="font-bold">多萬人</span>。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: Jǐ vs DUŌ (幾 vs 多) ==================== -->
+        <section id="sec-ji-duo" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        「幾」と「多」の境界線と量詞の挿入位置（TOCFL文法問100%頻出）
+                    </h2>
+                    <p class="text-sm text-slate-600">
+                        「幾」は<b>不定の数（1〜9）を置き換える代名詞</b>であり、「多」は<b>基準値の後に付く余り（端数）</b>です。量詞の「前」に入るか「後ろ」に入るかで意味が激変します。
+                    </p>
+                </div>
+
+                <!-- 量詞の位置ルール -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 多 の位置ルール -->
+                    <div class="bg-amber-50/50 border border-amber-200 p-5 rounded-xl space-y-3">
+                        <h3 class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                            「多」の決定的な語順ルール
+                        </h3>
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-white p-3 rounded border border-amber-200">
+                                <div class="font-bold text-amber-800">パターンA：【数詞 ＋ 多 ＋ 量詞 ＋ 名詞】</div>
+                                <div class="text-slate-600 mt-1">基準単位が「十・百・千・萬」など10以上の場合。端数は10未満（または下位の桁）。</div>
+                                <div class="font-mono text-blue-900 mt-1 font-bold">・三十多個人（30〜39人）/ 一百多塊（100〜199元）</div>
+                            </div>
+                            <div class="bg-white p-3 rounded border border-amber-200">
+                                <div class="font-bold text-amber-800">パターンB：【数詞 ＋ 量詞 ＋ 多 ＋ 名詞】</div>
+                                <div class="text-slate-600 mt-1">基準単位が「1〜9」の場合。端数は「1単位未満の小数/部分」。</div>
+                                <div class="font-mono text-blue-900 mt-1 font-bold">・三年多（3年と数ヶ月）/ 一歲多（1歳と数ヶ月）</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 幾 の位置ルール -->
+                    <div class="bg-emerald-50/50 border border-emerald-200 p-5 rounded-xl space-y-3">
+                        <h3 class="font-bold text-emerald-900 text-sm flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                            「幾」の決定的な語順ルール
+                        </h3>
+                        <div class="space-y-2 text-xs">
+                            <div class="bg-white p-3 rounded border border-emerald-200">
+                                <div class="font-bold text-emerald-800">パターンA：【十 ＋ 幾 ＋ 量詞 ＋ 名詞】</div>
+                                <div class="text-slate-600 mt-1">「10〜19」を表す。「幾」は1の位の数字（1〜9）を代用する。</div>
+                                <div class="font-mono text-blue-900 mt-1 font-bold">・十幾張椅子（11〜19脚） / 十幾個人（11〜19人）</div>
+                            </div>
+                            <div class="bg-white p-3 rounded border border-emerald-200">
+                                <div class="font-bold text-emerald-800">パターンB：【幾 ＋ 十/百/千/萬 ＋ 量詞 ＋ 名詞】</div>
+                                <div class="text-slate-600 mt-1">「数十/数百/数千/数万」を表す。桁の頭に「幾」を置く。</div>
+                                <div class="font-mono text-blue-900 mt-1 font-bold">・三十幾個人（31〜39人） / 幾百個番茄（200〜900個）</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 比較対比例 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+                    <div class="font-bold text-slate-800 text-sm mb-1">【徹底比較】「三年多」 vs 「三十多年」 vs 「三十幾年」</div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-blue-700">三年多</span><br>
+                            （3年〜4年未満）<br>
+                            <span class="text-slate-500">3年と約5ヶ月など、3年を超えているが4年には達していない。</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-amber-700">三十多年</span><br>
+                            （30年〜39年）<br>
+                            <span class="text-slate-500">30年以上経過している（32年、38年など）。「多」は10未満の端数。</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-emerald-700">三十幾年</span><br>
+                            （31年〜39年）<br>
+                            <span class="text-slate-500">意味は「三十多年」とほぼ同義。口語では「三十幾年」が好まれる。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: DECIMALS & FRACTIONS ==================== -->
+        <section id="sec-decimals" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        小数・分数・パーセント（趴）の読み方と特殊ルールの全貌
+                    </h2>
+                    <p class="text-sm text-slate-600">
+                        TOCFLのリスニング（聽力）で特に誤解されやすい「0の読み方（零）」や、台湾特有の口語単位「趴」のルール。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 小数のルール -->
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+                        <h3 class="font-bold text-blue-800 text-sm flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                            小数の読み方ルール（點 / diǎn）
+                        </h3>
+                        <ul class="text-xs text-slate-700 space-y-2">
+                            <li>・<b>小数点以下は1桁ずつ数字を棒読みする：</b><br>
+                            3.1415 ＝ 三點一四一五 (sān diǎn yī sì yī wǔ)<br>
+                            <span class="text-rose-600 font-bold">✕ 三點一千四百十五 とは読まない！</span></li>
+                            <li>・<b>「0」は必ず「零 (líng)」と発音する：</b><br>
+                            0.5 ＝ 零點五 (líng diǎn wǔ) / 0.08 ＝ 零點零八 (líng diǎn líng bā)</li>
+                            <li>・<b>「2」の読み方は必ず「二 (èr)」：</b><br>
+                            2.2 ＝ 二點二 (èr diǎn èr)<br>
+                            <span class="text-rose-600 font-bold">✕ 兩點兩 (liǎng diǎn liǎng) はNG！（「兩點」は2時を意味してしまう）</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 分数＆パーセントのルール -->
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-3">
+                        <h3 class="font-bold text-indigo-800 text-sm flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+                            分数 ＆ パーセント（百分之 / 趴）
+                        </h3>
+                        <ul class="text-xs text-slate-700 space-y-2">
+                            <li>・<b>分数：【母数 ＋ 分之 ＋ 分子】</b><br>
+                            1/2 ＝ 二分之一 (èr fēn zhī yī) ※「一半」とも言える<br>
+                            2/3 ＝ 三分之二 (sān fēn zhī èr) ※分子の2は「二」</li>
+                            <li>・<b>パーセント（標準）：【百分之 ＋ 数値】</b><br>
+                            85% ＝ 百分之八十五 (bǎi fēn zhī bāshí wǔ)</li>
+                            <li>・<b>パーセント（台湾口語）：【数値 ＋ 趴 (pā)】</b><br>
+                            85% ＝ 八十五趴 (bāshí wǔ pā)<br>
+                            30%多 ＝ 三十幾趴 (sānshí jǐ pā)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 割引・割増表現（折 / 成） -->
+                <div class="bg-blue-50/60 p-5 rounded-xl border border-blue-200 space-y-3 text-xs">
+                    <div class="font-bold text-blue-900 text-sm">【TOCFL Band B 必須】台湾の割引表現「折 (zhé)」の計算（日本と逆！）</div>
+                    <p class="text-slate-700 leading-relaxed">
+                        台湾の「折」は<b>「支払う割合（残りの価格）」</b>を表します。日本の「〜割引」と数値が逆になるため、TOCFLの聴解問題で非常に多く出題されます。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                        <div class="bg-white p-3 rounded border border-blue-200">
+                            <div class="font-bold text-blue-800">打八折 (dǎ bā zhé)</div>
+                            <div class="text-slate-600">80%の価格で売る ＝ <span class="font-bold text-rose-600">2割引 (20% OFF)</span></div>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-blue-200">
+                            <div class="font-bold text-blue-800">打七五折 (dǎ qī wǔ zhé)</div>
+                            <div class="text-slate-600">75%の価格で売る ＝ <span class="font-bold text-rose-600">25% OFF</span></div>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-blue-200">
+                            <div class="font-bold text-blue-800">打折 (dǎ zhé)</div>
+                            <div class="text-slate-600">割引する（一般動詞）</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: TOCFL TRAPS ==================== -->
+        <section id="sec-tocfl-traps" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-600"></span>
+                        TOCFL 試験に出てくる「概数・数値」誤用トラップ 4選
+                    </h2>
+                    <p class="text-sm text-slate-600">
+                        試験で受験者が陥りやすい代表的な間違った選択肢パターンとその解説。
+                    </p>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                    <!-- Trap 1 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-700 text-sm flex items-center gap-2">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-extrabold">TRAP 1</span>
+                            ❌ 「十多張椅子」はなぜ不自然か？
+                        </div>
+                        <p class="text-slate-700">
+                            <b>正解：十幾張椅子 (shí jǐ zhāng yǐzi)</b><br>
+                            解説：10〜19の端数（一の位）を表す場合は、原則として「幾」を使います。「多」は端数が2桁以上（百の位や千の位）の場合（例：一百多張）か、1未満の小数の場合（例：一年多）に使います。
+                        </p>
+                    </div>
+
+                    <!-- Trap 2 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-700 text-sm flex items-center gap-2">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-extrabold">TRAP 2</span>
+                            ❌ 「兩百幾十塊」はなぜ不自然か？
+                        </div>
+                        <p class="text-slate-700">
+                            <b>正解：兩百多塊 (liǎng bǎi duō kuài)</b><br>
+                            解説：「200〜299元」のように百の位の後に数十元の端数がある場合は、シンプルに「兩百多塊」と言います。「幾十」を百の後に重ねる表現は冗長であるためTOCFLの正解選択肢にはなりません。
+                        </p>
+                    </div>
+
+                    <!-- Trap 3 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-700 text-sm flex items-center gap-2">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-extrabold">TRAP 3</span>
+                            ❌ 「兩點五個小時」はなぜ間違いか？
+                        </div>
+                        <p class="text-slate-700">
+                            <b>正解：三點五個小時 / 零點五個小時 （2.5時間の「2」は「二點五」）</b><br>
+                            解説：小数の「.2」や整数部分の「2.5」を読む際、数字の「2」は必ず<b>「二 (èr)」</b>と読みます。「兩 (liǎng)」と読むと「兩點（2時）」の時間表現と混同するため不吉・誤りとなります。（例：二點五個小時 ＝ 2.5時間）
+                        </p>
+                    </div>
+
+                    <!-- Trap 4 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <div class="font-bold text-rose-700 text-sm flex items-center gap-2">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-extrabold">TRAP 4</span>
+                            ❌ 「幾十萬」と「十幾萬」のリスニング聞き取りミス
+                        </div>
+                        <p class="text-slate-700">
+                            <b>比較：幾十萬 (20万〜90万) vs 十幾萬 (11万〜19万)</b><br>
+                            解説：聴解（聽力）で「幾十萬」と聞こえたら「数十万（例：50万）」ですが、「十幾萬」と聞こえたら「10万ちょっと（例：13万）」です。順序ひとつで数値の桁規模が変わるため、TOCFLの数字聞き取り問題で最も誤答率が高いポイントです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 2 Advanced Quantifiers & Numbers Summary Guide | TOCFL Band A-C Master
+    </footer>
+
+    <!-- Tab Switching JS -->
+    <script>
+        function switchTab(tab) {
+            ['large-num', 'ji-duo', 'decimals', 'tocfl-traps'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 9 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">巧克力現在買兩盒就送一盒。（數量詞＋副詞「就」/「才」、條件「要/得」、半天的慣用詞義 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (16句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 9 例文網羅（⑤〜⑳ 全16句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 9 文法メタマトリクス：数量詞＋副詞「就」vs「才」＆ 条件マーカー「要 / 得」
+                </h2>
+                <p class="text-sm text-slate-600">数量・回数・時間を引き金とする条件判断（〜しただけで即成立 vs 〜して初めて成立）、文末「了」の排他ルール、および必要条件を示す助動詞のニュアンス差。</p>
+            </div>
+
+            <!-- 1. 数量詞＋就 vs 才 対比マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 数量詞＋「就」と「才」の基本構造・ニュアンス比較
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">副詞</th>
+                                <th class="p-3">主観的評価</th>
+                                <th class="p-3">基本構文パターン</th>
+                                <th class="p-3">文末「了」のルール</th>
+                                <th class="p-3">日本語訳のポイント</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">就 (jiù)</td>
+                                <td class="p-3 font-bold text-blue-800">数量・ハードルが低く「簡単・即座・スムーズ」</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">数量詞/条件 ＋ <span class="text-blue-700">就</span> ＋ 述語 ... <span class="text-blue-700">了</span></td>
+                                <td class="p-3 text-emerald-600 font-bold">⭕️ 原則伴う（未来の条件文でも「了」を置く）</td>
+                                <td class="p-3 text-slate-700">〜しただけでもう〜だ / 〜すれば（それだけで）〜になる</td>
+                                <td class="p-3 font-semibold text-slate-900">吃了一次藥<span class="text-blue-700 font-bold">就</span>好<span class="text-blue-700 font-bold">了</span>。<br>十八歲<span class="text-blue-700 font-bold">就</span>可以喝酒<span class="text-blue-700 font-bold">了</span>。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700">才 (cái)</td>
+                                <td class="p-3 font-bold text-rose-800">数量・ハードルが高く「難航・必須条件」</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">(要/得) ＋ 数量/条件 ＋ <span class="text-rose-700">才</span> ＋ 述語 ... <span class="text-rose-600 font-extrabold">(✕了)</span></td>
+                                <td class="p-3 text-rose-600 font-extrabold">❌ 絶対禁止！（文末に「了」を置かない）</td>
+                                <td class="p-3 text-slate-700">〜してようやく〜だ<br><span class="text-rose-700 font-bold">（否定訳：〜しなければ〜にならない）</span></td>
+                                <td class="p-3 font-semibold text-slate-900">開了兩個多小時<span class="text-rose-700 font-bold">才</span>到。<br>要二十歲<span class="text-rose-700 font-bold">才</span>可以喝酒。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 条件マーカー「要」と「得」の比較 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 条件成立に必要な助動詞「要 (yào)」 vs 「得 (děi)」のニュアンス
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【要 (yào) ＋ 条件 ＋ 才...】一般的な必須規定・予定</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            法律・ルール・手順として「〜する必要がある」というニュートラルな前提条件を示します。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900">
+                            ・要二十歲才可以喝酒。（20歳になって初めてお酒が飲める。）<br>
+                            ・要再等一下才會有位子。（もう少し待ってようやく席が空く。）
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">【得 (děi) ＋ 条件 ＋ 才...】強烈な義務・差し迫った必要性</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            話し手の主観で「どうしても〜しなければ、どうしても〜に至らない」という強い切迫感を伝えます。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-rose-900">
+                            ・他今天晚上得寫完兩份報告才能睡覺。（今晩レポートを2つ仕上げないと絶対眠れない。）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 9 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLの語彙・読解問題で頻出する「半天」の主観的意図と、「才」を含む条件文の選択肢トラップ。</p>
+            </div>
+
+            <!-- QA 1: 「半天」は文字通りの半日（12時間）を意味するのか？ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">語彙の感覚</span>
+                    💡 「我查了半天」は、本当に半日（12時間）調べ続けたという意味？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        いいえ。中国語の<b>「半天 (bàn tiān)」</b>は文字通りの「半日」を指すこともありますが、多くの場合<b>「非常に長い時間（かなり苦労して）」</b>という話し手の誇張・辟易とした主観を表す口語フレーズです。
+                    </p>
+                    <p>
+                        実際には30分〜1〜2時間の調査であっても、本人が「手こずって時間がかかった」と感じていれば「查了半天」と表現します。そのため、遅延を表す副詞<b>「才」</b>と非常に相性が良く、セットで多用されます。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>⭕️ 我 查了<span class="text-blue-700 font-bold">半天</span> <span class="text-rose-700 font-bold">才</span> 查到。（散々調べて、ようやく見つけた。）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 未来の条件文における「就...了」の「了」の役割 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 文法落とし穴</span>
+                    ❌ 未来のことなのに「十八歲就可以喝酒了」と文末に「了」が付くのはなぜ？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        ここでの<b>「了」</b>は過去完了の「了」ではなく、<b>「その条件が満たされた結果として、新しい状況が発生・成立する（状況の変化）」</b>を表す文末助詞です。
+                    </p>
+                    <p>
+                        副詞「就」は前述の条件から後述の状況へのスムーズな移行を意味するため、「18歳に達した時点で『飲酒可能』という新しい状態に切り替わる（了）」という文脈を完成させるために、未来や一般的ルールの文であっても文末の「了」が不可欠となります。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>⭕️ 在台灣，十八歲 就 可以喝酒 <span class="text-blue-700 font-bold">了</span>。（18歳になればもうお酒が飲める状態になる）</div>
+                        <div>❌ 在日本，要二十歲 才 可以喝酒 <span class="text-rose-600 font-bold">了</span>。（※ 才 の文には「了」を付けない！）</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 9 重要語彙 & 条件表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('grammar')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">副詞・助動詞</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・量詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 9 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 16 Sentences from 5 to 20)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "這次感冒，我吃了一次藥就好了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>感<rt>gǎn</rt></ruby><ruby>冒<rt>mào</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "今回の風邪は、一度薬を飲んだら治った。",
+                structure: "【動量詞＋就...了】吃了一次藥 就好了",
+                point: "💡<b>一次就...了</b>：たった1回で即座に回復した（軽快）。"
+            },
+            {
+                id: 6,
+                hanzi: "那本書很無聊，我看了幾行就不想看了。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>無<rt>wú</rt></ruby><ruby>聊<rt>liáo</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>行<rt>háng</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "あの本はつまらないので、私は数行読んだだけで読みたくなくなった。",
+                structure: "【数量＋就...了】看了幾行 就不想看了",
+                point: "<b>幾行就...</b>：わずか数行で即座に意欲喪失。"
+            },
+            {
+                id: 7,
+                hanzi: "姑姑這次去法國玩，怎麼三天就回國了呢？",
+                rubyHtml: "<ruby>姑<rt>gū</rt></ruby><ruby>姑<rt>gu</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>法<rt>Fǎ</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>玩<rt>wán</rt></ruby>，<ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>呢<rt>ne</rt></ruby>？",
+                translation: "おばさんは今回フランスに遊びに行って、どうして3日で帰国したの？",
+                structure: "【時量詞＋就...了】三天 就回國了",
+                point: "<b>三天就...</b>：わずか3日という短期間に対する驚き。"
+            },
+            {
+                id: 8,
+                hanzi: "他過了十幾天才交作業。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>交<rt>jiāo</rt></ruby><ruby>作<rt>zuò</rt></ruby><ruby>業<rt>yè</rt></ruby>。",
+                translation: "彼は十数日過ぎてからようやく宿題を出した。",
+                structure: "【時量詞＋才】十幾天才交... (✕了)",
+                point: "💡<b>才 (了なし)</b>：十数日もかかって遅れて提出。"
+            },
+            {
+                id: 9,
+                hanzi: "那所大學離這裡比較遠，我開了兩個多小時的車才到。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>遠<rt>yuǎn</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "あの大学はここから比較的遠い。私は2時間以上運転してようやく着いた。",
+                structure: "【時量詞＋才】開了兩個多小時...才到",
+                point: "<b>開車（kāi chē）</b>：運転する。2時間以上も要した遅延感。"
+            },
+            {
+                id: 10,
+                hanzi: "我查了半天才查到那間公司的電子郵件地址。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>查<rt>chá</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>查<rt>chá</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>子<rt>zǐ</rt></ruby><ruby>郵<rt>yóu</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>地<rt>dì</rt></ruby><ruby>址<rt>zhǐ</rt></ruby>。",
+                translation: "私は長い時間かけて調べて、ようやくあの会社のメールアドレスを見つけた。",
+                structure: "【半天＋才】查了半天才查到",
+                point: "💡<b>半天才...</b>：「散々時間をかけてようやく」という手こずり表現。"
+            },
+            {
+                id: 11,
+                hanzi: "在台灣，十八歲就可以喝酒了。",
+                rubyHtml: "<ruby>在<rt>zài</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>灣<rt>wān</rt></ruby>，<ruby>十<rt>shí</rt></ruby><ruby>八<rt>bā</rt></ruby><ruby>歲<rt>suì</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "台湾では、18歳になったらお酒が飲める。",
+                structure: "【年齢＋就...了】十八歲就可以...",
+                point: "<b>十八歲就...</b>：18歳という比較的若い年齢での解禁。"
+            },
+            {
+                id: 12,
+                hanzi: "在日本，要二十歲才可以喝酒。",
+                rubyHtml: "<ruby>在<rt>zài</rt></ruby><ruby>日<rt>Rì</rt></ruby><ruby>本<rt>běn</rt></ruby>，<ruby>要<rt>yào</rt></ruby><ruby>二<rt>èr</rt></ruby><ruby>十<rt>shí</rt></ruby><ruby>歲<rt>suì</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>酒<rt>jiǔ</rt></ruby>。",
+                translation: "日本では、20歳になってようやくお酒が飲める。／日本では、20歳にならないとお酒が飲めない。",
+                structure: "【要＋年齢＋才】要二十歲才可以... (✕了)",
+                point: "💡<b>要...才 (否定訳)</b>：20歳になるまで飲めない（条件必須）。"
+            },
+            {
+                id: 13,
+                hanzi: "他今天晚上得寫完兩份報告才能睡覺。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>得<rt>děi</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>覺<rt>jiào</rt></ruby>。",
+                translation: "彼は今晩レポートを2つ書き終えないと寝られない。",
+                structure: "【得＋条件＋才】得寫完...才能睡覺",
+                point: "<b>得 (děi)</b>：どうしても〜しなければならない（強い義務感）。"
+            },
+            {
+                id: 14,
+                hanzi: "巧克力現在買兩盒就送一盒。",
+                rubyHtml: "<ruby>巧<rt>qiǎo</rt></ruby><ruby>克<rt>kè</rt></ruby><ruby>力<rt>lì</rt></ruby><ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>盒<rt>hé</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>送<rt>sòng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>盒<rt>hé</rt></ruby>。",
+                translation: "チョコレートは、今2箱買ったら1箱ついてくる。",
+                structure: "【条件買...＋就送...】買兩盒 就送一盒",
+                point: "<b>送（sòng）</b>：おまけで贈与・プレゼントする。"
+            },
+            {
+                id: 15,
+                hanzi: "阿姨說每天吃一顆蘋果，就不會生病。",
+                rubyHtml: "<ruby>阿<rt>ā</rt></ruby><ruby>姨<rt>yí</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>顆<rt>kē</rt></ruby><ruby>蘋<rt>píng</rt></ruby><ruby>果<rt>guǒ</rt></ruby>，<ruby>就<rt>jiù</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>病<rt>bìng</rt></ruby>。",
+                translation: "おばさんは、毎日リンゴを1個食べたら病気にならないと言う。",
+                structure: "【習慣条件＋就】吃一顆蘋果 就不會...",
+                point: "<b>顆（kē）</b>：果実や丸い粒を数える量詞。"
+            },
+            {
+                id: 16,
+                hanzi: "這首歌，李伯伯只聽了一次就會唱了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>首<rt>shǒu</rt></ruby><ruby>歌<rt>gē</rt></ruby>，<ruby>李<rt>Lǐ</rt></ruby><ruby>伯<rt>bó</rt></ruby><ruby>伯<rt>bo</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>唱<rt>chàng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "その歌は、李おじさんは一度聞いただけで歌えるようになった。",
+                structure: "【只...一次＋就...了】只聽了一次 就會唱了",
+                point: "<b>只 (zhǐ)</b>：「たった〜だけ」でスムーズに習得したことを強調。"
+            },
+            {
+                id: 17,
+                hanzi: "要再等一下才會有位子。",
+                rubyHtml: "<ruby>要<rt>yào</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>位<rt>wèi</rt></ruby><ruby>子<rt>zi</rt></ruby>。",
+                translation: "もう少し待ったらようやく席が空く。／もう少し待たないと、席が空かない。",
+                structure: "【要＋時間＋才】要再等一下 才會...",
+                point: "<b>位子（wèizi）</b>：座席・席。"
+            },
+            {
+                id: 18,
+                hanzi: "我想了好幾天才買這個手錶。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>錶<rt>biǎo</rt></ruby>。",
+                translation: "私は何日も考えてから、ようやくこの腕時計を買った。",
+                structure: "【好幾天＋才】想了好幾天才買...",
+                point: "<b>手錶（shǒubiǎo）</b>：腕時計。"
+            },
+            {
+                id: 19,
+                hanzi: "我們談了兩、三次，他才接受我的建議。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>談<rt>tán</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>兩<rt>liǎng</rt></ruby>、<ruby>三<rt>sān</rt></ruby><ruby>次<rt>cì</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>受<rt>shòu</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>建<rt>jiàn</rt></ruby><ruby>議<rt>yì</rt></ruby>。",
+                translation: "私たちが2、3回話し合って、彼はようやく私のアドバイスを受け入れた。",
+                structure: "【回数＋才】談了兩、三次...才接受",
+                point: "<b>建議（jiànyì）</b>：提案・アドバイス。"
+            },
+            {
+                id: 20,
+                hanzi: "小花跟父親討論了一年多，他才同意一起搬到台北。",
+                rubyHtml: "<ruby>小<rt>Xiǎo</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>父<rt>fù</rt></ruby><ruby>親<rt>qīn</rt></ruby><ruby>討<rt>tǎo</rt></ruby><ruby>論<rt>lùn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>年<rt>nián</rt></ruby><ruby>多<rt>duō</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>同<rt>tóng</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>北<rt>běi</rt></ruby>。",
+                translation: "小花が父親と1年以上相談して、父親はようやく一緒に台北に引っ越すことに同意した。",
+                structure: "【時量＋才】討論了一年多...才同意",
+                point: "<b>討論（tǎolùn）</b>：話し合う・ディスカッションする。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "就", pinyin: "jiù", meaning: "（副詞）〜しただけで即座に（ハードルの低さ / 了を伴う）", cat: "grammar" },
+            { hanzi: "才", pinyin: "cái", meaning: "（副詞）〜してようやく（難航・必須条件 / 了は不可）", cat: "grammar" },
+            { hanzi: "要", pinyin: "yào", meaning: "（助動詞）〜する必要がある（一般的条件）", cat: "grammar" },
+            { hanzi: "得", pinyin: "děi", meaning: "（助動詞）どうしても〜しなければならない（強烈な義務）", cat: "grammar" },
+            { hanzi: "半天", pinyin: "bàn tiān", meaning: "かなり長い時間・散々手こずって", cat: "grammar" },
+            { hanzi: "送", pinyin: "sòng", meaning: "おまけでつける・プレゼントする", cat: "verb" },
+            { hanzi: "討論", pinyin: "tǎolùn", meaning: "話し合う・討論する", cat: "verb" },
+            { hanzi: "接受", pinyin: "jiēshòu", meaning: "受け入れる・承諾する", cat: "verb" },
+            { hanzi: "電子郵件地址", pinyin: "diànzǐ yóujiàn dìzhǐ", meaning: "メールアドレス", cat: "noun" },
+            { hanzi: "位子", pinyin: "wèizi", meaning: "座席・席", cat: "noun" },
+            { hanzi: "建議", pinyin: "jiànyì", meaning: "提案・アドバイス", cat: "noun" },
+            { hanzi: "盒 / 顆 / 行", pinyin: "hé / kē / háng", meaning: "（量詞）箱 / 粒・果実 / 行", cat: "noun" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

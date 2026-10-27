@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 8 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">我明天可以睡到中午。（結果補語「到」4大文型 / 目的語反復・離合詞 / 沒想到 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 8 例文網羅（⑤〜㉖ 全22句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 8 文法メタマトリクス：結果補語「到」の4大文型 ＆ 「沒想到」
+                </h2>
+                <p class="text-sm text-slate-600">動作が「対象・場所・時間・範囲」のどこに到達したかを表す「動詞＋到」の構造、目的語重複・離合詞パターン、および驚きを表す「沒想到」。</p>
+            </div>
+
+            <!-- 1. 結果補語「到」4大文型マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 結果補語「到」の4大機能分類・語順マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型区分</th>
+                                <th class="p-3">語順構造</th>
+                                <th class="p-3">到達の要素</th>
+                                <th class="p-3">ポイント・注意点</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">文型 (1) 対象</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 到 ＋ 対象名詞</td>
+                                <td class="p-3 text-slate-700">目的の達成・入手</td>
+                                <td class="p-3 text-slate-700">探す・買う・受け取る等の動作が目的を達したことを示す。</td>
+                                <td class="p-3 font-semibold text-slate-900">找到餐廳 / 沒買到票 / 接到電話</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">文型 (2) 場所</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 到 ＋ 場所詞</td>
+                                <td class="p-3 text-slate-700">空間的到達地点</td>
+                                <td class="p-3 text-emerald-700 font-bold">一般名詞には「裡/上」等を補い場所詞化する。</td>
+                                <td class="p-3 font-semibold text-slate-900">走到醫院 / 收到廚房<span class="text-emerald-700 font-bold">裡</span> / 丟到垃圾桶<span class="text-emerald-700 font-bold">裡</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700">文型 (3) 時間</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 到 ＋ 時間詞</td>
+                                <td class="p-3 text-slate-700">時間的継続限界</td>
+                                <td class="p-3 text-purple-700 font-bold">目的語がある場合は動詞を2回反復（離合詞も同様）。</td>
+                                <td class="p-3 font-semibold text-slate-900">睡到中午 / 看小說<span class="text-purple-700 font-bold">看</span>到五點 / 加班<span class="text-purple-700 font-bold">加</span>到八點</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-amber-700">文型 (4) 範囲</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 到 ＋ 範囲・段階</td>
+                                <td class="p-3 text-slate-700">進行プロセスの限界点</td>
+                                <td class="p-3 text-slate-700">読む・作る・計算する作業の途中の区切りを示す。</td>
+                                <td class="p-3 font-semibold text-slate-900">唸到第六行 / 看到這個部分 / 做到一半</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「想到」と「沒想到」の感情表現 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 「想到（思いが及ぶ）」 ＆ 「沒想到（まさか〜とは）」の構文規則
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【想到】〜と思うと・〜を考えると</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            ある未来や状況に思考が到達することを表し、後ろに感情（悲しい、嬉しい等）を伴います。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900">
+                            ・想到下個月就要離開，我覺得有點難過。（来月離れると思うと悲しくなる。）
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-rose-800 text-sm">【沒想到】まさか〜だなんて・思いがけず</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            節の先頭に置き、自分の予想や思い込み（以為...）と反する事実に対する<b>「意外・驚き」</b>を表します。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-rose-900">
+                            ・我以為她是國中生，沒想到她早就高中畢業了。（まさかとっくに高校卒業していたなんて。）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 8 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLテストの文法・並べ替えで頻出する「時間＋到＋目的語」の重複構文と、「物名詞＋場所詞化」の文法ルール。</p>
+            </div>
+
+            <!-- QA 1: 時間＋到＋目的語の動詞重複パターン -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 頻出文法</span>
+                    ❌ なぜ「看小說到五點」ではなく「看小說看到五點」と言うのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        中国語では、動詞が目的語（小說）を伴う際、結果補語「到 ＋ 時間詞（五點）」を直接目的語の後ろに置くことができません。
+                    </p>
+                    <p>
+                        そのため、Lesson 5で学んだ数量補語と同様に、<b>「動詞＋目的語＋動詞＋到＋時間詞」</b>と動詞をリピートさせる必要があります。離合詞（加班、放假）の場合も同じルールが適用されます。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>❌ 你 要 看 小說 到 什麼時候？</div>
+                        <div>⭕️ 你 要 看 小說 <span class="text-rose-700 font-bold">看</span>到 什麼時候？</div>
+                        <div>⭕️ 所有 人 都 加班 <span class="text-rose-700 font-bold">加</span>到 八點多。（離合詞：加班）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「物名詞＋場所詞化」のルール -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">文法穴埋め対策</span>
+                    💡 なぜ「丟到垃圾桶」ではなく「丟到垃圾桶裡」にしなければならない？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        結果補語「到」が空間的到達（文型2）を表す場合、後ろには<b>必ず「場所詞」</b>が来なければなりません。
+                    </p>
+                    <p>
+                        「廚房（台所）」や「垃圾桶（ゴミ箱）」などの物体・一般名詞はそのままでは場所詞ではないため、<b>「裡（中）」「上（上）」などの方位詞を文末に付け加えて場所詞化</b>する必要があります。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>❌ 收到 廚房。 / 丟到 垃圾桶。</div>
+                        <div>⭕️ 收到 廚房<span class="text-blue-700 font-bold">裡</span>。 / 丟到 垃圾桶<span class="text-blue-700 font-bold">裡</span>。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 8 重要語彙 & 結果補語動詞
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('dao')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">動詞＋到</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞・離合詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・その他</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 8 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 5 to 26)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "大家都喜歡阿德，他是怎麼做到的？",
+                rubyHtml: "<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>阿<rt>Ā</rt></ruby><ruby>德<rt>dé</rt></ruby>，<ruby>他<rt>tā</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>怎<rt>zěn</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>的<rt>de</rt></ruby>？",
+                translation: "阿徳はみんなに好かれている。彼はどうやってそれを成し得ているのだろう。",
+                structure: "【文型1:対象】做到（成し遂げる）",
+                point: "<b>做到（zuò dào）</b>：目的を達成する・やり遂げる。"
+            },
+            {
+                id: 6,
+                hanzi: "我們買的冰箱還沒送到。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>冰<rt>bīng</rt></ruby><ruby>箱<rt>xiāng</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>送<rt>sòng</rt></ruby><ruby>到<rt>dào</rt></ruby>。",
+                translation: "私たちが買った冷蔵庫は、まだ届いていない。",
+                structure: "【文型1否定】還沒送到",
+                point: "<b>送到（sòng dào）</b>：配送して届け完了する。"
+            },
+            {
+                id: 7,
+                hanzi: "你可以在這附近找到好幾家素食餐廳。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>附<rt>fù</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>找<rt>zhǎo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>素<rt>sù</rt></ruby><ruby>食<rt>shí</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>廳<rt>tīng</rt></ruby>。",
+                translation: "この近くで何軒ものベジタリアンのお店を見つけることができるよ。",
+                structure: "【文型1:対象】找到＋好幾家餐廳",
+                point: "<b>素食餐廳（sùshí cāntīng）</b>：ベジタリアンレストラン。"
+            },
+            {
+                id: 8,
+                hanzi: "我剛才沒接到女朋友打給我的電話。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>接<rt>jiē</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>女<rt>nǚ</rt></ruby><ruby>朋<rt>péng</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>給<rt>gěi</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>話<rt>huà</rt></ruby>。",
+                translation: "さっき私の彼女からかかってきた電話が取れなかった。",
+                structure: "【文型1否定】沒接到電話",
+                point: "<b>接到（jiē dào）</b>：電話を出て取る・受け取る。"
+            },
+            {
+                id: 9,
+                hanzi: "那個演員的見面會，很多人都沒買到票。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>演<rt>yǎn</rt></ruby><ruby>員<rt>yuán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>面<rt>miàn</rt></ruby><ruby>會<rt>huì</rt></ruby>，<ruby>很<rt>hěn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>票<rt>piào</rt></ruby>。",
+                translation: "あの俳優のファンミーティングは、チケットが買えなかった人がたくさんいた。",
+                structure: "【文型1否定】沒買到票",
+                point: "<b>見面會（jiànmiànhuì）</b>：ファンミーティング。"
+            },
+            {
+                id: 10,
+                hanzi: "從我家走到那間醫院，只要五分鐘左右。",
+                rubyHtml: "<ruby>從<rt>cóng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>醫<rt>yī</rt></ruby><ruby>院<rt>yuàn</rt></ruby>，<ruby>只<rt>zhǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>分<rt>fēn</rt></ruby><ruby>鐘<rt>zhōng</rt></ruby><ruby>左<rt>zuǒ</rt></ruby><ruby>右<rt>yòu</rt></ruby>。",
+                translation: "私の家からあの病院まで、歩いて5分ぐらいしかかからない。",
+                structure: "【文型2:場所】走到那間醫院",
+                point: "<b>走到（zǒu dào）</b>：歩いて到達する。"
+            },
+            {
+                id: 11,
+                hanzi: "媽媽說每天回到家都應該先洗手。",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>手<rt>shǒu</rt></ruby>。",
+                translation: "毎日家に帰ったらまず手を洗わなければならないと母が言う。",
+                structure: "【文型2:場所】回到家",
+                point: "<b>回到家（huí dào jiā）</b>：家に帰り着く。"
+            },
+            {
+                id: 12,
+                hanzi: "這些盤子，可以收到廚房裡了嗎？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>些<rt>xiē</rt></ruby><ruby>盤<rt>pán</rt></ruby><ruby>子<rt>zi</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>收<rt>shōu</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>廚<rt>chú</rt></ruby><ruby>房<rt>fáng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "これらのお皿は、もう台所に片付けてもいい？",
+                structure: "【文型2:場所化】收到廚房裡",
+                point: "💡<b>場所詞化</b>：物名詞（廚房）に「裡」を付けて場所化。"
+            },
+            {
+                id: 13,
+                hanzi: "巧克力吃完以後，盒子應該丟到垃圾桶裡。",
+                rubyHtml: "<ruby>巧<rt>qiǎo</rt></ruby><ruby>克<rt>kè</rt></ruby><ruby>力<rt>lì</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>後<rt>hòu</rt></ruby>，<ruby>盒<rt>hé</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>丟<rt>diū</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>拉<rt>lèsè</rt></ruby><ruby>圾<rt>lè</rt></ruby><ruby>桶<rt>tǒng</rt></ruby><ruby>裡<rt>lǐ</rt></ruby>。",
+                translation: "チョコレートを食べ終わったら、箱はゴミ箱に捨てなければだめだよ。",
+                structure: "【文型2:場所化】丟到垃圾桶裡",
+                point: "<b>丟到（diū dào）</b>：〜の中に投げ捨てる。"
+            },
+            {
+                id: 14,
+                hanzi: "明天不用上班，我可以睡到中午。",
+                rubyHtml: "<ruby>明<rt>míng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>班<rt>bān</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>午<rt>wǔ</rt></ruby>。",
+                translation: "明日は出勤しなくていいので、お昼まで寝られる。",
+                structure: "【文型3:時間】睡到中午",
+                point: "<b>睡到（shuì dào）</b>：〜の時点まで寝続ける。"
+            },
+            {
+                id: 15,
+                hanzi: "這間早餐店每天都開到下午兩點半。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>餐<rt>cān</rt></ruby><ruby>店<rt>diàn</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>兩<rt>liǎng</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>半<rt>bàn</rt></ruby>。",
+                translation: "この朝ごはん屋さんは、毎日午後2時半まで開いている。",
+                structure: "【文型3:時間】開到...兩點半",
+                point: "<b>開到（kāi dào）</b>：営業を〜まで継続する。"
+            },
+            {
+                id: 16,
+                hanzi: "這次暑假放到八月底就結束了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>暑<rt>shǔ</rt></ruby><ruby>假<rt>jià</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>八<rt>bā</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>底<rt>dǐ</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>結<rt>jié</rt></ruby><ruby>束<rt>shù</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "今回の夏休みは8月末までで終わってしまう。",
+                structure: "【文型3:時間】放到八月底",
+                point: "<b>八月底（bā yuè dǐ）</b>：8月末。"
+            },
+            {
+                id: 17,
+                hanzi: "我跟室友上個週末聊到早上五點多才睡覺。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>室<rt>shì</rt></ruby><ruby>友<rt>yǒu</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>週<rt>zhōu</rt></ruby><ruby>末<rt>mò</rt></ruby><ruby>聊<rt>liáo</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>覺<rt>jiào</rt></ruby>。",
+                translation: "私とルームメイトは、先週末朝5時過ぎまでおしゃべりしてようやく寝た／おしゃべりしていて朝5時過ぎまで寝なかった。",
+                structure: "【文型3:時間＋才】聊到...才睡覺",
+                point: "<b>聊到（liáo dào）</b>：〜まで話し込む（才で遅延を強調）。"
+            },
+            {
+                id: 18,
+                hanzi: "等一下就要出門了，你要看小說看到什麼時候？",
+                rubyHtml: "<ruby>等<rt>děng</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>出<rt>chū</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>候<rt>hòu</rt></ruby>？",
+                translation: "もうちょっとしたら出かけるのに、あなたはいつまで小説を読んでいるの？",
+                structure: "【動重複＋到時間】看小說 看到什麼時候",
+                point: "💡<b>目的語重複</b>：看小說（目的語）の後に動詞（看）を重ねる。"
+            },
+            {
+                id: 19,
+                hanzi: "最近雪下得太大了，全校放假放到下個禮拜一。",
+                rubyHtml: "<ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>雪<rt>xuě</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>全<rt>quán</rt></ruby><ruby>校<rt>xiào</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>假<rt>jià</rt></ruby><ruby>放<rt>fàng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>禮<rt>lǐ</rt></ruby><ruby>拜<rt>bài</rt></ruby><ruby>一<rt>yī</rt></ruby>。",
+                translation: "最近はあまりにも大雪なので、来週の月曜日まで全校休校だ。",
+                structure: "【離合詞重複＋到時間】放假 放到下個禮拜一",
+                point: "💡<b>離合詞重複</b>：放假（離合詞）の後に「放」を反復。"
+            },
+            {
+                id: 20,
+                hanzi: "我們公司最近很忙，所有人都加班加到八點多才下班。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>公<rt>gōng</rt></ruby><ruby>司<rt>sī</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>忙<rt>máng</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>班<rt>bān</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>八<rt>bā</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>班<rt>bān</rt></ruby>。",
+                translation: "私たちの会社は最近忙しく、全員8時過ぎまで残業をしてようやく帰る／残業で8時過ぎまで帰らない。",
+                structure: "【離合詞重複＋到時間】加班 加到八點多",
+                point: "<b>加班加到（jiābān jiā dào）</b>：残業を〜まで続ける。"
+            },
+            {
+                id: 21,
+                hanzi: "他剛才唸到第五行，我從第六行開始嗎？",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>剛<rt>gāng</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>唸<rt>niàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>第<rt>dì</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>行<rt>háng</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>從<rt>cóng</rt></ruby><ruby>第<rt>dì</rt></ruby><ruby>六<rt>liù</rt></ruby><ruby>行<rt>háng</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "彼はさっき5行目まで読みましたが、私は6行目からですか。",
+                structure: "【文型4:範囲】唸到第五行",
+                point: "<b>唸到（niàn dào）</b>：〜行目まで音読する。"
+            },
+            {
+                id: 22,
+                hanzi: "不好意思，我還沒看到這個部分。",
+                rubyHtml: "<ruby>不<rt>bù</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>意<rt>yì</rt></ruby><ruby>思<rt>sī</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>分<rt>fèn</rt></ruby>。",
+                translation: "すみません。その部分まではまだ見ていません。",
+                structure: "【文型4否定】還沒看到這個部分",
+                point: "<b>看到（kàn dào）</b>：〜の部分・範囲まで目を通す。"
+            },
+            {
+                id: 23,
+                hanzi: "這次活動花的錢我算得差不多了，但是還沒算到飯錢的部分。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>活<rt>huó</rt></ruby><ruby>動<rt>dòng</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>差<rt>chà</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>錢<rt>qián</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>分<rt>fèn</rt></ruby>。",
+                translation: "今回のイベントで使ったお金はほとんど計算したけれど、食事代の部分はまだ計算に入れていない。",
+                structure: "【文型4:範囲否定】還沒算到...",
+                point: "<b>算到（suàn dào）</b>：〜の範囲まで計算に入れる。"
+            },
+            {
+                id: 24,
+                hanzi: "今天時間不夠，那份資料我只能做到一半。",
+                rubyHtml: "<ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>夠<rt>gòu</rt></ruby>，<ruby>那<rt>nà</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>資<rt>zī</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>只<rt>zhǐ</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>半<rt>bàn</rt></ruby>。",
+                translation: "今日は時間が足りないので、あの資料は半分／途中までしか作れない／作れなかった。",
+                structure: "【文型4:段階】做到一半",
+                point: "<b>做到一半（zuò dào yí bàn）</b>：半分・途中で止まる。"
+            },
+            {
+                id: 25,
+                hanzi: "想到下個月就要離開台南了，我覺得有點難過。",
+                rubyHtml: "<ruby>想<rt>xiǎng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>離<rt>lí</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>台<rt>Tái</rt></ruby><ruby>南<rt>nán</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>過<rt>guò</rt></ruby>。",
+                translation: "来月いよいよ台南を離れると思うと、ちょっと悲しくなる。",
+                structure: "【思考到達】想到...",
+                point: "<b>想到（xiǎng dào）</b>：〜と思うと（感情誘発）。"
+            },
+            {
+                id: 26,
+                hanzi: "我以為家華還是國中生，沒想到她早就高中畢業了。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>為<rt>wéi</rt></ruby><ruby>家<rt>Jiā</rt></ruby><ruby>華<rt>huá</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>生<rt>shēng</rt></ruby>，<ruby>沒<rt>méi</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>高<rt>gāo</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>畢<rt>bì</rt></ruby><ruby>業<rt>yè</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "家華はまだ中学生だと思っていた。まさかとっくに高校を卒業していたなんて。",
+                structure: "【意外表現】沒想到...",
+                point: "💡<b>沒想到（méi xiǎng dào）</b>：まさか〜だなんて（予想外の驚き）。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "做到", pinyin: "zuò dào", meaning: "やり遂げる・成し得る（対象）", cat: "dao" },
+            { hanzi: "找到", pinyin: "zhǎo dào", meaning: "見つけ出す（対象）", cat: "dao" },
+            { hanzi: "買到", pinyin: "mǎi dào", meaning: "無事に買い手に入れる（対象）", cat: "dao" },
+            { hanzi: "走到", pinyin: "zǒu dào", meaning: "歩いて到達する（場所）", cat: "dao" },
+            { hanzi: "睡到", pinyin: "shuì dào", meaning: "〜まで寝続ける（時間）", cat: "dao" },
+            { hanzi: "聊到", pinyin: "liáo dào", meaning: "〜までおしゃべりする（時間）", cat: "dao" },
+            { hanzi: "唸到", pinyin: "niàn dào", meaning: "〜まで声を出して読む（範囲）", cat: "dao" },
+            { hanzi: "沒想到", pinyin: "méi xiǎng dào", meaning: "（フレーズ）まさか〜だとは思いがけず", cat: "dao" },
+            { hanzi: "素食餐廳", pinyin: "sùshí cāntīng", meaning: "ベジタリアンレストラン", cat: "noun" },
+            { hanzi: "見面會", pinyin: "jiànmiànhuì", meaning: "ファンミーティング", cat: "noun" },
+            { hanzi: "國中 / 高中", pinyin: "guózhōng / gāozhōng", meaning: "中学校 / 高等学校 (台湾用語)", cat: "noun" },
+            { hanzi: "加班", pinyin: "jiābān", meaning: "残業する (離合詞)", cat: "verb" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

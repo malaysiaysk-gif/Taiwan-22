@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 10 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">多喝水，多休息！（「多」の5大用法 / 多・少＋動詞 / 多＋形容詞［疑問「(有)多...」・感嘆「多...啊」］ / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (22句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 10 例文網羅（①〜㉒ 全22句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 10 文法メタマトリクス：「多」の全5大用法総まとめ
+                </h2>
+                <p class="text-sm text-slate-600">形容詞・端数・結果補語の復習から、新用法の「多/少＋動詞（動作の加減・命令）」および「多＋形容詞（程度疑問/感嘆文）」への完全整理。</p>
+            </div>
+
+            <!-- 1. 「多」の全5大用法完全比較マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 012 2"></path></svg>
+                    ① 「多」の5大機能・構文パターン比較
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">用法区分</th>
+                                <th class="p-3">品詞・役割</th>
+                                <th class="p-3">基本構文パターン</th>
+                                <th class="p-3">意味・主観的ニュアンス</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(1) 述語</td>
+                                <td class="p-3 font-semibold text-slate-800">形容詞</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">主語 ＋ 不多 / 很多</td>
+                                <td class="p-3 text-slate-700">（数量が）多い。</td>
+                                <td class="p-3 font-semibold text-slate-900">時間不多了。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(2) 端数</td>
+                                <td class="p-3 font-semibold text-slate-800">数詞後置</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">数詞 ＋ 量詞 ＋ 多 ＋ 名詞</td>
+                                <td class="p-3 text-slate-700">〜あまり、〜余り。</td>
+                                <td class="p-3 font-semibold text-slate-900">一個多月 / 五點多</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(3) 補語</td>
+                                <td class="p-3 font-semibold text-slate-800">結果補語</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 多 ＋ 了</td>
+                                <td class="p-3 text-slate-700">十分すぎるほど〜する（過剰）。</td>
+                                <td class="p-3 font-semibold text-slate-900">你想多了。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">(4) [新] 加減</td>
+                                <td class="p-3 font-semibold text-slate-800">状語（副詞的）</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800"><span class="text-blue-700">多 / 少</span> ＋ 動詞 (＋數量)</td>
+                                <td class="p-3 text-blue-900 font-bold">しっかりと多めに〜する / 控えめに少なめにする（助言・命令）。</td>
+                                <td class="p-3 font-semibold text-slate-900"><span class="text-blue-700 font-bold">多</span>喝水 / <span class="text-blue-700 font-bold">少</span>說話 / <span class="text-blue-700 font-bold">多</span>送一道菜</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">(5a) [新] 疑問</td>
+                                <td class="p-3 font-semibold text-slate-800">疑問詞</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">主語 ＋ (有) ＋ <span class="text-emerald-700">多</span> ＋ 形容詞？</td>
+                                <td class="p-3 text-emerald-900 font-bold">どのくらいの〜か（程度を尋ねる）。動詞がない時は「有」を伴う。</td>
+                                <td class="p-3 font-semibold text-slate-900">玉山<span class="text-emerald-700 font-bold">(有)多</span>高？ / <span class="text-emerald-700 font-bold">多</span>大？ / <span class="text-emerald-700 font-bold">多</span>遠？</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-purple-700">(5b) [新] 感嘆</td>
+                                <td class="p-3 font-semibold text-slate-800">感嘆表現</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">主語 ＋ <span class="text-purple-700">多</span> ＋ 形容詞 ＋ <span class="text-purple-700">啊</span>！</td>
+                                <td class="p-3 text-purple-900 font-bold">なんて〜だろう！（感嘆・強調）。</td>
+                                <td class="p-3 font-semibold text-slate-900">頭髮<span class="text-purple-700 font-bold">多</span>長<span class="text-purple-700 font-bold">啊</span>！ / <span class="text-purple-700 font-bold">多</span>難看<span class="text-purple-700 font-bold">啊</span>！</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「多＋形容詞」の【疑問文】と【感嘆文】の対比 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-indigo-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 「多＋形容詞」の2大用法：疑問文（有の挿入） vs 感嘆文（文末「啊」）
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【程度疑問文】(有) ＋ 多 ＋ 形容詞？</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            年齢、身長、時間、距離などの具体的な数値を尋ねます。文中に他の動詞（比、要など）がない述語形容詞文の場合、<b>「有 (yǒu)」</b>を前置するのが台湾華語の標準的慣用です。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900">
+                            ・他<b>有多高</b>？（彼の身長はどのくらい？）<br>
+                            ・還要<b>多久</b>？（あとどのくらい時間がかかる？）
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-purple-800 text-sm">【感嘆文】多 ＋ 形容詞 ＋ 啊！</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            疑問詞の形を用いて「どれほど〜か（言葉にならないほどだ）」と強く感情を込めます。文末に感嘆助詞<b>「啊 (a)」</b>を伴うのが原則的ルールです。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-purple-900">
+                            ・這部電視劇<b>多難看啊</b>！（なんてつまらないんだろう！）<br>
+                            ・<b>多可惜啊</b>！（なんて残念なんだろう！）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 10 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLテストの文法・読解で頻出する「多/少＋動詞」と「動詞＋多/少」の位置差、および「有」の挿入ルール。</p>
+            </div>
+
+            <!-- QA 1: 「多＋動詞」と「動詞＋多」の語順による意味の激変 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 頻出文法トラップ</span>
+                    ❌ 「多吃一點」と「吃多了」は何が違う？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「多」を動詞の<b>「前」</b>に置くか<b>「後ろ」</b>に置くかで、文法機能とニュアンスが根本的に異なります。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-2">
+                        <div><b>・多 ＋ 動詞 (多吃一點)：</b><br>
+                        「多」は修飾語（状語）。「しっかり食べる・もっと多めに食べる」という<b>【これからの動作の推奨・加減・命令】</b>を表します。</div>
+                        <div><b>・動詞 ＋ 多 (吃多了)：</b><br>
+                        「多」は結果補語。「食べ過ぎてしまった」という<b>【既発の動作の過剰・結果】</b>を表します。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「他有多高？」での「有」の必須性 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">台湾標準慣用</span>
+                    💡 「他多高？」と「他有多高？」はどちらが正しい？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        どちらも通じますが、台湾標準華語およびTOCFLの出題文では、主語と疑問形容詞句（多高、多重、多長等）の間に動詞が存在しない場合、<b>「有 (yǒu)」を補って「他有多高？」とする形が極めて自然で一般的</b>です。
+                    </p>
+                    <p>
+                        ただし、「你還要多久？」のように「要」などの助動詞・動詞がすでに存在する文では、「有」を挟まずそのまま「還要多久？」と表現します。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 10 重要語彙 & 「多/少」表現
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('duo')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">多/少表現</button>
+                    <button onclick="filterVocab('adj')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">形容詞・状態</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・動詞</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 10 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 22 Sentences from 1 to 22)
+        const sentencesData = [
+            {
+                id: 1,
+                hanzi: "時間不多了。",
+                rubyHtml: "<ruby>時<rt>shí</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "時間はもう多くない。",
+                structure: "【用法1:形容詞述語】時間不多了",
+                point: "<b>不多了（bù duō le）</b>：「残り少ない」という変化。"
+            },
+            {
+                id: 2,
+                hanzi: "這份報告可能要花一個多月寫。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>報<rt>bào</rt></ruby><ruby>告<rt>gào</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>花<rt>huā</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>月<rt>yuè</rt></ruby><ruby>寫<rt>xiě</rt></ruby>。",
+                translation: "このレポートは書くのに多分1か月以上かかる。",
+                structure: "【用法2:端数】一個多月",
+                point: "<b>一個多月（yí ge duō yuè）</b>：1ヶ月余り。"
+            },
+            {
+                id: 3,
+                hanzi: "你想多了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "きみは考え過ぎだ。",
+                structure: "【用法3:結果補語】你想多了",
+                point: "💡<b>想多了（xiǎng duō le）</b>：考え過ぎる（過剰結果）。"
+            },
+            {
+                id: 4,
+                hanzi: "多運動。",
+                rubyHtml: "<ruby>多<rt>duō</rt></ruby><ruby>運<rt>yùn</rt></ruby><ruby>動<rt>dòng</rt></ruby>。",
+                translation: "しっかり運動しなさい。",
+                structure: "【用法4:加減命令】多運動",
+                point: "<b>多運動（duō yùndòng）</b>：しっかり運動する。"
+            },
+            {
+                id: 5,
+                hanzi: "玉山(有)多高？",
+                rubyHtml: "<ruby>玉<rt>Yù</rt></ruby><ruby>山<rt>shān</rt></ruby>（<ruby>有<rt>yǒu</rt></ruby>）<ruby>多<rt>duō</rt></ruby><ruby>高<rt>gāo</rt></ruby>？",
+                translation: "玉山はどのくらいの高さですか？",
+                structure: "【用法5a:疑問詞】(有)多高？",
+                point: "💡<b>(有)多高</b>：高さの測定疑問。玉山（台湾最高峰）。"
+            },
+            {
+                id: 6,
+                hanzi: "多吃點！",
+                rubyHtml: "<ruby>多<rt>duō</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>點<rt>diǎn</rt></ruby>！",
+                translation: "しっかり食べて！／もっと食べて！",
+                structure: "【用法4:加減】多吃點",
+                point: "<b>多吃點（duō chī diǎn）</b>：しっかり食べる。"
+            },
+            {
+                id: 7,
+                hanzi: "多喝水，多休息！",
+                rubyHtml: "<ruby>多<rt>duō</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>水<rt>shuǐ</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>休<rt>xiū</rt></ruby><ruby>息<rt>xí</rt></ruby>！",
+                translation: "しっかり水分をとって、しっかり休んで。",
+                structure: "【用法4:加減】多喝水，多休息",
+                point: "<b>多...多...</b>：日常の健康の決め台詞。"
+            },
+            {
+                id: 8,
+                hanzi: "可心最近考試都沒考好，我們應該多關心她。",
+                rubyHtml: "<ruby>可<rt>Kě</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>近<rt>jìn</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>試<rt>shì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>關<rt>guān</rt></ruby><ruby>心<rt>xīn</rt></ruby><ruby>她<rt>tā</rt></ruby>。",
+                translation: "可心は最近テストの成績がずっとよくないから、私たちはもっと彼女のことを気にかけなければならない。",
+                structure: "【用法4:加減】多關心她",
+                point: "<b>多關心（duō guānxīn）</b>：もっと気にかける。"
+            },
+            {
+                id: 9,
+                hanzi: "你別再說自己笨了，多讀書就會有自信了。",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>己<rt>jǐ</rt></ruby><ruby>笨<rt>bèn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>讀<rt>dú</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>信<rt>xìn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "自分がバカだなんてもう言わないで。しっかり勉強すれば自信がつくよ。",
+                structure: "【用法4:加減＋就】多讀書 就會有...",
+                point: "<b>多讀書（duō dú shū）</b>：しっかり勉強する。"
+            },
+            {
+                id: 10,
+                hanzi: "那間飯館的老闆每次都會多送我們一道小菜。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>間<rt>jiān</rt></ruby><ruby>飯<rt>fàn</rt></ruby><ruby>館<rt>guǎn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>闆<rt>bǎn</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>送<rt>sòng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>菜<rt>cài</rt></ruby>。",
+                translation: "あの飲食店のオーナーは、毎回私たちに小皿のお惣菜を1品つけてくれる。",
+                structure: "【用法4:加算】多送...一道小菜",
+                point: "<b>多送（duō sòng）</b>：余分にサービスでつける。"
+            },
+            {
+                id: 11,
+                hanzi: "少說話，多做事。",
+                rubyHtml: "<ruby>少<rt>shǎo</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>多<rt>duō</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>事<rt>shì</rt></ruby>。",
+                translation: "［話を減らして／おしゃべりばかりしてないで］（するべきことを）しっかりやりなさい。",
+                structure: "【少＋動，多＋動】少說話，多做事",
+                point: "💡<b>少...多...</b>：控えめにして多く行う対比対句。"
+            },
+            {
+                id: 12,
+                hanzi: "炸的東西對身體不太好，你少吃一點吧！",
+                rubyHtml: "<ruby>炸<rt>zhá</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>東<rt>dōng</rt></ruby><ruby>西<rt>xī</rt></ruby><ruby>對<rt>duì</rt></ruby><ruby>身<rt>shēn</rt></ruby><ruby>體<rt>tǐ</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>少<rt>shǎo</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>吧<rt>ba</rt></ruby>！",
+                translation: "揚げ物はあまり身体によくないから、食べるのを少し控えなさいよ。",
+                structure: "【少＋動詞】少吃一點",
+                point: "<b>少吃（shǎo chī）</b>：控えめに食べる。"
+            },
+            {
+                id: 13,
+                hanzi: "我們以為他不會來咖啡廳，所以少點了一杯飲料。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>為<rt>wéi</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>咖<rt>kā</rt></ruby><ruby>啡<rt>fēi</rt></ruby><ruby>廳<rt>tīng</rt></ruby>，<ruby>所<rt>suǒ</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>少<rt>shǎo</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>杯<rt>bēi</rt></ruby><ruby>飲<rt>yǐn</rt></ruby><ruby>料<rt>liào</rt></ruby>。",
+                translation: "私たちは彼がカフェには来ないと思っていたから、飲み物を1杯少なく注文した。",
+                structure: "【少＋動詞＋了】少點了一杯...",
+                point: "<b>少點（shǎo diǎn）</b>：少なく注文する。"
+            },
+            {
+                id: 14,
+                hanzi: "你的孩子們多大了？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>孩<rt>hái</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>了<rt>le</rt></ruby>？",
+                translation: "あなたの子どもたちはいくつになりましたか。",
+                structure: "【用法5a:年齢】多大了？",
+                point: "<b>多大（duō dà）</b>：何歳（年齢を尋ねる）。"
+            },
+            {
+                id: 15,
+                hanzi: "我們快要遲到了，你還要多久？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>遲<rt>chí</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>久<rt>jiǔ</rt></ruby>？",
+                translation: "私たちはもうすぐ遅刻してしまうけど、あなたはあとどのくらいかかるの？",
+                structure: "【用法5a:時間長】還要多久？",
+                point: "<b>多久（duō jiǔ）</b>：どのくらいの時間長。"
+            },
+            {
+                id: 16,
+                hanzi: "我們還要開多遠才會到加油站？",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>遠<rt>yuǎn</rt></ruby><ruby>才<rt>cái</rt></ruby><ruby>會<rt>huì</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>加<rt>jiā</rt></ruby><ruby>油<rt>yóu</rt></ruby><ruby>站<rt>zhàn</rt></ruby>？",
+                translation: "私たちは、あとどのくらいの距離を運転したらガソリンスタンドに着くの？",
+                structure: "【用法5a:距離】開多遠...",
+                point: "<b>多遠（duō yuǎn）</b>：どのくらいの距離。"
+            },
+            {
+                id: 17,
+                hanzi: "你哥哥比你高嗎？他有多高？",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>哥<rt>gē</rt></ruby><ruby>哥<rt>ge</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>高<rt>gāo</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>他<rt>tā</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>高<rt>gāo</rt></ruby>？",
+                translation: "あなたのお兄さんは、あなたより背が高いのですか。身長はどのくらいですか。",
+                structure: "【用法5a:身長】有多高？",
+                point: "💡<b>有多高（yǒu duō gāo）</b>：身長の測定（有の挿入）。"
+            },
+            {
+                id: 18,
+                hanzi: "我想看看她喜歡的歌手有多帥。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>她<rt>tā</rt></ruby><ruby>喜<rt>xǐ</rt></ruby><ruby>歡<rt>huān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>歌<rt>gē</rt></ruby><ruby>手<rt>shǒu</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>帥<rt>shuài</rt></ruby>。",
+                translation: "彼女の好きな歌手がどのくらいカッコいいのか見てみたい。",
+                structure: "【間接疑問】有多帥",
+                point: "<b>有多帥（yǒu duō shuài）</b>：どれくらい男前か。"
+            },
+            {
+                id: 19,
+                hanzi: "她的頭髮多長、多好看啊！",
+                rubyHtml: "<ruby>她<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>頭<rt>tóu</rt></ruby><ruby>髮<rt>fǎ</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>長<rt>cháng</rt></ruby>、<ruby>多<rt>duō</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>啊<rt>a</rt></ruby>！",
+                translation: "彼女の髪はなんて長くて、なんてきれいなんだ。",
+                structure: "【用法5b:感嘆】多長、多好看啊！",
+                point: "💡<b>多...啊！</b>：感嘆（なんて〜なんだろう）。"
+            },
+            {
+                id: 20,
+                hanzi: "這部電視劇多難看啊！我不想看了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>視<rt>shì</rt></ruby><ruby>劇<rt>jù</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>啊<rt>a</rt></ruby>！<ruby>我<rt>wǒ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "このテレビドラマはなんておもしろくないのだろう。私はもう見たくない。",
+                structure: "【用法5b:感嘆】多難看啊！",
+                point: "<b>多難看啊</b>：なんてつまらないのだろう。"
+            },
+            {
+                id: 21,
+                hanzi: "小張多聰明啊！這麼難的考試也考一百分。",
+                rubyHtml: "<ruby>小<rt>Xiǎo</rt></ruby><ruby>張<rt>Zhāng</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>聰<rt>cōng</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>啊<rt>a</rt></ruby>！<ruby>這<rt>zhè</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>試<rt>shì</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>百<rt>bǎi</rt></ruby><ruby>分<rt>fēn</rt></ruby>。",
+                translation: "小張はなんて賢いのだろう。こんな難しいテストでも100点を取っている。",
+                structure: "【用法5b:感嘆】多聰明啊！",
+                point: "<b>聰明（cōngmíng）</b>：頭が良い・賢い。"
+            },
+            {
+                id: 22,
+                hanzi: "你不去美國念書了嗎？多可惜啊！",
+                rubyHtml: "<ruby>你<rt>nǐ</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>美<rt>Měi</rt></ruby><ruby>國<rt>guó</rt></ruby><ruby>念<rt>niàn</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？<ruby>多<rt>duō</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>惜<rt>xī</rt></ruby><ruby>啊<rt>a</rt></ruby>！",
+                translation: "きみはアメリカ留学をやめたの？なんて残念なんだろう。",
+                structure: "【用法5b:感嘆】多可惜啊！",
+                point: "<b>可惜（kěxī）</b>：惜しい・残念だ。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "多", pinyin: "duō", meaning: "（副詞）しっかり・多めに〜する / どのくらい〜か", cat: "duo" },
+            { hanzi: "少", pinyin: "shǎo", meaning: "（副詞）控えめに・少なめに〜する", cat: "duo" },
+            { hanzi: "有多高", pinyin: "yǒu duō gāo", meaning: "（疑問）身長・高さはどのくらいか", cat: "duo" },
+            { hanzi: "多久", pinyin: "duō jiǔ", meaning: "（疑問）時間はどのくらいか", cat: "duo" },
+            { hanzi: "多大", pinyin: "duō dà", meaning: "（疑問）年齢・大きさはどのくらいか", cat: "duo" },
+            { hanzi: "多遠", pinyin: "duō yuǎn", meaning: "（疑問）距離はどのくらいか", cat: "duo" },
+            { hanzi: "聰明", pinyin: "cōngmíng", meaning: "頭が良い・賢い", cat: "adj" },
+            { hanzi: "可惜", pinyin: "kěxī", meaning: "残念だ・惜しい", cat: "adj" },
+            { hanzi: "帥", pinyin: "shuài", meaning: "（男性が）かっこいい・ハンサムだ", cat: "adj" },
+            { hanzi: "加油站", pinyin: "jiāyóuzhàn", meaning: "ガソリンスタンド", cat: "noun" },
+            { hanzi: "自信", pinyin: "zìxìn", meaning: "自信", cat: "noun" },
+            { hanzi: "關心", pinyin: "guānxīn", meaning: "気にかける・配慮する", cat: "noun" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

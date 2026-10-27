@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 6 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">那條路比較好走。（「好」の用法全まとめ / 好幾＋量詞 / 好＋動詞 vs 難＋動詞 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (18句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 6 例文網羅（⑥〜㉓ 全18句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 6 文法メタマトリクス：「好」の5大用法 ＆ 「好/難＋動詞」派生形容詞
+                </h2>
+                <p class="text-sm text-slate-600">「幾」と「好幾」のニュアンス差、および「好＋動詞」が作る「評価（〜心地がよい）」と「容易度（〜しやすい）」の2分類体系。</p>
+            </div>
+
+            <!-- 1. 「好」の全5大用法総まとめ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 「好」の用法完全比較マトリクス
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">用法番号</th>
+                                <th class="p-3">品詞・役割</th>
+                                <th class="p-3">構文パターン</th>
+                                <th class="p-3">意味・主観的ニュアンス</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(1)</td>
+                                <td class="p-3 font-semibold text-slate-800">形容詞</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">主語 ＋ 很/最 ＋ 好</td>
+                                <td class="p-3 text-slate-700">よい、良好だ、元気だ。</td>
+                                <td class="p-3 font-semibold text-slate-900">這個辦法最好。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(2)</td>
+                                <td class="p-3 font-semibold text-slate-800">副詞 (口語)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">好 ＋ 形容詞/動詞</td>
+                                <td class="p-3 text-slate-700">「とても」「すごく」（「很」の口語強調）。</td>
+                                <td class="p-3 font-semibold text-slate-900">外面好吵。 / 好貴！</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-slate-600">(3)</td>
+                                <td class="p-3 font-semibold text-slate-800">結果補語</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 好 ＋ (了)</td>
+                                <td class="p-3 text-slate-700">ちゃんと〜し終える、準備完了する。</td>
+                                <td class="p-3 font-semibold text-slate-900">晚飯還沒煮好。 / 烤好。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">(4) [新]</td>
+                                <td class="p-3 font-semibold text-slate-800">数量強調</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">好 ＋ 幾 ＋ 量詞</td>
+                                <td class="p-3 text-blue-900 font-bold">「何〜も」「いくつも」（客観的な「幾」より多さを主観強調）。</td>
+                                <td class="p-3 font-semibold text-slate-900">好幾位老師 / 好幾次 / 好幾題</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">(5) [新]</td>
+                                <td class="p-3 font-semibold text-slate-800">派生形容詞</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">好 ＋ 動詞 (↔ 難＋動詞)</td>
+                                <td class="p-3 text-emerald-900 font-bold">[A] プラスの感覚評価 / [B] 〜しやすい。</td>
+                                <td class="p-3 font-semibold text-slate-900">好吃 (↔難吃) / 好走 (↔難走)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 「好/難＋動詞」派生形容詞の2大分類 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 「好＋動詞」および「難＋動詞」の2つの解釈属性
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【属性 A】知覚・感覚のプラス評価 (感官評價)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            五感（味覚、視覚、聴覚など）で味わった時の心地よさ・好ましさを表します。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900 space-y-1">
+                            <div>・<b>好吃</b> (おいしい) ↔ <b>難吃</b> (まずい)</div>
+                            <div>・<b>好看</b> (見た目がよい/面白い) ↔ <b>難看</b> (見苦しい/つまらない)</div>
+                            <div>・<b>好聽</b> (音・声・曲がよい) ↔ <b>難聽</b> (聞いていて不快)</div>
+                            <div>・<b>好玩</b> (楽しい) ↔ <b>難玩</b> (つまらない)</div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">【属性 B】動作の容易度・難易度 (難易程度)</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            その動作を行うことが「客観的・物理的にスムーズにできるか（〜しやすい）」を表します。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-emerald-900 space-y-1">
+                            <div>・<b>好走</b> (歩きやすい) ↔ <b>難走</b> (歩きにくい/道が悪い)</div>
+                            <div>・<b>好找</b> (探しやすい) ↔ <b>難找</b> (見つけにくい)</div>
+                            <div>・<b>好寫</b> (書きやすい) ↔ <b>難寫</b> (書きにくい)</div>
+                            <div>・<b>好開</b> (開けやすい/運転しやすい) ↔ <b>難開</b> (開けにくい)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 6 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLテストで出題される「幾」と「好幾」の比較、文脈による二重解釈の判別ポイント。</p>
+            </div>
+
+            <!-- QA 1: 「幾」vs「好幾」の決定的な違い -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">ニュアンス比較</span>
+                    💡 「幾位老師」と「好幾位老師」は何が違う？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>「幾 ＋ 量詞」</b>は、客観的・ニュートラルに「数人 / いくつか（1〜9のあいまいな数）」を指します。話し手に「多い」という強い気持ちはありません。
+                    </p>
+                    <p>
+                        一方、<b>「好幾 ＋ 量詞」</b>は、話し手が<b>「（思っていたよりも）何人も / 何個も / 何回もあって多い！」</b>という主観的な感情・強調を込めて発言する表現です。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>・我認識 <b>幾位</b> 書法老師。（書道の先生を何人か知っている＝客観的数値報告）</div>
+                        <div>・我認識 <b>好幾位</b> 書法老師。（書道の先生を何人も知っている＝人脈の多さを主張）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「好穿」「難吃」などの文脈による二重解釈 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-emerald-700 flex items-center gap-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-bold">文脈判別</span>
+                    「這雙鞋子很好穿」や「這道菜有點難吃」が2通りの意味になる理由は？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        「好/難 ＋ 動詞」の派生形容詞は、単語や文脈によって<b>【感覚評価 A】</b>にも<b>【容易度 B】</b>にも解釈可能な場合があります。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-2">
+                        <div><b>・這雙鞋子很好穿：</b><br>
+                        [A 感覚評価] この靴は履き心地が良い（クッション性が高い）。<br>
+                        [B 容易度] この靴は脱ぎ履きがしやすい（紐を結ばなくてよい）。</div>
+                        <div><b>・這道菜有點難吃：</b><br>
+                        [A 感覚評価] この料理は味がまずい。<br>
+                        [B 容易度] この料理は骨が多くて食べにくい。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 6 重要語彙 & 派生形容詞
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('hao')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">好/難＋動詞</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・その他</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 6 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 18 Sentences from 6 to 23)
+        const sentencesData = [
+            {
+                id: 6,
+                hanzi: "我認識幾位書法老師。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>位<rt>wèi</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby>。",
+                translation: "書道の先生を「何人か」知っている。",
+                structure: "【幾＋量詞】幾位 書法老師",
+                point: "💡<b>幾＋量詞</b>：客観的・ニュートラルな「何人か」。"
+            },
+            {
+                id: 7,
+                hanzi: "我認識好幾位書法老師。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>認<rt>rèn</rt></ruby><ruby>識<rt>shì</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>位<rt>wèi</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>法<rt>fǎ</rt></ruby><ruby>老<rt>lǎo</rt></ruby><ruby>師<rt>shī</rt></ruby>。",
+                translation: "書道の先生を「何人もの」知っている。",
+                structure: "【好幾＋量詞】好幾位 書法老師",
+                point: "💡<b>好幾＋量詞</b>：「何人も」という多さの主觀強調。"
+            },
+            {
+                id: 8,
+                hanzi: "這個問題，我問了他好幾次，可是他都沒回答。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>題<rt>tí</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>問<rt>wèn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>次<rt>cì</rt></ruby>，<ruby>可<rt>kě</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>回<rt>huí</rt></ruby><ruby>答<rt>dá</rt></ruby>。",
+                translation: "この問題は、彼に何度も聞いたけれど、彼はいつも答えなかった。",
+                structure: "【好幾＋動量詞】問了好幾次",
+                point: "<b>好幾次（hǎo jǐ cì）</b>：何回も・何度も（回数の強調）。"
+            },
+            {
+                id: 9,
+                hanzi: "明華這次數學考試算錯了好幾題。",
+                rubyHtml: "<ruby>明<rt>Míng</rt></ruby><ruby>華<rt>huá</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>數<rt>shù</rt></ruby><ruby>學<rt>xué</rt></ruby><ruby>考<rt>kǎo</rt></ruby><ruby>試<rt>shì</rt></ruby><ruby>算<rt>suàn</rt></ruby><ruby>錯<rt>cuò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>題<rt>tí</rt></ruby>。",
+                translation: "明華は今回の数学のテストで何問も計算間違いをした。",
+                structure: "【結果補語＋好幾＋量詞】算錯了好幾題",
+                point: "<b>算錯（suàn cuò）</b>：計算を間違える。「好幾題（何問も）」"
+            },
+            {
+                id: 10,
+                hanzi: "桌子上有好幾把鑰匙，哪一把是你的呢？",
+                rubyHtml: "<ruby>桌<rt>zhuō</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>鑰<rt>yào</rt></ruby><ruby>匙<rt>shi</rt></ruby>，<ruby>哪<rt>nǎ</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>呢<rt>ne</rt></ruby>？",
+                translation: "机の上に何本もカギがありますが、どれがあなたのですか。",
+                structure: "【好幾＋量詞(把)】好幾把鑰匙",
+                point: "<b>把（bǎ）</b>：鍵や傘・ハサミなど取っ手のある物を数える量詞。"
+            },
+            {
+                id: 11,
+                hanzi: "日本的文具太可愛了，我今天買了好幾樣。",
+                rubyHtml: "<ruby>日<rt>Rì</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>文<rt>wén</rt></ruby><ruby>具<rt>jù</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>愛<rt>'ài</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>今<rt>jīn</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>幾<rt>jǐ</rt></ruby><ruby>樣<rt>yàng</rt></ruby>。",
+                translation: "日本の文具はすごくかわいい。私は今日何種類も買った。",
+                structure: "【好幾＋量詞(樣)】買了好幾樣",
+                point: "<b>樣（yàng）</b>：種類・品目を数える量詞。"
+            },
+            {
+                id: 12,
+                hanzi: "媽媽煮的湯太好喝了，我每天都想喝。",
+                rubyHtml: "<ruby>媽<rt>mā</rt></ruby><ruby>媽<rt>ma</rt></ruby><ruby>煮<rt>zhǔ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>湯<rt>tāng</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>每<rt>měi</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>喝<rt>hē</rt></ruby>。",
+                translation: "お母さんが作ったスープはすごくおいしい。私は毎日飲みたい。",
+                structure: "【好＋動詞(飲料)】好喝",
+                point: "<b>好喝（hǎohē）</b>：（飲み物が）おいしい。"
+            },
+            {
+                id: 13,
+                hanzi: "阿中覺得打籃球比打棒球好玩多了。",
+                rubyHtml: "<ruby>阿<rt>Ā</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>籃<rt>lán</rt></ruby><ruby>球<rt>qiú</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>棒<rt>bàng</rt></ruby><ruby>球<rt>qiú</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>玩<rt>wán</rt></ruby><ruby>多<rt>duō</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "阿中は、バスケットボールは野球よりずいぶん楽しいと思っている。",
+                structure: "【比較構文＋好玩多了】比...好玩多了",
+                point: "<b>好玩（hǎowán）</b>：面白い・楽しい。"
+            },
+            {
+                id: 14,
+                hanzi: "這部連續劇的歌真好聽，你知道它叫什麼嗎？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>連<rt>lián</rt></ruby><ruby>續<rt>xù</rt></ruby><ruby>劇<rt>jù</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>歌<rt>gē</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>聽<rt>tīng</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>它<rt>tā</rt></ruby><ruby>叫<rt>jiào</rt></ruby><ruby>什<rt>shén</rt></ruby><ruby>麼<rt>me</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "このドラマの歌は本当にいい（音がよい）。何という歌か知ってる？",
+                structure: "【好＋動詞(聽覺)】好聽",
+                point: "<b>好聽（hǎotīng）</b>：（曲や声が）心地よい・美しい。"
+            },
+            {
+                id: 15,
+                hanzi: "我的機車停在門口附近，應該很好找。",
+                rubyHtml: "<ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>機<rt>jī</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>停<rt>tíng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>口<rt>kǒu</rt></ruby><ruby>附<rt>fù</rt></ruby><ruby>近<rt>jìn</rt></ruby>，<ruby>應<rt>yīng</rt></ruby><ruby>該<rt>gāi</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>找<rt>zhǎo</rt></ruby>。",
+                translation: "私のバイクは入口の近くに止めてあるから、探しやすいはずだ。",
+                structure: "【好＋動詞(容易度)】很好找",
+                point: "<b>好找（hǎozhǎo）</b>：探しやすい・すぐ見つかる。"
+            },
+            {
+                id: 16,
+                hanzi: "那條路雖然有點遠，但是比較好走，也很安全。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>條<rt>tiáo</rt></ruby><ruby>路<rt>lù</rt></ruby><ruby>雖<rt>suī</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>遠<rt>yuǎn</rt></ruby>，<ruby>但<rt>dàn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>較<rt>jiào</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>走<rt>zǒu</rt></ruby>，<ruby>也<rt>yě</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>安<rt>ān</rt></ruby><ruby>全<rt>quán</rt></ruby>。",
+                translation: "あの道は少し遠いけれど、比較的歩きやすいし安全だ。",
+                structure: "【好＋動詞(容易度)】比較好走",
+                point: "<b>好走（hǎozǒu）</b>：歩きやすい・通行しやすい。"
+            },
+            {
+                id: 17,
+                hanzi: "這枝筆真好寫，我想再買一枝。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>枝<rt>zhī</rt></ruby><ruby>筆<rt>bǐ</rt></ruby><ruby>真<rt>zhēn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>寫<rt>xiě</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>再<rt>zài</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>枝<rt>zhī</rt></ruby>。",
+                translation: "このペンは本当に書きやすいから、もう1本買いたい。",
+                structure: "【好＋動詞(容易度)】真好寫",
+                point: "<b>好寫（hǎoxiě）</b>：書き味がよい・書きやすい。"
+            },
+            {
+                id: 18,
+                hanzi: "這本小說有點難看，我不想看了。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この小説はちょっとおもしろくないから、もう読みたくない。",
+                structure: "【難＋動詞(視覺/評價)】難看",
+                point: "<b>難看（nánkàn）</b>：（本や映画が）面白くない・つまらない。"
+            },
+            {
+                id: 19,
+                hanzi: "這種藥太難喝了，我一定要喝完嗎？",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>種<rt>zhǒng</rt></ruby><ruby>藥<rt>yào</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>定<rt>dìng</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>喝<rt>hē</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "この薬はまずすぎる。必ず飲み切らなければいけないの？",
+                structure: "【難＋動詞(味覺)】難喝",
+                point: "<b>難喝（nánhē）</b>：（飲み物が）まずい。"
+            },
+            {
+                id: 20,
+                hanzi: "哥哥說那本歷史書很好看，不過我覺得有點難懂。",
+                rubyHtml: "<ruby>哥<rt>gē</rt></ruby><ruby>哥<rt>ge</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>那<rt>nà</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>歷<rt>lì</rt></ruby><ruby>史<rt>shǐ</rt></ruby><ruby>書<rt>shū</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>不<rt>bú</rt></ruby><ruby>過<rt>guò</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>覺<rt>jué</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>懂<rt>dǒng</rt></ruby>。",
+                translation: "兄はあの歴史の本がおもしろいと言うけれど、私はちょっとわかりにくいと思う。",
+                structure: "【好/難＋動詞】好看 ↔ 難懂",
+                point: "<b>難懂（nándǒng）</b>：理解しにくい・わかりにくい。"
+            },
+            {
+                id: 21,
+                hanzi: "客廳的門很難開，你可以幫我看一下嗎？",
+                rubyHtml: "<ruby>客<rt>kè</rt></ruby><ruby>廳<rt>tīng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>門<rt>mén</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>開<rt>kāi</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>幫<rt>bāng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "リビングのドアが開けにくいから、ちょっと見てくれる？",
+                structure: "【難＋動詞(難易度)】難開",
+                point: "<b>難開（nánkāi）</b>：開けづらい・開かない。"
+            },
+            {
+                id: 22,
+                hanzi: "這雙鞋子很好穿。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>雙<rt>shuāng</rt></ruby><ruby>鞋<rt>xié</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>穿<rt>chuān</rt></ruby>。",
+                translation: "［A］「この靴は履き心地がいい。」 / ［B］「この靴は履きやすい。」",
+                structure: "【二重意味属性】好穿",
+                point: "💡<b>二重解釈</b>：[A]履き心地がよい / [B]脱ぎ履きがしやすい。"
+            },
+            {
+                id: 23,
+                hanzi: "這道菜有點難吃。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>菜<rt>cài</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>難<rt>nán</rt></ruby><ruby>吃<rt>chī</rt></ruby>。",
+                translation: "［A］「この料理は、ちょっとまずい。」 / ［B］「この料理は、ちょっと食べにくい。」",
+                structure: "【二重意味属性】難吃",
+                point: "💡<b>二重解釈</b>：[A]味覚がまずい / [B]骨等が多くて食べづらい。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "好幾", pinyin: "hǎo jǐ", meaning: "何〜も・いくつも（多さの強調）", cat: "hao" },
+            { hanzi: "好走", pinyin: "hǎozǒu", meaning: "（道が）歩きやすい・通行しやすい", cat: "hao" },
+            { hanzi: "難走", pinyin: "nánzǒu", meaning: "（道が）歩きにくい・悪路だ", cat: "hao" },
+            { hanzi: "好穿", pinyin: "hǎochuān", meaning: "履き心地がよい / 履きやすい", cat: "hao" },
+            { hanzi: "好找", pinyin: "hǎozhǎo", meaning: "探しやすい・見つけやすい", cat: "hao" },
+            { hanzi: "難懂", pinyin: "nándǒng", meaning: "理解しにくい・わかりにくい", cat: "hao" },
+            { hanzi: "好寫", pinyin: "hǎoxiě", meaning: "書きやすい・書き心地がよい", cat: "hao" },
+            { hanzi: "算錯", pinyin: "suàn cuò", meaning: "計算を間違える", cat: "verb" },
+            { hanzi: "書法", pinyin: "shūfǎ", meaning: "書道", cat: "noun" },
+            { hanzi: "文具", pinyin: "wénjù", meaning: "文房具", cat: "noun" },
+            { hanzi: "客廳", pinyin: "kètīng", meaning: "リビング・応接室", cat: "noun" },
+            { hanzi: "把 / 樣", pinyin: "bǎ / yàng", meaning: "（量詞）取っ手のある物 / 種類・品目", cat: "noun" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4 台灣華語 & TOCFL Band A-B 徹底總整理 (超大拼音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        
+        /* 超大ピンイン (ルビ) カスタムスタイリング (2倍超特大表示) */
+        ruby {
+            ruby-position: over;
+            display: inline-flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 0 0.18em 0.9em 0.18em;
+            vertical-align: bottom;
+        }
+        rt {
+            font-size: 1.65rem; /* 2倍超の特大表示 */
+            line-height: 1.15;
+            color: #1d4ed8; /* 濃い鮮やかなブルー */
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-family: 'Inter', system-ui, sans-serif;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col custom-scrollbar text-slate-900 bg-slate-50">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 lg:px-8 py-3.5 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-md shadow-blue-500/20 text-white shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        Lesson 4 台灣華語 徹底總整理 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 font-bold border border-blue-200">超大拼音版 2.0</span>
+                    </h1>
+                    <p class="text-xs text-blue-600 font-semibold">這塊肉還沒烤好。（結果補語：動詞＋補語 / 否定形沒 / 反覆疑問「...了沒(有)？」 / TOCFL Band A-B）</p>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                <button onclick="switchTab('sentences')" id="tab-sentences" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition">例文マスター (20句)</button>
+                <button onclick="switchTab('grammar')" id="tab-grammar" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">文法メタマトリクス</button>
+                <button onclick="switchTab('qa')" id="tab-qa" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">Q&A 難所深掘り</button>
+                <button onclick="switchTab('vocab')" id="tab-vocab" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium">語彙・日常表現</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: SENTENCES ==================== -->
+        <section id="sec-sentences" class="space-y-6">
+            <div class="bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 4 例文網羅（⑤〜㉔ 全20句 特大ピンインルビ＆台湾音声対応）
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">ピンインを2倍大の特大表示に設定。スピーカーボタンで台湾標準音声を発音します。</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="sentenceSearch" oninput="filterSentences()" placeholder="文法キーワードや単語で検索..." class="bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-72 shadow-inner">
+                </div>
+            </div>
+
+            <div id="sentenceContainer" class="grid grid-cols-1 gap-6">
+                <!-- Sentences injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: GRAMMAR META MATRIX ==================== -->
+        <section id="sec-grammar" class="hidden space-y-8">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                    Lesson 4 文法メタマトリクス：結果補語の構造・否定・疑問・結果補語の使い分け
+                </h2>
+                <p class="text-sm text-slate-600">動作と到達結果を一体化させる結果補語の基本法則、否定形での「了」の削除、代表的結果補語（好 vs 完など）の機能分類。</p>
+            </div>
+
+            <!-- 1. 結果補語の3大基本構造マトリクス -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-blue-700 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ① 結果補語の「肯定・否定・疑問」基本構造
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">文型形式</th>
+                                <th class="p-3">語順構造</th>
+                                <th class="p-3">文法規則・絶対ルール</th>
+                                <th class="p-3">代表例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-blue-700">肯定文</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 結果補語 ＋ (目的語) ＋ 了</td>
+                                <td class="p-3 text-slate-700">動作が行われ、結果に到達したことを確定させる。</td>
+                                <td class="p-3 font-semibold text-slate-900">我聽懂了。 / 我把名字寫錯了。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-rose-700">否定文</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">沒(有) ＋ 動詞 ＋ 結果補語</td>
+                                <td class="p-3 text-rose-700 font-bold">❌ 文末の「了」は絶対に一緒に使わない！</td>
+                                <td class="p-3 font-semibold text-slate-900">這塊肉還沒烤好。 / 我沒背完。</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-extrabold text-emerald-700">疑問文 (反覆)</td>
+                                <td class="p-3 font-mono text-xs font-bold text-slate-800">動詞 ＋ 結果補語 ＋ 了沒(有)？</td>
+                                <td class="p-3 text-slate-700">結果が実現したかどうかを尋ねる台湾標準の問診形。</td>
+                                <td class="p-3 font-semibold text-slate-900">垃圾桶你洗好了沒？ / 改完了沒有？</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2. 代表的結果補語の機能比較（好 vs 完 vs 懂 vs 見 vs 錯） -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-purple-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    ② 主な結果補語のニュアンス分類 ＆ 「好」と「完」の相違
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-blue-800 text-sm">【好 (hǎo)】完成・準備完了・満足な状態</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            単に動作が終わるだけでなく、<b>「ちゃんと仕上がった」「準備が完了した」「満足のいく状態になった」</b>ことを意味する。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-blue-900">
+                            ・肉烤好了。（肉がちょうどよく焼き上がった）<br>
+                            ・沒睡好。（よく眠れなかった / 睡眠の質が不満足）
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <div class="font-bold text-emerald-800 text-sm">【完 (wán)】終結・消費尽くし・残量ゼロ</div>
+                        <p class="text-slate-600 leading-relaxed">
+                            対象となる物や過程が<b>「最後まで終わった」「全部なくなった（残量ゼロ）」</b>事実のみを客観的に示す。
+                        </p>
+                        <div class="font-mono text-xs bg-white p-2.5 rounded border border-slate-200 text-emerald-900">
+                            ・吃完。（食べ終えた / 全部食べた）<br>
+                            ・背完。（最後まで暗記し終えた）
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: QA DEEP DIVE ==================== -->
+        <section id="sec-qa" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    質疑応答・専門深掘り解説ノート (Lesson 4 難所攻略)
+                </h2>
+                <p class="text-sm text-slate-600">TOCFLテストで誤答率が高い「結果補語の否定文における了の脱落」と「見（知覚完了）」のメカニズム。</p>
+            </div>
+
+            <!-- QA 1: 否定形での「了」の脱落原則 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-rose-700 flex items-center gap-2">
+                    <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-1 rounded-full font-bold">TOCFL 超頻出問題</span>
+                    ❌ なぜ「這塊肉還沒烤好了」は文法的に大間違いなのか？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        <b>「了」</b>は「動作の実現・結果の成立」を表すマーカーです。一方、否定の<b>「沒(有)」</b>は「結果がまだ成立していない」ことを意味します。
+                    </p>
+                    <p>
+                        したがって、「結果が成立していない（沒）」と言っている文に「結果が成立した（了）」を同時に付けることは論理的矛盾になります。否定文では<b>必ず「了」を取り除かなければなりません</b>。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>❌ 這塊肉 還沒 烤好 <span class="text-rose-600 font-bold">了</span>。</div>
+                        <div>⭕️ 這塊肉 還沒 烤好。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QA 2: 「看」と「看見」の動作 vs 結果の相違 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-blue-700 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full font-bold">感覚比較</span>
+                    💡 「看」と「看見」はどう違う？日本語の「見る」との差は？
+                </h3>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-xs space-y-3 text-slate-700 leading-relaxed">
+                    <p>
+                        中国語の動詞「看」は<b>「視線を向けるという動作」</b>のみを表します（目を開けて見ようとしても見えないことがあります）。
+                    </p>
+                    <p>
+                        その動作によって<b>「実際に目に入った・知覚したという結果」</b>を表すために補語「見」を補い、<b>「看見」</b>と表現します。「気づく・見かける」の意味になります。
+                    </p>
+                    <div class="font-mono text-xs bg-white p-3 rounded border border-slate-200 space-y-1">
+                        <div>・我看了，但是沒看見。（私は視線を向けたが、見えなかった/見つけられなかった）</div>
+                        <div>・對不起，我沒看見你。（ごめんなさい、あなたに気づきませんでした）</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: VOCABULARY ==================== -->
+        <section id="sec-vocab" class="hidden space-y-6">
+            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+                        Lesson 4 重要語彙 & 結果補語要素
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">単語カードのスピーカーアイコンを押すと個別に発音されます。</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterVocab('all')" class="vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm">すべて</button>
+                    <button onclick="filterVocab('comp')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">結果補語</button>
+                    <button onclick="filterVocab('verb')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">主要動詞</button>
+                    <button onclick="filterVocab('noun')" class="vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium">名詞・その他</button>
+                </div>
+            </div>
+
+            <div id="vocabContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Vocab cards injected dynamically via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
+        Lesson 4 Taiwan Huayu TOCFL Master Summary Guide | Huge Pinyin Edition 2.0
+    </footer>
+
+    <!-- JavaScript Data & Speech Engine -->
+    <script>
+        // 1. Taiwan Speech Synthesis Engine
+        let taiwanVoice = null;
+        function initTaiwanVoice() {
+            if ('speechSynthesis' in window) {
+                const voices = window.speechSynthesis.getVoices();
+                taiwanVoice = voices.find(v => v.name.includes('Google 國語')) ||
+                              voices.find(v => v.name.includes('Yating')) ||
+                              voices.find(v => v.name.includes('Hanhan')) ||
+                              voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh-tw' || v.name.includes('Taiwan') || v.name.includes('台灣'));
+            }
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = initTaiwanVoice;
+            initTaiwanVoice();
+        }
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-TW';
+                utterance.rate = 0.85;
+                if (taiwanVoice) { utterance.voice = taiwanVoice; }
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 2. Sentences Data (Full 20 Sentences from 5 to 24)
+        const sentencesData = [
+            {
+                id: 5,
+                hanzi: "他說的話，我這次終於聽懂了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>話<rt>huà</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>次<rt>cì</rt></ruby><ruby>終<rt>zhōng</rt></ruby><ruby>於<rt>yú</rt></ruby><ruby>聽<rt>tīng</rt></ruby><ruby>懂<rt>dǒng</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼の話が、今回ついに聞き取れた（聞いて理解できた）。",
+                structure: "【動詞＋懂＋了】聽懂了",
+                point: "<b>聽懂（tīng dǒng）</b>：聞いて理解する。「終於（ついに）」"
+            },
+            {
+                id: 6,
+                hanzi: "李先生早就搬走了。",
+                rubyHtml: "<ruby>李<rt>Lǐ</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>早<rt>zǎo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>搬<rt>bān</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "李さんはとっくによそに引っ越していった。",
+                structure: "【動詞＋走＋了】搬走了",
+                point: "<b>搬走（bān zǒu）</b>：引っ越して離れる。「早就（とっくに）」"
+            },
+            {
+                id: 7,
+                hanzi: "電影是一個小時前開始的，你來晚了。",
+                rubyHtml: "<ruby>電<rt>diàn</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>個<rt>ge</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>時<rt>shí</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>開<rt>kāi</rt></ruby><ruby>始<rt>shǐ</rt></ruby><ruby>的<rt>de</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>來<rt>lái</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "映画は1時間前に始まったんだよ。きみは来るのが遅かった。",
+                structure: "【動詞＋形容詞補語＋了】來晚了",
+                point: "<b>來晚了（lái wǎn le）</b>：来るのが遅れた（遅刻した）。"
+            },
+            {
+                id: 8,
+                hanzi: "他買錯票了，不能跟我們一起去了。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>買<rt>mǎi</rt></ruby><ruby>錯<rt>cuò</rt></ruby><ruby>票<rt>piào</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>跟<rt>gēn</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>們<rt>men</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>起<rt>qǐ</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "彼は切符を買い間違えて、私達と一緒に行けなくなった。",
+                structure: "【動詞＋錯＋目的語＋了】買錯票了",
+                point: "<b>買錯（mǎi cuò）</b>：買い間違える。"
+            },
+            {
+                id: 9,
+                hanzi: "那份三明治太大了，我沒有吃完。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>三<rt>sān</rt></ruby><ruby>明<rt>míng</rt></ruby><ruby>治<rt>zhì</rt></ruby><ruby>太<rt>tài</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>吃<rt>chī</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "あのサンドイッチは大きすぎたので、私は食べきれなかった。",
+                structure: "【沒有＋動詞＋完】沒有吃完",
+                point: "💡<b>否定文</b>：沒有吃完（了は付けない）。"
+            },
+            {
+                id: 10,
+                hanzi: "那部電影我還是沒看懂。",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>部<rt>bù</rt></ruby><ruby>電<rt>diàn</rt></ruby><ruby>影<rt>yǐng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>懂<rt>dǒng</rt></ruby>。",
+                translation: "あの映画は、私はやはり見ても理解できなかった。",
+                structure: "【沒＋動詞＋懂】沒看懂",
+                point: "<b>看懂（kàn dǒng）</b>：見て理解する。"
+            },
+            {
+                id: 11,
+                hanzi: "機車鑰匙不見了，你看見了嗎？",
+                rubyHtml: "<ruby>機<rt>jī</rt></ruby><ruby>車<rt>chē</rt></ruby><ruby>鑰<rt>yào</rt></ruby><ruby>匙<rt>shi</rt></ruby><ruby>不<rt>bú</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "バイクのカギが見当たらないけど、きみ見かけた？",
+                structure: "【動詞＋見＋了＋嗎】看見了嗎？",
+                point: "<b>機車（jīchē）</b>：スクーター・バイク（台湾重要語彙）。"
+            },
+            {
+                id: 12,
+                hanzi: "快五點了，那份資料他改完了沒有？",
+                rubyHtml: "<ruby>快<rt>kuài</rt></ruby><ruby>五<rt>wǔ</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>那<rt>nà</rt></ruby><ruby>份<rt>fèn</rt></ruby><ruby>資<rt>zī</rt></ruby><ruby>料<rt>liào</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>改<rt>gǎi</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>？",
+                translation: "もうすぐ5時だけど、あの資料を彼はちゃんと修正した？",
+                structure: "【動詞＋完＋了沒有】改完了沒有？",
+                point: "<b>改完（gǎi wán）</b>：修正し終える。"
+            },
+            {
+                id: 13,
+                hanzi: "垃圾桶你洗好了沒？",
+                rubyHtml: "<ruby>拉<rt>lèsè</rt></ruby><ruby>圾<rt>lè</rt></ruby><ruby>桶<rt>tǒng</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>沒<rt>méi</rt></ruby>？",
+                translation: "ゴミ箱はきれいに洗った？",
+                structure: "【動詞＋好＋了沒】洗好了沒？",
+                point: "<b>洗好（xǐ hǎo）</b>：きれいに洗い終える。"
+            },
+            {
+                id: 14,
+                hanzi: "這塊肉還沒烤好。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>塊<rt>kuài</rt></ruby><ruby>肉<rt>ròu</rt></ruby><ruby>還<rt>hái</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>烤<rt>kǎo</rt></ruby><ruby>好<rt>hǎo</rt></ruby>。",
+                translation: "この肉はまだちゃんと焼けていない。",
+                structure: "【還沒＋動詞＋好】還沒烤好",
+                point: "💡<b>還沒...好</b>：まだ十分に焼き上がっていない（準備未完了）。"
+            },
+            {
+                id: 15,
+                hanzi: "昨天的生字你都背好了沒有？",
+                rubyHtml: "<ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>有<rt>yǒu</rt></ruby>？",
+                translation: "昨日の新出単語は全部しっかり暗記した？",
+                structure: "【動詞＋好＋了沒有】背好了沒有？",
+                point: "<b>背好（bèi hǎo）</b>：しっかり暗記し終える。"
+            },
+            {
+                id: 16,
+                hanzi: "昨晚我沒睡好，現在頭有點痛。",
+                rubyHtml: "<ruby>昨<rt>zuó</rt></ruby><ruby>晚<rt>wǎn</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>好<rt>hǎo</rt></ruby>，<ruby>現<rt>xiàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>頭<rt>tóu</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>點<rt>diǎn</rt></ruby><ruby>痛<rt>tòng</rt></ruby>。",
+                translation: "昨日の夜はよく眠れなかったので、今少し頭が痛い。",
+                structure: "【沒＋睡＋好】沒睡好",
+                point: "<b>沒睡好（méi shuì hǎo）</b>：満足に眠れなかった。"
+            },
+            {
+                id: 17,
+                hanzi: "這件襯衫他洗得很乾淨。",
+                rubyHtml: "<ruby>這<rt>zhè</rt></ruby><ruby>件<rt>jiàn</rt></ruby><ruby>襯<rt>chèn</rt></ruby><ruby>衫<rt>shān</rt></ruby><ruby>他<rt>tā</rt></ruby><ruby>洗<rt>xǐ</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby>。",
+                translation: "このワイシャツを彼はとてもきれいに洗った。",
+                structure: "【様態補語】洗得很乾淨",
+                point: "<b>乾淨（gānjìng）</b>：清潔だ・きれいだ。"
+            },
+            {
+                id: 18,
+                hanzi: "地上我已經擦乾淨了，你別擔心。",
+                rubyHtml: "<ruby>地<rt>dì</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>經<rt>jīng</rt></ruby><ruby>擦<rt>cā</rt></ruby><ruby>乾<rt>gān</rt></ruby><ruby>淨<rt>jìng</rt></ruby><ruby>了<rt>le</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>別<rt>bié</rt></ruby><ruby>擔<rt>dān</rt></ruby><ruby>心<rt>xīn</rt></ruby>。",
+                translation: "床は私がもうきれいに拭いたから、心配しないで。",
+                structure: "【動詞＋乾淨＋了】擦乾淨了",
+                point: "<b>擦乾淨（cā gānjìng）</b>：きれいに拭き上げる。"
+            },
+            {
+                id: 19,
+                hanzi: "聽完這首歌，大家都哭了。",
+                rubyHtml: "<ruby>聽<rt>tīng</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>這<rt>zhè</rt></ruby><ruby>首<rt>shǒu</rt></ruby><ruby>歌<rt>gē</rt></ruby>，<ruby>大<rt>dà</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>哭<rt>kū</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "この歌を聴き終わって、みんな泣いた。",
+                structure: "【動詞＋完】聽完這首歌",
+                point: "<b>聽完（tīng wán）</b>：聴き終わる。"
+            },
+            {
+                id: 20,
+                hanzi: "他氣得拿著背包就走。",
+                rubyHtml: "<ruby>他<rt>tā</rt></ruby><ruby>氣<rt>qì</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>拿<rt>ná</rt></ruby><ruby>著<rt>zhe</rt></ruby><ruby>背<rt>bēi</rt></ruby><ruby>包<rt>bāo</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>走<rt>zǒu</rt></ruby>。",
+                translation: "彼は怒ってリュックを持つとすぐに出て行ってしまった。",
+                structure: "【様態補語＋動作】氣得...就走",
+                point: "<b>氣得（qì de）</b>：かんかんに怒って〜する。"
+            },
+            {
+                id: 21,
+                hanzi: "對不起，我把你的名字寫錯了。",
+                rubyHtml: "<ruby>對<rt>duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>名<rt>míng</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>寫<rt>xiě</rt></ruby><ruby>錯<rt>cuò</rt></ruby><ruby>了<rt>le</rt></ruby>。",
+                translation: "ごめんなさい、あなたの名前を書き間違えてしまいました。",
+                structure: "【把構文＋寫錯】把...寫錯了",
+                point: "<b>寫錯（xiě cuò）</b>：書き間違える。"
+            },
+            {
+                id: 22,
+                hanzi: "那本小說很好看，你看完了嗎？",
+                rubyHtml: "<ruby>那<rt>nà</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>小<rt>xiǎo</rt></ruby><ruby>說<rt>shuō</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>好<rt>hǎo</rt></ruby><ruby>看<rt>kàn</rt></ruby>，<ruby>你<rt>nǐ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>完<rt>wán</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>嗎<rt>ma</rt></ruby>？",
+                translation: "あの小説はとても面白いよ、もう読み終わった？",
+                structure: "【動詞＋完＋了＋嗎】看完了嗎？",
+                point: "<b>看完（kàn wán）</b>：読み終える。"
+            },
+            {
+                id: 23,
+                hanzi: "對不起，我沒看見你。",
+                rubyHtml: "<ruby>對<rt>duì</rt></ruby><ruby>不<rt>bu</rt></ruby><ruby>起<rt>qǐ</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>見<rt>jiàn</rt></ruby><ruby>你<rt>nǐ</rt></ruby>。",
+                translation: "ごめんなさい、あなたを見かけませんでした（気づきませんでした）。",
+                structure: "【沒＋看見】沒看見你",
+                point: "<b>沒看見（méi kàn jiàn）</b>：見えなかった・気づかなかった。"
+            },
+            {
+                id: 24,
+                hanzi: "昨天的生字很多，我沒背完。",
+                rubyHtml: "<ruby>昨<rt>zuó</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>多<rt>duō</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>沒<rt>méi</rt></ruby><ruby>背<rt>bèi</rt></ruby><ruby>完<rt>wán</rt></ruby>。",
+                translation: "昨日の新出単語はとても多くて、私は覚えきれなかった。",
+                structure: "【沒＋背完】沒背完",
+                point: "<b>背完（bèi wán）</b>：暗記し終える。"
+            }
+        ];
+
+        // 3. Vocabulary Data
+        const vocabData = [
+            { hanzi: "好", pinyin: "hǎo", meaning: "（結果補語）しっかりと・ちゃんと〜し終える", cat: "comp" },
+            { hanzi: "完", pinyin: "wán", meaning: "（結果補語）〜し終える・完全になくなる", cat: "comp" },
+            { hanzi: "懂", pinyin: "dǒng", meaning: "（結果補語）〜して理解する", cat: "comp" },
+            { hanzi: "見", pinyin: "jiàn", meaning: "（結果補語）〜して目・耳に入る（知覚完了）", cat: "comp" },
+            { hanzi: "錯", pinyin: "cuò", meaning: "（結果補語）〜し間違える", cat: "comp" },
+            { hanzi: "乾淨", pinyin: "gānjìng", meaning: "（結果補語/形容詞）きれいに・清潔に", cat: "comp" },
+            { hanzi: "烤", pinyin: "kǎo", meaning: "焼く（BBQ/グリル）", cat: "verb" },
+            { hanzi: "背", pinyin: "bèi", meaning: "暗記する・覚える", cat: "verb" },
+            { hanzi: "擦", pinyin: "cā", meaning: "拭く・磨く", cat: "verb" },
+            { hanzi: "機車", pinyin: "jīchē", meaning: "スクーター・バイク (台湾用語)", cat: "noun" },
+            { hanzi: "垃圾桶", pinyin: "lèsètǒng", meaning: "ゴミ箱", cat: "noun" },
+            { hanzi: "生字", pinyin: "shēngzì", meaning: "新出単語", cat: "noun" }
+        ];
+
+        // 4. Render Sentences
+        function renderSentences(data) {
+            const container = document.getElementById('sentenceContainer');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 md:p-7 transition shadow-sm space-y-4">
+                    <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+                        <div class="space-y-3 w-full">
+                            <div class="text-xs font-mono text-blue-700 font-extrabold uppercase tracking-wider">SENTENCE #${item.id}</div>
+                            <!-- 特大ピンインルビ表示エリア -->
+                            <div class="text-2xl md:text-3xl font-bold text-slate-900 leading-relaxed pt-2">
+                                ${item.rubyHtml}
+                            </div>
+                        </div>
+                        <button onclick="speakText('${item.hanzi}')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 p-3.5 rounded-2xl border border-blue-200 transition flex items-center justify-center group shadow-sm mt-2" title="発音を聞く">
+                            <svg class="w-7 h-7 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm text-slate-800 font-medium">
+                        <span class="text-xs text-slate-500 font-bold block mb-1">【日本語訳】</span>
+                        ${item.translation}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-blue-700 block mb-1">文法構造ブレイクダウン</span>
+                            <span class="text-slate-800 font-mono text-xs leading-normal">${item.structure}</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <span class="font-bold text-emerald-700 block mb-1">TOCFL メタポイント</span>
+                            <span class="text-slate-800 leading-normal">${item.point}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 5. Render Vocabulary Cards
+        function renderVocab(filter = 'all') {
+            const container = document.getElementById('vocabContainer');
+            const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+            
+            container.innerHTML = filtered.map(v => `
+                <div class="bg-white border border-slate-200 p-4.5 rounded-2xl flex items-center justify-between gap-3 hover:border-slate-300 transition shadow-sm">
+                    <div>
+                        <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            ${v.hanzi}
+                        </div>
+                        <div class="text-sm font-mono text-blue-700 mt-0.5 font-bold">${v.pinyin}</div>
+                        <div class="text-xs text-slate-600 mt-1">${v.meaning}</div>
+                    </div>
+                    <button onclick="speakText('${v.hanzi}')" class="bg-slate-50 hover:bg-slate-100 text-blue-700 p-2.5 rounded-xl border border-slate-200 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 6. UI Navigation Controls
+        function switchTab(tab) {
+            ['sentences', 'grammar', 'qa', 'vocab'].forEach(t => {
+                document.getElementById(`sec-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition font-medium";
+            });
+            document.getElementById(`sec-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "px-4 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-md shadow-blue-500/20 transition";
+        }
+
+        function filterSentences() {
+            const query = document.getElementById('sentenceSearch').value.toLowerCase();
+            const filtered = sentencesData.filter(s => 
+                s.hanzi.toLowerCase().includes(query) || 
+                s.translation.toLowerCase().includes(query) ||
+                s.point.toLowerCase().includes(query)
+            );
+            renderSentences(filtered);
+        }
+
+        function filterVocab(cat) {
+            document.querySelectorAll('.vocab-btn').forEach(btn => {
+                btn.className = "vocab-btn px-3 py-1.5 rounded-xl text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium";
+            });
+            event.target.className = "vocab-btn active px-3 py-1.5 rounded-xl text-xs bg-blue-600 text-white font-bold shadow-sm";
+            renderVocab(cat);
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            renderSentences(sentencesData);
+            renderVocab();
+        }
+    </script>
+</body>
+</html>
